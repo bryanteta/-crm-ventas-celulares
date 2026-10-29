@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
   const browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium',headless:true,args:['--no-sandbox']});
   try {
     for (const width of [320,390,768,1440]) {
-      const context=await browser.newContext({viewport:{width,height:900}});
+      const context=await browser.newContext({timezoneId:'America/El_Salvador',viewport:{width,height:900}});
       const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
       const checkScreen=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`overflow at ${width}`);
       assert.equal((await page.goto('http://127.0.0.1:8000')).status(),200);

@@ -1,0 +1,84 @@
+const { chromium } = require('playwright');
+const assert = require('node:assert/strict');
+(async () => {
+  const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
+  try {
+    const page = await browser.newPage({ viewport: { width: 412, height: 915 } });
+    const errors = []; page.on('pageerror', e => errors.push(e.message));
+    await page.goto('http://127.0.0.1:8000/#registro');
+    const fill = async name => {
+      await page.locator('nav a[href="#registro"]').click();
+      for (const [field,value] of Object.entries({ client: name, model: 'Galaxy', phone: '71234567', when: '2030-12-01T10:00' })) await page.locator(`#form [name=${field}]`).fill(value);
+    };
+    const addUser = async name => {
+      await page.locator('nav a[href="#ajustes"]').click();
+      await page.locator('#profile-name').fill(name); await page.locator('#profile-save').click();
+    };
+    await fill('Primero'); await page.locator('#form [type=submit]').click();
+    await page.locator('#profiles-panel').waitFor();
+    assert.equal(await page.evaluate(() => LunivoApp.records().length), 0);
+    assert.match(await page.locator('#notice').textContent(), /selecciona tu usuario/);
+    await addUser('  Ana   María  '); await addUser('Bruno');
+    await addUser('ana maría');
+    assert.match(await page.locator('#notice').textContent(), /Ya existe/);
+    assert.equal(await page.locator('.profile-row').count(), 2);
+    const ana = await page.locator('#profile-current option').filter({ hasText: 'Ana María' }).getAttribute('value');
+    const bruno = await page.locator('#profile-current option').filter({ hasText: 'Bruno' }).getAttribute('value');
+    await page.locator('#profile-current').selectOption(ana);
+    await page.locator('nav a[href="#registro"]').click();
+    assert.equal(await page.locator('#form [name=client]').inputValue(), 'Primero');
+    assert.match(await page.locator('#record-author').textContent(), /Ana María/);
+    await page.locator('#form [type=submit]').click(); await page.locator('#listado').waitFor();
+    await page.locator('nav a[href="#dashboard"]').click();
+    assert.match(await page.locator('#upcoming-items').textContent(), /Registrado por: Ana María/);
+    const original = await page.evaluate(() => LunivoApp.records()[0]);
+    assert.equal(original.createdById, ana); assert.equal(original.createdByName, 'Ana María'); assert.ok(Number.isFinite(Date.parse(original.createdAt)));
+    await page.locator('nav a[href="#ajustes"]').click(); await page.locator('#profile-current').selectOption(bruno);
+    await page.locator('nav a[href="#listado"]').click();
+    await page.locator('#items').getByRole('button', { name: 'Editar', exact: true }).click();
+    assert.match(await page.locator('#record-author').textContent(), /Registrado por: Ana María/);
+    await page.locator('#form [name=notes]').fill('Editado por Bruno'); await page.locator('#form [type=submit]').click();
+    await page.locator('#items').getByRole('combobox').selectOption('Completado');
+    const edited = await page.evaluate(() => LunivoApp.records()[0]);
+    for (const key of ['createdById','createdByName','createdAt']) assert.equal(edited[key], original[key]);
+    await page.locator('nav a[href="#ajustes"]').click();
+    await page.getByRole('button', { name: 'Editar nombre de Ana María', exact: true }).click();
+    await page.locator('#profile-name').fill('Ana Martínez'); await page.locator('#profile-save').click();
+    await page.locator('#profile-current').selectOption(ana);
+    await fill('Segundo'); await page.locator('#form [type=submit]').click(); await page.locator('#listado').waitFor();
+    assert.equal(await page.evaluate(() => LunivoApp.records()[1].createdByName), 'Ana Martínez');
+    await page.locator('nav a[href="#ajustes"]').click();
+    await page.getByRole('button', { name: 'Desactivar a Ana Martínez', exact: true }).click();
+    assert.equal(await page.locator('#profile-current').inputValue(), '');
+    await fill('Sin usuario activo'); await page.locator('#form [type=submit]').click(); await page.locator('#ajustes').waitFor();
+    assert.equal(await page.evaluate(() => LunivoApp.records().length), 2);
+    await page.getByRole('button', { name: 'Reactivar a Ana Martínez', exact: true }).click();
+    await page.locator('#profile-current').selectOption(bruno);
+    await page.reload(); assert.equal(await page.locator('#profile-current').inputValue(), bruno);
+    const before = await page.evaluate(() => localStorage.getItem('lunivo-profiles-local-v1'));
+    await page.locator('#profile-name').fill('No guardar');
+    await page.evaluate(() => { window.originalSet = Storage.prototype.setItem; Storage.prototype.setItem = () => { throw new DOMException('Full', 'QuotaExceededError'); }; });
+    await page.locator('#profile-save').click();
+    assert.match(await page.locator('#notice').textContent(), /No se pudieron guardar/);
+    assert.equal(await page.evaluate(() => localStorage.getItem('lunivo-profiles-local-v1')), before);
+    await page.evaluate(() => { Storage.prototype.setItem = window.originalSet; });
+    await page.evaluate(() => { const rows = LunivoApp.records(); rows.push({ ...rows[0], id:'legacy', client:'Anterior' }); for (const k of ['createdById','createdByName','createdAt']) delete rows.at(-1)[k]; LunivoStore.save(rows); LunivoApp.reload(); });
+    await page.locator('nav a[href="#listado"]').click();
+    const legacy = page.locator('#items .row').filter({ hasText: 'Anterior' });
+    assert.match(await legacy.textContent(), /Sin usuario registrado/);
+    await legacy.getByRole('button', { name: 'Editar', exact: true }).click();
+    await page.locator('#form [name=notes]').fill('Conservar sin atribuir'); await page.locator('#form [type=submit]').click();
+    assert.equal(await page.evaluate(() => Object.hasOwn(LunivoApp.records().find(r=>r.id==='legacy'), 'createdById')), false);
+    await addUser('<img src=x onerror=alert(1)>');
+    assert.equal(await page.locator('#profiles-list img').count(), 0);
+    for (const [width,height] of [[320,840],[384,832],[440,956],[840,920],[915,412]]) {
+      await page.setViewportSize({ width,height });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${width} settings overflow`);
+    }
+    await page.evaluate(() => { LunivoProfiles.save(LunivoProfiles.records().filter(p => !p.name.startsWith('<img'))); LunivoProfileUI.render(); });
+    await page.setViewportSize({ width: 412, height: 915 });
+    await page.screenshot({ path: require('./artifacts.cjs').path('lunivo-' + require('../package.json').version + '-usuarios.png'), fullPage: true });
+    assert.deepEqual(errors, []);
+    console.log('PASS perfiles: selección obligatoria, borrador conservado, nombres duplicados, autor original al editar/completar/renombrar, desactivar/reactivar, persistencia, fallo de almacenamiento, legado y escape de texto; 5 tamaños de pantalla');
+  } finally { await browser.close(); }
+})().catch(e=>{console.error(e);process.exitCode=1});

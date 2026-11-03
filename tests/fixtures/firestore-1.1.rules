@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+    function text(value, max) { return value is string && value.size() <= max; }
+    function validRecord(r, id) {
+      return r is map
+        && r.keys().hasAll(['id','client','phone','model','channel','payment','event','when','state','contactProfile','notes'])
+        && r.keys().hasOnly(['id','client','phone','model','channel','payment','event','when','state','contactProfile','notes','createdById','createdByName','createdAt'])
+        && validCreator(r)
+        && r.id == id && text(r.id, 200)
+        && text(r.client, 100) && r.client.size() > 0
+        && text(r.model, 100) && r.model.size() > 0
+        && text(r.phone, 25) && text(r.contactProfile, 250) && text(r.notes, 1000)
+        && r.channel in ['WhatsApp','Facebook','Instagram','TikTok','Presencial','Llamada']
+        && r.payment in ['Contado','Cuotas','Por definir']
+        && text(r.event, 100) && text(r.when, 40)
+        && r.state in ['Pendiente','En proceso','Completado'];
+    }
+    function validCreator(r) {
+      return !r.keys().hasAny(['createdById','createdByName','createdAt'])
+        || (r.keys().hasAll(['createdById','createdByName','createdAt'])
+          && text(r.createdById, 128) && r.createdById.size() > 0
+          && text(r.createdByName, 80) && r.createdByName.size() > 0
+          && text(r.createdAt, 40) && r.createdAt.size() > 0);
+    }
+    function validProfile(r, id) {
+      return r is map && r.keys().hasAll(['id','name','active'])
+        && r.keys().hasOnly(['id','name','active'])
+        && r.id == id && text(r.id, 128) && r.id.size() > 0
+        && text(r.name, 80) && r.name.size() > 0 && r.active is bool;
+    }
+    function sameCreator() {
+      let before = resource.data;
+      let after = request.resource.data;
+      return before.deleted || after.deleted
+        || (before.record.get('createdById', '') == after.record.get('createdById', '')
+          && before.record.get('createdByName', '') == after.record.get('createdByName', '')
+          && before.record.get('createdAt', '') == after.record.get('createdAt', ''));
+    }
+    function validChange(d, profile) {
+      return d.keys().hasAll(['id','revision','deleted','updatedAt'])
+        && d.keys().hasOnly(['id','revision','deleted','updatedAt','record'])
+        && text(d.id, 200) && d.id.size() > 0
+        && text(d.revision, 100) && d.revision.size() > 0
+        && d.deleted is bool && d.updatedAt == request.time
+        && (d.deleted ? !('record' in d) : (profile ? validProfile(d.record, d.id) : validRecord(d.record, d.id)));
+    }
+    match /users/{uid}/profiles/{document} {
+      allow read: if owner(uid);
+      allow create, update: if owner(uid) && validChange(request.resource.data, true);
+      allow delete: if false;
+    }
+    match /users/{uid}/followups/{document} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && validChange(request.resource.data, false);
+      allow update: if owner(uid) && validChange(request.resource.data, false) && sameCreator();
+      // Keep tombstones, so a disconnected phone cannot resurrect deleted data.
+      allow delete: if false;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+(function(root,factory){const core=factory();if(typeof module==='object'&&module.exports)module.exports=core;else root.LunivoReceipt=core;})(typeof window==='object'?window:globalThis,()=>{
+'use strict';
+const TERMS=[
+'LUNIVO otorga 3 meses calendario de garantía sobre el dispositivo, contados desde la fecha de entrega. Aplica únicamente por desperfectos de fábrica o fallas de funcionamiento no atribuibles al uso, manejo o intervención del cliente o de terceros.',
+'No cubre golpes, caídas, humedad o inmersión, reparación por terceros, alteraciones de software fuera de parámetros de fábrica, bloqueo por cuentas personales, desgaste normal por uso, daños causados por accesorios externos ni daños físicos posteriores a la entrega.',
+'Para hacer válida la garantía, el cliente debe presentar este comprobante y el dispositivo debe corresponder al equipo entregado. Si se registró un IMEI/Serial, deberá coincidir con el indicado en este comprobante. LUNIVO no acepta devoluciones después de entregado; las solicitudes se atenderán conforme a estas condiciones.'
+];
+const COMPANY={name:'LUNIVO',phone:'+503 7624 1930',facebook:'@lunivo',instagram:'@lunivosv',tiktok:'@lunivosv'};
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function date(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))throw Error('Revisa la fecha de entrega.');const d=new Date(value+'T12:00:00Z');if(!Number.isFinite(+d)||d.toISOString().slice(0,10)!==value)throw Error('Fecha de entrega inválida.');return d;}
+function expires(value){const d=date(value),month=d.getUTCMonth()+3,y=d.getUTCFullYear()+Math.floor(month/12),m=month%12,last=new Date(Date.UTC(y,m+1,0)).getUTCDate();return `${y}-${String(m+1).padStart(2,'0')}-${String(Math.min(d.getUTCDate(),last)).padStart(2,'0')}`;}
+const dateText=v=>{date(v);return v.slice(8,10)+'/'+v.slice(5,7)+'/'+v.slice(0,4)};
+const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(n/100);
+function serials(v){return String(v||'').split(/[\n,;]+/).map(s=>s.trim()).filter(Boolean);}
+function number(sale){return sale.saleNumber||sale.receipt?.number||'';}
+function allocate(data,sale){
+ if(sale.saleNumber)return;
+ const month=sale.date.slice(0,7);date(sale.date);
+ if(data.receiptCounters===undefined)data.receiptCounters={};
+ if(!data.receiptCounters||typeof data.receiptCounters!=='object'||Array.isArray(data.receiptCounters))throw Error('No se pudo leer el correlativo del mes.');
+ const assigned=data.sales.filter(s=>s.date.slice(0,7)===month&&Number.isInteger(s.saleSequence)).map(s=>s.saleSequence);
+ const last=Math.max(0,data.receiptCounters[month]||0,...assigned);
+ if(!Number.isSafeInteger(last)||last<0||last>=Number.MAX_SAFE_INTEGER)throw Error('Correlativo inválido.');
+ sale.saleSequence=last+1;sale.saleMonth=month;sale.saleNumber=month.slice(5,7)+String(sale.saleSequence).padStart(2,'0');
+ data.receiptCounters[month]=sale.saleSequence;
+}
+function validate(r,sale){
+if(!r||r.version!==1||!r.number||r.number.length>50)throw Error('Revisa el número del comprobante.');date(r.deliveryDate);
+for(const key of ['brand','capacity','color','condition','battery','physical'])if(typeof r[key]!=='string'||!r[key].trim())throw Error('Completa marca, capacidad, color, estado comercial, batería y estado físico para emitir la garantía.');
+if(!Array.isArray(r.serials)||r.serials.length>sale.quantity||r.serials.some(s=>typeof s!=='string'||!s.trim()||s.length>100))throw Error('Registra como máximo un IMEI/serial por unidad; también puedes dejarlo vacío.');
+if(new Set(r.serials.map(s=>s.replace(/\s/g,'').toUpperCase())).size!==r.serials.length)throw Error('No repitas el mismo IMEI/serial.');
+if(!['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro'].includes(r.paymentMethod))throw Error('Selecciona el método de pago.');
+if(r.paymentMethod==='Tasa cero'&&(!r.bank||!Number.isInteger(r.months)||r.months<1||r.months>60))throw Error('Completa banco y meses de la tasa cero.');
+if(r.phone&&!/^[+\d\s().-]{7,30}$/.test(r.phone))throw Error('Revisa el teléfono del cliente.');
+if(r.warrantyMonths!==3||!Array.isArray(r.terms)||r.terms.length!==3)throw Error('No se pudieron leer las condiciones de garantía.');
+if(!Array.isArray(r.gifts)||r.gifts.some(g=>!g.name||!Number.isSafeInteger(g.reference)||g.reference<0))throw Error('Revisa las cortesías y sus valores de referencia.');
+return true;
+}
+function payment(r){return r.paymentMethod+(r.bank?' · '+r.bank:'')+(r.paymentMethod==='Tasa cero'?' · '+r.months+' meses':'');}
+function accessoryRows(sale){
+ if(Array.isArray(sale.accessoryItems))return sale.accessoryItems.map(item=>({concept:item.name,quantity:'1',amount:money(item.price),application:item.price===0?'Cortesía LUNIVO':'Accesorio'}));
+ return sale.accessories?[{concept:'Accesorios cobrados (registro anterior)',quantity:'1',amount:money(sale.accessories),application:'Accesorios'}]:[];
+}
+function giftsFor(sale){const ids=new Set((sale.accessoryItems||[]).map(i=>i.catalogId));return sale.receipt.gifts.filter(g=>!ids.has(g.name==='Cargador completo'?'charger':g.name==='Case'?'case':g.name==='Protector de pantalla'?'protector':''));}
+function documentData(sale){
+ if(sale.status==='Borrador')throw Error('Confirma la venta antes de emitir un comprobante.');const r=sale.receipt;validate(r,sale);
+ return {version:1,number:r.number,cancelled:sale.status==='Anulada',client:sale.client,phone:r.phone||'',model:sale.model,
+ deliveryDate:dateText(r.deliveryDate),expires:dateText(expires(r.deliveryDate)),payment:payment(r),
+ device:[['Marca / modelo',r.brand+' · '+sale.model],['Capacidad',r.capacity],['Color',r.color],['Estado comercial',r.condition],['Batería',r.battery],['Estado físico',r.physical],['IMEI / Serial',r.serials.length?r.serials.join('\n'):'No registrado (opcional)'],['Fecha de entrega',dateText(r.deliveryDate)]],
+ items:[{concept:sale.model,quantity:String(sale.quantity),amount:money(sale.price*sale.quantity),application:'Precio dispositivo'},...accessoryRows(sale),...giftsFor(sale).map(g=>({concept:g.name,quantity:'1',amount:g.reference?money(g.reference):'—',application:'Cortesía LUNIVO'}))],
+ total:money(sale.revenue),terms:[...r.terms],customerNotes:r.customerNotes||'Comprobante correspondiente a la compra y entrega del dispositivo detallado.',channel:r.channel||'Tienda',company:{...(r.company||COMPANY)}};
+}
+function html(sale){if(sale.status==='Borrador')throw Error('Confirma la venta antes de emitir un comprobante.');const r=sale.receipt;validate(r,sale);const company=r.company||COMPANY,extra=sale.accessories||0;const logo=typeof location==='object'?new URL('assets/lunivo-mark.png',location.href).href:'https://appassets.androidplatform.net/assets/www/assets/lunivo-mark.png';
+const accessoryHtml=accessoryRows(sale).map(item=>`<tr><td>${esc(item.concept)}</td><td>${esc(item.quantity)}</td><td>${esc(item.amount)}</td><td>${esc(item.application)}</td></tr>`).join('');
+const giftRows=giftsFor(sale).map(g=>`<tr><td>${esc(g.name)}</td><td>1</td><td>${g.reference?money(g.reference):'—'}</td><td>Cortesía LUNIVO</td></tr>`).join('');
+const field=(title,value)=>`<div class="field"><small>${esc(title)}</small><strong>${esc(value)}</strong></div>`;
+return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(r.number)} · LUNIVO</title><style>
+@page{size:A4;margin:10mm}*{box-sizing:border-box}body{margin:0;font:10.5px/1.4 Arial,sans-serif;color:#20334d;background:white}.sheet{max-width:760px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:3px solid #275b9e;padding-bottom:10px;margin-bottom:10px}.brand-logo{width:68px;height:74px;object-fit:contain}.brand-name{font-size:23px;font-weight:750;letter-spacing:4px;color:#172f57}.heading{text-align:right}h1{font-size:19px;line-height:1.2;margin:0 0 7px;color:#162c4b}.heading p{margin:3px 0;font-size:10px;color:#597190}.intro{font-size:10px;color:#607087;margin:8px 0 10px}.summary,.device{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#e3e8f0;border:1px solid #e3e8f0}.summary{grid-template-columns:1fr 1.4fr 1.2fr}.field{background:#f5f7fa;padding:7px 10px;min-width:0;overflow-wrap:anywhere}.field small{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.4px;color:#6d7c8e;margin-bottom:4px}.field strong{display:block;font-size:11px;white-space:pre-line}h2{font-size:12px;margin:13px 0 7px;color:#233c5e}h2 span{color:#3978bd;margin-right:6px}table{table-layout:fixed;width:100%;border-collapse:collapse;font-size:10.5px}th{background:#1a304e;color:white;text-align:left;padding:8px}td{overflow-wrap:anywhere;padding:6px 8px;border-bottom:1px solid #e7ecf2}th:nth-child(3),td:nth-child(3){text-align:right;white-space:nowrap}tr{break-inside:avoid}th:first-child{width:37%}th:nth-child(2){width:11%}th:nth-child(3){width:18%}tr.total td:last-child{white-space:normal}tr.total td:nth-child(2){white-space:nowrap}tr.total td{background:#eaf1fb;font-weight:bold;font-size:12px}.footnote{font-size:9px;color:#6f7d8e;margin:7px 0}.terms p{margin:7px 0;text-align:justify}.expiry{font-weight:bold;color:#214f88}.observations{padding:10px;background:#f6f8fb;white-space:pre-line;overflow-wrap:anywhere}.control{display:flex;gap:20px;justify-content:space-between;margin-top:10px;font-size:10px}footer{break-inside:avoid;border-top:1px solid #dfe6ef;padding-top:10px;margin-top:16px;text-align:center;font-size:9px;color:#62768f}.cancelled{background:#fff0ee;color:#a13e35;padding:10px;margin:0 0 12px;text-align:center;font-weight:bold;font-size:15px}.device,.summary,header,h2{break-inside:avoid}h2{break-after:avoid}@media screen{body{padding:16px}}@media screen and (max-width:520px){.summary{grid-template-columns:1fr}.heading h1{font-size:15px}.brand-name{font-size:18px}.brand-logo{width:55px;height:65px}.device .field strong{font-size:11px}td,th{padding:7px 5px;font-size:10px}th:first-child{width:31%}th:nth-child(2){width:15%}th:nth-child(3){width:25%}tr.total td{font-size:10px}}
+@media print{
+ html,body{width:auto;margin:0;padding:0;background:#fff;color:#172c46;font:9.5pt/1.35 Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:optimizeLegibility}
+ .sheet{width:100%;max-width:none}header{gap:16px;padding-bottom:7px;margin-bottom:9px}.brand-logo{width:54px;height:58px;image-rendering:auto}.brand-name{font-size:18pt;font-weight:700}.heading h1{font-size:15pt}.heading p{font-size:8.5pt;color:#43556b}
+ .intro{font-size:8.2pt;line-height:1.35;color:#43556b;margin:6px 0 9px}.field{padding:5px 9px}.field small{font-size:7.5pt;line-height:1.3;color:#43556b;margin-bottom:3px}.field strong{font-size:10pt;line-height:1.3;font-weight:700}
+ h2{font-size:10pt;line-height:1.2;margin:10px 0 6px}table{font-size:9.2pt}th{font-size:8.5pt;padding:6px 7px}td{padding:5px 7px}tr.total td{font-size:10pt}.footnote{font-size:7.5pt;line-height:1.35;color:#43556b;margin:6px 0}
+ .terms{font-size:9.2pt;line-height:1.35}.terms p{margin:6px 0}.observations{padding:6px 9px;font-size:9pt}.control{font-size:8pt;margin-top:8px}footer{font-size:8pt;line-height:1.35;color:#43556b;margin-top:10px;padding-top:7px}.cancelled{font-size:12pt}
+}
+
+</style></head><body><article class="sheet">${sale.status==='Anulada'?'<div class="cancelled">COMPROBANTE ANULADO</div>':''}<header><div><img class="brand-logo" src="${esc(logo)}" alt="Logo LUNIVO"><div class="brand-name">LUNIVO</div></div><div class="heading"><h1>COMPROBANTE DE COMPRA<br>Y GARANTÍA</h1><p>${esc(r.number)}</p><p>Teléfonos de gama alta</p></div></header><p class="intro">Documento emitido por LUNIVO como comprobante de compra, entrega y respaldo de garantía. No requiere firma del cliente; registra la información comercial y técnica del equipo entregado.</p><div class="summary">${field('Fecha de entrega',dateText(r.deliveryDate))}${field('Cliente',sale.client+(r.phone?'\n'+r.phone:''))}${field('Método de pago',payment(r))}</div><h2><span>01</span>DATOS DEL DISPOSITIVO ENTREGADO</h2><div class="device">${field('Marca / modelo',r.brand+' · '+sale.model)}${field('Capacidad',r.capacity)}${field('Color',r.color)}${field('Estado comercial',r.condition)}${field('Batería',r.battery)}${field('Estado físico',r.physical)}${field('IMEI / Serial',r.serials.length?r.serials.join('\n'):'No registrado (opcional)')}${field('Fecha de entrega',dateText(r.deliveryDate))}</div><h2><span>02</span>PRECIO COBRADO Y BENEFICIOS ENTREGADOS</h2><table><thead><tr><th>Concepto</th><th>Cant.</th><th>Valor</th><th>Aplicación</th></tr></thead><tbody><tr><td>${esc(sale.model)}</td><td>${sale.quantity}</td><td>${money(sale.price*sale.quantity)}</td><td>Precio dispositivo</td></tr>${accessoryHtml}${giftRows}<tr class="total"><td colspan="2">TOTAL PAGADO POR EL CLIENTE</td><td>${money(sale.revenue)}</td><td>${esc(payment(r))}</td></tr></tbody></table><p class="footnote">Los artículos indicados como cortesía o regalía se entregaron sin costo adicional. Sus valores son referenciales y no son canjeables por efectivo, descuento posterior ni devolución independiente.</p><h2><span>03</span>CONDICIONES DE GARANTÍA LUNIVO</h2><div class="terms"><p class="expiry">3 MESES CALENDARIO desde ${dateText(r.deliveryDate)}. Válida hasta ${dateText(expires(r.deliveryDate))}.</p>${r.terms.map(t=>`<p>${esc(t)}</p>`).join('')}</div><h2><span>04</span>CONTROL Y VALIDEZ DEL COMPROBANTE</h2><div class="observations">${esc(r.customerNotes||'Comprobante correspondiente a la compra y entrega del dispositivo detallado.')}</div><div class="control"><span>Correlativo: ${esc(r.number)}</span><span>Canal: ${esc(r.channel||'Tienda')}</span></div><footer>${esc(company.name)} · WhatsApp ${esc(company.phone)}<br>Facebook ${esc(company.facebook)} · Instagram ${esc(company.instagram)} · TikTok ${esc(company.tiktok)}</footer></article></body></html>`;
+}
+return{TERMS,COMPANY,esc,date,expires,dateText,serials,number,allocate,validate,payment,documentData,html};
+});

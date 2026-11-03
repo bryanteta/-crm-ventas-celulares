@@ -1,0 +1,13 @@
+android/.gradle/
+android/local.properties
+android/**/build/
+*.jks
+*.keystore
+android/firebase.properties
+android/google-services.json
+node_modules/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebase/
+test-results/

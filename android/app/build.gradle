@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.application'
+}
+
+def firebaseConfig = new Properties()
+def firebaseConfigFile = rootProject.file('firebase.properties')
+if (firebaseConfigFile.exists()) {
+    firebaseConfigFile.withInputStream { firebaseConfig.load(it) }
+}
+
+android {
+    namespace 'com.crmcelulares.app'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.crmcelulares.app'
+        minSdk 26
+        targetSdk 35
+        versionCode 19
+        versionName '1.5.0-preview'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        buildConfigField 'String', 'FIREBASE_API_KEY', groovy.json.JsonOutput.toJson(firebaseConfig.getProperty('apiKey', ''))
+        buildConfigField 'String', 'FIREBASE_PROJECT_ID', groovy.json.JsonOutput.toJson(firebaseConfig.getProperty('projectId', ''))
+        buildConfigField 'String', 'FIREBASE_APP_ID', groovy.json.JsonOutput.toJson(firebaseConfig.getProperty('appId', ''))
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        buildConfig true
+    }
+    buildTypes {
+        release {
+            // Keep the installed APK's signing identity for private, in-place distribution.
+            signingConfig signingConfigs.debug
+            debuggable false
+        }
+    }
+    testBuildType 'release'
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.all {
+            systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+            // Robolectric uses a download lock in user.home; keep tests self-contained.
+            def testHome = layout.buildDirectory.dir('test-home').get().asFile
+            systemProperty 'user.home', testHome.absolutePath
+            doFirst { testHome.mkdirs() }
+        }
+    }
+}
+
+// Package the same interface used by browser development and functional tests.
+def prepareWebAssets = tasks.register('prepareWebAssets', Copy) {
+    from(rootProject.projectDir.parentFile) {
+        include 'index.html', 'app.css', 'app.js', 'data-store.js', 'sync-ui.js', 'profiles-ui.js', 'suite.js', 'sales-core.js', 'suite.css', 'launch.js', 'receipt-core.js', 'warranty.js', 'inventory.js', 'accessories.js', 'assets/**'
+    }
+    into(layout.buildDirectory.dir('generated/crmAssets/www'))
+}
+android.sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/crmAssets'))
+android.sourceSets.androidTest.assets.srcDir(rootProject.file('../tests/fixtures'))
+tasks.named('preBuild').configure { dependsOn(prepareWebAssets) }
+
+dependencies {
+    implementation 'androidx.core:core:1.15.0'
+    implementation 'androidx.webkit:webkit:1.12.1'
+    implementation platform('com.google.firebase:firebase-bom:33.14.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.14.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test:core:1.6.1'
+}

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "number": "1101",
+  "cancelled": false,
+  "client": "Cliente de ejemplo",
+  "phone": "",
+  "model": "iPhone 15",
+  "deliveryDate": "02/11/2026",
+  "expires": "02/02/2027",
+  "payment": "Efectivo",
+  "device": [
+    [
+      "Marca / modelo",
+      "Apple · iPhone 15"
+    ],
+    [
+      "Capacidad",
+      "128 GB"
+    ],
+    [
+      "Color",
+      "Negro"
+    ],
+    [
+      "Estado comercial",
+      "Nuevo"
+    ],
+    [
+      "Batería",
+      "100%"
+    ],
+    [
+      "Estado físico",
+      "Sin daños visibles"
+    ],
+    [
+      "IMEI / Serial",
+      "No registrado (opcional)"
+    ],
+    [
+      "Fecha de entrega",
+      "02/11/2026"
+    ]
+  ],
+  "items": [
+    {
+      "concept": "iPhone 15",
+      "quantity": "1",
+      "amount": "$740.00",
+      "application": "Precio dispositivo"
+    },
+    {
+      "concept": "Cargador completo · Cable y cubo",
+      "quantity": "1",
+      "amount": "$15.00",
+      "application": "Accesorio"
+    },
+    {
+      "concept": "Protector de pantalla · Vidrio templado (iPhone)",
+      "quantity": "1",
+      "amount": "$8.00",
+      "application": "Accesorio"
+    },
+    {
+      "concept": "Case",
+      "quantity": "1",
+      "amount": "$5.00",
+      "application": "Accesorio"
+    },
+    {
+      "concept": "Caja genérica",
+      "quantity": "1",
+      "amount": "$3.00",
+      "application": "Accesorio"
+    },
+    {
+      "concept": "Audífonos",
+      "quantity": "1",
+      "amount": "$20.00",
+      "application": "Accesorio"
+    },
+    {
+      "concept": "Soporte de cortesía",
+      "quantity": "1",
+      "amount": "$0.00",
+      "application": "Cortesía LUNIVO"
+    }
+  ],
+  "total": "$791.00",
+  "terms": [
+    "LUNIVO otorga 3 meses calendario de garantía sobre el dispositivo, contados desde la fecha de entrega. Aplica únicamente por desperfectos de fábrica o fallas de funcionamiento no atribuibles al uso, manejo o intervención del cliente o de terceros.",
+    "No cubre golpes, caídas, humedad o inmersión, reparación por terceros, alteraciones de software fuera de parámetros de fábrica, bloqueo por cuentas personales, desgaste normal por uso, daños causados por accesorios externos ni daños físicos posteriores a la entrega.",
+    "Para hacer válida la garantía, el cliente debe presentar este comprobante y el dispositivo debe corresponder al equipo entregado. Si se registró un IMEI/Serial, deberá coincidir con el indicado en este comprobante. LUNIVO no acepta devoluciones después de entregado; las solicitudes se atenderán conforme a estas condiciones."
+  ],
+  "customerNotes": "Comprobante correspondiente a la compra y entrega del dispositivo detallado.",
+  "channel": "Tienda",
+  "company": {
+    "name": "LUNIVO",
+    "phone": "+503 7624 1930",
+    "facebook": "@lunivo",
+    "instagram": "@lunivosv",
+    "tiktok": "@lunivosv"
+  }
+}

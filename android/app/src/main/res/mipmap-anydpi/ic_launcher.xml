@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MonochromeLauncherIcon">
+    <background android:drawable="@color/lunivo_icon_background" />
+    <foreground android:drawable="@drawable/lunivo_launcher_foreground" />
+    <!-- The API 33 resource override supplies the themed monochrome layer. -->
+</adaptive-icon>

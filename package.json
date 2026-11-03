@@ -1,0 +1,16 @@
+{
+  "name": "lunivo-development",
+  "version": "1.5.0-preview",
+  "private": true,
+  "description": "Validation of Lunivo offline synchronization and Firebase rules",
+  "scripts": {
+    "test": "node --test tests/data-store.test.cjs tests/sales-core.test.cjs tests/receipt-core.test.cjs",
+    "test:rules": "node --test tests/firestore-rules.test.cjs",
+    "test:ui": "node scripts/test-ui.cjs"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "4.0.1",
+    "firebase": "11.10.0",
+    "playwright": "1.62.1"
+  }
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "upgrade-1",
+    "client": "Cliente Álvarez",
+    "phone": "+50371234567",
+    "model": "Galaxy Note 20 Ultra",
+    "channel": "WhatsApp",
+    "payment": "Cuotas",
+    "event": "Enviar cotización",
+    "when": "2030-12-01T10:00",
+    "state": "Pendiente",
+    "contactProfile": "",
+    "notes": "Línea 1\nLínea 2 ✓"
+  },
+  {
+    "id": "upgrade-2",
+    "client": "Cliente internacional",
+    "phone": "+12025550123",
+    "model": "Galaxy Z Fold7",
+    "channel": "Llamada",
+    "payment": "Contado",
+    "event": "Confirmar compra",
+    "when": "2030-12-02T11:30",
+    "state": "Completado",
+    "contactProfile": "",
+    "notes": "Compra confirmada; no debe generar alarma."
+  },
+  {
+    "id": "upgrade-3",
+    "client": "Perfil social",
+    "phone": "",
+    "model": "Equipo de prueba",
+    "channel": "Instagram",
+    "payment": "Por definir",
+    "event": "Seguimiento",
+    "when": "2030-12-03T10:00",
+    "state": "En proceso",
+    "contactProfile": "@cliente.sv",
+    "notes": "Texto literal <script>no ejecutar</script>"
+  }
+]

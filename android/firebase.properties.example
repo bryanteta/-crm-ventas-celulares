@@ -1,0 +1,5 @@
+# Public Android app configuration, extracted from google-services.json.
+# Use: node scripts/configure-firebase.cjs /path/to/google-services.json
+apiKey=
+projectId=
+appId=

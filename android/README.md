@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.4-preview
+# Lunivo para Android · 1.5.5-preview
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 23. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 24. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -54,9 +54,15 @@ Proveedores reúne **Split (Saúl y Javier)** y **Samuel**. Buscar, comparar mod
 
 Las cotizaciones antiguas de TecnoShop se presentan como Samuel mediante un alias de lectura, conservando los datos originales y los accesos guardados `provider=tecnoshop`. Las ventas nuevas usan los nombres actuales; el historial financiero no se recalcula. Elegir un lote de Samuel usa su costo y descuenta solo sus unidades al confirmar. Split permite los filtros Combinado, Saúl y Javier.
 
-La hoja Google de Samuel y la página externa de Split están en Fuentes de inventario. **Todavía no hay lectura automática ni contrato de API verificado.** El entorno de desarrollo bloqueó ambos hosts antes de contactar los servicios; sus esquemas y autenticación no se han inspeccionado. No se supone que la clave recibida sea un token REST ni se adivinan endpoints. No se incluyen claves de Split en código, configuración compilada, enlaces o archivos del repositorio.
+Samuel se consulta como CSV desde su hoja pública de Google. Split usa su API de revendedores verificada: `GET https://split-crm.splitelsalvador.workers.dev/api/v1/inventario`, encabezado `X-API-Key`. Se proyectan sus orígenes `SPLIT` → Saúl y `JAVIER` → Javier. Solo se hacen lecturas; Lunivo no modifica inventarios o ventas del proveedor.
 
-La referencia PDF integrada del 02/11/2026 solo se importa con una acción explícita dentro de Fuentes; no representa una actualización desde las nuevas URLs. Los nuevos dominios y un requisito de clave se guardaron en el borrador del entorno de desarrollo para revisión. Guardar ese borrador no activa las conexiones de la app ni despliega servicios.
+`InventoryHttp` solo admite esos dos destinos HTTPS fijos, no sigue redirecciones, limita tamaño y tiempos de espera y rechaza páginas HTML o respuestas fallidas. El puente `LunivoInventoryAndroid` solo se inyecta en el frame principal del origen de recursos empaquetados. El WebView no recibe la clave guardada. La clave se introduce en Ajustes y se cifra con AES-GCM y una clave de Android Keystore, vinculada a la cuenta por AAD. No se incluye en BuildConfig, fuentes, archivos de inventario ni APK.
+
+El constructor privado ejecuta `python3 scripts/fetch-provider-snapshot.py` con `SPLIT_INVENTORY_TOKEN` del entorno. Las credenciales de proxy se usan solo en el encabezado dirigido a Split, sin imprimirlas ni guardarlas. El archivo resultante `android/provider-bootstrap.json`, ignorado por Git, contiene únicamente variantes/precios/cantidades y fecha de lectura. Gradle Sync lo incluye en `www/assets/provider-bootstrap.json` y elimina recursos generados obsoletos si falta en otra compilación.
+
+La copia incluida se carga al abrir Proveedores si la cuenta no tiene datos descargados. Samuel se actualiza automáticamente cuando la consulta tiene más de diez minutos. Split se actualiza del mismo modo una vez guardada su clave en el teléfono. Actualizar consulta ambas fuentes; si Split no tiene clave, conserva su copia y explica cómo configurarla. El inventario permanece visible sin conexión. La fecha distingue copia incluida y consulta directa.
+
+`feeds-core.js` valida toda la respuesta, cuenta unidades, conserva precios distintos, vincula dueños y genera identificadores de variante estables. Cada proveedor se sustituye en una sola escritura del almacenamiento de la cuenta. Una actualización de Samuel retira la referencia PDF antigua integrada, conservando ofertas manuales y otros proveedores. No cambia ventas, autores, inventario propio ni correlativos. Una respuesta válida vacía retira los equipos no disponibles; errores y respuestas tardías de otra cuenta no reemplazan la lista guardada. Los lotes locales permanecen en Inventario registrado; Proveedores usa la fuente descargada cuando existe para evitar duplicar existencias.
 
 Las tarjetas mantienen el formato compacto y sus acciones desplegables. Organizar cambia solo dueño/marca; los equipos de distintos dueños o costos no se combinan.
 
@@ -101,3 +107,11 @@ adb pull /sdcard/Android/data/com.crmcelulares.app/files/receipt-quality-example
 ```
 
 `FinalAppTest` es una suite distinta para actualizaciones históricas y requiere preparar sus datos de origen; no debe contarse como ejecutada por compilarla.
+
+Para verificar la nueva integración en un emulador, ejecuta únicamente sus dos pruebas:
+
+```sh
+adb shell am instrument -w -r -e class com.crmcelulares.app.InventoryInstrumentedTest com.crmcelulares.app.test/androidx.test.runner.AndroidJUnitRunner
+```
+
+Las pruebas instrumentadas usan una clave ficticia aislada para comprobar el cifrado y la borran al finalizar. La prueba de WebView verifica los datos reales empaquetados; no supone que el emulador tenga acceso de red a los proveedores. Las lecturas de los servicios reales se verifican por separado durante la generación de la copia.

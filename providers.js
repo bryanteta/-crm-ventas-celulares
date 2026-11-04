@@ -8,11 +8,11 @@ const details=o=>[o.model,o.capacity,o.color,o.category,o.battery,o.notes].filte
 let api=null;
 function modelKey(o){
  // Group by model for browsing only. Capacity, condition and price remain separate rows.
- return normalize(o.model.split(' · ')[0]).replace(/\b(?:apple|samsung|galaxy)\b/g,'').replace(/\b\d+\s*(?:gb|tb)\b/g,'').replace(/\s+/g,' ').trim();
+ let name=normalize(o.model.split(' · ')[0]);if(name.includes('iphone'))name=name.replace(/\bnormal\b/g,'');return name.replace(/\b(?:apple|samsung|galaxy)\b/g,'').replace(/\b\d+\s*(?:gb|tb|ram)\b/g,'').replace(/[-–—|]/g,' ').replace(/\s+/g,' ').trim();
 }
 function rows(data){
  return [...data.offers.map(o=>({...o,provider:core.providerForOffer(o),supplier:core.supplierName(o)})),
- ...data.inventory.filter(item=>core.providerForOwner(item.ownerId)).map(item=>({id:'provider-stock:'+item.id,stockId:item.id,ownerId:item.ownerId,provider:core.providerForOwner(item.ownerId),supplier:core.providerForOwner(item.ownerId)==='split'?'Split':'Samuel',model:item.model,price:item.cost,quantity:item.quantity,source:'stock',stock:item}))];
+ ...data.inventory.filter(item=>core.providerForOwner(item.ownerId)&&!data.providerFeeds?.[core.providerForOwner(item.ownerId)]).map(item=>({id:'provider-stock:'+item.id,stockId:item.id,ownerId:item.ownerId,provider:core.providerForOwner(item.ownerId),supplier:core.providerForOwner(item.ownerId)==='split'?'Split':'Samuel',model:item.model,price:item.cost,quantity:item.quantity,source:'stock',stock:item}))];
 }
 function link(choice,active){
  const a=el('a',undefined,'provider-card');a.href=choice.url;a.dataset.inventoryProvider=choice.id;
@@ -34,9 +34,9 @@ function render(data){
  const provider=onPage?core.providerFilter(params.get('provider')):'';
  const owner=provider==='split'&&core.SPLIT_OWNERS.includes(params.get('owner'))?params.get('owner'):'';
  $('#sales-providers').classList.add('unified-providers');
- $('#provider-catalog-title').textContent='Inventarios de proveedores';
- $('#provider-catalog-description').textContent='Busca un modelo y compara el costo de Split con el precio de Samuel. Revisa capacidad, estado y batería antes de elegir.';
- $('#provider-all-link').hidden=!provider;
+ $('#provider-catalog-title').textContent='Inventarios';
+ $('#provider-catalog-description').textContent='Compara precios por unidad. Revisa capacidad, estado y batería.';
+ $('#provider-all-link').hidden=true;
  const ownFilters=$('#provider-owner-filters');ownFilters.replaceChildren();ownFilters.hidden=provider!=='split';
  if(provider==='split')for(const choice of[{id:'',name:'Combinado'},...core.OWNERS.filter(o=>core.SPLIT_OWNERS.includes(o.id))]){
   const b=button(choice.name,()=>{const query=new URLSearchParams({provider:'split'});if(choice.id)query.set('owner',choice.id);location.hash='#ventas/proveedores?'+query;});b.dataset.providerOwner=choice.id;b.setAttribute('aria-pressed',String(choice.id===owner));ownFilters.append(b);
@@ -56,14 +56,15 @@ function render(data){
  if(!filtered.length)list.append(el('p','No hay equipos con estos filtros. Puedes registrar equipos o añadir una oferta.','empty'));
  for(const o of filtered){
   const row=el('details',undefined,'suite-offer compact-device-card');row.dataset.offerId=o.id;row.dataset.provider=o.provider;if(o.stockId)row.dataset.providerStockId=o.stockId;row.open=o.id===openId;
-  const parts=o.model.split(' · '),isStock=Boolean(o.stockId),summary=window.LunivoInventory.cardSummary({model:isStock?parts[0]:o.model,description:isStock?[core.inventoryBrand(o.stock),...parts.slice(1)].join(' · '):[o.capacity,o.color,o.category,o.battery,o.notes].filter(Boolean).join(' · '),ownerName:isStock?core.ownerName(o.ownerId):o.supplier,ownerLabel:isStock?o.supplier+' · Dueño':'Proveedor',quantity:o.quantity,amount:o.price,priceLabel:isStock?'Costo':'Precio'});
-  const body=el('div',undefined,'device-card-body');body.append(el('p',details(o),'device-card-full-model'),el('p',(isStock?'Costo: ':'Precio: ')+money(o.price)+' / unidad'),el('p',isStock?o.supplier+' · Dueño: '+core.ownerName(o.ownerId)+' · '+o.quantity+' disponible(s)':o.quantity+' disponible(s) · Lista '+o.date+' · '+(o.source==='pdf'?'PDF anterior · Referencia':'Cotización manual')));
+  const parts=o.model.split(' · '),isStock=Boolean(o.stockId),splitOwner=o.provider==='split'&&['saul','javier'].includes(o.ownerId),summary=window.LunivoInventory.cardSummary({model:isStock?parts[0]:o.model,description:isStock?[core.inventoryBrand(o.stock),...parts.slice(1)].join(' · '):[o.capacity,o.color,o.category,o.battery,o.notes].filter(Boolean).join(' · '),ownerName:isStock||splitOwner?core.ownerName(o.ownerId):o.supplier,ownerLabel:isStock||splitOwner?o.supplier+' · Dueño':'Proveedor',quantity:o.quantity,amount:o.price,priceLabel:isStock?'Costo':'Precio'});
+  const body=el('div',undefined,'device-card-body');body.append(el('p',details(o),'device-card-full-model'),el('p',(isStock?'Costo: ':'Precio: ')+money(o.price)+' / unidad'),el('p',isStock?o.supplier+' · Dueño: '+core.ownerName(o.ownerId)+' · '+o.quantity+' disponible(s)':o.quantity+' disponible(s) · Lista '+o.date+' · '+(o.source==='feed'?'Inventario del proveedor':o.source==='pdf'?'PDF anterior · Referencia':'Cotización manual')));
   const actions=el('div',undefined,'actions'),sell=button('Usar en venta',()=>isStock?api.sellStock(o.stock):api.sellOffer(o));sell.disabled=o.quantity===0;actions.append(sell);
   if(isStock){const manage=el('a','Administrar inventario de '+core.ownerName(o.ownerId),'text-link');manage.href='#ventas/inventario?provider='+o.provider+'&owner='+o.ownerId;actions.append(manage);}
   else actions.append(button('Añadir alternativa',()=>api.alternative(o)));
   body.append(actions);row.append(summary,body);window.LunivoInventory.accordion(row,list);list.append(row);
  }
- $('#catalog-source').textContent='Samuel: hoja de cálculo · Split: Saúl y Javier. La lectura automática de las nuevas fuentes está pendiente de verificar. Los datos mostrados son los guardados en este teléfono.';
+ $('#catalog-load').hidden=Boolean(data.providerFeeds?.samuel);$('#catalog-source').hidden=Boolean(data.providerFeeds?.samuel||data.providerFeeds?.split);
+ $('#catalog-source').textContent='Samuel: hoja de cálculo · Split: Saúl y Javier. Precios y disponibilidad del proveedor en la última consulta. Confirma las existencias antes de vender.';
  shortcuts();
 }
 for(const id of['offer-search','offer-variant','provider-model','offer-sort','provider-available'])$('#'+id).addEventListener(id==='offer-search'?'input':'change',()=>{try{if(['offer-search','provider-model'].includes(id))$('#offer-variant').value='';render(api.read());}catch(e){api.notice(api.errorText(e),'error');}});

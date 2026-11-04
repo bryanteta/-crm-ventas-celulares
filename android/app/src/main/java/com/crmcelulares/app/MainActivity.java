@@ -41,6 +41,7 @@ public final class MainActivity extends Activity {
     private SafeAreaLayout safeArea;
     private LaunchSound launchSound;
     private ReceiptPrinter receiptPrinter;
+    private InventoryBridge inventoryBridge;
     private boolean startupSoundPending;
 
     @Override
@@ -52,6 +53,7 @@ public final class MainActivity extends Activity {
         readFollowup(getIntent());
         launchSound = new LaunchSound(this);
         receiptPrinter = new ReceiptPrinter(this);
+        inventoryBridge = new InventoryBridge(this);
         startupSoundPending = state == null && pendingFollowup == null;
         if (Build.VERSION.SDK_INT >= 28) {
             WindowManager.LayoutParams attributes = getWindow().getAttributes();
@@ -144,6 +146,22 @@ public final class MainActivity extends Activity {
                         } catch (JSONException | RuntimeException error) {
                             reply.postMessage("{\"type\":\"error\",\"message\":\"No se pudieron actualizar los avisos. Vuelve a abrir la app e inténtalo de nuevo.\"}");
                         }
+                    });
+        }
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+            WebViewCompat.addWebMessageListener(webView, "LunivoInventoryAndroid",
+                    Collections.singleton("https://appassets.androidplatform.net"),
+                    (view, message, origin, mainFrame, reply) -> {
+                        if (!mainFrame || !"https://appassets.androidplatform.net".equals(origin.toString())) return;
+                        try {
+                            String payload = message.getData();
+                            if (payload == null || payload.length() > 4096) return;
+                            inventoryBridge.handle(new JSONObject(payload), response -> runOnUiThread(() -> {
+                                if (!isDestroyed()) {
+                                    try { reply.postMessage(response.toString()); } catch (RuntimeException ignored) { /* Page closed. */ }
+                                }
+                            }));
+                        } catch (JSONException | RuntimeException ignored) { /* Only packaged assets can use this listener. */ }
                     });
         }
         WebViewAssetLoader assets = new WebViewAssetLoader.Builder()
@@ -312,6 +330,7 @@ public final class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        if (inventoryBridge != null) inventoryBridge.close();
         pageReady = false;
         if (receiptPrinter != null) receiptPrinter.close();
         if (cloud != null) cloud.close();

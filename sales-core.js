@@ -4,6 +4,9 @@
  function totals({price,cost,expenses,quantity,accessories=0,accessoryCost=0,status='Confirmada',commissionEnabled=true}){if(!Number.isInteger(quantity)||quantity<1||quantity>1000)throw Error('La cantidad debe estar entre 1 y 1,000.');for(const n of[price,cost,expenses,accessories,accessoryCost])if(!Number.isSafeInteger(n)||n<0)throw Error('Importes inválidos.');const revenue=price*quantity+accessories,purchase=cost*quantity+accessoryCost,commission=status==='Confirmada'&&commissionEnabled?1500:0,profit=revenue-purchase-expenses-commission;if(![revenue,purchase,profit].every(Number.isSafeInteger))throw Error('Importe demasiado grande.');return{revenue,purchase,commission,profit};}
 
  const OWNERS=[{id:'samuel',name:'Samuel'},{id:'saul',name:'Saúl'},{id:'javier',name:'Javier'}];
+ const SPLIT_OWNERS=['samuel','javier'];
+ const inSplit=item=>SPLIT_OWNERS.includes(item.ownerId);
+ const isTecnoShop=offer=>['tecnoshop','tecnoshopsv','tech'].includes(String(offer.supplier||'').toLowerCase().replace(/[\s._-]/g,''))||String(offer.id||'').startsWith('tecno-reference-');
  const ownerName=id=>OWNERS.find(o=>o.id===id)?.name||'Sin asignar';
  function inventoryBrand(item){if(item.brand?.trim())return item.brand.trim();const name=item.model||'';for(const[pattern,brand]of[[/iphone|apple/i,'Apple'],[/samsung|galaxy/i,'Samsung'],[/xiaomi|redmi|poco/i,'Xiaomi'],[/honor/i,'Honor'],[/huawei/i,'Huawei'],[/motorola|moto /i,'Motorola'],[/pixel|google/i,'Google']])if(pattern.test(name))return brand;return 'Sin marca';}
  function accessoryTotal(items){if(!Array.isArray(items)||items.length>30)throw Error('Revisa los accesorios de la venta.');const ids=new Set();let total=0;for(const item of items){if(!item||typeof item.id!=='string'||!item.id||ids.has(item.id)||typeof item.name!=='string'||!item.name.trim()||item.name.length>150||typeof item.catalogId!=='string'||!Number.isSafeInteger(item.price)||item.price<0)throw Error('Cada accesorio debe tener un nombre y precio válidos.');ids.add(item.id);total+=item.price;}if(!Number.isSafeInteger(total))throw Error('Importe demasiado grande.');return total;}
@@ -28,5 +31,5 @@
   if(!Number.isSafeInteger(next*item.cost))throw Error('El valor del inventario es demasiado grande.');
   item.quantity=next;sale.stockDeducted=!restore;
  }
- return{money,totals,variant,summary,validateSale,applyStock,OWNERS,ownerName,inventoryBrand,accessoryTotal};
+ return{money,totals,variant,summary,validateSale,applyStock,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop};
 });

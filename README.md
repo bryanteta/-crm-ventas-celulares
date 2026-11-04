@@ -1,11 +1,11 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.0-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.1-preview**; Android 8.0 o superior.
 
 ## Funciones
 
 - **Follows:** clientes, agenda, usuarios que registran cada seguimiento, avisos nativos y sincronización opcional con Firebase.
-- **Inventario:** vista global y apartados de Samuel, Saúl y Javier; búsqueda, marcas, orden alfabético, reposición y organización de lotes. Los registros antiguos quedan sin asignar hasta clasificarlos. Los enlaces externos todavía están pendientes; la carga manual ya funciona.
+- **Inventarios por proveedor:** Split abre el combinado de Samuel y Javier, con vistas individuales de cada uno. TecnoShop abre su catálogo del PDF y lo carga al primer acceso si hace falta. La vista global conserva todos los equipos registrados, incluidos los de Saúl y los lotes sin asignar. Búsqueda, marcas, orden alfabético, reposición y organización de lotes. La lista de TecnoShop es una referencia fechada; no es inventario en vivo.
 - **Ventas:** selección de equipo propio, oferta de proveedor o entrada manual; descuento de existencias junto con el guardado. Las ventas nuevas no descuentan comisiones. Los importes históricos se conservan.
 - **Accesorios:** cargador completo, protector con tipo, case, caja genérica y varios accesorios adicionales, cada uno con su precio. Precio cero significa entrega sin costo. El comprobante incluye el detalle.
 - **Garantías:** IMEI/serial manual y opcional, tres meses calendario desde la entrega y correlativo por mes/año. Exportación directa de PDF A4 vectorial y opción separada de impresión.

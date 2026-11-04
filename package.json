@@ -1,6 +1,6 @@
 {
   "name": "lunivo-development",
-  "version": "1.5.1-preview",
+  "version": "1.5.2-preview",
   "private": true,
   "description": "Validation of Lunivo offline synchronization and Firebase rules",
   "scripts": {

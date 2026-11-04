@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.1-preview
+# Lunivo para Android · 1.5.2-preview
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 20. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 21. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -50,7 +50,7 @@ Follows permite vincular varios teléfonos con la misma cuenta. Los perfiles de 
 
 ## Inventario y ventas
 
-El inventario conserva una vista global y sus identificadores de dueño (`samuel`, `saul`, `javier`). Split agrupa únicamente Samuel y Javier y permite filtrarlos por separado. TecnoShop abre un catálogo filtrado del proveedor y carga la referencia PDF integrada en su primer acceso. Los registros manuales de Saúl y los lotes sin asignar siguen disponibles en Global; no se reclasifican ni se combinan con la disponibilidad del proveedor. Cada lote conserva su identificador, cantidad y costo. Organizar un lote cambia solo dueño/marca. No combina existencias de dueños o costos diferentes. Las vistas permiten buscar y ordenar por modelo o marca y mostrar agotados. Los enlaces de inventarios todavía no están disponibles; la carga manual sirve para empezar a organizar los datos.
+El inventario conserva una vista global y sus identificadores de dueño (`samuel`, `saul`, `javier`). Split agrupa únicamente Samuel y Javier y permite filtrarlos por separado. TecnoShop abre un catálogo filtrado del proveedor y carga la referencia PDF integrada en su primer acceso. Los registros manuales de Saúl y los lotes sin asignar siguen disponibles en Global; no se reclasifican ni se combinan con la disponibilidad del proveedor. Las tarjetas compactas muestran modelo, detalles, dueño, cantidad, costo y disponibilidad. Al tocar una tarjeta aparecen las acciones; marca y orden están en un desplegable. TecnoShop muestra proveedor y precio de su catálogo con el mismo formato. Cada lote conserva su identificador, cantidad y costo. Organizar un lote cambia solo dueño/marca. No combina existencias de dueños o costos diferentes. Las vistas permiten buscar y ordenar por modelo o marca y mostrar agotados. Los enlaces de inventarios todavía no están disponibles; la carga manual sirve para empezar a organizar los datos.
 
 Registrar una venta de inventario descuenta las unidades en la misma escritura local. Un fallo de guardado no aplica un descuento parcial. No se permite stock negativo. Anular devuelve las unidades una sola vez y conserva el historial. Las ventas históricas cuyo pago de comisión ya se registró mantienen su restricción de anulación.
 

@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.3-preview
+# Lunivo para Android · 1.5.4-preview
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 22. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 23. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -50,11 +50,15 @@ Follows permite vincular varios teléfonos con la misma cuenta. Los perfiles de 
 
 ## Inventario y ventas
 
-Proveedores reúne Split y TecnoShop en una pantalla, con búsqueda común, selector de modelo y orden por importe o modelo. La agrupación por modelo ayuda a consultar; no declara equivalencia de capacidad, condición, color o batería. Esas características permanecen visibles por variante. Más filtros conserva la selección de variante exacta y permite mostrar solo disponibles.
+Proveedores reúne **Split (Saúl y Javier)** y **Samuel**. Buscar, comparar modelo y ordenar permite consultar ambos sin copiar lotes a cotizaciones. Los dueños y los identificadores persistidos permanecen intactos; cambiar la agrupación no reasigna inventarios ni reescribe ventas. La vista Global conserva los equipos sin asignar.
 
-Split muestra los lotes registrados de Samuel y Javier sin copiarlos a las cotizaciones. Permite combinado e individuales y muestra el dueño en cada tarjeta. TecnoShop muestra sus cotizaciones e importa una sola vez la referencia PDF integrada al abrir Todos/TecnoShop, si todavía no está cargada. El filtro Todos conserva cotizaciones manuales de otros proveedores.
+Las cotizaciones antiguas de TecnoShop se presentan como Samuel mediante un alias de lectura, conservando los datos originales y los accesos guardados `provider=tecnoshop`. Las ventas nuevas usan los nombres actuales; el historial financiero no se recalcula. Elegir un lote de Samuel usa su costo y descuenta solo sus unidades al confirmar. Split permite los filtros Combinado, Saúl y Javier.
 
-Inventario registrado permite administrar existencias, costos y dueños. Global conserva los identificadores (`samuel`, `saul`, `javier`) y los lotes sin asignar. Organizar cambia solo dueño/marca, sin combinar cantidades ni costos. Los accesos antiguos a Split siguen disponibles para administrar sus equipos. No hay enlaces nuevos ni consulta en vivo. Cada tarjeta mantiene las acciones desplegables.
+La hoja Google de Samuel y la página externa de Split están en Fuentes de inventario. **Todavía no hay lectura automática ni contrato de API verificado.** El entorno de desarrollo bloqueó ambos hosts antes de contactar los servicios; sus esquemas y autenticación no se han inspeccionado. No se supone que la clave recibida sea un token REST ni se adivinan endpoints. No se incluyen claves de Split en código, configuración compilada, enlaces o archivos del repositorio.
+
+La referencia PDF integrada del 02/11/2026 solo se importa con una acción explícita dentro de Fuentes; no representa una actualización desde las nuevas URLs. Los nuevos dominios y un requisito de clave se guardaron en el borrador del entorno de desarrollo para revisión. Guardar ese borrador no activa las conexiones de la app ni despliega servicios.
+
+Las tarjetas mantienen el formato compacto y sus acciones desplegables. Organizar cambia solo dueño/marca; los equipos de distintos dueños o costos no se combinan.
 
 Registrar una venta de inventario descuenta las unidades en la misma escritura local. Un fallo de guardado no aplica un descuento parcial. No se permite stock negativo. Anular devuelve las unidades una sola vez y conserva el historial. Las ventas históricas cuyo pago de comisión ya se registró mantienen su restricción de anulación.
 

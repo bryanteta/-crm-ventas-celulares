@@ -1,12 +1,13 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.3-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.4-preview**; Android 8.0 o superior.
 
 ## Funciones
 
 - **Follows:** clientes, agenda, usuarios que registran cada seguimiento, avisos nativos y sincronización opcional con Firebase.
-- **Proveedores:** Split y TecnoShop en la misma pantalla para buscar un modelo, ver sus variantes y ordenar por importe. Filtros Todos, Split y TecnoShop; Split incluye Samuel y Javier, combinados o individuales, con el dueño visible. El catálogo de TecnoShop se carga una vez al abrir Proveedores si hace falta; es la referencia del PDF, no disponibilidad en vivo.
-- **Inventario registrado:** administración de equipos, reposición y organización por dueño. Global conserva todos los equipos, incluidos Saúl y los lotes sin asignar. Las filas de Split en Proveedores apuntan a estos mismos lotes, sin duplicarlos.
+- **Proveedores:** Split reúne **Saúl y Javier**; **Samuel** tiene su proveedor e inventario separado. Todos permite compararlos por modelo e importe. Las tarjetas indican dueño, cantidad y costo/precio. Los lotes se muestran sin duplicar las existencias.
+- **Inventario registrado:** administración, reposición y organización por dueño. Global conserva todos los equipos y los lotes sin asignar. Los registros existentes conservan sus identificadores, propietarios, cantidades y costos.
+- **Fuentes externas pendientes:** están identificadas la hoja de Google de Samuel y la web de Split. Los enlaces abren las páginas externas; todavía no alimentan automáticamente la app. La referencia PDF anterior se conserva para consulta/importación explícita; ya no se carga automáticamente al abrir Proveedores.
 - **Tarjetas compactas:** modelo, detalles y dueño visibles; costo/precio y disponibilidad a la derecha. Toca el equipo para vender, agregar unidades u organizar. Los filtros de marca/orden se despliegan cuando los necesitas.
 - **Ventas:** selección de equipo propio, oferta de proveedor o entrada manual; descuento de existencias junto con el guardado. Las ventas nuevas no descuentan comisiones. Los importes históricos se conservan.
 - **Accesorios:** cargador completo, protector con tipo, case, caja genérica y varios accesorios adicionales, cada uno con su precio. Precio cero significa entrega sin costo. El comprobante incluye el detalle.

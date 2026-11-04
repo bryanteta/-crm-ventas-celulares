@@ -1,11 +1,12 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.2-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.3-preview**; Android 8.0 o superior.
 
 ## Funciones
 
 - **Follows:** clientes, agenda, usuarios que registran cada seguimiento, avisos nativos y sincronización opcional con Firebase.
-- **Inventarios por proveedor:** Split abre el combinado de Samuel y Javier, con vistas individuales de cada uno. TecnoShop abre su catálogo del PDF y lo carga al primer acceso si hace falta. La vista global conserva todos los equipos registrados, incluidos los de Saúl y los lotes sin asignar. Búsqueda, marcas, orden alfabético, reposición y organización de lotes. La lista de TecnoShop es una referencia fechada; no es inventario en vivo.
+- **Proveedores:** Split y TecnoShop en la misma pantalla para buscar un modelo, ver sus variantes y ordenar por importe. Filtros Todos, Split y TecnoShop; Split incluye Samuel y Javier, combinados o individuales, con el dueño visible. El catálogo de TecnoShop se carga una vez al abrir Proveedores si hace falta; es la referencia del PDF, no disponibilidad en vivo.
+- **Inventario registrado:** administración de equipos, reposición y organización por dueño. Global conserva todos los equipos, incluidos Saúl y los lotes sin asignar. Las filas de Split en Proveedores apuntan a estos mismos lotes, sin duplicarlos.
 - **Tarjetas compactas:** modelo, detalles y dueño visibles; costo/precio y disponibilidad a la derecha. Toca el equipo para vender, agregar unidades u organizar. Los filtros de marca/orden se despliegan cuando los necesitas.
 - **Ventas:** selección de equipo propio, oferta de proveedor o entrada manual; descuento de existencias junto con el guardado. Las ventas nuevas no descuentan comisiones. Los importes históricos se conservan.
 - **Accesorios:** cargador completo, protector con tipo, case, caja genérica y varios accesorios adicionales, cada uno con su precio. Precio cero significa entrega sin costo. El comprobante incluye el detalle.

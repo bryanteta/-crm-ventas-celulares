@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.2-preview
+# Lunivo para Android · 1.5.3-preview
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 21. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 22. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -50,7 +50,11 @@ Follows permite vincular varios teléfonos con la misma cuenta. Los perfiles de 
 
 ## Inventario y ventas
 
-El inventario conserva una vista global y sus identificadores de dueño (`samuel`, `saul`, `javier`). Split agrupa únicamente Samuel y Javier y permite filtrarlos por separado. TecnoShop abre un catálogo filtrado del proveedor y carga la referencia PDF integrada en su primer acceso. Los registros manuales de Saúl y los lotes sin asignar siguen disponibles en Global; no se reclasifican ni se combinan con la disponibilidad del proveedor. Las tarjetas compactas muestran modelo, detalles, dueño, cantidad, costo y disponibilidad. Al tocar una tarjeta aparecen las acciones; marca y orden están en un desplegable. TecnoShop muestra proveedor y precio de su catálogo con el mismo formato. Cada lote conserva su identificador, cantidad y costo. Organizar un lote cambia solo dueño/marca. No combina existencias de dueños o costos diferentes. Las vistas permiten buscar y ordenar por modelo o marca y mostrar agotados. Los enlaces de inventarios todavía no están disponibles; la carga manual sirve para empezar a organizar los datos.
+Proveedores reúne Split y TecnoShop en una pantalla, con búsqueda común, selector de modelo y orden por importe o modelo. La agrupación por modelo ayuda a consultar; no declara equivalencia de capacidad, condición, color o batería. Esas características permanecen visibles por variante. Más filtros conserva la selección de variante exacta y permite mostrar solo disponibles.
+
+Split muestra los lotes registrados de Samuel y Javier sin copiarlos a las cotizaciones. Permite combinado e individuales y muestra el dueño en cada tarjeta. TecnoShop muestra sus cotizaciones e importa una sola vez la referencia PDF integrada al abrir Todos/TecnoShop, si todavía no está cargada. El filtro Todos conserva cotizaciones manuales de otros proveedores.
+
+Inventario registrado permite administrar existencias, costos y dueños. Global conserva los identificadores (`samuel`, `saul`, `javier`) y los lotes sin asignar. Organizar cambia solo dueño/marca, sin combinar cantidades ni costos. Los accesos antiguos a Split siguen disponibles para administrar sus equipos. No hay enlaces nuevos ni consulta en vivo. Cada tarjeta mantiene las acciones desplegables.
 
 Registrar una venta de inventario descuenta las unidades en la misma escritura local. Un fallo de guardado no aplica un descuento parcial. No se permite stock negativo. Anular devuelve las unidades una sola vez y conserva el historial. Las ventas históricas cuyo pago de comisión ya se registró mantienen su restricción de anulación.
 

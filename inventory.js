@@ -10,14 +10,7 @@ function metric(target,label,value,sub){const cell=el('div',undefined,'suite-met
 function openAdd(){const f=$('#stock-form');if(provider==='split'&&!core.SPLIT_OWNERS.includes(f.elements.ownerId.value))f.elements.ownerId.value='';if(core.OWNERS.some(o=>o.id===owner))f.elements.ownerId.value=owner;$('#stock-entry').open=true;$('#stock-entry').scrollIntoView({block:'start'});f.elements.ownerId.focus()}
 function organize(item){organizing=item.id;organizingAccount=window.LunivoStore.account();$('#stock-organize-model').textContent=item.model+' · '+item.quantity+' unidades · Costo '+money(item.cost);$('#stock-organize-owner').value=item.ownerId||'';$('#stock-organize-brand').value=item.brand||core.inventoryBrand(item);$('#stock-organize-error').textContent='';$('#stock-organize').showModal()}
 function belongs(item,id){if(!id)return true;if(id==='unassigned')return !item.ownerId;return item.ownerId===id;}
-function providerCards(data){
- for(const id of['inventory-owner-shortcuts','inventory-provider-cards','provider-directory']){const cards=$('#'+id);cards.replaceChildren();cards.classList.add('provider-cards');const techPage=location.hash.startsWith('#ventas/proveedores')&&new URLSearchParams(location.hash.split('?')[1]||'').get('provider')==='tecnoshop';cards.classList.toggle('provider-cards-compact',id!=='inventory-owner-shortcuts'&&(provider==='split'||techPage));
-  for(const choice of[{id:'split',name:'Split',icon:'icon-inventory',url:'#ventas/inventario?provider=split',sub:'Samuel + Javier · '+data.inventory.filter(core.inSplit).reduce((n,i)=>n+i.quantity,0)+' equipos'},{id:'tecnoshop',name:'TecnoShop',icon:'icon-phone',url:'#ventas/proveedores?provider=tecnoshop',sub:'Inventario del proveedor'}]){
-   const a=el('a',undefined,'provider-card');a.href=choice.url;a.dataset.inventoryProvider=choice.id;const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'),use=document.createElementNS('http://www.w3.org/2000/svg','use');svg.setAttribute('aria-hidden','true');use.setAttribute('href','#'+choice.icon);svg.append(use);const copy=el('span');copy.append(el('strong',choice.name),el('small',choice.sub));a.append(svg,copy,el('span','→','provider-arrow'));
-   const query=new URLSearchParams(location.hash.split('?')[1]||'');const active=choice.id==='split'?provider==='split'&&location.hash.startsWith('#ventas/inventario'):query.get('provider')==='tecnoshop'&&location.hash.startsWith('#ventas/proveedores');if(active)a.setAttribute('aria-current','page');cards.append(a);
-  }
- }
-}
+function providerCards(){window.LunivoProviders.shortcuts();}
 function render(data,requested,requestedProvider=''){
  const nextProvider=requestedProvider==='split'||core.SPLIT_OWNERS.includes(requested)?'split':'';
  const candidate=core.OWNERS.some(o=>o.id===requested)||requested==='unassigned'?requested:'';const next=nextProvider==='split'&&!core.SPLIT_OWNERS.includes(candidate)?'':candidate;

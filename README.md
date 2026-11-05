@@ -1,9 +1,10 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.6-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.7-preview**; Android 8.0 o superior.
 
 ## Funciones
 
+- **Ajustes:** Cuenta, Inventarios, Avisos y Aplicación. Los botones «?» explican las opciones sin ejecutarlas. El cambio entre Follows y Ventas muestra el espacio activo y recupera la última pantalla de cada módulo, con los formularios sin guardar.
 - **Follows:** clientes, agenda, usuarios que registran cada seguimiento, avisos nativos y sincronización opcional con Firebase.
 - **Inventario:** una sola entrada para Samuel y Split (Saúl y Javier). Elige proveedor, busca un equipo y consulta precio por unidad, quién lo tiene y cuántos hay disponibles. Modelo, orden y demás filtros quedan en Más opciones. Las tarjetas abren detalles y permiten preparar la venta.
 - **Mis equipos:** el registro manual permanece en Inventario → Más opciones → Mis equipos. Mantiene alta, reposición, organización, descuento al vender y devolución al anular. Los registros existentes conservan sus identificadores, dueños, cantidades y costos.

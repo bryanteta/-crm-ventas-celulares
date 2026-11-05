@@ -51,6 +51,143 @@ service cloud.firestore {
         && d.deleted is bool && d.updatedAt == request.time
         && (d.deleted ? !('record' in d) : (profile ? validProfile(d.record, d.id) : validRecord(d.record, d.id)));
     }
+    function safeInt(value, min, max) { return value is int && value >= min && value <= max; }
+    function businessActor(uid, op) {
+      let profile = get(/databases/$(database)/documents/users/$(uid)/profiles/$(op.actorKey)).data;
+      return text(op.actorKey, 200) && op.actorKey.matches('^[A-Za-z0-9_-]+$')
+        && !profile.deleted && profile.record.active
+        && profile.record.id == op.actorId && profile.record.name == op.actorName;
+    }
+    function validStock(r) {
+      return r is map && r.keys().hasAll(['id','model','quantity','cost'])
+        && r.keys().hasOnly(['id','model','quantity','cost','ownerId','brand','createdBy','createdByName','createdAt'])
+        && text(r.id,200) && r.id.size()>0 && text(r.model,200) && r.model.size()>0
+        && r.get('ownerId','') in ['','lunivo','samuel','saul','javier'] && text(r.get('brand',''),60)
+        && safeInt(r.quantity,0,9007199254740991) && safeInt(r.cost,0,9007199254740991)
+        && r.quantity*r.cost <= 9007199254740991
+        && text(r.get('createdBy',''),128) && text(r.get('createdByName',''),80) && text(r.get('createdAt',''),40);
+    }
+    function validReceipt(r, quantity) {
+      return r is map && r.version==1 && text(r.number,50)
+        && text(r.deliveryDate,10) && r.deliveryDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && text(r.brand,120) && text(r.capacity,120) && text(r.color,120)
+        && text(r.condition,120) && text(r.battery,120) && text(r.physical,120)
+        && text(r.get('phone',''),30) && text(r.get('customerNotes',''),1000)
+        && r.paymentMethod in ['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro']
+        && (r.paymentMethod!='Tasa cero' || (text(r.bank,80) && r.bank.size()>0 && safeInt(r.months,1,60)))
+        && r.serials is list && r.serials.size()<=quantity && r.warrantyMonths==3
+        && r.terms is list && r.terms.size()==3 && r.gifts is list && r.gifts.size()<=10;
+    }
+    function completeReceipt(r) {
+      return r.brand.size()>0 && r.capacity.size()>0 && r.color.size()>0
+        && r.condition.size()>0 && r.battery.size()>0 && r.physical.size()>0;
+    }
+    function validSale(r) {
+      // Keep commit evaluation below Firestore's 1,000-expression budget. Native BusinessEngine
+      // validates full accessory/receipt payloads; rules enforce identity and financial invariants.
+      return r is map && text(r.id,200) && r.id.size()>0
+        && text(r.client,100) && r.client.size()>0 && text(r.model,2000) && r.model.size()>0
+        && r.date is string && r.date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && safeInt(r.quantity,1,1000) && safeInt(r.price,0,9007199254740991) && safeInt(r.cost,0,9007199254740991)
+        && safeInt(r.expenses,0,9007199254740991) && safeInt(r.get('accessories',0),0,9007199254740991) && safeInt(r.get('accessoryCost',0),0,9007199254740991)
+        && safeInt(r.revenue,0,9007199254740991) && r.revenue==r.price*r.quantity+r.get('accessories',0)
+        && safeInt(r.purchase,0,9007199254740991) && r.purchase==r.cost*r.quantity+r.get('accessoryCost',0)
+        && r.get('commissionEnabled',true) is bool && r.commission==(r.get('commissionEnabled',true)?1500:0)
+        && safeInt(r.profit,-9007199254740991,9007199254740991) && r.profit==r.revenue-r.purchase-r.expenses-r.commission
+        && r.status in ['Confirmada','Anulada'] && text(r.sellerId,128) && r.sellerId.size()>0 && text(r.sellerName,80) && r.sellerName.size()>0;
+    }
+    function businessDocument(d, stock) {
+      return d.keys().hasAll(['id','record','revision','legacy','updatedAt'])
+        && d.keys().hasOnly(['id','record','revision','legacy','updatedAt'])
+        && text(d.id,200) && d.id==d.record.id && text(d.revision,100) && d.revision.size()>0
+        && d.legacy is bool && d.updatedAt==request.time && (stock?validStock(d.record):validSale(d.record));
+    }
+    function businessOperation(uid, revision) {
+      return getAfter(/databases/$(database)/documents/users/$(uid)/suiteOperations/$(revision)).data;
+    }
+    function validBusinessOperation(uid, op, id) {
+      return op.keys().hasAll(['id','kind','targetId','targetKey','actorId','actorName','actorKey','fingerprint','stockId','stockKey','stockDelta','counterKey','sequence','createdAt'])
+        && op.keys().hasOnly(['id','kind','targetId','targetKey','actorId','actorName','actorKey','fingerprint','stockId','stockKey','stockDelta','counterKey','sequence','createdAt'])
+        && text(op.targetKey,300) && op.targetKey.matches('^[A-Za-z0-9_-]+$') && op.id==id && text(op.id,100) && op.id.matches('^[A-Za-z0-9_-]+$') && text(op.targetId,200)
+        && op.kind in ['confirmSale','saveWarranty','cancelSale','addStock','restock','organizeStock']
+        && text(op.actorId,128) && text(op.actorName,80) && op.actorId.size()>0 && op.actorName.size()>0
+        && text(op.fingerprint,64) && op.fingerprint.matches('^[0-9a-f]{64}$')
+        && text(op.stockId,200) && text(op.stockKey,300) && text(op.counterKey,7)
+        && safeInt(op.stockDelta,-1000,9007199254740991) && safeInt(op.sequence,0,9007199254740991)
+        && op.createdAt==request.time && businessActor(uid,op);
+    }
+    function newSaleOperation(uid,d) {
+      let op=businessOperation(uid,d.revision);
+      let counter=getAfter(/databases/$(database)/documents/users/$(uid)/suiteCounters/$(d.record.saleMonth)).data;
+      return op.kind=='confirmSale' && op.targetId==d.id && op.id==d.revision
+        && d.record.sellerId==op.actorId && d.record.sellerName==op.actorName && op.createdAt==request.time
+        && d.record.status=='Confirmada' && d.record.commissionEnabled==false
+        && d.record.saleSequence==op.sequence && d.record.saleMonth==op.counterKey
+        && counter.sequence==op.sequence && counter.lastOperationId==op.id
+        && d.record.saleNumber==d.record.saleMonth.split('-')[1]+(d.record.saleSequence<10?'0':'')+string(d.record.saleSequence)
+        && (d.record.get('stockId','')=='' || (op.stockId==d.record.stockId && op.stockDelta==-d.record.quantity
+          && getAfter(/databases/$(database)/documents/users/$(uid)/suiteInventory/$(op.stockKey)).data.revision==op.id));
+    }
+    function saleUpdateOperation(uid,d) {
+      let op=businessOperation(uid,d.revision);
+      let before=resource.data.record;
+      let after=d.record;
+      return op.targetId==d.id && op.id==d.revision && op.createdAt==request.time
+        && after.diff(before).affectedKeys().hasOnly(['receipt','status','stockDeducted','cancelReason','cancelledBy','cancelledById','cancelledAt','lastEditedById','lastEditedByName','lastEditedAt'])
+        && ((op.kind=='saveWarranty' && before.status=='Confirmada' && after.status==before.status
+          && after.get('stockDeducted',false)==before.get('stockDeducted',false) && completeReceipt(after.receipt)
+          && validReceipt(after.receipt,after.quantity) && after.receipt.number==before.saleNumber && after.lastEditedById==op.actorId && after.lastEditedByName==op.actorName)
+        || (op.kind=='cancelSale' && before.status=='Confirmada' && before.get('paidAt',null)==null && after.status=='Anulada'
+          && after.stockDeducted==false && after.cancelledById==op.actorId && after.cancelledBy==op.actorName
+          && text(after.cancelReason,500) && after.cancelReason.size()>0
+          && (!before.get('stockDeducted',false) || (op.stockId==before.stockId && op.stockDelta==before.quantity
+            && getAfter(/databases/$(database)/documents/users/$(uid)/suiteInventory/$(op.stockKey)).data.revision==op.id))));
+    }
+    function stockOperation(uid,d,create) {
+      let op=businessOperation(uid,d.revision);
+      return op.stockId==d.id && op.id==d.revision && op.createdAt==request.time
+        && (create?(op.kind=='addStock' && op.targetId==d.id && op.stockDelta==d.record.quantity && d.record.createdBy==op.actorId && d.record.createdByName==op.actorName)
+          :(op.kind in ['restock','organizeStock','confirmSale','cancelSale']
+            && d.record.quantity==resource.data.record.quantity+op.stockDelta
+            && d.record.diff(resource.data.record).affectedKeys().hasOnly(['quantity','ownerId','brand'])
+            && (op.kind!='organizeStock' || op.stockDelta==0)
+            && (!(op.kind in ['confirmSale','cancelSale']) || getAfter(/databases/$(database)/documents/users/$(uid)/suiteSales/$(op.targetKey)).data.revision==op.id)));
+    }
+    match /users/{uid}/suiteSales/{document} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && businessDocument(request.resource.data,false)
+        && (request.resource.data.legacy || newSaleOperation(uid,request.resource.data));
+      allow update: if owner(uid) && businessDocument(request.resource.data,false)
+        && request.resource.data.legacy==resource.data.legacy && saleUpdateOperation(uid,request.resource.data);
+      allow delete: if false;
+    }
+    match /users/{uid}/suiteInventory/{document} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && businessDocument(request.resource.data,true)
+        && (request.resource.data.legacy || stockOperation(uid,request.resource.data,true));
+      allow update: if owner(uid) && businessDocument(request.resource.data,true)
+        && request.resource.data.legacy==resource.data.legacy && stockOperation(uid,request.resource.data,false);
+      allow delete: if false;
+    }
+    match /users/{uid}/suiteOperations/{operation} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && validBusinessOperation(uid,request.resource.data,operation);
+      allow update,delete: if false;
+    }
+    match /users/{uid}/suiteCounters/{month} {
+      allow read: if owner(uid);
+      allow create,update: if owner(uid)
+        && request.resource.data.keys().hasAll(['month','sequence','legacy','updatedAt'])
+        && request.resource.data.keys().hasOnly(['month','sequence','legacy','lastOperationId','updatedAt'])
+        && month==request.resource.data.month && month.matches('^[0-9]{4}-(0[1-9]|1[0-2])$')
+        && safeInt(request.resource.data.sequence,0,9007199254740991) && request.resource.data.legacy is bool && request.resource.data.updatedAt==request.time
+        && (!exists(/databases/$(database)/documents/users/$(uid)/suiteCounters/$(month)) || request.resource.data.sequence>=resource.data.sequence)
+        && (request.resource.data.legacy || (businessOperation(uid,request.resource.data.lastOperationId).kind=='confirmSale'
+          && businessOperation(uid,request.resource.data.lastOperationId).sequence==request.resource.data.sequence
+          && businessOperation(uid,request.resource.data.lastOperationId).counterKey==month
+          && request.resource.data.sequence==(exists(/databases/$(database)/documents/users/$(uid)/suiteCounters/$(month))?resource.data.sequence+1:1)));
+      allow delete: if false;
+    }
     match /users/{uid}/profiles/{document} {
       allow read: if owner(uid);
       allow create, update: if owner(uid) && validChange(request.resource.data, true);

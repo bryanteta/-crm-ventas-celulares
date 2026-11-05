@@ -80,3 +80,15 @@
 :root[data-theme=dark] .status{background:#29405d;color:#d2e3fb}
 :root[data-theme=dark] .status.late{background:#472e2d;color:#ffcfb8}
 :root[data-theme=dark] .status.done{background:#1d4035;color:#b9e7cf}
+.phone-family-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0 8px}.phone-family-filters button{min-height:44px;font-size:12px;padding:9px 8px}.phone-family-filters button[aria-pressed=true]{background:#e7f0ff;border-color:#7d9fd2;color:#244f86;box-shadow:inset 0 0 0 1px #7d9fd220}:root[data-theme=dark] .phone-family-filters button[aria-pressed=true]{background:#23456d;border-color:#8ebaff;color:#e0eeff}
+.suite-cloud-status{padding:9px 12px;margin:0 0 15px;border:1px solid #dce6f3;background:#f7faff;border-radius:12px;font-size:11px;color:#526d92}.suite-cloud-status>summary{min-height:28px;cursor:pointer;list-style:none;display:flex;gap:8px;align-items:center}.cloud-state-dot{width:6px;height:6px;border-radius:50%;background:#4b9779}.suite-cloud-status p{font-size:11px;margin:8px 0 12px;line-height:1.6}.suite-cloud-status button{font-size:11px;min-height:40px;padding:8px 12px}.suite-cloud-status[data-urgent=true]{border-color:#d8bd8e;background:#fffaf0}.suite-cloud-status[data-urgent=true] .cloud-state-dot{background:#b48131}:root[data-theme=dark] .suite-cloud-status{background:#162b43;color:#c5dbf7;border-color:#3e5876}:root[data-theme=dark] .suite-cloud-status[data-urgent=true]{background:#352f24;border-color:#89744d}
+/* Editing controls and exhausted stock must not fall back to light-only colors. */
+:root[data-theme=dark] #cancel-edit{background:var(--night-raised);color:#c3d9f4;border-color:#38516f}
+:root[data-theme=dark] #cancel-edit:hover{background:#263e5b}
+:root[data-theme=dark] button.danger{background:#452932;border-color:#80505d;color:#ffb5b5}
+:root[data-theme=dark] button.danger:hover{background:#57323c}
+:root[data-theme=dark] .device-card-status.is-empty{background:#443922;color:#f4d79c}
+:root[data-theme=dark] :is(.device-card-full-model,#manual-offer>summary,.sale-link-follow summary){color:var(--night-link)}
+:root[data-theme=dark] :is(#sale-action-error,#stock-organize-error){color:#ffb9c3}
+:root[data-theme=dark] .notification-symbol{background:#294665;color:#b9d7ff}
+:root[data-theme=dark] .notification-panel.is-enabled .notification-symbol{background:#254b44;color:#b1e7d5}

@@ -1,4 +1,4 @@
-(()=>{'use strict';const core=window.LunivoReceipt,$=s=>document.querySelector(s);let api=null,currentId=null,currentHtml='',dirty=false;const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/El_Salvador',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+(()=>{'use strict';const core=window.LunivoReceipt,$=s=>document.querySelector(s);let api=null,currentId=null,currentHtml='',dirty=false,saving=false,baseRevision=null;const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/El_Salvador',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const fields=[['brand','Marca','text'],['capacity','Capacidad','text'],['color','Color','text'],['condition','Estado comercial','select'],['battery','Batería','text'],['physical','Estado físico','text'],['serials','IMEI / serial (manual y opcional)','textarea'],['deliveryDate','Fecha de entrega','date'],['customerNotes','Observaciones para el cliente','textarea']];
 const requiredFields=['brand','capacity','color','condition','battery','physical','deliveryDate'];
 const validation=$('#warranty-validation'),labels=Object.fromEntries(fields.map(([key,label])=>[key,label]));Object.assign(labels,{phone:'Número de contacto',paymentMethod:'Método de pago',bank:'Banco',months:'Meses'});
@@ -31,21 +31,22 @@ function preview(sale){try{
 function load(id){
  const sale=api?.read().sales.find(s=>s.id===id);
  if(!sale||sale.status==='Borrador'){clear();$('#warranty-message').textContent='Selecciona una venta confirmada del historial.';return false;}
- currentId=id;dirty=false;fill('receipt',sale.receipt||{deliveryDate:sale.date});syncGifts(sale);
- $('#warranty-sale-summary').textContent=(sale.saleNumber?'Venta #'+sale.saleNumber+' · ':'')+sale.client+' · '+sale.model+' · Total '+new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(sale.revenue/100);
+ $('#warranty-reload').hidden=true;currentId=id;baseRevision=window.LunivoSuiteCloud?.revision('sales',id);dirty=false;fill('receipt',sale.receipt||{deliveryDate:sale.date});syncGifts(sale);
+ $('#warranty-sale-summary').textContent=(sale.saleNumber?'Venta #'+sale.saleNumber+' · ':'')+sale.client+' · '+sale.model+' · Registrada por '+sale.sellerName+(sale.lastEditedByName?' · Garantía actualizada por '+sale.lastEditedByName:'')+' · Total '+new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(sale.revenue/100);
  $('#warranty-back').href='#ventas/detalle?id='+encodeURIComponent(id);$('#warranty-save').disabled=sale.status==='Anulada';preview(sale);return true;
 }
 function open(id){if(load(id))location.hash='#ventas/garantia?id='+encodeURIComponent(id);}
-function clear(){currentId=null;currentHtml='';dirty=false;fill('receipt');surface.replaceChildren();$('#warranty-sale-summary').textContent='Selecciona una venta del historial.';$('#warranty-message').textContent='';$('#warranty-ready-copy').textContent='';$('#warranty-back').href='#ventas/historial';$('#warranty-print').disabled=true;$('#warranty-export').disabled=true;$('#warranty-save').disabled=true;editor(false);}
+function clear(){$('#warranty-reload').hidden=true;currentId=null;baseRevision=null;currentHtml='';dirty=false;fill('receipt');surface.replaceChildren();$('#warranty-sale-summary').textContent='Selecciona una venta del historial.';$('#warranty-message').textContent='';$('#warranty-ready-copy').textContent='';$('#warranty-back').href='#ventas/historial';$('#warranty-print').disabled=true;$('#warranty-export').disabled=true;$('#warranty-save').disabled=true;editor(false);}
 $('#warranty-edit').addEventListener('click',()=>{editor(true);$('#warranty-message').textContent='Guarda para aplicar los cambios al comprobante.';$('#receipt-brand').focus();});
+$('#warranty-reload').addEventListener('click',()=>{if(currentId)load(currentId)});
 $('#warranty-edit-cancel').addEventListener('click',()=>{if(currentId)load(currentId)});
 function changed(event){if(event?.target)clearField(event.target);dirty=true;$('#warranty-print').disabled=true;$('#warranty-export').disabled=true;$('#warranty-message').textContent='Tienes cambios pendientes. Guarda para actualizar el comprobante.';}
 $('#warranty-form').addEventListener('input',changed);$('#warranty-form').addEventListener('change',changed);
-$('#warranty-form').addEventListener('submit',event=>{event.preventDefault();clearValidation();try{
+$('#warranty-form').addEventListener('submit',async event=>{event.preventDefault();if(saving)return;saving=true;clearValidation();try{
  if(!currentId||!api)throw Error('Selecciona una venta del historial.');
- api.commit(data=>{const sale=data.sales.find(s=>s.id===currentId);if(!sale||sale.status!=='Confirmada')throw Error('La venta cambió o está anulada.');core.allocate(data,sale);const r=collect('receipt',sale,sale.receipt);core.validate(r,sale);if(data.sales.some(s=>s.id!==sale.id&&s.saleMonth===sale.saleMonth&&s.saleNumber===sale.saleNumber))throw Error('El correlativo ya está usado.');sale.receipt=r;return data;});
- dirty=false;preview(api.read().sales.find(s=>s.id===currentId));$('#warranty-toolbar').scrollIntoView({block:'start'});window.LunivoApp.notice('Comprobante listo. Puedes guardar el PDF o imprimirlo.');
- }catch(e){$('#warranty-message').textContent=['QuotaExceededError','SecurityError'].includes(e.name)?'No se pudo guardar la garantía. Los datos anteriores se conservan.':e.message;if(!showIssue(e))$('#warranty-message').scrollIntoView({block:'center'});}});
+ const requested=currentId,account=window.LunivoStore.account(),current=api.read().sales.find(s=>s.id===requested);if(!current||current.status!=='Confirmada')throw Error('La venta cambió o está anulada.');const receipt=collect('receipt',current,current.receipt);if(window.LunivoSuiteCloud.enabled())core.validate(receipt,current);await api.business('saveWarranty',{receipt,expectedRevision:baseRevision},requested,data=>{const sale=data.sales.find(s=>s.id===requested);if(!sale||sale.status!=='Confirmada')throw Error('La venta cambió o está anulada.');core.allocate(data,sale);const r=collect('receipt',sale,sale.receipt);core.validate(r,sale);if(data.sales.some(s=>s.id!==sale.id&&s.saleMonth===sale.saleMonth&&s.saleNumber===sale.saleNumber))throw Error('El correlativo ya está usado.');sale.receipt=r;return data;});
+ if(account!==window.LunivoStore.account()||currentId!==requested)return;load(currentId);$('#warranty-toolbar').scrollIntoView({block:'start'});window.LunivoApp.notice('Comprobante listo. Puedes guardar el PDF o imprimirlo.');
+ }catch(e){$('#warranty-reload').hidden=e.code!=='conflict';$('#warranty-message').textContent=['QuotaExceededError','SecurityError'].includes(e.name)?'No se pudo guardar la garantía. Los datos anteriores se conservan.':e.message;if(!showIssue(e))$('#warranty-message').scrollIntoView({block:'center'});}finally{saving=false}});
 function output(kind){try{
  if(dirty||!currentHtml)throw Error('Guarda una garantía completa antes de imprimir.');
  const sale=api.read().sales.find(s=>s.id===currentId),html=core.html(sale);
@@ -57,8 +58,9 @@ function output(kind){try{
   frame.onload=()=>{frame.contentWindow.focus();frame.contentWindow.print();};frame.srcdoc=html;document.body.append(frame);setTimeout(()=>frame.remove(),60000);
  }
  }catch(e){$('#warranty-message').textContent=e.message;}}
+window.addEventListener('lunivo-suite-committed',event=>{if(event.detail.recovered&&event.detail.kind==='saveWarranty'&&event.detail.targetId===currentId)load(currentId);});
 $('#warranty-print').addEventListener('click',()=>output('receiptPrint'));
 $('#warranty-export').addEventListener('click',()=>output('receiptExport'));
 window.addEventListener('lunivo-document-status',event=>{$('#warranty-message').textContent=event.detail.message;});
-window.LunivoWarranty={connect(value){api=value},entry,reset(){fill('sale-receipt');},loadEntry(r){fill('sale-receipt',r)},prefill,open,ensure(id){if(id!==currentId)load(id)},clear};fill('sale-receipt');clear();
+window.LunivoWarranty={connect(value){api=value},entry,reset(){fill('sale-receipt');},loadEntry(r){fill('sale-receipt',r)},prefill,open,ensure(id){if(id!==currentId||(!dirty&&baseRevision!==window.LunivoSuiteCloud?.revision('sales',id)))load(id)},clear};fill('sale-receipt');clear();
 })();

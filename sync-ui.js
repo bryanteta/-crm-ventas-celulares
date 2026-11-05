@@ -46,7 +46,7 @@
     document.querySelector('#cloud-status').textContent = problem || (state.uid
       ? pending > 0 ? `${pending} cambio(s) en este teléfono, pendientes de confirmar en la nube.`
       : !navigator.onLine || !serverSeen || !profilesServerSeen ? 'Datos disponibles en este teléfono. Esperando conexión con la nube.'
-      : 'Datos sincronizados con tu cuenta.'
+      : 'Seguimientos y usuarios sincronizados con tu cuenta.'
       : state.configured ? 'Inicia sesión con el mismo correo en tus dispositivos.'
       : 'La vinculación todavía no está disponible en esta versión. Tus datos siguen en el teléfono.');
     signInForm.hidden = Boolean(state.uid);

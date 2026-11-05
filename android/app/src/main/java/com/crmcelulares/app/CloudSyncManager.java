@@ -31,6 +31,7 @@ public final class CloudSyncManager {
     public interface Sink { void send(JSONObject event); }
     private Sink sink;
     private FirebaseAuth auth;
+    private BusinessCloudManager business;
     private FirebaseFirestore database;
     private FirebaseAuth.AuthStateListener authListener;
     private final Map<String, ListenerRegistration> listeners = new HashMap<>();
@@ -53,6 +54,7 @@ public final class CloudSyncManager {
         auth = FirebaseAuth.getInstance(app);
         database = FirebaseFirestore.getInstance(app);
         // Disk persistence is enabled by default on Android; do not clear queued writes on logout.
+        business = new BusinessCloudManager(auth,database,event -> sink.send(event));
         authListener = currentAuth -> {
             listenToAccount(currentAuth.getCurrentUser());
             state();
@@ -63,6 +65,10 @@ public final class CloudSyncManager {
     public void handle(JSONObject message) throws JSONException {
         String type = message.getString("type");
         if (type.equals("cloudState")) { state(); return; }
+        if (type.startsWith("cloudSuite")) {
+            if (business != null) { try { business.handle(message); } catch (Exception invalid) { business.failure(message.optString("requestId"),message.optString("uid"),invalid); } }
+            return;
+        }
         if (auth == null) {
             error("La sincronización todavía no está disponible en esta versión. Tus datos siguen en este teléfono.");
             return;
@@ -107,6 +113,7 @@ public final class CloudSyncManager {
             sink.send(new JSONObject().put("type", "cloudState").put("configured", auth != null)
                     .put("uid", user == null ? JSONObject.NULL : user.getUid())
                     .put("email", user == null ? "" : user.getEmail()));
+            if (business != null) business.replay();
             if (user != null) for (JSONObject snapshot : snapshots.values()) {
                 if (user.getUid().equals(snapshot.optString("uid"))) sink.send(snapshot);
             }
@@ -121,6 +128,7 @@ public final class CloudSyncManager {
         for (ListenerRegistration listener : listeners.values()) listener.remove();
         listeners.clear();
         listeningUid = uid;
+        if (business != null) business.account(uid);
         snapshots.clear();
         if (uid == null) return;
         listen(uid, "followups", "cloudSnapshot");
@@ -247,6 +255,7 @@ public final class CloudSyncManager {
     public void invalidRequest() { error("No se pudo procesar la sincronización. Los cambios locales se conservan."); }
 
     public void close() {
+        if (business != null) business.close();
         if (auth != null && authListener != null) auth.removeAuthStateListener(authListener);
         for (ListenerRegistration listener : listeners.values()) listener.remove();
         listeners.clear();

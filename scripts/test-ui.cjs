@@ -2,7 +2,7 @@ const { spawnSync } = require('node:child_process');
 const path = require('node:path');
 const suites = [
   'suite-ui', 'suite-integrity', 'inventory-ui', 'inventory-owners-ui',
-  'provider-inventory-ui', 'compact-inventory-ui', 'feeds-ui', 'accessories-ui', 'commission-removal-ui', 'sales-flow-ui', 'receipt-integrity-ui',
+  'provider-inventory-ui', 'compact-inventory-ui', 'phone-filters-ui', 'feeds-ui', 'accessories-ui', 'commission-removal-ui', 'sales-flow-ui', 'receipt-integrity-ui',
   'warranty-ui', 'settings-module-ui', 'appearance-warranty-ui', 'release-audit-ui', 'launch-ui', 'settings-notices', 'single-brand', 'profiles-ui',
   'android-ui', 'storage', 'el-salvador'
 ];

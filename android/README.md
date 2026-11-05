@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.9
+# Lunivo para Android · 1.6.0
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 28. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 29. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -66,13 +66,13 @@ La copia incluida se carga al abrir Inventario si la cuenta no tiene datos desca
 
 Las tarjetas mantienen el formato compacto y sus acciones desplegables. Organizar cambia solo dueño/marca; los equipos de distintos dueños o costos no se combinan.
 
-Registrar una venta de inventario descuenta las unidades en la misma escritura local. Un fallo de guardado no aplica un descuento parcial. No se permite stock negativo. Anular devuelve las unidades una sola vez y conserva el historial. Las ventas históricas cuyo pago de comisión ya se registró mantienen su restricción de anulación.
+Registrar una venta de inventario descuenta las unidades en una transacción compartida con conexión cuando hay cuenta; en modo local, en la misma escritura local. Un fallo de guardado no aplica un descuento parcial. No se permite stock negativo. Anular devuelve las unidades una sola vez y conserva el historial. Las ventas históricas cuyo pago de comisión ya se registró mantienen su restricción de anulación.
 
 Las ventas nuevas llevan `commissionEnabled: false` y no descuentan los $15 anteriores. Los cálculos de registros anteriores sin esa marca mantienen sus importes originales. La comisión ya no tiene apartado ni acciones de pago en la interfaz.
 
 Los accesorios se guardan como líneas con identificador, categoría, descripción y precio en centavos. Su suma debe coincidir con el total cobrado por accesorios. Precio cero es una cortesía. Los registros antiguos que solo tienen un importe conservan ese importe sin inventar un desglose. Las cortesías de garantía no se duplican cuando el accesorio ya está incluido en la venta.
 
-Ventas, garantías, inventario y cotizaciones son locales por cuenta/dispositivo. No se sincronizan con Firebase en esta versión ni se importan automáticamente al cambiar de cuenta. Los datos del proveedor son referencia y no se suman al inventario propio. La lista TecnoShopSV corresponde al PDF compartido del 02/11/2026; no hay importación automática de PDFs nuevos.
+Las ventas confirmadas, garantías y Mis equipos se sincronizan con Firebase por cuenta. Borradores, cotizaciones, claves y cachés de proveedores permanecen locales. La confirmación de ventas y los cambios de existencias exigen conexión; los borradores se guardan offline. Publica manualmente las reglas y migra todos los teléfonos siguiendo el README principal. Los datos del proveedor son referencia y no se suman al inventario propio. La lista TecnoShopSV corresponde al PDF compartido del 02/11/2026; no hay importación automática de PDFs nuevos.
 
 ## PDF e impresión
 
@@ -80,7 +80,7 @@ Ventas, garantías, inventario y cotizaciones son locales por cuenta/dispositivo
 
 **Imprimir** conserva una acción independiente. El documento HTML se sirve desde memoria en una dirección HTTPS interna y solo pasa a impresión si termina de cargar correctamente. Se solicita A4, color y 600 dpi; el servicio de impresión puede ajustar sus opciones. La vista previa de la app utiliza un Shadow DOM, sin navegación `srcdoc` ni estilos que afecten al resto de la interfaz.
 
-El IMEI es opcional; si se añade se admite como máximo uno por unidad sin repetir. La garantía dura tres meses calendario desde la entrega, ajustando el último día del mes. El correlativo usa mes + secuencia: 1001 = octubre, venta 1; 1101 = noviembre, venta 1. Se separa por año/mes, es local al dispositivo y no se consume con borradores o reimpresiones. Anular no reutiliza números.
+El IMEI es opcional; si se añade se admite como máximo uno por unidad sin repetir. La garantía dura tres meses calendario desde la entrega, ajustando el último día del mes. El correlativo usa mes + secuencia: 1001 = octubre, venta 1; 1101 = noviembre, venta 1. Se separa por año/mes, es compartido por cuenta (local si no hay sesión) y no se consume con borradores o reimpresiones. Anular no reutiliza números.
 
 ## Notificaciones y pantallas Samsung
 

@@ -1,12 +1,12 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.5-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.6-preview**; Android 8.0 o superior.
 
 ## Funciones
 
 - **Follows:** clientes, agenda, usuarios que registran cada seguimiento, avisos nativos y sincronización opcional con Firebase.
-- **Proveedores:** Split reúne **Saúl y Javier**; **Samuel** tiene su proveedor e inventario separado. Todos permite compararlos por modelo e importe. Las tarjetas indican dueño, cantidad y costo/precio. Los lotes se muestran sin duplicar las existencias.
-- **Inventario registrado:** administración, reposición y organización por dueño. Global conserva todos los equipos y los lotes sin asignar. Los registros existentes conservan sus identificadores, propietarios, cantidades y costos.
+- **Inventario:** una sola entrada para Samuel y Split (Saúl y Javier). Elige proveedor, busca un equipo y consulta precio por unidad, quién lo tiene y cuántos hay disponibles. Modelo, orden y demás filtros quedan en Más opciones. Las tarjetas abren detalles y permiten preparar la venta.
+- **Mis equipos:** el registro manual permanece en Inventario → Más opciones → Mis equipos. Mantiene alta, reposición, organización, descuento al vender y devolución al anular. Los registros existentes conservan sus identificadores, dueños, cantidades y costos.
 - **Inventarios conectados:** Samuel se lee desde su hoja pública de Google; Split desde su API de revendedores, separando Saúl y Javier. El APK privado incluye una copia verificada para mostrar equipos desde la primera apertura. Actualizar consulta las fuentes; conserva la última lista válida si no hay conexión o falla el guardado. Para actualizar Split, la clave se guarda una vez por cuenta/teléfono en Ajustes, cifrada mediante Android Keystore. Nunca se incluye en Git ni en el APK.
 - **Tarjetas compactas:** modelo, detalles y dueño visibles; costo/precio y disponibilidad a la derecha. Toca el equipo para vender, agregar unidades u organizar. Los filtros de marca/orden se despliegan cuando los necesitas.
 - **Ventas:** selección de equipo propio, oferta de proveedor o entrada manual; descuento de existencias junto con el guardado. Las ventas nuevas no descuentan comisiones. Los importes históricos se conservan.
@@ -47,7 +47,7 @@ La configuración de Firebase y las claves de firma no se incluyen en Git. Insta
 
 El conector de Samuel verifica el formato real de la hoja, interpreta CSV y agrupa filas idénticas conservando sus cantidades y precios. Split usa `GET /api/v1/inventario` con `X-API-Key`; solo lee los equipos disponibles del API de revendedores. `SPLIT` se presenta como Saúl y `JAVIER` como Javier. No se escriben ventas ni reservas en sistemas de los proveedores.
 
-Las descargas se validan completas antes de sustituir el inventario de ese proveedor en una escritura local. Una lista vacía válida retira los equipos que ya no están disponibles; un error HTTP, contenido inesperado, conteos incompletos o falta de espacio conserva la lista anterior. Se muestran fecha de consulta, unidades y estado. La actualización automática al consultar se limita a una vez cada diez minutos por proveedor; los filtros no descargan. El botón Actualizar permite solicitar otra consulta.
+Las descargas se validan completas antes de sustituir el inventario de ese proveedor en una escritura local. Una lista vacía válida retira los equipos que ya no están disponibles; un error HTTP, contenido inesperado, conteos incompletos o falta de espacio conserva la lista anterior. Se muestran fecha de consulta, unidades y estado. Los detalles de fuentes y conexión se consultan en Ajustes. La actualización automática al consultar se limita a una vez cada diez minutos por proveedor; los filtros no descargan. El botón Actualizar permite solicitar otra consulta.
 
 El constructor puede generar una copia inicial privada con `python3 scripts/fetch-provider-snapshot.py`, usando `SPLIT_INVENTORY_TOKEN` configurado de forma segura en el entorno. Genera `android/provider-bootstrap.json`, ignorado por Git. Gradle lo empaqueta como datos de inventario; no contiene la clave ni datos de autenticación. Una compilación sin esa copia puede cargar los datos al actualizar y conserva cualquier descarga previa.
 

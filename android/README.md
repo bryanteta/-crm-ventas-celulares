@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.5-preview
+# Lunivo para Android · 1.5.6-preview
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 24. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 25. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -50,7 +50,7 @@ Follows permite vincular varios teléfonos con la misma cuenta. Los perfiles de 
 
 ## Inventario y ventas
 
-Proveedores reúne **Split (Saúl y Javier)** y **Samuel**. Buscar, comparar modelo y ordenar permite consultar ambos sin copiar lotes a cotizaciones. Los dueños y los identificadores persistidos permanecen intactos; cambiar la agrupación no reasigna inventarios ni reescribe ventas. La vista Global conserva los equipos sin asignar.
+La entrada **Inventario** reúne **Split (Saúl y Javier)** y **Samuel**. Más opciones agrupa los filtros y el acceso a **Mis equipos**, el registro manual; las fuentes y detalles de conexión quedan en Ajustes. Buscar, comparar modelo y ordenar permite consultar ambos sin copiar lotes a cotizaciones. Los dueños y los identificadores persistidos permanecen intactos; cambiar la agrupación no reasigna inventarios ni reescribe ventas. La vista Global conserva los equipos sin asignar.
 
 Las cotizaciones antiguas de TecnoShop se presentan como Samuel mediante un alias de lectura, conservando los datos originales y los accesos guardados `provider=tecnoshop`. Las ventas nuevas usan los nombres actuales; el historial financiero no se recalcula. Elegir un lote de Samuel usa su costo y descuenta solo sus unidades al confirmar. Split permite los filtros Combinado, Saúl y Javier.
 
@@ -60,9 +60,9 @@ Samuel se consulta como CSV desde su hoja pública de Google. Split usa su API d
 
 El constructor privado ejecuta `python3 scripts/fetch-provider-snapshot.py` con `SPLIT_INVENTORY_TOKEN` del entorno. Las credenciales de proxy se usan solo en el encabezado dirigido a Split, sin imprimirlas ni guardarlas. El archivo resultante `android/provider-bootstrap.json`, ignorado por Git, contiene únicamente variantes/precios/cantidades y fecha de lectura. Gradle Sync lo incluye en `www/assets/provider-bootstrap.json` y elimina recursos generados obsoletos si falta en otra compilación.
 
-La copia incluida se carga al abrir Proveedores si la cuenta no tiene datos descargados. Samuel se actualiza automáticamente cuando la consulta tiene más de diez minutos. Split se actualiza del mismo modo una vez guardada su clave en el teléfono. Actualizar consulta ambas fuentes; si Split no tiene clave, conserva su copia y explica cómo configurarla. El inventario permanece visible sin conexión. La fecha distingue copia incluida y consulta directa.
+La copia incluida se carga al abrir Inventario si la cuenta no tiene datos descargados. Samuel se actualiza automáticamente cuando la consulta tiene más de diez minutos. Split se actualiza del mismo modo una vez guardada su clave en el teléfono. Actualizar consulta ambas fuentes; si Split no tiene clave, conserva su copia y explica cómo configurarla. El inventario permanece visible sin conexión. La fecha distingue copia incluida y consulta directa.
 
-`feeds-core.js` valida toda la respuesta, cuenta unidades, conserva precios distintos, vincula dueños y genera identificadores de variante estables. Cada proveedor se sustituye en una sola escritura del almacenamiento de la cuenta. Una actualización de Samuel retira la referencia PDF antigua integrada, conservando ofertas manuales y otros proveedores. No cambia ventas, autores, inventario propio ni correlativos. Una respuesta válida vacía retira los equipos no disponibles; errores y respuestas tardías de otra cuenta no reemplazan la lista guardada. Los lotes locales permanecen en Inventario registrado; Proveedores usa la fuente descargada cuando existe para evitar duplicar existencias.
+`feeds-core.js` valida toda la respuesta, cuenta unidades, conserva precios distintos, vincula dueños y genera identificadores de variante estables. Cada proveedor se sustituye en una sola escritura del almacenamiento de la cuenta. Una actualización de Samuel retira la referencia PDF antigua integrada, conservando ofertas manuales y otros proveedores. No cambia ventas, autores, inventario propio ni correlativos. Una respuesta válida vacía retira los equipos no disponibles; errores y respuestas tardías de otra cuenta no reemplazan la lista guardada. Los lotes locales permanecen en Mis equipos; Inventario usa la fuente descargada cuando existe para evitar duplicar existencias.
 
 Las tarjetas mantienen el formato compacto y sus acciones desplegables. Organizar cambia solo dueño/marca; los equipos de distintos dueños o costos no se combinan.
 

@@ -3,7 +3,7 @@
 const $=s=>document.querySelector(s),core=window.LunivoFeedCore,bridge=window.LunivoInventoryAndroid;
 let api=null,scope=null,bootstrapAttempted=false,keyKnown=false,configured=false,stateRequested=false,bootstrapBusy=false;
 let errors={},working=new Set(),attempted=new Map();const pending=new Map(),TTL=10*60*1000;
-const account=()=>window.LunivoStore.account()||'local',active=()=>['#ventas/proveedores','#ventas/inventario'].includes(location.hash.split('?')[0]);
+const account=()=>window.LunivoStore.account()||'local',active=()=>['#ventas','#ventas/proveedores','#ventas/inventario'].includes(location.hash.split('?')[0]);
 function native(type,fields={}){
  if(!bridge)return Promise.reject(Error('Abre Lunivo para Android para actualizar los inventarios.'));
  const id=crypto.randomUUID(),requestScope=scope;
@@ -29,8 +29,10 @@ async function refresh(provider,manual=false){
  finally{if(current(expected)){working.delete(provider);paint(api.read());}}
 }
 function paint(data){
- $('#provider-refresh').hidden=!bridge;$('#provider-refresh').disabled=bootstrapBusy||working.size>0;$('#provider-refresh').textContent=working.size?'Actualizando…':'Actualizar inventarios';
+ $('#provider-refresh').hidden=!bridge;$('#provider-refresh').disabled=bootstrapBusy||working.size>0;$('#provider-refresh').textContent=working.size?'Actualizando…':'Actualizar';
  const total=['samuel','split'].reduce((n,p)=>n+(data.providerFeeds?.[p]?.total||0),0),hasLists=Boolean(data.providerFeeds?.samuel||data.providerFeeds?.split);$('#feed-info').hidden=!bridge&&!hasLists;$('#feed-info-title').textContent=working.size?'Actualizando inventarios…':hasLists?total+' equipos · Ver estado de actualización':bootstrapBusy?'Cargando inventarios…':'Estado de inventarios';if(Object.keys(errors).length)$('#feed-info').open=true;
+ const selected=window.LunivoSalesCore.providerFilter(new URLSearchParams(location.hash.split('?')[1]||'').get('provider')),dates=(selected?[data.providerFeeds?.[selected]]:Object.values(data.providerFeeds||{})).filter(Boolean).map(m=>Date.parse(m.checkedAt)).filter(Number.isFinite);const latest=dates.length?new Intl.DateTimeFormat('es-SV',{timeZone:'America/El_Salvador',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(Math.min(...dates))):'';const problem=Object.keys(errors).length>0;
+ $('#inventory-sync-status').textContent=working.size?'Actualizando equipos…':problem?'No se actualizó '+Object.keys(errors).map(p=>p==='split'?'Split':'Samuel').join(' y ')+'. Se conserva la lista.':latest?'Consulta: '+latest:bootstrapBusy?'Cargando equipos…':'Consulta la disponibilidad antes de vender.';$('#inventory-sync-help').hidden=!problem;
  const target=$('#feed-status');target.replaceChildren();for(const p of['samuel','split']){const meta=data.providerFeeds?.[p],row=document.createElement('p');row.className='feed-source-status';const name=p==='split'?'Split':'Samuel';let text=name+': ';
   if(working.has(p))text+='actualizando…';else if(meta){const when=new Intl.DateTimeFormat('es-SV',{timeZone:'America/El_Salvador',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(meta.checkedAt));text+=meta.total+' equipos · '+(meta.origin==='included'?'Copia incluida':'Consultado')+' '+when;if(p==='split'){const rows=data.offers.filter(o=>o.feedProvider==='split');text+=' · Saúl '+rows.filter(o=>o.ownerId==='saul').reduce((n,o)=>n+o.quantity,0)+' / Javier '+rows.filter(o=>o.ownerId==='javier').reduce((n,o)=>n+o.quantity,0);}}
   else text+=bootstrapBusy?'cargando inventario…':'sin inventario descargado.';

@@ -9,6 +9,17 @@ function memory() {
 const row = (id, client = 'Ana') => ({ id, client, phone: '+50371234567', model: 'Galaxy', channel: 'WhatsApp', payment: 'Contado', event: 'Seguimiento', when: '2030-12-01T10:00', state: 'Pendiente', contactProfile: '', notes: '' });
 const remote = (record, revision = 'remote', committed = true) => ({ id: record.id, record, revision, deleted: false, committed });
 
+test('damaged target cannot publish its account identity or erase the previous account',()=>{
+  const storage=memory(),store=createStore(storage);store.switchAccount('alice');store.save([row('saved')]);
+  storage.setItem('lunivo-account-v1:bob','{"records":{},"outbox":{}}');
+  assert.throws(()=>store.switchAccount('bob'));assert.equal(store.account(),'alice');assert.equal(storage.getItem('lunivo-active-account-v1'),'alice');assert.equal(store.records()[0].id,'saved');
+});
+test('corrupted local JSON cannot be replaced by a save and can recover after a valid read',()=>{
+  const storage=memory(),store=createStore(storage);storage.setItem('crm-telefonos-seguimientos-v1','{broken');
+  assert.throws(()=>store.save([row('new')]));assert.equal(storage.getItem('crm-telefonos-seguimientos-v1'),'{broken');
+  storage.setItem('crm-telefonos-seguimientos-v1','[]');store.save([row('new')]);assert.equal(store.records()[0].id,'new');
+});
+
 test('legacy records stay local until an explicit account import', () => {
   const storage = memory();
   const store = createStore(storage);

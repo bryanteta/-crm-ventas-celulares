@@ -41,6 +41,7 @@ for(const tab of tabs){tab.addEventListener('click',()=>select(tab.dataset.setti
 document.addEventListener('click',event=>{const link=event.target.closest('[data-settings-section]');if(link){pending=link.dataset.settingsSection;if(location.hash==='#ajustes'){select(pending);pending=null;}}});
 function route(){if(location.hash==='#ajustes'&&previous!=='#ajustes'){const fromInventory=['#ventas/proveedores','#ventas/inventario'].includes(previous.split('?')[0]);select(pending||(fromInventory?'inventory':'account'));pending=null;}previous=location.hash;}
 window.addEventListener('hashchange',route);window.addEventListener('lunivo-module-change',event=>{requestAnimationFrame(()=>{const sales=event.detail.module==='sales';$('#workspace-announcement').textContent=sales?'Ventas. Inventarios, ventas y garantías.':'Follows. Clientes, seguimientos y agenda.';if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&typeof document.querySelector('main').animate==='function')document.querySelector('main').animate([{opacity:.65,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'ease-out'});$('#view-title').focus({preventScroll:true});});});
+window.LunivoDismissDialog=()=>{const dialogs=[...document.querySelectorAll('dialog[open]')];if(!dialogs.length)return false;dialogs[dialogs.length-1].close();return true;};
 window.LunivoSettings={open(id){pending=id;if(location.hash==='#ajustes'){select(id);pending=null;}else location.hash='#ajustes';}};
 select('account');route();
 })();

@@ -18,18 +18,19 @@ final class InventoryCredentials {
     private final SharedPreferences prefs;
     private final Keys keys;
     InventoryCredentials(Context context) {
-        this(context.getSharedPreferences("lunivo-inventory-credentials", Context.MODE_PRIVATE), () -> {
-            KeyStore store = KeyStore.getInstance("AndroidKeyStore");
-            try { store.load(null); } catch (java.io.IOException error) { throw new GeneralSecurityException(error); }
-            String alias = "lunivo-inventory-key";
-            if (!store.containsAlias(alias)) {
-                KeyGenerator generator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
-                generator.init(new KeyGenParameterSpec.Builder(alias, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                        .setBlockModes(KeyProperties.BLOCK_MODE_GCM).setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE).build());
-                generator.generateKey();
-            }
-            return (SecretKey) store.getKey(alias, null);
-        });
+        this(context.getSharedPreferences("lunivo-inventory-credentials", Context.MODE_PRIVATE), InventoryCredentials::platformKey);
+    }
+    private static synchronized SecretKey platformKey() throws GeneralSecurityException {
+        KeyStore store = KeyStore.getInstance("AndroidKeyStore");
+        try { store.load(null); } catch (java.io.IOException error) { throw new GeneralSecurityException(error); }
+        String alias = "lunivo-inventory-key";
+        if (!store.containsAlias(alias)) {
+            KeyGenerator generator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+            generator.init(new KeyGenParameterSpec.Builder(alias, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM).setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE).build());
+            generator.generateKey();
+        }
+        return (SecretKey) store.getKey(alias, null);
     }
     InventoryCredentials(SharedPreferences prefs, Keys keys) { this.prefs = prefs; this.keys = keys; }
     static void scope(String scope) {

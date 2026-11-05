@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.5.8-preview
+# Lunivo para Android · 1.5.9
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 27. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 28. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -50,7 +50,7 @@ Follows permite vincular varios teléfonos con la misma cuenta. Los perfiles de 
 
 ## Inventario y ventas
 
-La entrada **Inventario** reúne **Split (Saúl y Javier)** y **Samuel**. Más opciones agrupa los filtros y el acceso a **Mis equipos**, el registro manual; las fuentes y detalles de conexión quedan en Ajustes. Buscar, comparar modelo y ordenar permite consultar ambos sin copiar lotes a cotizaciones. Los dueños y los identificadores persistidos permanecen intactos; cambiar la agrupación no reasigna inventarios ni reescribe ventas. La vista Global conserva los equipos sin asignar.
+La entrada **Inventario** reúne **Split (Saúl y Javier)** y **Samuel**. Inicio de Ventas e Inventario tienen acceso visible a **Mis equipos**, cuyo registro propio usa la categoría Lunivo. Más opciones conserva filtros y el enlace anterior al registro manual; las fuentes y detalles de conexión quedan en Ajustes. Buscar, comparar modelo y ordenar permite consultar ambos sin copiar lotes a cotizaciones. Los dueños y los identificadores persistidos permanecen intactos; cambiar la agrupación no reasigna inventarios ni reescribe ventas. La vista Global conserva los equipos sin asignar.
 
 Las cotizaciones antiguas de TecnoShop se presentan como Samuel mediante un alias de lectura, conservando los datos originales y los accesos guardados `provider=tecnoshop`. Las ventas nuevas usan los nombres actuales; el historial financiero no se recalcula. Elegir un lote de Samuel usa su costo y descuenta solo sus unidades al confirmar. Split permite los filtros Combinado, Saúl y Javier.
 
@@ -72,7 +72,7 @@ Las ventas nuevas llevan `commissionEnabled: false` y no descuentan los $15 ante
 
 Los accesorios se guardan como líneas con identificador, categoría, descripción y precio en centavos. Su suma debe coincidir con el total cobrado por accesorios. Precio cero es una cortesía. Los registros antiguos que solo tienen un importe conservan ese importe sin inventar un desglose. Las cortesías de garantía no se duplican cuando el accesorio ya está incluido en la venta.
 
-Ventas, garantías, inventario y cotizaciones son locales por cuenta/dispositivo. No se sincronizan con Firebase en esta vista previa ni se importan automáticamente al cambiar de cuenta. Los datos del proveedor son referencia y no se suman al inventario propio. La lista TecnoShopSV corresponde al PDF compartido del 02/11/2026; no hay importación automática de PDFs nuevos.
+Ventas, garantías, inventario y cotizaciones son locales por cuenta/dispositivo. No se sincronizan con Firebase en esta versión ni se importan automáticamente al cambiar de cuenta. Los datos del proveedor son referencia y no se suman al inventario propio. La lista TecnoShopSV corresponde al PDF compartido del 02/11/2026; no hay importación automática de PDFs nuevos.
 
 ## PDF e impresión
 

@@ -324,11 +324,12 @@ public final class MainActivity extends Activity {
     }
 
     private void navigateBack() {
-        if (webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            finish();
-        }
+        // Android Back must dismiss the topmost help/action dialog before changing routes.
+        webView.evaluateJavascript("Boolean(window.LunivoDismissDialog && window.LunivoDismissDialog())", handled -> {
+            if (isFinishing() || isDestroyed() || "true".equals(handled)) return;
+            if (webView.canGoBack()) webView.goBack();
+            else finish();
+        });
     }
 
     @Override

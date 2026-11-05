@@ -1,6 +1,6 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.8-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.9**; Android 8.0 o superior.
 
 ## Funciones
 
@@ -43,6 +43,8 @@ Para probar reglas y sincronización de Follows se necesita el emulador oficial 
 Consulta [android/README.md](android/README.md) para compilar, configurar Firebase, conservar la firma de actualización y ejecutar las pruebas nativas. El APK se genera en `android/app/build/outputs/apk/release/app-release.apk`.
 
 La configuración de Firebase y las claves de firma no se incluyen en Git. Instala las actualizaciones sobre el APK existente, sin desinstalar ni borrar sus datos.
+
+La [revisión de entrega 1.5.9](docs/release-audit-1.5.9.md) detalla errores corregidos, pruebas y límites de validación. La entrega queda preparada localmente; no implica publicación ni despliegue de reglas.
 
 ## Inventarios de proveedores
 

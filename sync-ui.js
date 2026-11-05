@@ -10,6 +10,7 @@
   const connected = document.querySelector('#account-connected');
   let state = { configured: false, uid: null, email: '' };
   let busy = false;
+  let resetting = false;
   let imports = [];
   let profileImports = [];
   let problem = '';
@@ -28,6 +29,7 @@
   }
   function fail(text) {
     busy = false;
+    resetting = false;
     problem = text;
     message.textContent = text;
     render();
@@ -111,7 +113,13 @@
   document.querySelector('#account-register').addEventListener('click', () => authenticate('cloudRegister'));
   document.querySelector('#account-reset').addEventListener('click', () => {
     const email = document.querySelector('#account-email');
-    if (!email.reportValidity() || !state.configured) return;
+    if (busy || !email.reportValidity() || !state.configured) return;
+    busy = true;
+    resetting = true;
+    problem = '';
+    info = '';
+    message.textContent = 'Solicitando las instrucciones de recuperación…';
+    render();
     send('cloudResetPassword', { email: email.value.trim() });
   });
   document.querySelector('#account-sync').addEventListener('click', () => { problem = ''; submitted.clear(); requestState(); });
@@ -189,9 +197,10 @@
         fail(response.message);
       } else if (response.type === 'cloudMessage') {
         info = response.message;
+        if (resetting) { busy = false; resetting = false; }
       }
     } catch {
-      if (response.type === 'cloudState' && (store.account() !== (response.uid || null) || profiles.account() !== (response.uid || null))) {
+      if (response.type === 'cloudState') {
         window.LunivoApp.hideRecords();
       }
       fail('No se pudieron actualizar los datos de esta cuenta. Los cambios locales se conservan; vuelve a intentarlo.');

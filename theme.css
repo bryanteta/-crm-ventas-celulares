@@ -72,3 +72,11 @@
 :root[data-theme=dark] .brand-mark{overflow:hidden}
 :root[data-theme=dark] .brand-mark img{border-radius:inherit}
 :root[data-theme=dark] .launch-emblem img{height:105px;border-radius:12px}
+/* Populated follow-up lists and expanded accessories need the same night surfaces. */
+:root[data-theme=dark] .row{background:var(--night-surface);border-color:var(--line)}
+:root[data-theme=dark] .row b,:root[data-theme=dark] .accessory-pick strong{color:var(--night-text)}
+:root[data-theme=dark] .accessory-extra{background:var(--night-raised);border-color:var(--line)}
+:root[data-theme=dark] .accessory-option{border-color:var(--line)}
+:root[data-theme=dark] .status{background:#29405d;color:#d2e3fb}
+:root[data-theme=dark] .status.late{background:#472e2d;color:#ffcfb8}
+:root[data-theme=dark] .status.done{background:#1d4035;color:#b9e7cf}

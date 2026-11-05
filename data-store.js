@@ -24,7 +24,11 @@
     try { account = storage.getItem(ACTIVE) || null; } catch { /* Read errors are reported on use. */ }
     const accountKey = uid => `${options.accountPrefix || 'lunivo-account-v1:'}${uid}`;
     function readEnvelope(uid = account) {
-      if (!uid) return { records: JSON.parse(storage.getItem(localKey) || '[]'), outbox: {} };
+      if (!uid) {
+        const records = JSON.parse(storage.getItem(localKey) || '[]');
+        if (!Array.isArray(records)) throw new Error('No se pudo leer el almacenamiento local.');
+        return { records, outbox: {} };
+      }
       const raw = JSON.parse(storage.getItem(accountKey(uid)) || '{"records":[],"outbox":{}}');
       if (!Array.isArray(raw.records) || !raw.outbox || typeof raw.outbox !== 'object' || Array.isArray(raw.outbox)) {
         throw new Error('No se pudo leer el almacenamiento de la cuenta.');
@@ -56,7 +60,8 @@
       pending: () => account ? Object.values(readEnvelope().outbox).map(clone) : [],
       save(next) {
         // In account mode, records and pending operations commit in ONE storage write.
-        const envelope = account ? changed(readEnvelope(), next) : { records: next, outbox: {} };
+        const before = readEnvelope();
+        const envelope = account ? changed(before, next) : { records: next, outbox: {} };
         persist(envelope);
       },
       switchAccount(uid, imports = []) {
@@ -67,11 +72,13 @@
           const added = imports.filter(row => !existing.has(row.id));
           persist(changed(envelope, [...envelope.records, ...added], true), uid);
         }
+        // Validate the target before publishing its identity. Damaged data cannot half-switch accounts.
+        const nextRecords = clone(readEnvelope(uid).records);
         // A failed storage write cannot silently switch the active data set.
         if (uid) storage.setItem(ACTIVE, uid);
         else storage.removeItem(ACTIVE);
         account = uid;
-        return this.records();
+        return nextRecords;
       },
       merge(uid, documents, fromCache) {
         if (uid !== account) return false;

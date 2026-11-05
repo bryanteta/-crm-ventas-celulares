@@ -36,7 +36,8 @@ public class InventoryInstrumentedTest {
             java.lang.reflect.Field field=MainActivity.class.getDeclaredField("webView");field.setAccessible(true);WebView view=(WebView)field.get(activity);
             long end=SystemClock.elapsedRealtime()+20000;while(SystemClock.elapsedRealtime()<end&&!"true".equals(js(view,"Boolean(window.LunivoSuite&&window.LunivoInventoryAndroid)")))SystemClock.sleep(100);
             assertEquals("true",js(view,"Boolean(window.LunivoSuite&&window.LunivoInventoryAndroid)"));
-            js(view,"window.LunivoSyncCanSave=()=>true;window.savedInventoryTestAccount=LunivoStore.account();LunivoProfiles.switchAccount('inventory-instrumented-test');LunivoStore.switchAccount('inventory-instrumented-test');LunivoApp.reload(true);location.hash='#ventas/proveedores';window.LunivoSuite.render();true");
+            // Keep the packaged snapshot current during this offline test; do not query live providers.
+            js(view,"Date.now=()=>"+java.time.Instant.parse(snapshot.getString("checkedAt")).toEpochMilli()+";window.LunivoSyncCanSave=()=>true;window.savedInventoryTestAccount=LunivoStore.account();LunivoProfiles.switchAccount('inventory-instrumented-test');LunivoStore.switchAccount('inventory-instrumented-test');LunivoApp.reload(true);location.hash='#ventas/proveedores';window.LunivoSuite.render();true");
             end=SystemClock.elapsedRealtime()+20000;while(SystemClock.elapsedRealtime()<end&&!String.valueOf(variants).equals(js(view,"document.querySelectorAll('#offers-list .suite-offer').length")))SystemClock.sleep(100);
             assertEquals(String.valueOf(variants),js(view,"document.querySelectorAll('#offers-list .suite-offer').length"));
             assertEquals("true",js(view,"document.querySelector('#feed-status').textContent.includes('Samuel')&&document.querySelector('#feed-status').textContent.includes('Saúl')&&document.querySelector('#feed-status').textContent.includes('Javier')"));

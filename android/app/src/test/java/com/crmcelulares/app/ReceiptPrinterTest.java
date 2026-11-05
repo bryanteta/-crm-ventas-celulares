@@ -80,4 +80,17 @@ public class ReceiptPrinterTest {
         client.onReceivedError(null,request("https://example.com/pixel",false),null);
         client.onPageFinished(null,ReceiptPrinter.DOCUMENT_URL);assertEquals(1,callbacks[0]);assertEquals(0,callbacks[1]);
     }
+    @Test public void leavingTheReceiptOrPausingCancelsEvenALatePageReadyCallback() throws Exception {
+        for(boolean pause:new boolean[]{false,true}){
+            android.app.Activity activity=org.robolectric.Robolectric.buildActivity(android.app.Activity.class).setup().get();
+            ReceiptPrinter printer=new ReceiptPrinter(activity);java.util.List<String> messages=new java.util.ArrayList<>();printer.context("receipt-a");
+            printer.print("<!doctype html><html>Cliente A</html>","Lunivo-2026-1101","receipt-a",messages::add);
+            java.lang.reflect.Field field=ReceiptPrinter.class.getDeclaredField("documents");field.setAccessible(true);
+            java.util.List<?> documents=(java.util.List<?>)field.get(printer);assertEquals(1,documents.size());android.webkit.WebView view=(android.webkit.WebView)documents.get(0);
+            android.webkit.WebViewClient client=org.robolectric.Shadows.shadowOf(view).getWebViewClient();client.shouldInterceptRequest(view,request(ReceiptPrinter.DOCUMENT_URL,true));
+            if(pause)printer.pause();else printer.context("receipt-b");
+            assertTrue(org.robolectric.Shadows.shadowOf(view).wasDestroyCalled());assertTrue(documents.isEmpty());
+            client.onPageFinished(view,ReceiptPrinter.DOCUMENT_URL);assertTrue("a stale ready callback cannot launch printing or report another receipt's status",messages.isEmpty());printer.close();
+        }
+    }
 }

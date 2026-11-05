@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.6.0
+# Lunivo para Android · 1.6.1
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 29. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 30. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -115,3 +115,5 @@ adb shell am instrument -w -r -e class com.crmcelulares.app.InventoryInstrumente
 ```
 
 Las pruebas instrumentadas usan una clave ficticia aislada para comprobar el cifrado y la borran al finalizar. La prueba de WebView verifica los datos reales empaquetados; no supone que el emulador tenga acceso de red a los proveedores. Las lecturas de los servicios reales se verifican por separado durante la generación de la copia.
+
+La impresión de 1.6.1 queda autorizada por la pantalla local de la garantía y requiere una pulsación del usuario. Una impresión todavía en preparación se cancela al cambiar de contexto o pausar la actividad; una devolución tardía de carga no puede iniciarla. El selector de archivos mantiene el documento que el usuario solicitó exportar. Las respuestas incluyen el identificador de la solicitud para no escribir estados sobre otra garantía.

@@ -103,17 +103,20 @@ public final class MainActivity extends Activity {
                                     safeArea.appearance(getWindow(), dark);
                                     webView.setBackgroundColor(dark ? Color.rgb(14, 23, 38) : Color.rgb(244, 246, 250));
                                     return;
+                                case "receiptContext":
+                                    receiptPrinter.context(request.optString("context"));
+                                    return;
                                 case "receiptPrint":
                                 case "receiptExport":
                                     java.util.function.Consumer<String> documentStatus = status -> {
-                                        try { reply.postMessage(new JSONObject().put("type", "documentStatus").put("message", status).toString()); }
+                                        try { reply.postMessage(new JSONObject().put("type", "documentStatus").put("requestId", request.optString("requestId")).put("message", status).toString()); }
                                         catch (JSONException | RuntimeException ignored) { /* The originating page may have closed. */ }
                                     };
                                     if ("receiptExport".equals(request.optString("type"))) {
-                                        receiptPrinter.export(request.getJSONObject("document"), request.optString("name"), documentStatus);
+                                        receiptPrinter.export(request.getJSONObject("document"), request.optString("name"), request.optString("context"), documentStatus);
                                         return;
                                     }
-                                    receiptPrinter.print(request.optString("html"), request.optString("name"), documentStatus);
+                                    receiptPrinter.print(request.optString("html"), request.optString("name"), request.optString("context"), documentStatus);
                                     return;
                                 case "launchSoundState":
                                 case "launchSoundPreference":
@@ -330,6 +333,12 @@ public final class MainActivity extends Activity {
             if (webView.canGoBack()) webView.goBack();
             else finish();
         });
+    }
+
+    @Override
+    protected void onPause() {
+        if (receiptPrinter != null) receiptPrinter.pause();
+        super.onPause();
     }
 
     @Override

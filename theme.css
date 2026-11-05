@@ -92,3 +92,5 @@
 :root[data-theme=dark] :is(#sale-action-error,#stock-organize-error){color:#ffb9c3}
 :root[data-theme=dark] .notification-symbol{background:#294665;color:#b9d7ff}
 :root[data-theme=dark] .notification-panel.is-enabled .notification-symbol{background:#254b44;color:#b1e7d5}
+/* Editable fields with a full-size native picker: choose a common value or type your own. */
+.receipt-combobox{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:6px;align-items:start;margin-top:8px;min-width:0}.receipt-combobox>input{margin-top:0;min-width:0}.receipt-picker{position:relative;display:block;height:50px;border:1px solid #c4d4eb;border-radius:11px;background:#edf3fc;color:#345b8b}.receipt-picker:after{content:'⌄';position:absolute;inset:0;display:grid;place-items:center;font-size:23px;pointer-events:none}.receipt-picker>select{width:100%;height:100%;min-height:44px;margin:0;padding:0;opacity:0;cursor:pointer}.receipt-picker:focus-within{outline:2px solid #658fec;outline-offset:2px}:root[data-theme=dark] .receipt-picker{background:#1c2d44;color:#c3d9f4;border-color:#40546e}

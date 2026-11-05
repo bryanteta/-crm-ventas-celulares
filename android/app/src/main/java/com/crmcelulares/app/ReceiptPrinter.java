@@ -41,6 +41,8 @@ final class ReceiptPrinter {
     private final Handler main = new Handler(Looper.getMainLooper());
     private final ExecutorService exportWorker = Executors.newSingleThreadExecutor();
     private boolean closed;
+    private final ReceiptActionGate gate = new ReceiptActionGate();
+    private final ArrayList<WebView> preparingDocuments = new ArrayList<>();
     private static final class PendingExport {
         final JSONObject document;
         final Consumer<String> status;
@@ -114,9 +116,18 @@ final class ReceiptPrinter {
         if (!documents.isEmpty() || pendingExport != null || exporting) { status.accept("Ya hay un comprobante en preparación. Termina o cancela la operación actual."); return false; }
         return true;
     }
-    private void loadDocument(String html, Consumer<WebView> ready, Consumer<String> status) {
+    void context(String value) { if (gate.update(value)) cancelPreparing(); }
+    void pause() { gate.clear(); cancelPreparing(); }
+    private void cancelPreparing() { for (WebView view : new ArrayList<>(preparingDocuments)) { view.stopLoading(); release(view); } }
+    private long authorize(String context, Consumer<String> status) {
+        long ticket=gate.capture(context);
+        if(ticket<0)status.accept("Abre la garantía y pulsa Imprimir o Guardar PDF en este teléfono.");
+        return ticket;
+    }
+    private void loadDocument(String html, long ticket, Consumer<WebView> ready, Consumer<String> status) {
         WebView view = new WebView(activity);
         documents.add(view);
+        preparingDocuments.add(view);
         view.getSettings().setJavaScriptEnabled(false);
         view.getSettings().setAllowFileAccess(false);
         view.getSettings().setAllowContentAccess(false);
@@ -125,14 +136,16 @@ final class ReceiptPrinter {
         WebViewAssetLoader assets = new WebViewAssetLoader.Builder()
                 .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(activity)).build();
         view.setWebViewClient(new DocumentClient(html, assets, () -> {
-            if (closed || activity.isFinishing() || activity.isDestroyed()) { release(view); return; }
+            if (!preparingDocuments.remove(view)) return;
+            if (closed || !gate.current(ticket) || !activity.hasWindowFocus() || activity.isFinishing() || activity.isDestroyed()) { release(view); return; }
             ready.accept(view);
         }, () -> { release(view); status.accept("No se pudo preparar el comprobante. Vuelve a abrirlo e inténtalo de nuevo."); }));
         view.loadUrl(DOCUMENT_URL);
     }
-    void print(String html, String name, Consumer<String> status) {
-        if (!accept(html, name, status)) return;
-        loadDocument(html, view -> {
+    void print(String html, String name, String context, Consumer<String> status) {
+        long ticket=authorize(context,status);
+        if (ticket<0 || !accept(html, name, status)) return;
+        loadDocument(html, ticket, view -> {
             try {
                 PrintManager manager = (PrintManager) activity.getSystemService(Activity.PRINT_SERVICE);
                 if (manager == null) throw new IllegalStateException();
@@ -149,8 +162,8 @@ final class ReceiptPrinter {
         }, status);
     }
     @SuppressWarnings("deprecation") // Activity owns the system file picker result.
-    void export(JSONObject document, String name, Consumer<String> status) {
-        if (!accept("<!doctype html>", name, status)) return;
+    void export(JSONObject document, String name, String context, Consumer<String> status) {
+        if (authorize(context,status)<0 || !accept("<!doctype html>", name, status)) return;
         try { ReceiptPdfDocument.validate(document); }
         catch (JSONException problem) { status.accept("No se pudo leer el comprobante para guardar el PDF."); return; }
         pendingExport = new PendingExport(document, status);
@@ -190,9 +203,10 @@ final class ReceiptPrinter {
         });
         return true;
     }
-    private void release(WebView view) { if (documents.remove(view)) view.destroy(); }
+    private void release(WebView view) { preparingDocuments.remove(view); if (documents.remove(view)) view.destroy(); }
     void close() {
         closed = true;
+        gate.clear();
         pendingExport = null;
         exportWorker.shutdownNow();
         for (WebView view : new ArrayList<>(documents)) release(view);

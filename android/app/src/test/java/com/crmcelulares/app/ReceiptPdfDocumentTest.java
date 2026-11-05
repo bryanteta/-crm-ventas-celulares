@@ -39,9 +39,15 @@ public class ReceiptPdfDocumentTest {
         Intent intent=ReceiptPrinter.exportIntent("Lunivo-2026-1101");assertEquals(Intent.ACTION_CREATE_DOCUMENT,intent.getAction());assertEquals("application/pdf",intent.getType());assertEquals("Lunivo-2026-1101.pdf",intent.getStringExtra(Intent.EXTRA_TITLE));assertTrue(intent.hasCategory(Intent.CATEGORY_OPENABLE));
     }
     @Test public void filePickerCancellationAndDuplicatesNeverGenerateAFile() throws Exception {
-        Activity activity=Robolectric.buildActivity(Activity.class).setup().get();ReceiptPrinter printer=new ReceiptPrinter(activity);List<String> messages=new ArrayList<>();
-        printer.export(sample(),"Lunivo-2026-1101",messages::add);assertEquals(ReceiptPrinter.EXPORT_REQUEST,shadowOf(activity).getNextStartedActivityForResult().requestCode);
-        printer.export(sample(),"Lunivo-2026-1101",messages::add);assertTrue(messages.get(0).contains("operación actual"));
+        Activity activity=Robolectric.buildActivity(Activity.class).setup().get();ReceiptPrinter printer=new ReceiptPrinter(activity);List<String> messages=new ArrayList<>();printer.context("receipt-a");
+        printer.export(sample(),"Lunivo-2026-1101","receipt-a",messages::add);assertEquals(ReceiptPrinter.EXPORT_REQUEST,shadowOf(activity).getNextStartedActivityForResult().requestCode);
+        printer.export(sample(),"Lunivo-2026-1101","receipt-a",messages::add);assertTrue(messages.get(0).contains("operación actual"));
+        printer.pause(); // Opening the system picker must not lose the explicitly requested export.
         assertTrue(printer.handleExportResult(ReceiptPrinter.EXPORT_REQUEST,Activity.RESULT_CANCELED,null));assertTrue(messages.get(1).contains("cancelada"));assertFalse(printer.handleExportResult(1,Activity.RESULT_OK,null));printer.close();
+    }
+    @Test public void aDifferentOrExpiredReceiptCannotOpenTheFilePicker() throws Exception {
+        Activity activity=Robolectric.buildActivity(Activity.class).setup().get();ReceiptPrinter printer=new ReceiptPrinter(activity);List<String> messages=new ArrayList<>();
+        printer.context("receipt-a");printer.export(sample(),"Lunivo-2026-1101","receipt-b",messages::add);assertNull(shadowOf(activity).getNextStartedActivityForResult());
+        printer.pause();printer.export(sample(),"Lunivo-2026-1101","receipt-a",messages::add);assertNull(shadowOf(activity).getNextStartedActivityForResult());assertEquals(2,messages.size());printer.close();
     }
 }

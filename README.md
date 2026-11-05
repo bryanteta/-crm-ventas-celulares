@@ -1,6 +1,6 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.6.0**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.6.1**; Android 8.0 o superior.
 
 ## Funciones
 
@@ -12,7 +12,7 @@ App Android y prototipo web para gestionar seguimientos, inventarios, ventas y g
 - **Tarjetas compactas:** modelo, detalles y dueño visibles; costo/precio y disponibilidad a la derecha. Toca el equipo para vender, agregar unidades u organizar. Los filtros de marca/orden se despliegan cuando los necesitas.
 - **Ventas:** selección de equipo propio, oferta de proveedor o entrada manual; descuento de existencias junto con el guardado. Las ventas nuevas no descuentan comisiones. Los importes históricos se conservan.
 - **Accesorios:** cargador completo, protector con tipo, case, caja genérica y varios accesorios adicionales, cada uno con su precio. Precio cero significa entrega sin costo. El comprobante incluye el detalle.
-- **Garantías:** campos pendientes resaltados, mensajes junto a cada dato y salto al primer campo; abre la sección de pago si falta banco o meses. IMEI/serial manual y opcional, tres meses calendario desde la entrega y correlativo por mes/año. Exportación directa de PDF A4 vectorial y opción separada de impresión. Comprobantes claros para imprimir, incluso con la app en modo oscuro.
+- **Garantías:** desplegables editables para marca, capacidad, color, batería, estado físico y banco; también aceptan texto propio. El estado comercial conserva valores históricos. Impresión y exportación exigen una pulsación local en la garantía visible: al salir, editar, cambiar de cuenta o poner la app en segundo plano se descarta la impresión todavía en preparación. La sincronización recibe registros y nunca ejecuta impresiones. Los estados de una exportación no se muestran en otra garantía. Campos pendientes resaltados, mensajes junto a cada dato y salto al primer campo; abre la sección de pago si falta banco o meses. IMEI/serial manual y opcional, tres meses calendario desde la entrega y correlativo por mes/año. Exportación directa de PDF A4 vectorial y opción separada de impresión. Comprobantes claros para imprimir, incluso con la app en modo oscuro.
 
 Con sesión iniciada en Android, **ventas confirmadas, garantías y Mis equipos se comparten por cuenta**. La confirmación exige conexión y un perfil activo; guarda al vendedor, descuenta existencias y asigna un correlativo común en una transacción. Los borradores, cotizaciones y cachés de proveedores siguen locales. El modo sin cuenta conserva el funcionamiento local. Follows y los perfiles mantienen su sincronización existente. Los dueños del inventario son categorías de organización; no representan cuentas ni permisos individuales. Los inventarios externos se consultan mediante HTTPS y se conservan en el teléfono; no requieren lecturas de Firebase. No se importan PDFs nuevos automáticamente.
 
@@ -58,7 +58,7 @@ Pruebas del conector: `npm test`, `node tests/feeds-ui.cjs` y las pruebas nativa
 
 ## Activar ventas compartidas
 
-Antes de instalar 1.6.0 en todos los teléfonos, publica manualmente el archivo completo [firestore.rules](firestore.rules) en el proyecto Firebase existente. Esta entrega no publica la app ni las reglas. Las colecciones nuevas son `suiteSales`, `suiteInventory`, `suiteCounters` y `suiteOperations`, dentro de `users/{uid}`. Las reglas mantienen Follows y perfiles.
+Antes de instalar 1.6.1 en todos los teléfonos, publica manualmente el archivo completo [firestore.rules](firestore.rules) en el proyecto Firebase existente. Esta entrega no publica la app ni las reglas. Las colecciones nuevas son `suiteSales`, `suiteInventory`, `suiteCounters` y `suiteOperations`, dentro de `users/{uid}`. Las reglas mantienen Follows y perfiles.
 
 Pausa el registro de ventas mientras actualizas y conectas todos los teléfonos antiguos. Actualiza todos los teléfonos sin desinstalar. Abre la misma cuenta en cada uno con conexión y espera a que termine «Preparando Ventas compartidas» antes de registrar nuevas ventas. Se incorporan las ventas confirmadas y equipos previamente guardados para esa cuenta; la zona sin cuenta no se importa automáticamente. Los registros con el mismo ID no se sobrescriben. Se conservan autores, importes y correlativos históricos; si dos instalaciones antiguas ya usaron un mismo número, esos comprobantes no se renumeran. La sincronización reserva el máximo correlativo importado, por lo que deben conectarse todos los teléfonos antiguos antes de emitir comprobantes nuevos.
 

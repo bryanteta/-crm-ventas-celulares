@@ -61,6 +61,22 @@ public class SafeAreaLayoutTest {
     }
 
     @Test
+    public void darkAppearanceKeepsClockReadableAndSurvivesInsetsRefresh() {
+        root.appearance(activity.getWindow(), true);
+        root.refresh(activity.getWindow());
+        assertFalse(WindowCompat.getInsetsController(activity.getWindow(), root).isAppearanceLightStatusBars());
+        assertFalse(WindowCompat.getInsetsController(activity.getWindow(), root).isAppearanceLightNavigationBars());
+        layout(840, 920, 40, 32, 0, 0, 0);
+        assertEquals(40, viewport.getTop());
+        assertEquals(888, viewport.getBottom());
+        assertSame(viewport, root.getChildAt(0));
+        root.appearance(activity.getWindow(), false);
+        assertTrue(WindowCompat.getInsetsController(activity.getWindow(), root).isAppearanceLightStatusBars());
+        assertTrue(WindowCompat.getInsetsController(activity.getWindow(), root).isAppearanceLightNavigationBars());
+        assertEquals(40, viewport.getTop());
+    }
+
+    @Test
     public void statusBarAndCameraAreaAreOutsideTheWebViewport() {
         layout(840, 920, 40, 32, 0, 0, 0);
         assertEquals("native parent padding", 40, root.getPaddingTop());

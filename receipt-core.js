@@ -24,14 +24,15 @@ function allocate(data,sale){
  sale.saleSequence=last+1;sale.saleMonth=month;sale.saleNumber=month.slice(5,7)+String(sale.saleSequence).padStart(2,'0');
  data.receiptCounters[month]=sale.saleSequence;
 }
+function invalid(field,message,fields){throw Object.assign(new Error(message),{field,fields:fields||[field]});}
 function validate(r,sale){
-if(!r||r.version!==1||!r.number||r.number.length>50)throw Error('Revisa el número del comprobante.');date(r.deliveryDate);
-for(const key of ['brand','capacity','color','condition','battery','physical'])if(typeof r[key]!=='string'||!r[key].trim())throw Error('Completa marca, capacidad, color, estado comercial, batería y estado físico para emitir la garantía.');
-if(!Array.isArray(r.serials)||r.serials.length>sale.quantity||r.serials.some(s=>typeof s!=='string'||!s.trim()||s.length>100))throw Error('Registra como máximo un IMEI/serial por unidad; también puedes dejarlo vacío.');
-if(new Set(r.serials.map(s=>s.replace(/\s/g,'').toUpperCase())).size!==r.serials.length)throw Error('No repitas el mismo IMEI/serial.');
-if(!['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro'].includes(r.paymentMethod))throw Error('Selecciona el método de pago.');
-if(r.paymentMethod==='Tasa cero'&&(!r.bank||!Number.isInteger(r.months)||r.months<1||r.months>60))throw Error('Completa banco y meses de la tasa cero.');
-if(r.phone&&!/^[+\d\s().-]{7,30}$/.test(r.phone))throw Error('Revisa el teléfono del cliente.');
+if(!r||r.version!==1||!r.number||r.number.length>50)throw Error('Revisa el número del comprobante.');try{date(r.deliveryDate)}catch(e){invalid('deliveryDate',e.message)};
+const labels={brand:'Marca',capacity:'Capacidad',color:'Color',condition:'Estado comercial',battery:'Batería',physical:'Estado físico'};const missing=Object.keys(labels).filter(key=>typeof r[key]!=='string'||!r[key].trim());if(missing.length)invalid(missing[0],'Falta completar: '+missing.map(key=>labels[key]).join(', ')+'.',missing);
+if(!Array.isArray(r.serials)||r.serials.length>sale.quantity||r.serials.some(s=>typeof s!=='string'||!s.trim()||s.length>100))invalid('serials','Registra como máximo un IMEI/serial por unidad; también puedes dejarlo vacío.');
+if(new Set(r.serials.map(s=>s.replace(/\s/g,'').toUpperCase())).size!==r.serials.length)invalid('serials','No repitas el mismo IMEI/serial.');
+if(!['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro'].includes(r.paymentMethod))invalid('paymentMethod','Selecciona el método de pago.');
+if(r.paymentMethod==='Tasa cero'&&!r.bank)invalid('bank','Falta el banco para la tasa cero.');if(r.paymentMethod==='Tasa cero'&&(!Number.isInteger(r.months)||r.months<1||r.months>60))invalid('months','Indica los meses de tasa cero, entre 1 y 60.');
+if(r.phone&&!/^[+\d\s().-]{7,30}$/.test(r.phone))invalid('phone','Revisa el número de contacto: usa entre 7 y 30 caracteres de teléfono.');
 if(r.warrantyMonths!==3||!Array.isArray(r.terms)||r.terms.length!==3)throw Error('No se pudieron leer las condiciones de garantía.');
 if(!Array.isArray(r.gifts)||r.gifts.some(g=>!g.name||!Number.isSafeInteger(g.reference)||g.reference<0))throw Error('Revisa las cortesías y sus valores de referencia.');
 return true;

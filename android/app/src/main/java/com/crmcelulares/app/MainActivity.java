@@ -68,6 +68,9 @@ public final class MainActivity extends Activity {
         }));
         webView.setBackgroundColor(Color.rgb(243, 246, 251));
         safeArea = new SafeAreaLayout(this, webView);
+        boolean darkAppearance = getSharedPreferences("lunivo-appearance", MODE_PRIVATE).getBoolean("dark", false);
+        safeArea.appearance(getWindow(), darkAppearance);
+        webView.setBackgroundColor(darkAppearance ? Color.rgb(14, 23, 38) : Color.rgb(244, 246, 250));
         setContentView(safeArea);
         safeArea.post(() -> safeArea.refresh(getWindow()));
         WebSettings settings = webView.getSettings();
@@ -94,6 +97,12 @@ public final class MainActivity extends Activity {
                                 return;
                             }
                             switch (request.optString("type")) {
+                                case "appearance":
+                                    boolean dark = request.getBoolean("dark");
+                                    getSharedPreferences("lunivo-appearance", MODE_PRIVATE).edit().putBoolean("dark", dark).apply();
+                                    safeArea.appearance(getWindow(), dark);
+                                    webView.setBackgroundColor(dark ? Color.rgb(14, 23, 38) : Color.rgb(244, 246, 250));
+                                    return;
                                 case "receiptPrint":
                                 case "receiptExport":
                                     java.util.function.Consumer<String> documentStatus = status -> {

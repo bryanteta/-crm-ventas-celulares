@@ -1,18 +1,18 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.7-preview**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.5.8-preview**; Android 8.0 o superior.
 
 ## Funciones
 
-- **Ajustes:** Cuenta, Inventarios, Avisos y Aplicación. Los botones «?» explican las opciones sin ejecutarlas. El cambio entre Follows y Ventas muestra el espacio activo y recupera la última pantalla de cada módulo, con los formularios sin guardar.
+- **Ajustes:** Cuenta, Inventarios, Avisos y Aplicación. Los botones «?» explican las opciones sin ejecutarlas. En Aplicación puedes elegir Claro, Oscuro o seguir el teléfono; la selección y el logo se adaptan a ambos espacios. El cambio entre Follows y Ventas muestra el espacio activo y recupera la última pantalla de cada módulo, con los formularios sin guardar.
 - **Follows:** clientes, agenda, usuarios que registran cada seguimiento, avisos nativos y sincronización opcional con Firebase.
 - **Inventario:** una sola entrada para Samuel y Split (Saúl y Javier). Elige proveedor, busca un equipo y consulta precio por unidad, quién lo tiene y cuántos hay disponibles. Modelo, orden y demás filtros quedan en Más opciones. Las tarjetas abren detalles y permiten preparar la venta.
-- **Mis equipos:** el registro manual permanece en Inventario → Más opciones → Mis equipos. Mantiene alta, reposición, organización, descuento al vender y devolución al anular. Los registros existentes conservan sus identificadores, dueños, cantidades y costos.
+- **Mis equipos:** acceso visible en Inicio de Ventas e Inventario para consultar o agregar equipos. La categoría Lunivo corresponde al inventario propio y no entra en la comparación de proveedores. Se conservan los registros manuales anteriores de Samuel, Saúl y Javier. Mantiene alta, reposición, organización, descuento al vender y devolución al anular, sin reasignar registros existentes.
 - **Inventarios conectados:** Samuel se lee desde su hoja pública de Google; Split desde su API de revendedores, separando Saúl y Javier. El APK privado incluye una copia verificada para mostrar equipos desde la primera apertura. Actualizar consulta las fuentes; conserva la última lista válida si no hay conexión o falla el guardado. Para actualizar Split, la clave se guarda una vez por cuenta/teléfono en Ajustes, cifrada mediante Android Keystore. Nunca se incluye en Git ni en el APK.
 - **Tarjetas compactas:** modelo, detalles y dueño visibles; costo/precio y disponibilidad a la derecha. Toca el equipo para vender, agregar unidades u organizar. Los filtros de marca/orden se despliegan cuando los necesitas.
 - **Ventas:** selección de equipo propio, oferta de proveedor o entrada manual; descuento de existencias junto con el guardado. Las ventas nuevas no descuentan comisiones. Los importes históricos se conservan.
 - **Accesorios:** cargador completo, protector con tipo, case, caja genérica y varios accesorios adicionales, cada uno con su precio. Precio cero significa entrega sin costo. El comprobante incluye el detalle.
-- **Garantías:** IMEI/serial manual y opcional, tres meses calendario desde la entrega y correlativo por mes/año. Exportación directa de PDF A4 vectorial y opción separada de impresión.
+- **Garantías:** campos pendientes resaltados, mensajes junto a cada dato y salto al primer campo; abre la sección de pago si falta banco o meses. IMEI/serial manual y opcional, tres meses calendario desde la entrega y correlativo por mes/año. Exportación directa de PDF A4 vectorial y opción separada de impresión. Comprobantes claros para imprimir, incluso con la app en modo oscuro.
 
 Ventas, garantías, inventario y cotizaciones permanecen **locales por cuenta y dispositivo**. Follows y los perfiles mantienen su sincronización existente. Los dueños del inventario son categorías de organización; no representan cuentas ni permisos individuales. Los inventarios externos se consultan mediante HTTPS y se conservan en el teléfono; no requieren lecturas de Firebase. No se importan PDFs nuevos automáticamente.
 

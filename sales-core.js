@@ -3,7 +3,7 @@
  function money(value){const s=String(value).trim();if(!/^\d{1,9}(?:\.\d{1,2})?$/.test(s))throw Error('Escribe un importe válido con hasta dos decimales.');const[a,b='']=s.split('.');return Number(a)*100+Number(b.padEnd(2,'0'));}
  function totals({price,cost,expenses,quantity,accessories=0,accessoryCost=0,status='Confirmada',commissionEnabled=true}){if(!Number.isInteger(quantity)||quantity<1||quantity>1000)throw Error('La cantidad debe estar entre 1 y 1,000.');for(const n of[price,cost,expenses,accessories,accessoryCost])if(!Number.isSafeInteger(n)||n<0)throw Error('Importes inválidos.');const revenue=price*quantity+accessories,purchase=cost*quantity+accessoryCost,commission=status==='Confirmada'&&commissionEnabled?1500:0,profit=revenue-purchase-expenses-commission;if(![revenue,purchase,profit].every(Number.isSafeInteger))throw Error('Importe demasiado grande.');return{revenue,purchase,commission,profit};}
 
- const OWNERS=[{id:'samuel',name:'Samuel'},{id:'saul',name:'Saúl'},{id:'javier',name:'Javier'}];
+ const OWNERS=[{id:'lunivo',name:'Lunivo'},{id:'samuel',name:'Samuel'},{id:'saul',name:'Saúl'},{id:'javier',name:'Javier'}];
  const SPLIT_OWNERS=['saul','javier'];
  const inSplit=item=>SPLIT_OWNERS.includes(item.ownerId);
  const isTecnoShop=offer=>['tecnoshop','tecnoshopsv','tech'].includes(String(offer.supplier||'').toLowerCase().replace(/[\s._-]/g,''))||String(offer.id||'').startsWith('tecno-reference-');

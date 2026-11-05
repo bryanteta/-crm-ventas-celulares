@@ -98,7 +98,7 @@ function render(){try{
  const history=data.sales.filter(r=>(!historyPeriod||r.date.startsWith(historyPeriod))&&($('#sale-state').value==='Todos'||r.status===$('#sale-state').value)&&(!search||[r.client,r.model,r.saleNumber,r.sellerName].join(' ').toLocaleLowerCase('es').includes(search)));
  $('#sales-history-count').textContent=history.length+' registro(s)'+(historyPeriod?' · '+historyPeriod:' · Todos los meses');
  for(const [target,list]of[[$('#sales-recent'),data.sales.slice(0,4)],[$('#sales-list'),history]]){target.replaceChildren();if(!list.length)target.append(el('p',target.id==='sales-list'?'No hay ventas con estos filtros.':'Tu primera venta aparecerá aquí.','empty'));for(const r of list)target.append(saleRow(r));}
- fillLookups(data);renderOffers(data);window.LunivoInventory.render(data,params.get('owner'),params.get('provider'));calculate();
+ fillLookups(data);renderOffers(data);window.LunivoInventory.render(data,params.get('owner'),params.get('provider'));if(view==='#ventas/inventario'&&params.get('agregar')==='1'){params.delete('agregar');window.history.replaceState(null,'','#ventas/inventario'+(params.size?'?'+params.toString():''));lastSales=location.hash;window.LunivoInventory.openAdd();}calculate();
  const id=new URLSearchParams(rawHash.split('?')[1]||'').get('id')||currentSaleId;
  if(view==='#ventas/detalle')renderDetail(data,id);
  if(view==='#ventas/garantia')window.LunivoWarranty.ensure(id);

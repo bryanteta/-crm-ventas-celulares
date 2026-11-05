@@ -18,6 +18,8 @@ import androidx.core.view.WindowInsetsControllerCompat;
 /** Resizes the actual WebView viewport, rather than padding its HTML drawing area. */
 final class SafeAreaLayout extends FrameLayout {
     private static final int BACKGROUND = Color.rgb(244, 246, 250);
+    private static final int DARK_BACKGROUND = Color.rgb(14, 23, 38);
+    private boolean dark;
 
     SafeAreaLayout(Context context) {
         super(context);
@@ -47,12 +49,19 @@ final class SafeAreaLayout extends FrameLayout {
                 | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
                 | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(BACKGROUND);
-        window.setNavigationBarColor(Build.VERSION.SDK_INT >= 27 ? BACKGROUND : Color.rgb(24, 40, 66));
+        int background = dark ? DARK_BACKGROUND : BACKGROUND;
+        setBackgroundColor(background);
+        window.setStatusBarColor(background);
+        window.setNavigationBarColor(dark || Build.VERSION.SDK_INT >= 27 ? background : Color.rgb(24, 40, 66));
         WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(window, this);
-        controller.setAppearanceLightStatusBars(true);
-        controller.setAppearanceLightNavigationBars(Build.VERSION.SDK_INT >= 27);
+        controller.setAppearanceLightStatusBars(!dark);
+        controller.setAppearanceLightNavigationBars(!dark && Build.VERSION.SDK_INT >= 27);
         controller.show(WindowInsetsCompat.Type.statusBars());
+    }
+
+    void appearance(Window window, boolean value) {
+        dark = value;
+        configureWindow(window);
     }
 
     void refresh(Window window) {

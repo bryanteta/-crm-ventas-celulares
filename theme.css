@@ -1,0 +1,74 @@
+/* Shared surfaces keep both workspaces readable in either appearance. */
+.own-stock-access{display:flex;align-items:center;gap:13px;padding:17px 18px;margin-bottom:18px;border:1px solid #dfe7f2;border-radius:16px;background:#fff;min-width:0}
+.own-stock-access>div:not(.actions){flex:1;min-width:0}.own-stock-access h3{font-size:14px;margin:0 0 4px}.own-stock-access p{font-size:11px;margin:0;line-height:1.5}.own-stock-access .actions{gap:12px;flex-wrap:wrap}.own-stock-access .btn,.own-stock-access .text-link{font-size:11px;min-height:44px}.own-stock-access .text-link{display:inline-flex;align-items:center}.own-stock-icon{display:grid;place-items:center;width:38px;height:42px;border-radius:12px;background:#eef4ff;color:#3a67ad;flex:none}.own-stock-icon svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.6;fill:none}
+#sales-providers>.own-stock-access{padding:10px 12px;gap:10px;margin-bottom:12px}#sales-providers>.own-stock-access p{display:none}#sales-providers>.own-stock-access h3{margin:0;font-size:12px}#sales-providers>.own-stock-access .own-stock-icon{display:none}#sales-providers>.own-stock-access .btn{padding:8px 10px}
+.field-error{display:block;color:#a62f3b;font-size:12px;line-height:1.5;margin-top:7px;font-weight:600}.warranty-validation{border:1px solid #e4b5bd;background:#fff4f5;border-radius:13px;padding:13px 15px;color:#982d39;font-size:12px;line-height:1.6}.warranty-validation p{color:inherit;margin:0 0 7px}.warranty-validation button{color:inherit;background:transparent;border:1px solid #e4b5bd;font-size:11px;padding:7px 10px;min-height:40px;margin:3px 5px 3px 0}#warranty-form [aria-invalid=true]{border-color:#c34857;box-shadow:0 0 0 2px #c3485718}#warranty-form label:has([aria-invalid=true]){color:#a62f3b}
+@media(max-width:599px){.own-stock-access{flex-wrap:wrap;padding:15px}.own-stock-access .actions{width:100%;justify-content:space-between}.own-stock-access .btn{flex:1}.own-stock-access .text-link{flex:1;justify-content:center}#sales-providers>.own-stock-access{flex-wrap:nowrap}#sales-providers>.own-stock-access .actions{width:auto;gap:9px}#sales-providers>.own-stock-access .btn,#sales-providers>.own-stock-access .text-link{white-space:nowrap;font-size:10px}#sales-providers>.own-stock-access .own-stock-icon{display:none}}
+:root[data-theme=dark]{color-scheme:dark;color:#e4edf8;background:#0e1726;--blue:#396fd0;--line:#2b3c52;--muted:#a4b5cb;--surface:#162337;--accent-soft:#203958;--accent-line:#385b83;--accent-hover:#356cd2;--night-bg:#0e1726;--night-surface:#162337;--night-raised:#1c2d44;--night-text:#e4edf8;--night-muted:#a4b5cb;--night-link:#a3c6ff}
+:root[data-theme=dark] body{background:var(--night-bg);color:var(--night-text)}
+:root[data-theme=dark] :is(h1,h2,h3,h4,legend,label,.form-section,.card strong,.suite-metric strong,.sale-calculation strong,.sale-card-foot strong,.sale-detail-heading h3,.device-card-copy h4,.device-card-value strong,.provider-card strong,.record-creator,.summary-entry b){color:var(--night-text)}
+:root[data-theme=dark] :is(p,.hint,.eyebrow,small,.card,.card small,.suite-caption,.suite-metric span,.suite-metric small,.sale-calculation span,.sale-calculation small,.sale-flow-hint,.field-caption,.field-caption,.sale-card-meta,.sale-card-head p,.sales-period-label,.device-card-description,.device-card-units,.device-card-price-label,.device-card-by,.module-return-note,#module-description-copy,.workspace-copy small,.settings-intro,.settings-tabs small,.provider-tap-hint,#inventory-sync-status,#feed-info>summary){color:var(--night-muted)}
+:root[data-theme=dark] :is(.panel,.card,.suite-metric,.cloud-panel,.notification-panel,dialog,.settings-content .panel,.settings-content .cloud-panel,.settings-content .notification-panel,.sales-shortcuts a,.own-stock-access,.provider-cards a.provider-card,.inventory-panel .compact-device-card,.unified-providers #offers-list>.compact-device-card,.tech-catalog #offers-list>.compact-device-card){background:var(--night-surface);border-color:var(--line);box-shadow:none}
+:root[data-theme=dark] :is(.summary-entry,.empty,.metric-icon,.sale-calculation,.sale-details,.sale-sources,.sale-next-step,.gift-choice,.warranty-toolbar,.sales-period-label,.settings-browser-note,.help-dialog-icon,.provider-tab-count,.own-stock-icon,#provider-more-filters[open],#feed-status .feed-source-status,.sales-local p){background:var(--night-raised);border-color:var(--line);color:var(--night-muted)}
+:root[data-theme=dark] :is(input,select,textarea){background:#101c2d;color:var(--night-text);border-color:#40546e;outline-color:#8eb9ff}
+:root[data-theme=dark] input::placeholder,:root[data-theme=dark] textarea::placeholder{color:#91a3ba;opacity:1}
+:root[data-theme=dark] :is(input,select,textarea):focus{border-color:#83b4ff;box-shadow:0 0 0 3px #83b4ff22}
+:root[data-theme=dark] :is(a,.text-link,.text-button,.sale-details summary,.sale-internal summary,.inventory-link-info summary,.inventory-more-filters>summary,.provider-sources>summary,.provider-sources a,.device-card-owner,.offer-price,.settings-card-heading .context-help,.setting-field-heading .context-help,.context-help){color:var(--night-link)}
+:root[data-theme=dark] #stock-entry>summary,:root[data-theme=dark] #provider-more-filters>summary,:root[data-theme=dark] #provider-results{color:var(--night-link)}
+:root[data-theme=dark] :is(button.secondary,.btn.secondary,.suite-settings,.settings-tabs>button,.dialog-close,.module-button){background:var(--night-raised);color:#c3d9f4;border-color:#38516f}
+:root[data-theme=dark] :is(button.secondary,.btn.secondary,.suite-settings,.settings-tabs>button,.module-button):hover{background:#263e5b}
+:root[data-theme=dark] :is(.settings-tabs>button[aria-selected=true],.sale-sources button[aria-pressed=true],.provider-cards a.provider-card[aria-current=page],.inventory-owner-filters button[aria-pressed=true]){background:#203e64;color:#d7e8ff;border-color:#759dd9}
+:root[data-theme=dark] :is(.settings-content .hint,.settings-content .cloud-panel #cloud-status,.settings-content #feed-status .feed-source-status,#context-help-body p,.settings-content .profile-row>span){color:var(--night-muted)}
+:root[data-theme=dark] :is(.module-choices .module-choice-button,.module-choice[data-workspace-card=follows] .module-choice-button){background:#1a2b40;color:var(--night-text);border-color:#3b506b}
+:root[data-theme=dark] .module-choices .module-choice-button[aria-pressed=true]{background:#203e64;border-color:#88b4f2}
+:root[data-theme=dark] .module-choice[data-workspace-card=follows] .module-choice-button[aria-pressed=true]{background:#193d38;border-color:#6ebaa8}
+:root[data-theme=dark] .module-choice-description{color:var(--night-muted)!important}
+:root[data-theme=dark] :is(.module-choices .module-choice-action,.module-choice-status,.module-choice-icon){color:#b9d7ff!important}
+:root[data-theme=dark] :is(.module-choice-icon,.workspace-mark){background:#294665}
+:root[data-theme=dark][data-workspace=follows] .workspace-mark,:root[data-theme=dark] .module-choice[data-workspace-card=follows] .module-choice-icon{background:#254b44;color:#b1e7d5!important}
+:root[data-theme=dark][data-workspace=follows] .module-button{background:#1b3634;color:#c5ebdf;border-color:#3d685c}
+:root[data-theme=dark] :is(.context-help,.module-choices .module-context-help){color:#bdd8fc;background:transparent}
+:root[data-theme=dark] .context-help::before{border-color:#5a7392}
+:root[data-theme=dark] .context-help:hover{background:#294360}
+:root[data-theme=dark] .sales-hero{background:linear-gradient(120deg,#1b3558,#192a40);border-color:#345475}
+:root[data-theme=dark] .sales-hero :is(h3,.sales-eyebrow){color:#d7e8ff}
+:root[data-theme=dark] .location,:root[data-theme=dark] .status-confirmada,:root[data-theme=dark] .device-card-status.is-available{background:#1b3d35;border-color:#355d51;color:#b2e5ce}
+:root[data-theme=dark] :is(.status-borrador,.card-pending .metric-icon){background:#443922;color:#f4d79c}
+:root[data-theme=dark] :is(.status-anulada,.card-late .metric-icon){background:#452932;color:#f8b6ba}
+:root[data-theme=dark] .sale-status{color:#cfdeef}
+:root[data-theme=dark] .danger{color:#ffb5b5!important}
+:root[data-theme=dark] :is(.card-late strong,.sale-calculation .loss strong){color:#ffb5b5}
+:root[data-theme=dark] :is(.warranty-gifts,.sales-fieldset,.suite-sale,.suite-offer,.device-card-body,.profile-row,.sale-internal,#inventory-totals,#registered-inventory-link){border-color:var(--line)}
+:root[data-theme=dark] #notice{background:#183c32;color:#b9ebd6;border-color:#376c55}
+:root[data-theme=dark] #notice[data-tone=error]{background:#432b32;color:#ffd0d4;border-color:#85515c}
+:root[data-theme=dark] .warranty-validation{background:#3d262e;color:#ffd0d4;border-color:#a0626d}
+:root[data-theme=dark] .warranty-validation button{color:#ffd0d4;background:#492e38;border-color:#a0626d}
+:root[data-theme=dark] :is(.field-error,#warranty-form label:has([aria-invalid=true])){color:#ffb9c3}
+:root[data-theme=dark] #warranty-form [aria-invalid=true]{border-color:#f28a9b}
+:root[data-theme=dark] .brand-mark,:root[data-theme=dark] .launch-emblem{background:#162b43;border-color:#37516e;box-shadow:none}
+:root[data-theme=dark] .launch-intro{background:radial-gradient(ellipse at 50% 42%,#19324b,#0e1726 75%);color:#e3f2ff}
+:root[data-theme=dark] .launch-intro :is(p,span){color:#b2c8e1}
+:root[data-theme=dark] .launch-intro>button{background:#1b3049;color:#d1e3f8;border-color:#455f7e}
+:root[data-theme=dark] aside{background:#101d30}
+:root[data-theme=dark] nav a{color:#b2c6df}
+:root[data-theme=dark] nav a.active{background:#284c78;color:#eff6ff}
+:root[data-theme=dark] nav a:hover:not(.active){background:#1d334f}
+:root[data-theme=dark] :is(.calendar-day,.day){background:var(--night-surface);color:var(--night-text);border-color:var(--line)}
+:root[data-theme=dark] .calendar-day.selected{background:#2c5484;color:#fff}
+:root[data-theme=dark] .calendar-day.today{border-color:#8dbbff}
+:root[data-theme=dark] .calendar-day.other-month{color:#8192aa}
+@media(max-width:599px){:root[data-theme=dark] aside{background:var(--night-bg)}:root[data-theme=dark] nav{background:#142135fa;border-color:var(--line)}:root[data-theme=dark] h1{color:var(--night-text)}}
+@media print{:root[data-theme=dark]{color-scheme:light}}
+
+:root[data-theme=dark] .calendar-day small{background:#294666;color:#d0e3ff}:root[data-theme=dark] .calendar-day.has-pending small{background:#524026;color:#f8daa6}
+
+:root[data-theme=dark] #ajustes .settings-tabs>button[aria-selected=true]{background:#23456d;color:#e0eeff;border-color:#8ebaff;box-shadow:inset 0 0 0 1px #8ebaff33}
+:root[data-theme=dark] a.btn:not(.secondary){color:#fff}
+:root[data-theme=dark] #warranty-validation p{color:#ffd0d4}
+:root[data-theme=dark] #calendar-days .calendar-day.today{color:#c3ddff;border-color:#8dbbff}
+:root[data-theme=dark] #calendar-days .calendar-day.today.selected{color:#fff}
+
+:root[data-theme=dark] .empty:before{background:#294360;color:#b9d4fc}
+:root[data-theme=dark] .brand-mark{overflow:hidden}
+:root[data-theme=dark] .brand-mark img{border-radius:inherit}
+:root[data-theme=dark] .launch-emblem img{height:105px;border-radius:12px}

@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 @RunWith(RobolectricTestRunner.class) @Config(sdk=35)
 public class AppUpdaterTest {
  private JSONObject manifest()throws Exception{return new JSONObject().put("versionCode",36).put("versionName","1.7.1").put("sha256","a".repeat(64)).put("apkUrl",AppUpdater.REPO+"v1.7.1/lunivo.apk");}
+ @Test public void distributionBranchIsAcceptedOnlyForItsOwnVersion()throws Exception{AppUpdater.validate(manifest().put("apkUrl",AppUpdater.RAW+"v1.7.1/lunivo.apk"));JSONObject m=manifest().put("apkUrl",AppUpdater.RAW+"v1.7.2/lunivo.apk");assertThrows(Exception.class,()->AppUpdater.validate(m));}
  @Test public void officialManifestIsAccepted()throws Exception{AppUpdater.validate(manifest());}
  @Test public void foreignAndInsecureDownloadsAreRejected()throws Exception{for(String url:new String[]{"http://github.com/file.apk","https://example.com/app.apk",AppUpdater.REPO+"v1.7.1/app.apk?redirect=x",AppUpdater.REPO+"../app.apk"}){JSONObject m=manifest().put("apkUrl",url);assertThrows(Exception.class,()->AppUpdater.validate(m));}}
  @Test public void malformedDigestAndVersionAreRejected()throws Exception{JSONObject m=manifest().put("sha256","bad");assertThrows(Exception.class,()->AppUpdater.validate(m));JSONObject v=manifest().put("versionName","<script>");assertThrows(Exception.class,()->AppUpdater.validate(v));}

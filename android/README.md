@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.6.3
+# Lunivo para Android · 1.6.4
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 32. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 33. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 

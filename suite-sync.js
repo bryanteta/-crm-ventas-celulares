@@ -29,7 +29,7 @@ function paint(){
  $('#suite-cloud-copy').textContent=problem||(request?'Se conserva la solicitud de '+request.actor.name+'. Se recuperará al volver la conexión. Reintentar usa el mismo identificador y evita duplicados.':migrating||meta&&!meta.imported?'Conecta este teléfono para compartir sus registros anteriores. Pendientes: '+count+'.':online()?'Ventas, garantías y Mis equipos se comparten con esta cuenta. Cada operación guarda su usuario.':'Puedes consultar los datos guardados y preparar borradores. Conecta el teléfono para confirmar ventas o modificar el inventario.');
  $('#suite-cloud-retry').disabled=working||migrating||!navigator.onLine;$('#suite-cloud-retry').textContent=request?'Reintentar solicitud':'Sincronizar Ventas';
  for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form']){const form=$(selector);form.inert=Boolean(request);form.setAttribute('aria-busy',String(Boolean(request)));}
- $('#sale-action-confirm').disabled=Boolean(request)||working;for(const input of document.querySelectorAll('#sale-action input,#sale-action textarea'))input.readOnly=Boolean(request);
+ if(shared())$('#sale-edit-save').disabled=Boolean(request)||working;$('#sale-action-confirm').disabled=Boolean(request)||working;for(const input of document.querySelectorAll('#sale-action input,#sale-action textarea'))input.readOnly=Boolean(request);
  $('#stock-organize-form button[type=submit]').disabled=Boolean(request)||working;$('#sale-action-close').textContent=request?'Cerrar':'Cancelar';$('#stock-organize-close').textContent=request?'Cerrar':'Cancelar';
  if(!shared())for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form'])$(selector).inert=false;
 }

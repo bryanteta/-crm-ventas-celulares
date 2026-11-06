@@ -53,4 +53,21 @@ public class BusinessEngineTest {
     @Test public void tamperedTotalsAndFractionalUnitsAreRejected()throws Exception{
         Memory db=new Memory();JSONObject bad=sale("bad","").put("profit",1);assertThrows(BusinessEngine.Problem.class,()->db.run(command("bad","confirmSale","bad",new JSONObject().put("sale",bad))));JSONObject fraction=sale("fraction","").put("quantity",1.5);JSONObject op=command("fraction","confirmSale","fraction",new JSONObject().put("sale",fraction));assertThrows(BusinessEngine.Problem.class,()->db.run(op));
     }
+    @Test public void saleEditIsAtomicIdempotentAndKeepsOriginalAttributionAndNumber()throws Exception{
+        Memory db=new Memory();add(db,"one",3);db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",sale("sale","one"))));
+        JSONObject patch=new JSONObject().put("client","Cliente corregido").put("quantity",3).put("price",60000).put("date","2026-10-24").put("receipt",receipt(false));JSONObject op=command("edit","editSale","sale",new JSONObject().put("patch",patch)).put("expectedRevision","sell");db.run(op);assertTrue(db.run(op).getBoolean("replayed"));
+        JSONObject r=db.rows.get(BusinessEngine.path(UID,"sales","sale")).getJSONObject("record");assertEquals("Ana",r.getString("sellerName"));assertEquals("1101",r.getString("saleNumber"));assertEquals("2026-11",r.getString("saleMonth"));assertEquals("2026-10-24",r.getJSONObject("receipt").getString("deliveryDate"));assertEquals(180000,r.getLong("revenue"));assertEquals(0,db.rows.get(BusinessEngine.path(UID,"inventory","one")).getJSONObject("record").getLong("quantity"));assertEquals(1,db.rows.get("users/"+UID+"/suiteCounters/2026-11").getLong("sequence"));
+    }
+    @Test public void staleOrImpossibleSaleEditsCannotPartiallyChangeStock()throws Exception{
+        Memory db=new Memory();add(db,"one",1);db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",sale("sale","one"))));int before=db.rows.size();JSONObject values=new JSONObject().put("patch",new JSONObject().put("quantity",2).put("receipt",receipt(false)));
+        assertThrows(BusinessEngine.Problem.class,()->db.run(command("no-stock","editSale","sale",values).put("expectedRevision","sell")));assertEquals(before,db.rows.size());
+        assertThrows(BusinessEngine.Problem.class,()->db.run(command("stale","editSale","sale",values).put("expectedRevision","old")));assertEquals(0,db.rows.get(BusinessEngine.path(UID,"inventory","one")).getJSONObject("record").getLong("quantity"));
+        JSONObject tampered=new JSONObject().put("patch",new JSONObject().put("sellerName","Otro autor").put("receipt",receipt(false)));assertThrows(BusinessEngine.Problem.class,()->db.run(command("author","editSale","sale",tampered).put("expectedRevision","sell")));
+    }
+    @Test public void cancellingAnEditedQuantityReturnsTheRevisedUnitsExactlyOnce()throws Exception{
+        Memory db=new Memory();add(db,"one",4);db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",sale("sale","one"))));db.run(command("edit","editSale","sale",new JSONObject().put("patch",new JSONObject().put("quantity",3).put("receipt",receipt(false)))).put("expectedRevision","sell"));JSONObject cancel=command("cancel","cancelSale","sale",new JSONObject().put("reason","Cancelada")).put("expectedRevision","edit");db.run(cancel);db.run(cancel);assertEquals(4,db.rows.get(BusinessEngine.path(UID,"inventory","one")).getJSONObject("record").getLong("quantity"));
+    }
+    @Test public void confirmationAndWarrantyAlwaysTakeTheSaleDateRatherThanIssueDate()throws Exception{
+        Memory db=new Memory();JSONObject draft=sale("sale","").put("date","2026-10-24");draft.getJSONObject("receipt").put("deliveryDate","2026-11-06");db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",draft)));assertEquals("2026-10-24",db.rows.get(BusinessEngine.path(UID,"sales","sale")).getJSONObject("record").getJSONObject("receipt").getString("deliveryDate"));JSONObject receipt=receipt(true).put("deliveryDate","2026-11-06");db.run(command("warranty","saveWarranty","sale",new JSONObject().put("receipt",receipt)).put("expectedRevision","sell"));assertEquals("2026-10-24",db.rows.get(BusinessEngine.path(UID,"sales","sale")).getJSONObject("record").getJSONObject("receipt").getString("deliveryDate"));
+    }
 }

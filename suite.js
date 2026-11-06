@@ -31,7 +31,7 @@ function setSource(value,clear=false){
 for(const b of document.querySelectorAll('[data-sale-source]'))b.addEventListener('click',()=>{setSource(b.dataset.saleSource,source!==b.dataset.saleSource);calculate()});
 function loadDraft(r){formId=r.id;for(const name of['client','model','supplier','quantity','date','notes'])form.elements[name].value=r[name]??'';for(const name of['price','cost','expenses','accessories','accessoryCost'])form.elements[name].value=((r[name]||0)/100).toFixed(2);setSource(r.stockId?'stock':r.offerId?'offer':'manual');$('#sale-follow').value=r.followupId||'';$('#sale-offer').value=r.offerId||'';$('#sale-stock').value=r.stockId||'';window.LunivoAccessories.load(r);window.LunivoWarranty.loadEntry(r.receipt||{deliveryDate:r.date});location.hash='#ventas/nueva';calculate();}
 function openDetail(id){currentSaleId=id;location.hash='#ventas/detalle?id='+encodeURIComponent(id);render();}
-function receiptReady(r){try{window.LunivoReceipt.validate(r.receipt,r);return true}catch{return false}}
+function receiptReady(r){try{window.LunivoReceipt.validate(window.LunivoReceipt.receiptForSale(r),r);return true}catch{return false}}
 function saleRow(r,context='history'){
  const row=el('article',undefined,'suite-sale sale-card');row.dataset.saleId=r.id;
  const head=el('div',undefined,'sale-card-head'),name=el('div');name.append(el('h4',r.client),el('p',r.model));head.append(name,el('span',r.status,'sale-status status-'+r.status.toLowerCase()));row.append(head);
@@ -47,7 +47,7 @@ function renderDetail(data,id){
  currentSaleId=id;
  const heading=el('div',undefined,'sale-detail-heading');heading.append(el('span',r.status,'sale-status status-'+r.status.toLowerCase()),el('p',r.saleNumber?'Venta #'+r.saleNumber:'Venta anterior'),el('h3',r.client),el('p',r.model));target.append(heading);
  const metrics=el('div',undefined,'suite-metrics sale-detail-metrics');metric(metrics,'Total del cliente',money(r.revenue),r.quantity+' equipo(s)');metric(metrics,'Equipo de',r.stockOwnerName||(r.offerId?'Proveedor':'Venta manual'),r.stockId?'Inventario registrado':'Sin descuento de inventario');target.append(metrics);
- target.append(el('p',r.date+' · Registrada por '+r.sellerName,'hint'));
+ target.append(el('p',r.date+' · Registrada por '+r.sellerName,'hint'));if(r.saleEditedByName)target.append(el('p','Venta editada por '+r.saleEditedByName,'hint'));if(r.status==='Confirmada')target.append(button('Editar venta',()=>window.LunivoSaleEdit.open(r.id),'secondary'));
  const actions=el('div',undefined,'sale-next-step');
  if(r.status==='Borrador')actions.append(el('h4','Termina de registrar esta venta'),button('Continuar borrador',()=>loadDraft(r),''));
  else if(r.status==='Confirmada'||receiptReady(r)){
@@ -84,7 +84,7 @@ function render(){try{
  const rawHash=location.hash||'#dashboard',hash=rawHash.split('?')[0],params=new URLSearchParams(rawHash.split('?')[1]||'');const samuelView=hash==='#ventas/proveedores'&&core.providerFilter(params.get('provider'))==='samuel';if(hash==='#ventas/comisiones'){location.hash='#ventas/inventario';return;}
  if(hash.startsWith('#ventas')){salesMode=true;lastSales=rawHash;}else if(hash!=='#ajustes'){salesMode=false;lastFollows=rawHash;}
  setNavigation(salesMode);$('#module-label').textContent=salesMode?'Ventas':'Follows';$('#module-description').textContent=salesMode?'Inventario y ventas':'Clientes y agenda';$('#workspace-icon').setAttribute('href',salesMode?'#icon-inventory':'#icon-users');document.documentElement.dataset.workspace=salesMode?'sales':'follows';for(const choice of document.querySelectorAll('[data-module]')){const selected=(choice.dataset.module==='sales')===salesMode;choice.setAttribute('aria-pressed',String(selected));choice.querySelector('.module-choice-status').textContent=selected?'En uso':'';choice.querySelector('.module-choice-action').firstChild.textContent=selected?'Continuar aquí ':'Abrir '+(choice.dataset.module==='sales'?'Ventas ':'Follows ');}$('#suite-settings').hidden=!salesMode;
- window.LunivoSuiteCloud?.paint();const showSales=salesMode&&hash!=='#ajustes';$('#sales-module').hidden=!showSales;
+ window.LunivoSuiteCloud?.paint();window.LunivoSaleEdit?.refresh();const showSales=salesMode&&hash!=='#ajustes';$('#sales-module').hidden=!showSales;
  primary.href=salesMode?'#ventas/nueva':'#registro';primary.setAttribute('aria-label',salesMode?'Nueva venta':'Nuevo seguimiento');primary.title=salesMode?'Nueva venta':'Nuevo seguimiento';primary.querySelector('span').textContent=salesMode?'Nueva venta':'Nuevo seguimiento';
  if(!showSales)return;
  for(const selector of['#registro','.cards','#overview','#ajustes','#listado','#agenda'])$(selector).hidden=true;
@@ -109,6 +109,7 @@ function render(){try{
 $('#suite-settings').addEventListener('click',()=>{location.hash='#ajustes'});
 window.addEventListener('hashchange',render);window.addEventListener('lunivo-cloud',render);window.addEventListener('storage',render);window.LunivoSuite={render};function sellStock(item){if(formId&&read().sales.find(r=>r.id===formId)?.status!=='Borrador')resetSale();$('#sale-stock').value=item.id;$('#sale-stock').dispatchEvent(new Event('change'));location.hash='#ventas/nueva';}
 window.LunivoFeeds.connect({read,commit,render,ready,errorText});
+window.LunivoSaleEdit.connect({read,business:commitBusiness,ready,render,notice});
 window.LunivoInventory.connect({read,commit,business:commitBusiness,notice,errorText,render,restock:id=>openAction('restock',id),sell:sellStock});
 window.LunivoProviders.connect({read,notice,errorText,sellStock,sellOffer(o){if(formId&&read().sales.find(r=>r.id===formId)?.status!=='Borrador')resetSale();$('#sale-offer').value=o.id;$('#sale-offer').dispatchEvent(new Event('change'));location.hash='#ventas/nueva';},alternative(o){for(const name of['model','capacity','color','category','battery','notes'])offerForm.elements[name].value=o[name]||'';offerForm.elements.supplier.value='';offerForm.elements.price.value='';offerForm.elements.quantity.value='';offerForm.elements.date.value=today();$('#offer-variant').value=core.variant(o);$('#provider-more-filters').open=true;$('#manual-offer').open=true;offerForm.elements.supplier.focus();}});window.LunivoWarranty.connect({read,commit,business:commitBusiness,detail:openDetail});window.LunivoSuiteCloud.connect({read,ready,render,write(data,uid){if(uid!==store.account()||!ready())throw Error('La cuenta cambió.');localStorage.setItem(key(),JSON.stringify(data));}});window.addEventListener('lunivo-suite-committed',event=>{render();if(event.detail.recovered){if(event.detail.kind==='confirmSale'&&location.hash.split('?')[0]==='#ventas/nueva')openDetail(event.detail.targetId);notice('Solicitud recuperada. Revisa el registro compartido.');}});try{resetSale();offerForm.elements.date.value=today();}catch(e){notice(errorText(e),'error')}render();
 })();

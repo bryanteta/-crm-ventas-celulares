@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.6.1
+# Lunivo para Android · 1.6.2
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 30. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 31. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -80,7 +80,7 @@ Las ventas confirmadas, garantías y Mis equipos se sincronizan con Firebase por
 
 **Imprimir** conserva una acción independiente. El documento HTML se sirve desde memoria en una dirección HTTPS interna y solo pasa a impresión si termina de cargar correctamente. Se solicita A4, color y 600 dpi; el servicio de impresión puede ajustar sus opciones. La vista previa de la app utiliza un Shadow DOM, sin navegación `srcdoc` ni estilos que afecten al resto de la interfaz.
 
-El IMEI es opcional; si se añade se admite como máximo uno por unidad sin repetir. La garantía dura tres meses calendario desde la entrega, ajustando el último día del mes. El correlativo usa mes + secuencia: 1001 = octubre, venta 1; 1101 = noviembre, venta 1. Se separa por año/mes, es compartido por cuenta (local si no hay sesión) y no se consume con borradores o reimpresiones. Anular no reutiliza números.
+El IMEI es opcional; si se añade se admite como máximo uno por unidad sin repetir. La garantía usa la fecha de la venta, aunque se prepare otro día, y dura tres meses calendario desde esa fecha, ajustando el último día del mes. El correlativo usa mes + secuencia: 1001 = octubre, venta 1; 1101 = noviembre, venta 1. Se separa por año/mes, es compartido por cuenta (local si no hay sesión) y no se consume con borradores o reimpresiones. Anular no reutiliza números.
 
 ## Notificaciones y pantallas Samsung
 
@@ -117,3 +117,5 @@ adb shell am instrument -w -r -e class com.crmcelulares.app.InventoryInstrumente
 Las pruebas instrumentadas usan una clave ficticia aislada para comprobar el cifrado y la borran al finalizar. La prueba de WebView verifica los datos reales empaquetados; no supone que el emulador tenga acceso de red a los proveedores. Las lecturas de los servicios reales se verifican por separado durante la generación de la copia.
 
 La impresión de 1.6.1 queda autorizada por la pantalla local de la garantía y requiere una pulsación del usuario. Una impresión todavía en preparación se cancela al cambiar de contexto o pausar la actividad; una devolución tardía de carga no puede iniciarla. El selector de archivos mantiene el documento que el usuario solicitó exportar. Las respuestas incluyen el identificador de la solicitud para no escribir estados sobre otra garantía.
+
+1.6.2 agrega `editSale` al motor y a las reglas de Firestore. Corregir una venta conserva el ID, autor, correlativo y contador. La cantidad de un equipo propio actualiza venta y stock en la misma transacción; se registra el editor. Actualizar el archivo completo de reglas antes de utilizar la edición compartida.

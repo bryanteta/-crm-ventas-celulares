@@ -36,5 +36,28 @@
   if(!Number.isSafeInteger(next*item.cost))throw Error('El valor del inventario es demasiado grande.');
   item.quantity=next;sale.stockDeducted=!restore;
  }
- return{money,totals,variant,summary,validateSale,applyStock,phoneFamily,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop,providerForOwner,providerForOffer,providerFilter,supplierName};
+ function editSale(data,id,patch,actor,now){
+  const before=data.sales.find(r=>r.id===id);if(!before||before.status!=='Confirmada')throw Error('Solo puedes editar una venta confirmada.');
+  const allowed=['client','model','date','quantity','price','cost','expenses','accessoryCost','notes','supplier','accessoryItems','accessories','receipt'];
+  if(!patch||Object.keys(patch).some(k=>!allowed.includes(k)))throw Error('Hay campos de la venta que no se pueden cambiar.');
+  if(!actor?.id||!actor.name)throw Error('Selecciona tu usuario en Ajustes.');const r=JSON.parse(JSON.stringify(before));
+  for(const key of allowed)if(key!=='receipt'&&Object.hasOwn(patch,key))r[key]=JSON.parse(JSON.stringify(patch[key]));
+  r.notes??='';r.supplier??='';
+  for(const [key,max]of [['client',100],['model',2000],['notes',1000],['supplier',100]])if(typeof r[key]!=='string'||r[key].length>max||(['client','model'].includes(key)&&!r[key].trim()))throw Error('Revisa cliente, modelo, proveedor y notas.');
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(r.date)||!Number.isFinite(+new Date(r.date+'T12:00:00Z'))||new Date(r.date+'T12:00:00Z').toISOString().slice(0,10)!==r.date)throw Error('Revisa la fecha de venta.');
+  if(before.stockId&&(r.model!==before.model||r.cost!==before.cost))throw Error('El modelo y costo del equipo propio se conservan. Para cambiar de equipo, anula la venta y registra otra.');
+  if(r.accessoryItems!==undefined)r.accessories=accessoryTotal(r.accessoryItems);
+  Object.assign(r,totals(r));
+  const receipt=JSON.parse(JSON.stringify(before.receipt||patch.receipt||{}));for(const key of ['phone','paymentMethod','bank','months','channel'])if(patch.receipt&&Object.hasOwn(patch.receipt,key))receipt[key]=patch.receipt[key];
+  receipt.number=r.saleNumber||receipt.number||'';receipt.deliveryDate=r.date;
+  if(receipt.phone&&!/^[+\d\s().-]{7,30}$/.test(receipt.phone))throw Error('Revisa el número de contacto.');
+  if(!['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro'].includes(receipt.paymentMethod))throw Error('Selecciona el método de pago.');
+  if(receipt.paymentMethod==='Tasa cero'&&(!receipt.bank||!Number.isInteger(receipt.months)||receipt.months<1||receipt.months>60))throw Error('Completa banco y meses para la tasa cero.');
+  if((receipt.serials||[]).length>r.quantity)throw Error('Hay más IMEI que equipos. Revisa la garantía antes de reducir la cantidad.');
+  r.receipt=receipt;r.saleEditedById=actor.id;r.saleEditedByName=actor.name;r.saleEditedAt=now;validateSale(r);
+  const delta=before.quantity-r.quantity;let item,next;
+  if(before.stockDeducted&&before.stockId&&delta!==0){item=data.inventory.find(i=>i.id===before.stockId);if(!item)throw Error('El equipo ya no está en Mis equipos.');next=item.quantity+delta;if(!Number.isSafeInteger(next)||next<0||!Number.isSafeInteger(next*item.cost))throw Error('No hay suficientes unidades disponibles para este cambio.');}
+  if(item)item.quantity=next;data.sales=data.sales.map(s=>s.id===id?r:s);return data;
+ }
+ return{editSale,money,totals,variant,summary,validateSale,applyStock,phoneFamily,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop,providerForOwner,providerForOffer,providerFilter,supplierName};
 });

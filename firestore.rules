@@ -109,7 +109,7 @@ service cloud.firestore {
       return op.keys().hasAll(['id','kind','targetId','targetKey','actorId','actorName','actorKey','fingerprint','stockId','stockKey','stockDelta','counterKey','sequence','createdAt'])
         && op.keys().hasOnly(['id','kind','targetId','targetKey','actorId','actorName','actorKey','fingerprint','stockId','stockKey','stockDelta','counterKey','sequence','createdAt'])
         && text(op.targetKey,300) && op.targetKey.matches('^[A-Za-z0-9_-]+$') && op.id==id && text(op.id,100) && op.id.matches('^[A-Za-z0-9_-]+$') && text(op.targetId,200)
-        && op.kind in ['confirmSale','saveWarranty','cancelSale','addStock','restock','organizeStock']
+        && op.kind in ['confirmSale','editSale','saveWarranty','cancelSale','addStock','restock','organizeStock']
         && text(op.actorId,128) && text(op.actorName,80) && op.actorId.size()>0 && op.actorName.size()>0
         && text(op.fingerprint,64) && op.fingerprint.matches('^[0-9a-f]{64}$')
         && text(op.stockId,200) && text(op.stockKey,300) && text(op.counterKey,7)
@@ -122,36 +122,52 @@ service cloud.firestore {
       return op.kind=='confirmSale' && op.targetId==d.id && op.id==d.revision
         && d.record.sellerId==op.actorId && d.record.sellerName==op.actorName && op.createdAt==request.time
         && d.record.status=='Confirmada' && d.record.commissionEnabled==false
+        && d.record.receipt.deliveryDate==d.record.date
         && d.record.saleSequence==op.sequence && d.record.saleMonth==op.counterKey
         && counter.sequence==op.sequence && counter.lastOperationId==op.id
         && d.record.saleNumber==d.record.saleMonth.split('-')[1]+(d.record.saleSequence<10?'0':'')+string(d.record.saleSequence)
         && (d.record.get('stockId','')=='' || (op.stockId==d.record.stockId && op.stockDelta==-d.record.quantity
           && getAfter(/databases/$(database)/documents/users/$(uid)/suiteInventory/$(op.stockKey)).data.revision==op.id));
     }
+    function editedSale(uid,op,before,after) {
+      return before.status=='Confirmada'
+        && after.diff(before).affectedKeys().hasOnly(['client','model','date','quantity','price','cost','expenses','accessoryCost','notes','supplier','accessoryItems','accessories','revenue','purchase','profit','receipt','saleEditedById','saleEditedByName','saleEditedAt'])
+        && after.saleEditedById==op.actorId && after.saleEditedByName==op.actorName
+        && (before.get('stockId','')=='' || (after.model==before.model && after.cost==before.cost))
+        && after.receipt.number==before.saleNumber && after.receipt.deliveryDate==after.date
+        && (!('receipt' in before) || after.receipt.diff(before.receipt).affectedKeys().hasOnly(['phone','paymentMethod','bank','months','channel','number','deliveryDate']))
+        && validReceipt(after.receipt,after.quantity)
+        && ((before.quantity==after.quantity || !before.get('stockDeducted',false))
+          ? op.stockId=='' && op.stockDelta==0
+          : op.stockId==before.stockId && op.stockDelta==before.quantity-after.quantity
+            && getAfter(/databases/$(database)/documents/users/$(uid)/suiteInventory/$(op.stockKey)).data.revision==op.id);
+    }
     function saleUpdateOperation(uid,d) {
       let op=businessOperation(uid,d.revision);
       let before=resource.data.record;
       let after=d.record;
       return op.targetId==d.id && op.id==d.revision && op.createdAt==request.time
-        && after.diff(before).affectedKeys().hasOnly(['receipt','status','stockDeducted','cancelReason','cancelledBy','cancelledById','cancelledAt','lastEditedById','lastEditedByName','lastEditedAt'])
-        && ((op.kind=='saveWarranty' && before.status=='Confirmada' && after.status==before.status
-          && after.get('stockDeducted',false)==before.get('stockDeducted',false) && completeReceipt(after.receipt)
-          && validReceipt(after.receipt,after.quantity) && after.receipt.number==before.saleNumber && after.lastEditedById==op.actorId && after.lastEditedByName==op.actorName)
-        || (op.kind=='cancelSale' && before.status=='Confirmada' && before.get('paidAt',null)==null && after.status=='Anulada'
-          && after.stockDeducted==false && after.cancelledById==op.actorId && after.cancelledBy==op.actorName
-          && text(after.cancelReason,500) && after.cancelReason.size()>0
-          && (!before.get('stockDeducted',false) || (op.stockId==before.stockId && op.stockDelta==before.quantity
-            && getAfter(/databases/$(database)/documents/users/$(uid)/suiteInventory/$(op.stockKey)).data.revision==op.id))));
+        && ((op.kind=='editSale' && editedSale(uid,op,before,after))
+        || (after.diff(before).affectedKeys().hasOnly(['receipt','status','stockDeducted','cancelReason','cancelledBy','cancelledById','cancelledAt','lastEditedById','lastEditedByName','lastEditedAt'])
+          && ((op.kind=='saveWarranty' && before.status=='Confirmada' && after.status==before.status
+            && after.get('stockDeducted',false)==before.get('stockDeducted',false) && completeReceipt(after.receipt)
+            && validReceipt(after.receipt,after.quantity) && after.receipt.deliveryDate==after.date
+            && after.receipt.number==before.saleNumber && after.lastEditedById==op.actorId && after.lastEditedByName==op.actorName)
+          || (op.kind=='cancelSale' && before.status=='Confirmada' && before.get('paidAt',null)==null && after.status=='Anulada'
+            && after.stockDeducted==false && after.cancelledById==op.actorId && after.cancelledBy==op.actorName
+            && text(after.cancelReason,500) && after.cancelReason.size()>0
+            && (!before.get('stockDeducted',false) || (op.stockId==before.stockId && op.stockDelta==before.quantity
+              && getAfter(/databases/$(database)/documents/users/$(uid)/suiteInventory/$(op.stockKey)).data.revision==op.id))))));
     }
     function stockOperation(uid,d,create) {
       let op=businessOperation(uid,d.revision);
       return op.stockId==d.id && op.id==d.revision && op.createdAt==request.time
         && (create?(op.kind=='addStock' && op.targetId==d.id && op.stockDelta==d.record.quantity && d.record.createdBy==op.actorId && d.record.createdByName==op.actorName)
-          :(op.kind in ['restock','organizeStock','confirmSale','cancelSale']
+          :(op.kind in ['restock','organizeStock','confirmSale','editSale','cancelSale']
             && d.record.quantity==resource.data.record.quantity+op.stockDelta
             && d.record.diff(resource.data.record).affectedKeys().hasOnly(['quantity','ownerId','brand'])
             && (op.kind!='organizeStock' || op.stockDelta==0)
-            && (!(op.kind in ['confirmSale','cancelSale']) || getAfter(/databases/$(database)/documents/users/$(uid)/suiteSales/$(op.targetKey)).data.revision==op.id)));
+            && (!(op.kind in ['confirmSale','editSale','cancelSale']) || getAfter(/databases/$(database)/documents/users/$(uid)/suiteSales/$(op.targetKey)).data.revision==op.id)));
     }
     match /users/{uid}/suiteSales/{document} {
       allow read: if owner(uid);

@@ -134,7 +134,7 @@ final class ReceiptPdfDocument {
         StaticLayout sub=layout(number+"\nTeléfonos de gama alta",CONTENT-150,paint(9,false,MUTED),Layout.Alignment.ALIGN_OPPOSITE);draw(sub,MARGIN+150,headerY+heading.getHeight()+12);
         y=headerY+85;rule(y,BLUE);y+=10;
         paragraph("Documento emitido por LUNIVO como comprobante de compra, entrega y respaldo de garantía. No requiere firma del cliente; registra la información comercial y técnica del equipo entregado.",8.5f,false,MUTED);
-        fields(new String[]{"Fecha de entrega","Cliente","Método de pago"},new String[]{d.getString("deliveryDate"),d.getString("client")+(d.getString("phone").isEmpty()?"":"\n"+d.getString("phone")),d.getString("payment")},new float[]{.23f,.37f,.40f});
+        fields(new String[]{"Fecha de venta","Cliente","Método de pago"},new String[]{d.getString("deliveryDate"),d.getString("client")+(d.getString("phone").isEmpty()?"":"\n"+d.getString("phone")),d.getString("payment")},new float[]{.23f,.37f,.40f});
         section("01  DATOS DEL DISPOSITIVO ENTREGADO");JSONArray device=d.getJSONArray("device");
         for(int i=0;i<device.length();i+=2)fields(new String[]{device.getJSONArray(i).getString(0),device.getJSONArray(i+1).getString(0)},new String[]{device.getJSONArray(i).getString(1),device.getJSONArray(i+1).getString(1)},new float[]{.5f,.5f});
         section("02  PRECIO COBRADO Y BENEFICIOS ENTREGADOS");float[] columns={.39f,.10f,.18f,.33f};

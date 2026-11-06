@@ -89,9 +89,9 @@ final class BusinessEngine {
     }
     static JSONObject execute(Tx tx,String uid,JSONObject command,String now)throws Exception{
         identity(uid);String id=text(command,"id",100,true),kind=text(command,"kind",30,true),target=text(command,"targetId",200,true);
-        require(id.matches("[A-Za-z0-9_-]+"),"Revisa la solicitud.");require(java.util.Arrays.asList("confirmSale","saveWarranty","cancelSale","addStock","restock","organizeStock").contains(kind),"Operación no válida.");
+        require(id.matches("[A-Za-z0-9_-]+"),"Revisa la solicitud.");require(java.util.Arrays.asList("confirmSale","editSale","saveWarranty","cancelSale","addStock","restock","organizeStock").contains(kind),"Operación no válida.");
         String ledgerPath="users/"+uid+"/suiteOperations/"+id,digest=fingerprint(command);JSONObject ledger=tx.get(ledgerPath);
-        boolean isSale=kind.equals("confirmSale")||kind.equals("saveWarranty")||kind.equals("cancelSale");String targetPath=path(uid,isSale?"sales":"inventory",target);JSONObject current=tx.get(targetPath);
+        boolean isSale=kind.equals("confirmSale")||kind.equals("editSale")||kind.equals("saveWarranty")||kind.equals("cancelSale");String targetPath=path(uid,isSale?"sales":"inventory",target);JSONObject current=tx.get(targetPath);
         if(ledger!=null){require(digest.equals(ledger.optString("fingerprint")),"Esta solicitud ya corresponde a otra operación.");JSONObject stockDoc=null;if(isSale&&current!=null&&!current.getJSONObject("record").optString("stockId").isEmpty())stockDoc=tx.get(path(uid,"inventory",current.getJSONObject("record").getString("stockId")));return result(isSale?current:null,isSale?stockDoc:current,true);}
         JSONObject who=command.getJSONObject("actor");actor(tx,uid,who);JSONObject values=command.getJSONObject("values"),saleDoc=null,stockDoc=null,counter=null;String stockPath=null,counterPath=null;long stockDelta=0;
         Map<String,JSONObject> writes=new LinkedHashMap<>();
@@ -100,7 +100,7 @@ final class BusinessEngine {
             String draftSeller=r.optString("sellerId"),draftName=r.optString("sellerName"),draftAt=r.optString("createdAt");r.put("sellerId",who.getString("id")).put("sellerName",who.getString("name")).put("createdAt",now).put("status","Confirmada").put("paidAt",JSONObject.NULL).put("stockDeducted",false);
             if(!draftSeller.isEmpty()&&!draftSeller.equals(who.getString("id")))r.put("draftSellerId",draftSeller).put("draftSellerName",draftName).put("draftCreatedAt",draftAt);
             sale(r,false);require(r.optString("stockId").isEmpty()||r.optString("offerId").isEmpty(),"Elige un único origen del equipo.");
-            JSONObject receipt=copy(r.getJSONObject("receipt"));receipt(receipt,r.getLong("quantity"),false);
+            JSONObject receipt=copy(r.getJSONObject("receipt"));receipt.put("deliveryDate",r.getString("date"));receipt(receipt,r.getLong("quantity"),false);
             if(!r.optString("stockId").isEmpty()){
                 stockPath=path(uid,"inventory",r.getString("stockId"));JSONObject before=tx.get(stockPath),item=record(before);stock(item);
                 require(item.getString("model").equals(r.getString("model"))&&item.getLong("cost")==r.getLong("cost"),"El equipo cambió. Selecciónalo otra vez.");
@@ -108,8 +108,21 @@ final class BusinessEngine {
             }
             String month=r.getString("date").substring(0,7);counterPath="users/"+uid+"/suiteCounters/"+month;JSONObject previous=tx.get(counterPath);long sequence=previous==null?1:integer(previous,"sequence",0,MAX-1)+1;
             String number=month.substring(5)+String.format(java.util.Locale.ROOT,"%02d",sequence);r.put("saleMonth",month).put("saleSequence",sequence).put("saleNumber",number);receipt.put("number",number);r.put("receipt",receipt);counter=new JSONObject().put("month",month).put("sequence",sequence).put("legacy",false).put("lastOperationId",id).put("updatedAt",SERVER_TIME);saleDoc=wrap(r,id,false);
+        }else if(kind.equals("editSale")){
+            revision(current,command);JSONObject before=record(current),r=copy(before),patch=values.getJSONObject("patch");require(r.optString("status").equals("Confirmada"),"Solo puedes editar una venta confirmada.");
+            java.util.List<String> allowed=java.util.Arrays.asList("client","model","date","quantity","price","cost","expenses","accessoryCost","notes","supplier","accessoryItems","accessories","receipt");
+            java.util.Iterator<String> keys=patch.keys();while(keys.hasNext()){String key=keys.next();require(allowed.contains(key),"Hay campos de la venta que no se pueden cambiar.");if(!key.equals("receipt"))r.put(key,patch.get(key));}
+            long quantity=integer(r,"quantity",1,1000),price=integer(r,"price",0,MAX),cost=integer(r,"cost",0,MAX),expenses=integer(r,"expenses",0,MAX),accessoryCost=r.has("accessoryCost")?integer(r,"accessoryCost",0,MAX):0;
+            require(before.optString("stockId").isEmpty()||(before.getString("model").equals(r.getString("model"))&&before.getLong("cost")==cost),"El modelo y costo del equipo propio se conservan. Para cambiar de equipo, anula la venta y registra otra.");
+            long accessories=r.has("accessories")?integer(r,"accessories",0,MAX):0;if(r.has("accessoryItems")){accessories=0;JSONArray items=r.getJSONArray("accessoryItems");for(int n=0;n<items.length();n++)accessories=safe(Math.addExact(accessories,integer(items.getJSONObject(n),"price",0,MAX)));r.put("accessories",accessories);}
+            long revenue=safe(Math.addExact(Math.multiplyExact(quantity,price),accessories)),purchase=safe(Math.addExact(Math.multiplyExact(quantity,cost),accessoryCost));r.put("revenue",revenue).put("purchase",purchase).put("profit",safe(revenue-purchase-expenses-r.getLong("commission")));sale(r,true);
+            JSONObject contact=patch.getJSONObject("receipt"),receipt=before.optJSONObject("receipt")==null?copy(contact):copy(before.getJSONObject("receipt"));for(String key:new String[]{"phone","paymentMethod","bank","months","channel"})if(contact.has(key))receipt.put(key,contact.get(key));
+            receipt.put("deliveryDate",r.getString("date")).put("number",r.getString("saleNumber"));receipt(receipt,quantity,false);r.put("receipt",receipt).put("saleEditedById",who.getString("id")).put("saleEditedByName",who.getString("name")).put("saleEditedAt",now);
+            long delta=before.getLong("quantity")-quantity;
+            if(before.optBoolean("stockDeducted")&&!before.optString("stockId").isEmpty()&&delta!=0){stockPath=path(uid,"inventory",before.getString("stockId"));JSONObject stockBefore=tx.get(stockPath),item=record(stockBefore);long next=safe(Math.addExact(item.getLong("quantity"),delta));require(next>=0,"No hay suficientes unidades disponibles para este cambio.");item.put("quantity",next);stock(item);stockDoc=wrap(item,id,stockBefore.optBoolean("legacy"));stockDelta=delta;}
+            saleDoc=wrap(r,id,current.optBoolean("legacy"));
         }else if(kind.equals("saveWarranty")){
-            revision(current,command);JSONObject r=record(current);require(r.optString("status").equals("Confirmada"),"La venta cambió o está anulada.");JSONObject receipt=copy(values.getJSONObject("receipt"));receipt.put("number",r.getString("saleNumber")).put("savedAt",now);receipt(receipt,r.getLong("quantity"),true);r.put("receipt",receipt).put("lastEditedById",who.getString("id")).put("lastEditedByName",who.getString("name")).put("lastEditedAt",now);saleDoc=wrap(r,id,current.optBoolean("legacy"));
+            revision(current,command);JSONObject r=record(current);require(r.optString("status").equals("Confirmada"),"La venta cambió o está anulada.");JSONObject receipt=copy(values.getJSONObject("receipt"));receipt.put("number",r.getString("saleNumber")).put("deliveryDate",r.getString("date")).put("savedAt",now);receipt(receipt,r.getLong("quantity"),true);r.put("receipt",receipt).put("lastEditedById",who.getString("id")).put("lastEditedByName",who.getString("name")).put("lastEditedAt",now);saleDoc=wrap(r,id,current.optBoolean("legacy"));
         }else if(kind.equals("cancelSale")){
             revision(current,command);JSONObject r=record(current);require(r.optString("status").equals("Confirmada")&&r.isNull("paidAt"),"La venta ya cambió o mantiene un pago histórico.");String reason=text(values,"reason",500,true);
             if(r.optBoolean("stockDeducted")&&!r.optString("stockId").isEmpty()){stockPath=path(uid,"inventory",r.getString("stockId"));JSONObject before=tx.get(stockPath),item=record(before);item.put("quantity",safe(Math.addExact(item.getLong("quantity"),r.getLong("quantity"))));stock(item);stockDoc=wrap(item,id,before.optBoolean("legacy"));stockDelta=r.getLong("quantity");}

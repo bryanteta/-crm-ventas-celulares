@@ -1,0 +1,8 @@
+/* Keep long lists bounded; filtering and totals still use the complete data. */
+(()=>{'use strict';const states=new WeakMap();
+function limit(target,key){const scoped=(window.LunivoStore.account()||'local')+'|'+key;let state=states.get(target);if(!state||state.key!==scoped){state={key:scoped,count:60};states.set(target,state);}return state.count;}
+function more(target,total,render){const state=states.get(target);if(!state||total<=state.count)return;const button=document.createElement('button');button.type='button';button.className='secondary list-more';button.dataset.listMore='';button.textContent='Ver más · '+state.count+' de '+total;button.addEventListener('click',()=>{state.count+=60;render();});target.append(button);}
+const frames=new Map();function schedule(key,fn){if(frames.has(key)){frames.set(key,fn);return;}frames.set(key,fn);requestAnimationFrame(()=>{const run=frames.get(key);frames.delete(key);try{run();}catch(e){window.LunivoApp?.notice(e.message,'error');}});}
+function reveal(target,key,index){limit(target,key);const state=states.get(target);state.count=Math.max(state.count,Math.ceil((index+1)/60)*60);}
+const optionKeys=new WeakMap();function options(select,placeholder,entries){const signature=JSON.stringify(entries);if(optionKeys.get(select)===signature&&select.options.length===entries.length+1)return;const selected=select.value,fragment=document.createDocumentFragment();fragment.append(new Option(placeholder,''));for(const [value,label]of entries)fragment.append(new Option(label,value));select.replaceChildren(fragment);select.value=selected;if(select.selectedIndex<0)select.value='';optionKeys.set(select,signature);}
+window.LunivoList={limit,more,schedule,reveal,options};})();

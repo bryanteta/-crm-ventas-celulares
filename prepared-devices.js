@@ -9,8 +9,7 @@ const providerKey=row=>row.provider==='other'?'other:'+row.supplier:row.provider
 const ownerKey=row=>row.provider==='samuel'?'samuel':row.ownerId||'unspecified';
 const rowKey=row=>row.provider+':'+row.id;
 function options(select,placeholder,entries,value=''){
- select.replaceChildren(new Option(placeholder,''));
- for(const [id,label] of entries)select.add(new Option(label,id));
+ window.LunivoList.options(select,placeholder,entries);
  select.value=value;if(select.selectedIndex<0)select.value='';select.disabled=entries.length===0;
 }
 function clearSelection(){

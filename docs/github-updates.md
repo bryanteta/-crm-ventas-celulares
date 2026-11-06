@@ -21,4 +21,4 @@ El script valida paquete, nombre de versión, etiqueta y firma instalada. Calcul
 
 No se necesitan tokens GitHub dentro de la app. Las credenciales para publicar se quedan en el equipo del desarrollador. El sistema no compila ni publica cada cambio de código automáticamente: la publicación del release es el paso que entrega cada actualización.
 
-La primera versión del actualizador debe instalarse manualmente; las versiones antiguas no lo pueden recibir por sí solas. Se mantienen las reglas de Firebase de 1.6.5. La publicación de un APK no despliega reglas ni cambia datos. Las verificaciones automáticas se complementan con una prueba física de instalación en Android, permisos del sistema y firma conservada.
+La primera versión del actualizador debe instalarse manualmente; las versiones antiguas no lo pueden recibir por sí solas. La versión 1.7.1 añade campos de precios preparados a firestore.rules y requiere publicar ese archivo completo en Firebase. La publicación de un APK no despliega reglas ni cambia datos. Las verificaciones automáticas se complementan con una prueba física de instalación en Android, permisos del sistema y firma conservada.

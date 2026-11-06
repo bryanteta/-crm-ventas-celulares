@@ -1,0 +1,15 @@
+# Lunivo 1.7.1 · equipos preparados con precio de venta
+
+Código 36, paquete com.crmcelulares.app. Desde Inventario → proveedor → equipo → Preparar con mi precio se guarda una opción para revender. Los botones +$50, +$75 y +$100 calculan el precio final desde el costo del proveedor; también se puede escribir el precio final manualmente. No son aumentos acumulativos. Los importes se conservan en centavos.
+
+Mis equipos muestra estas opciones como PREPARADO, con el proveedor, costo y precio final. Vender carga modelo, proveedor, costo y precio, además de los detalles disponibles para la garantía. Cambiar precio permite ajustar el importe después. Volver a preparar el mismo registro actualiza su precio y costo sin duplicarlo; un identificador SHA-256 del proveedor y registro evita creaciones duplicadas entre teléfonos.
+
+Estas opciones no son compras ni existencias físicas: tienen cantidad cero y no se descuentan del inventario propio ni del proveedor al vender. Los equipos propios mantienen sus unidades y también admiten un precio de venta predeterminado opcional. El motor rechaza añadir unidades a una opción preparada o venderla como stock físico.
+
+Se consulta la última lista del proveedor disponible en el teléfono. Si no está presente o indica agotado, se bloquea la venta desde el preparado. Si cambió el costo, se carga el nuevo costo y se avisa para revisar el precio final guardado, que no cambia automáticamente. Esto no reserva existencias externas ni garantiza disponibilidad en tiempo real; se debe actualizar el catálogo y confirmar con el proveedor. La conexión del catálogo se configura en cada teléfono.
+
+Los preparados y precios se comparten mediante suiteInventory y las transacciones existentes de la cuenta, conservando el usuario que los registra. **Publicar el archivo firestore.rules completo de esta versión en Firebase es necesario para guardar los nuevos campos compartidos.** No se publicaron reglas desde este entorno. Conviene actualizar todos los teléfonos. No se cambian las claves de almacenamiento ni se borran ventas o inventarios anteriores.
+
+Validación: 69 pruebas unitarias Android release, 56 Node, 27 suites de interfaz, 8 de reglas y pruebas de sincronización/transacciones con Firestore Emulator y el motor Java real. Dos sesiones verifican que el precio preparado por Ana llega a Bruno y que la venta precargada no descuenta stock ficticio. Se prueban aumentos exactos, precio manual, actualización sin duplicación, cambio de costo, agotados, modos claro/oscuro y anchos 320/412/840/960. Compilación release, APK instrumentado y lint; no se ejecutó instalación ni instrumentación en un Samsung físico.
+
+Distribución pública mediante la rama lunivo-updates y Release estable v1.7.1. APK compilado con -PpublicRelease, sin claves de proveedores ni provider-bootstrap.json; misma firma que la versión anterior. El actualizador verifica versión, hash y firma. Firebase mantiene su configuración pública habitual; claves privadas de proveedores y keystore permanecen fuera del repositorio.

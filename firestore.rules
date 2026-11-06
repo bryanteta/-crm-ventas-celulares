@@ -60,10 +60,13 @@ service cloud.firestore {
     }
     function validStock(r) {
       return r is map && r.keys().hasAll(['id','model','quantity','cost'])
-        && r.keys().hasOnly(['id','model','quantity','cost','ownerId','brand','createdBy','createdByName','createdAt'])
-        && text(r.id,200) && r.id.size()>0 && text(r.model,200) && r.model.size()>0
+        && r.keys().hasOnly(['id','model','quantity','cost','ownerId','brand','createdBy','createdByName','createdAt','salePrice','prepared','preset'])
+        && text(r.id,200) && r.id.size()>0 && text(r.model,r.get('prepared',false)?2000:200) && r.model.size()>0
         && r.get('ownerId','') in ['','lunivo','samuel','saul','javier'] && text(r.get('brand',''),60)
         && safeInt(r.quantity,0,9007199254740991) && safeInt(r.cost,0,9007199254740991)
+        && safeInt(r.get('salePrice',0),0,9007199254740991)
+        && r.get('prepared',false) is bool
+        && (r.get('prepared',false)?(r.quantity==0 && r.ownerId=='lunivo' && 'salePrice' in r && r.preset is map && text(r.preset.id,200) && text(r.preset.provider,40) && text(r.preset.supplier,100)):!('preset' in r))
         && r.quantity*r.cost <= 9007199254740991
         && text(r.get('createdBy',''),128) && text(r.get('createdByName',''),80) && text(r.get('createdAt',''),40);
     }
@@ -166,7 +169,8 @@ service cloud.firestore {
         && (create?(op.kind=='addStock' && op.targetId==d.id && op.stockDelta==d.record.quantity && d.record.createdBy==op.actorId && d.record.createdByName==op.actorName)
           :(op.kind in ['restock','organizeStock','confirmSale','editSale','cancelSale']
             && d.record.quantity==resource.data.record.quantity+op.stockDelta
-            && d.record.diff(resource.data.record).affectedKeys().hasOnly(['quantity','ownerId','brand'])
+            && d.record.diff(resource.data.record).affectedKeys().hasOnly(['quantity','ownerId','brand','salePrice','cost'])
+            && (d.record.cost==resource.data.record.cost || (op.kind=='organizeStock' && resource.data.record.get('prepared',false)))
             && (op.kind!='organizeStock' || op.stockDelta==0)
             && (!(op.kind in ['confirmSale','editSale','cancelSale']) || getAfter(/databases/$(database)/documents/users/$(uid)/suiteSales/$(op.targetKey)).data.revision==op.id)));
     }

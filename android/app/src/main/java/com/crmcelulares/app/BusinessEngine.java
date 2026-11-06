@@ -40,8 +40,10 @@ final class BusinessEngine {
     private static void identity(String uid)throws Problem{require(uid!=null&&uid.matches("[A-Za-z0-9_-]{1,128}"),"Vuelve a iniciar sesión.");}
     private static String owner(String id){return id.equals("lunivo")?"Lunivo":id.equals("samuel")?"Samuel":id.equals("saul")?"Saúl":id.equals("javier")?"Javier":"Sin asignar";}
     private static void stock(JSONObject r)throws Exception{
-        text(r,"id",200,true);text(r,"model",200,true);String id=text(r,"ownerId",128,false);require(id.isEmpty()||java.util.Arrays.asList("lunivo","samuel","saul","javier").contains(id),"Revisa el dueño del equipo.");
-        text(r,"brand",60,false);long q=integer(r,"quantity",0,MAX),cost=integer(r,"cost",0,MAX);safe(Math.multiplyExact(q,cost));
+        text(r,"id",200,true);text(r,"model",r.optBoolean("prepared")?2000:200,true);String id=text(r,"ownerId",128,false);require(id.isEmpty()||java.util.Arrays.asList("lunivo","samuel","saul","javier").contains(id),"Revisa el dueño del equipo.");
+        text(r,"brand",60,false);if(r.has("salePrice"))integer(r,"salePrice",0,MAX);long q=integer(r,"quantity",0,MAX),cost=integer(r,"cost",0,MAX);safe(Math.multiplyExact(q,cost));
+        if(r.has("prepared"))require(r.opt("prepared") instanceof Boolean,"Revisa el tipo de equipo.");
+        if(r.optBoolean("prepared")){require(q==0&&id.equals("lunivo")&&r.has("salePrice")&&r.optJSONObject("preset")!=null,"Revisa el equipo preparado.");JSONObject p=r.getJSONObject("preset");text(p,"id",200,true);text(p,"provider",40,true);text(p,"supplier",100,true);for(String key:new String[]{"brand","capacity","color","category","battery"})text(p,key,120,false);text(p,"notes",1000,false);text(p,"date",40,false);text(p,"stockId",200,false);}else require(!r.has("preset"),"Revisa el origen del equipo.");
         text(r,"createdBy",128,false);text(r,"createdByName",80,false);text(r,"createdAt",40,false);
     }
     private static void sale(JSONObject r,boolean legacy)throws Exception{
@@ -102,7 +104,7 @@ final class BusinessEngine {
             sale(r,false);require(r.optString("stockId").isEmpty()||r.optString("offerId").isEmpty(),"Elige un único origen del equipo.");
             JSONObject receipt=copy(r.getJSONObject("receipt"));receipt.put("deliveryDate",r.getString("date"));receipt(receipt,r.getLong("quantity"),false);
             if(!r.optString("stockId").isEmpty()){
-                stockPath=path(uid,"inventory",r.getString("stockId"));JSONObject before=tx.get(stockPath),item=record(before);stock(item);
+                stockPath=path(uid,"inventory",r.getString("stockId"));JSONObject before=tx.get(stockPath),item=record(before);stock(item);require(!item.optBoolean("prepared"),"El equipo preparado es una referencia del proveedor. Úsalo desde Mis equipos.");
                 require(item.getString("model").equals(r.getString("model"))&&item.getLong("cost")==r.getLong("cost"),"El equipo cambió. Selecciónalo otra vez.");
                 long q=item.getLong("quantity")-r.getLong("quantity");require(q>=0,"No hay suficientes unidades disponibles. La venta queda como borrador.");item.put("quantity",q);r.put("stockDeducted",true).put("stockOwnerId",item.optString("ownerId")).put("stockOwnerName",owner(item.optString("ownerId")));stockDoc=wrap(item,id,before.optBoolean("legacy"));stockDelta=-r.getLong("quantity");
             }
@@ -132,9 +134,9 @@ final class BusinessEngine {
         }else if(kind.equals("addStock")){
             require(current==null,"Este equipo ya se guardó.");JSONObject item=copy(values.getJSONObject("stock"));require(target.equals(item.optString("id")),"Revisa el equipo.");item.put("createdBy",who.getString("id")).put("createdByName",who.getString("name")).put("createdAt",now);stock(item);stockPath=targetPath;stockDoc=wrap(item,id,false);stockDelta=item.getLong("quantity");
         }else{
-            JSONObject item=record(current);if(kind.equals("restock")){stockDelta=integer(values,"quantity",1,100000);item.put("quantity",safe(Math.addExact(item.getLong("quantity"),stockDelta)));}
+            JSONObject item=record(current);if(kind.equals("restock")){require(!item.optBoolean("prepared"),"Un equipo preparado no tiene unidades propias.");stockDelta=integer(values,"quantity",1,100000);item.put("quantity",safe(Math.addExact(item.getLong("quantity"),stockDelta)));}
             else{revision(current,command);item.put("ownerId",text(values,"ownerId",128,false)).put("brand",text(values,"brand",60,false));}
-            stock(item);stockPath=targetPath;stockDoc=wrap(item,id,current.optBoolean("legacy"));
+            if(kind.equals("organizeStock")&&item.optBoolean("prepared")&&values.has("cost"))item.put("cost",integer(values,"cost",0,MAX));if(kind.equals("organizeStock")&&values.has("salePrice")){if(values.isNull("salePrice"))item.remove("salePrice");else item.put("salePrice",integer(values,"salePrice",0,MAX));}stock(item);stockPath=targetPath;stockDoc=wrap(item,id,current.optBoolean("legacy"));
         }
         if(saleDoc!=null)writes.put(targetPath,saleDoc);if(stockDoc!=null)writes.put(stockPath,stockDoc);if(counter!=null)writes.put(counterPath,counter);
         writes.put(ledgerPath,new JSONObject().put("id",id).put("kind",kind).put("targetId",target).put("targetKey",encoded(target)).put("actorId",who.getString("id")).put("actorName",who.getString("name")).put("actorKey",encoded(who.getString("id"))).put("fingerprint",digest).put("stockId",stockDoc==null?"":stockDoc.getString("id")).put("stockKey",stockDoc==null?"":encoded(stockDoc.getString("id"))).put("stockDelta",stockDelta).put("counterKey",counter==null?"":counter.getString("month")).put("sequence",counter==null?0:counter.getLong("sequence")).put("createdAt",SERVER_TIME));

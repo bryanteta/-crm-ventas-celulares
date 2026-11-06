@@ -30,7 +30,7 @@
  function applyStock(data,sale,restore=false){
   if(!sale.stockId||restore&&!sale.stockDeducted)return;
   const item=data.inventory.find(i=>i.id===sale.stockId);
-  if(!item)throw Error('El producto ya no está en el inventario. Revisa la venta.');
+  if(!item)throw Error('El producto ya no está en el inventario. Revisa la venta.');if(item.prepared)throw Error('Un equipo preparado se vende como referencia del proveedor.');
   const next=item.quantity+(restore?sale.quantity:-sale.quantity);
   if(!Number.isSafeInteger(next)||next<0)throw Error('No hay suficientes unidades disponibles.');
   if(!Number.isSafeInteger(next*item.cost))throw Error('El valor del inventario es demasiado grande.');

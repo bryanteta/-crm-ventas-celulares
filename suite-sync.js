@@ -28,10 +28,10 @@ function paint(){
  $('#suite-cloud-title').textContent=request?'Operación pendiente de confirmar':migrating||meta&&!meta.imported?'Preparando Ventas compartidas':online()?'Ventas compartidas':'Tu copia está disponible';
  $('#suite-cloud-copy').textContent=problem||(request?'Se conserva la solicitud de '+request.actor.name+'. Se recuperará al volver la conexión. Reintentar usa el mismo identificador y evita duplicados.':migrating||meta&&!meta.imported?'Conecta este teléfono para compartir sus registros anteriores. Pendientes: '+count+'.':online()?'Ventas, garantías y Mis equipos se comparten con esta cuenta. Cada operación guarda su usuario.':'Puedes consultar los datos guardados y preparar borradores. Conecta el teléfono para confirmar ventas o modificar el inventario.');
  $('#suite-cloud-retry').disabled=working||migrating||!navigator.onLine;$('#suite-cloud-retry').textContent=request?'Reintentar solicitud':'Sincronizar Ventas';
- for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form']){const form=$(selector);form.inert=Boolean(request);form.setAttribute('aria-busy',String(Boolean(request)));}
- if(shared())$('#sale-edit-save').disabled=Boolean(request)||working;$('#sale-action-confirm').disabled=Boolean(request)||working;for(const input of document.querySelectorAll('#sale-action input,#sale-action textarea'))input.readOnly=Boolean(request);
+ for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form','#prepared-form']){const form=$(selector);form.inert=Boolean(request);form.setAttribute('aria-busy',String(Boolean(request)));}
+ if(shared()){$('#sale-edit-save').disabled=Boolean(request)||working;$('#prepared-save').disabled=Boolean(request)||working;}$('#sale-action-confirm').disabled=Boolean(request)||working;for(const input of document.querySelectorAll('#sale-action input,#sale-action textarea'))input.readOnly=Boolean(request);
  $('#stock-organize-form button[type=submit]').disabled=Boolean(request)||working;$('#sale-action-close').textContent=request?'Cerrar':'Cancelar';$('#stock-organize-close').textContent=request?'Cerrar':'Cancelar';
- if(!shared())for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form'])$(selector).inert=false;
+ if(!shared())for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form','#prepared-form'])$(selector).inert=false;
 }
 function refresh(){api?.render();paint();}
 async function migrate(){

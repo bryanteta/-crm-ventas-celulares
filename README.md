@@ -1,6 +1,6 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.6.2**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.6.3**; Android 8.0 o superior.
 
 ## Funciones
 

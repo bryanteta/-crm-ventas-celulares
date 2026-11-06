@@ -61,7 +61,7 @@ async function mutate(kind,values,targetId){
   const draft=clone(values.sale);draft.status='Borrador';draft.stockDeducted=false;delete draft.saleNumber;delete draft.saleSequence;delete draft.saleMonth;if(draft.receipt)draft.receipt.number='';data.sales=data.sales.some(s=>s.id===targetId)?data.sales.map(s=>s.id===targetId?draft:s):[draft,...data.sales];
  }
  if(!online()||!meta.imported){if(kind==='confirmSale')write(data);throw Error(kind==='confirmSale'?'Borrador guardado. Conecta el teléfono y espera la sincronización para confirmar sin duplicar existencias ni correlativos.':'Conecta el teléfono y espera la sincronización de tu usuario para guardar cambios compartidos.');}
- const collection=['confirmSale','editSale','saveWarranty','cancelSale'].includes(kind)?'sales':'inventory',operation={id:crypto.randomUUID(),kind,targetId,actor:{id:actor.id,name:actor.name},values:clone(values)};if(!['confirmSale','addStock','restock'].includes(kind))operation.expectedRevision=values.expectedRevision??meta.versions[collection][targetId]??'';
+ const collection=['confirmSale','setSaleVisibility','editSale','saveWarranty','cancelSale'].includes(kind)?'sales':'inventory',operation={id:crypto.randomUUID(),kind,targetId,actor:{id:actor.id,name:actor.name},values:clone(values)};if(!['confirmSale','addStock','restock'].includes(kind))operation.expectedRevision=values.expectedRevision??meta.versions[collection][targetId]??'';
  meta.pending=operation;write(data);return run(operation);
 }
 window.addEventListener('lunivo-cloud',event=>{

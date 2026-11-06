@@ -1,6 +1,6 @@
 # Lunivo Suite
 
-App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.6.4**; Android 8.0 o superior.
+App Android y prototipo web para gestionar seguimientos, inventarios, ventas y garantías. Versión **1.6.5**; Android 8.0 o superior.
 
 ## Funciones
 
@@ -67,3 +67,5 @@ Una solicitud pendiente conserva su identificador y usuario hasta recibir confir
 Firebase lee las ventas e inventario de la cuenta al abrir sus listeners y después recibe cambios; no son consultas periódicas. Las operaciones usan transacciones cortas y un registro de idempotencia. El consumo crece con el historial y los dispositivos conectados; no se presenta como ilimitado.
 
 Para habilitar **Editar venta** con cuenta en 1.6.2, publicar manualmente la versión completa actual de `firestore.rules`; las reglas de 1.6.0/1.6.1 no autorizan la nueva operación. Actualizar todos los teléfonos para que las garantías compartidas utilicen la misma fecha. El correlativo, su mes de emisión y el vendedor original se conservan incluso al corregir una fecha de otro mes o año. El nombre del archivo conserva el año del correlativo emitido.
+
+1.6.5 permite Eliminar del historial y recuperar desde Ver eliminadas sin anular, devolver stock ni cambiar importes. La visibilidad de ventas confirmadas se comparte entre dispositivos y requiere publicar el archivo completo de reglas actualizado. Los borradores siguen locales. El editor recalcula solo la venta abierta y agrupa eventos de teclado por cuadro; no lee el historial al escribir. Hidrogel y Vidrio templado se muestran sin marcas entre paréntesis.

@@ -89,9 +89,9 @@ final class BusinessEngine {
     }
     static JSONObject execute(Tx tx,String uid,JSONObject command,String now)throws Exception{
         identity(uid);String id=text(command,"id",100,true),kind=text(command,"kind",30,true),target=text(command,"targetId",200,true);
-        require(id.matches("[A-Za-z0-9_-]+"),"Revisa la solicitud.");require(java.util.Arrays.asList("confirmSale","editSale","saveWarranty","cancelSale","addStock","restock","organizeStock").contains(kind),"Operación no válida.");
+        require(id.matches("[A-Za-z0-9_-]+"),"Revisa la solicitud.");require(java.util.Arrays.asList("confirmSale","setSaleVisibility","editSale","saveWarranty","cancelSale","addStock","restock","organizeStock").contains(kind),"Operación no válida.");
         String ledgerPath="users/"+uid+"/suiteOperations/"+id,digest=fingerprint(command);JSONObject ledger=tx.get(ledgerPath);
-        boolean isSale=kind.equals("confirmSale")||kind.equals("editSale")||kind.equals("saveWarranty")||kind.equals("cancelSale");String targetPath=path(uid,isSale?"sales":"inventory",target);JSONObject current=tx.get(targetPath);
+        boolean isSale=kind.equals("setSaleVisibility")||kind.equals("confirmSale")||kind.equals("editSale")||kind.equals("saveWarranty")||kind.equals("cancelSale");String targetPath=path(uid,isSale?"sales":"inventory",target);JSONObject current=tx.get(targetPath);
         if(ledger!=null){require(digest.equals(ledger.optString("fingerprint")),"Esta solicitud ya corresponde a otra operación.");JSONObject stockDoc=null;if(isSale&&current!=null&&!current.getJSONObject("record").optString("stockId").isEmpty())stockDoc=tx.get(path(uid,"inventory",current.getJSONObject("record").getString("stockId")));return result(isSale?current:null,isSale?stockDoc:current,true);}
         JSONObject who=command.getJSONObject("actor");actor(tx,uid,who);JSONObject values=command.getJSONObject("values"),saleDoc=null,stockDoc=null,counter=null;String stockPath=null,counterPath=null;long stockDelta=0;
         Map<String,JSONObject> writes=new LinkedHashMap<>();
@@ -108,6 +108,8 @@ final class BusinessEngine {
             }
             String month=r.getString("date").substring(0,7);counterPath="users/"+uid+"/suiteCounters/"+month;JSONObject previous=tx.get(counterPath);long sequence=previous==null?1:integer(previous,"sequence",0,MAX-1)+1;
             String number=month.substring(5)+String.format(java.util.Locale.ROOT,"%02d",sequence);r.put("saleMonth",month).put("saleSequence",sequence).put("saleNumber",number);receipt.put("number",number);r.put("receipt",receipt);counter=new JSONObject().put("month",month).put("sequence",sequence).put("legacy",false).put("lastOperationId",id).put("updatedAt",SERVER_TIME);saleDoc=wrap(r,id,false);
+        }else if(kind.equals("setSaleVisibility")){
+            revision(current,command);JSONObject r=record(current);require(values.opt("hidden") instanceof Boolean,"Revisa la visibilidad de la venta.");r.put("hidden",values.getBoolean("hidden")).put("visibilityChangedById",who.getString("id")).put("visibilityChangedByName",who.getString("name")).put("visibilityChangedAt",now);saleDoc=wrap(r,id,current.optBoolean("legacy"));
         }else if(kind.equals("editSale")){
             revision(current,command);JSONObject before=record(current),r=copy(before),patch=values.getJSONObject("patch");require(r.optString("status").equals("Confirmada"),"Solo puedes editar una venta confirmada.");
             java.util.List<String> allowed=java.util.Arrays.asList("client","model","date","quantity","price","cost","expenses","accessoryCost","notes","supplier","accessoryItems","accessories","receipt");

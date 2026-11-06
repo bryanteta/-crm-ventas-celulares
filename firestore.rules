@@ -109,7 +109,7 @@ service cloud.firestore {
       return op.keys().hasAll(['id','kind','targetId','targetKey','actorId','actorName','actorKey','fingerprint','stockId','stockKey','stockDelta','counterKey','sequence','createdAt'])
         && op.keys().hasOnly(['id','kind','targetId','targetKey','actorId','actorName','actorKey','fingerprint','stockId','stockKey','stockDelta','counterKey','sequence','createdAt'])
         && text(op.targetKey,300) && op.targetKey.matches('^[A-Za-z0-9_-]+$') && op.id==id && text(op.id,100) && op.id.matches('^[A-Za-z0-9_-]+$') && text(op.targetId,200)
-        && op.kind in ['confirmSale','editSale','saveWarranty','cancelSale','addStock','restock','organizeStock']
+        && op.kind in ['confirmSale','setSaleVisibility','editSale','saveWarranty','cancelSale','addStock','restock','organizeStock']
         && text(op.actorId,128) && text(op.actorName,80) && op.actorId.size()>0 && op.actorName.size()>0
         && text(op.fingerprint,64) && op.fingerprint.matches('^[0-9a-f]{64}$')
         && text(op.stockId,200) && text(op.stockKey,300) && text(op.counterKey,7)
@@ -147,7 +147,8 @@ service cloud.firestore {
       let before=resource.data.record;
       let after=d.record;
       return op.targetId==d.id && op.id==d.revision && op.createdAt==request.time
-        && ((op.kind=='editSale' && editedSale(uid,op,before,after))
+        && ((op.kind=='setSaleVisibility' && after.diff(before).affectedKeys().hasOnly(['hidden','visibilityChangedById','visibilityChangedByName','visibilityChangedAt']) && after.hidden is bool && after.visibilityChangedById==op.actorId && after.visibilityChangedByName==op.actorName && op.stockId=='' && op.stockDelta==0)
+        || (op.kind=='editSale' && editedSale(uid,op,before,after))
         || (after.diff(before).affectedKeys().hasOnly(['receipt','status','stockDeducted','cancelReason','cancelledBy','cancelledById','cancelledAt','lastEditedById','lastEditedByName','lastEditedAt'])
           && ((op.kind=='saveWarranty' && before.status=='Confirmada' && after.status==before.status
             && after.get('stockDeducted',false)==before.get('stockDeducted',false) && completeReceipt(after.receipt)

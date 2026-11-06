@@ -1,6 +1,6 @@
-# Lunivo para Android · 1.6.4
+# Lunivo para Android · 1.6.5
 
-App para instalación directa, paquete `com.crmcelulares.app`, código de versión 33. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
+App para instalación directa, paquete `com.crmcelulares.app`, código de versión 34. Interfaz local en WebView, recordatorios nativos y exportación de PDF mediante las APIs de Android. Android mínimo 8.0; compilación con SDK 35.
 
 ## Compilar
 
@@ -119,3 +119,5 @@ Las pruebas instrumentadas usan una clave ficticia aislada para comprobar el cif
 La impresión de 1.6.1 queda autorizada por la pantalla local de la garantía y requiere una pulsación del usuario. Una impresión todavía en preparación se cancela al cambiar de contexto o pausar la actividad; una devolución tardía de carga no puede iniciarla. El selector de archivos mantiene el documento que el usuario solicitó exportar. Las respuestas incluyen el identificador de la solicitud para no escribir estados sobre otra garantía.
 
 1.6.2 agrega `editSale` al motor y a las reglas de Firestore. Corregir una venta conserva el ID, autor, correlativo y contador. La cantidad de un equipo propio actualiza venta y stock en la misma transacción; se registra el editor. Actualizar el archivo completo de reglas antes de utilizar la edición compartida.
+
+1.6.5 permite Eliminar del historial y recuperar desde Ver eliminadas sin anular, devolver stock ni cambiar importes. La visibilidad de ventas confirmadas se comparte entre dispositivos y requiere publicar el archivo completo de reglas actualizado. Los borradores siguen locales. El editor recalcula solo la venta abierta y agrupa eventos de teclado por cuadro; no lee el historial al escribir. Hidrogel y Vidrio templado se muestran sin marcas entre paréntesis.

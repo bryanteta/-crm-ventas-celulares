@@ -41,6 +41,7 @@ public final class MainActivity extends Activity {
     private SafeAreaLayout safeArea;
     private LaunchSound launchSound;
     private ReceiptPrinter receiptPrinter;
+    private AppUpdater updater;
     private InventoryBridge inventoryBridge;
     private boolean startupSoundPending;
 
@@ -53,6 +54,7 @@ public final class MainActivity extends Activity {
         readFollowup(getIntent());
         launchSound = new LaunchSound(this);
         receiptPrinter = new ReceiptPrinter(this);
+        updater = new AppUpdater(this, event -> { if (webView != null && !isDestroyed()) webView.evaluateJavascript("window.dispatchEvent(new CustomEvent('lunivo-update',{detail:"+event+"}))",null); });
         inventoryBridge = new InventoryBridge(this);
         startupSoundPending = state == null && pendingFollowup == null;
         if (Build.VERSION.SDK_INT >= 28) {
@@ -97,6 +99,10 @@ public final class MainActivity extends Activity {
                                 return;
                             }
                             switch (request.optString("type")) {
+                                case "updateState": updater.state(); return;
+                                case "updateCheck": updater.check(request.optBoolean("force",true)); return;
+                                case "updateDownload": updater.download(); return;
+                                case "updateInstall": updater.install(); return;
                                 case "appearance":
                                     boolean dark = request.getBoolean("dark");
                                     getSharedPreferences("lunivo-appearance", MODE_PRIVATE).edit().putBoolean("dark", dark).apply();
@@ -352,6 +358,7 @@ public final class MainActivity extends Activity {
         if (inventoryBridge != null) inventoryBridge.close();
         pageReady = false;
         if (receiptPrinter != null) receiptPrinter.close();
+        if (updater != null) updater.close();
         if (cloud != null) cloud.close();
         if (launchSound != null) launchSound.stop();
         webView.destroy();

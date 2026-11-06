@@ -10,7 +10,6 @@ exports.load = async page => {
 };
 exports.localInventory = async page => {
   await page.getByRole('link', { name: 'Inventario', exact: true }).click();
-  await exports.options(page);
   await page.locator('#registered-inventory-link').click();
   await page.locator('#sales-inventory').waitFor();
 };

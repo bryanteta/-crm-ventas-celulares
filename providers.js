@@ -24,9 +24,9 @@ function link(choice,active){
 }
 function shortcuts(data){
  const params=new URLSearchParams(location.hash.split('?')[1]||''),current=location.hash.startsWith('#ventas/proveedores')?core.providerFilter(params.get('provider')):'';
- for(const id of['inventory-owner-shortcuts','inventory-provider-cards','provider-directory']){
+ for(const id of['inventory-owner-shortcuts','provider-directory']){
   const target=$('#'+id);target.replaceChildren();target.classList.add('provider-cards');target.classList.toggle('provider-cards-compact',id==='provider-directory');target.classList.toggle('provider-access',id!=='provider-directory');
-  const available=rows(data);const choices=id==='provider-directory'?[{id:'',name:'Todos',icon:'icon-compare',url:'#ventas/proveedores'},{id:'samuel',name:'Samuel',icon:'icon-phone',url:'#ventas/proveedores?provider=samuel'},{id:'split',name:'Split',icon:'icon-inventory',url:'#ventas/proveedores?provider=split'}].map(choice=>({...choice,count:available.filter(o=>!choice.id||o.provider===choice.id).reduce((n,o)=>n+o.quantity,0)})):[{id:'all',name:'Inventario',icon:'icon-inventory',url:'#ventas/proveedores',sub:'Equipos disponibles de Samuel y Split'}];
+  const available=rows(data);const choices=id==='provider-directory'?[{id:'',name:'Todos',icon:'icon-compare',url:'#ventas/proveedores'},{id:'samuel',name:'Samuel',icon:'icon-phone',url:'#ventas/proveedores?provider=samuel'},{id:'split',name:'Split',icon:'icon-inventory',url:'#ventas/proveedores?provider=split'}].map(choice=>({...choice,count:available.filter(o=>!choice.id||o.provider===choice.id).reduce((n,o)=>n+o.quantity,0)})):[{id:'all',name:'Proveedores',icon:'icon-inventory',url:'#ventas/proveedores',sub:'Equipos disponibles de Samuel y Split'}];
   for(const choice of choices)target.append(link(choice,id==='provider-directory'&&choice.id===current));
  }
 }
@@ -56,17 +56,17 @@ function render(data){
  filtered.sort((a,b)=>($('#offer-sort').value==='price'?a.price-b.price:details(a).localeCompare(details(b),'es',{numeric:true}))||details(a).localeCompare(details(b),'es',{numeric:true})||a.supplier.localeCompare(b.supplier,'es')||a.id.localeCompare(b.id));
  const units=filtered.reduce((n,o)=>n+o.quantity,0);$('#provider-results').textContent=units+' equipo'+(units===1?' disponible':'s disponibles')+(owner?' · '+core.ownerName(owner):provider==='samuel'?' · Samuel':provider==='split'?' · Split':'');
  const list=$('#offers-list'),openId=list.querySelector('[open]')?.dataset.offerId;list.replaceChildren();
- if(!filtered.length)list.append(el('p','No hay equipos con esta búsqueda. Prueba otro modelo o quita los filtros en Más opciones.','empty'));
+ if(!filtered.length)list.append(el('p',all.length?'No hay equipos con esta búsqueda. Prueba otro modelo o quita los filtros en Más opciones.':'Actualiza el inventario para consultar los equipos de tus proveedores.','empty'));
  const count=window.LunivoList.limit(list,[location.hash,$('#offer-search').value,model.value,variant.value,family,$('#provider-available').checked,$('#offer-sort').value].join('|'));
  for(const o of filtered.slice(0,count)){
   const row=el('details',undefined,'suite-offer compact-device-card');row.dataset.offerId=o.id;row.dataset.provider=o.provider;if(o.stockId)row.dataset.providerStockId=o.stockId;row.open=o.id===openId;
   const parts=o.model.split(' · '),isStock=Boolean(o.stockId),splitOwner=o.provider==='split'&&['saul','javier'].includes(o.ownerId),summary=window.LunivoInventory.cardSummary({model:displayModel(o),description:isStock?[core.inventoryBrand(o.stock),...parts.slice(1)].join(' · '):specs(o),ownerName:isStock||splitOwner?core.ownerName(o.ownerId):o.supplier,ownerLabel:isStock||splitOwner?o.supplier+' · Dueño':'Proveedor',quantity:o.quantity,amount:o.price,priceLabel:isStock?'Costo':'Precio'});
   const ownerText=splitOwner?'Split · '+core.ownerName(o.ownerId):o.supplier;summary.querySelector('.device-card-owner').textContent=ownerText;summary.querySelector('.device-card-owner').setAttribute('aria-label','Proveedor: '+o.supplier+(o.ownerId?' · Dueño: '+core.ownerName(o.ownerId):''));summary.querySelector('.device-card-units').remove();summary.querySelector('.device-card-status').textContent=o.quantity>0?o.quantity+' disponible'+(o.quantity===1?'':'s'):'Agotado';
   const body=el('div',undefined,'device-card-body');body.append(el('p',details(o),'device-card-full-model'),el('p',(isStock?'Costo: ':'Precio: ')+money(o.price)+' / unidad'),el('p',isStock?o.supplier+' · Dueño: '+core.ownerName(o.ownerId)+' · '+o.quantity+' disponible(s)':o.quantity+' disponible(s) · Lista '+o.date+' · '+(o.source==='feed'?'Inventario del proveedor':o.source==='pdf'?'PDF anterior · Referencia':'Cotización manual')));
-  const actions=el('div',undefined,'actions'),sell=button('Usar en venta',()=>isStock?api.sellStock(o.stock):api.sellOffer(o));sell.disabled=o.quantity===0;actions.append(sell);const prepare=button('Preparar con mi precio',()=>api.prepare(o));prepare.disabled=o.quantity===0;actions.append(prepare);
-  if(isStock){const manage=el('a','Administrar inventario de '+core.ownerName(o.ownerId),'text-link');manage.href='#ventas/inventario?provider='+o.provider+'&owner='+o.ownerId;actions.append(manage);}
-  else actions.append(button('Añadir alternativa',()=>api.alternative(o)));
-  body.append(actions);row.append(summary,body);window.LunivoInventory.accordion(row,list);list.append(row);
+  const actions=el('div',undefined,'actions'),prepare=button('Preparar con mi precio',()=>api.prepare(o));prepare.className='';prepare.disabled=o.quantity===0;actions.append(prepare);const more=el('details',undefined,'action-options'),moreSummary=el('summary','Más opciones'),moreBody=el('div',undefined,'action-options-body');more.append(moreSummary,moreBody);const sell=button('Usar en venta',()=>isStock?api.sellStock(o.stock):api.sellOffer(o));sell.disabled=o.quantity===0;moreBody.append(sell);
+  if(isStock){const manage=el('a','Administrar inventario de '+core.ownerName(o.ownerId),'text-link');manage.href='#ventas/inventario?provider='+o.provider+'&owner='+o.ownerId;moreBody.append(manage);}
+  else moreBody.append(button('Añadir alternativa',()=>api.alternative(o)));
+  actions.append(more);body.append(actions);row.append(summary,body);window.LunivoInventory.accordion(row,list);list.append(row);
  }
  window.LunivoList.more(list,filtered.length,()=>render(api.read()));
  $('#catalog-load').hidden=Boolean(data.providerFeeds?.samuel);$('#catalog-source').hidden=Boolean(data.providerFeeds?.samuel||data.providerFeeds?.split);

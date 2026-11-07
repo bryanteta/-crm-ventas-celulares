@@ -1,0 +1,11 @@
+# Lunivo 1.7.6 · aumento sugerido de $80 por equipo
+
+Código 41. Seleccionar un equipo propio, una cotización de proveedor o una opción preparada en Nueva venta carga el precio unitario como costo del equipo + 8.000 centavos. El precio continúa editable. Aplicar +$80 restablece el sugerido desde el costo actual, sin sumar aumentos sucesivos. Si el equipo tenía un precio guardado diferente, Usar precio guardado permite recuperarlo explícitamente. La elección desde tarjetas y desde el selector del formulario usa el mismo comportamiento.
+
+El aumento se aplica por unidad: con tres equipos y sin otros conceptos el margen es $240. El costo de compra se conserva; gastos, costos de accesorios y accesorios vendidos siguen en el cálculo habitual, por lo que el beneficio neto puede variar. Si el usuario cambia el costo mientras utiliza el precio sugerido, el precio se recalcula. Si escribió otro precio o eligió el guardado, se conserva esa elección al editar el costo. Un costo manual permite sugerir el precio cuando el precio aún está vacío.
+
+Borradores reabiertos conservan su precio, igual que ventas confirmadas, garantías, precios de Mis equipos y solicitudes pendientes de sincronizar. El cambio no reescribe registros anteriores ni modifica su política de comisiones. El precio elegido al confirmar queda firmado por el mismo usuario y sigue el protocolo transaccional e idempotente existente. Las reglas de Firebase y el esquema permanecen iguales.
+
+Validación: 32 suites de interfaz, 69 pruebas Android release, 56 Node, 8 de reglas, sincronización de Follows y transacciones con dos sesiones en Firestore Emulator. La nueva suite cubre importes con centavos, todas las fuentes de equipo, cantidades, precio personalizado/guardado, cambios de costo, borrador con recarga, edición de ventas anteriores y descuentos de stock. La prueba compartida confirma costo $500.25, precio $580.25 y utilidad $80 sin existencias propias ficticias. Se adaptan pruebas de precios preparados para ejercer la recuperación explícita del precio guardado o el nuevo sugerido.
+
+Compilación pública release y lint sin errores, misma firma instalada y sin claves ni copia privada de proveedores. Distribución main + Release estable v1.7.6 mediante lunivo-updates. Prueba física de instalación/teclado en Samsung pendiente.

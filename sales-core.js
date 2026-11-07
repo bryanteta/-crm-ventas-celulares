@@ -1,6 +1,8 @@
 (function(root,factory){const core=factory();if(typeof module==='object'&&module.exports)module.exports=core;else root.LunivoSalesCore=core;})(typeof window==='object'?window:globalThis,()=>{
  'use strict';
  function money(value){const s=String(value).trim();if(!/^\d{1,9}(?:\.\d{1,2})?$/.test(s))throw Error('Escribe un importe válido con hasta dos decimales.');const[a,b='']=s.split('.');return Number(a)*100+Number(b.padEnd(2,'0'));}
+ const DEFAULT_MARKUP=8000;
+ function suggestedPrice(cost){if(!Number.isSafeInteger(cost)||cost<0||!Number.isSafeInteger(cost+DEFAULT_MARKUP))throw Error('Revisa el costo del equipo.');return cost+DEFAULT_MARKUP;}
  function totals({price,cost,expenses,quantity,accessories=0,accessoryCost=0,status='Confirmada',commissionEnabled=true}){if(!Number.isInteger(quantity)||quantity<1||quantity>1000)throw Error('La cantidad debe estar entre 1 y 1,000.');for(const n of[price,cost,expenses,accessories,accessoryCost])if(!Number.isSafeInteger(n)||n<0)throw Error('Importes inválidos.');const revenue=price*quantity+accessories,purchase=cost*quantity+accessoryCost,commission=status==='Confirmada'&&commissionEnabled?1500:0,profit=revenue-purchase-expenses-commission;if(![revenue,purchase,profit].every(Number.isSafeInteger))throw Error('Importe demasiado grande.');return{revenue,purchase,commission,profit};}
 
  const OWNERS=[{id:'lunivo',name:'Lunivo'},{id:'samuel',name:'Samuel'},{id:'saul',name:'Saúl'},{id:'javier',name:'Javier'}];
@@ -59,5 +61,5 @@
   if(before.stockDeducted&&before.stockId&&delta!==0){item=data.inventory.find(i=>i.id===before.stockId);if(!item)throw Error('El equipo ya no está en Mis equipos.');next=item.quantity+delta;if(!Number.isSafeInteger(next)||next<0||!Number.isSafeInteger(next*item.cost))throw Error('No hay suficientes unidades disponibles para este cambio.');}
   if(item)item.quantity=next;data.sales=data.sales.map(s=>s.id===id?r:s);return data;
  }
- return{editSale,money,totals,variant,summary,validateSale,applyStock,phoneFamily,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop,providerForOwner,providerForOffer,providerFilter,supplierName};
+ return{DEFAULT_MARKUP,suggestedPrice,editSale,money,totals,variant,summary,validateSale,applyStock,phoneFamily,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop,providerForOwner,providerForOffer,providerFilter,supplierName};
 });

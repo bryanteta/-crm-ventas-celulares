@@ -26,7 +26,6 @@ function buildCatalog(snapshot, now=Date.now()) {
   const products=new Map();
   for (const provider of ['samuel','split']) {
     const source=validate(provider,snapshot.providers?.[provider]);
-    if (!source.rows.length) throw Error('Una fuente está vacía. Revisa antes de sustituir el catálogo.');
     for (const r of source.rows) {
       if (r.price<=0) throw Error('No se publican equipos sin un precio válido.');
       const device=modelName(r.model);
@@ -42,11 +41,17 @@ function buildCatalog(snapshot, now=Date.now()) {
       if (/\b(?:msj|mensaje)\s*(?:de\s*)?bater[ií]a\b/i.test(r.notes)) observations.push('Aviso de batería');
       if (/\b(?:msj|mensaje)\s*(?:de\s*)?pantalla\b/i.test(r.notes)) observations.push('Aviso de pantalla');
       if (/\bdesgaste\b/i.test(r.notes)) observations.push('Desgaste visible');
-      const specs={...device,capacity,color:colorName(r.color||r.notes),condition,grade,battery,observations};
-      const key=JSON.stringify(specs);
+      const cyclesMatch=(r.model+' '+r.notes).match(/\b(\d{1,5})\s*(?:ciclos\b|c\b)/i);
+      const cycles=cyclesMatch?Number(cyclesMatch[1]):null;
+      const sim=/\bsim\s*f[ií]sic[oa]\b/i.test(description)?'SIM física':'Por confirmar';
+      const box=/\bsin\s+caja\b/i.test(description)?false:/\bcaja\b/i.test(description)?true:null;
+      const specs={...device,capacity,color:colorName(r.color||r.notes),condition,grade,battery,observations,cycles,sim,box};
       const priceCents=suggestedPrice(r.price);
+      // Match the app's complete available units: never replace a different price.
+      const key=JSON.stringify({...specs,priceCents});
       const existing=products.get(key);
-      if (!existing || priceCents<existing.priceCents) products.set(key,{id:createHash('sha256').update(key).digest('hex').slice(0,20),...specs,priceCents,available:true});
+      if(existing) existing.quantity+=r.quantity;
+      else products.set(key,{id:createHash('sha256').update(key).digest('hex').slice(0,20),...specs,priceCents,quantity:r.quantity,available:true});
     }
   }
   return {schemaVersion:1,brand:'Lunivo',currency:'USD',updatedAt:new Date(checked).toISOString(),products:[...products.values()].sort((a,b)=>a.model.localeCompare(b.model,'es',{numeric:true})||a.priceCents-b.priceCents)};

@@ -5,7 +5,8 @@
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let images={};
-  const regularPrice=cents=>cents+Math.round(cents/10);
+  // Apply 10% and round once to the nearest whole dollar (half rounds up).
+  const regularPrice=cents=>Number((BigInt(cents)*11n+500n)/1000n)*100;
   let banks=[];
   const plansReady=fetch('payment-plans.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async response=>{
     if(!response.ok)throw Error('Planes no disponibles');
@@ -134,7 +135,7 @@
     $('#financing').hidden=!financed;
     $('#detail-regular').hidden=financed;$('#detail-regular s').textContent=money(regular);
     $('#detail-price-label').textContent=financed?'Precio regular':'Precio promocional';
-    $('#detail-payment-note').textContent=financed?'Total a pagar a tasa cero':'Exclusivo al contado';
+    $('#detail-payment-note').textContent=financed?'Total a pagar a tasa cero':'Precio exclusivo por pago de contado';
     $('#detail-price').textContent=money(financed?regular:p.priceCents);
     $('#detail-price').classList.toggle('is-regular',financed);
     let paymentText='Al contado, precio promocional: '+money(p.priceCents);

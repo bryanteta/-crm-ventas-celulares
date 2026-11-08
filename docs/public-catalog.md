@@ -75,3 +75,11 @@ La revisión del 8 de noviembre contrastó 150 variantes/324 unidades, todos los
 Se conservan los nombres comerciales «Blanco» y «Amarillo» del proveedor. Samsung Bespoke Studio documenta las combinaciones White/White y Yellow/Yellow con marco Silver, asociadas respectivamente a los SKU SM-F721B4SEXME y SM-F721B4YEXME. Se utilizan imágenes oficiales de esos acabados como referencias para cada color, sin cambiar las etiquetas visibles ni atribuir una edición o SKU concreto a las unidades del proveedor. El inventario de origen no especifica el marco ni la edición exacta de esas unidades.
 
 Fuente de combinaciones: https://www.samsung.com/my/mobile/galaxy-bespoke/galaxy-z-flip4/ . La imagen amarilla se obtiene de la página oficial de soporte del SKU y la blanca del propio Studio. Las URLs, los acabados y la procedencia quedan documentados en el manifiesto de imágenes.
+
+## Tema claro y oscuro
+
+El botón de luna/sol de la cabecera alterna el tema. En la primera visita se respeta `prefers-color-scheme`; una elección manual se guarda en `lunivo-catalog-theme` de este catálogo y tiene prioridad sobre el sistema. Los cambios se reflejan entre pestañas. No se escriben datos en Firebase ni se modifica el inventario. Si el navegador bloquea almacenamiento, la selección sigue funcionando durante la visita.
+
+`theme.js` aplica la preferencia en la cabecera del documento antes de cargar los estilos para evitar el destello claro al abrir el modo oscuro. También ajusta el color de la barra del navegador. Las superficies, botones, filtros, avisos y diálogos tienen su paleta oscura. Las fotos de productos conservan sus colores originales sobre una base neutra.
+
+Validación: `npm run test:catalog-theme` comprueba persistencia, preferencia del sistema, sincronización entre pestañas, contraste de botones, diálogo oscuro, controles en pantallas pequeñas y funcionamiento con almacenamiento bloqueado.

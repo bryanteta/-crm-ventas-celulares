@@ -145,10 +145,10 @@
       if(!banks.length)summary='No se pudieron cargar las cuotas. Consúltalas con Lunivo por WhatsApp.';
       else if(bank){
         paymentText+=' · '+bank.name;
-        summary=bank.installments.length?'Selecciona el número de cuotas.':'Cuotas de este banco por confirmar con Lunivo.';
+        summary=bank.installments.length?(bank.installments.some(n=>regular%n)?'Montos mensuales aproximados. Selecciona tus cuotas.':'Selecciona el número de cuotas.'):'Cuotas de este banco por confirmar con Lunivo.';
         if(bank.installments.includes(months)){
-          const installment=Math.floor(regular/months),last=regular-installment*(months-1);
-          summary=last===installment?months+' cuotas de '+money(installment):months===1?'1 cuota de '+money(regular):(months-1)+' cuotas de '+money(installment)+' y una última de '+money(last);
+          const installment=Math.round(regular/months);
+          summary=months+' cuotas de '+money(installment)+(regular%months?' aprox.':'')+' · Total: '+money(regular);
           paymentText+=' · '+months+' cuotas';
         }
       }
@@ -212,12 +212,11 @@
     grid.dataset.plan=signature;
     const fragment=document.createDocumentFragment();
     for(const months of terms){
-      const each=Math.floor(total/months),last=total-each*(months-1);
-      const label=document.createElement('label'),input=document.createElement('input'),copy=document.createElement('span'),name=document.createElement('span'),amount=document.createElement('strong'),note=document.createElement('small');
+      const each=Math.round(total/months);
+      const label=document.createElement('label'),input=document.createElement('input'),copy=document.createElement('span'),name=document.createElement('span'),amount=document.createElement('strong');
       input.type='radio';input.name='installment-term';input.value=String(months);input.checked=selected===months;
       name.textContent=months+' cuotas';amount.textContent=money(each);
-      note.textContent=last===each?'Por mes':'Por mes · Última: '+money(last);
-      copy.append(name,amount,note);label.append(input,copy);fragment.append(label);
+      copy.append(name,amount);label.append(input,copy);fragment.append(label);
     }
     grid.replaceChildren(fragment);
   }

@@ -32,6 +32,15 @@
     }
     return data;
   }
+  function framePhoto(image,picture){
+    const original={x:0,y:0,width:picture.width,height:picture.height};
+    const frame=picture.framing||original;
+    if(![frame.x,frame.y,frame.width,frame.height,picture.width,picture.height].every(Number.isFinite)||frame.width<=0||frame.height<=0||frame.x<0||frame.y<0||frame.x+frame.width>picture.width||frame.y+frame.height>picture.height)return;
+    image.parentElement.style.aspectRatio=frame.width+'/'+frame.height;
+    image.parentElement.style.setProperty('--photo-ratio',String(frame.width/frame.height));
+    image.style.width=(picture.width/frame.width*100)+'%';image.style.height=(picture.height/frame.height*100)+'%';
+    image.style.left=(-frame.x/frame.width*100)+'%';image.style.top=(-frame.y/frame.height*100)+'%';
+  }
   function paintHero(data){
     const stage=$('.hero-collection');
     if(!stage)return;
@@ -44,7 +53,7 @@
       figure.hidden=!selected;
       if(!selected)continue;
       const image=figure.querySelector('img'),picture=images[selected.model+'|'+selected.color];
-      image.src=picture.path;image.alt=selected.model+', '+selected.color+' · imagen de referencia';
+      framePhoto(image,picture);image.src=picture.path;image.alt=selected.model+', '+selected.color+' · imagen de referencia';
       figure.dataset.productId=selected.id;
       figure.querySelector('strong').textContent=selected.model.replace(/^Samsung /,'');
       figure.querySelector('small').textContent=selected.color;
@@ -66,10 +75,10 @@
       card.querySelector('h3').textContent=group.model;
       const device=group.variants[0];
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
-      const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería por confirmar',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
+      const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería en excelente estado',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
       const image=card.querySelector('.product-image'),picture=images[device.model+'|'+device.color];
-      if(picture){image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-caption').textContent='Imagen de referencia · '+device.color;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
+      if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-caption').textContent='Imagen de referencia · '+device.color;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
       else{card.querySelector('.image-caption').hidden=true;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
@@ -90,7 +99,7 @@
   function showVariant(){
     const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);
     if(!p)return;
-    const specs=[['Capacidad',p.capacity],['Color',p.color],['Estado',p.condition],['Batería',p.battery||'Por confirmar']];
+    const specs=[['Capacidad',p.capacity],['Color',p.color],['Estado',p.condition],['Batería',p.battery||'En excelente estado']];
     if(p.grade)specs.push(['Categoría',p.grade]);
     if(Number.isSafeInteger(p.quantity))specs.push(['Disponibles',String(p.quantity)]);
     if(p.cycles!==null&&p.cycles!==undefined)specs.push(['Ciclos de batería',String(p.cycles)]);
@@ -102,7 +111,7 @@
     for(const [name,value]of specs){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);fragment.append(row);}
     $('#specs').replaceChildren(fragment);
     $('#detail-price').textContent=money(p.priceCents);
-    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. Precio publicado: ${money(p.priceCents)}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:''}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
+    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. Precio publicado: ${money(p.priceCents)}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:', batería en excelente estado'}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
     $('#consult').href='https://wa.me/50376241930?text='+encodeURIComponent(text);
   }
   function openDetails(group){

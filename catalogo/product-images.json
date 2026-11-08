@@ -11,7 +11,13 @@
       "path": "assets/products/samsung-s21-ultra-negro.png",
       "sha256": "1ffb61b0a9f7196f68b54a982a2040a7b08b499555737ae763131b9842bd2a45",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 142,
+        "y": 106,
+        "width": 340,
+        "height": 412
+      }
     },
     "Samsung S21 Ultra|Plata": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/galaxy-s21/gallery/uk-galaxy-s21-ultra-5g-g988-sm-g998bzsgeua-368888053?$624_624_PNG$",
@@ -24,7 +30,13 @@
       "path": "assets/products/samsung-s21-ultra-plata.png",
       "sha256": "747c147d87da350e86a4ed1c2715dd453a5271b90c6eea5485914b4477dc2b5c",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 146,
+        "y": 103,
+        "width": 332,
+        "height": 418
+      }
     },
     "Samsung S22 Ultra|Blanco": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2202/gallery/uk-galaxy-s22-ultra-s908-sm-s908bzwdeub-530847248?$624_624_PNG$",
@@ -37,7 +49,13 @@
       "path": "assets/products/samsung-s22-ultra-blanco.png",
       "sha256": "bccd3d3d389b01aa242049ae88828efc5862b7fc1a9f324c22e875da44150df3",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 125,
+        "y": 120,
+        "width": 374,
+        "height": 385
+      }
     },
     "Samsung S22 Ultra|Borgoña": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2202/gallery/uk-galaxy-s22-ultra-s908-sm-s908bdrdeub-530846360?$624_624_PNG$",
@@ -50,7 +68,13 @@
       "path": "assets/products/samsung-s22-ultra-borgona.png",
       "sha256": "a0b5e12e3b89e371c8e19274defbcfef26736c787b4ad2118519ada6f10dd7a4",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 125,
+        "y": 120,
+        "width": 374,
+        "height": 385
+      }
     },
     "Samsung S22 Ultra|Negro": {
       "model": "Samsung S22 Ultra",
@@ -62,7 +86,13 @@
       "path": "assets/products/samsung-s22-ultra-negro.png",
       "sha256": "c247dd6fdbb0ee73630d508d2893b170671f62b8709de99fe2349d3b01ac4089",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 125,
+        "y": 120,
+        "width": 374,
+        "height": 385
+      }
     },
     "Samsung S22 Ultra|Verde": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2202/gallery/uk-galaxy-s22-ultra-s908-sm-s908bzgdeub-530846804?$624_624_PNG$",
@@ -75,7 +105,13 @@
       "path": "assets/products/samsung-s22-ultra-verde.png",
       "sha256": "f71a44dd2aaca00e11626ee03388b15649e57c5ee8a8647edcaa600fe93c3af6",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 125,
+        "y": 120,
+        "width": 374,
+        "height": 385
+      }
     },
     "Samsung S23 Ultra|Negro": {
       "model": "Samsung S23 Ultra",
@@ -87,7 +123,13 @@
       "path": "assets/products/samsung-s23-ultra-negro.png",
       "sha256": "16afa39cdf4e0479e3321867392175b0333d50818c6aa038bff2fd3a9d85ab0e",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 125,
+        "y": 121,
+        "width": 373,
+        "height": 382
+      }
     },
     "Samsung S25 FE|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s731uzkaxaa/gallery/us-galaxy-s25-fe-sm-s731-sm-s731uzkaxaa-548774008?$product-details-jpg$",
@@ -101,7 +143,13 @@
       "path": "assets/products/samsung-s25-fe-negro.png",
       "sha256": "47ffedcd7a19c182cc85f1c6850a95bd685478bc545869e129a465b7d814730e",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 663,
+        "y": 54,
+        "width": 591,
+        "height": 1173
+      }
     },
     "Samsung S25 Ultra|Azul": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzbfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzbfxaa-548617513?$product-details-jpg$",
@@ -115,7 +163,13 @@
       "path": "assets/products/samsung-s25-ultra-azul.png",
       "sha256": "bec69192b00ef89e591980dc9d37d47e2d62d05744ca9c0dee45c54ccc2b06a2",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 320,
+        "y": 48,
+        "width": 1177,
+        "height": 1186
+      }
     },
     "Samsung S25 Ultra|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzbfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzbfxaa-548617513?$product-details-jpg$",
@@ -129,7 +183,13 @@
       "path": "assets/products/samsung-s25-ultra-celeste.png",
       "sha256": "bec69192b00ef89e591980dc9d37d47e2d62d05744ca9c0dee45c54ccc2b06a2",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 320,
+        "y": 48,
+        "width": 1177,
+        "height": 1186
+      }
     },
     "Samsung S25 Ultra|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzkexaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzkexaa-548617962?$product-details-jpg$",
@@ -143,7 +203,13 @@
       "path": "assets/products/samsung-s25-ultra-negro.png",
       "sha256": "6633f33220208ee8a7a1926c795979ba33f3855b403d5fccda991d83bd92b46e",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 320,
+        "y": 48,
+        "width": 1177,
+        "height": 1186
+      }
     },
     "Samsung S25|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931ulbaxaa/gallery/us-galaxy-s25-s931-551170-sm-s931ulbaxaa-547068836?$product-details-jpg$",
@@ -157,7 +223,13 @@
       "path": "assets/products/samsung-s25-celeste.png",
       "sha256": "52101f332e1ae9fd890bce05fa7f7803ceb8f9254298003a01be272a2feb4c77",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 687,
+        "y": 106,
+        "width": 543,
+        "height": 1068
+      }
     },
     "Samsung S25|Gris": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931uzsaxaa/gallery/us-galaxy-s25-s931-551170-sm-s931uzsaxaa-547069570?$product-details-jpg$",
@@ -171,7 +243,13 @@
       "path": "assets/products/samsung-s25-gris.png",
       "sha256": "5981a411c86364f2222be3f86d612051e7c20bbb691589b22ebe0473fa520908",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 687,
+        "y": 106,
+        "width": 543,
+        "height": 1068
+      }
     },
     "Samsung S26 FE|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s741uzkaxaa/gallery/us-galaxy-s26-fe-sm-s741-sm-s741uzkaxaa-554292693?$product-details-jpg$",
@@ -185,7 +263,13 @@
       "path": "assets/products/samsung-s26-fe-negro.png",
       "sha256": "fef8674cdf2875d7763fe34993e5d595b78108bcbd3bb89f954eaf9b69cfaf87",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 664,
+        "y": 53,
+        "width": 592,
+        "height": 1174
+      }
     },
     "Samsung S26 Plus|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzkaxaa-550994730?$product-details-jpg$",
@@ -199,7 +283,13 @@
       "path": "assets/products/samsung-s26-plus-negro.png",
       "sha256": "255101038fd62738b7bf97cc0f454bb91d90c4b69a9956d3145185611a30ad35",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 668,
+        "y": 67,
+        "width": 581,
+        "height": 1146
+      }
     },
     "Samsung S26|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942ulbexaa-550995215?$product-details-jpg$",
@@ -213,7 +303,13 @@
       "path": "assets/products/samsung-s26-celeste.png",
       "sha256": "39437033ec9af89f053e88173501ce80de9a81035c80c079bc1c3300241a0b23",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 683,
+        "y": 99,
+        "width": 551,
+        "height": 1082
+      }
     },
     "Samsung S26|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzkexaa-550995412?$product-details-jpg$",
@@ -227,7 +323,13 @@
       "path": "assets/products/samsung-s26-negro.png",
       "sha256": "fb0dbe20c16f8284dba1f063c09442a9651c1899a6375b29b09cb4f16805a6f7",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "framing": {
+        "x": 683,
+        "y": 99,
+        "width": 551,
+        "height": 1082
+      }
     },
     "Samsung Z Flip 4|Amarillo": {
       "model": "Samsung Z Flip 4",
@@ -242,7 +344,13 @@
       "path": "assets/products/samsung-z-flip-4-amarillo.png",
       "sha256": "1fea9da5ba5dab4ac27c2e017d03a04dc28976488455e47053a58af77a72f8a4",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 200,
+        "y": 110,
+        "width": 223,
+        "height": 404
+      }
     },
     "Samsung Z Flip 4|Blanco": {
       "model": "Samsung Z Flip 4",
@@ -256,7 +364,13 @@
       "path": "assets/products/samsung-z-flip-4-blanco.png",
       "sha256": "e65dfd86f4a9ce117447634fde25c468220f729f29de58a79ff73d3ebe60650e",
       "width": 720,
-      "height": 720
+      "height": 720,
+      "framing": {
+        "x": 186,
+        "y": 0,
+        "width": 348,
+        "height": 720
+      }
     },
     "Samsung Z Flip 6|Gris": {
       "model": "Samsung Z Flip 6",
@@ -268,7 +382,13 @@
       "path": "assets/products/samsung-z-flip-6-gris.png",
       "sha256": "476708eda5d4a222a7c141daf76dccd669b7fe36b385412c27c12f6b53e02ffe",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 147,
+        "y": 104,
+        "width": 329,
+        "height": 417
+      }
     },
     "Samsung Z Flip 7|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/f2507/gallery/us-galaxy-zflip7-f766-sm-f766uzkaxaa-547905701?$product-details-jpg$",
@@ -282,7 +402,13 @@
       "path": "assets/products/samsung-z-flip-7-negro.jpg",
       "sha256": "59da50f7e5d5e07bb63ed0124103ecab68f14bbac1df46473455c91e6183e2b7",
       "width": 1600,
-      "height": 1200
+      "height": 1200,
+      "framing": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 1200
+      }
     },
     "Samsung Z Fold 5|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2307/gallery/uk-galaxy-z-fold5-f946-466188-sm-f946blbbeub-537168146?$624_624_PNG$",
@@ -295,7 +421,13 @@
       "path": "assets/products/samsung-z-fold-5-celeste.png",
       "sha256": "c55e0a4149f23d70f1aded6a3b0ba2978a39be121141ae5642f54feb983827f5",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 165,
+        "y": 109,
+        "width": 294,
+        "height": 406
+      }
     },
     "Samsung Z Fold 6|Gris": {
       "model": "Samsung Z Fold 6",
@@ -307,7 +439,13 @@
       "path": "assets/products/samsung-z-fold-6-gris.png",
       "sha256": "19e51047423a33c65a7c4839c777d13fd8fce7fcedd44baf74760fe41f24c161",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "framing": {
+        "x": 162,
+        "y": 109,
+        "width": 300,
+        "height": 406
+      }
     },
     "iPhone 11 Pro Max|Blanco": {
       "model": "iPhone 11 Pro Max",

@@ -39,13 +39,20 @@ def download(entry):
         extension = {'PNG': 'png', 'JPEG': 'jpg', 'WEBP': 'webp'}.get(image.format)
     if not extension or min(width, height) < 200:
         raise ValueError('Image is not an adequate product photo')
+    framing={}
+    if item['model'].startswith('Samsung'):
+        with Image.open(io.BytesIO(data)) as image:
+            x,y,right,bottom=image.getchannel('A').getbbox() if 'A' in image.getbands() else (0,0,width,height)
+            pad=round(max(right-x,bottom-y)*.025)
+            x=max(0,x-pad);y=max(0,y-pad);right=min(width,right+pad);bottom=min(height,bottom+pad)
+            framing={'framing':{'x':x,'y':y,'width':right-x,'height':bottom-y}}
     slug = re.sub(r'[^a-z0-9]+','-',unicodedata.normalize('NFD',model).encode('ascii','ignore').decode().lower()).strip('-')
     filename = slug + '.' + extension
     target = output / filename
     temporary = output / (filename + '.tmp')
     temporary.write_bytes(data)
     temporary.replace(target)
-    return model, {**item, 'path': 'assets/products/' + filename, 'sha256': hashlib.sha256(data).hexdigest(), 'width': width, 'height': height}
+    return model, {**item, **framing, 'path': 'assets/products/' + filename, 'sha256': hashlib.sha256(data).hexdigest(), 'width': width, 'height': height}
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--model',action='append',help='Download only the specified model (repeatable)')

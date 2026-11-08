@@ -15,3 +15,7 @@
 .ui-icon{display:block;width:16px;height:16px;flex:0 0 16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.view{display:inline-flex;align-items:center;justify-content:center;gap:6px;line-height:1.2}
 
 .footer-brand{display:flex;flex-direction:column;gap:14px;flex:0 0 auto}.social-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.social-links a{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 11px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--muted);font-size:11px;font-weight:600}.social-links a:hover{color:var(--ink);border-color:var(--accent)}
+
+.photo-frame{position:absolute;inset:28px 10px 20px;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo-crop{position:relative;height:100%;max-width:100%;flex-shrink:0;overflow:hidden;background:#fff}.photo-crop>img{position:absolute;max-width:none;display:block;object-fit:fill;padding:0;transform:none}.hero-pick-photo{display:flex;align-items:center;justify-content:center}.hero-pick-samsung .photo-crop>img{transform:none}@media(max-width:720px){.photo-frame{inset:27px 7px 18px}}
+
+@supports(width:1cqw){.photo-frame,.hero-pick-photo{container-type:size}.photo-crop{width:min(100cqw,calc(100cqh * var(--photo-ratio,1)));height:auto;max-height:100%}}

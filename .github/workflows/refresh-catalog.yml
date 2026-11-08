@@ -2,7 +2,7 @@ name: Actualizar inventario público de Lunivo
 
 on:
   schedule:
-    - cron: '14,44 * * * *'
+    - cron: '22,52 * * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -13,6 +13,9 @@ on:
       - 'scripts/build-public-catalog.cjs'
       - 'feeds-core.js'
       - 'sales-core.js'
+      - 'catalogo/index.html'
+      - 'catalogo/catalog.js'
+      - 'catalogo/product-images.json'
 
 permissions:
   contents: write

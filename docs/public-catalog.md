@@ -20,7 +20,7 @@ Archivo: `.github/workflows/refresh-catalog.yml`.
 2. Comprobar que el archivo del workflow esté en `main` y que Actions esté habilitado. Abre https://github.com/bryanteta/-crm-ventas-celulares/actions/workflows/refresh-catalog.yml y ejecuta **Run workflow** para verificar la primera consulta.
 3. Una ejecución correcta consulta ambas fuentes, construye el JSON público, ejecuta las pruebas, guarda únicamente `catalogo/inventory.json` y solicita explícitamente una compilación de Pages. Es necesario solicitarla porque los commits hechos con `GITHUB_TOKEN` no disparan el Pages heredado por sí solos.
 
-La tarea está programada a los minutos 14 y 44 de cada hora, y permite ejecución manual. GitHub puede retrasar tareas programadas: no es tiempo real ni un máximo garantizado de 30 minutos. Actions y Pages en este repositorio público utilizan el servicio gratuito estándar de GitHub.
+La tarea está programada a los minutos 22 y 52 de cada hora, y permite ejecución manual. GitHub puede retrasar tareas programadas: no es tiempo real ni un máximo garantizado de 30 minutos. Actions y Pages en este repositorio público utilizan el servicio gratuito estándar de GitHub.
 
 Permisos del workflow: `contents: write` para guardar el catálogo y `pages: write` para solicitar la publicación. La tarea no tiene permiso para administrar secretos. El secreto se envía solo al endpoint del proveedor durante la consulta. Las respuestas privadas se procesan dentro de un directorio temporal que se elimina al finalizar; no se suben artefactos privados ni se hace commit de datos crudos. Solo se guarda el JSON público.
 
@@ -83,3 +83,11 @@ El botón de luna/sol de la cabecera alterna el tema. En la primera visita se re
 `theme.js` aplica la preferencia en la cabecera del documento antes de cargar los estilos para evitar el destello claro al abrir el modo oscuro. También ajusta el color de la barra del navegador. Las superficies, botones, filtros, avisos y diálogos tienen su paleta oscura. Las fotos de productos conservan sus colores originales sobre una base neutra.
 
 Validación: `npm run test:catalog-theme` comprueba persistencia, preferencia del sistema, sincronización entre pestañas, contraste de botones, diálogo oscuro, controles en pantallas pequeñas y funcionamiento con almacenamiento bloqueado.
+
+## Comprobaciones de actualización y presentación
+
+El 8 de noviembre se confirmó que las consultas y publicaciones manuales funcionaban, pero no aparecían ejecuciones con evento `schedule`. Se volvió a registrar el horario (minutos 22 y 52 UTC), y se deshabilitó/habilitó la tarea para reactivar la programación. La tarea también consulta los proveedores al publicar cambios de la portada, código del catálogo o manifiesto de imágenes. Los commits de `GITHUB_TOKEN` no disparan otra tarea, y se mantiene la solicitud explícita de compilación de Pages.
+
+Una ejecución manual correcta no demuestra que el cron esté funcionando. Para comprobar el automático se debe revisar una ejecución cuyo evento sea `schedule`, su resultado y la nueva fecha del JSON público. GitHub puede retrasar o descartar tareas programadas; si se necesita un horario independiente se puede usar un programador externo que invoque `workflow_dispatch` con una credencial de GitHub limitada al repositorio, guardada de forma privada en ese programador.
+
+Las fotos Samsung usan metadatos de encuadre calculados sobre los márgenes transparentes originales. El navegador centra el dispositivo dentro de la misma zona que los iPhone, sin cambiar los archivos ni sus colores. «Batería en excelente estado» se usa, por indicación del comercio, cuando el proveedor no aporta porcentaje; los porcentajes existentes se conservan y no se inventa un 100%.

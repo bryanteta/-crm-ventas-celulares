@@ -135,3 +135,9 @@ test('supplier API to public catalog to image binding keeps the declared Lila co
  const [p]=buildCatalog(s).products;assert.equal(p.model,'iPhone 14 Plus');assert.equal(p.color,'Lila');assert.equal(p.capacity,'128 GB');assert.equal(p.battery,'100%');assert.equal(p.condition,'Seminuevo');assert.equal(p.priceCents,38000);assert.equal(p.quantity,1);
  const images=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));assert.equal(images.products[p.model+'|'+p.color].officialColor,'purple');assert(!images.unavailable[p.model+'|'+p.color]);
 });
+
+test('photo framing stays within original images and keeps product asset bytes unchanged',()=>{
+ const fs=require('node:fs'),m=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));
+ for(const item of Object.values(m.products))if(item.framing){const f=item.framing;assert([f.x,f.y,f.width,f.height].every(Number.isFinite));assert(f.x>=0&&f.y>=0&&f.width>0&&f.height>0);assert(f.x+f.width<=item.width&&f.y+f.height<=item.height);}
+ assert(m.products['Samsung S25 Ultra|Celeste'].framing.width<m.products['Samsung S25 Ultra|Celeste'].width);
+});

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-08T19:51:36.862Z",
+  "updatedAt": "2026-11-08T21:26:35.290Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1019,24 +1019,6 @@
       "box": null,
       "ram": "",
       "priceCents": 58000,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "3fe924e3e9483fad1ac2",
-      "manufacturer": "Apple",
-      "model": "iPhone 15",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 63000,
       "quantity": 1,
       "available": true
     },

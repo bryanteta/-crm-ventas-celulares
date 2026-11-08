@@ -15,7 +15,10 @@ const fs=require('node:fs');
  const rendered=await page.locator('.card').evaluateAll(cards=>cards.map(c=>c.dataset.productId));
  assert.deepEqual([...rendered].sort(),data.products.map(p=>p.id).sort());
  const imageMap=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));
- assert(data.products.every(p=>imageMap.products[p.model]),'Every current model has an official image');
+ assert(data.products.every(p=>imageMap.products[p.model+'|'+p.color]||imageMap.unavailable[p.model+'|'+p.color]),'Every variant has an exact color image or an explicit pending entry');
+ const assigned=await page.locator('.card').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,src:c.querySelector('img').getAttribute('src'),alt:c.querySelector('img').alt,pending:c.querySelector('.image-placeholder').textContent})));
+ for(const card of assigned){const p=data.products.find(p=>p.id===card.id),image=imageMap.products[p.model+'|'+p.color];if(image){assert.equal(card.src,image.path);assert(card.alt.includes(p.color));}else{assert.equal(card.src,null);assert(card.pending.includes('color pendiente'));}}
+ assert.equal(await page.getByText('Estado por confirmar',{exact:false}).count(),0);
  await page.locator('.product-image').first().evaluate(img=>img.decode());
  assert(await page.locator('.product-image').first().evaluate(img=>img.naturalWidth>0));
  assert.equal(await page.locator('#error').isVisible(),false);

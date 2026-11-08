@@ -8,6 +8,8 @@ import json
 import pathlib
 import urllib.parse
 import urllib.request
+import re
+import unicodedata
 from PIL import Image
 
 root = pathlib.Path(__file__).resolve().parent.parent
@@ -37,7 +39,7 @@ def download(entry):
         extension = {'PNG': 'png', 'JPEG': 'jpg', 'WEBP': 'webp'}.get(image.format)
     if not extension or min(width, height) < 200:
         raise ValueError('Image is not an adequate product photo')
-    slug = model.lower().replace(' ', '-')
+    slug = re.sub(r'[^a-z0-9]+','-',unicodedata.normalize('NFD',model).encode('ascii','ignore').decode().lower()).strip('-')
     filename = slug + '.' + extension
     target = output / filename
     temporary = output / (filename + '.tmp')
@@ -48,8 +50,8 @@ def download(entry):
 parser=argparse.ArgumentParser()
 parser.add_argument('--model',action='append',help='Download only the specified model (repeatable)')
 args=parser.parse_args()
-entries=[(model,item) for model,item in manifest['products'].items() if not args.model or model in args.model]
-if args.model and set(args.model)-set(manifest['products']):
+entries=[(model,item) for model,item in manifest['products'].items() if not args.model or item['model'] in args.model]
+if args.model and set(args.model)-{item['model'] for item in manifest['products'].values()}:
     raise ValueError('Unknown model')
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
     results = list(pool.map(download, entries))

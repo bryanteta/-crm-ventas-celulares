@@ -16,7 +16,7 @@ function modelName(raw) {
   throw Error('Modelo no reconocido: revisa la fuente antes de publicar.');
 }
 function colorName(raw) {
-  const colors = {blanco:'Blanco',white:'Blanco',negro:'Negro',black:'Negro',morado:'Morado',purple:'Morado',verde:'Verde',green:'Verde',dorado:'Dorado',gold:'Dorado',azul:'Azul',blue:'Azul',rojo:'Rojo',red:'Rojo',celeste:'Celeste',amarillo:'Amarillo',yellow:'Amarillo',rosado:'Rosado',pink:'Rosado',rosa:'Rosado',desert:'Titanio desierto',gris:'Gris',gray:'Gris',grey:'Gris',anaranjado:'Anaranjado',orange:'Anaranjado',silver:'Plata',plata:'Plata',burgundy:'Borgoña',natural:'Titanio natural',titanio:'Titanio'};
+  const colors = {blanco:'Blanco',white:'Blanco',negro:'Negro',black:'Negro',morado:'Morado',purple:'Morado',verde:'Verde',green:'Verde',dorado:'Dorado',gold:'Dorado',azul:'Azul',blue:'Azul',rojo:'Rojo',red:'Rojo',celeste:'Celeste',amarillo:'Amarillo',yellow:'Amarillo',rosado:'Rosado',pink:'Rosado',rosa:'Rosado',desert:'Titanio desierto',gris:'Gris',gray:'Gris',grey:'Gris',anaranjado:'Anaranjado',orange:'Anaranjado',silver:'Plata',plata:'Plata',burgundy:'Borgoña',natural:'Titanio natural',titanio:'Titanio natural'};
   const words=String(raw).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').match(/[a-z]+/g)||[];
   return [...new Set(words.map(w=>colors[w]).filter(Boolean))].join(' / ') || 'Color por confirmar';
 }
@@ -33,7 +33,7 @@ function buildCatalog(snapshot, now=Date.now()) {
       const shorthand=r.notes.match(/\b(64|128|256|512|1024)\s*\/\s*(?:100|[1-9]?\d)\s*%/);
       const capacity=storage ? `${storage[1]||storage[2]} ${storage[1]?'GB':'TB'}` : shorthand ? `${shorthand[1]} GB` : 'Capacidad por confirmar';
       const description=`${r.category} ${r.model} ${r.notes}`;
-      const condition=/\b(nuevo|sellado)\b/i.test(description) ? 'Nuevo' : /\bopen\s*box\b/i.test(description) ? 'Open Box' : 'Estado por confirmar';
+      const condition=/\b(nuevo|sellado)\b/i.test(description) ? 'Nuevo' : /\bopen\s*box\b/i.test(description) ? 'Open Box' : 'Seminuevo';
       const grade=/^(A\+?|B\+?)$/.test(r.category) ? r.category : '';
       const percent=(r.battery+' '+r.notes).match(/\b(100|[1-9]?\d)\s*%/);
       const battery=percent ? `${Number(percent[1])}%` : '';

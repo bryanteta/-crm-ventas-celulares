@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-08T18:07:53.901Z",
+  "updatedAt": "2026-11-08T18:31:01.943Z",
   "products": [
     {
-      "id": "56dd16d2886f92d08fbd",
+      "id": "a76739d9f8b322114a0f",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "64 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -22,12 +22,12 @@
       "available": true
     },
     {
-      "id": "4b77f33c120b7159f0ca",
+      "id": "294ffe2a72c726158831",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "64 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -39,12 +39,12 @@
       "available": true
     },
     {
-      "id": "7fb98e4e6333f91246aa",
+      "id": "063d011deca5175beb7a",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "128 GB",
       "color": "Morado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -56,12 +56,12 @@
       "available": true
     },
     {
-      "id": "562f82dc1319683363a0",
+      "id": "d8d7aa27a1ce5e4575cc",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -73,12 +73,12 @@
       "available": true
     },
     {
-      "id": "d5e0b2910dba6a6653bc",
+      "id": "2fe2450870c9f6a016fe",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -90,12 +90,12 @@
       "available": true
     },
     {
-      "id": "a3a117130af2f40bad47",
+      "id": "c33a9a88e05af2cecfb4",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -107,12 +107,12 @@
       "available": true
     },
     {
-      "id": "6126fefaf7074fd38318",
+      "id": "e41e611db907c3aaa2ab",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -124,12 +124,12 @@
       "available": true
     },
     {
-      "id": "e33aea2b0334bb6d66cc",
+      "id": "128a88131b618930dd15",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -141,12 +141,12 @@
       "available": true
     },
     {
-      "id": "f8e947c66c1b97c96cc3",
+      "id": "c331dbc4609d1d281e08",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [
@@ -160,12 +160,12 @@
       "available": true
     },
     {
-      "id": "77bd9c05e9495d028d2d",
+      "id": "37ac6885cfe82a50e3f8",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [
@@ -179,12 +179,12 @@
       "available": true
     },
     {
-      "id": "eb68db7480a5c42fe8d9",
+      "id": "bdca035d47ff1de20e62",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -196,12 +196,12 @@
       "available": true
     },
     {
-      "id": "236df506027294f3c12b",
+      "id": "e1f08230c1fd9ce27259",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -213,12 +213,12 @@
       "available": true
     },
     {
-      "id": "de4aac27edb87dc7b78b",
+      "id": "c62c5d0df24b9ca36c2a",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Rojo",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -230,12 +230,12 @@
       "available": true
     },
     {
-      "id": "8ab46b2c2de187799ffb",
+      "id": "f3c7200901ca3c462c1d",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -247,12 +247,12 @@
       "available": true
     },
     {
-      "id": "714b195ccb0a618b4a0e",
+      "id": "9838f723991cd6eb5881",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Rojo",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -264,12 +264,12 @@
       "available": true
     },
     {
-      "id": "5f0d857578577ecb8fd6",
+      "id": "a55b2537f2e4a030a40c",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -281,12 +281,12 @@
       "available": true
     },
     {
-      "id": "f228a54263d472f0590c",
+      "id": "7bbb7342cd51ab77bd7b",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -298,12 +298,12 @@
       "available": true
     },
     {
-      "id": "b2bf548c793e6e8a2094",
+      "id": "222f7daa4f4b529d224f",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -315,12 +315,12 @@
       "available": true
     },
     {
-      "id": "7981ecba6b1ba3a483fc",
+      "id": "afa24d10476009b3d937",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -332,12 +332,12 @@
       "available": true
     },
     {
-      "id": "1a47db5e5e1b1ae56e39",
+      "id": "21ae2588eb8208bfb905",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Rojo",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -349,12 +349,12 @@
       "available": true
     },
     {
-      "id": "6dac3523bfedf4ccba63",
+      "id": "370a7f2bd6dbb817a666",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -366,12 +366,12 @@
       "available": true
     },
     {
-      "id": "b0730a384593e8083ed4",
+      "id": "38deaeda4877c87200d7",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -383,12 +383,12 @@
       "available": true
     },
     {
-      "id": "9da8b443082714571d5d",
+      "id": "ae55f5895f4df0a2a7cd",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "256 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [
@@ -402,12 +402,12 @@
       "available": true
     },
     {
-      "id": "eee7509334aa9c7ac8d3",
+      "id": "787a9620a459afab4027",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Color por confirmar",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -419,12 +419,12 @@
       "available": true
     },
     {
-      "id": "213797689f57c4f1851c",
+      "id": "8647376cad16d644f279",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -436,12 +436,12 @@
       "available": true
     },
     {
-      "id": "2641c6c729f477258ea9",
+      "id": "67a31ebb1cea89458f30",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -453,12 +453,12 @@
       "available": true
     },
     {
-      "id": "7b25d982d1709e89ff71",
+      "id": "f38d58013dbb0330ccf8",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -470,12 +470,12 @@
       "available": true
     },
     {
-      "id": "043ad4c6311caa0ff707",
+      "id": "e30eae6315bbb3556891",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -487,12 +487,12 @@
       "available": true
     },
     {
-      "id": "af59ac56d2e33259a26f",
+      "id": "189b2560cf132e55d877",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -504,12 +504,12 @@
       "available": true
     },
     {
-      "id": "1832d63a30543c41e237",
+      "id": "123084ea8f621e6cabca",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -521,12 +521,12 @@
       "available": true
     },
     {
-      "id": "7a3840e38e0ce0e553a0",
+      "id": "a19e67e848a39c27f962",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -538,12 +538,12 @@
       "available": true
     },
     {
-      "id": "dec316293df8ff090418",
+      "id": "b72c6f75f49b67f60b38",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -555,12 +555,12 @@
       "available": true
     },
     {
-      "id": "2677d1f66ce9dc86ef3c",
+      "id": "c416a611bcdcc8510106",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -572,12 +572,12 @@
       "available": true
     },
     {
-      "id": "d52e477c269efe10e89a",
+      "id": "34eb838b7603f5d381c8",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -589,12 +589,12 @@
       "available": true
     },
     {
-      "id": "6de24c2c14db53ab2374",
+      "id": "06d713d39a57c9716941",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -606,12 +606,12 @@
       "available": true
     },
     {
-      "id": "a80359da400dec609ac8",
+      "id": "d16754679b77c61d6872",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -623,12 +623,12 @@
       "available": true
     },
     {
-      "id": "c89cfe60e2aa8cbc4725",
+      "id": "5403dba31697a404ffed",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "512 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -640,12 +640,12 @@
       "available": true
     },
     {
-      "id": "00bb4a7ec9514af413b8",
+      "id": "987dae2ca736ef742b2b",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -657,12 +657,12 @@
       "available": true
     },
     {
-      "id": "9aecca0548ca764d60af",
+      "id": "58c2a3f956e77fe82fbf",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -674,12 +674,12 @@
       "available": true
     },
     {
-      "id": "864ca8c9570eb4ec168d",
+      "id": "ce34eb005f802cb6b44b",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "86%",
       "observations": [],
@@ -691,12 +691,12 @@
       "available": true
     },
     {
-      "id": "319e5fa7171a70ca30c0",
+      "id": "93577638f8690126e240",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -708,12 +708,12 @@
       "available": true
     },
     {
-      "id": "5435a984f55d41adc75e",
+      "id": "4c7d4376dacb1fab3b41",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -725,12 +725,12 @@
       "available": true
     },
     {
-      "id": "d7991cfedbd9016d4243",
+      "id": "808d7792a65943ee3b46",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -742,12 +742,12 @@
       "available": true
     },
     {
-      "id": "052b66680e096d3532c0",
+      "id": "f67f02cd634395429cbc",
       "manufacturer": "Apple",
       "model": "iPhone 14",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -759,12 +759,12 @@
       "available": true
     },
     {
-      "id": "c8f6a082acc24eda394d",
+      "id": "036206e3f869eff38863",
       "manufacturer": "Apple",
       "model": "iPhone 14",
       "capacity": "128 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -776,12 +776,12 @@
       "available": true
     },
     {
-      "id": "78c745212c6a2bc066f9",
+      "id": "6b5ab6f7a65449c214cf",
       "manufacturer": "Apple",
       "model": "iPhone 14 Plus",
       "capacity": "128 GB",
       "color": "Color por confirmar",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -793,12 +793,12 @@
       "available": true
     },
     {
-      "id": "cccebc645655a8022d12",
+      "id": "2b78cd1cc55f67f14401",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -810,12 +810,12 @@
       "available": true
     },
     {
-      "id": "88dcdf3f0baf21b30685",
+      "id": "9ccc9d99b34c87fb4664",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -827,12 +827,12 @@
       "available": true
     },
     {
-      "id": "aab01f930760143ea777",
+      "id": "940d8cbac56b274ec76d",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -844,12 +844,12 @@
       "available": true
     },
     {
-      "id": "cc4d8a226cc250c3249c",
+      "id": "7c11cc17f56920cfd712",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -861,12 +861,12 @@
       "available": true
     },
     {
-      "id": "f660bfff2081c3141364",
+      "id": "68c3abcf574f25ca4cf2",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [
@@ -881,12 +881,12 @@
       "available": true
     },
     {
-      "id": "3875e605781dd77d8008",
+      "id": "e664faf0606dd0b69901",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "128 GB",
       "color": "Morado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -898,12 +898,12 @@
       "available": true
     },
     {
-      "id": "f719ff6bbd8b4c0be10a",
+      "id": "b0141f9262dd09b60d88",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "256 GB",
       "color": "Morado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -915,12 +915,12 @@
       "available": true
     },
     {
-      "id": "8e21516f1ee8210be709",
+      "id": "c54282be92bf5fad77f3",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -932,12 +932,12 @@
       "available": true
     },
     {
-      "id": "3f57f3b4ed1ab25f9d59",
+      "id": "806cfd578541f36d3af3",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Amarillo",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -949,12 +949,12 @@
       "available": true
     },
     {
-      "id": "2e145f8a48276dd1b562",
+      "id": "beaa4a51bb478acd7ff4",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Amarillo",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [],
@@ -966,12 +966,12 @@
       "available": true
     },
     {
-      "id": "db4517774362416b279a",
+      "id": "5366ec4997572373dc47",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Rosado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -983,12 +983,12 @@
       "available": true
     },
     {
-      "id": "2abb948138fee1ac1f96",
+      "id": "5a0997527d164c8ee9f0",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1000,12 +1000,12 @@
       "available": true
     },
     {
-      "id": "89d2d61b0b946b33dba4",
+      "id": "3c6f2ee9321e9b283811",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1017,12 +1017,12 @@
       "available": true
     },
     {
-      "id": "590d88d854f642c0f833",
+      "id": "80813992d36ea96ffa28",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1034,12 +1034,12 @@
       "available": true
     },
     {
-      "id": "ce3421d41d391413b2ad",
+      "id": "55a9bab144b2c64b2e2e",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1051,12 +1051,12 @@
       "available": true
     },
     {
-      "id": "ef59d08b043647f2ad0b",
+      "id": "a6dbd7e3976e716d5a76",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "256 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1068,12 +1068,12 @@
       "available": true
     },
     {
-      "id": "d96f6a48a98011992ebd",
+      "id": "51bffbe3bfcb2cd3ad18",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
       "color": "Rosado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1102,12 +1102,12 @@
       "available": true
     },
     {
-      "id": "f2768343d756300fdd80",
+      "id": "6d88e54f807019841d55",
       "manufacturer": "Apple",
       "model": "iPhone 15 Plus",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1119,12 +1119,12 @@
       "available": true
     },
     {
-      "id": "6449ebdd16d0837bdf02",
+      "id": "409954b622cc85150201",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -1136,12 +1136,12 @@
       "available": true
     },
     {
-      "id": "8a4226767bd14fffae44",
+      "id": "a912f7622fad0bd89915",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1153,12 +1153,12 @@
       "available": true
     },
     {
-      "id": "750a1ec575d1520d61b6",
+      "id": "3dde88d05a5e04a5b222",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
-      "color": "Titanio",
-      "condition": "Estado por confirmar",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1170,12 +1170,12 @@
       "available": true
     },
     {
-      "id": "6d7f3b9ffa12a611e79d",
+      "id": "b2e1f44791787a1a901a",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1187,12 +1187,12 @@
       "available": true
     },
     {
-      "id": "0b00b7b6a939adb8ccf8",
+      "id": "f5a294ddfa235be56c84",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1204,12 +1204,12 @@
       "available": true
     },
     {
-      "id": "ada91703a9b56d704873",
+      "id": "ce0c3393da1033e180ca",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio",
-      "condition": "Estado por confirmar",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [
@@ -1223,12 +1223,12 @@
       "available": true
     },
     {
-      "id": "a981389df05f9e1454fa",
+      "id": "1fc913c591ad2b1b8f37",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [
@@ -1242,12 +1242,12 @@
       "available": true
     },
     {
-      "id": "0fbf11a57cebdc34e9c0",
+      "id": "1504f5f62990c7d94f8e",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [
@@ -1262,12 +1262,12 @@
       "available": true
     },
     {
-      "id": "fdd16530be54d96d9189",
+      "id": "a5384926845d6a5bacfd",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [
@@ -1283,12 +1283,12 @@
       "available": true
     },
     {
-      "id": "359bf3983b29566825fb",
+      "id": "f24202670b85707b0b9b",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [
@@ -1304,12 +1304,12 @@
       "available": true
     },
     {
-      "id": "7e00d811d3cea92fb015",
+      "id": "c3d74015003052a9e7e4",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [
@@ -1323,12 +1323,12 @@
       "available": true
     },
     {
-      "id": "7d2768ef6a9cded5f3b8",
+      "id": "a42cab9e7a125c12515f",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [
@@ -1343,12 +1343,12 @@
       "available": true
     },
     {
-      "id": "c78e689f82ac18fcac16",
+      "id": "98085156832a6002f84b",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
       "observations": [
@@ -1362,12 +1362,12 @@
       "available": true
     },
     {
-      "id": "83ed73a8c2fc90ac3043",
+      "id": "fd402f79560f956cc629",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio",
-      "condition": "Estado por confirmar",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1379,12 +1379,12 @@
       "available": true
     },
     {
-      "id": "13c1df8e31d982d59d78",
+      "id": "da3c4efb8a80deb5df82",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Plata",
-      "condition": "Estado por confirmar",
+      "color": "Negro",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1396,29 +1396,12 @@
       "available": true
     },
     {
-      "id": "5786b4b662c10e2bf481",
+      "id": "338ccbb30a3ca2455958",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Estado por confirmar",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "Por confirmar",
-      "box": true,
-      "priceCents": 86000,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "d9e90dfc9c079372f057",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "256 GB",
-      "color": "Titanio",
-      "condition": "Estado por confirmar",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1430,12 +1413,12 @@
       "available": true
     },
     {
-      "id": "bc7777c4b5a50324b346",
+      "id": "c947cc10a79f37965de1",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1447,12 +1430,12 @@
       "available": true
     },
     {
-      "id": "913942a46b8a17618498",
+      "id": "40e05c5ede7817b4a786",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1464,12 +1447,12 @@
       "available": true
     },
     {
-      "id": "3b073503caf7f9e78101",
+      "id": "b5ff050e0904a84c07c2",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1481,12 +1464,12 @@
       "available": true
     },
     {
-      "id": "a6b0c10a3960dcf7903c",
+      "id": "e05b2d2fcd4f804b9d77",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "86%",
       "observations": [],
@@ -1498,12 +1481,12 @@
       "available": true
     },
     {
-      "id": "1b2ef196dcc8cec118a0",
+      "id": "f81bda9eb13474ea9c1a",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "128 GB",
       "color": "Rosado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "89%",
       "observations": [],
@@ -1532,12 +1515,12 @@
       "available": true
     },
     {
-      "id": "5a89019c0207f57a510b",
+      "id": "bf9cc2326b778f7372f5",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "128 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "85%",
       "observations": [],
@@ -1549,12 +1532,12 @@
       "available": true
     },
     {
-      "id": "b5ffe8a8a1c0dfcaf569",
+      "id": "a342e0ef9fa5cb04e53c",
       "manufacturer": "Apple",
       "model": "iPhone 16 Plus",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "92%",
       "observations": [
@@ -1568,12 +1551,12 @@
       "available": true
     },
     {
-      "id": "a004e72e43eb230c0d24",
+      "id": "f54746384274c0e9819a",
       "manufacturer": "Apple",
       "model": "iPhone 16 Plus",
       "capacity": "128 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "93%",
       "observations": [],
@@ -1585,12 +1568,12 @@
       "available": true
     },
     {
-      "id": "3d9a9500a59d1532fd25",
+      "id": "afeb02e47507d2492910",
       "manufacturer": "Apple",
       "model": "iPhone 16 Plus",
       "capacity": "128 GB",
       "color": "Rosado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "97%",
       "observations": [],
@@ -1602,12 +1585,12 @@
       "available": true
     },
     {
-      "id": "a3548f72ba6364ef189c",
+      "id": "9044abde345c143d9f53",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "91%",
       "observations": [],
@@ -1619,12 +1602,12 @@
       "available": true
     },
     {
-      "id": "40fae23645ad168a4f1b",
+      "id": "74dbf400c4525c60852e",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
       "color": "Titanio desierto",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "90%",
       "observations": [],
@@ -1636,12 +1619,12 @@
       "available": true
     },
     {
-      "id": "ec9631ad35a1b3b9bc60",
+      "id": "a2e8d226e577f445f4b4",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
       "color": "Titanio desierto",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "93%",
       "observations": [],
@@ -1653,12 +1636,12 @@
       "available": true
     },
     {
-      "id": "2f4eef52e89c40f8ee57",
+      "id": "8cc3fc0d182544800a5c",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "93%",
       "observations": [],
@@ -1670,12 +1653,12 @@
       "available": true
     },
     {
-      "id": "818b620084f4df2e9699",
+      "id": "7aa01f0644acd2590e4a",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "90%",
       "observations": [],
@@ -1687,12 +1670,12 @@
       "available": true
     },
     {
-      "id": "1398a084f49becee871c",
+      "id": "722a70495c4397d37703",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "93%",
       "observations": [],
@@ -1704,12 +1687,12 @@
       "available": true
     },
     {
-      "id": "515d9a892799fe1c755a",
+      "id": "0bb1f5706fd08cab6a9d",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio",
-      "condition": "Estado por confirmar",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "89%",
       "observations": [],
@@ -1721,12 +1704,12 @@
       "available": true
     },
     {
-      "id": "fd893ae6e3640c5ed3ff",
+      "id": "e5c35f18b1d5c5651c2e",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Titanio desierto",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "89%",
       "observations": [],
@@ -1738,12 +1721,12 @@
       "available": true
     },
     {
-      "id": "a79ee0850846517ff743",
+      "id": "5ef65fda70dbf1989390",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio",
-      "condition": "Estado por confirmar",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "94%",
       "observations": [],
@@ -1755,12 +1738,12 @@
       "available": true
     },
     {
-      "id": "c8376f836a20ea135c4c",
+      "id": "cd3d578353d31541b64d",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Titanio desierto",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "96%",
       "observations": [],
@@ -1772,12 +1755,12 @@
       "available": true
     },
     {
-      "id": "5125e236d950106c334a",
+      "id": "2c5f99533e850c8025f6",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "99%",
       "observations": [],
@@ -1789,12 +1772,12 @@
       "available": true
     },
     {
-      "id": "167cfb9907455eca36f9",
+      "id": "a7bef3f4739630c232d1",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Gris",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "98%",
       "observations": [],
@@ -1806,12 +1789,12 @@
       "available": true
     },
     {
-      "id": "3a1d0537474845de433f",
+      "id": "9c3c923a001d01016812",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "96%",
       "observations": [],
@@ -1823,12 +1806,12 @@
       "available": true
     },
     {
-      "id": "73b586a944a49c1ead2c",
+      "id": "3f11b56cd1ca51d4aecb",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "95%",
       "observations": [],
@@ -1840,12 +1823,12 @@
       "available": true
     },
     {
-      "id": "011a31eff8e753a79d12",
+      "id": "877134ba2126e078ed30",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "94%",
       "observations": [],
@@ -1857,12 +1840,12 @@
       "available": true
     },
     {
-      "id": "9e1957dc822e004f7847",
+      "id": "a7664d5278d3c84cc975",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "93%",
       "observations": [],
@@ -1874,12 +1857,12 @@
       "available": true
     },
     {
-      "id": "ea88f99b81cfc31b3b6d",
+      "id": "cf0a856bae0445452ae0",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "92%",
       "observations": [],
@@ -1891,12 +1874,12 @@
       "available": true
     },
     {
-      "id": "f6e01dfcbb50a42ce19b",
+      "id": "d72f17bc9250dafe8e29",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Dorado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "91%",
       "observations": [],
@@ -1908,12 +1891,12 @@
       "available": true
     },
     {
-      "id": "2226a80d6219a6e089e6",
+      "id": "8e905e0db5b83f9cf532",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "89%",
       "observations": [],
@@ -1925,12 +1908,12 @@
       "available": true
     },
     {
-      "id": "61764ea9f829ac6a79cc",
+      "id": "daceedb22e84ba99023b",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "91%",
       "observations": [],
@@ -1942,12 +1925,12 @@
       "available": true
     },
     {
-      "id": "35295d079b2928086ff3",
+      "id": "0bc2f1b6125472c35c3c",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro",
       "capacity": "256 GB",
       "color": "Plata",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -1976,12 +1959,12 @@
       "available": true
     },
     {
-      "id": "ab4e5343d24048f4f44c",
+      "id": "83fa22aaac1335000454",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
       "color": "Anaranjado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A",
       "battery": "98%",
       "observations": [],
@@ -1993,12 +1976,12 @@
       "available": true
     },
     {
-      "id": "b43b3e05c4490b02fdd2",
+      "id": "aa721d520996295ae5eb",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
       "color": "Plata",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "94%",
       "observations": [],
@@ -2010,12 +1993,12 @@
       "available": true
     },
     {
-      "id": "8d7fb31b352c5f23c923",
+      "id": "3eb01e652483ec6524e6",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2044,12 +2027,12 @@
       "available": true
     },
     {
-      "id": "8b8bc5e639fb11832f1c",
+      "id": "db0d0572131bd2a7002b",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
       "color": "Plata",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -2061,12 +2044,12 @@
       "available": true
     },
     {
-      "id": "b354eceae30fd86b86b2",
+      "id": "842ed5ff3d05943f0d69",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
       "color": "Plata",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -2078,12 +2061,12 @@
       "available": true
     },
     {
-      "id": "f985ccc25dd298ed3b6d",
+      "id": "5dd1cd0820b82a9548ed",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "1 TB",
       "color": "Anaranjado",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2095,12 +2078,12 @@
       "available": true
     },
     {
-      "id": "a65f53abccda33b5c266",
+      "id": "b2ea2b4012561fc94a1d",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro",
       "capacity": "256 GB",
       "color": "Color por confirmar",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -2146,12 +2129,12 @@
       "available": true
     },
     {
-      "id": "6c2adca8460db66b3e78",
+      "id": "15f7320fb39225b57d83",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro Max",
       "capacity": "256 GB",
       "color": "Borgoña",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -2197,12 +2180,12 @@
       "available": true
     },
     {
-      "id": "09f90cfb56eedd5700b0",
+      "id": "73659ba6b0e0d1355666",
       "manufacturer": "Samsung",
       "model": "Samsung S21 Ultra",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2214,12 +2197,12 @@
       "available": true
     },
     {
-      "id": "9de8632d952a88aff742",
+      "id": "89c7f1b4e5bdd9072ace",
       "manufacturer": "Samsung",
       "model": "Samsung S21 Ultra",
       "capacity": "128 GB",
       "color": "Plata",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2231,12 +2214,12 @@
       "available": true
     },
     {
-      "id": "698a5180aec46c57909c",
+      "id": "ef0e90e28d3de6296162",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "B+",
       "battery": "100%",
       "observations": [],
@@ -2248,12 +2231,12 @@
       "available": true
     },
     {
-      "id": "d2c75eeb9929f47f5493",
+      "id": "4d86b16c6e4526300d8d",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
       "color": "Verde",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2265,12 +2248,12 @@
       "available": true
     },
     {
-      "id": "3caed896321c6d00e126",
+      "id": "c45af2d4522d6c1d6b79",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
       "color": "Borgoña",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2282,12 +2265,12 @@
       "available": true
     },
     {
-      "id": "876eacec4b7bf4bdbcea",
+      "id": "d259a4de7ad3f7b38c1d",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2299,12 +2282,12 @@
       "available": true
     },
     {
-      "id": "131450cb47f0ddcd9c60",
+      "id": "610af96796997a0cdd16",
       "manufacturer": "Samsung",
       "model": "Samsung S23 Ultra",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "B",
       "battery": "100%",
       "observations": [],
@@ -2316,12 +2299,12 @@
       "available": true
     },
     {
-      "id": "b2fbafe950343fd576e3",
+      "id": "b07c9b4d5acc14228986",
       "manufacturer": "Samsung",
       "model": "Samsung S25",
       "capacity": "128 GB",
       "color": "Gris",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2333,12 +2316,12 @@
       "available": true
     },
     {
-      "id": "c6e11b21d3d66161e1f8",
+      "id": "537720c41bc1d3728513",
       "manufacturer": "Samsung",
       "model": "Samsung S25",
       "capacity": "128 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2350,12 +2333,12 @@
       "available": true
     },
     {
-      "id": "29fab80cd5a07feac881",
+      "id": "365edcaa89f5782a6ae0",
       "manufacturer": "Samsung",
       "model": "Samsung S25 FE",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2367,12 +2350,12 @@
       "available": true
     },
     {
-      "id": "bf08adedb6df43bf6745",
+      "id": "d847678187de63004d6d",
       "manufacturer": "Samsung",
       "model": "Samsung S25 Ultra",
       "capacity": "256 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2384,12 +2367,12 @@
       "available": true
     },
     {
-      "id": "bb0e82994977011aa066",
+      "id": "bcedc31eecdd14c884ae",
       "manufacturer": "Samsung",
       "model": "Samsung S25 Ultra",
       "capacity": "256 GB",
       "color": "Azul",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2418,12 +2401,12 @@
       "available": true
     },
     {
-      "id": "0550e52aa405b029ee09",
+      "id": "e86fff03ecf84f3a7ad5",
       "manufacturer": "Samsung",
       "model": "Samsung S26",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2435,12 +2418,12 @@
       "available": true
     },
     {
-      "id": "f9714e13ab00f4ffef5c",
+      "id": "42a7bd173234d1a37485",
       "manufacturer": "Samsung",
       "model": "Samsung S26",
       "capacity": "256 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2452,12 +2435,12 @@
       "available": true
     },
     {
-      "id": "b608a301fbe00a5056a9",
+      "id": "6e479ca8c363a3649a5d",
       "manufacturer": "Samsung",
       "model": "Samsung S26 FE",
       "capacity": "128 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
@@ -2469,12 +2452,12 @@
       "available": true
     },
     {
-      "id": "1f7e3824a23013e297fd",
+      "id": "d3553f62fab29ba320be",
       "manufacturer": "Samsung",
       "model": "Samsung S26 Plus",
       "capacity": "256 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2486,12 +2469,12 @@
       "available": true
     },
     {
-      "id": "b06fd38472de8caae6a3",
+      "id": "60c3e51ee2b5eb1e7a86",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 4",
       "capacity": "256 GB",
       "color": "Amarillo",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2503,12 +2486,12 @@
       "available": true
     },
     {
-      "id": "f8676dcc2977f3a08761",
+      "id": "7fc438c137c720669b3d",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 4",
       "capacity": "256 GB",
       "color": "Blanco",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
       "observations": [],
@@ -2520,12 +2503,12 @@
       "available": true
     },
     {
-      "id": "031dfecede2302b5df50",
+      "id": "c0bf9a6cc910a2bcb155",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 6",
       "capacity": "256 GB",
       "color": "Gris",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2537,12 +2520,12 @@
       "available": true
     },
     {
-      "id": "12037833f66e62bc90dc",
+      "id": "9c1ae3d9a9dc7c840ad5",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 7",
       "capacity": "512 GB",
       "color": "Negro",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2554,12 +2537,12 @@
       "available": true
     },
     {
-      "id": "576141e1d6a8f1ef57ed",
+      "id": "ac8f2a229f270f2eff94",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "256 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2571,12 +2554,12 @@
       "available": true
     },
     {
-      "id": "0863da1e3b66b6008523",
+      "id": "468e3de25f7499d3607a",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "512 GB",
       "color": "Celeste",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],
@@ -2588,12 +2571,12 @@
       "available": true
     },
     {
-      "id": "67496e4eb38915fa4639",
+      "id": "f9d8bd3cf0e753f5ed73",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 6",
       "capacity": "512 GB",
       "color": "Gris",
-      "condition": "Estado por confirmar",
+      "condition": "Seminuevo",
       "grade": "",
       "battery": "",
       "observations": [],

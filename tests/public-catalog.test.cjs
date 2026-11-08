@@ -30,7 +30,7 @@ test('requires both valid recent sources and rejects free-form model names',()=>
 });
 test('unknown colors and notes cannot leak arbitrary data',()=>{
  const s=snapshot();for(const p of Object.values(s.providers)){p.rows[0].color='<script>Samuel key</script>';p.rows[0].category='private';p.rows[0].notes='Sold by Javier, cost 475';}
- const out=buildCatalog(s);assert.equal(out.products[0].color,'Color por confirmar');assert.equal(out.products[0].condition,'Estado por confirmar');assert.doesNotMatch(JSON.stringify(out),/script|private|Javier|475/);
+ const out=buildCatalog(s);assert.equal(out.products[0].color,'Color por confirmar');assert.equal(out.products[0].condition,'Seminuevo');assert.doesNotMatch(JSON.stringify(out),/script|private|Javier|475/);
 });
 
 test('decodes storage shorthand and retains customer-relevant warnings without free text',()=>{
@@ -78,9 +78,28 @@ test('official image manifest has reviewed sources and original local assets mat
  const fs=require('node:fs'),{createHash}=require('node:crypto');
  const manifest=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));
  for(const model of Object.keys(manifest.products)){
-  const item=manifest.products[model];assert(item,model);assert.equal(item.model,model);
+  const item=manifest.products[model];assert(item,model);assert.equal(model,item.model+'|'+item.color);assert(item.officialColor);
   for(const url of [item.sourcePage,item.sourceImage]){const host=new URL(url).hostname;assert(new URL(url).protocol==='https:'&&(host.endsWith('.apple.com')||host.endsWith('.samsung.com')));}
   assert.match(item.path,/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/);
   const content=fs.readFileSync('catalogo/'+item.path);assert.equal(createHash('sha256').update(content).digest('hex'),item.sha256);assert(item.width>=200&&item.height>=200);
  }
+});
+
+test('seminuevo is the default, preserving new and open box condition and the confirmed natural titanium alias',()=>{
+ const s=snapshot();let out=buildCatalog(s);assert(out.products.every(p=>p.condition==='Seminuevo'));
+ s.providers.samuel.rows[0].category='Nuevo';s.providers.split.rows[0].category='Open Box';
+ out=buildCatalog(s);assert.deepEqual(new Set(out.products.map(p=>p.condition)),new Set(['Nuevo','Open Box']));
+ s.providers.samuel.rows[0].color='Titanio';out=buildCatalog(s);assert(out.products.some(p=>p.color==='Titanio natural'));
+});
+test('color images never fall back to a different finish or a model-wide color lineup',()=>{
+ const fs=require('node:fs');const m=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));
+ assert.equal(m.version,2);
+ for(const [key,item]of Object.entries(m.products)){
+  assert.equal(key,item.model+'|'+item.color);assert(!item.sourceImage.includes('-colors'));
+  assert(!m.unavailable[key]);
+ }
+ for(const key of Object.keys(m.unavailable))assert(!m.products[key]);
+ assert.notEqual(m.products['iPhone 11|Blanco'].path,m.products['iPhone 11|Negro'].path);
+ assert.notEqual(m.products['iPhone 16 Pro Max|Negro'].path,m.products['iPhone 16 Pro Max|Titanio natural'].path);
+ assert(m.unavailable['Samsung Z Flip 4|Amarillo']);
 });

@@ -5,7 +5,14 @@
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let images={};
-  const imagesReady=fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{if(!r.ok)return;const data=await r.json();for(const [model,item]of Object.entries(data.products||{})){if(item.model===model&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(item.path))images[model]=item;}}).catch(()=>{});
+  const imagesReady=fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{
+    if(!r.ok)return;
+    const data=await r.json();
+    if(data.version!==2)return;
+    for(const [key,item]of Object.entries(data.products||{})){
+      if(key===item.model+'|'+item.color&&typeof item.color==='string'&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(item.path))images[key]=item;
+    }
+  }).catch(()=>{});
   const collator=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
   const option=(value,label)=>{const item=document.createElement('option');item.value=value;item.textContent=label;return item;};
   function valid(data) {
@@ -19,6 +26,7 @@
       if(p.sim!==undefined&&!['SIM física','Por confirmar'].includes(p.sim))throw Error('SIM inválida');
       if(p.box!==undefined&&p.box!==null&&typeof p.box!=='boolean')throw Error('Caja inválida');
       if(!Array.isArray(p.observations)||p.observations.some(v=>!['Aviso de batería','Aviso de pantalla','Aviso de cámara','Aviso de TrueDepth','Aviso de Face ID','Desgaste visible'].includes(v)))throw Error('Observaciones inválidas');
+      if(p.condition==='Estado por confirmar')p.condition='Seminuevo';
       ids.add(p.id);
     }
     return data;
@@ -39,9 +47,9 @@
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
       const details=[device.condition,device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería por confirmar',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim==='SIM física'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
-      const image=card.querySelector('.product-image'),picture=images[device.model];
-      if(picture){image.src=picture.path;image.alt=device.model+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
-      else card.querySelector('.image-caption').hidden=true;
+      const image=card.querySelector('.product-image'),picture=images[device.model+'|'+device.color];
+      if(picture){image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-caption').textContent='Imagen de referencia · '+device.color;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
+      else{card.querySelector('.image-caption').hidden=true;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
       card.querySelector('.from').textContent=new Set(prices).size>1?'Desde':'Precio de venta';

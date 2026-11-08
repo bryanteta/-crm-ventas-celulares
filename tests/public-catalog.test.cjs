@@ -61,3 +61,26 @@ test('failed CLI refresh leaves the previous public file intact',()=>{
   assert.notEqual(result.status,0);assert.equal(fs.readFileSync(output,'utf8'),'last good catalog');
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('every specification or condition difference keeps equipment separate',()=>{
+ for(const change of [r=>r.color='Blanco',r=>r.capacity='256GB',r=>r.battery='91%',r=>r.category='B+',r=>r.price+=500,r=>r.notes='128GB 5 ciclos',r=>r.notes='SIM FISICO',r=>r.notes='CAJA',r=>r.notes='Msj original camara, pantalla y Truedepth',r=>r.notes='Different unspecified device condition']){
+  const s=snapshot();change(s.providers.split.rows[0]);const out=buildCatalog(s);
+  assert.equal(out.products.length,2);assert.equal(out.products.reduce((n,p)=>n+p.quantity,0),2);
+ }
+});
+test('component notices separated by intervening words are kept and distinguish the equipment',()=>{
+ const s=snapshot();s.providers.samuel.rows[0].notes='Msj original camara y pantalla';s.providers.split.rows[0].notes='Msj original camara, pantalla y Truedepth';
+ const products=buildCatalog(s).products;assert.equal(products.length,2);
+ assert(products.every(p=>p.observations.includes('Aviso de cámara')&&p.observations.includes('Aviso de pantalla')));
+ assert.equal(products.filter(p=>p.observations.includes('Aviso de TrueDepth')).length,1);
+});
+test('official image manifest has reviewed sources and original local assets match their checksums',()=>{
+ const fs=require('node:fs'),{createHash}=require('node:crypto');
+ const manifest=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));
+ for(const model of Object.keys(manifest.products)){
+  const item=manifest.products[model];assert(item,model);assert.equal(item.model,model);
+  for(const url of [item.sourcePage,item.sourceImage]){const host=new URL(url).hostname;assert(new URL(url).protocol==='https:'&&(host.endsWith('.apple.com')||host.endsWith('.samsung.com')));}
+  assert.match(item.path,/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/);
+  const content=fs.readFileSync('catalogo/'+item.path);assert.equal(createHash('sha256').update(content).digest('hex'),item.sha256);assert(item.width>=200&&item.height>=200);
+ }
+});

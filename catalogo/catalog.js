@@ -4,6 +4,8 @@
   const money = value => new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(value/100);
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
+  let images={};
+  const imagesReady=fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{if(!r.ok)return;const data=await r.json();for(const [model,item]of Object.entries(data.products||{})){if(item.model===model&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(item.path))images[model]=item;}}).catch(()=>{});
   const collator=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
   const option=(value,label)=>{const item=document.createElement('option');item.value=value;item.textContent=label;return item;};
   function valid(data) {
@@ -16,7 +18,7 @@
       if(p.cycles!==undefined&&p.cycles!==null&&(!Number.isSafeInteger(p.cycles)||p.cycles<0))throw Error('Ciclos inválidos');
       if(p.sim!==undefined&&!['SIM física','Por confirmar'].includes(p.sim))throw Error('SIM inválida');
       if(p.box!==undefined&&p.box!==null&&typeof p.box!=='boolean')throw Error('Caja inválida');
-      if(!Array.isArray(p.observations)||p.observations.some(v=>!['Aviso de batería','Aviso de pantalla','Desgaste visible'].includes(v)))throw Error('Observaciones inválidas');
+      if(!Array.isArray(p.observations)||p.observations.some(v=>!['Aviso de batería','Aviso de pantalla','Aviso de cámara','Aviso de TrueDepth','Aviso de Face ID','Desgaste visible'].includes(v)))throw Error('Observaciones inválidas');
       ids.add(p.id);
     }
     return data;
@@ -33,21 +35,27 @@
       card.classList.toggle('samsung',group.manufacturer==='Samsung');
       card.querySelector('.manufacturer').textContent=group.manufacturer==='Apple'?'iPhone · Lunivo':'Samsung · Lunivo';
       card.querySelector('h3').textContent=group.model;
-      const capacities=[...new Set(group.variants.map(v=>v.capacity))].sort(collator.compare);
-      card.querySelector('.summary').textContent=capacities.join(' · ');
+      const device=group.variants[0];
+      card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
+      const details=[device.condition,device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería por confirmar',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim==='SIM física'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
+      card.querySelector('.variant-specs').textContent=details.join(' · ');
+      const image=card.querySelector('.product-image'),picture=images[device.model];
+      if(picture){image.src=picture.path;image.alt=device.model+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
+      else card.querySelector('.image-caption').hidden=true;
+      card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
       card.querySelector('.from').textContent=new Set(prices).size>1?'Desde':'Precio de venta';
       card.querySelector('.price').textContent=money(Math.min(...prices));
       const units=group.variants.every(v=>Number.isSafeInteger(v.quantity))?group.variants.reduce((n,v)=>n+v.quantity,0):null;
       card.querySelector('.availability').textContent=stale?'Consultar stock':units===null?'● Disponible':`${units} disponible${units===1?'':'s'}`;
       const button=card.querySelector('button');
-      button.setAttribute('aria-label',`Ver opciones de ${group.model}`);
+      button.setAttribute('aria-label',`Ver ${group.model}, ${device.capacity}, ${device.color}, ${money(device.priceCents)}`);
       button.addEventListener('click',()=>openDetails(group));
       fragment.append(card);
     }
     nodes.products.replaceChildren(fragment);
     const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
-    nodes.count.textContent=`${matches.length} ${matches.length===1?'modelo':'modelos'}${units?' · '+units+' equipos':''}`;
+    nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipos':''}`;
     $('#empty').hidden=matches.length!==0;
   }
   function showVariant(){
@@ -72,6 +80,8 @@
     $('#detail-title').textContent=group.model;
     const sorted=[...group.variants].sort((a,b)=>a.priceCents-b.priceCents||collator.compare(a.capacity,b.capacity));
     nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim==='SIM física'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
+    nodes.variant.hidden=sorted.length===1;
+    document.querySelector('label[for=variant]').hidden=sorted.length===1;
     showVariant();
     nodes.dialog.showModal();
   }
@@ -85,9 +95,8 @@
       const response=await fetch('inventory.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});
       if(!response.ok)throw Error('No disponible');
       catalog=valid(await response.json());
-      const map=new Map();
-      for(const p of catalog.products){const key=p.manufacturer+'|'+p.model;if(!map.has(key))map.set(key,{model:p.model,manufacturer:p.manufacturer,variants:[]});map.get(key).variants.push(p);}
-      groups=[...map.values()];
+      groups=catalog.products.map(p=>({model:p.model,manufacturer:p.manufacturer,variants:[p]}));
+      await imagesReady;
       nodes.capacity.replaceChildren(option('all','Toda capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
       $('#updated').textContent='Inventario actualizado: '+new Intl.DateTimeFormat('es-SV',{dateStyle:'medium',timeStyle:'short',timeZone:'America/El_Salvador'}).format(new Date(catalog.updatedAt))+' · El Salvador';

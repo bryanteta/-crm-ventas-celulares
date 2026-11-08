@@ -6,9 +6,9 @@ Sitio independiente en `catalogo/`, publicado por GitHub Pages desde `main`. No 
 
 ## Coincidencia con la app
 
-El actualizador consulta las mismas fuentes y usa el mismo `feeds-core.js` que la app. El precio final se calcula con `SalesCore.suggestedPrice`: precio de origen + $80. Se conservan todas las unidades disponibles y sus distintos precios. Solo se suman cantidades cuando coinciden **todas las características públicas y el precio final**. No se descartan las alternativas de mayor precio. Las tarjetas agrupan por modelo para navegar y muestran «Desde» si hay precios distintos; la ficha presenta las variantes concretas, su precio y existencias.
+El actualizador consulta las mismas fuentes y usa el mismo `feeds-core.js` que la app. El precio final se calcula con `SalesCore.suggestedPrice`: precio de origen + $80. Se conservan todas las unidades disponibles y sus distintos precios. Solo se suman cantidades cuando coinciden **todas las características públicas y el precio final**. No se descartan las alternativas de mayor precio. Cada variante tiene su propia tarjeta con sus características, condición, precio exacto y existencias. Solo se reúnen equipos idénticos: un cambio en capacidad, color, categoría, batería, ciclos, SIM, caja, avisos, descripción de condición o precio conserva una tarjeta separada. No hay un precio «Desde» que mezcle distintas variantes. Las descripciones libres se comparan internamente para evitar unir estados desconocidos; solo su huella forma parte del identificador público, sin publicar las notas.
 
-Se conservan capacidad, color, batería, categoría, ciclos, SIM física, caja y avisos de pantalla/batería/desgaste cuando la fuente los proporciona. Lo desconocido no se inventa. Los dibujos son ilustraciones decorativas, no fotos de unidades. La suma de existencias y el desglose por precio deben coincidir con las fuentes que recibe la app en la misma consulta.
+Se conservan capacidad, color, batería, categoría, ciclos, SIM física, caja y avisos de pantalla/batería/desgaste cuando la fuente los proporciona. Lo desconocido no se inventa. Las fotos son imágenes oficiales de referencia de Apple y Samsung, no fotos de las unidades en venta; el color puede variar. El color real ofrecido aparece como texto en cada tarjeta. La suma de existencias y el desglose por precio deben coincidir con las fuentes que recibe la app en la misma consulta.
 
 Esto refleja el **inventario de proveedores de la app**, con la regla de $80 solicitada. No lee las ventas, clientes, garantías, equipos manuales ni precios personales preparados en la cuenta de Firebase. Estos datos siguen privados. App y web pueden tener horas de consulta distintas; la app actualiza cuando está abierta y el catálogo tiene su propia tarea periódica.
 
@@ -47,3 +47,11 @@ npm run test:catalog
 El actualizador usa un directorio temporal privado; el constructor comprueba ambas fuentes, cantidades, precios y fecha de menos de 24 horas, y reemplaza el JSON de forma atómica. Para el navegador, servir previamente el repositorio en `http://127.0.0.1:8000/`, o configurar `CATALOG_TEST_URL`.
 
 Las pruebas cubren privacidad, precio exacto, conservación de cantidades y variantes, listas vacías, avisos de condición, fallo sin sobrescritura, filtros, WhatsApp, carga automática, preservación del diálogo y errores de actualización.
+
+## Imágenes oficiales
+
+`catalogo/product-images.json` conserva la URL de la página oficial, la URL original de cada imagen, el crédito, dimensiones, archivo local y SHA-256. Los 36 modelos de la publicación inicial de fotos tienen una imagen revisada. Las imágenes de iPhone proceden de la página oficial de identificación de modelos de Apple (https://support.apple.com/en-us/108044); las de Samsung proceden de sus páginas de producto, compra o soporte. No se utilizan fotos de otros comercios.
+
+Las imágenes se guardan sin alterar sus bytes en `catalogo/assets/products/`, se cargan de forma diferida y se reutilizan entre variantes. No se consulta a Apple o Samsung desde el navegador del cliente. La foto es del modelo, no una promesa del color ni de la condición de una unidad. Si falta un modelo nuevo en el manifiesto o falla una foto, el inventario y el botón de consulta siguen disponibles con «Imagen no disponible».
+
+Para volver a descargar las imágenes revisadas: `python3 scripts/fetch-catalog-images.py` (requiere Pillow para validar los archivos). No forma parte del cron de inventario, por lo que una caída de las webs de imágenes no impide actualizar existencias. Las pruebas comprueban las fuentes oficiales, hashes de archivos y la degradación ante imágenes ausentes.

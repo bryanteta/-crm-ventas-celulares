@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-08T17:55:26.512Z",
+  "updatedAt": "2026-11-08T18:04:47.730Z",
   "products": [
     {
-      "id": "fab2ec7e38f12099d223",
+      "id": "56dd16d2886f92d08fbd",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "64 GB",
@@ -22,7 +22,7 @@
       "available": true
     },
     {
-      "id": "0d7c4abc8e42833a9904",
+      "id": "4b77f33c120b7159f0ca",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "64 GB",
@@ -39,7 +39,7 @@
       "available": true
     },
     {
-      "id": "ca0439332511a703255d",
+      "id": "7fb98e4e6333f91246aa",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "128 GB",
@@ -56,7 +56,7 @@
       "available": true
     },
     {
-      "id": "b96e4a1d17545cc54185",
+      "id": "562f82dc1319683363a0",
       "manufacturer": "Apple",
       "model": "iPhone 11",
       "capacity": "128 GB",
@@ -73,7 +73,7 @@
       "available": true
     },
     {
-      "id": "0a2feedcf20458e0f147",
+      "id": "d5e0b2910dba6a6653bc",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
@@ -90,7 +90,7 @@
       "available": true
     },
     {
-      "id": "69884f067220de4ae57e",
+      "id": "a3a117130af2f40bad47",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
@@ -107,7 +107,7 @@
       "available": true
     },
     {
-      "id": "98071912f0bb434ffe5c",
+      "id": "6126fefaf7074fd38318",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
@@ -124,7 +124,7 @@
       "available": true
     },
     {
-      "id": "32d8f19abe81e9e612a5",
+      "id": "e33aea2b0334bb6d66cc",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
       "capacity": "64 GB",
@@ -141,7 +141,7 @@
       "available": true
     },
     {
-      "id": "e0117a64558194333357",
+      "id": "f8e947c66c1b97c96cc3",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
@@ -160,7 +160,7 @@
       "available": true
     },
     {
-      "id": "d29e65bd0417cd3081e2",
+      "id": "77bd9c05e9495d028d2d",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
@@ -179,7 +179,7 @@
       "available": true
     },
     {
-      "id": "a951ace54d33d9700bd3",
+      "id": "eb68db7480a5c42fe8d9",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
@@ -196,7 +196,7 @@
       "available": true
     },
     {
-      "id": "c4a56be57d260970fa10",
+      "id": "236df506027294f3c12b",
       "manufacturer": "Apple",
       "model": "iPhone 12",
       "capacity": "64 GB",
@@ -213,7 +213,7 @@
       "available": true
     },
     {
-      "id": "70f27e5168133595d7c8",
+      "id": "de4aac27edb87dc7b78b",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -230,7 +230,7 @@
       "available": true
     },
     {
-      "id": "39145a3bc184486ccbed",
+      "id": "8ab46b2c2de187799ffb",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -247,7 +247,7 @@
       "available": true
     },
     {
-      "id": "cabd919a8bc6434d7fb5",
+      "id": "714b195ccb0a618b4a0e",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -264,7 +264,7 @@
       "available": true
     },
     {
-      "id": "99f2bf88bca3767142b7",
+      "id": "5f0d857578577ecb8fd6",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -281,7 +281,7 @@
       "available": true
     },
     {
-      "id": "f1021b0d627bf410a77a",
+      "id": "f228a54263d472f0590c",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -298,7 +298,7 @@
       "available": true
     },
     {
-      "id": "9688f72c86a5296e7aed",
+      "id": "b2bf548c793e6e8a2094",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -315,7 +315,7 @@
       "available": true
     },
     {
-      "id": "87c5a558c07fa94f7f06",
+      "id": "7981ecba6b1ba3a483fc",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -332,7 +332,7 @@
       "available": true
     },
     {
-      "id": "3ad80c66bca58ec48a71",
+      "id": "1a47db5e5e1b1ae56e39",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -349,7 +349,7 @@
       "available": true
     },
     {
-      "id": "7e35f768c460f96f199f",
+      "id": "6dac3523bfedf4ccba63",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -366,7 +366,7 @@
       "available": true
     },
     {
-      "id": "bda129b749d232570d30",
+      "id": "b0730a384593e8083ed4",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "128 GB",
@@ -383,7 +383,7 @@
       "available": true
     },
     {
-      "id": "62fbd69d18c159d81ee3",
+      "id": "9da8b443082714571d5d",
       "manufacturer": "Apple",
       "model": "iPhone 13",
       "capacity": "256 GB",
@@ -402,7 +402,7 @@
       "available": true
     },
     {
-      "id": "77c75518eddda6625571",
+      "id": "eee7509334aa9c7ac8d3",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -419,7 +419,7 @@
       "available": true
     },
     {
-      "id": "bc3c1a953b3e5dbc10ab",
+      "id": "213797689f57c4f1851c",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -436,7 +436,7 @@
       "available": true
     },
     {
-      "id": "166d4554605b97ac7c46",
+      "id": "2641c6c729f477258ea9",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -453,7 +453,7 @@
       "available": true
     },
     {
-      "id": "1447f0d9efb0e4f0b099",
+      "id": "7b25d982d1709e89ff71",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -470,7 +470,7 @@
       "available": true
     },
     {
-      "id": "59ba4ed15a168cce530f",
+      "id": "043ad4c6311caa0ff707",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -487,7 +487,7 @@
       "available": true
     },
     {
-      "id": "bccccdea2568ed19a963",
+      "id": "af59ac56d2e33259a26f",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
@@ -504,7 +504,7 @@
       "available": true
     },
     {
-      "id": "cba77fecfd4230bdf330",
+      "id": "1832d63a30543c41e237",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
@@ -521,7 +521,7 @@
       "available": true
     },
     {
-      "id": "a24a04e94be7605302fa",
+      "id": "7a3840e38e0ce0e553a0",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
@@ -538,7 +538,7 @@
       "available": true
     },
     {
-      "id": "d5858eb7ce92cb1f4297",
+      "id": "dec316293df8ff090418",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
@@ -555,7 +555,7 @@
       "available": true
     },
     {
-      "id": "dfbec4693b10819805aa",
+      "id": "2677d1f66ce9dc86ef3c",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -572,7 +572,7 @@
       "available": true
     },
     {
-      "id": "2b09d4293f6cd6174b35",
+      "id": "d52e477c269efe10e89a",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
@@ -589,7 +589,7 @@
       "available": true
     },
     {
-      "id": "e546d55e379de378e8f1",
+      "id": "6de24c2c14db53ab2374",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
@@ -606,7 +606,7 @@
       "available": true
     },
     {
-      "id": "7e07af05e5bdf6d6cb7f",
+      "id": "a80359da400dec609ac8",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "256 GB",
@@ -623,7 +623,7 @@
       "available": true
     },
     {
-      "id": "1e06ac98ddce71cf16f1",
+      "id": "c89cfe60e2aa8cbc4725",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "512 GB",
@@ -640,7 +640,7 @@
       "available": true
     },
     {
-      "id": "a6d15039a2653d6163e8",
+      "id": "00bb4a7ec9514af413b8",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
@@ -657,7 +657,7 @@
       "available": true
     },
     {
-      "id": "08774a7c9d1a4260d5a4",
+      "id": "9aecca0548ca764d60af",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
@@ -674,7 +674,7 @@
       "available": true
     },
     {
-      "id": "5ec4f730f42c2eab623b",
+      "id": "864ca8c9570eb4ec168d",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
@@ -691,7 +691,7 @@
       "available": true
     },
     {
-      "id": "e42932d87fa9153e6db1",
+      "id": "319e5fa7171a70ca30c0",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
@@ -708,7 +708,7 @@
       "available": true
     },
     {
-      "id": "4ed4624ad9616c3314d4",
+      "id": "5435a984f55d41adc75e",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
@@ -725,7 +725,7 @@
       "available": true
     },
     {
-      "id": "3dc0b9d03b0ce28f3ce6",
+      "id": "d7991cfedbd9016d4243",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
@@ -742,7 +742,7 @@
       "available": true
     },
     {
-      "id": "5f8b4702ff6c636d5304",
+      "id": "052b66680e096d3532c0",
       "manufacturer": "Apple",
       "model": "iPhone 14",
       "capacity": "128 GB",
@@ -759,7 +759,7 @@
       "available": true
     },
     {
-      "id": "634764dcc08fa969f2ea",
+      "id": "c8f6a082acc24eda394d",
       "manufacturer": "Apple",
       "model": "iPhone 14",
       "capacity": "128 GB",
@@ -776,7 +776,7 @@
       "available": true
     },
     {
-      "id": "4ded305267935a008daa",
+      "id": "78c745212c6a2bc066f9",
       "manufacturer": "Apple",
       "model": "iPhone 14 Plus",
       "capacity": "128 GB",
@@ -793,7 +793,7 @@
       "available": true
     },
     {
-      "id": "05e202940a00af3fc438",
+      "id": "cccebc645655a8022d12",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
@@ -810,7 +810,7 @@
       "available": true
     },
     {
-      "id": "ff128e91df733b5d0b7c",
+      "id": "88dcdf3f0baf21b30685",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
@@ -827,7 +827,7 @@
       "available": true
     },
     {
-      "id": "ba395470abad1954a2fc",
+      "id": "aab01f930760143ea777",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
@@ -844,7 +844,7 @@
       "available": true
     },
     {
-      "id": "76f8a795061024d2d92d",
+      "id": "cc4d8a226cc250c3249c",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro",
       "capacity": "128 GB",
@@ -861,7 +861,7 @@
       "available": true
     },
     {
-      "id": "0d07fa2675f6ad8716fb",
+      "id": "f660bfff2081c3141364",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "128 GB",
@@ -869,7 +869,10 @@
       "condition": "Estado por confirmar",
       "grade": "A",
       "battery": "100%",
-      "observations": [],
+      "observations": [
+        "Aviso de pantalla",
+        "Aviso de cámara"
+      ],
       "cycles": null,
       "sim": "Por confirmar",
       "box": null,
@@ -878,7 +881,7 @@
       "available": true
     },
     {
-      "id": "3ad4c93b22657935e599",
+      "id": "3875e605781dd77d8008",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "128 GB",
@@ -895,7 +898,7 @@
       "available": true
     },
     {
-      "id": "72ff20e2388d666e1fd5",
+      "id": "f719ff6bbd8b4c0be10a",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "256 GB",
@@ -912,7 +915,7 @@
       "available": true
     },
     {
-      "id": "754f157ef12c70b0aa8f",
+      "id": "8e21516f1ee8210be709",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
       "capacity": "256 GB",
@@ -929,7 +932,7 @@
       "available": true
     },
     {
-      "id": "4053488d30698f7a9a23",
+      "id": "3f57f3b4ed1ab25f9d59",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -946,7 +949,7 @@
       "available": true
     },
     {
-      "id": "c0a9c971dd74bc3e5276",
+      "id": "2e145f8a48276dd1b562",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -963,7 +966,7 @@
       "available": true
     },
     {
-      "id": "abd9504754334323d441",
+      "id": "db4517774362416b279a",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -980,7 +983,7 @@
       "available": true
     },
     {
-      "id": "90ec6a827c338685a28a",
+      "id": "2abb948138fee1ac1f96",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -997,7 +1000,7 @@
       "available": true
     },
     {
-      "id": "b5c08af4c1ad44d8f711",
+      "id": "89d2d61b0b946b33dba4",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -1014,7 +1017,7 @@
       "available": true
     },
     {
-      "id": "b8278e09235b493a4169",
+      "id": "590d88d854f642c0f833",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -1031,7 +1034,7 @@
       "available": true
     },
     {
-      "id": "baf643e0504cab5353ef",
+      "id": "ce3421d41d391413b2ad",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -1048,7 +1051,7 @@
       "available": true
     },
     {
-      "id": "55defd19966139c09d23",
+      "id": "ef59d08b043647f2ad0b",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "256 GB",
@@ -1065,7 +1068,7 @@
       "available": true
     },
     {
-      "id": "0db622fec8c70debe3c1",
+      "id": "d96f6a48a98011992ebd",
       "manufacturer": "Apple",
       "model": "iPhone 15",
       "capacity": "128 GB",
@@ -1082,7 +1085,7 @@
       "available": true
     },
     {
-      "id": "b6ee6f6addc1310e3b71",
+      "id": "9a926cb4814f4a847b8c",
       "manufacturer": "Apple",
       "model": "iPhone 15 Plus",
       "capacity": "128 GB",
@@ -1099,7 +1102,7 @@
       "available": true
     },
     {
-      "id": "34c1ae39e61fc2e682e7",
+      "id": "f2768343d756300fdd80",
       "manufacturer": "Apple",
       "model": "iPhone 15 Plus",
       "capacity": "128 GB",
@@ -1116,7 +1119,7 @@
       "available": true
     },
     {
-      "id": "c6f0b52d9687ae2532af",
+      "id": "6449ebdd16d0837bdf02",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
@@ -1133,7 +1136,7 @@
       "available": true
     },
     {
-      "id": "8389d9b52844c814b589",
+      "id": "8a4226767bd14fffae44",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
@@ -1150,7 +1153,7 @@
       "available": true
     },
     {
-      "id": "79487e4e77b2374d8bff",
+      "id": "750a1ec575d1520d61b6",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
@@ -1167,7 +1170,7 @@
       "available": true
     },
     {
-      "id": "659a12e469b4d8de7d1d",
+      "id": "6d7f3b9ffa12a611e79d",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "128 GB",
@@ -1184,7 +1187,7 @@
       "available": true
     },
     {
-      "id": "7180598b392154639db5",
+      "id": "0b00b7b6a939adb8ccf8",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro",
       "capacity": "256 GB",
@@ -1201,7 +1204,7 @@
       "available": true
     },
     {
-      "id": "17617dbecfd970fb9d02",
+      "id": "ada91703a9b56d704873",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1220,7 +1223,7 @@
       "available": true
     },
     {
-      "id": "163449cb323f03f9d88c",
+      "id": "a981389df05f9e1454fa",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1239,7 +1242,7 @@
       "available": true
     },
     {
-      "id": "ff999bad27cf09d3b3d5",
+      "id": "0fbf11a57cebdc34e9c0",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
@@ -1247,7 +1250,71 @@
       "condition": "Estado por confirmar",
       "grade": "A+",
       "battery": "100%",
-      "observations": [],
+      "observations": [
+        "Aviso de pantalla",
+        "Aviso de cámara"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "priceCents": 83000,
+      "quantity": 2,
+      "available": true
+    },
+    {
+      "id": "fdd16530be54d96d9189",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "512 GB",
+      "color": "Azul",
+      "condition": "Estado por confirmar",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [
+        "Aviso de pantalla",
+        "Aviso de cámara",
+        "Aviso de TrueDepth"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "priceCents": 83000,
+      "quantity": 1,
+      "available": true
+    },
+    {
+      "id": "359bf3983b29566825fb",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "512 GB",
+      "color": "Azul",
+      "condition": "Estado por confirmar",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [
+        "Aviso de pantalla",
+        "Aviso de cámara",
+        "Aviso de TrueDepth"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "priceCents": 83000,
+      "quantity": 2,
+      "available": true
+    },
+    {
+      "id": "7e00d811d3cea92fb015",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "512 GB",
+      "color": "Azul",
+      "condition": "Estado por confirmar",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [
+        "Aviso de pantalla"
+      ],
       "cycles": null,
       "sim": "Por confirmar",
       "box": null,
@@ -1256,7 +1323,7 @@
       "available": true
     },
     {
-      "id": "cb83ab46aeb9d226e70d",
+      "id": "7d2768ef6a9cded5f3b8",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
@@ -1264,16 +1331,19 @@
       "condition": "Estado por confirmar",
       "grade": "A",
       "battery": "100%",
-      "observations": [],
+      "observations": [
+        "Aviso de pantalla",
+        "Aviso de cámara"
+      ],
       "cycles": null,
       "sim": "Por confirmar",
       "box": null,
       "priceCents": 83000,
-      "quantity": 10,
+      "quantity": 5,
       "available": true
     },
     {
-      "id": "00ae509fd108a638c70b",
+      "id": "c78e689f82ac18fcac16",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
@@ -1292,7 +1362,7 @@
       "available": true
     },
     {
-      "id": "2420df095849a74f837c",
+      "id": "83ed73a8c2fc90ac3043",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1309,7 +1379,7 @@
       "available": true
     },
     {
-      "id": "98b4a9510159507b8642",
+      "id": "13c1df8e31d982d59d78",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1326,7 +1396,7 @@
       "available": true
     },
     {
-      "id": "f44e37a6960f6bbd5066",
+      "id": "5786b4b662c10e2bf481",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1343,7 +1413,7 @@
       "available": true
     },
     {
-      "id": "d0ca3973a949d467a851",
+      "id": "d9e90dfc9c079372f057",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1360,7 +1430,7 @@
       "available": true
     },
     {
-      "id": "76c8e88106ee77c6efa7",
+      "id": "bc7777c4b5a50324b346",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1377,7 +1447,7 @@
       "available": true
     },
     {
-      "id": "5f13e5b49c1369997b90",
+      "id": "913942a46b8a17618498",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1394,7 +1464,7 @@
       "available": true
     },
     {
-      "id": "4fe5f97fdd8e73946ba8",
+      "id": "3b073503caf7f9e78101",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",
@@ -1411,7 +1481,7 @@
       "available": true
     },
     {
-      "id": "eb06e674cb6d81a15dc1",
+      "id": "a6b0c10a3960dcf7903c",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "256 GB",
@@ -1428,7 +1498,7 @@
       "available": true
     },
     {
-      "id": "949776d66b9a6bbb1c5a",
+      "id": "1b2ef196dcc8cec118a0",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "128 GB",
@@ -1445,7 +1515,7 @@
       "available": true
     },
     {
-      "id": "9142fed9ae3b1eabf4dc",
+      "id": "d9af4cf3e1e11cfe9fff",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "128 GB",
@@ -1462,7 +1532,7 @@
       "available": true
     },
     {
-      "id": "966a3fa3edd4dc9f28d5",
+      "id": "5a89019c0207f57a510b",
       "manufacturer": "Apple",
       "model": "iPhone 16",
       "capacity": "128 GB",
@@ -1479,7 +1549,7 @@
       "available": true
     },
     {
-      "id": "dbbe1b467f0aae2c7a34",
+      "id": "b5ffe8a8a1c0dfcaf569",
       "manufacturer": "Apple",
       "model": "iPhone 16 Plus",
       "capacity": "128 GB",
@@ -1498,7 +1568,7 @@
       "available": true
     },
     {
-      "id": "d51f09e7d86521e96f7d",
+      "id": "a004e72e43eb230c0d24",
       "manufacturer": "Apple",
       "model": "iPhone 16 Plus",
       "capacity": "128 GB",
@@ -1515,7 +1585,7 @@
       "available": true
     },
     {
-      "id": "15972173a4f192219b42",
+      "id": "3d9a9500a59d1532fd25",
       "manufacturer": "Apple",
       "model": "iPhone 16 Plus",
       "capacity": "128 GB",
@@ -1532,7 +1602,7 @@
       "available": true
     },
     {
-      "id": "af0d466b223abb5afec8",
+      "id": "a3548f72ba6364ef189c",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
@@ -1549,7 +1619,7 @@
       "available": true
     },
     {
-      "id": "7fc9a99321c16ffe7ab9",
+      "id": "40fae23645ad168a4f1b",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
@@ -1566,7 +1636,7 @@
       "available": true
     },
     {
-      "id": "b2831a2eb1b250f83330",
+      "id": "ec9631ad35a1b3b9bc60",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
@@ -1583,7 +1653,7 @@
       "available": true
     },
     {
-      "id": "4ee49861b37009ec8132",
+      "id": "2f4eef52e89c40f8ee57",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
@@ -1600,7 +1670,7 @@
       "available": true
     },
     {
-      "id": "b2ed812b3a7889f695c4",
+      "id": "818b620084f4df2e9699",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
       "capacity": "128 GB",
@@ -1617,7 +1687,7 @@
       "available": true
     },
     {
-      "id": "98d9bfde9a4d616eec89",
+      "id": "1398a084f49becee871c",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1634,7 +1704,7 @@
       "available": true
     },
     {
-      "id": "a2fee446062186d7c71b",
+      "id": "515d9a892799fe1c755a",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1651,7 +1721,7 @@
       "available": true
     },
     {
-      "id": "86d66ee50b9179aa4999",
+      "id": "fd893ae6e3640c5ed3ff",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1668,7 +1738,7 @@
       "available": true
     },
     {
-      "id": "5be0d9b45d7f7570f3b8",
+      "id": "a79ee0850846517ff743",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1685,7 +1755,7 @@
       "available": true
     },
     {
-      "id": "381fe5c4b023a3838ec1",
+      "id": "c8376f836a20ea135c4c",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1702,7 +1772,7 @@
       "available": true
     },
     {
-      "id": "d2a9eec38f439ef07ba9",
+      "id": "5125e236d950106c334a",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1719,7 +1789,7 @@
       "available": true
     },
     {
-      "id": "9f531ae67b7ede1dba67",
+      "id": "167cfb9907455eca36f9",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1736,7 +1806,7 @@
       "available": true
     },
     {
-      "id": "01fd69f92991107d5748",
+      "id": "3a1d0537474845de433f",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1753,7 +1823,7 @@
       "available": true
     },
     {
-      "id": "c61d05c5777f53eb5b83",
+      "id": "73b586a944a49c1ead2c",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1770,7 +1840,7 @@
       "available": true
     },
     {
-      "id": "b9795ef658f43886a035",
+      "id": "011a31eff8e753a79d12",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1787,7 +1857,7 @@
       "available": true
     },
     {
-      "id": "ed65b30f9ad9c88a9b47",
+      "id": "9e1957dc822e004f7847",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1804,7 +1874,7 @@
       "available": true
     },
     {
-      "id": "35fab3e0f5e82e8119d5",
+      "id": "ea88f99b81cfc31b3b6d",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1821,7 +1891,7 @@
       "available": true
     },
     {
-      "id": "4db43066c8a118e7be30",
+      "id": "f6e01dfcbb50a42ce19b",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1838,7 +1908,7 @@
       "available": true
     },
     {
-      "id": "4e51f22bedddbfe8d2ea",
+      "id": "2226a80d6219a6e089e6",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1855,7 +1925,7 @@
       "available": true
     },
     {
-      "id": "5021cde7ae9f42e4cd65",
+      "id": "61764ea9f829ac6a79cc",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1872,7 +1942,7 @@
       "available": true
     },
     {
-      "id": "7525b1478a71ba0d5b54",
+      "id": "35295d079b2928086ff3",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro",
       "capacity": "256 GB",
@@ -1889,7 +1959,7 @@
       "available": true
     },
     {
-      "id": "f3fd30760291ead67bc2",
+      "id": "0793145d11d7dcdeaefd",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro",
       "capacity": "256 GB",
@@ -1906,7 +1976,7 @@
       "available": true
     },
     {
-      "id": "ca1f048e9f6858b5d001",
+      "id": "ab4e5343d24048f4f44c",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
@@ -1923,7 +1993,7 @@
       "available": true
     },
     {
-      "id": "f24ff5d0b0904f9e86fc",
+      "id": "b43b3e05c4490b02fdd2",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
@@ -1940,7 +2010,7 @@
       "available": true
     },
     {
-      "id": "7117d4d383100623d087",
+      "id": "8d7fb31b352c5f23c923",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
@@ -1957,7 +2027,7 @@
       "available": true
     },
     {
-      "id": "d7cc9c25651db974800f",
+      "id": "971738fd36a1cc02c3ed",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
@@ -1974,7 +2044,7 @@
       "available": true
     },
     {
-      "id": "6ef2fbbcf86cdb3e45ce",
+      "id": "8b8bc5e639fb11832f1c",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
@@ -1991,7 +2061,7 @@
       "available": true
     },
     {
-      "id": "8d6d5779f7c2e30e0e99",
+      "id": "b354eceae30fd86b86b2",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "256 GB",
@@ -2008,7 +2078,7 @@
       "available": true
     },
     {
-      "id": "a7474a6771628ba47fe5",
+      "id": "f985ccc25dd298ed3b6d",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
       "capacity": "1 TB",
@@ -2025,7 +2095,7 @@
       "available": true
     },
     {
-      "id": "06b78694e7c1b2f17229",
+      "id": "a65f53abccda33b5c266",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro",
       "capacity": "256 GB",
@@ -2042,7 +2112,7 @@
       "available": true
     },
     {
-      "id": "315b45429262570e032d",
+      "id": "dd5dcc9c6723785d2325",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro",
       "capacity": "256 GB",
@@ -2059,7 +2129,7 @@
       "available": true
     },
     {
-      "id": "5c7455db3c2070e36376",
+      "id": "11a9f6132fe148144ac3",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro",
       "capacity": "256 GB",
@@ -2076,7 +2146,7 @@
       "available": true
     },
     {
-      "id": "dd1b5a20a3930114f890",
+      "id": "6c2adca8460db66b3e78",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro Max",
       "capacity": "256 GB",
@@ -2093,7 +2163,7 @@
       "available": true
     },
     {
-      "id": "f2ed8fc4f4d99dd4391e",
+      "id": "6e4408e12b3022a8d663",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro Max",
       "capacity": "256 GB",
@@ -2110,7 +2180,7 @@
       "available": true
     },
     {
-      "id": "fd5a893456e0c1f16237",
+      "id": "0e488207b315ed1848ee",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro Max",
       "capacity": "256 GB",
@@ -2127,7 +2197,7 @@
       "available": true
     },
     {
-      "id": "83145be764c0ecdc0323",
+      "id": "09f90cfb56eedd5700b0",
       "manufacturer": "Samsung",
       "model": "Samsung S21 Ultra",
       "capacity": "128 GB",
@@ -2144,7 +2214,7 @@
       "available": true
     },
     {
-      "id": "54592e8be3eaebca8aa0",
+      "id": "9de8632d952a88aff742",
       "manufacturer": "Samsung",
       "model": "Samsung S21 Ultra",
       "capacity": "128 GB",
@@ -2161,7 +2231,7 @@
       "available": true
     },
     {
-      "id": "b55840aba37c3f0a6778",
+      "id": "698a5180aec46c57909c",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
@@ -2178,7 +2248,7 @@
       "available": true
     },
     {
-      "id": "badd60893af9dec5251c",
+      "id": "d2c75eeb9929f47f5493",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
@@ -2195,7 +2265,7 @@
       "available": true
     },
     {
-      "id": "5d143ed39773257e7eb1",
+      "id": "3caed896321c6d00e126",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
@@ -2212,7 +2282,7 @@
       "available": true
     },
     {
-      "id": "4246ebcee57d5b41be6b",
+      "id": "876eacec4b7bf4bdbcea",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
@@ -2229,7 +2299,7 @@
       "available": true
     },
     {
-      "id": "62ac832ccd451da4efac",
+      "id": "131450cb47f0ddcd9c60",
       "manufacturer": "Samsung",
       "model": "Samsung S23 Ultra",
       "capacity": "256 GB",
@@ -2246,7 +2316,7 @@
       "available": true
     },
     {
-      "id": "fabc9c55907c649ba436",
+      "id": "b2fbafe950343fd576e3",
       "manufacturer": "Samsung",
       "model": "Samsung S25",
       "capacity": "128 GB",
@@ -2263,7 +2333,7 @@
       "available": true
     },
     {
-      "id": "b56851f3860360a206cf",
+      "id": "c6e11b21d3d66161e1f8",
       "manufacturer": "Samsung",
       "model": "Samsung S25",
       "capacity": "128 GB",
@@ -2280,7 +2350,7 @@
       "available": true
     },
     {
-      "id": "0a45eb41bc1bdda9e275",
+      "id": "29fab80cd5a07feac881",
       "manufacturer": "Samsung",
       "model": "Samsung S25 FE",
       "capacity": "128 GB",
@@ -2297,7 +2367,7 @@
       "available": true
     },
     {
-      "id": "26724d9a7b3fdfce5be9",
+      "id": "bf08adedb6df43bf6745",
       "manufacturer": "Samsung",
       "model": "Samsung S25 Ultra",
       "capacity": "256 GB",
@@ -2314,7 +2384,7 @@
       "available": true
     },
     {
-      "id": "c82f570fd25c5ef5958e",
+      "id": "bb0e82994977011aa066",
       "manufacturer": "Samsung",
       "model": "Samsung S25 Ultra",
       "capacity": "256 GB",
@@ -2331,7 +2401,7 @@
       "available": true
     },
     {
-      "id": "2909f9863c4f575410a2",
+      "id": "a268dd2e3a826961d8ec",
       "manufacturer": "Samsung",
       "model": "Samsung S25 Ultra",
       "capacity": "256 GB",
@@ -2348,7 +2418,7 @@
       "available": true
     },
     {
-      "id": "6556590923fab5299e82",
+      "id": "0550e52aa405b029ee09",
       "manufacturer": "Samsung",
       "model": "Samsung S26",
       "capacity": "256 GB",
@@ -2365,7 +2435,7 @@
       "available": true
     },
     {
-      "id": "08652d79c985f0788622",
+      "id": "f9714e13ab00f4ffef5c",
       "manufacturer": "Samsung",
       "model": "Samsung S26",
       "capacity": "256 GB",
@@ -2382,7 +2452,7 @@
       "available": true
     },
     {
-      "id": "5f844c9f6dc2fffd531b",
+      "id": "b608a301fbe00a5056a9",
       "manufacturer": "Samsung",
       "model": "Samsung S26 FE",
       "capacity": "128 GB",
@@ -2399,7 +2469,7 @@
       "available": true
     },
     {
-      "id": "54e5199105cef25a2537",
+      "id": "1f7e3824a23013e297fd",
       "manufacturer": "Samsung",
       "model": "Samsung S26 Plus",
       "capacity": "256 GB",
@@ -2416,7 +2486,7 @@
       "available": true
     },
     {
-      "id": "4be464e12d71937d3659",
+      "id": "b06fd38472de8caae6a3",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 4",
       "capacity": "256 GB",
@@ -2433,7 +2503,7 @@
       "available": true
     },
     {
-      "id": "ddfbdab0d3b2a52a975f",
+      "id": "f8676dcc2977f3a08761",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 4",
       "capacity": "256 GB",
@@ -2450,7 +2520,7 @@
       "available": true
     },
     {
-      "id": "3eab5fc0958375e335bb",
+      "id": "031dfecede2302b5df50",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 6",
       "capacity": "256 GB",
@@ -2467,7 +2537,7 @@
       "available": true
     },
     {
-      "id": "e6e42e129469bb38b40d",
+      "id": "12037833f66e62bc90dc",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 7",
       "capacity": "512 GB",
@@ -2484,7 +2554,7 @@
       "available": true
     },
     {
-      "id": "06b59f8f80ca48ef182f",
+      "id": "576141e1d6a8f1ef57ed",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "256 GB",
@@ -2501,7 +2571,7 @@
       "available": true
     },
     {
-      "id": "580e94297b491f043d83",
+      "id": "0863da1e3b66b6008523",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "512 GB",
@@ -2518,7 +2588,7 @@
       "available": true
     },
     {
-      "id": "8c0da9128107e31998b7",
+      "id": "67496e4eb38915fa4639",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 6",
       "capacity": "512 GB",

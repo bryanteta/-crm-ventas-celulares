@@ -38,9 +38,13 @@ function buildCatalog(snapshot, now=Date.now()) {
       const percent=(r.battery+' '+r.notes).match(/\b(100|[1-9]?\d)\s*%/);
       const battery=percent ? `${Number(percent[1])}%` : '';
       const observations=[];
-      if (/\b(?:msj|mensaje)\s*(?:de\s*)?bater[ií]a\b/i.test(r.notes)) observations.push('Aviso de batería');
-      if (/\b(?:msj|mensaje)\s*(?:de\s*)?pantalla\b/i.test(r.notes)) observations.push('Aviso de pantalla');
-      if (/\bdesgaste\b/i.test(r.notes)) observations.push('Desgaste visible');
+      const message=/\b(msj|mensaje|aviso)\b/i.test(r.notes);
+      if(message&&/\bbater[ií]a\b/i.test(r.notes))observations.push('Aviso de batería');
+      if(message&&/\bpantalla\b/i.test(r.notes))observations.push('Aviso de pantalla');
+      if(message&&/\bc[aá]mara\b/i.test(r.notes))observations.push('Aviso de cámara');
+      if(message&&/\btruedepth\b/i.test(r.notes))observations.push('Aviso de TrueDepth');
+      if(message&&/\bface\s*id\b/i.test(r.notes))observations.push('Aviso de Face ID');
+      if(/\bdesgaste\b/i.test(r.notes))observations.push('Desgaste visible');
       const cyclesMatch=(r.model+' '+r.notes).match(/\b(\d{1,5})\s*(?:ciclos\b|c\b)/i);
       const cycles=cyclesMatch?Number(cyclesMatch[1]):null;
       const sim=/\bsim\s*f[ií]sic[oa]\b/i.test(description)?'SIM física':'Por confirmar';
@@ -48,7 +52,10 @@ function buildCatalog(snapshot, now=Date.now()) {
       const specs={...device,capacity,color:colorName(r.color||r.notes),condition,grade,battery,observations,cycles,sim,box};
       const priceCents=suggestedPrice(r.price);
       // Match the app's complete available units: never replace a different price.
-      const key=JSON.stringify({...specs,priceCents});
+      // Different source descriptions may carry details we cannot safely publish.
+      // Keep those units separate rather than assuming unknown conditions match.
+      const descriptionIdentity=r.notes.normalize('NFC').trim().toLocaleLowerCase('es').replace(/\s+/g,' ');
+      const key=JSON.stringify({...specs,priceCents,descriptionIdentity});
       const existing=products.get(key);
       if(existing) existing.quantity+=r.quantity;
       else products.set(key,{id:createHash('sha256').update(key).digest('hex').slice(0,20),...specs,priceCents,quantity:r.quantity,available:true});

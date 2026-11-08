@@ -1,0 +1,365 @@
+{
+  "version": 1,
+  "products": {
+    "Samsung S21 Ultra": {
+      "model": "Samsung S21 Ultra",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/galaxy-s21/gallery/uk-galaxy-s21-ultra-5g-g988-sm-g998bzkdeua-368887916?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-G998BZKDEUA/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s21-ultra.png",
+      "sha256": "1ffb61b0a9f7196f68b54a982a2040a7b08b499555737ae763131b9842bd2a45",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung S22 Ultra": {
+      "model": "Samsung S22 Ultra",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2202/gallery/uk-galaxy-s22-ultra-s908-sm-s908bzkdeub-530846952?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-S908BZKDEUB/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s22-ultra.png",
+      "sha256": "c247dd6fdbb0ee73630d508d2893b170671f62b8709de99fe2349d3b01ac4089",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung S23 Ultra": {
+      "model": "Samsung S23 Ultra",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2302/gallery/uk-galaxy-s23-s918-sm-s918bzkdeub-534793350?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-S918BZKDEUB/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s23-ultra.png",
+      "sha256": "16afa39cdf4e0479e3321867392175b0333d50818c6aa038bff2fd3a9d85ab0e",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung S25": {
+      "model": "Samsung S25",
+      "sourceImage": "https://image-us.samsung.com/us/smartphones/galaxy-s25/images/galaxy-s25-features-colors-blueblack.jpg",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s25/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s25.jpg",
+      "sha256": "09e3d410b4dcd1206afbf9b82fc093cf723642c73323ee9b2e90ae0e09eb90fa",
+      "width": 256,
+      "height": 538
+    },
+    "Samsung S25 FE": {
+      "model": "Samsung S25 FE",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/assets/us/smartphones/galaxy-s25-fe/08252025/Galaxy_S25_FE-MLP-FT12-1-Design_color_Jetblack-pc.jpg?$720_N_JPG$",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s25-fe/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s25-fe.jpg",
+      "sha256": "9f6b2745121e5ca22da4f6b45205c0c3f81474f666b2c03036977dec0f63a23d",
+      "width": 720,
+      "height": 540
+    },
+    "Samsung S25 Ultra": {
+      "model": "Samsung S25 Ultra",
+      "sourceImage": "https://image-us.samsung.com/us/smartphones/galaxy-s25-ultra/images/galaxy-s25-ultra-features-colors-titanium-jetblack.jpg",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s25-ultra.jpg",
+      "sha256": "41007c454cb2eadb493528c994015b59b6883142f7fa3e99d78cb636d27fca4f",
+      "width": 448,
+      "height": 502
+    },
+    "Samsung S26": {
+      "model": "Samsung S26",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942ulbexaa-550995232",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s26.png",
+      "sha256": "d69ab906106292e56414d279ed19778c1e3aec74e25d8dc48a32c74fef63682a",
+      "width": 1920,
+      "height": 1280
+    },
+    "Samsung S26 FE": {
+      "model": "Samsung S26 FE",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/assets/us/smartphones/galaxy-s26-fe/mlp/S26FE-MLP-FT12-Colors-Graphite-PC.jpg?$570_N_JPG$",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-fe/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s26-fe.jpg",
+      "sha256": "5a7df4da5d4a10ce48b1e33ae06f8eb20ea8569eaf60803de986251b2575e067",
+      "width": 570,
+      "height": 336
+    },
+    "Samsung S26 Plus": {
+      "model": "Samsung S26 Plus",
+      "sourceImage": "https://image-us.samsung.com/us/smartphones/galaxy-s26/images/galaxy-s26-features-colors-black.jpg",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-s26-plus.jpg",
+      "sha256": "077020f01c278682e1db2a7dbfe4b8a2f5eaf2b3d295a3e3bdbd22df2ef737ec",
+      "width": 496,
+      "height": 538
+    },
+    "Samsung Z Flip 4": {
+      "model": "Samsung Z Flip 4",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-f721blvgeub/gallery/uk-galaxy-z-flip4-f721-sm-f721blvgeub-534230045?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-F721BLVGEUB/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-z-flip-4.png",
+      "sha256": "d693228351e8c67999234cc631a4fb6e60995c026db6780fcbfcae1269161a44",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung Z Flip 6": {
+      "model": "Samsung Z Flip 6",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2407/gallery/uk-galaxy-zflip6-f741-sm-f741bzsgeub-542658961?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-F741BZSGEUB/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-z-flip-6.png",
+      "sha256": "476708eda5d4a222a7c141daf76dccd669b7fe36b385412c27c12f6b53e02ffe",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung Z Flip 7": {
+      "model": "Samsung Z Flip 7",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/assets/us/smartphones/galaxy-z-flip7/galaxy-z-flip7-features-colors-jetblack.jpg",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-flip7/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-z-flip-7.jpg",
+      "sha256": "a5a79e0a38199f50013815ea04ecf519ea0db7d0501350273f98f452ff0b5229",
+      "width": 400,
+      "height": 502
+    },
+    "Samsung Z Fold 5": {
+      "model": "Samsung Z Fold 5",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2307/gallery/uk-galaxy-z-fold5-f946-466188-sm-f946bzkbeub-537168262?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-F946BZKBEUB/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-z-fold-5.png",
+      "sha256": "eaed1d129675652075b910a5df253c4429944b247253798da8a3ba2a2d5da6e1",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung Z Fold 6": {
+      "model": "Samsung Z Fold 6",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2407/gallery/uk-galaxy-z-fold6-f956-sm-f956bzsbeub-542660710?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-F956BZSBEUB/",
+      "credit": "Samsung",
+      "path": "assets/products/samsung-z-fold-6.png",
+      "sha256": "19e51047423a33c65a7c4839c777d13fd8fce7fcedd44baf74760fe41f24c161",
+      "width": 624,
+      "height": 624
+    },
+    "iPhone 11": {
+      "model": "iPhone 11",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/identify-iphone-11-colors.jpg",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-11.jpg",
+      "sha256": "fe1ca1e7d755783c55e68468c043cafea42a37646c0bbe7cafbcea970bec5f53",
+      "width": 752,
+      "height": 600
+    },
+    "iPhone 11 Pro Max": {
+      "model": "iPhone 11 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/identify-iphone-11pro-max.jpg",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-11-pro-max.jpg",
+      "sha256": "64701f43a33cda5e457b911b01e2f4dcce406a1de0a445a44260be88706f78be",
+      "width": 956,
+      "height": 700
+    },
+    "iPhone 12": {
+      "model": "iPhone 12",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2021-iphone12-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-12.png",
+      "sha256": "b20589fa15261db160f33ae685f882b8f2c2f4bc74f3b7cfeea828c8d8c169d8",
+      "width": 958,
+      "height": 636
+    },
+    "iPhone 13": {
+      "model": "iPhone 13",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2022-spring-iphone13-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-13.png",
+      "sha256": "5769035bf5e83c2342e13ae71b5d1a7cf04288fc6ff8f1befdb34e46c9c2ff7c",
+      "width": 1000,
+      "height": 624
+    },
+    "iPhone 13 Pro": {
+      "model": "iPhone 13 Pro",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2022-spring-iphone13-pro-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-13-pro.png",
+      "sha256": "dcf2510a9e611bee84bd16917ab56b6066393852e46d230c340d75025ebccdf6",
+      "width": 1000,
+      "height": 658
+    },
+    "iPhone 13 Pro Max": {
+      "model": "iPhone 13 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/2022-spring-iphone13-pro-max-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-13-pro-max.png",
+      "sha256": "26c5d61d34f2e48566e6446eb9d12682eeeca2e658d0574480b3e3631a868b96",
+      "width": 1002,
+      "height": 702
+    },
+    "iPhone 14": {
+      "model": "iPhone 14",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-14-colors-spring-2023.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14.png",
+      "sha256": "a73b1f8a13f9ff9b3bc066896f745e16d9ec5c4ee6c77e3b58ea98ab9e96b6ef",
+      "width": 1074,
+      "height": 656
+    },
+    "iPhone 14 Plus": {
+      "model": "iPhone 14 Plus",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-14-plus-colors-spring-2023.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14-plus.png",
+      "sha256": "7c91b723b6d73e38c7467bb68ac9f79de3cb895b40df6b172618879ae6979c2c",
+      "width": 1092,
+      "height": 700
+    },
+    "iPhone 14 Pro": {
+      "model": "iPhone 14 Pro",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-14-pro-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14-pro.png",
+      "sha256": "0f00a4cb89635d6d97437264979b51ba80cd3eeb727e97ff9fe1037660d42b9e",
+      "width": 900,
+      "height": 656
+    },
+    "iPhone 14 Pro Max": {
+      "model": "iPhone 14 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-14-pro-max-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14-pro-max.png",
+      "sha256": "8d397286a0269672dbc302c66fce3caee1f29ee300d7c265eb9428dd90a9b7a8",
+      "width": 904,
+      "height": 700
+    },
+    "iPhone 15": {
+      "model": "iPhone 15",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15.png",
+      "sha256": "57742189fd91b8f61bfdefdad8f7692787cd9df55371d837195d0774444dbe5e",
+      "width": 950,
+      "height": 656
+    },
+    "iPhone 15 Plus": {
+      "model": "iPhone 15 Plus",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-plus.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15-plus.png",
+      "sha256": "c6876c9136398acd001d129abe803f534b690edfced3b7c09b6b973324e4de94",
+      "width": 958,
+      "height": 700
+    },
+    "iPhone 15 Pro": {
+      "model": "iPhone 15 Pro",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-pro.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15-pro.png",
+      "sha256": "e91c699fc07e1ad330f7857beb030df4530e1064e379551588501578447b3465",
+      "width": 900,
+      "height": 659
+    },
+    "iPhone 15 Pro Max": {
+      "model": "iPhone 15 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-pro-max.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15-pro-max.png",
+      "sha256": "22ed10c6986c2c529df0a3d7428d3d5248a9f9760bd7bca13ad590362fd433a6",
+      "width": 904,
+      "height": 700
+    },
+    "iPhone 16": {
+      "model": "iPhone 16",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-16.png",
+      "sha256": "5a9bd8dc9b8be344305533504b1ddca10f029e8ff34950f465748bcfa640119a",
+      "width": 950,
+      "height": 656
+    },
+    "iPhone 16 Plus": {
+      "model": "iPhone 16 Plus",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-plus-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-16-plus.png",
+      "sha256": "d7aaf8608af76ac82622a1577239d93682767ac8189312debdd1a470e35704c8",
+      "width": 958,
+      "height": 700
+    },
+    "iPhone 16 Pro": {
+      "model": "iPhone 16 Pro",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-pro-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-16-pro.png",
+      "sha256": "88d15adf63c09d41a0b29be563941bbabccbfcf3f09a80ed06a9a9ac1469de06",
+      "width": 900,
+      "height": 659
+    },
+    "iPhone 16 Pro Max": {
+      "model": "iPhone 16 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-pro-max-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-16-pro-max.png",
+      "sha256": "0c178501af4a8640e409593154edfe49378b3096b75073b4c11e54bcd1e362a5",
+      "width": 904,
+      "height": 700
+    },
+    "iPhone 17 Pro": {
+      "model": "iPhone 17 Pro",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-17-pro.png",
+      "sha256": "bddaa4243446641f17fb77e5961b63598632e54f531e0c126b7ce8c166c0cf4c",
+      "width": 939,
+      "height": 659
+    },
+    "iPhone 17 Pro Max": {
+      "model": "iPhone 17 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-17-pro-max.png",
+      "sha256": "feaffd90d5ed9aaaddc093f1356a68f8ee5199ef0f428d6ecc63d793cb9d602b",
+      "width": 950,
+      "height": 700
+    },
+    "iPhone 18 Pro": {
+      "model": "iPhone 18 Pro",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-18-pro-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-18-pro.png",
+      "sha256": "a447c5e74abd6d244cc84d46fb5fa4935d932ace2627b72448d5f35cacd5b93e",
+      "width": 900,
+      "height": 660
+    },
+    "iPhone 18 Pro Max": {
+      "model": "iPhone 18 Pro Max",
+      "sourceImage": "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-18-pro-max-colors.png",
+      "sourcePage": "https://support.apple.com/en-us/108044",
+      "credit": "Apple",
+      "path": "assets/products/iphone-18-pro-max.png",
+      "sha256": "b4e1cb5a51847761fb79a6671f6c8ee12bb8704b6614acee039908d5e06c00e8",
+      "width": 906,
+      "height": 700
+    }
+  }
+}

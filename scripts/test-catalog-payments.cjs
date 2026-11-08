@@ -31,13 +31,15 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   assert.equal(await page.locator('#financing').isVisible(),true);
   assert.equal(await page.locator('#detail-price').textContent(),money(regular));
   assert.equal(await page.locator('#detail-regular').isVisible(),false);
-  assert.equal(await page.locator('#payment-installments').isDisabled(),true);
+  assert.equal(await page.locator('#installment-options').isVisible(),false);
   for(const bank of config.banks){
    await page.locator('#payment-bank').selectOption(bank.id);
-   assert.equal(await page.locator('#payment-installments').inputValue(),'');
-   assert.deepEqual(await page.locator('#payment-installments option').evaluateAll(o=>o.map(n=>n.value)),['','3','6','9','12']);
+   assert.equal(await page.locator('[name=installment-term]:checked').count(),0);
+   assert.deepEqual(await page.locator('[name=installment-term]').evaluateAll(o=>o.map(n=>n.value)),['3','6','9','12']);
+   assert.equal(await page.locator('#installment-grid label:visible').count(),4);
+   for(const months of bank.installments){const card=page.locator('#installment-grid label').filter({has:page.locator('[value="'+months+'"]')});assert.equal(await card.locator('strong').textContent(),money(Math.floor(regular/months)));}
    for(const months of bank.installments){
-    await page.locator('#payment-installments').selectOption(String(months));
+    await page.locator('[name=installment-term][value="'+months+'"]').check();
     const each=Math.floor(regular/months),last=regular-each*(months-1);
     const expected=each===last?months+' cuotas de '+money(each):(months-1)+' cuotas de '+money(each)+' y una última de '+money(last);
     assert.equal(await page.locator('#installment-summary').textContent(),expected);
@@ -72,13 +74,13 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   await rounding.goto(base);await rounding.locator('.card').waitFor();
   assert.equal(await rounding.locator('.price').textContent(),'$100.05');assert.equal(await rounding.locator('.regular-price s').first().textContent(),'$110.06');
   await rounding.locator('.view').click();await rounding.getByLabel('Tasa cero',{exact:false}).check();
-  await rounding.locator('#payment-bank').selectOption('bac');await rounding.locator('#payment-installments').selectOption('12');
+  await rounding.locator('#payment-bank').selectOption('bac');await rounding.locator('[name=installment-term][value="12"]').check();
   assert.equal(await rounding.locator('#installment-summary').textContent(),'11 cuotas de $9.17 y una última de $9.19');
   const failure=await browser.newPage();await failure.route('**/payment-plans.json',r=>r.fulfill({status:500,body:''}));
   await failure.goto(base);await failure.locator('.card').first().waitFor();await failure.locator('.view').first().click();await failure.getByLabel('Tasa cero',{exact:false}).check();
   assert.match(await failure.locator('#installment-summary').textContent(),/No se pudieron cargar/);
-  assert.equal(await failure.locator('#payment-installments').isDisabled(),true);
+  assert.equal(await failure.locator('#installment-options').isVisible(),false);
   assert.deepEqual(errors,[]);
-  console.log('PASS promotional cash/regular +10% for every card, five banks × four terms, exact cents and final installment, WhatsApp method/bank/terms, reset between products, responsive two themes and safe config failure');
+  console.log('PASS promotional cash/regular +10% for every card, five banks × four visible selectable installment amounts, exact cents and final installment, WhatsApp method/bank/terms, reset between products, responsive two themes and safe config failure');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

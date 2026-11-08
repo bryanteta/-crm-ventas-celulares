@@ -129,7 +129,8 @@
   function updatePayment(){
     const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);if(!p)return;
     const financed=$('[name=payment]:checked').value==='installments',regular=regularPrice(p.priceCents);
-    const bank=banks.find(b=>b.id===$('#payment-bank').value),months=Number($('#payment-installments').value);
+    const bank=banks.find(b=>b.id===$('#payment-bank').value),months=Number($('[name=installment-term]:checked')?.value||0);
+    renderInstallments(regular,bank,months);
     $('#financing').hidden=!financed;
     $('#detail-regular').hidden=financed;$('#detail-regular s').textContent=money(regular);
     $('#detail-price-label').textContent=financed?'Precio regular':'Precio promocional';
@@ -199,13 +200,29 @@
   document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog)render();}));
   $('#reset').addEventListener('click',()=>{brand='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
   function resetInstallments(){
-    const bank=banks.find(b=>b.id===$('#payment-bank').value),terms=bank?[...bank.installments].sort((a,b)=>a-b):[];
-    $('#payment-installments').replaceChildren(option('',!bank?'Selecciona un banco primero':terms.length?'Selecciona las cuotas':'Cuotas por confirmar'),...terms.map(n=>option(String(n),n+' cuota'+(n===1?'':'s'))));
-    $('#payment-installments').disabled=!terms.length;
+    $('#installment-grid').replaceChildren();delete $('#installment-grid').dataset.plan;$('#installment-options').hidden=true;
+  }
+  function renderInstallments(total,bank,selected){
+    const terms=bank?[...bank.installments].sort((a,b)=>a-b):[],grid=$('#installment-grid');
+    $('#installment-options').hidden=!terms.length;
+    // Keep the radio being used in place, so keyboard focus survives a selection.
+    const signature=JSON.stringify([total,bank?.id,terms]);
+    if(grid.dataset.plan===signature)return;
+    grid.dataset.plan=signature;
+    const fragment=document.createDocumentFragment();
+    for(const months of terms){
+      const each=Math.floor(total/months),last=total-each*(months-1);
+      const label=document.createElement('label'),input=document.createElement('input'),copy=document.createElement('span'),name=document.createElement('span'),amount=document.createElement('strong'),note=document.createElement('small');
+      input.type='radio';input.name='installment-term';input.value=String(months);input.checked=selected===months;
+      name.textContent=months+' cuotas';amount.textContent=money(each);
+      note.textContent=last===each?'Por mes':'Por mes · Última: '+money(last);
+      copy.append(name,amount,note);label.append(input,copy);fragment.append(label);
+    }
+    grid.replaceChildren(fragment);
   }
   document.querySelectorAll('[name=payment]').forEach(input=>input.addEventListener('change',updatePayment));
   $('#payment-bank').addEventListener('change',()=>{resetInstallments();updatePayment();});
-  $('#payment-installments').addEventListener('change',updatePayment);
+  $('#installment-grid').addEventListener('change',updatePayment);
   nodes.variant.addEventListener('change',showVariant);
   $('#close').addEventListener('click',()=>nodes.dialog.close());
   nodes.dialog.addEventListener('click',event=>{if(event.target!==nodes.dialog)return;const r=nodes.dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)nodes.dialog.close();});

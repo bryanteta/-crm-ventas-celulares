@@ -145,10 +145,11 @@
       if(!banks.length)summary='No se pudieron cargar las cuotas. Consúltalas con Lunivo por WhatsApp.';
       else if(bank){
         paymentText+=' · '+bank.name;
-        summary=bank.installments.length?(bank.installments.some(n=>regular%n)?'Montos mensuales aproximados. Selecciona tus cuotas.':'Selecciona el número de cuotas.'):'Cuotas de este banco por confirmar con Lunivo.';
+        summary=bank.installments.length?'Selecciona el número de cuotas.':'Cuotas de este banco por confirmar con Lunivo.';
         if(bank.installments.includes(months)){
-          const installment=Math.round(regular/months);
-          summary=months+' cuotas de '+money(installment)+(regular%months?' aprox.':'')+' · Total: '+money(regular);
+          const installment=Math.floor(regular/months),higher=regular%months;
+          const breakdown=higher?higher+' × '+money(installment+1)+' + '+(months-higher)+' × '+money(installment):months+' cuotas de '+money(installment);
+          summary=breakdown+' · Total: '+money(regular);
           paymentText+=' · '+months+' cuotas';
         }
       }
@@ -212,10 +213,10 @@
     grid.dataset.plan=signature;
     const fragment=document.createDocumentFragment();
     for(const months of terms){
-      const each=Math.round(total/months);
+      const each=Math.floor(total/months);
       const label=document.createElement('label'),input=document.createElement('input'),copy=document.createElement('span'),name=document.createElement('span'),amount=document.createElement('strong');
       input.type='radio';input.name='installment-term';input.value=String(months);input.checked=selected===months;
-      name.textContent=months+' cuotas';amount.textContent=money(each);
+      name.textContent=months+' cuotas';amount.textContent=(total%months?'Desde ':'')+money(each);
       copy.append(name,amount);label.append(input,copy);fragment.append(label);
     }
     grid.replaceChildren(fragment);

@@ -102,4 +102,4 @@ El desglose trabaja con centavos enteros y deja cualquier diferencia de redondeo
 
 Validación: `npm run test:catalog-payments` verifica todos los precios públicos, los cinco bancos y sus plazos hasta 36 cuotas, redondeo al dólar, mensajes de WhatsApp, reinicio entre equipos, fallos de configuración y diseño en ambos temas a 320/412/840/1140 px. Complementan las pruebas existentes de catálogo y modo oscuro.
 
-El bloque visual sigue la referencia comercial: etiqueta Precio regular con el importe tachado en su propia línea; Precio promocional con importe grande en verde; y una marca de verificación junto a «Precio exclusivo por pago de contado». Adapta el contraste al tema claro u oscuro.
+La presentación recupera el diseño compacto anterior, sin un recuadro adicional dentro de la tarjeta ni un bloque enmarcado en el detalle. Conserva los textos «Precio regular», «Precio promocional» y «Precio exclusivo por pago de contado», el regular tachado y el promocional resaltado, con adaptación a ambos temas.

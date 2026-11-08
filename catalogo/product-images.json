@@ -616,6 +616,20 @@
       "width": 306,
       "height": 380
     },
+    "iPhone 14 Plus|Lila": {
+      "model": "iPhone 14 Plus",
+      "color": "Lila",
+      "officialColor": "purple",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_plus_purple__ebfjg5vvyu0y_large.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-14-plus-purple",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14-plus-lila.jpg",
+      "sha256": "871977be1ce5d52c26c8f8625c7f56bf4891a731f3c4ecb4781c9b847b6336c3",
+      "width": 306,
+      "height": 380
+    },
     "iPhone 14 Pro Max|Dorado": {
       "model": "iPhone 14 Pro Max",
       "color": "Dorado",
@@ -1232,6 +1246,20 @@
       "width": 306,
       "height": 380
     },
+    "iPhone 18 Pro|Glaciar": {
+      "model": "iPhone 18 Pro",
+      "color": "Glaciar",
+      "officialColor": "glacier",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_glacier__f830jkql73iy_large.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-18-pro-glacier",
+      "credit": "Apple",
+      "path": "assets/products/iphone-18-pro-celeste.jpg",
+      "sha256": "6ca900968464ab6138b20e2b477cbe36fd552022d353c9cab12aa9ab62521251",
+      "width": 306,
+      "height": 380
+    },
     "iPhone 18 Pro|Negro": {
       "model": "iPhone 18 Pro",
       "color": "Negro",
@@ -1250,16 +1278,6 @@
   "unavailable": {
     "iPhone 13 Pro|Color por confirmar": {
       "model": "iPhone 13 Pro",
-      "color": "Color por confirmar",
-      "reason": "Color sin confirmar"
-    },
-    "iPhone 14 Plus|Color por confirmar": {
-      "model": "iPhone 14 Plus",
-      "color": "Color por confirmar",
-      "reason": "Color sin confirmar"
-    },
-    "iPhone 18 Pro|Color por confirmar": {
-      "model": "iPhone 18 Pro",
       "color": "Color por confirmar",
       "reason": "Color sin confirmar"
     },

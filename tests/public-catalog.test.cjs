@@ -9,7 +9,7 @@ test('publishes only customer fields, canonical models and final retail price',(
  assert.equal(out.products.length,1);
  const product=out.products[0];
  assert.equal(product.priceCents,55500);assert.equal(product.model,'iPhone 13 Pro');assert.equal(product.capacity,'128 GB');assert.equal(product.quantity,2);
- assert.deepEqual(Object.keys(product).sort(),['id','manufacturer','model','capacity','color','condition','grade','battery','priceCents','available','observations','quantity','cycles','sim','box'].sort());
+ assert.deepEqual(Object.keys(product).sort(),['id','manufacturer','model','capacity','color','condition','grade','battery','priceCents','available','observations','quantity','cycles','sim','box','ram'].sort());
  assert.doesNotMatch(JSON.stringify(out),/Samuel|Split|saul|private|123456789012345|47500|128GB475/i);
 });
 test('preserves every unit and price; combines only identical public variants at identical prices',()=>{
@@ -28,9 +28,11 @@ test('requires both valid recent sources and rejects free-form model names',()=>
  assert.equal(modelName('SAMSUNG Z FLIP 6 256GB 12 RAM').model,'Samsung Z Flip 6');
  assert.equal(modelName('IPHONE 16 NORMAL 128GB - 2 CICLOS OPEN BOX').model,'iPhone 16');
 });
-test('unknown colors and notes cannot leak arbitrary data',()=>{
- const s=snapshot();for(const p of Object.values(s.providers)){p.rows[0].color='<script>Samuel key</script>';p.rows[0].category='private';p.rows[0].notes='Sold by Javier, cost 475';}
- const out=buildCatalog(s);assert.equal(out.products[0].color,'Color por confirmar');assert.equal(out.products[0].condition,'Seminuevo');assert.doesNotMatch(JSON.stringify(out),/script|private|Javier|475/);
+test('unrecognized declared colors stop publication; private notes are never exported',()=>{
+ const s=snapshot();s.providers.samuel.rows[0].color='A color not yet supported';assert.throws(()=>buildCatalog(s),/color/);
+ s.providers.samuel.rows[0].color='<script>Samuel key</script>';assert.throws(()=>buildCatalog(s),/color/);
+ for(const p of Object.values(s.providers)){p.rows[0].color='Negro';p.rows[0].category='private';p.rows[0].notes='Sold by Javier, cost 475';}
+ const out=buildCatalog(s);assert.equal(out.products[0].color,'Negro');assert.equal(out.products[0].condition,'Seminuevo');assert.doesNotMatch(JSON.stringify(out),/script|private|Javier|475/);
 });
 
 test('decodes storage shorthand and retains customer-relevant warnings without free text',()=>{
@@ -102,4 +104,33 @@ test('color images never fall back to a different finish or a model-wide color l
  assert.notEqual(m.products['iPhone 11|Blanco'].path,m.products['iPhone 11|Negro'].path);
  assert.notEqual(m.products['iPhone 16 Pro Max|Negro'].path,m.products['iPhone 16 Pro Max|Titanio natural'].path);
  assert(m.unavailable['Samsung Z Flip 4|Amarillo']);
+});
+
+test('explicit supplier colors survive the public projection, including Lila and Glaciar',()=>{
+ for(const [raw,expected] of [['Lila','Lila'],['LILAC','Lila'],['Lavanda','Lila'],['Glaciar','Glaciar'],['Glacier','Glaciar'],['Titanium Black','Negro'],['Titanio negro','Negro'],['Titanio natural','Titanio natural']]){
+  const s=snapshot();s.providers.samuel.rows[0].color=raw;
+  assert(buildCatalog(s).products.some(p=>p.color===expected),raw);
+ }
+ const s=snapshot();s.providers.split.rows[0]={...make('split'),model:'IPHONE 14 PLUS 128GB',color:'Lila',notes:'128GB · Batería 100% · Seminuevo'};
+ const p=buildCatalog(s).products.find(p=>p.model==='iPhone 14 Plus');assert.equal(p.color,'Lila');assert.equal(p.battery,'100%');assert.equal(p.capacity,'128 GB');assert.equal(p.condition,'Seminuevo');
+});
+test('structured condition takes precedence over stale product titles',()=>{
+ const s=snapshot();s.providers.split.rows[0]={...make('split'),model:'IPHONE 17 PRO 256GB - NUEVO',category:'',notes:'256GB · Batería 100% · Open Box'};
+ assert.equal(buildCatalog(s).products.find(p=>p.model==='iPhone 17 Pro').condition,'Open Box');
+ s.providers.split.rows[0].notes='256GB · Seminuevo';assert.equal(buildCatalog(s).products.find(p=>p.model==='iPhone 17 Pro').condition,'Seminuevo');
+ s.providers.split.rows[0].category='Nuevo';assert.equal(buildCatalog(s).products.find(p=>p.model==='iPhone 17 Pro').condition,'Nuevo');
+});
+test('SIM, RAM and screen condition details are preserved without exporting private notes',()=>{
+ const s=snapshot();s.providers.samuel.rows[0].notes='Chip fisico + Esim';
+ s.providers.split.rows[0]={...make('split'),model:'SAMSUNG S25 NORMAL 128GB 12RAM',notes:'Burbujitas en pantalla y 2 puntos negros'};
+ const out=buildCatalog(s);assert.equal(out.products.find(p=>p.manufacturer==='Apple').sim,'SIM física y eSIM');
+ const p=out.products.find(p=>p.manufacturer==='Samsung');assert.equal(p.ram,'12 GB');assert(p.observations.includes('Burbujas en pantalla'));assert(p.observations.includes('Puntos negros en pantalla'));
+ assert.doesNotMatch(JSON.stringify(out),/2 puntos|Burbujitas/);
+});
+
+test('supplier API to public catalog to image binding keeps the declared Lila color and its actual details',()=>{
+ const feeds=require('../feeds-core.js'),fs=require('node:fs'),s=snapshot();s.providers.samuel={rows:[],total:0};
+ s.providers.split=feeds.split({moneda:'USD',total:1,actualizado:s.checkedAt,items:[{id:'synthetic-color-regression',origen:'SPLIT',modelo:'IPHONE 14 PLUS 128GB',color:'Lila',detalle:'128GB · Batería 100% · Seminuevo',precio:'300.00'}]});
+ const [p]=buildCatalog(s).products;assert.equal(p.model,'iPhone 14 Plus');assert.equal(p.color,'Lila');assert.equal(p.capacity,'128 GB');assert.equal(p.battery,'100%');assert.equal(p.condition,'Seminuevo');assert.equal(p.priceCents,38000);assert.equal(p.quantity,1);
+ const images=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));assert.equal(images.products[p.model+'|'+p.color].officialColor,'purple');assert(!images.unavailable[p.model+'|'+p.color]);
 });

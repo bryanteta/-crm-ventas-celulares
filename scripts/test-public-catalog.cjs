@@ -59,6 +59,10 @@ const fs=require('node:fs');
  }
  assert.deepEqual(errors,[]);
  assert(requests.every(url=>url.startsWith(base)),`Unexpected network request: ${requests.filter(url=>!url.startsWith(base))}`);
+ const lilac=await browser.newPage({viewport:{width:412,height:915}});
+ await lilac.goto(base);await lilac.locator('.card').first().waitFor();await lilac.locator('#search').fill('iPhone 14 Plus');
+ const lilacItem=data.products.find(p=>p.model==='iPhone 14 Plus'&&p.color==='Lila');
+ if(lilacItem){const card=lilac.locator(`[data-product-id="${lilacItem.id}"]`);assert((await card.locator('.summary').textContent()).includes('Lila'));assert((await card.locator('.variant-specs').textContent()).includes(lilacItem.battery));assert((await card.locator('img').getAttribute('src')).includes('lila'));await lilac.locator('#inventario').scrollIntoViewIfNeeded();await card.locator('img').evaluate(i=>i.decode());await lilac.screenshot({path:'/workspace/artifacts/lunivo-14-plus-lila-corregido.png'});}
  const bad=await browser.newPage();
  await bad.route('**/inventory.json',r=>r.fulfill({status:500,body:'error'}));
  await bad.goto(base);await bad.locator('#error').waitFor();

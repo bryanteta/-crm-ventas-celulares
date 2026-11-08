@@ -23,10 +23,11 @@
       for(const key of ['capacity','color','condition','grade','battery'])if(typeof p[key]!=='string'||p[key].length>100)throw Error('Detalle inválido');
       if(p.quantity!==undefined&&(!Number.isSafeInteger(p.quantity)||p.quantity<1))throw Error('Existencias inválidas');
       if(p.cycles!==undefined&&p.cycles!==null&&(!Number.isSafeInteger(p.cycles)||p.cycles<0))throw Error('Ciclos inválidos');
-      if(p.sim!==undefined&&!['SIM física','Por confirmar'].includes(p.sim))throw Error('SIM inválida');
+      if(p.sim!==undefined&&!['SIM física','SIM física y eSIM','eSIM','Por confirmar'].includes(p.sim))throw Error('SIM inválida');
       if(p.box!==undefined&&p.box!==null&&typeof p.box!=='boolean')throw Error('Caja inválida');
-      if(!Array.isArray(p.observations)||p.observations.some(v=>!['Aviso de batería','Aviso de pantalla','Aviso de cámara','Aviso de TrueDepth','Aviso de Face ID','Desgaste visible'].includes(v)))throw Error('Observaciones inválidas');
+      if(!Array.isArray(p.observations)||p.observations.some(v=>!['Aviso de batería','Aviso de pantalla','Aviso de cámara','Aviso de TrueDepth','Aviso de Face ID','Desgaste visible','Burbujas en pantalla','Puntos negros en pantalla','Pantalla reemplazada','Cable incluido'].includes(v)))throw Error('Observaciones inválidas');
       if(p.condition==='Estado por confirmar')p.condition='Seminuevo';
+      if(p.ram!==undefined&&p.ram!==''&&!/^(?:[1-9]|[1-9][0-9]) GB$/.test(p.ram))throw Error('RAM inválida');
       ids.add(p.id);
     }
     return data;
@@ -45,7 +46,7 @@
       card.querySelector('h3').textContent=group.model;
       const device=group.variants[0];
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
-      const details=[device.condition,device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería por confirmar',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim==='SIM física'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
+      const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería por confirmar',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
       const image=card.querySelector('.product-image'),picture=images[device.model+'|'+device.color];
       if(picture){image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-caption').textContent='Imagen de referencia · '+device.color;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
@@ -63,7 +64,7 @@
     }
     nodes.products.replaceChildren(fragment);
     const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
-    nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipos':''}`;
+    nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
     $('#empty').hidden=matches.length!==0;
   }
   function showVariant(){
@@ -73,21 +74,22 @@
     if(p.grade)specs.push(['Categoría',p.grade]);
     if(Number.isSafeInteger(p.quantity))specs.push(['Disponibles',String(p.quantity)]);
     if(p.cycles!==null&&p.cycles!==undefined)specs.push(['Ciclos de batería',String(p.cycles)]);
-    if(p.sim==='SIM física')specs.push(['Tipo de SIM',p.sim]);
+    if(p.sim!=='Por confirmar')specs.push(['Tipo de SIM',p.sim]);
+    if(p.ram)specs.push(['Memoria RAM',p.ram]);
     if(typeof p.box==='boolean')specs.push(['Caja',p.box?'Incluida':'Sin caja']);
     if(p.observations.length)specs.push(['A tener en cuenta',p.observations.join(' · ')]);
     const fragment=document.createDocumentFragment();
     for(const [name,value]of specs){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);fragment.append(row);}
     $('#specs').replaceChildren(fragment);
     $('#detail-price').textContent=money(p.priceCents);
-    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. Precio publicado: ${money(p.priceCents)}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:''}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim==='SIM física'?', SIM física':''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
+    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. Precio publicado: ${money(p.priceCents)}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:''}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
     $('#consult').href='https://wa.me/50376241930?text='+encodeURIComponent(text);
   }
   function openDetails(group){
     activeGroup=group;
     $('#detail-title').textContent=group.model;
     const sorted=[...group.variants].sort((a,b)=>a.priceCents-b.priceCents||collator.compare(a.capacity,b.capacity));
-    nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim==='SIM física'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
+    nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim!=='Por confirmar'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
     nodes.variant.hidden=sorted.length===1;
     document.querySelector('label[for=variant]').hidden=sorted.length===1;
     showVariant();

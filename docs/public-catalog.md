@@ -52,7 +52,7 @@ Las pruebas cubren privacidad, precio exacto, conservación de cantidades y vari
 
 `catalogo/product-images.json` (versión 2) indexa las fotos por la pareja `modelo|color`, con nombre de acabado oficial, página original, URL de imagen, crédito, dimensiones, archivo local y SHA-256. Las fotos de iPhone proceden de los selectores por modelo/acabado del comparador oficial de Apple (https://www.apple.com/iphone/compare/); se conserva el selector CSS y su hoja de estilos para comprobar que la foto corresponde al acabado indicado. Las de Samsung proceden de sus páginas oficiales de producto, compra o soporte; se conserva el SKU o la descripción de la galería cuando está disponible.
 
-La publicación inicial de este formato incorpora 90 combinaciones de modelo/color. Las imágenes muestran un solo acabado, que puede verse por delante y por detrás en la misma foto. No se usan composiciones de toda la gama ni se modifica o recolorea la foto original. El dueño confirmó que «Titanio» significa «Titanio natural»; este nombre se normaliza al generar el inventario.
+El manifiesto incorpora 92 combinaciones de modelo/color, incluidos iPhone 14 Plus Lila y iPhone 18 Pro Glaciar. Las imágenes muestran un solo acabado, que puede verse por delante y por detrás en la misma foto. No se usan composiciones de toda la gama ni se modifica o recolorea la foto original. El dueño confirmó que «Titanio» significa «Titanio natural»; este nombre se normaliza al generar el inventario.
 
 Los alias de proveedor se vinculan a acabados oficiales del modelo: por ejemplo, Negro de iPhone 13 → Midnight, Celeste/Azul de iPhone 13 Pro → Sierra Blue, Dorado de iPhone 16 Pro → Desert Titanium y Blanco de iPhone 17 Pro Max → Silver. La correspondencia concreta figura en cada entrada como `officialColor`. Los colores sin confirmar y los Flip4 «Blanco»/«Amarillo» (edición no confirmada por el proveedor) quedan registrados en `unavailable`, con foto pendiente. Se mantienen en venta con sus especificaciones y precio, sin inventar una foto del color.
 
@@ -61,3 +61,11 @@ Las fotos se guardan sin alterar sus bytes en `catalogo/assets/products/`, se ca
 Para volver a descargar las imágenes revisadas: `python3 scripts/fetch-catalog-images.py` (requiere Pillow para validar archivos). Es posible limitar modelos con `--model 'iPhone 13'`. No forma parte del cron de inventario: una caída de las webs de imágenes no impide actualizar existencias. Un color nuevo sin foto revisada muestra el aviso de foto pendiente hasta añadir su entrada.
 
 Las pruebas comprueban selección exacta por modelo/color, ausencia de fotos de otros acabados como alternativa, conservación de «Nuevo»/«Open Box», política «Seminuevo», fuentes oficiales, archivos originales y degradación ante imágenes ausentes.
+
+## Control de datos de origen
+
+Los colores declarados se validan antes de publicar: Lila/Lilac/Lavanda y Glaciar/Glacier están reconocidos; un nombre declarado no reconocido detiene la actualización en lugar de descartarlo silenciosamente. El último catálogo correcto se conserva hasta revisar el color. Un color realmente vacío puede seguir como «Color por confirmar» si tampoco figura en los detalles.
+
+La condición sigue esta prioridad: categoría estructurada, estado de los detalles y, finalmente, título. Así, «Open Box» o «Seminuevo» en los detalles no se convierten en «Nuevo» porque un título antiguo contenga esa palabra. Se reconocen SIM física, chip físico, eSIM, RAM, avisos de componentes, pantalla reemplazada, burbujas/puntos negros de pantalla y cable incluido mediante etiquetas controladas. No se publican notas libres, costos ni datos del proveedor.
+
+La revisión del 8 de noviembre contrastó 150 variantes/324 unidades, todos los colores explícitos (100 variantes), 136 valores de batería y 102 capacidades explícitas con una misma consulta de los proveedores. Coincidieron cantidades y el desglose de precios finales. El único equipo sin color de esa consulta era un iPhone 13 Pro 128 GB cuyo origen no incluía color. Estas cifras describen esa consulta, no un total fijo: el inventario puede cambiar en actualizaciones posteriores.

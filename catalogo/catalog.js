@@ -32,6 +32,26 @@
     }
     return data;
   }
+  function paintHero(data){
+    const stage=$('.hero-collection');
+    if(!stage)return;
+    const preference={Apple:['iPhone 17 Pro Max|Anaranjado','iPhone 16 Pro|Titanio desierto','iPhone 15|Rosado'],Samsung:['Samsung S25 Ultra|Celeste','Samsung S26|Celeste','Samsung S22 Ultra|Verde']};
+    function updateCount(){const count=stage.querySelectorAll('figure:not([hidden])').length;stage.dataset.count=String(count);$('#hero-signature').hidden=count>0;}
+    for(const manufacturer of ['Samsung','Apple']){
+      const figure=stage.querySelector('[data-hero-brand="'+manufacturer+'"]');
+      const choices=data.products.filter(p=>p.manufacturer===manufacturer&&p.available&&images[p.model+'|'+p.color]);
+      const selected=preference[manufacturer].map(key=>choices.find(p=>p.model+'|'+p.color===key)).find(Boolean)||choices[0];
+      figure.hidden=!selected;
+      if(!selected)continue;
+      const image=figure.querySelector('img'),picture=images[selected.model+'|'+selected.color];
+      image.src=picture.path;image.alt=selected.model+', '+selected.color+' · imagen de referencia';
+      figure.dataset.productId=selected.id;
+      figure.querySelector('strong').textContent=selected.model.replace(/^Samsung /,'');
+      figure.querySelector('small').textContent=selected.color;
+      image.onerror=()=>{figure.hidden=true;updateCount();};
+    }
+    updateCount();
+  }
   function render(){
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
@@ -107,6 +127,7 @@
       catalog=valid(await response.json());
       groups=catalog.products.map(p=>({model:p.model,manufacturer:p.manufacturer,variants:[p]}));
       await imagesReady;
+      paintHero(catalog);
       nodes.capacity.replaceChildren(option('all','Toda capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
       $('#updated').textContent='Inventario actualizado: '+new Intl.DateTimeFormat('es-SV',{dateStyle:'medium',timeStyle:'short',timeZone:'America/El_Salvador'}).format(new Date(catalog.updatedAt))+' · El Salvador';

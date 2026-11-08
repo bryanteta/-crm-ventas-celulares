@@ -4,12 +4,31 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f6f7fb"><meta name="description" content="Encuentra tu próximo iPhone o Samsung en Lunivo. Consulta modelos disponibles, características y precios de venta en dólares.">
 <title>Inventario Lunivo · Tu próximo equipo</title>
-<link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="styles.css?v=20261108-datos"><script src="catalog.js?v=20261108-datos" defer></script>
+<link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="styles.css?v=20261108-portada"><link rel="stylesheet" href="hero.css?v=20261108-portada"><script src="catalog.js?v=20261108-portada" defer></script>
 </head>
 <body>
 <header class="header"><a class="brand" href="./" aria-label="Lunivo, inicio"><img src="assets/logo.png" alt="" width="44" height="44"><span>LUNIVO<span class="brand-caption">CATÁLOGO</span></span></a><a class="contact" href="https://wa.me/50376241930" target="_blank" rel="noopener noreferrer">Hablemos <span class="arrow" aria-hidden="true"></span></a></header>
 <main>
-<section class="hero" aria-labelledby="headline"><div class="hero-copy"><div class="eyebrow"><span class="dot"></span> EQUIPOS DISPONIBLES EN LUNIVO</div><h1 id="headline">Un nuevo equipo.<br>Más posibilidades<span class="accent">.</span></h1><p>Encuentra el que va contigo. Explora nuestros modelos y consulta los detalles con nosotros.</p><a href="#inventario" class="button hero-button">Explorar inventario <span aria-hidden="true">↓</span></a></div><div class="hero-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><div class="device device-back"><div class="cameras"><i></i><i></i><i></i></div><span class="device-monogram">L</span></div><div class="device device-front"><div class="island"></div><div class="screen-orb"></div><span>Todo comienza<br>con un cambio.</span></div><span class="art-label">ENCUENTRA TU SIGUIENTE</span></div></section>
+<section class="hero hero-showcase" aria-labelledby="headline">
+  <div class="hero-intro">
+    <div class="hero-kicker"><span class="dot" aria-hidden="true"></span> ENCUÉNTRALO EN LUNIVO</div>
+    <h1 id="headline" class="hero-title">Tu próximo equipo.<br><span>Tu siguiente paso.</span></h1>
+    <p class="hero-description">iPhone y Samsung, a tu manera. Explora colores, capacidades y precios para encontrar el que va contigo.</p>
+    <div class="hero-actions">
+      <a href="#inventario" class="button hero-primary">Explorar equipos <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      <a href="https://wa.me/50376241930?text=Hola%20Lunivo%2C%20quiero%20ayuda%20para%20elegir%20un%20equipo." class="hero-advice" target="_blank" rel="noopener noreferrer">Ayúdame a elegir <span class="arrow" aria-hidden="true"></span></a>
+    </div>
+    <ul class="hero-facts" aria-label="Acerca del catálogo"><li>Fotos por color</li><li>Precios en USD</li><li>Consulta directa</li></ul>
+  </div>
+  <div class="hero-collection" data-count="0" aria-label="Una selección del catálogo">
+    <div class="hero-halo" aria-hidden="true"></div>
+    <span class="hero-spark" aria-hidden="true">✦</span>
+    <div class="hero-signature" id="hero-signature"><img src="assets/logo.png" alt="" width="72" height="72"><span>Tu próximo paso.<strong>LUNIVO</strong></span></div>
+    <figure class="hero-pick hero-pick-samsung" data-hero-brand="Samsung" hidden><div class="hero-pick-photo"><img width="306" height="380" alt="" decoding="async"></div><figcaption><span>Samsung</span><strong></strong><small></small></figcaption></figure>
+    <figure class="hero-pick hero-pick-apple" data-hero-brand="Apple" hidden><div class="hero-pick-photo"><img width="306" height="380" alt="" decoding="async"></div><figcaption><span>iPhone</span><strong></strong><small></small></figcaption></figure>
+    <div class="hero-reference"><span aria-hidden="true"></span> Imágenes de referencia del catálogo</div>
+  </div>
+</section>
 <section class="inventory" id="inventario" aria-labelledby="inventory-title"><div class="section-top"><div><div class="eyebrow">ELIGE TU PRÓXIMO EQUIPO</div><h2 id="inventory-title">Nuestro inventario</h2></div><p id="updated" class="updated" aria-live="polite">Consultando catálogo…</p></div>
 <form id="filters" role="search" aria-label="Buscar en el inventario"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar un modelo…" aria-label="Buscar modelo" autocomplete="off"></label><div class="filter-row"><div class="brands" role="group" aria-label="Marca"><button type="button" data-brand="all" aria-pressed="true">Todos</button><button type="button" data-brand="Apple" aria-pressed="false">iPhone</button><button type="button" data-brand="Samsung" aria-pressed="false">Samsung</button></div><div class="selects"><label><span class="sr-only">Capacidad</span><select id="capacity"><option value="all">Toda capacidad</option></select></label><label><span class="sr-only">Ordenar</span><select id="sort"><option value="model">Por modelo</option><option value="low">Menor precio</option><option value="high">Mayor precio</option></select></label></div></div></form>
 <div class="results-row"><p id="count" role="status" aria-live="polite">Cargando equipos…</p><span>Precios en USD</span></div><div id="notice" class="notice" hidden></div><div id="products" class="products" aria-busy="true"><div class="loading">Preparando el inventario de Lunivo…</div></div><div id="empty" class="empty" hidden><span aria-hidden="true">⌕</span><h3>No encontramos ese equipo</h3><p>Prueba otro modelo o quita los filtros.</p><button id="reset" class="button" type="button">Ver todos los equipos</button></div><div id="error" class="empty" hidden><h3>El inventario no pudo cargar</h3><p>Intenta nuevamente o escríbenos para consultar modelos.</p><button id="retry" class="button" type="button">Volver a intentar</button></div>

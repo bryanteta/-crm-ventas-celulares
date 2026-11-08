@@ -103,7 +103,8 @@ test('color images never fall back to a different finish or a model-wide color l
  for(const key of Object.keys(m.unavailable))assert(!m.products[key]);
  assert.notEqual(m.products['iPhone 11|Blanco'].path,m.products['iPhone 11|Negro'].path);
  assert.notEqual(m.products['iPhone 16 Pro Max|Negro'].path,m.products['iPhone 16 Pro Max|Titanio natural'].path);
- assert(m.unavailable['Samsung Z Flip 4|Amarillo']);
+ for(const color of ['Blanco','Amarillo']){const key='Samsung Z Flip 4|'+color;assert.equal(m.products[key].color,color);assert.equal(m.products[key].model,'Samsung Z Flip 4');assert(!m.unavailable[key]);}
+ assert.notEqual(m.products['Samsung Z Flip 4|Blanco'].path,m.products['Samsung Z Flip 4|Amarillo'].path);
 });
 
 test('explicit supplier colors survive the public projection, including Lila and Glaciar',()=>{

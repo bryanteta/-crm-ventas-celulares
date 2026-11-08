@@ -229,6 +229,35 @@
       "width": 1920,
       "height": 1280
     },
+    "Samsung Z Flip 4|Amarillo": {
+      "model": "Samsung Z Flip 4",
+      "color": "Amarillo",
+      "officialColor": "Bespoke Yellow/Yellow (Silver frame)",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/my/2208/gallery/my-galaxy-z-flip4-f721-bespoke-edition-yellow-front-color-sm-f721b4yexme-533145580?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/my/support/model/SM-F721B4YEXME/",
+      "credit": "Samsung",
+      "sourceSku": "SM-F721B4YEXME",
+      "sourceDescription": "Bespoke Studio: silver frame; yellow front panel; yellow back panel. Reference finish; supplier frame and exact edition not specified.",
+      "finishReferencePage": "https://www.samsung.com/my/mobile/galaxy-bespoke/galaxy-z-flip4/",
+      "path": "assets/products/samsung-z-flip-4-amarillo.png",
+      "sha256": "1fea9da5ba5dab4ac27c2e017d03a04dc28976488455e47053a58af77a72f8a4",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung Z Flip 4|Blanco": {
+      "model": "Samsung Z Flip 4",
+      "color": "Blanco",
+      "officialColor": "Bespoke White/White (Silver frame)",
+      "sourceImage": "https://images.samsung.com/global/flip4/bespoke-studio/B4_4S_sp.png?imwidth=720",
+      "sourcePage": "https://www.samsung.com/my/mobile/galaxy-bespoke/galaxy-z-flip4/",
+      "credit": "Samsung",
+      "sourceSku": "SM-F721B4SEXME",
+      "sourceDescription": "Bespoke Studio: silver frame; white front panel; white back panel. Reference finish; supplier frame and exact edition not specified.",
+      "path": "assets/products/samsung-z-flip-4-blanco.png",
+      "sha256": "e65dfd86f4a9ce117447634fde25c468220f729f29de58a79ff73d3ebe60650e",
+      "width": 720,
+      "height": 720
+    },
     "Samsung Z Flip 6|Gris": {
       "model": "Samsung Z Flip 6",
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2407/gallery/uk-galaxy-zflip6-f741-sm-f741bzsgeub-542658961?$624_624_PNG$",
@@ -1280,16 +1309,6 @@
       "model": "iPhone 13 Pro",
       "color": "Color por confirmar",
       "reason": "Color sin confirmar"
-    },
-    "Samsung Z Flip 4|Amarillo": {
-      "model": "Samsung Z Flip 4",
-      "color": "Amarillo",
-      "reason": "Nombre de color del proveedor pendiente de equivalencia oficial"
-    },
-    "Samsung Z Flip 4|Blanco": {
-      "model": "Samsung Z Flip 4",
-      "color": "Blanco",
-      "reason": "Nombre de color del proveedor pendiente de equivalencia oficial"
     }
   }
 }

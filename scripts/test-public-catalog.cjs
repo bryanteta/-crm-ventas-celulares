@@ -63,6 +63,11 @@ const fs=require('node:fs');
  await lilac.goto(base);await lilac.locator('.card').first().waitFor();await lilac.locator('#search').fill('iPhone 14 Plus');
  const lilacItem=data.products.find(p=>p.model==='iPhone 14 Plus'&&p.color==='Lila');
  if(lilacItem){const card=lilac.locator(`[data-product-id="${lilacItem.id}"]`);assert((await card.locator('.summary').textContent()).includes('Lila'));assert((await card.locator('.variant-specs').textContent()).includes(lilacItem.battery));assert((await card.locator('img').getAttribute('src')).includes('lila'));await lilac.locator('#inventario').scrollIntoViewIfNeeded();await card.locator('img').evaluate(i=>i.decode());await lilac.screenshot({path:'/workspace/artifacts/lunivo-14-plus-lila-corregido.png'});}
+ const flips=await browser.newPage({viewport:{width:412,height:915}});
+ await flips.goto(base);await flips.locator('.card').first().waitFor();await flips.locator('#search').fill('Flip 4');
+ const flipItems=data.products.filter(p=>p.model==='Samsung Z Flip 4');
+ for(const item of flipItems){const card=flips.locator(`[data-product-id="${item.id}"]`);assert((await card.locator('.summary').textContent()).includes(item.color));await card.locator('img').evaluate(i=>i.decode());assert.equal(await card.locator('img').getAttribute('src'),imageMap.products[item.model+'|'+item.color].path);assert.equal(await card.locator('.image-placeholder').isVisible(),false);}
+ if(flipItems.length){await flips.locator('#inventario').scrollIntoViewIfNeeded();await flips.screenshot({path:'/workspace/artifacts/lunivo-flip4-blanco-amarillo.png'});}
  const bad=await browser.newPage();
  await bad.route('**/inventory.json',r=>r.fulfill({status:500,body:'error'}));
  await bad.goto(base);await bad.locator('#error').waitFor();

@@ -21,17 +21,12 @@
 .hero-description { max-width: 360px; margin: 0; color: #667085; font-size: 14px; line-height: 1.85; }
 .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 26px; }
 .hero-primary { gap: 23px; padding: 15px 19px; font-size: 12px; border-radius: 11px; box-shadow: 0 6px 14px #14213b14; transition: transform .18s, background .18s; }
-.hero-primary svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .hero-primary:hover { background: #293a5b; transform: translateY(-2px); }
 .hero-advice { display: inline-flex; align-items: center; gap: 12px; padding: 12px 0; font-size: 11px; font-weight: 650; color: #515a70; min-height: 44px; }
 .hero-advice:hover { color: var(--accent); }
-.hero-facts { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; list-style: none; margin: 26px 0 0; padding: 0; color: #71788b; font-size: 9px; }
-.hero-facts li { display: inline-flex; gap: 6px; align-items: center; }
-.hero-facts li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: #a7a5cb; }
 .hero-collection { height: 350px; position: relative; min-width: 0; z-index: 1; }
 .hero-halo { position: absolute; width: 330px; height: 330px; left: 50%; top: 48%; transform: translate(-50%, -50%); border-radius: 50%; background: linear-gradient(140deg, #dcdcf8, #eae8f8); border: 1px solid #d5d4ef; }
 .hero-halo::before { content: ''; position: absolute; inset: -25px; border: 1px dashed #d9d8ed; border-radius: inherit; }
-.hero-spark { position: absolute; right: 0; top: 1px; color: #9590c9; font-size: 27px; line-height: 1; }
 .hero-pick { position: absolute; margin: 0; border-radius: 19px; padding: 13px 14px 15px; background: #ffffff; border: 1px solid #e5e6ee; box-shadow: 0 16px 30px #36365c12, 0 4px 8px #36365c06; overflow: hidden; }
 .hero-pick-photo { background: white; }
 .hero-pick img { width: 100%; height: 100%; display: block; object-fit: contain; }
@@ -44,8 +39,6 @@
 .hero-pick-samsung img { object-fit: contain; transform: scale(1.45); }
 .hero-pick-apple { right: 0; top: 48px; width: 186px; transform: rotate(8deg); }
 .hero-pick-apple .hero-pick-photo { height: 206px; }
-.hero-reference { display: flex; align-items: center; justify-content: center; gap: 6px; position: absolute; bottom: -4px; left: 0; right: 0; color: #86859f; font-size: 8px; }
-.hero-reference>span { width: 5px; height: 5px; border: 1px solid #a6a4bc; border-radius: 50%; }
 .hero-signature { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; color: #787a93; font-size: 12px; text-align: center; }
 .hero-signature strong { display: block; margin-top: 8px; font-size: 24px; letter-spacing: 5px; color: var(--ink); }
 .hero-collection[data-count="1"] .hero-pick { left: 50%; right: auto; top: 20px; transform: translateX(-50%) rotate(-5deg); }
@@ -59,7 +52,6 @@
   .hero-pick-apple .hero-pick-photo { height: 179px; }
   .hero-halo { width: 270px; height: 270px; }
   .hero-actions { gap: 12px; }
-  .hero-facts { gap: 10px; font-size: 8px; }
   .hero-pick strong { font-size: 10px; }
 }
 @media (max-width: 720px) {
@@ -70,7 +62,6 @@
   .hero-actions { margin-top: 19px; gap: 17px; }
   .hero-primary { font-size: 11px; gap: 14px; min-height: 44px; padding: 12px 14px; }
   .hero-advice { font-size: 10px; gap: 7px; }
-  .hero-facts { display: none; }
   .hero-collection { height: 192px; width: min(100%, 340px); margin: 3px auto 0; }
   .hero-halo { width: 195px; height: 195px; top: 43%; }
   .hero-halo::before { inset: -14px; }
@@ -83,8 +74,6 @@
   .hero-pick figcaption>span { font-size: 7px; margin-bottom: 3px; }
   .hero-pick strong { font-size: 9px; }
   .hero-pick small { display: none; }
-  .hero-reference { bottom: -5px; font-size: 7px; }
-  .hero-spark { right: 1%; top: 12px; font-size: 22px; }
   .hero-signature img { width: 50px; height: 50px; }
   .hero-signature { gap: 10px; }
 }
@@ -93,7 +82,6 @@
   .hero-title { font-size: 29px; letter-spacing: -1.4px; }
   .hero-actions { gap: 8px; }
   .hero-primary { gap: 8px; }
-  .hero-facts { gap: 8px; font-size: 7px; }
   .hero-pick-samsung { left: 6%; }
   .hero-pick-apple { right: 5%; }
 }

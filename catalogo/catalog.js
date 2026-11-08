@@ -5,6 +5,19 @@
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let images={};
+  const regularPrice=cents=>cents+Math.round(cents/10);
+  let banks=[];
+  const plansReady=fetch('payment-plans.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async response=>{
+    if(!response.ok)throw Error('Planes no disponibles');
+    const data=await response.json();
+    if(!Array.isArray(data.banks)||data.banks.length!==5)throw Error('Bancos inválidos');
+    const ids=new Set();
+    for(const bank of data.banks){
+      if(!bank||!['agricola','bac','promerica','davivienda','cuscatlan'].includes(bank.id)||ids.has(bank.id)||typeof bank.name!=='string'||!bank.name.length||bank.name.length>60||!Array.isArray(bank.installments)||bank.installments.some(n=>!Number.isInteger(n)||n<1||n>60)||new Set(bank.installments).size!==bank.installments.length)throw Error('Cuotas inválidas');
+      ids.add(bank.id);
+    }
+    banks=data.banks;
+  }).catch(()=>{});
   const imagesReady=fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{
     if(!r.ok)return;
     const data=await r.json();
@@ -19,7 +32,7 @@
     if(data?.schemaVersion!==1||data.brand!=='Lunivo'||data.currency!=='USD'||!Number.isFinite(Date.parse(data.updatedAt))||!Array.isArray(data.products)||data.products.length>20000)throw Error('Formato inválido');
     const ids=new Set();
     for(const p of data.products){
-      if(!p||typeof p.id!=='string'||!/^[a-f0-9]{20}$/.test(p.id)||ids.has(p.id)||!['Apple','Samsung'].includes(p.manufacturer)||typeof p.model!=='string'||!p.model.length||p.model.length>80||!Number.isSafeInteger(p.priceCents)||p.priceCents<=0||p.available!==true)throw Error('Equipo inválido');
+      if(!p||typeof p.id!=='string'||!/^[a-f0-9]{20}$/.test(p.id)||ids.has(p.id)||!['Apple','Samsung'].includes(p.manufacturer)||typeof p.model!=='string'||!p.model.length||p.model.length>80||!Number.isSafeInteger(p.priceCents)||p.priceCents<=0||!Number.isSafeInteger(regularPrice(p.priceCents))||p.available!==true)throw Error('Equipo inválido');
       for(const key of ['capacity','color','condition','grade','battery'])if(typeof p[key]!=='string'||p[key].length>100)throw Error('Detalle inválido');
       if(p.quantity!==undefined&&(!Number.isSafeInteger(p.quantity)||p.quantity<1))throw Error('Existencias inválidas');
       if(p.cycles!==undefined&&p.cycles!==null&&(!Number.isSafeInteger(p.cycles)||p.cycles<0))throw Error('Ciclos inválidos');
@@ -82,7 +95,8 @@
       else{card.querySelector('.image-caption').hidden=true;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
-      card.querySelector('.from').textContent=new Set(prices).size>1?'Desde':'Precio de venta';
+      card.querySelector('.from').textContent=new Set(prices).size>1?'Promocional desde':'Precio promocional';
+      card.querySelector('.regular-price s').textContent=money(regularPrice(Math.min(...prices)));
       card.querySelector('.price').textContent=money(Math.min(...prices));
       const units=group.variants.every(v=>Number.isSafeInteger(v.quantity))?group.variants.reduce((n,v)=>n+v.quantity,0):null;
       card.querySelector('.availability').textContent=stale?'Consultar stock':units===null?'● Disponible':`${units} disponible${units===1?'':'s'}`;
@@ -110,12 +124,43 @@
     const fragment=document.createDocumentFragment();
     for(const [name,value]of specs){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);fragment.append(row);}
     $('#specs').replaceChildren(fragment);
-    $('#detail-price').textContent=money(p.priceCents);
-    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. Precio publicado: ${money(p.priceCents)}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:', batería en excelente estado'}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
+    updatePayment();
+  }
+  function updatePayment(){
+    const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);if(!p)return;
+    const financed=$('[name=payment]:checked').value==='installments',regular=regularPrice(p.priceCents);
+    const bank=banks.find(b=>b.id===$('#payment-bank').value),months=Number($('#payment-installments').value);
+    $('#financing').hidden=!financed;
+    $('#detail-regular').hidden=financed;$('#detail-regular s').textContent=money(regular);
+    $('#detail-price-label').textContent=financed?'Precio regular':'Precio promocional';
+    $('#detail-payment-note').textContent=financed?'Total a pagar a tasa cero':'Exclusivo al contado';
+    $('#detail-price').textContent=money(financed?regular:p.priceCents);
+    $('#detail-price').classList.toggle('is-regular',financed);
+    let paymentText='Al contado, precio promocional: '+money(p.priceCents);
+    let summary='Selecciona un banco para ver sus cuotas.';
+    if(financed){
+      paymentText='A tasa cero, precio regular: '+money(regular);
+      if(!banks.length)summary='No se pudieron cargar las cuotas. Consúltalas con Lunivo por WhatsApp.';
+      else if(bank){
+        paymentText+=' · '+bank.name;
+        summary=bank.installments.length?'Selecciona el número de cuotas.':'Cuotas de este banco por confirmar con Lunivo.';
+        if(bank.installments.includes(months)){
+          const installment=Math.floor(regular/months),last=regular-installment*(months-1);
+          summary=last===installment?months+' cuotas de '+money(installment):months===1?'1 cuota de '+money(regular):(months-1)+' cuotas de '+money(installment)+' y una última de '+money(last);
+          paymentText+=' · '+months+' cuotas';
+        }
+      }
+      if(!bank||!bank.installments.includes(months))paymentText+=' · Quiero consultar las cuotas disponibles';
+    }
+    $('#installment-summary').textContent=summary;
+    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. ${paymentText}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:', batería en excelente estado'}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
     $('#consult').href='https://wa.me/50376241930?text='+encodeURIComponent(text);
   }
   function openDetails(group){
     activeGroup=group;
+    $('[name=payment][value=cash]').checked=true;
+    $('#payment-bank').replaceChildren(option('','Selecciona tu banco'),...banks.map(b=>option(b.id,b.name)));
+    resetInstallments();
     $('#detail-title').textContent=group.model;
     const sorted=[...group.variants].sort((a,b)=>a.priceCents-b.priceCents||collator.compare(a.capacity,b.capacity));
     nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim!=='Por confirmar'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
@@ -135,7 +180,7 @@
       if(!response.ok)throw Error('No disponible');
       catalog=valid(await response.json());
       groups=catalog.products.map(p=>({model:p.model,manufacturer:p.manufacturer,variants:[p]}));
-      await imagesReady;
+      await Promise.all([imagesReady,plansReady]);
       paintHero(catalog);
       nodes.capacity.replaceChildren(option('all','Toda capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
@@ -153,6 +198,14 @@
   nodes.sort.addEventListener('change',()=>{if(catalog)render();});
   document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog)render();}));
   $('#reset').addEventListener('click',()=>{brand='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
+  function resetInstallments(){
+    const bank=banks.find(b=>b.id===$('#payment-bank').value),terms=bank?[...bank.installments].sort((a,b)=>a-b):[];
+    $('#payment-installments').replaceChildren(option('',!bank?'Selecciona un banco primero':terms.length?'Selecciona las cuotas':'Cuotas por confirmar'),...terms.map(n=>option(String(n),n+' cuota'+(n===1?'':'s'))));
+    $('#payment-installments').disabled=!terms.length;
+  }
+  document.querySelectorAll('[name=payment]').forEach(input=>input.addEventListener('change',updatePayment));
+  $('#payment-bank').addEventListener('change',()=>{resetInstallments();updatePayment();});
+  $('#payment-installments').addEventListener('change',updatePayment);
   nodes.variant.addEventListener('change',showVariant);
   $('#close').addEventListener('click',()=>nodes.dialog.close());
   nodes.dialog.addEventListener('click',event=>{if(event.target!==nodes.dialog)return;const r=nodes.dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)nodes.dialog.close();});

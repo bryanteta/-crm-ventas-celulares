@@ -1,0 +1,54 @@
+{
+  "banks": [
+    {
+      "id": "agricola",
+      "name": "Banco Agrícola",
+      "installments": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    {
+      "id": "bac",
+      "name": "BAC",
+      "installments": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    {
+      "id": "promerica",
+      "name": "Promerica",
+      "installments": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    {
+      "id": "davivienda",
+      "name": "Davivienda",
+      "installments": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    {
+      "id": "cuscatlan",
+      "name": "Banco Cuscatlán",
+      "installments": [
+        3,
+        6,
+        9,
+        12
+      ]
+    }
+  ]
+}

@@ -43,3 +43,4 @@
   .theme-toggle{width:40px;height:40px;flex-basis:40px}
   .contact{font-size:11px;padding:10px;gap:6px}
 }
+:root[data-theme="dark"]{--promo:#6ee0ba;--promo-bg:#142e2a}

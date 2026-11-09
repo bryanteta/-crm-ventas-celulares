@@ -24,7 +24,7 @@ async function bootstrap(){
 async function refresh(provider,manual=false){
  if(!bridge||working.has(provider)||!api.ready())return;if(provider==='split'&&!configured){if(manual)errors.split='Para actualizar Split, guarda su clave en Ajustes. La copia incluida sigue disponible.';paint(api.read());return;}
  const expected=scope;working.add(provider);attempted.set(provider,Date.now());delete errors[provider];paint(api.read());
- try{const response=await native('refresh',{provider});const parsed=core[provider](response.body);if(!current(expected))return;api.commit(data=>core.replace(data,provider,parsed,new Date().toISOString()));api.render();}
+ try{const response=await native('refresh',{provider});const parsed=provider==='samuel'?core.samuelApi(response.body):core.split(response.body);if(!current(expected))return;api.commit(data=>core.replace(data,provider,parsed,new Date().toISOString()));api.render();}
  catch(e){if(current(expected))errors[provider]=api.errorText(e);}
  finally{if(current(expected)){working.delete(provider);paint(api.read());}}
 }

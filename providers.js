@@ -72,7 +72,7 @@ function render(data){
  }
  window.LunivoList.more(list,filtered.length,()=>render(api.read()));
  $('#catalog-load').hidden=Boolean(data.providerFeeds?.samuel);$('#catalog-source').hidden=Boolean(data.providerFeeds?.samuel||data.providerFeeds?.split);
- $('#catalog-source').textContent='Samuel: hoja de cálculo · Split: Saúl y Javier. Precios y disponibilidad del proveedor en la última consulta. Confirma las existencias antes de vender.';
+ $('#catalog-source').textContent='Samuel: API de TecnoShop · Split: Saúl y Javier. Precios y disponibilidad del proveedor en la última consulta. Confirma las existencias antes de vender.';
  shortcuts(data);
 }
 for(const id of['offer-search','offer-variant','provider-model','offer-sort','provider-available'])$('#'+id).addEventListener(id==='offer-search'?'input':'change',()=>{try{if(id==='offer-search'&&rowCount>60){window.LunivoList.schedule('provider-search',()=>{$('#offer-variant').value='';render(api.read());});return;}if(['provider-model','offer-variant'].includes(id)&&$('#'+id).value)family='';if(['offer-search','provider-model'].includes(id))$('#offer-variant').value='';render(api.read());}catch(e){api.notice(api.errorText(e),'error');}});

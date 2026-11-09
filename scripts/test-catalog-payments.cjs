@@ -21,6 +21,11 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
    assert.equal(card.regular,money(Math.floor((product.priceCents*11+500)/1000)*100));
    assert.equal(card.label,'Precio promocional');assert.equal(card.caption,'Precio exclusivo por pago de contado');
   }
+  assert(!((await page.locator('body').innerText()).includes('+503 7624 1930')));
+  const first=page.locator('.card').first(),firstId=await first.getAttribute('data-product-id');
+  await first.locator('.product-photo').click();assert.equal(await page.locator('#variant').inputValue(),firstId);await page.locator('#close').click();
+  await first.locator('.product-name').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('#variant').inputValue(),firstId);await page.locator('#close').click();
+  await first.locator('.product-photo').focus();await page.keyboard.press('Space');assert.equal(await page.locator('#variant').inputValue(),firstId);await page.locator('#close').click();
   await page.locator('.view').first().click();
   const id=await page.locator('#variant').inputValue(),p=source.products.find(p=>p.id===id),regular=Math.floor((p.priceCents*11+500)/1000)*100;
   assert.equal(await page.locator('#detail-price').textContent(),money(p.priceCents));
@@ -28,6 +33,9 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   assert.equal(await page.locator('#financing').isVisible(),false);
   let message=decodeURIComponent(await page.locator('#consult').getAttribute('href'));
   assert(message.includes('Al contado, precio promocional: '+money(p.priceCents)));
+  assert(message.includes('Hola 👋 Lunivo, me interesa el siguiente dispositivo:\n\n📲 '+p.model+' - '+p.capacity));
+  assert(message.endsWith('¿Cómo realizo la compra?'));
+  assert(message.includes('⭐️ Estado: '+p.condition));assert(message.includes('Color '+p.color));
   await page.getByLabel('Tasa cero', {exact:false}).check();
   assert.equal(await page.locator('#financing').isVisible(),true);
   assert.equal(await page.locator('#detail-price').textContent(),money(regular));
@@ -45,7 +53,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
     assert.equal(await page.locator('#detail-price').textContent(),money(regular));
     message=decodeURIComponent(await page.locator('#consult').getAttribute('href'));
     assert(message.includes('A tasa cero, precio regular: '+money(regular)));
-    assert(message.includes(bank.name+' · '+months+' cuotas'));
+    assert(message.includes('🏦 '+bank.name+' · '+months+' cuotas - '+(regular%months?'desde ':'')+money(Math.floor(regular/months))));
     assert(!message.includes('Al contado'));
    }
   }
@@ -81,11 +89,17 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
    await rounding.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[{...source.products[0],priceCents:promo}]}}));
    await rounding.reload();await rounding.locator('.card').waitFor();assert.equal(await rounding.locator('.regular-price s').first().textContent(),expected);
   }
+  const sample=await browser.newPage();
+  const quote={...source.products[0],model:'iPhone 11 Pro Max',capacity:'64 GB',color:'Verde',condition:'Seminuevo',grade:'A',battery:'100%',priceCents:38000,cycles:null,sim:'Por confirmar',ram:'',box:null,observations:[]};
+  await sample.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[quote]}}));await sample.goto(base);await sample.locator('.card').waitFor();await sample.locator('.product-name').click();await sample.getByLabel('Tasa cero',{exact:false}).check();await sample.locator('#payment-bank').selectOption('cuscatlan');await sample.locator('[name=installment-term][value="36"]').check();
+  const expected=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:','','📲 iPhone 11 Pro Max - 64 GB','⭐️ Estado: Seminuevo, categoría A','🔋 Batería 100%','🟢 Color Verde','','💰 A tasa cero, precio regular: $418.00','🏦 Banco Cuscatlán · 36 cuotas - desde $11.61','','¿Cómo realizo la compra?'].join('\n');
+  assert.equal(new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text'),expected);
+  await sample.getByLabel('Al contado',{exact:false}).check();const cashMessage=new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text');assert(cashMessage.includes('💰 Al contado, precio promocional: $380.00'));assert(!cashMessage.includes('🏦'));
   const failure=await browser.newPage();await failure.route('**/payment-plans.json',r=>r.fulfill({status:500,body:''}));
   await failure.goto(base);await failure.locator('.card').first().waitFor();await failure.locator('.view').first().click();await failure.getByLabel('Tasa cero',{exact:false}).check();
   assert.match(await failure.locator('#installment-summary').textContent(),/No se pudieron cargar/);
   assert.equal(await failure.locator('#installment-options').isVisible(),false);
   assert.deepEqual(errors,[]);
-  console.log('PASS promotional cash/regular +10% for every card, five banks with specific terms up to 36 months and whole-dollar regular prices, exact total with no selected-plan breakdown, approximation or last-payment labels, WhatsApp method/bank/terms, reset between products, responsive two themes and safe config failure');
+  console.log('PASS promotional cash/regular +10% for every card, five banks with specific terms up to 36 months and whole-dollar regular prices, exact total with no selected-plan breakdown, approximation or last-payment labels, multiline WhatsApp sample/bank/terms, photo/name mouse and keyboard activation, no visible footer number, reset between products, responsive two themes and safe config failure');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

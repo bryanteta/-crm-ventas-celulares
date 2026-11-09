@@ -86,7 +86,7 @@
       const card=$('#card').content.firstElementChild.cloneNode(true);
       card.classList.toggle('samsung',group.manufacturer==='Samsung');
       card.querySelector('.manufacturer').textContent=group.manufacturer==='Apple'?'iPhone · Lunivo':'Samsung · Lunivo';
-      card.querySelector('h3').textContent=group.model;
+      card.querySelector('.product-name').textContent=group.model;
       const device=group.variants[0];
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
       const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería en excelente estado',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
@@ -101,9 +101,12 @@
       card.querySelector('.price').textContent=money(Math.min(...prices));
       const units=group.variants.every(v=>Number.isSafeInteger(v.quantity))?group.variants.reduce((n,v)=>n+v.quantity,0):null;
       card.querySelector('.availability').textContent=stale?'Consultar stock':units===null?'● Disponible':`${units} disponible${units===1?'':'s'}`;
-      const button=card.querySelector('button');
-      button.setAttribute('aria-label',`Ver ${group.model}, ${device.capacity}, ${device.color}, ${money(device.priceCents)}`);
-      button.addEventListener('click',()=>openDetails(group));
+      card.querySelector('.view').setAttribute('aria-label',`Ver ${group.model}, ${device.capacity}, ${device.color}, ${money(device.priceCents)}`);
+      card.querySelector('.product-photo').setAttribute('aria-label',`Ver detalles de ${group.model}, ${device.capacity}, ${device.color}`);
+      for(const button of card.querySelectorAll('.view,.product-photo,.product-name')){
+        button.setAttribute('aria-haspopup','dialog');
+        button.addEventListener('click',()=>openDetails(group));
+      }
       fragment.append(card);
     }
     nodes.products.replaceChildren(fragment);
@@ -118,7 +121,7 @@
     if(p.grade)specs.push(['Categoría',p.grade]);
     if(Number.isSafeInteger(p.quantity))specs.push(['Disponibles',String(p.quantity)]);
     if(p.cycles!==null&&p.cycles!==undefined)specs.push(['Ciclos de batería',String(p.cycles)]);
-    if(p.sim!=='Por confirmar')specs.push(['Tipo de SIM',p.sim]);
+    if(p.sim&&p.sim!=='Por confirmar')specs.push(['Tipo de SIM',p.sim]);
     if(p.ram)specs.push(['Memoria RAM',p.ram]);
     if(typeof p.box==='boolean')specs.push(['Caja',p.box?'Incluida':'Sin caja']);
     if(p.observations.length)specs.push(['A tener en cuenta',p.observations.join(' · ')]);
@@ -138,24 +141,34 @@
     $('#detail-payment-note').textContent=financed?'Total a pagar a tasa cero':'Precio exclusivo por pago de contado';
     $('#detail-price').textContent=money(financed?regular:p.priceCents);
     $('#detail-price').classList.toggle('is-regular',financed);
-    let paymentText='Al contado, precio promocional: '+money(p.priceCents);
     let summary='Selecciona un banco para ver sus cuotas.';
+    const paymentLines=[financed?'💰 A tasa cero, precio regular: '+money(regular):'💰 Al contado, precio promocional: '+money(p.priceCents)];
     if(financed){
-      paymentText='A tasa cero, precio regular: '+money(regular);
       if(!banks.length)summary='No se pudieron cargar las cuotas. Consúltalas con Lunivo por WhatsApp.';
       else if(bank){
-        paymentText+=' · '+bank.name;
         summary=bank.installments.length?'Selecciona el número de cuotas.':'Cuotas de este banco por confirmar con Lunivo.';
         if(bank.installments.includes(months)){
           summary='';
-          paymentText+=' · '+months+' cuotas';
-        }
-      }
-      if(!bank||!bank.installments.includes(months))paymentText+=' · Quiero consultar las cuotas disponibles';
+          paymentLines.push('🏦 '+bank.name+' · '+months+' cuotas - '+(regular%months?'desde ':'')+money(Math.floor(regular/months)));
+        }else paymentLines.push('🏦 '+bank.name+' · Quiero consultar las cuotas disponibles.');
+      }else paymentLines.push('🏦 Quiero conocer los bancos y cuotas disponibles.');
     }
     $('#installment-summary').textContent=summary;
     $('#installment-summary').hidden=!summary;
-    const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. ${paymentText}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:', batería en excelente estado'}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
+    const color=p.color.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    const colorIcon=/verde/.test(color)?'🟢':/negro|grafito/.test(color)?'⚫️':/blanco|plata/.test(color)?'⚪️':/azul|celeste/.test(color)?'🔵':/morado|lila|violeta/.test(color)?'🟣':/rojo/.test(color)?'🔴':/anaranjado|naranja/.test(color)?'🟠':/amarillo|dorado/.test(color)?'🟡':'🔘';
+    const deviceLines=[
+      '📲 '+p.model+' - '+p.capacity,
+      '⭐️ Estado: '+p.condition+(p.grade?', categoría '+p.grade:''),
+      '🔋 Batería '+(p.battery||'en excelente estado'),
+      colorIcon+' Color '+p.color
+    ];
+    if(p.ram)deviceLines.push('🧠 RAM: '+p.ram);
+    if(p.cycles!==null&&p.cycles!==undefined)deviceLines.push('🔄 Ciclos: '+p.cycles);
+    if(p.sim&&p.sim!=='Por confirmar')deviceLines.push('📶 '+p.sim);
+    if(typeof p.box==='boolean')deviceLines.push('📦 '+(p.box?'Con caja':'Sin caja'));
+    if(p.observations.length)deviceLines.push('📝 Observaciones: '+p.observations.join(', '));
+    const text=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:',deviceLines.join('\n'),paymentLines.join('\n'),'¿Cómo realizo la compra?'].join('\n\n');
     $('#consult').href='https://wa.me/50376241930?text='+encodeURIComponent(text);
   }
   function openDetails(group){

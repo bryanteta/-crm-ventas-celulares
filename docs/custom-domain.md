@@ -20,6 +20,8 @@ No modificar registros MX, TXT u otros servicios. Evitar registros A/AAAA antigu
 
 ## Activación en GitHub
 
+En Settings → Pages → Build and deployment → Source, seleccionar **GitHub Actions**. La integración de esta sesión recibió HTTP 403 al cambiar este ajuste mediante API, así que el propietario debe hacerlo desde su cuenta. El workflow ya está preparado y mantiene el sitio anterior mientras la fuente continúe en modo legacy. Después de cambiar la fuente, ejecutar «Publicar catálogo de Lunivo» o esperar una actualización correcta del inventario.
+
 Después de comprobar los DNS, establecer `lunivosv.com` en Settings → Pages → Custom domain (también se puede hacer con la API autorizada del repositorio). Esperar la emisión del certificado y activar Enforce HTTPS cuando esté disponible. No activar el dominio mientras siga apuntando al parking: GitHub redirige la dirección anterior hacia el dominio personalizado.
 
 GitHub no controla los DNS de Namecheap; este paso no se puede hacer solo con un commit. Es recomendable verificar también la propiedad del dominio en la configuración personal de GitHub → Pages, usando el TXT específico que GitHub indique.

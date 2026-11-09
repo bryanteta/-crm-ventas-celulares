@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: lunivo-public-catalog
@@ -71,5 +72,9 @@ jobs:
             git commit -m 'Actualizar inventario público de Lunivo'
             git push origin HEAD:main
           fi
-          # Publicar catálogo de Lunivo runs after this workflow succeeds.
-          # Its workflow_run trigger also handles commits made by GITHUB_TOKEN.
+          # Preserve the current site until the owner switches Pages to Actions.
+          # In workflow mode, deployment follows automatically via workflow_run.
+          mode=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.build_type')
+          if [ "$mode" = legacy ]; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
+          fi

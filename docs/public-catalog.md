@@ -80,11 +80,11 @@ Fuente de combinaciones: https://www.samsung.com/my/mobile/galaxy-bespoke/galaxy
 
 ## Tema claro y oscuro
 
-El botón de luna/sol de la cabecera alterna el tema. En la primera visita se respeta `prefers-color-scheme`; una elección manual se guarda en `lunivo-catalog-theme` de este catálogo y tiene prioridad sobre el sistema. Los cambios se reflejan entre pestañas. No se escriben datos en Firebase ni se modifica el inventario. Si el navegador bloquea almacenamiento, la selección sigue funcionando durante la visita.
+El botón de luna/sol de la cabecera alterna el tema. La primera visita usa modo claro, independientemente del tema del teléfono. Una elección manual se guarda en `lunivo-catalog-theme` de este catálogo y se conserva en visitas posteriores. Cambiar el tema del sistema no altera esa selección. Los cambios se reflejan entre pestañas. No se escriben datos en Firebase ni se modifica el inventario. Si el navegador bloquea almacenamiento, la selección sigue funcionando durante la visita.
 
 `theme.js` aplica la preferencia en la cabecera del documento antes de cargar los estilos para evitar el destello claro al abrir el modo oscuro. También ajusta el color de la barra del navegador. Las superficies, botones, filtros, avisos y diálogos tienen su paleta oscura. Las fotos de productos conservan sus colores originales sobre una base neutra.
 
-Validación: `npm run test:catalog-theme` comprueba persistencia, preferencia del sistema, sincronización entre pestañas, contraste de botones, diálogo oscuro, controles en pantallas pequeñas y funcionamiento con almacenamiento bloqueado.
+Validación: `npm run test:catalog-theme` comprueba modo claro predeterminado incluso en dispositivos oscuros, persistencia manual, sincronización entre pestañas, contraste, diálogo oscuro, footer adaptable y funcionamiento con almacenamiento bloqueado.
 
 ## Comprobaciones de actualización y presentación
 
@@ -98,7 +98,7 @@ Las fotos Samsung usan metadatos de encuadre calculados sobre los márgenes tran
 
 El importe `priceCents` del inventario público sigue siendo el precio promocional exclusivo al contado. En cada tarjeta se resalta y se muestra tachado el precio regular, calculado como el promocional más un 10%, redondeado una sola vez al dólar más cercano (mitades hacia arriba); por ejemplo, $935.00 → $1,029.00. El promocional conserva sus centavos originales. El cálculo se deriva en el navegador de cada actualización del inventario; no se suma el 10% al JSON ni se publica el precio de compra.
 
-La leyenda inicial dice «Precio promocional al contado. Precio regular con tasa 0.». En el detalle del equipo, elegir Tasa cero aplica el precio regular y muestra banco y cuotas. Al seleccionar banco aparecen sus opciones con el monto mensual visible antes de elegir el plazo. Se seleccionan directamente, sin un desplegable adicional. Banco Agrícola y Banco BAC Credomatic ofrecen 3, 6, 9 y 12 cuotas; Banco Promerica y Banco Davivienda agregan 18 y 24; Banco Cuscatlán agrega 18, 24 y 36 según la configuración comercial indicada por el usuario y guardada en `catalogo/payment-plans.json`. No se consulta una API bancaria ni se autoriza un financiamiento: el enlace de WhatsApp permite consultar con Lunivo el equipo, forma de pago, banco, plazo y total elegidos.
+Las condiciones de pago se presentan junto al precio de cada equipo y en su detalle, sin una leyenda adicional en la portada. En el detalle del equipo, elegir Tasa cero aplica el precio regular y muestra banco y cuotas. Al seleccionar banco aparecen sus opciones con el monto mensual visible antes de elegir el plazo. Se seleccionan directamente, sin un desplegable adicional. Banco Agrícola y Banco BAC Credomatic ofrecen 3, 6, 9 y 12 cuotas; Banco Promerica y Banco Davivienda agregan 18 y 24; Banco Cuscatlán agrega 18, 24 y 36 según la configuración comercial indicada por el usuario y guardada en `catalogo/payment-plans.json`. No se consulta una API bancaria ni se autoriza un financiamiento: el enlace de WhatsApp permite consultar con Lunivo el equipo, forma de pago, banco, plazo y total elegidos.
 
 Cada opción muestra el plazo y el importe de la cuota. Si la división deja centavos, la tarjeta usa «Desde». Al elegir el plazo se oculta el mensaje auxiliar, incluido el desglose de cuotas; el total regular exacto permanece en el bloque de precio. Se conservan instrucciones antes de seleccionar y mensajes de error de configuración. No se muestran aproximaciones, «Por mes» o «Última». Cambiar banco restablece el plazo; abrir otro equipo restablece la opción al contado. Un fallo de configuración conserva el catálogo y permite consultar por WhatsApp sin inventar cuotas.
 
@@ -111,3 +111,5 @@ Los acentos de botones, opciones seleccionadas, enfoque y portada usan tonos azu
 ## Verificación de la programación
 
 Se confirmó una ejecución real con evento `schedule`, no causada por un push ni una ejecución manual: [42534114500](https://github.com/bryanteta/-crm-ventas-celulares/actions/runs/42534114500), terminada correctamente el 8 de noviembre a las 5:13 p. m. de El Salvador. Consultó las fuentes, pasó las pruebas de integridad y solicitó la publicación de Pages. Esto confirma que GitHub registró la programación; no garantiza puntualidad. Se amplió la frecuencia a cuatro consultas por hora y se incorporaron reintentos ante fallos transitorios. La clave de Split permanece en GitHub Actions, sin exponerse en la web.
+
+El footer organiza la identidad de Lunivo, el contacto por WhatsApp, el acceso al inventario y los enlaces oficiales de Instagram y Linktree. La nota comercial y la moneda se muestran en una franja inferior. La estructura se adapta a móvil y escritorio en ambos temas.

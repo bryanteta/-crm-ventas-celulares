@@ -13,7 +13,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   const terms={agricola:[3,6,9,12],bac:[3,6,9,12],promerica:[3,6,9,12,18,24],davivienda:[3,6,9,12,18,24],cuscatlan:[3,6,9,12,18,24,36]};
   config.banks.forEach(b=>{assert.deepEqual(b.installments,terms[b.id]);assert.match(b.name,/^Banco /);});
   await page.goto(base);await page.locator('.card').first().waitFor();
-  assert.match(await page.locator('.promotion-legend').textContent(),/Precio promocional al contado.*Precio regular con tasa 0/);
+  assert.equal(await page.locator('.promotion-legend').count(),0);
   const cards=await page.locator('.card').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,promo:c.querySelector('.price').textContent,regular:c.querySelector('.regular-price s').textContent,label:c.querySelector('.from').textContent,caption:c.querySelector('.cash-only').textContent})));
   for(const card of cards){
    const product=source.products.find(p=>p.id===card.id);assert(product);

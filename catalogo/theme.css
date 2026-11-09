@@ -44,3 +44,5 @@
   .contact{font-size:11px;padding:10px;gap:6px}
 }
 :root[data-theme="dark"]{--promo:#6ee0ba;--promo-bg:#142e2a}
+
+:root[data-theme="dark"] .footer-logo img{mix-blend-mode:normal;filter:brightness(0) invert(1)}

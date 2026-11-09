@@ -37,8 +37,20 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/';
  await page.screenshot({path:'/workspace/artifacts/lunivo-modo-oscuro-detalles.png'});await page.locator('#close').click();
  const other=await context.newPage();await other.goto(base);assert.equal(await other.locator('html').getAttribute('data-theme'),'dark');await other.getByRole('button',{name:'Activar modo claro',exact:true}).click();await page.waitForFunction(()=>document.documentElement.dataset.theme==='light');
  await other.reload();assert.equal(await other.locator('html').getAttribute('data-theme'),'light');
- const system=await browser.newContext({colorScheme:'dark'}),systemPage=await system.newPage();await systemPage.goto(base);assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'dark');await systemPage.emulateMedia({colorScheme:'light'});await systemPage.waitForFunction(()=>document.documentElement.dataset.theme==='light');
- await systemPage.emulateMedia({colorScheme:'dark'});await systemPage.waitForFunction(()=>document.documentElement.dataset.theme==='dark');await systemPage.getByRole('button',{name:'Activar modo claro',exact:true}).click();await systemPage.emulateMedia({colorScheme:'light'});await systemPage.emulateMedia({colorScheme:'dark'});assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
- const blocked=await browser.newContext({colorScheme:'dark'});await blocked.addInitScript(()=>{Storage.prototype.getItem=()=>{throw Error('Storage blocked')};Storage.prototype.setItem=()=>{throw Error('Storage blocked')};});const blockedPage=await blocked.newPage();blockedPage.on('pageerror',e=>errors.push(e.message));await blockedPage.goto(base);await blockedPage.locator('.card').first().waitFor();await blockedPage.getByRole('button',{name:'Activar modo claro',exact:true}).click();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');
- assert.deepEqual(errors,[]);await browser.close();console.log('Theme: manual/system preference, reload, cross-tab changes, contrast, dark dialog, mobile header and blocked storage passed.');
+ const system=await browser.newContext({colorScheme:'dark'}),systemPage=await system.newPage();await systemPage.goto(base);assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
+ await systemPage.emulateMedia({colorScheme:'light'});await systemPage.emulateMedia({colorScheme:'dark'});assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
+ await systemPage.getByRole('button',{name:'Activar modo oscuro',exact:true}).click();await systemPage.reload();assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'dark');
+ await systemPage.evaluate(()=>localStorage.removeItem('lunivo-catalog-theme'));await systemPage.reload();assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
+ const blocked=await browser.newContext({colorScheme:'dark'});await blocked.addInitScript(()=>{Storage.prototype.getItem=()=>{throw Error('Storage blocked')};Storage.prototype.setItem=()=>{throw Error('Storage blocked')};});const blockedPage=await blocked.newPage();blockedPage.on('pageerror',e=>errors.push(e.message));await blockedPage.goto(base);await blockedPage.locator('.card').first().waitFor();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');await blockedPage.getByRole('button',{name:'Activar modo oscuro',exact:true}).click();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'dark');await blockedPage.reload();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');
+ for(const theme of ['light','dark']){
+  await page.evaluate(t=>{document.documentElement.dataset.theme=t;},theme);
+  for(const width of [320,412,840,1140]){
+   await page.setViewportSize({width,height:915});await page.locator('.site-footer').scrollIntoViewIfNeeded();
+   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Footer overflow '+theme+width);
+   for(const selector of ['.footer-contact','.footer-inventory','.social-links a'])assert(await page.locator(selector).first().isVisible());
+   assert.equal(await page.locator('.footer-contact').getAttribute('href'),'https://wa.me/50376241930?text=Hola%20Lunivo%2C%20quiero%20consultar%20un%20equipo.');
+   if(width===412||width===1140)await page.screenshot({path:'/workspace/artifacts/lunivo-footer-'+theme+'-'+width+'.png'});
+  }
+ }
+ assert.deepEqual(errors,[]);await browser.close();console.log('Theme: light default even on dark devices, saved choice, reload, cross-tab changes, contrast, responsive footer/contact links, dark dialog and blocked storage passed.');
 })().catch(e=>{console.error(e);process.exit(1);});

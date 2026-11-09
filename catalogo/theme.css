@@ -9,8 +9,6 @@
 :root[data-theme="dark"] .brand img,:root[data-theme="dark"] .hero-signature img{mix-blend-mode:normal;filter:brightness(0) invert(1)}
 :root[data-theme="dark"] .button{background:#8bc0ff;color:#10243d}
 :root[data-theme="dark"] .hero.hero-showcase{border-color:#2a3c57;background:radial-gradient(ellipse at 90% 40%,#142e4d 0,transparent 60%),linear-gradient(120deg,#151d30,#131e32)}
-:root[data-theme="dark"] .hero-kicker{background:#20283d;border-color:#39435e;color:#d8deef}
-:root[data-theme="dark"] .hero-kicker .dot{background:#62d9b1}
 :root[data-theme="dark"] .hero-title span{color:#8bc0ff}
 :root[data-theme="dark"] .hero-description,:root[data-theme="dark"] .hero-signature{color:var(--muted)}
 :root[data-theme="dark"] .hero-advice{color:#c8cde0}

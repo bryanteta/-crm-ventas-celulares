@@ -14,3 +14,6 @@ test-results/
 
 # Private supplier data for the distributed APK, never credentials or Git data.
 android/provider-bootstrap.json
+
+# Generated GitHub Pages artifact.
+_catalog_site/

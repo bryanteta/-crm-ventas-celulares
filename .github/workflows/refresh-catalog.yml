@@ -19,7 +19,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: lunivo-public-catalog
@@ -61,7 +60,7 @@ jobs:
           exit 1
       - name: Probar integridad y privacidad
         run: npm test
-      - name: Guardar catálogo y solicitar publicación
+      - name: Guardar catálogo para publicación automática
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -72,5 +71,5 @@ jobs:
             git commit -m 'Actualizar inventario público de Lunivo'
             git push origin HEAD:main
           fi
-          # GITHUB_TOKEN pushes do not trigger legacy Pages automatically.
-          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
+          # Publicar catálogo de Lunivo runs after this workflow succeeds.
+          # Its workflow_run trigger also handles commits made by GITHUB_TOKEN.

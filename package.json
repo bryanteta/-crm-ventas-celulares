@@ -4,7 +4,7 @@
   "private": true,
   "description": "Validation of Lunivo offline synchronization and Firebase rules",
   "scripts": {
-    "test": "node --test tests/data-store.test.cjs tests/sales-core.test.cjs tests/receipt-core.test.cjs tests/feeds-core.test.cjs tests/public-catalog.test.cjs",
+    "test": "node --test tests/data-store.test.cjs tests/sales-core.test.cjs tests/receipt-core.test.cjs tests/feeds-core.test.cjs tests/public-catalog.test.cjs tests/catalog-site.test.cjs",
     "test:rules": "node --test tests/firestore-rules.test.cjs",
     "test:ui": "node scripts/test-ui.cjs",
     "test:business": "node tests/shared-business-ui.cjs",

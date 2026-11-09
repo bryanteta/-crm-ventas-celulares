@@ -1,0 +1,50 @@
+name: Publicar catálogo de Lunivo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'catalogo/**'
+      - 'scripts/prepare-catalog-site.cjs'
+      - '.github/workflows/deploy-catalog.yml'
+  workflow_dispatch:
+  # A GITHUB_TOKEN commit does not trigger push workflows. A successful refresh
+  # triggers this deployment explicitly through workflow_run instead.
+  workflow_run:
+    workflows: ['Actualizar inventario público de Lunivo']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: lunivo-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Preparar catálogo público en la raíz
+        run: node scripts/prepare-catalog-site.cjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _catalog_site
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

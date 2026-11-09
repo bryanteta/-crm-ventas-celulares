@@ -1,8 +1,10 @@
 # Catálogo público de Lunivo
 
-URL: https://bryanteta.github.io/-crm-ventas-celulares/catalogo/
+URL principal de GitHub: https://bryanteta.github.io/-crm-ventas-celulares/
 
-Sitio independiente en `catalogo/`, publicado por GitHub Pages desde `main`. No cambia el CRM, la APK ni las reglas de Firestore. La consulta de cada variante abre WhatsApp de Lunivo (+503 7624 1930); el sitio no confirma ventas ni reserva unidades.
+La ruta anterior `/catalogo/` se conserva. Dominio previsto: `lunivosv.com`, pendiente de que sus DNS apunten a GitHub y se active el dominio personalizado en Pages.
+
+Sitio independiente en `catalogo/`, publicado por GitHub Actions/Pages desde `main`. El archivo `scripts/prepare-catalog-site.cjs` prepara una copia pública en la raíz y otra en `/catalogo/`, sin incluir los archivos del CRM ni Android. No cambia el CRM, la APK ni las reglas de Firestore. La consulta de cada variante abre WhatsApp de Lunivo (+503 7624 1930); el sitio no confirma ventas ni reserva unidades.
 
 ## Coincidencia con la app
 
@@ -18,11 +20,11 @@ Archivo: `.github/workflows/refresh-catalog.yml`.
 
 1. Guardar la clave de acceso del proveedor como **Actions Secret** llamado `SPLIT_INVENTORY_TOKEN` en https://github.com/bryanteta/-crm-ventas-celulares/settings/secrets/actions/new. No es una variable pública y nunca se pega en archivos, logs ni mensajes.
 2. Comprobar que el archivo del workflow esté en `main` y que Actions esté habilitado. Abre https://github.com/bryanteta/-crm-ventas-celulares/actions/workflows/refresh-catalog.yml y ejecuta **Run workflow** para verificar la primera consulta.
-3. Una ejecución correcta consulta ambas fuentes, construye el JSON público, ejecuta las pruebas, guarda únicamente `catalogo/inventory.json` y solicita explícitamente una compilación de Pages. Es necesario solicitarla porque los commits hechos con `GITHUB_TOKEN` no disparan el Pages heredado por sí solos.
+3. Una ejecución correcta consulta ambas fuentes, construye el JSON público, ejecuta las pruebas, guarda únicamente `catalogo/inventory.json`. Al terminar correctamente dispara `.github/workflows/deploy-catalog.yml` mediante `workflow_run`, que publica la versión más reciente de `main`. Este evento funciona aunque el commit de datos lo haya realizado `GITHUB_TOKEN`. Si la consulta falla, no se despliega un reemplazo.
 
 La tarea está programada a los minutos 7, 22, 37 y 52 de cada hora, y permite ejecución manual. Si falla una consulta, reintenta hasta tres veces antes de conservar la última publicación válida. GitHub puede retrasar o descartar tareas programadas: no es tiempo real ni un máximo garantizado de 15 minutos. Actions y Pages en este repositorio público utilizan el servicio gratuito estándar de GitHub.
 
-Permisos del workflow: `contents: write` para guardar el catálogo y `pages: write` para solicitar la publicación. La tarea no tiene permiso para administrar secretos. El secreto se envía solo al endpoint del proveedor durante la consulta. Las respuestas privadas se procesan dentro de un directorio temporal que se elimina al finalizar; no se suben artefactos privados ni se hace commit de datos crudos. Solo se guarda el JSON público.
+Permisos: el actualizador usa `contents: write` para guardar el catálogo. El publicador independiente usa `contents: read`, `pages: write` e `id-token: write`, sin acceso a la clave del proveedor. La tarea no tiene permiso para administrar secretos. El secreto se envía solo al endpoint del proveedor durante la consulta. Las respuestas privadas se procesan dentro de un directorio temporal que se elimina al finalizar; no se suben artefactos privados ni se hace commit de datos crudos. Solo se guarda el JSON público.
 
 No se puede copiar el secreto restringido del entorno cloud a GitHub; su propietario debe configurarlo directamente en la pantalla segura indicada arriba. Si la integración utilizada para trabajar en el repositorio no tiene permiso `workflows`, el archivo queda preparado localmente y debe añadirse desde GitHub por un administrador antes de poder activar la tarea.
 
@@ -30,7 +32,7 @@ Si falta el secreto o falla una fuente o la validación, no se sustituye el cat�
 
 ## Comportamiento de la web
 
-El navegador consulta solo `catalogo/inventory.json`. Revisa una nueva copia cada cinco minutos mientras está visible y al regresar a la pestaña. Conserva los filtros y no cambia la selección ni el precio de un diálogo abierto. Si falla la consulta en segundo plano, mantiene la lista anterior con un aviso. Al superar dos horas desde la última actualización muestra «Consultar stock» y advierte al visitante. La hora publicada utiliza `America/El_Salvador`.
+El navegador consulta `inventory.json` relativo a la ubicación de la página: tanto la raíz como `/catalogo/` reciben el mismo inventario. Revisa una nueva copia cada cinco minutos mientras está visible y al regresar a la pestaña. Conserva los filtros y no cambia la selección ni el precio de un diálogo abierto. Si falla la consulta en segundo plano, mantiene la lista anterior con un aviso. Al superar dos horas desde la última actualización muestra «Consultar stock» y advierte al visitante. La hora publicada utiliza `America/El_Salvador`.
 
 La disponibilidad se confirma por WhatsApp antes de comprar. No hay claves, costos, proveedores, dueños, enlaces de origen, identificadores de fuentes, IMEI ni notas privadas en el JSON o los recursos del catálogo. Los nombres se convierten a modelos conocidos (por ejemplo, `IPHONE 13 PRO 128GB475` pasa a `iPhone 13 Pro`). Las observaciones se limitan a valores controlados.
 

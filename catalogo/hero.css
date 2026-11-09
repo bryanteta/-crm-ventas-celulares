@@ -10,14 +10,14 @@
   padding: 44px 42px 35px;
   border: 1px solid #e2e4f1;
   border-radius: 28px;
-  background: radial-gradient(ellipse at 90% 40%, #e9e8fe 0, transparent 57%), linear-gradient(120deg, #ffffff 5%, #f7f7fe 75%);
+  background: radial-gradient(ellipse at 90% 40%, #e6f0ff 0, transparent 57%), linear-gradient(120deg, #ffffff 5%, #f4f8ff 75%);
   overflow: hidden;
   isolation: isolate;
 }
 .hero-intro { position: relative; z-index: 2; min-width: 0; padding-bottom: 4px; }
 .hero-kicker { display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e7e8f0; border-radius: 20px; padding: 8px 12px; background: #ffffffbd; font-size: 9px; font-weight: 750; letter-spacing: 1.4px; }
 .hero-title { margin: 23px 0 18px; font-size: clamp(32px, 4.1vw, 49px); line-height: 1.13; letter-spacing: -2px; font-weight: 780; }
-.hero-title span { color: #6460c9; }
+.hero-title span { color: #2563eb; }
 .hero-description { max-width: 360px; margin: 0; color: #667085; font-size: 14px; line-height: 1.85; }
 .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 26px; }
 .hero-primary { gap: 23px; padding: 15px 19px; font-size: 12px; border-radius: 11px; box-shadow: 0 6px 14px #14213b14; transition: transform .18s, background .18s; }
@@ -25,8 +25,8 @@
 .hero-advice { display: inline-flex; align-items: center; gap: 12px; padding: 12px 0; font-size: 11px; font-weight: 650; color: #515a70; min-height: 44px; }
 .hero-advice:hover { color: var(--accent); }
 .hero-collection { height: 350px; position: relative; min-width: 0; z-index: 1; }
-.hero-halo { position: absolute; width: 330px; height: 330px; left: 50%; top: 48%; transform: translate(-50%, -50%); border-radius: 50%; background: linear-gradient(140deg, #dcdcf8, #eae8f8); border: 1px solid #d5d4ef; }
-.hero-halo::before { content: ''; position: absolute; inset: -25px; border: 1px dashed #d9d8ed; border-radius: inherit; }
+.hero-halo { position: absolute; width: 330px; height: 330px; left: 50%; top: 48%; transform: translate(-50%, -50%); border-radius: 50%; background: linear-gradient(140deg, #d7e7fb, #e9f2fe); border: 1px solid #cbdff5; }
+.hero-halo::before { content: ''; position: absolute; inset: -25px; border: 1px dashed #cee0f3; border-radius: inherit; }
 .hero-pick { position: absolute; margin: 0; border-radius: 19px; padding: 13px 14px 15px; background: #ffffff; border: 1px solid #e5e6ee; box-shadow: 0 16px 30px #36365c12, 0 4px 8px #36365c06; overflow: hidden; }
 .hero-pick-photo { background: white; }
 .hero-pick img { width: 100%; height: 100%; display: block; object-fit: contain; }

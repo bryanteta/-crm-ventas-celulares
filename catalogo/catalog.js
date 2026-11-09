@@ -147,15 +147,14 @@
         paymentText+=' · '+bank.name;
         summary=bank.installments.length?'Selecciona el número de cuotas.':'Cuotas de este banco por confirmar con Lunivo.';
         if(bank.installments.includes(months)){
-          const installment=Math.floor(regular/months),higher=regular%months;
-          const breakdown=higher?higher+' × '+money(installment+1)+' + '+(months-higher)+' × '+money(installment):months+' cuotas de '+money(installment);
-          summary=breakdown+' · Total: '+money(regular);
+          summary='';
           paymentText+=' · '+months+' cuotas';
         }
       }
       if(!bank||!bank.installments.includes(months))paymentText+=' · Quiero consultar las cuotas disponibles';
     }
     $('#installment-summary').textContent=summary;
+    $('#installment-summary').hidden=!summary;
     const text=`Hola Lunivo, me interesa el ${p.model}, ${p.capacity}, color ${p.color}. ${paymentText}. Estado: ${p.condition}${p.grade?`, categoría ${p.grade}`:''}${p.battery?`, batería ${p.battery}`:', batería en excelente estado'}${p.cycles!==null&&p.cycles!==undefined?`, ${p.cycles} ciclos`:''}${p.sim!=='Por confirmar'?', '+p.sim:''}${p.ram?', RAM '+p.ram:''}${typeof p.box==='boolean'?(p.box?', con caja':', sin caja'):''}${p.observations.length?`. Observaciones: ${p.observations.join(', ')}`:''}. ¿Está disponible?`;
     $('#consult').href='https://wa.me/50376241930?text='+encodeURIComponent(text);
   }

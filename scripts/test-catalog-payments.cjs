@@ -41,10 +41,8 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
    for(const months of bank.installments){const card=page.locator('#installment-grid label').filter({has:page.locator('[value="'+months+'"]')});assert.equal(await card.locator('strong').textContent(),(regular%months?'Desde ':'')+money(Math.floor(regular/months)));}
    for(const months of bank.installments){
     await page.locator('[name=installment-term][value="'+months+'"]').check();
-    const each=Math.floor(regular/months),higher=regular%months;
-    assert.equal(higher*(each+1)+(months-higher)*each,regular);
-    const expected=(higher?higher+' × '+money(each+1)+' + '+(months-higher)+' × '+money(each):months+' cuotas de '+money(each))+' · Total: '+money(regular);
-    assert.equal(await page.locator('#installment-summary').textContent(),expected);
+    assert.equal(await page.locator('#installment-summary').isVisible(),false);
+    assert.equal(await page.locator('#detail-price').textContent(),money(regular));
     message=decodeURIComponent(await page.locator('#consult').getAttribute('href'));
     assert(message.includes('A tasa cero, precio regular: '+money(regular)));
     assert(message.includes(bank.name+' · '+months+' cuotas'));
@@ -78,7 +76,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   assert.equal(await rounding.locator('.price').textContent(),'$100.05');assert.equal(await rounding.locator('.regular-price s').first().textContent(),'$110.00');
   await rounding.locator('.view').click();await rounding.getByLabel('Tasa cero',{exact:false}).check();
   await rounding.locator('#payment-bank').selectOption('bac');await rounding.locator('[name=installment-term][value="12"]').check();
-  assert.equal(await rounding.locator('#installment-summary').textContent(),'8 × $9.17 + 4 × $9.16 · Total: $110.00');
+  assert.equal(await rounding.locator('#installment-summary').isVisible(),false);assert.equal(await rounding.locator('#detail-price').textContent(),'$110.00');
   for(const [promo,expected] of [[93500,'$1,029.00'],[10409,'$114.00'],[10410,'$115.00']]){
    await rounding.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[{...source.products[0],priceCents:promo}]}}));
    await rounding.reload();await rounding.locator('.card').waitFor();assert.equal(await rounding.locator('.regular-price s').first().textContent(),expected);
@@ -88,6 +86,6 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   assert.match(await failure.locator('#installment-summary').textContent(),/No se pudieron cargar/);
   assert.equal(await failure.locator('#installment-options').isVisible(),false);
   assert.deepEqual(errors,[]);
-  console.log('PASS promotional cash/regular +10% for every card, five banks with specific terms up to 36 months and whole-dollar regular prices, exact cent distribution and total, no approximation or last-payment labels, WhatsApp method/bank/terms, reset between products, responsive two themes and safe config failure');
+  console.log('PASS promotional cash/regular +10% for every card, five banks with specific terms up to 36 months and whole-dollar regular prices, exact total with no selected-plan breakdown, approximation or last-payment labels, WhatsApp method/bank/terms, reset between products, responsive two themes and safe config failure');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -32,7 +32,7 @@ Si falta el secreto o falla una fuente o la validación, no se sustituye el cat�
 
 ## Comportamiento de la web
 
-El navegador consulta `inventory.json` relativo a la ubicación de la página: tanto la raíz como `/catalogo/` reciben el mismo inventario. Revisa una nueva copia cada cinco minutos mientras está visible y al regresar a la pestaña. Conserva los filtros y no cambia la selección ni el precio de un diálogo abierto. Si falla la consulta en segundo plano, mantiene la lista anterior con un aviso. Al superar dos horas desde la última actualización muestra «Consultar stock» y advierte al visitante. La hora publicada utiliza `America/El_Salvador`.
+El navegador consulta `inventory.json` relativo a la ubicación de la página: tanto la raíz como `/catalogo/` reciben el mismo inventario. Revisa una nueva copia cada cinco minutos mientras está visible y al regresar a la pestaña. Conserva los filtros y no cambia la selección ni el precio de un diálogo abierto. Si falla la consulta en segundo plano, mantiene la lista anterior con un aviso. Al superar dos horas desde la última actualización, las tarjetas muestran «Consultar stock», sin un aviso general de antigüedad. La hora publicada utiliza `America/El_Salvador`.
 
 La disponibilidad se confirma por WhatsApp antes de comprar. No hay claves, costos, proveedores, dueños, enlaces de origen, identificadores de fuentes, IMEI ni notas privadas en el JSON o los recursos del catálogo. Los nombres se convierten a modelos conocidos (por ejemplo, `IPHONE 13 PRO 128GB475` pasa a `iPhone 13 Pro`). Las observaciones se limitan a valores controlados.
 

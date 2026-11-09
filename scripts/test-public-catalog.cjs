@@ -98,7 +98,7 @@ const fs=require('node:fs');
  const noStock=await browser.newPage();await noStock.route('**/inventory.json',r=>r.fulfill({json:{...data,products:[]}}));await noStock.goto(base);await noStock.locator('#empty').waitFor();assert.equal(await noStock.locator('.hero-pick:visible').count(),0);assert(await noStock.locator('#hero-signature').isVisible());
  const stale=await browser.newPage();
  await stale.route('**/inventory.json',r=>r.fulfill({json:{...data,updatedAt:'2020-01-01T00:00:00Z'}}));
- await stale.goto(base);await stale.locator('#notice').waitFor();assert((await stale.locator('.availability').first().textContent()).includes('Consultar'));
+ await stale.goto(base);await stale.locator('.card').first().waitFor();assert.equal(await stale.locator('#notice').isVisible(),false);assert((await stale.locator('.availability').first().textContent()).includes('Consultar'));
  const malicious=await browser.newPage();
  await malicious.route('**/inventory.json',r=>r.fulfill({json:{...data,products:[{...data.products[0],model:'<img src=x onerror=alert(1)>'}]}}));
  await malicious.goto(base);await malicious.locator('.card').waitFor();assert.equal(await malicious.locator('.card h3 img').count(),0);

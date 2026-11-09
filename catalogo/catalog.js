@@ -205,7 +205,6 @@
       nodes.capacity.replaceChildren(option('all','Toda capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
       $('#updated').textContent='Inventario actualizado: '+new Intl.DateTimeFormat('es-SV',{dateStyle:'medium',timeStyle:'short',timeZone:'America/El_Salvador'}).format(new Date(catalog.updatedAt))+' · El Salvador';
-      if(Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000){$('#notice').textContent='Esta lista lleva más de dos horas sin actualizarse. Consulta por WhatsApp para confirmar el precio y la disponibilidad de tu equipo.';$('#notice').hidden=false;}
       render();
     }catch{
       if(background&&previous){catalog=previous;render();$('#notice').textContent='No pudimos comprobar la última actualización. Se conserva la lista anterior; confirma disponibilidad por WhatsApp.';$('#notice').hidden=false;return;}

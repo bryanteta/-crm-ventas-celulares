@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="es-SV">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+// Keep the custom domain on the public catalog while Pages uses the legacy root.
+if (['lunivosv.com', 'www.lunivosv.com'].includes(location.hostname)) {
+  document.documentElement.hidden = true;
+  location.replace('/catalogo/' + location.search + location.hash);
+}
+</script>
 <title>Lunivo — Clientes y seguimientos</title>
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="suite.css">

@@ -27,3 +27,5 @@ Después de comprobar los DNS, establecer `lunivosv.com` en Settings → Pages �
 GitHub no controla los DNS de Namecheap; este paso no se puede hacer solo con un commit. Es recomendable verificar también la propiedad del dominio en la configuración personal de GitHub → Pages, usando el TXT específico que GitHub indique.
 
 La migración de publicación usa `build_type: workflow`, `.github/workflows/deploy-catalog.yml` y los permisos estándar de Pages. El actualizador programado dispara el publicador mediante `workflow_run` al finalizar con éxito; no depende de las compilaciones heredadas de Pages. El dominio es una configuración de dirección y no modifica las consultas de proveedores ni los precios.
+
+Mientras Pages mantenga la fuente legacy, el `index.html` del CRM redirige únicamente los hosts `lunivosv.com` y `www.lunivosv.com` a `/catalogo/`, conservando parámetros y fragmento. Esto evita que el dominio abra el CRM anterior; la app Android usa `appassets.androidplatform.net` y conserva su interfaz. Al activar la publicación por Actions, el artefacto coloca directamente el catálogo en la raíz y esta redirección deja de intervenir.

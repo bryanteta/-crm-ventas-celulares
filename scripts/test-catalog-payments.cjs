@@ -45,15 +45,15 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
    await page.locator('#payment-bank').selectOption(bank.id);
    assert.equal(await page.locator('[name=installment-term]:checked').count(),0);
    assert.deepEqual(await page.locator('[name=installment-term]').evaluateAll(o=>o.map(n=>n.value)),bank.installments.map(String));
-   assert.equal(await page.locator('#installment-grid label:visible').count(),bank.installments.length);assert.doesNotMatch(await page.locator('#installment-grid').textContent(),/Por mes|Última|última|aprox/i);
-   for(const months of bank.installments){const card=page.locator('#installment-grid label').filter({has:page.locator('[value="'+months+'"]')});assert.equal(await card.locator('strong').textContent(),(regular%months?'Desde ':'')+money(Math.floor(regular/months)));}
+   assert.equal(await page.locator('#installment-grid label:visible').count(),bank.installments.length);assert.doesNotMatch(await page.locator('#installment-grid').textContent(),/Por mes|Última|última|aprox|desde/i);
+   for(const months of bank.installments){const card=page.locator('#installment-grid label').filter({has:page.locator('[value="'+months+'"]')});assert.equal(await card.locator('strong').textContent(),money(Math.floor(regular/months)));}
    for(const months of bank.installments){
     await page.locator('[name=installment-term][value="'+months+'"]').check();
     assert.equal(await page.locator('#installment-summary').isVisible(),false);
     assert.equal(await page.locator('#detail-price').textContent(),money(regular));
     message=decodeURIComponent(await page.locator('#consult').getAttribute('href'));
     assert(message.includes('A tasa cero, precio regular: '+money(regular)));
-    assert(message.includes('🏦 '+bank.name+' · '+months+' cuotas - '+(regular%months?'desde ':'')+money(Math.floor(regular/months))));
+    assert(message.includes('🏦 '+bank.name+' · '+months+' cuotas - '+money(Math.floor(regular/months))));
     assert(!message.includes('Al contado'));
    }
   }
@@ -92,7 +92,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   const sample=await browser.newPage();
   const quote={...source.products[0],model:'iPhone 11 Pro Max',capacity:'64 GB',color:'Verde',condition:'Seminuevo',grade:'A',battery:'100%',priceCents:38000,cycles:null,sim:'Por confirmar',ram:'',box:null,observations:[]};
   await sample.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[quote]}}));await sample.goto(base);await sample.locator('.card').waitFor();await sample.locator('.product-name').click();await sample.getByLabel('Tasa cero',{exact:false}).check();await sample.locator('#payment-bank').selectOption('cuscatlan');await sample.locator('[name=installment-term][value="36"]').check();
-  const expected=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:','','📲 iPhone 11 Pro Max - 64 GB','⭐️ Estado: Seminuevo, categoría A','🔋 Batería 100%','🟢 Color Verde','','💰 A tasa cero, precio regular: $418.00','🏦 Banco Cuscatlán · 36 cuotas - desde $11.61','','¿Cómo realizo la compra?'].join('\n');
+  const expected=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:','','📲 iPhone 11 Pro Max - 64 GB','⭐️ Estado: Seminuevo, categoría A','🔋 Batería 100%','🟢 Color Verde','','💰 A tasa cero, precio regular: $418.00','🏦 Banco Cuscatlán · 36 cuotas - $11.61','','¿Cómo realizo la compra?'].join('\n');
   assert.equal(new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text'),expected);
   await sample.getByLabel('Al contado',{exact:false}).check();const cashMessage=new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text');assert(cashMessage.includes('💰 Al contado, precio promocional: $380.00'));assert(!cashMessage.includes('🏦'));
   const failure=await browser.newPage();await failure.route('**/payment-plans.json',r=>r.fulfill({status:500,body:''}));

@@ -291,6 +291,26 @@
         "height": 1146
       }
     },
+    "Samsung S26 Ultra|Celeste": {
+      "model": "Samsung S26 Ultra",
+      "color": "Celeste",
+      "officialColor": "Sky Blue",
+      "sourceSku": "SM-S948ULBEXAA",
+      "sourceDescription": "Galaxy S26 Ultra DeviceBack Sky Blue",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-ultra-s948-sm-s948ulbexaa-550993029?$product-details-jpg$",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/",
+      "credit": "Samsung",
+      "framing": {
+        "x": 659,
+        "y": 48,
+        "width": 599,
+        "height": 1186
+      },
+      "path": "assets/products/samsung-s26-ultra-celeste.png",
+      "sha256": "2eba26deaa576670fc26a94bd39d011c27b0fadc8891a024c4a5cc6f2853c202",
+      "width": 1920,
+      "height": 1280
+    },
     "Samsung S26|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942ulbexaa-550995215?$product-details-jpg$",
       "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-fe/buy/",

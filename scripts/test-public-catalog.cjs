@@ -10,10 +10,15 @@ const fs=require('node:fs');
  const errors=[],requests=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
  await page.goto(base);await page.waitForFunction(()=>document.querySelector('#products').getAttribute('aria-busy')==='false');
- const selectedHero=await page.locator('.hero-pick:not([hidden])').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,src:c.querySelector('img').getAttribute('src'),alt:c.querySelector('img').alt})));
+ const selectedHero=await page.locator('.hero-pick:not([hidden])').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,model:c.dataset.featuredModel,color:c.dataset.featuredColor,reference:c.dataset.reference,src:c.querySelector('img').getAttribute('src'),alt:c.querySelector('img').alt})));
  const heroImages=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8')).products;
  assert.equal(selectedHero.length,2);
- for(const selected of selectedHero){const item=data.products.find(p=>p.id===selected.id);assert(item&&item.available);assert.equal(selected.src,heroImages[item.model+'|'+item.color].path);assert(selected.alt.includes(item.color));}
+ assert.deepEqual(selectedHero.map(h=>h.model+'|'+h.color).sort(),['Samsung S26 Ultra|Celeste','iPhone 18 Pro Max|Borgoña'].sort());
+ for(const selected of selectedHero){
+  assert.equal(selected.src,heroImages[selected.model+'|'+selected.color].path);assert(selected.alt.includes(selected.color));
+  if(selected.id){const item=data.products.find(p=>p.id===selected.id);assert(item&&item.available);assert.equal(item.model,selected.model);assert.equal(item.color,selected.color);}
+  else{assert.equal(selected.reference,'true');assert(!data.products.some(p=>p.available&&p.model===selected.model&&p.color===selected.color));}
+ }
  await page.locator('.hero-primary').click();assert.equal(new URL(page.url()).hash,'#inventario');
  assert((await page.locator('.hero-advice').getAttribute('href')).startsWith('https://wa.me/50376241930'));
  const count=await page.locator('.card').count();assert(count>10);

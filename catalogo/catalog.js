@@ -58,19 +58,23 @@
   function paintHero(data){
     const stage=$('.hero-collection');
     if(!stage)return;
-    const preference={Apple:['iPhone 17 Pro Max|Anaranjado','iPhone 16 Pro|Titanio desierto','iPhone 15|Rosado'],Samsung:['Samsung S25 Ultra|Celeste','Samsung S26|Celeste','Samsung S22 Ultra|Verde']};
+    const featured={Apple:{model:'iPhone 18 Pro Max',color:'Borgoña',label:'Burgundy'},Samsung:{model:'Samsung S26 Ultra',color:'Celeste',label:'Celeste'}};
     function updateCount(){const count=stage.querySelectorAll('figure:not([hidden])').length;stage.dataset.count=String(count);$('#hero-signature').hidden=count>0;}
     for(const manufacturer of ['Samsung','Apple']){
       const figure=stage.querySelector('[data-hero-brand="'+manufacturer+'"]');
-      const choices=data.products.filter(p=>p.manufacturer===manufacturer&&p.available&&images[p.model+'|'+p.color]);
-      const selected=preference[manufacturer].map(key=>choices.find(p=>p.model+'|'+p.color===key)).find(Boolean)||choices[0];
-      figure.hidden=!selected;
-      if(!selected)continue;
-      const image=figure.querySelector('img'),picture=images[selected.model+'|'+selected.color];
-      framePhoto(image,picture);image.src=picture.path;image.alt=selected.model+', '+selected.color+' · imagen de referencia';
-      figure.dataset.productId=selected.id;
-      figure.querySelector('strong').textContent=selected.model.replace(/^Samsung /,'');
-      figure.querySelector('small').textContent=selected.color;
+      const feature=featured[manufacturer],key=feature.model+'|'+feature.color,picture=images[key];
+      const available=data.products.some(p=>p.manufacturer===manufacturer&&p.available);
+      const selected=data.products.find(p=>p.manufacturer===manufacturer&&p.available&&p.model===feature.model&&p.color===feature.color);
+      delete figure.dataset.productId;
+      figure.hidden=!available||!picture;
+      if(figure.hidden)continue;
+      const image=figure.querySelector('img');
+      framePhoto(image,picture);image.src=picture.path;image.alt=feature.model+', '+feature.color+' · imagen oficial de referencia';
+      figure.dataset.featuredModel=feature.model;figure.dataset.featuredColor=feature.color;
+      figure.dataset.reference=String(!selected);
+      if(selected)figure.dataset.productId=selected.id;
+      figure.querySelector('strong').textContent=feature.model.replace(/^Samsung /,'');
+      figure.querySelector('small').textContent=feature.label+(selected?'':' · Consultar disponibilidad');
       image.onerror=()=>{figure.hidden=true;updateCount();};
     }
     updateCount();
@@ -96,7 +100,7 @@
       else{card.querySelector('.image-caption').hidden=true;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
-      card.querySelector('.from').textContent=new Set(prices).size>1?'Promocional desde':'Precio promocional';
+      card.querySelector('.from').textContent='Precio promocional';
       card.querySelector('.regular-price s').textContent=money(regularPrice(Math.min(...prices)));
       card.querySelector('.price').textContent=money(Math.min(...prices));
       const units=group.variants.every(v=>Number.isSafeInteger(v.quantity))?group.variants.reduce((n,v)=>n+v.quantity,0):null;
@@ -149,7 +153,7 @@
         summary=bank.installments.length?'Selecciona el número de cuotas.':'Cuotas de este banco por confirmar con Lunivo.';
         if(bank.installments.includes(months)){
           summary='';
-          paymentLines.push('🏦 '+bank.name+' · '+months+' cuotas - '+(regular%months?'desde ':'')+money(Math.floor(regular/months)));
+          paymentLines.push('🏦 '+bank.name+' · '+months+' cuotas - '+money(Math.floor(regular/months)));
         }else paymentLines.push('🏦 '+bank.name+' · Quiero consultar las cuotas disponibles.');
       }else paymentLines.push('🏦 Quiero conocer los bancos y cuotas disponibles.');
     }
@@ -228,7 +232,7 @@
       const each=Math.floor(total/months);
       const label=document.createElement('label'),input=document.createElement('input'),copy=document.createElement('span'),name=document.createElement('span'),amount=document.createElement('strong');
       input.type='radio';input.name='installment-term';input.value=String(months);input.checked=selected===months;
-      name.textContent=months+' cuotas';amount.textContent=(total%months?'Desde ':'')+money(each);
+      name.textContent=months+' cuotas';amount.textContent=money(each);
       copy.append(name,amount);label.append(input,copy);fragment.append(label);
     }
     grid.replaceChildren(fragment);

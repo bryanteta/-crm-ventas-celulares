@@ -69,12 +69,12 @@
       figure.hidden=!available||!picture;
       if(figure.hidden)continue;
       const image=figure.querySelector('img');
-      framePhoto(image,picture);image.src=picture.path;image.alt=feature.model+', '+feature.color+' · imagen oficial de referencia';
+      framePhoto(image,picture);image.src=picture.path+'?v='+picture.sha256.slice(0,12);image.alt=feature.model+', '+feature.color+' · imagen oficial de referencia';
       figure.dataset.featuredModel=feature.model;figure.dataset.featuredColor=feature.color;
       figure.dataset.reference=String(!selected);
       if(selected)figure.dataset.productId=selected.id;
       figure.querySelector('strong').textContent=feature.model.replace(/^Samsung /,'');
-      figure.querySelector('small').textContent=feature.label+(selected?'':' · Consultar disponibilidad');
+      figure.querySelector('small').textContent=feature.label;
       image.onerror=()=>{figure.hidden=true;updateCount();};
     }
     updateCount();

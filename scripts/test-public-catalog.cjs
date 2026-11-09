@@ -12,10 +12,10 @@ const fs=require('node:fs');
  await page.goto(base);await page.waitForFunction(()=>document.querySelector('#products').getAttribute('aria-busy')==='false');
  const selectedHero=await page.locator('.hero-pick:not([hidden])').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,model:c.dataset.featuredModel,color:c.dataset.featuredColor,reference:c.dataset.reference,src:c.querySelector('img').getAttribute('src'),alt:c.querySelector('img').alt})));
  const heroImages=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8')).products;
- assert.equal(selectedHero.length,2);
+ assert.equal(selectedHero.length,2);assert.doesNotMatch(await page.locator('.hero-collection').innerText(),/Consultar disponibilidad/i);
  assert.deepEqual(selectedHero.map(h=>h.model+'|'+h.color).sort(),['Samsung S26 Ultra|Celeste','iPhone 18 Pro Max|Borgoña'].sort());
  for(const selected of selectedHero){
-  assert.equal(selected.src,heroImages[selected.model+'|'+selected.color].path);assert(selected.alt.includes(selected.color));
+  const picture=heroImages[selected.model+'|'+selected.color];assert.equal(selected.src,picture.path+'?v='+picture.sha256.slice(0,12));assert(selected.alt.includes(selected.color));
   if(selected.id){const item=data.products.find(p=>p.id===selected.id);assert(item&&item.available);assert.equal(item.model,selected.model);assert.equal(item.color,selected.color);}
   else{assert.equal(selected.reference,'true');assert(!data.products.some(p=>p.available&&p.model===selected.model&&p.color===selected.color));}
  }

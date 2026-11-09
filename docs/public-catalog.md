@@ -20,7 +20,7 @@ Archivo: `.github/workflows/refresh-catalog.yml`.
 2. Comprobar que el archivo del workflow esté en `main` y que Actions esté habilitado. Abre https://github.com/bryanteta/-crm-ventas-celulares/actions/workflows/refresh-catalog.yml y ejecuta **Run workflow** para verificar la primera consulta.
 3. Una ejecución correcta consulta ambas fuentes, construye el JSON público, ejecuta las pruebas, guarda únicamente `catalogo/inventory.json` y solicita explícitamente una compilación de Pages. Es necesario solicitarla porque los commits hechos con `GITHUB_TOKEN` no disparan el Pages heredado por sí solos.
 
-La tarea está programada a los minutos 22 y 52 de cada hora, y permite ejecución manual. GitHub puede retrasar tareas programadas: no es tiempo real ni un máximo garantizado de 30 minutos. Actions y Pages en este repositorio público utilizan el servicio gratuito estándar de GitHub.
+La tarea está programada a los minutos 7, 22, 37 y 52 de cada hora, y permite ejecución manual. Si falla una consulta, reintenta hasta tres veces antes de conservar la última publicación válida. GitHub puede retrasar o descartar tareas programadas: no es tiempo real ni un máximo garantizado de 15 minutos. Actions y Pages en este repositorio público utilizan el servicio gratuito estándar de GitHub.
 
 Permisos del workflow: `contents: write` para guardar el catálogo y `pages: write` para solicitar la publicación. La tarea no tiene permiso para administrar secretos. El secreto se envía solo al endpoint del proveedor durante la consulta. Las respuestas privadas se procesan dentro de un directorio temporal que se elimina al finalizar; no se suben artefactos privados ni se hace commit de datos crudos. Solo se guarda el JSON público.
 
@@ -105,3 +105,7 @@ Validación: `npm run test:catalog-payments` verifica todos los precios público
 La presentación recupera el diseño compacto anterior, sin un recuadro adicional dentro de la tarjeta ni un bloque enmarcado en el detalle. Conserva los textos «Precio regular», «Precio promocional» y «Precio exclusivo por pago de contado», el regular tachado y el promocional resaltado, con adaptación a ambos temas.
 
 Los acentos de botones, opciones seleccionadas, enfoque y portada usan tonos azules en ambos temas. Los importes promocionales y el check de contado conservan su color verde; las fotos de los dispositivos conservan sus colores originales.
+
+## Verificación de la programación
+
+Se confirmó una ejecución real con evento `schedule`, no causada por un push ni una ejecución manual: [42534114500](https://github.com/bryanteta/-crm-ventas-celulares/actions/runs/42534114500), terminada correctamente el 8 de noviembre a las 5:13 p. m. de El Salvador. Consultó las fuentes, pasó las pruebas de integridad y solicitó la publicación de Pages. Esto confirma que GitHub registró la programación; no garantiza puntualidad. Se amplió la frecuencia a cuatro consultas por hora y se incorporaron reintentos ante fallos transitorios. La clave de Split permanece en GitHub Actions, sin exponerse en la web.

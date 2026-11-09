@@ -2,7 +2,7 @@ name: Actualizar inventario público de Lunivo
 
 on:
   schedule:
-    - cron: '22,52 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -47,7 +47,18 @@ jobs:
       - name: Consultar fuentes y preparar inventario público
         env:
           SPLIT_INVENTORY_TOKEN: ${{ secrets.SPLIT_INVENTORY_TOKEN }}
-        run: python3 scripts/refresh-public-catalog.py
+        run: |
+          for attempt in 1 2 3; do
+            if python3 scripts/refresh-public-catalog.py; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning::No se pudo consultar el inventario. Reintento $attempt de 2; se conserva la última publicación."
+              sleep "$((attempt * 5))"
+            fi
+          done
+          echo '::error::No se pudo preparar un inventario válido tras tres intentos. Se conserva el catálogo publicado.'
+          exit 1
       - name: Probar integridad y privacidad
         run: npm test
       - name: Guardar catálogo y solicitar publicación

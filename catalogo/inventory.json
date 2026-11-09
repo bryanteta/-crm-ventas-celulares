@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-09T14:29:51.399Z",
+  "updatedAt": "2026-11-09T16:23:30.849Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -203,7 +203,7 @@
       "box": null,
       "ram": "",
       "priceCents": 35500,
-      "quantity": 1,
+      "quantity": 2,
       "available": true
     },
     {
@@ -221,7 +221,7 @@
       "box": null,
       "ram": "",
       "priceCents": 35500,
-      "quantity": 3,
+      "quantity": 2,
       "available": true
     },
     {
@@ -1623,24 +1623,6 @@
       "available": true
     },
     {
-      "id": "0f8a911832890b76ed22",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Plus",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "97%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 80500,
-      "quantity": 1,
-      "available": true
-    },
-    {
       "id": "10f0c7794d7e54dd01a4",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro",
@@ -2325,7 +2307,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 9,
+      "quantity": 8,
       "available": true
     },
     {
@@ -2343,7 +2325,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true
     },
     {

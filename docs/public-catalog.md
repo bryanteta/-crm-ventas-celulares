@@ -2,9 +2,9 @@
 
 URL principal: https://lunivosv.com/
 
-Dominio activo con HTTPS y publicación mediante GitHub Actions. La raíz abre directamente el catálogo; `www.lunivosv.com` redirige al dominio principal y la ruta anterior `/catalogo/` se conserva.
+Dominio activo con HTTPS y publicación mediante GitHub Actions. La raíz abre directamente el catálogo; `www.lunivosv.com` redirige al dominio principal y la ruta anterior `/catalogo/` redirige a la raíz.
 
-Sitio independiente en `catalogo/`, publicado por GitHub Actions/Pages desde `main`. El archivo `scripts/prepare-catalog-site.cjs` prepara una copia pública en la raíz y otra en `/catalogo/`, sin incluir los archivos del CRM ni Android. No cambia el CRM, la APK ni las reglas de Firestore. La consulta de cada variante abre WhatsApp de Lunivo (+503 7624 1930); el sitio no confirma ventas ni reserva unidades.
+Sitio independiente en `catalogo/`, publicado por GitHub Actions/Pages desde `main`. El archivo `scripts/prepare-catalog-site.cjs` prepara el catálogo en la raíz y una redirección para `/catalogo/`, conservando los recursos antiguos para pestañas abiertas, sin incluir los archivos del CRM ni Android. No cambia el CRM, la APK ni las reglas de Firestore. La consulta de cada variante abre WhatsApp de Lunivo (+503 7624 1930); el sitio no confirma ventas ni reserva unidades.
 
 ## Coincidencia con la app
 

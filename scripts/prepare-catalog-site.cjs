@@ -19,5 +19,10 @@ for(const entry of entries)safeCopy(path.join(source,entry),path.join(output,ent
 // Keep existing /catalogo/ links and open tabs working after moving to the root.
 fs.mkdirSync(path.join(output,'catalogo'));
 for(const entry of entries)safeCopy(path.join(source,entry),path.join(output,'catalogo',entry));
+fs.writeFileSync(path.join(output,'catalogo','index.html'),`<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Catálogo Lunivo</title><link rel="canonical" href="../"><meta http-equiv="refresh" content="0; url=../">
+<script>location.replace('../' + location.search + location.hash);</script></head>
+<body><p><a href="../">Abrir el catálogo de Lunivo</a></p></body></html>\n`);
 fs.writeFileSync(path.join(output,'.nojekyll'),'');
-console.log('Public catalog prepared at root and /catalogo/.');
+console.log('Public catalog prepared at root; legacy links redirect to root.');

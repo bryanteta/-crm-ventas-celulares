@@ -9,10 +9,11 @@ test('Pages artifact serves the same public catalog at root and legacy path with
   for(const file of ['index.html','inventory.json','payment-plans.json','product-images.json','catalog.js','styles.css']){
    const original=fs.readFileSync(path.join(root,'catalogo',file));
    assert.deepEqual(fs.readFileSync(path.join(output,file)),original);
-   assert.deepEqual(fs.readFileSync(path.join(output,'catalogo',file)),original);
+   if(file!=='index.html')assert.deepEqual(fs.readFileSync(path.join(output,'catalogo',file)),original);
   }
   for(const excluded of ['android','app.js','app.css','suite.js','firestore.rules','.git','.github','docs'])assert.equal(fs.existsSync(path.join(output,excluded)),false);
   assert.match(fs.readFileSync(path.join(output,'index.html'),'utf8'),/id="products"/);
+  assert.match(fs.readFileSync(path.join(output,'catalogo','index.html'),'utf8'),/location\.replace\('\.\.\/'/);
   assert.ok(fs.existsSync(path.join(output,'assets/logo.png')));
   assert.ok(fs.existsSync(path.join(output,'.nojekyll')));
   fs.writeFileSync(path.join(output,'keep.txt'),'preserve');

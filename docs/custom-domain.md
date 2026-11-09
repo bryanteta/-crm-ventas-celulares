@@ -1,6 +1,6 @@
 # Dominio lunivosv.com
 
-El catálogo funciona directamente en la raíz, sin `/catalogo/`, mediante GitHub Actions/Pages. Conserva la ruta anterior y la actualización programada del inventario. La app Android utiliza su fuente original y no necesita recompilarse.
+El catálogo funciona directamente en la raíz, sin `/catalogo/`, mediante GitHub Actions/Pages. Los enlaces anteriores con `/catalogo/` redirigen a la raíz; el inventario mantiene su actualización programada. La app Android utiliza su fuente original y no necesita recompilarse.
 
 ## DNS en Namecheap
 

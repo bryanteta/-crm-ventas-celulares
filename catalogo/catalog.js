@@ -173,7 +173,8 @@
     if(typeof p.box==='boolean')deviceLines.push('📦 '+(p.box?'Con caja':'Sin caja'));
     if(p.observations.length)deviceLines.push('📝 Observaciones: '+p.observations.join(', '));
     const text=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:',deviceLines.join('\n'),paymentLines.join('\n'),'¿Cómo realizo la compra?'].join('\n\n');
-    $('#consult').href='https://wa.me/50376241930?text='+encodeURIComponent(text);
+    // The direct endpoint preserves Unicode when the short-link redirect does not.
+    $('#consult').href='https://api.whatsapp.com/send?phone=50376241930&text='+encodeURIComponent(text);
   }
   function openDetails(group){
     activeGroup=group;

@@ -51,7 +51,7 @@ const fs=require('node:fs');
  const selected=await page.locator('#variant').inputValue();
  const item=data.products.find(p=>p.id===selected);assert(item);
  assert((await page.locator('#specs').textContent()).includes(String(item.quantity)));
- const href=await page.locator('#consult').getAttribute('href');assert(href.startsWith('https://wa.me/50376241930?text='));
+ const href=await page.locator('#consult').getAttribute('href');assert(href.startsWith('https://api.whatsapp.com/send?phone=50376241930&text='));
  assert(decodeURIComponent(href).includes(item.model));assert(decodeURIComponent(href).includes((item.priceCents/100).toFixed(2)));
  const options=await page.locator('#variant option').evaluateAll(o=>o.map(n=>n.value));
  if(options.length>1){await page.locator('#variant').selectOption(options[options.length-1]);const price=data.products.find(p=>p.id===options[options.length-1]).priceCents;assert((await page.locator('#detail-price').textContent()).includes((price/100).toFixed(2)));}

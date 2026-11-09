@@ -95,6 +95,13 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   const expected=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:','','📲 iPhone 11 Pro Max - 64 GB','⭐️ Estado: Seminuevo, categoría A','🔋 Batería 100%','🟢 Color Verde','','💰 A tasa cero, precio regular: $418.00','🏦 Banco Cuscatlán · 36 cuotas - $11.61','','¿Cómo realizo la compra?'].join('\n');
   const whatsappUrl=new URL(await sample.locator('#consult').getAttribute('href'));assert.equal(whatsappUrl.origin,'https://api.whatsapp.com');assert.equal(whatsappUrl.pathname,'/send');assert.equal(whatsappUrl.searchParams.get('phone'),'50376241930');assert.equal(whatsappUrl.searchParams.get('text'),expected);assert(whatsappUrl.href.includes('%F0%9F%91%8B'));assert(!whatsappUrl.href.includes('%EF%BF%BD'));
   await sample.getByLabel('Al contado',{exact:false}).check();const cashMessage=new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text');assert(cashMessage.includes('💰 Al contado, precio promocional: $380.00'));assert(!cashMessage.includes('🏦'));
+  // Supplier percentages must never reach Samsung cards, details, variants or WhatsApp.
+  const samsung={...quote,manufacturer:'Samsung',model:'Samsung S23 Ultra',color:'Negro',battery:'95%'};
+  await sample.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[samsung]}}));await sample.reload();await sample.locator('.card').waitFor();
+  assert.match(await sample.locator('.variant-specs').textContent(),/Batería en excelentes condiciones/);assert.doesNotMatch(await sample.locator('.variant-specs').textContent(),/95%/);
+  await sample.locator('.product-name').click();assert.equal(await sample.locator('#specs div').filter({has:sample.locator('dt',{hasText:'Batería'})}).locator('dd').textContent(),'En excelentes condiciones');
+  assert.doesNotMatch(await sample.locator('#variant').textContent(),/95%/);assert.match(await sample.locator('#variant').textContent(),/Batería en excelentes condiciones/);
+  const samsungMessage=new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text');assert(samsungMessage.includes('🔋 Batería en excelentes condiciones'));assert(!samsungMessage.includes('95%'));
   const failure=await browser.newPage();await failure.route('**/payment-plans.json',r=>r.fulfill({status:500,body:''}));
   await failure.goto(base);await failure.locator('.card').first().waitFor();await failure.locator('.view').first().click();await failure.getByLabel('Tasa cero',{exact:false}).check();
   assert.match(await failure.locator('#installment-summary').textContent(),/No se pudieron cargar/);

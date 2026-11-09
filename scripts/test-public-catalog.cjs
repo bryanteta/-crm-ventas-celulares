@@ -35,7 +35,7 @@ const fs=require('node:fs');
  for(const width of [320,412,1140]){await page.setViewportSize({width,height:915});assert(await page.locator('.card .photo-crop:has(img[src])').evaluateAll(frames=>frames.every(frame=>{const p=frame.parentElement.getBoundingClientRect(),r=frame.getBoundingClientRect();return Math.abs(r.left+r.width/2-p.left-p.width/2)<1&&Math.abs(r.top+r.height/2-p.top-p.height/2)<1&&r.width>0&&r.height>0;})));}
  await page.setViewportSize({width:1280,height:900});
  assert.equal(await page.getByText('Batería por confirmar',{exact:false}).count(),0);
- const withoutBattery=data.products.find(p=>!p.battery);if(withoutBattery){const card=page.locator(`[data-product-id="${withoutBattery.id}"]`);assert((await card.locator('.variant-specs').textContent()).includes('Batería en excelente estado'));await card.locator('.view').click();assert((await page.locator('#specs').textContent()).includes('En excelente estado'));await page.locator('#close').click();}
+ const withoutBattery=data.products.find(p=>!p.battery);if(withoutBattery){const card=page.locator(`[data-product-id="${withoutBattery.id}"]`);assert((await card.locator('.variant-specs').textContent()).includes(withoutBattery.manufacturer==='Samsung'?'Batería en excelentes condiciones':'Batería en excelente estado'));await card.locator('.view').click();assert((await page.locator('#specs').textContent()).includes(withoutBattery.manufacturer==='Samsung'?'En excelentes condiciones':'En excelente estado'));await page.locator('#close').click();}
  assert.equal(await page.locator('#error').isVisible(),false);
  assert((await page.locator('#count').textContent()).includes(String(data.products.reduce((n,p)=>n+p.quantity,0))));
  await page.getByRole('button',{name:'Samsung',exact:true}).click();

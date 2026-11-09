@@ -28,6 +28,7 @@
     }
   }).catch(()=>{});
   const collator=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
+  const batteryText=p=>p.manufacturer==='Samsung'?'en excelentes condiciones':(p.battery||'en excelente estado');
   const option=(value,label)=>{const item=document.createElement('option');item.value=value;item.textContent=label;return item;};
   function valid(data) {
     if(data?.schemaVersion!==1||data.brand!=='Lunivo'||data.currency!=='USD'||!Number.isFinite(Date.parse(data.updatedAt))||!Array.isArray(data.products)||data.products.length>20000)throw Error('Formato inválido');
@@ -93,7 +94,7 @@
       card.querySelector('.product-name').textContent=group.model;
       const device=group.variants[0];
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
-      const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'',device.battery?'Batería '+device.battery:'Batería en excelente estado',device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
+      const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'','Batería '+batteryText(device),device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
       const image=card.querySelector('.product-image'),picture=images[device.model+'|'+device.color];
       if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;card.querySelector('.image-caption').textContent='Imagen de referencia · '+device.color;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;card.querySelector('.image-caption').hidden=true;},{once:true});}
@@ -121,7 +122,7 @@
   function showVariant(){
     const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);
     if(!p)return;
-    const specs=[['Capacidad',p.capacity],['Color',p.color],['Estado',p.condition],['Batería',p.battery||'En excelente estado']];
+    const specs=[['Capacidad',p.capacity],['Color',p.color],['Estado',p.condition],['Batería',batteryText(p).replace(/^e/,'E')]];
     if(p.grade)specs.push(['Categoría',p.grade]);
     if(Number.isSafeInteger(p.quantity))specs.push(['Disponibles',String(p.quantity)]);
     if(p.cycles!==null&&p.cycles!==undefined)specs.push(['Ciclos de batería',String(p.cycles)]);
@@ -164,7 +165,7 @@
     const deviceLines=[
       '📲 '+p.model+' - '+p.capacity,
       '⭐️ Estado: '+p.condition+(p.grade?', categoría '+p.grade:''),
-      '🔋 Batería '+(p.battery||'en excelente estado'),
+      '🔋 Batería '+batteryText(p),
       colorIcon+' Color '+p.color
     ];
     if(p.ram)deviceLines.push('🧠 RAM: '+p.ram);
@@ -183,7 +184,7 @@
     resetInstallments();
     $('#detail-title').textContent=group.model;
     const sorted=[...group.variants].sort((a,b)=>a.priceCents-b.priceCents||collator.compare(a.capacity,b.capacity));
-    nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim!=='Por confirmar'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
+    nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.manufacturer==='Samsung'?'Batería '+batteryText(v):v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim!=='Por confirmar'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
     nodes.variant.hidden=sorted.length===1;
     document.querySelector('label[for=variant]').hidden=sorted.length===1;
     showVariant();

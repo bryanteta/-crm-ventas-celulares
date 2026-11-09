@@ -127,3 +127,9 @@ La actualización del catálogo consulta por HTTP GET la implementación de Apps
 El nuevo adaptador `samuelApi` acepta el sobre JSON o el catálogo ya decodificado, valida columnas, tipos, precios y fechas, y toma solamente las unidades de `filas`. `proximos` no se publica como stock disponible. Agrupa únicamente variantes idénticas y conserva los identificadores para datos equivalentes. No se consulta el CSV desde la actualización web ni se vuelve a él si la API falla: los reintentos conservan el último catálogo válido. El adaptador CSV se conserva por compatibilidad con los datos existentes. Android 1.7.12 consulta la misma API JSON y mantiene los identificadores y las listas guardadas.
 
 La comprobación de integración contrastó 226 unidades de esta API con su fuente anterior: coincidieron variantes, cantidades, especificaciones y precios. El catálogo público mantiene el aumento de $80 y las reglas de precio promocional/regular, sin publicar costos ni el catálogo crudo del proveedor.
+
+## Cobertura de imágenes revisada el 9 de noviembre de 2026
+
+Las APIs de inventario de Samuel y Split no incluyen campos de imagen en sus respuestas actuales. Se conservan fotos oficiales locales por modelo y color. Se añadieron las equivalencias de iPhone 15 Pro Max Blanco → White Titanium y Gris → Natural Titanium, usando los mismos archivos oficiales ya verificados para esos acabados; el nombre del proveedor se mantiene en la vista. Samsung S26 Morado usa la galería oficial de Cobalt Violet, SKU SM-S942UZVEXAA, con vista frontal y trasera.
+
+En la consulta revisada solo permanece sin foto el iPhone 13 Pro cuyo color está por confirmar. No se asigna otro acabado para llenar ese espacio. Los archivos nuevos conservan sus bytes originales, fuente, dimensiones, encuadre y SHA-256 en `product-images.json`.

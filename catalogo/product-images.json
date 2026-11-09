@@ -331,6 +331,26 @@
         "height": 1082
       }
     },
+    "Samsung S26|Morado": {
+      "model": "Samsung S26",
+      "color": "Morado",
+      "officialColor": "Cobalt Violet",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzvexaa-550995612?$product-details-jpg$",
+      "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26/buy/",
+      "credit": "Samsung",
+      "sourceSku": "SM-S942UZVEXAA",
+      "sourceDescription": "Galaxy S26 Front Cobalt Violet ",
+      "framing": {
+        "x": 507,
+        "y": 99,
+        "width": 906,
+        "height": 1082
+      },
+      "path": "assets/products/samsung-s26-morado.png",
+      "sha256": "24ab1c7ce3752a85f4be2c81f7b66d98f63c2566a13d3c8696ad2400a0267b80",
+      "width": 1920,
+      "height": 1280
+    },
     "Samsung S26|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzkexaa-550995412?$product-details-jpg$",
       "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-fe/buy/",
@@ -956,6 +976,36 @@
       "sha256": "40602effd367c86704543f1b7e394e666ffa4ef37cfc44ab315cd8bf805a00d6",
       "width": 306,
       "height": 380
+    },
+    "iPhone 15 Pro Max|Blanco": {
+      "model": "iPhone 15 Pro Max",
+      "color": "Blanco",
+      "officialColor": "whitetitanium",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_white_titanium__citdiqo2e0gi_large.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-15-pro-max-whitetitanium",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15-pro-max-plata.jpg",
+      "sha256": "e91927622c63cc7cb03b65ac4f0b5b2dd5032acaeb8aabe342b193473a2b2437",
+      "width": 306,
+      "height": 380,
+      "aliasOf": "iPhone 15 Pro Max|Plata"
+    },
+    "iPhone 15 Pro Max|Gris": {
+      "model": "iPhone 15 Pro Max",
+      "color": "Gris",
+      "officialColor": "naturaltitanium",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_natural_titanium__byvhspupwiuq_large.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-15-pro-max-naturaltitanium",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15-pro-max-titanio-natural.jpg",
+      "sha256": "46dc29362d67383a0c5ac8d5441ae03dbd3a4a098c15ad4674acceb3577ed0ef",
+      "width": 306,
+      "height": 380,
+      "aliasOf": "iPhone 15 Pro Max|Titanio natural"
     },
     "iPhone 15 Pro Max|Negro": {
       "model": "iPhone 15 Pro Max",

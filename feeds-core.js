@@ -23,6 +23,25 @@ function samuel(input){
  if(declared!==null&&declared!==recognized)throw Error('La hoja llegó incompleta. Se conserva la lista anterior.');
  return{rows:group('samuel',items),total:items.length};
 }
+function samuelApi(input){
+ let data;
+ try{
+  data=typeof input==='string'?JSON.parse(input):input;
+  if(data&&typeof data.c==='string')data=JSON.parse(data.c);
+ }catch{throw Error('La API de Samuel no devolvió un inventario válido.');}
+ if(!data||!Array.isArray(data.columnas)||data.columnas.length<7||data.columnas.length>100||!Array.isArray(data.filas)||data.filas.length>10000||!Number.isSafeInteger(data.ahora)||!Number.isSafeInteger(data.leido)||data.ahora<=0||data.leido<=0||data.leido>data.ahora+300000||!Number.isFinite(new Date(data.ahora).getTime())||!Number.isFinite(new Date(data.leido).getTime()))throw Error('La API de Samuel está incompleta. Se conserva la lista anterior.');
+ const columns=data.columnas.map(c=>normalize(text(c,100)));
+ const required=['modelo','color','capacidad','bateria','categoria','precio venta','observaciones'];
+ if(new Set(columns).size!==columns.length||required.some(c=>!columns.includes(c)))throw Error('La API de Samuel cambió de formato. Se conserva la lista anterior.');
+ const index=Object.fromEntries(required.map(c=>[c,columns.indexOf(c)])),items=[];
+ for(const row of data.filas){
+  if(!Array.isArray(row)||row.length!==columns.length)throw Error('La API de Samuel contiene una fila incompleta.');
+  const field=(name,max)=>text(row[index[name]],max);
+  const model=field('modelo',200);if(!model)throw Error('La API de Samuel contiene un equipo sin modelo.');
+  items.push({model,color:field('color',80),capacity:field('capacidad',40),battery:field('bateria',80),category:field('categoria',80),notes:field('observaciones',1000),price:cents(row[index['precio venta']])});
+ }
+ return{rows:group('samuel',items),total:items.length,sourceUpdatedAt:new Date(data.leido).toISOString()};
+}
 function split(input){
  let data;try{data=typeof input==='string'?JSON.parse(input):input;}catch{throw Error('Split no devolvió un inventario válido.');}
  if(!data||data.moneda!=='USD'||!Array.isArray(data.items)||!Number.isInteger(data.total)||data.total!==data.items.length||data.items.length>10000||typeof data.actualizado!=='string'||!Number.isFinite(Date.parse(data.actualizado)))throw Error('La respuesta de Split está incompleta. Se conserva la lista anterior.');
@@ -38,5 +57,5 @@ function replace(data,provider,result,checkedAt,origin='network'){
  validate(provider,result);if(!Number.isFinite(Date.parse(checkedAt)))throw Error('Fecha del inventario inválida.');const date=new Date(checkedAt).toISOString().slice(0,10);
  const rows=result.rows.map(r=>({...r,date}));return{...data,offers:[...data.offers.filter(o=>o.feedProvider!==provider&&!(provider==='samuel'&&o.source==='pdf'&&String(o.id).startsWith('tecno-reference-'))),...rows],providerFeeds:{...data.providerFeeds,[provider]:{checkedAt:new Date(checkedAt).toISOString(),sourceUpdatedAt:result.sourceUpdatedAt||null,total:result.total,variants:rows.length,origin}}};
 }
-return{csv,samuel,split,replace,validate};
+return{csv,samuel,samuelApi,split,replace,validate};
 });

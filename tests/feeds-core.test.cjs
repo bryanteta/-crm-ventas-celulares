@@ -13,3 +13,21 @@ test('Partial, wrong-currency, bad-origin and non-JSON Split responses cannot re
 test('Feed ids are stable across reordering and change for price changes',()=>{const d=api(),first=core.split(d);d.items.reverse();a.deepEqual(core.split(d).rows.map(r=>r.id).sort(),first.rows.map(r=>r.id).sort());d.items[0].precio++;a.notEqual(core.split(d).rows[0].id,first.rows[1].id);});
 test('Feed replacement preserves sales, inventory, receipt counters, other quotes and other feed',()=>{const other={id:'manual',model:'Galaxy',supplier:'Other'},split={id:'other-feed',feedProvider:'split'},prior={id:'tecno-reference-1',source:'pdf'},old={id:'old-samuel',feedProvider:'samuel'},data={sales:[{id:'sale',stockOwnerId:'samuel'}],inventory:[{id:'lot',ownerId:'saul',quantity:3,cost:100}],receiptCounters:{202611:1},offers:[other,split,prior,old],providerFeeds:{split:{total:2}}},copy=structuredClone(data),parsed=core.samuel(sheet());const next=core.replace(data,'samuel',parsed,'2026-11-04T12:00:00Z');a.deepEqual(data,copy);a.deepEqual(next.sales,data.sales);a.deepEqual(next.inventory,data.inventory);a.deepEqual(next.receiptCounters,data.receiptCounters);a.ok(next.offers.includes(other));a.ok(next.offers.includes(split));a.equal(next.offers.some(o=>o.id===old.id||o.id===prior.id),false);a.deepEqual(next.providerFeeds.split,data.providerFeeds.split);a.equal(next.providerFeeds.samuel.total,2);});
 test('Cache validation rejects totals, duplicate variants, owners and timestamps before writing',()=>{const d=core.split(api());a.throws(()=>core.validate('split',{...d,total:9}));a.throws(()=>core.validate('split',{...d,rows:[...d.rows,d.rows[0]]}));a.throws(()=>core.validate('split',{...d,rows:[{...d.rows[0],ownerId:'samuel'},d.rows[1]]}));a.throws(()=>core.replace({offers:[]},'split',d,'invalid'));});
+
+test('Samuel JSON API reads the published columns, combines identical units and excludes upcoming stock',()=>{
+ const now=Date.parse('2026-11-09T04:00:00Z');
+ const item=['iPhone 13','Negro','128 GB','100%','A','$350.00','Sin daños'];
+ const data={columnas:['Modelo','Color','Capacidad','Batería','Categoría','Precio Venta','Observaciones'],filas:[item,item,[...item.slice(0,5),'351',item[6]]],proximos:[item,item,item],ingreso:[],bajas:[],ofertas:[],ahora:now,leido:now-1000};
+ const parsed=core.samuelApi(JSON.stringify({c:JSON.stringify(data),v:2}));
+ a.equal(parsed.total,3);a.equal(parsed.rows.length,2);a.equal(parsed.rows[0].quantity,2);a.equal(parsed.rows[0].price,35000);a.equal(parsed.sourceUpdatedAt,'2026-11-09T03:59:59.000Z');core.validate('samuel',parsed);
+ const reordered={...data,columnas:[...data.columnas].reverse(),filas:data.filas.map(r=>[...r].reverse())};
+ a.deepEqual(core.samuelApi(reordered),parsed);
+ const empty=core.samuelApi({...data,filas:[]});a.equal(empty.total,0);a.deepEqual(empty.rows,[]);
+ const csvRow=['iPhone 13','Negro','128 GB','100%','128 GB','A','$350.00','Disponible','Sin daños'];
+ a.equal(core.samuel(sheet([csvRow])).rows[0].id,parsed.rows[0].id);
+ a.equal('proximos' in parsed,false);a.equal('ingreso' in parsed,false);
+});
+test('Samuel JSON API rejects HTML, malformed wrappers, missing columns, partial rows, invalid prices and timestamps',()=>{
+ const now=Date.now(),base={columnas:['Modelo','Color','Capacidad','Batería','Categoría','Precio Venta','Observaciones'],filas:[['iPhone 13','Negro','128 GB','100%','A','350','']],ahora:now,leido:now};
+ for(const data of ['<html>Login</html>',{c:'invalid'},{...base,filas:null},{...base,columnas:base.columnas.slice(1)},{...base,filas:[['short']]},{...base,filas:[[...base.filas[0].slice(0,5),'NaN','']]},{...base,filas:[[...base.filas[0].slice(0,5),'-1','']]},{...base,leido:'bad'},{...base,leido:now+300001},{...base,columnas:[...base.columnas.slice(0,6),'Modelo']}])a.throws(()=>core.samuelApi(data));
+});

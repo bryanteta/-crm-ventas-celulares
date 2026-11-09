@@ -1,8 +1,8 @@
 # Catálogo público de Lunivo
 
-URL principal de GitHub: https://bryanteta.github.io/-crm-ventas-celulares/
+URL principal: https://lunivosv.com/
 
-La ruta anterior `/catalogo/` se conserva. Dominio previsto: `lunivosv.com`, pendiente de que sus DNS apunten a GitHub y se active el dominio personalizado en Pages.
+Dominio activo con HTTPS y publicación mediante GitHub Actions. La raíz abre directamente el catálogo; `www.lunivosv.com` redirige al dominio principal y la ruta anterior `/catalogo/` se conserva.
 
 Sitio independiente en `catalogo/`, publicado por GitHub Actions/Pages desde `main`. El archivo `scripts/prepare-catalog-site.cjs` prepara una copia pública en la raíz y otra en `/catalogo/`, sin incluir los archivos del CRM ni Android. No cambia el CRM, la APK ni las reglas de Firestore. La consulta de cada variante abre WhatsApp de Lunivo (+503 7624 1930); el sitio no confirma ventas ni reserva unidades.
 

@@ -1,12 +1,12 @@
 # Dominio lunivosv.com
 
-El catálogo se prepara para funcionar directamente en la raíz, sin `/catalogo/`, mediante GitHub Actions/Pages. Conserva la ruta anterior y la actualización programada del inventario. La app Android utiliza su fuente original y no necesita recompilarse.
+El catálogo funciona directamente en la raíz, sin `/catalogo/`, mediante GitHub Actions/Pages. Conserva la ruta anterior y la actualización programada del inventario. La app Android utiliza su fuente original y no necesita recompilarse.
 
 ## DNS en Namecheap
 
-Los servidores autoritativos detectados son `dns1.registrar-servers.com` y `dns2.registrar-servers.com`. El dominio raíz apunta a `162.255.119.141` y `www` a `parkingpage.namecheap.com`, por lo que todavía no dirige al catálogo.
+Los servidores autoritativos son `dns1.registrar-servers.com` y `dns2.registrar-servers.com`. El dominio raíz apunta a las cuatro IP de GitHub Pages y `www` a `bryanteta.github.io`. Los DNS, el certificado TLS y HTTPS obligatorio quedaron comprobados.
 
-En **Domain List → Manage → Advanced DNS**, sustituir únicamente los registros de parking/redirección de `@` y `www` por:
+Configuración guardada en **Domain List → Manage → Advanced DNS**:
 
 | Tipo | Host | Valor | TTL |
 |---|---|---|---|
@@ -20,9 +20,13 @@ No modificar registros MX, TXT u otros servicios. Evitar registros A/AAAA antigu
 
 ## Activación en GitHub
 
-En Settings → Pages → Build and deployment → Source, seleccionar **GitHub Actions**. La integración de esta sesión recibió HTTP 403 al cambiar este ajuste mediante API, así que el propietario debe hacerlo desde su cuenta. El workflow ya está preparado y mantiene el sitio anterior mientras la fuente continúe en modo legacy. Después de cambiar la fuente, ejecutar «Publicar catálogo de Lunivo» o esperar una actualización correcta del inventario.
+Configuración activa en Settings → Pages:
 
-Después de comprobar los DNS, establecer `lunivosv.com` en Settings → Pages → Custom domain (también se puede hacer con la API autorizada del repositorio). Esperar la emisión del certificado y activar Enforce HTTPS cuando esté disponible. No activar el dominio mientras siga apuntando al parking: GitHub redirige la dirección anterior hacia el dominio personalizado.
+- Source: **GitHub Actions** (`build_type: workflow`).
+- Custom domain: **lunivosv.com**.
+- Enforce HTTPS: **activado**; certificado válido para el dominio y `www`.
+
+Se verificó la [publicación inicial en la raíz](https://github.com/bryanteta/-crm-ventas-celulares/actions/runs/42551124219). También se ejecutó una [consulta de proveedores](https://github.com/bryanteta/-crm-ventas-celulares/actions/runs/42551165478) y se comprobó su [publicación automática posterior](https://github.com/bryanteta/-crm-ventas-celulares/actions/runs/42551196339). El JSON publicado en `/inventory.json` coincidió con el de `/catalogo/inventory.json` y correspondió a esa consulta nueva.
 
 GitHub no controla los DNS de Namecheap; este paso no se puede hacer solo con un commit. Es recomendable verificar también la propiedad del dominio en la configuración personal de GitHub → Pages, usando el TXT específico que GitHub indique.
 

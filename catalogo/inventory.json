@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-09T02:46:07.571Z",
+  "updatedAt": "2026-11-09T02:54:25.101Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -584,24 +584,6 @@
       "ram": "",
       "priceCents": 55500,
       "quantity": 3,
-      "available": true
-    },
-    {
-      "id": "dbffa25135f2ee3d9f19",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro",
-      "capacity": "128 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 56000,
-      "quantity": 1,
       "available": true
     },
     {
@@ -1437,7 +1419,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 6,
+      "quantity": 5,
       "available": true
     },
     {

@@ -22,8 +22,8 @@ const fs=require('node:fs');
  await page.locator('.hero-primary').click();assert.equal(new URL(page.url()).hash,'#inventario');
  assert((await page.locator('.hero-advice').getAttribute('href')).startsWith('https://wa.me/50376241930'));
  const count=await page.locator('.card').count();assert(count>10);
- assert.equal(count,data.products.length);
- const rendered=await page.locator('.card').evaluateAll(cards=>cards.map(c=>c.dataset.productId));
+ assert(count<data.products.length,'equivalent colors share cards');assert.equal(await page.locator('#products .color-swatch').count(),data.products.length);
+ const rendered=await page.locator('#products .color-swatch').evaluateAll(buttons=>buttons.map(c=>c.dataset.variantId));
  assert.deepEqual([...rendered].sort(),data.products.map(p=>p.id).sort());
  const imageMap=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8'));
  assert(data.products.every(p=>imageMap.products[p.model+'|'+p.color]||imageMap.unavailable[p.model+'|'+p.color]),'Every variant has an exact color image or an explicit pending entry');
@@ -35,7 +35,7 @@ const fs=require('node:fs');
  for(const width of [320,412,1140]){await page.setViewportSize({width,height:915});assert(await page.locator('.card .photo-crop:has(img[src])').evaluateAll(frames=>frames.every(frame=>{const p=frame.parentElement.getBoundingClientRect(),r=frame.getBoundingClientRect();return Math.abs(r.left+r.width/2-p.left-p.width/2)<1&&Math.abs(r.top+r.height/2-p.top-p.height/2)<1&&r.width>0&&r.height>0;})));}
  await page.setViewportSize({width:1280,height:900});
  assert.equal(await page.getByText('Batería por confirmar',{exact:false}).count(),0);
- const withoutBattery=data.products.find(p=>!p.battery);if(withoutBattery){const card=page.locator(`[data-product-id="${withoutBattery.id}"]`);assert((await card.locator('.variant-specs').textContent()).includes(withoutBattery.manufacturer==='Samsung'?'Batería en excelentes condiciones':'Batería en excelente estado'));await card.locator('.view').click();assert((await page.locator('#specs').textContent()).includes(withoutBattery.manufacturer==='Samsung'?'En excelentes condiciones':'En excelente estado'));await page.locator('#close').click();}
+ const withoutBattery=data.products.find(p=>!p.battery);if(withoutBattery){await page.locator(`#products [data-variant-id="${withoutBattery.id}"]`).click();const card=page.locator(`[data-product-id="${withoutBattery.id}"]`);assert((await card.locator('.variant-specs').textContent()).includes(withoutBattery.manufacturer==='Samsung'?'Batería en excelentes condiciones':'Batería en excelente estado'));await card.locator('.view').click();assert((await page.locator('#specs').textContent()).includes(withoutBattery.manufacturer==='Samsung'?'En excelentes condiciones':'En excelente estado'));await page.locator('#close').click();}
  assert.equal(await page.locator('#error').isVisible(),false);
  assert((await page.locator('#count').textContent()).includes(String(data.products.reduce((n,p)=>n+p.quantity,0))));
  await page.getByRole('button',{name:'Samsung',exact:true}).click();
@@ -54,7 +54,7 @@ const fs=require('node:fs');
  const href=await page.locator('#consult').getAttribute('href');assert(href.startsWith('https://api.whatsapp.com/send?phone=50376241930&text='));
  assert(decodeURIComponent(href).includes(item.model));assert(decodeURIComponent(href).includes((item.priceCents/100).toFixed(2)));
  const options=await page.locator('#variant option').evaluateAll(o=>o.map(n=>n.value));
- if(options.length>1){await page.locator('#variant').selectOption(options[options.length-1]);const price=data.products.find(p=>p.id===options[options.length-1]).priceCents;assert((await page.locator('#detail-price').textContent()).includes((price/100).toFixed(2)));}
+ if(options.length>1){await page.locator(`#detail-colors [data-variant-id="${options[options.length-1]}"]`).click();const price=data.products.find(p=>p.id===options[options.length-1]).priceCents;assert((await page.locator('#detail-price').textContent()).includes((price/100).toFixed(2)));}
  await page.keyboard.press('Escape');assert.equal(await page.locator('#details').isVisible(),false);
  await page.locator('#search').fill('noexistezz');assert(await page.locator('#empty').isVisible());
  await page.locator('#reset').click();assert.equal(await page.locator('.card').count(),count);
@@ -79,11 +79,11 @@ const fs=require('node:fs');
  const lilac=await browser.newPage({viewport:{width:412,height:915}});
  await lilac.goto(base);await lilac.locator('.card').first().waitFor();await lilac.locator('#search').fill('iPhone 14 Plus');
  const lilacItem=data.products.find(p=>p.model==='iPhone 14 Plus'&&p.color==='Lila');
- if(lilacItem){const card=lilac.locator(`[data-product-id="${lilacItem.id}"]`);assert((await card.locator('.summary').textContent()).includes('Lila'));assert((await card.locator('.variant-specs').textContent()).includes(lilacItem.battery));assert((await card.locator('img').getAttribute('src')).includes('lila'));await lilac.locator('#inventario').scrollIntoViewIfNeeded();await card.locator('img').evaluate(i=>i.decode());await lilac.screenshot({path:'/workspace/artifacts/lunivo-14-plus-lila-corregido.png'});}
+ if(lilacItem){await lilac.locator(`#products [data-variant-id="${lilacItem.id}"]`).click();const card=lilac.locator(`[data-product-id="${lilacItem.id}"]`);assert((await card.locator('.summary').textContent()).includes('Lila'));assert((await card.locator('.variant-specs').textContent()).includes(lilacItem.battery));assert((await card.locator('img').getAttribute('src')).includes('lila'));await lilac.locator('#inventario').scrollIntoViewIfNeeded();await card.locator('img').evaluate(i=>i.decode());await lilac.screenshot({path:'/workspace/artifacts/lunivo-14-plus-lila-corregido.png'});}
  const flips=await browser.newPage({viewport:{width:412,height:915}});
  await flips.goto(base);await flips.locator('.card').first().waitFor();await flips.locator('#search').fill('Flip 4');
  const flipItems=data.products.filter(p=>p.model==='Samsung Z Flip 4');
- for(const item of flipItems){const card=flips.locator(`[data-product-id="${item.id}"]`);assert((await card.locator('.summary').textContent()).includes(item.color));await card.locator('img').evaluate(i=>i.decode());assert.equal(await card.locator('img').getAttribute('src'),imageMap.products[item.model+'|'+item.color].path);assert.equal(await card.locator('.image-placeholder').isVisible(),false);}
+ for(const item of flipItems){await flips.locator(`#products [data-variant-id="${item.id}"]`).click();const card=flips.locator(`[data-product-id="${item.id}"]`);assert((await card.locator('.summary').textContent()).includes(item.color));await card.locator('img').evaluate(i=>i.decode());assert.equal(await card.locator('img').getAttribute('src'),imageMap.products[item.model+'|'+item.color].path);assert.equal(await card.locator('.image-placeholder').isVisible(),false);}
  if(flipItems.length){await flips.locator('#inventario').scrollIntoViewIfNeeded();await flips.screenshot({path:'/workspace/artifacts/lunivo-flip4-blanco-amarillo.png'});}
  const bad=await browser.newPage();
  await bad.route('**/inventory.json',r=>r.fulfill({status:500,body:'error'}));
@@ -93,7 +93,7 @@ const fs=require('node:fs');
  await missingImage.route('**/assets/products/**',r=>r.abort());
  await missingImage.goto(base);await missingImage.locator('.card').first().waitFor();
  await missingImage.waitForFunction(()=>!document.querySelector('.card .image-placeholder').hidden);
- assert.equal(await missingImage.locator('.card').count(),data.products.length);
+ assert.equal(await missingImage.locator('.card').count(),count);
  await missingImage.locator('#hero-signature').waitFor();assert(await missingImage.locator('#hero-signature').isVisible());
  const noStock=await browser.newPage();await noStock.route('**/inventory.json',r=>r.fulfill({json:{...data,products:[]}}));await noStock.goto(base);await noStock.locator('#empty').waitFor();assert.equal(await noStock.locator('.hero-pick:visible').count(),0);assert(await noStock.locator('#hero-signature').isVisible());
  const stale=await browser.newPage();

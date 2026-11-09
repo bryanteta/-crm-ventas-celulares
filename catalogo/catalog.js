@@ -5,6 +5,7 @@
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let images={};
+  const selectedColors=new Map();
   // Apply 10% and round once to the nearest whole dollar (half rounds up).
   const regularPrice=cents=>Number((BigInt(cents)*11n+500n)/1000n)*100;
   let banks=[];
@@ -80,6 +81,33 @@
     }
     updateCount();
   }
+  const colorPalette={Blanco:'#f3f3ed',Negro:'#282b30',Morado:'#8e80ae',Lila:'#c4b6dc',Verde:'#799582',Dorado:'#dbc59d',Azul:'#5075a3',Rojo:'#b73e49',Celeste:'#b9dce9',Amarillo:'#f1db8e',Rosado:'#e7bfd0',Gris:'#8d9093',Plata:'#cdd0d4',Anaranjado:'#de8546',Borgoña:'#79444f',Glaciar:'#d5e8ed','Titanio natural':'#b6afa4','Titanio desierto':'#cbb39e'};
+  function colorButtons(variants,selected,onSelect){
+    const fragment=document.createDocumentFragment();
+    for(const v of variants){
+      const button=document.createElement('button');button.type='button';button.className='color-swatch';button.dataset.variantId=v.id;
+      button.setAttribute('aria-label',v.color);button.title=v.color;button.setAttribute('aria-pressed',String(v.id===selected));
+      const dot=document.createElement('span');dot.className='color-dot';dot.setAttribute('aria-hidden','true');
+      const colors=v.color.split(' / ').map(c=>colorPalette[c]||'#a3a8b3');dot.style.background=colors.length===1?colors[0]:'linear-gradient(135deg,'+colors.join(',')+')';
+      button.append(dot);button.addEventListener('click',()=>onSelect(v,button));fragment.append(button);
+    }
+    return fragment;
+  }
+  function groupProducts(products){
+    const grouped=new Map();
+    for(const p of products){
+      // Keep all variants and stock intact; only color may differ within a card.
+      const key=JSON.stringify([p.manufacturer,p.model,p.capacity,p.condition,p.grade,p.battery,p.cycles??null,p.sim,p.box??null,p.ram||'',[...p.observations].sort(),p.priceCents]);
+      if(!grouped.has(key))grouped.set(key,[]);
+      const buckets=grouped.get(key);
+      // Distinct source descriptions can produce separate rows in the same color.
+      // Preserve those alternatives rather than presenting identical color buttons.
+      let group=buckets.find(g=>!g.variants.some(v=>v.color===p.color));
+      if(!group){group={key:key+':'+buckets.length,model:p.model,manufacturer:p.manufacturer,variants:[]};buckets.push(group);}
+      group.variants.push(p);
+    }
+    return [...grouped.values()].flat();
+  }
   function render(){
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
@@ -88,11 +116,19 @@
     const fragment=document.createDocumentFragment();
     const stale=Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000;
     for(const group of matches){
+      fragment.append(createCard(group,stale));
+    }
+    nodes.products.replaceChildren(fragment);
+    const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
+    nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
+    $('#empty').hidden=matches.length!==0;
+  }
+  function createCard(group,stale){
       const card=$('#card').content.firstElementChild.cloneNode(true);
       card.classList.toggle('samsung',group.manufacturer==='Samsung');
       card.querySelector('.manufacturer').textContent=group.manufacturer==='Apple'?'iPhone · Lunivo':'Samsung · Lunivo';
       card.querySelector('.product-name').textContent=group.model;
-      const device=group.variants[0];
+      const device=group.variants.find(v=>v.id===selectedColors.get(group.key))||group.variants[0];
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
       const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'','Batería '+batteryText(device),device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
@@ -104,20 +140,22 @@
       card.querySelector('.from').textContent='Precio promocional';
       card.querySelector('.regular-price s').textContent=money(regularPrice(Math.min(...prices)));
       card.querySelector('.price').textContent=money(Math.min(...prices));
-      const units=group.variants.every(v=>Number.isSafeInteger(v.quantity))?group.variants.reduce((n,v)=>n+v.quantity,0):null;
+      const units=Number.isSafeInteger(device.quantity)?device.quantity:null;
       card.querySelector('.availability').textContent=stale?'Consultar stock':units===null?'● Disponible':`${units} disponible${units===1?'':'s'}`;
       card.querySelector('.view').setAttribute('aria-label',`Ver ${group.model}, ${device.capacity}, ${device.color}, ${money(device.priceCents)}`);
       card.querySelector('.product-photo').setAttribute('aria-label',`Ver detalles de ${group.model}, ${device.capacity}, ${device.color}`);
       for(const button of card.querySelectorAll('.view,.product-photo,.product-name')){
         button.setAttribute('aria-haspopup','dialog');
-        button.addEventListener('click',()=>openDetails(group));
+        button.addEventListener('click',()=>openDetails(group,card.dataset.productId));
       }
-      fragment.append(card);
-    }
-    nodes.products.replaceChildren(fragment);
-    const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
-    nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
-    $('#empty').hidden=matches.length!==0;
+      const colors=card.querySelector('.color-options');
+      colors.setAttribute('aria-label','Colores de '+group.model);
+      colors.append(colorButtons(group.variants,device.id,(v)=>{
+        selectedColors.set(group.key,v.id);
+        const replacement=createCard(group,stale);card.replaceWith(replacement);
+        replacement.querySelector('[data-variant-id="'+v.id+'"]').focus({preventScroll:true});
+      }));
+      return card;
   }
   function showVariant(){
     const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);
@@ -133,6 +171,7 @@
     const fragment=document.createDocumentFragment();
     for(const [name,value]of specs){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);fragment.append(row);}
     $('#specs').replaceChildren(fragment);
+    for(const button of $('#detail-colors').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.variantId===p.id));
     updatePayment();
   }
   function updatePayment(){
@@ -177,7 +216,7 @@
     // The direct endpoint preserves Unicode when the short-link redirect does not.
     $('#consult').href='https://api.whatsapp.com/send?phone=50376241930&text='+encodeURIComponent(text);
   }
-  function openDetails(group){
+  function openDetails(group,selectedId){
     activeGroup=group;
     $('[name=payment][value=cash]').checked=true;
     $('#payment-bank').replaceChildren(option('','Selecciona tu banco'),...banks.map(b=>option(b.id,b.name)));
@@ -185,8 +224,10 @@
     $('#detail-title').textContent=group.model;
     const sorted=[...group.variants].sort((a,b)=>a.priceCents-b.priceCents||collator.compare(a.capacity,b.capacity));
     nodes.variant.replaceChildren(...sorted.map(v=>option(v.id,[v.capacity,v.color,v.condition,v.grade?`Categoría ${v.grade}`:'',v.manufacturer==='Samsung'?'Batería '+batteryText(v):v.battery?`Bat. ${v.battery}`:'',v.cycles!==null&&v.cycles!==undefined?`${v.cycles} ciclos`:'',v.sim!=='Por confirmar'?v.sim:'',typeof v.box==='boolean'?(v.box?'Con caja':'Sin caja'):'',...v.observations,money(v.priceCents),v.quantity?`${v.quantity} disponibles`:''].filter(Boolean).join(' · '))));
-    nodes.variant.hidden=sorted.length===1;
-    document.querySelector('label[for=variant]').hidden=sorted.length===1;
+    nodes.variant.value=sorted.some(v=>v.id===selectedId)?selectedId:sorted[0].id;
+    nodes.variant.hidden=true;
+    document.querySelector('label[for=variant]').hidden=true;
+    $('#detail-colors').replaceChildren(colorButtons(sorted,nodes.variant.value,(v)=>{nodes.variant.value=v.id;selectedColors.set(group.key,v.id);showVariant();const card=nodes.products.querySelector('[data-variant-id="'+v.id+'"]')?.closest('.card');if(card)card.replaceWith(createCard(group,Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000));}));
     showVariant();
     nodes.dialog.showModal();
   }
@@ -200,7 +241,7 @@
       const response=await fetch('inventory.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});
       if(!response.ok)throw Error('No disponible');
       catalog=valid(await response.json());
-      groups=catalog.products.map(p=>({model:p.model,manufacturer:p.manufacturer,variants:[p]}));
+      groups=groupProducts(catalog.products);
       await Promise.all([imagesReady,plansReady]);
       paintHero(catalog);
       nodes.capacity.replaceChildren(option('all','Toda capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));

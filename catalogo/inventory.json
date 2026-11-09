@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-08T23:13:25.041Z",
+  "updatedAt": "2026-11-09T01:26:26.088Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -2015,24 +2015,6 @@
       "box": null,
       "ram": "",
       "priceCents": 98500,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "2f614e937edebceabf79",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro",
-      "capacity": "256 GB",
-      "color": "Plata",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 121000,
       "quantity": 1,
       "available": true
     },

@@ -36,11 +36,10 @@ final class ReceiptPdfDocument {
     private Canvas canvas;
     private float y;
     private int pageCount;
-    private String number;
 
     static void validate(JSONObject d) throws JSONException {
         if (d == null || d.optInt("version") != 1 || d.toString().length() > 200000) throw new JSONException("Invalid document");
-        for (String key : new String[]{"number","client","model","deliveryDate","expires","payment","total","channel"}) text(d,key,500,true);
+        for (String key : new String[]{"client","model","deliveryDate","expires","payment","total","channel"}) text(d,key,500,true);
         text(d,"phone",40,false);text(d,"customerNotes",2000,false);d.getBoolean("cancelled");
         JSONArray fields=d.getJSONArray("device");if(fields.length()!=8)throw new JSONException("Invalid device");
         for(int i=0;i<fields.length();i++){JSONArray cell=fields.getJSONArray(i);if(cell.length()!=2||!(cell.get(0) instanceof String)||!(cell.get(1) instanceof String)||cell.getString(0).length()>100||cell.getString(1).length()>110000)throw new JSONException("Invalid field");}
@@ -76,13 +75,13 @@ final class ReceiptPdfDocument {
     private void rule(float top,int color){shape.setColor(color);shape.setStrokeWidth(.6f);canvas.drawLine(MARGIN,top,WIDTH-MARGIN,top,shape);}
     private void finishPage(){
         if(page==null)return;
-        TextPaint footer=paint(7.5f,false,MUTED);String label="LUNIVO · "+number+" · Página "+pageCount;
+        TextPaint footer=paint(7.5f,false,MUTED);String label="LUNIVO · Página "+pageCount;
         canvas.drawText(label,WIDTH-MARGIN-footer.measureText(label),HEIGHT-15,footer);pdf.finishPage(page);page=null;
     }
     private void newPage(){
         if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException();
         finishPage();page=pdf.startPage(new PdfDocument.PageInfo.Builder(WIDTH,HEIGHT,++pageCount).create());canvas=page.getCanvas();y=MARGIN;
-        if(pageCount>1){TextPaint p=paint(9,true,BLUE);canvas.drawText("LUNIVO · COMPROBANTE "+number,MARGIN,y+10,p);rule(y+20,Color.rgb(220,228,238));y+=32;}
+        if(pageCount>1){TextPaint p=paint(9,true,BLUE);canvas.drawText("LUNIVO · COMPROBANTE",MARGIN,y+10,p);rule(y+20,Color.rgb(220,228,238));y+=32;}
     }
     private void ensure(float height){if(y+height>BOTTOM)newPage();}
     private void section(String text){ensure(46);y+=6;StaticLayout title=layout(text,CONTENT,paint(10,true,BLUE),Layout.Alignment.ALIGN_NORMAL);draw(title,MARGIN,y);y+=title.getHeight()+7;}
@@ -122,7 +121,7 @@ final class ReceiptPdfDocument {
     }
     private void fields(String[] labels,String[] values,float[] weights){CharSequence[] text=new CharSequence[labels.length];for(int i=0;i<labels.length;i++)text[i]=field(labels[i],values[i]);row(text,weights,LIGHT,false,NAVY,-1);}
     private void render(Context context,JSONObject d)throws IOException,JSONException {
-        number=d.getString("number");newPage();
+        newPage();
         if(d.getBoolean("cancelled")){row(new String[]{"COMPROBANTE ANULADO"},new float[]{1},Color.rgb(255,239,235),true,Color.rgb(160,52,40),-1);y+=8;}
         float headerY=y;
         Bitmap logo;
@@ -131,7 +130,7 @@ final class ReceiptPdfDocument {
         Paint image=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);canvas.drawBitmap(logo,null,new RectF(MARGIN,headerY,MARGIN+56,headerY+56),image);
         canvas.drawText("LUNIVO",MARGIN,headerY+77,paint(18,true,NAVY));
         StaticLayout heading=layout("COMPROBANTE DE COMPRA\nY GARANTÍA",CONTENT-150,paint(15,true,NAVY),Layout.Alignment.ALIGN_OPPOSITE);draw(heading,MARGIN+150,headerY+3);
-        StaticLayout sub=layout(number+"\nTeléfonos de gama alta",CONTENT-150,paint(9,false,MUTED),Layout.Alignment.ALIGN_OPPOSITE);draw(sub,MARGIN+150,headerY+heading.getHeight()+12);
+        StaticLayout sub=layout("Teléfonos de gama alta",CONTENT-150,paint(9,false,MUTED),Layout.Alignment.ALIGN_OPPOSITE);draw(sub,MARGIN+150,headerY+heading.getHeight()+12);
         y=headerY+85;rule(y,BLUE);y+=10;
         paragraph("Documento emitido por LUNIVO como comprobante de compra, entrega y respaldo de garantía. No requiere firma del cliente; registra la información comercial y técnica del equipo entregado.",8.5f,false,MUTED);
         fields(new String[]{"Fecha de venta","Cliente","Método de pago"},new String[]{d.getString("deliveryDate"),d.getString("client")+(d.getString("phone").isEmpty()?"":"\n"+d.getString("phone")),d.getString("payment")},new float[]{.23f,.37f,.40f});
@@ -144,7 +143,7 @@ final class ReceiptPdfDocument {
         y+=4;paragraph("Los artículos indicados como cortesía o regalía se entregaron sin costo adicional. Sus valores son referenciales y no son canjeables por efectivo, descuento posterior ni devolución independiente.",8,false,MUTED);
         section("03  CONDICIONES DE GARANTÍA LUNIVO");paragraph("3 MESES CALENDARIO desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);
         JSONArray terms=d.getJSONArray("terms");for(int i=0;i<terms.length();i++)paragraph(terms.getString(i),9.5f,false,NAVY);
-        section("04  CONTROL Y VALIDEZ DEL COMPROBANTE");paragraph(d.getString("customerNotes"),9.5f,false,NAVY);paragraph("Correlativo: "+number+" · Canal: "+d.getString("channel"),8.5f,false,MUTED);
+        section("04  CONTROL Y VALIDEZ DEL COMPROBANTE");paragraph(d.getString("customerNotes"),9.5f,false,NAVY);paragraph("Canal: "+d.getString("channel"),8.5f,false,MUTED);
         JSONObject company=d.getJSONObject("company");ensure(50);y+=6;rule(y,Color.rgb(220,228,238));y+=9;
         paragraph(company.getString("name")+" · WhatsApp "+company.getString("phone")+"\nFacebook "+company.getString("facebook")+" · Instagram "+company.getString("instagram")+" · TikTok "+company.getString("tiktok"),8.5f,false,MUTED);
         finishPage();

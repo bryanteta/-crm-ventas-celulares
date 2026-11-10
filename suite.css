@@ -68,3 +68,5 @@
 .settings-content .profile-row>span{min-width:0;overflow-wrap:anywhere}#account-dialog .action-with-help>button:first-child{flex:1;min-width:0}#account-dialog .account-actions>.action-with-help{display:flex;min-width:0}
 
 .inventory-order{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0;font-size:11px}.inventory-order select{width:auto;max-width:65%;min-height:40px;font-size:12px}
+
+.warranty-contact-payment{border-bottom:1px solid #dce4ef;padding-bottom:8px}.warranty-contact-payment>.form-section{margin:0}.warranty-contact-payment>.formgrid{margin-bottom:10px!important}.warranty-contact-payment input,.warranty-contact-payment select{min-height:46px}:root[data-theme=dark] .warranty-contact-payment{border-color:var(--line)}

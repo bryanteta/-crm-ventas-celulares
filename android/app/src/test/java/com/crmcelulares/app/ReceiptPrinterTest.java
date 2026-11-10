@@ -26,8 +26,10 @@ public class ReceiptPrinterTest {
             public Map<String,String> getRequestHeaders(){return Collections.emptyMap();}
         };
     }
-    @Test public void onlyBoundedDocumentAndNumericReceiptNamesAreAccepted() {
+    @Test public void onlyBoundedDocumentsAndSafeReceiptNamesAreAccepted() {
         assertTrue(ReceiptPrinter.validRequest("<!doctype html><html></html>", "Lunivo-2026-1001"));
+        assertTrue(ReceiptPrinter.validRequest("<!doctype html>", "Lunivo - María Gómez - iPhone 15 Pro Max"));
+        for(String name:new String[]{"Lunivo - ../Ana", "Lunivo - Ana/Samsung", "Lunivo - Ana\\Samsung", "Lunivo - Ana\nSamsung"})assertFalse(ReceiptPrinter.validRequest("<!doctype html>",name));
         assertFalse(ReceiptPrinter.validRequest(null, "Lunivo-2026-1001"));
         assertFalse(ReceiptPrinter.validRequest("<script>alert(1)</script>", "Lunivo-2026-1001"));
         assertFalse(ReceiptPrinter.validRequest("<!doctype html>", "../client"));

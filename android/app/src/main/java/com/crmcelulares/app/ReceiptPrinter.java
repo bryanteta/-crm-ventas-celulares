@@ -63,7 +63,7 @@ final class ReceiptPrinter {
     ReceiptPrinter(Activity activity) { this.activity = activity; }
     static boolean validRequest(String html, String name) {
         return html != null && html.startsWith("<!doctype html>") && html.length() <= 200000
-                && name != null && name.matches("Lunivo-[0-9]{4}-[0-9]{3,20}");
+                && name != null && (name.matches("Lunivo-[0-9]{4}-[0-9]{3,20}") || name.matches("Lunivo - [\\p{L}\\p{M}\\p{N} ()-]{1,160}"));
     }
 
     // Separately testable routing and readiness: an error page must never become a receipt.

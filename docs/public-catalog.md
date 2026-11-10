@@ -150,6 +150,6 @@ En la web se usa el nombre «BAC Credomatic», sin el prefijo Banco, tanto en el
 
 La portada muestra «Recíbelo», «Revísalo» y «Paga» en tres líneas. Debajo aparece en pequeño «Pago contra entrega • Sin anticipos», con un punto sólido entre ambas frases. En móvil los dos equipos se colocan a la derecha de los tres pasos para aprovechar el ancho de la portada, conservando los dos temas.
 
-En dispositivos con puntero táctil, el banco se elige con el selector nativo del sistema sobre el control compacto con logo y nombre. Los desplegables de capacidad, orden y variante usan 16 px para evitar el zoom de Safari. En escritorio se conserva el menú con logos, contenido dentro del modal.
+En dispositivos táctiles y escritorio, el banco se elige en el menú compacto con sus cinco logos originales en azul, visibles al abrir la lista y al seleccionar un banco. Los desplegables de capacidad, orden y variante usan 16 px para evitar el zoom de Safari. En escritorio se conserva el menú con logos, contenido dentro del modal.
 
 Prueba táctil: `node scripts/test-catalog-mobile.cjs`. Para WebKit: `CATALOG_BROWSER=webkit node scripts/test-catalog-mobile.cjs` (requiere WebKit de Playwright instalado). Comprueba filtros, orden, búsqueda, selección de bancos y cuotas, mensaje de WhatsApp, cambio a contado, cierre y tema, en cuatro tamaños. Es una prueba automatizada de motor WebKit, no una prueba en un iPhone físico.

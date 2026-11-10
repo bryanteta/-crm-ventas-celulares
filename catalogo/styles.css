@@ -56,11 +56,7 @@
 
 .bank-name,.bank-current-name{font-size:12px;font-weight:600;line-height:1.4;letter-spacing:0;color:var(--ink)}
 
-/* Let touch browsers open the native bank picker without a floating menu. */
 .bank-control{position:relative;min-width:0}
-.native-bank-picker #payment-bank{display:block;position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer;font-size:16px}
-.native-bank-picker .bank-dropdown>summary{pointer-events:none}
-.native-bank-picker .bank-control:focus-within #bank-current{outline:2px solid var(--accent);outline-offset:2px}
 @media(pointer:coarse){.selects select,#variant{font-size:16px;min-height:44px}.selects{width:100%}.selects label{flex:1;min-width:0}.selects select{width:100%;padding-right:20px}.selects select option{font-size:16px}}
 
 @media(pointer:coarse){

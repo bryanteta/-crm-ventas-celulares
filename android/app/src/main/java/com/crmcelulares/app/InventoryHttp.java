@@ -42,7 +42,7 @@ final class InventoryHttp {
                 connection.setInstanceFollowRedirects(false);
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("Accept", "application/json");
-                connection.setRequestProperty("User-Agent", "Lunivo/1.7.13 Android");
+                connection.setRequestProperty("User-Agent", "Lunivo/1.7.14 Android");
                 if (!samuel) connection.setRequestProperty("X-API-Key", key);
                 int status = connection.getResponseCode();
                 if (status == 301 || status == 302 || status == 303 || status == 307 || status == 308) {

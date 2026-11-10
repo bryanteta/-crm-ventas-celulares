@@ -37,7 +37,7 @@ if(!['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro'].includes(r.payment
 if(r.paymentMethod==='Tasa cero'&&!r.bank)invalid('bank','Falta el banco para la tasa cero.');if(r.paymentMethod==='Tasa cero'&&(!Number.isInteger(r.months)||r.months<1||r.months>60))invalid('months','Indica los meses de tasa cero, entre 1 y 60.');
 if(r.phone&&!/^[+\d\s().-]{7,30}$/.test(r.phone))invalid('phone','Revisa el número de contacto: usa entre 7 y 30 caracteres de teléfono.');
 if(r.warrantyMonths!==3||!Array.isArray(r.terms)||r.terms.length!==3)throw Error('No se pudieron leer las condiciones de garantía.');
-if(!Array.isArray(r.gifts)||r.gifts.some(g=>!g.name||!Number.isSafeInteger(g.reference)||g.reference<0))throw Error('Revisa las cortesías y sus valores de referencia.');
+if(!Array.isArray(r.gifts)||r.gifts.length>10||r.gifts.some(g=>!g||typeof g.name!=='string'||!g.name.trim()||g.name.length>150||!Number.isSafeInteger(g.reference)||g.reference<0))throw Error('Revisa las cortesías y sus valores de referencia.');
 return true;
 }
 function payment(r){return r.paymentMethod+(r.bank?' · '+r.bank:'')+(r.paymentMethod==='Tasa cero'?' · '+r.months+' meses':'');}
@@ -45,7 +45,7 @@ function accessoryRows(sale){
  if(Array.isArray(sale.accessoryItems))return sale.accessoryItems.map(item=>({concept:item.name,quantity:'1',amount:money(item.price),application:item.price===0?'Cortesía LUNIVO':'Accesorio'}));
  return sale.accessories?[{concept:'Accesorios cobrados (registro anterior)',quantity:'1',amount:money(sale.accessories),application:'Accesorios'}]:[];
 }
-function giftsFor(sale){const ids=new Set((sale.accessoryItems||[]).map(i=>i.catalogId));return sale.receipt.gifts.filter(g=>!ids.has(g.name==='Cargador completo'?'charger':g.name==='Case'?'case':g.name==='Protector de pantalla'?'protector':''));}
+function giftsFor(sale){const ids=new Set((sale.accessoryItems||[]).map(i=>i.catalogId));return sale.receipt.gifts.filter(g=>!ids.has(g.name==='Cargador completo'?'charger':g.name==='Case'?'case':g.name==='Protector de pantalla'?'protector':g.name==='Caja genérica'?'box':''));}
 function receiptForSale(sale){return {...sale.receipt,deliveryDate:sale.date};}
 function documentData(sale){
  if(sale.status==='Borrador')throw Error('Confirma la venta antes de emitir un comprobante.');const r=receiptForSale(sale);validate(r,sale);

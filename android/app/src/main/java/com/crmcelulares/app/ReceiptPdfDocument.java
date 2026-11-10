@@ -43,7 +43,7 @@ final class ReceiptPdfDocument {
         text(d,"phone",40,false);text(d,"customerNotes",2000,false);d.getBoolean("cancelled");
         JSONArray fields=d.getJSONArray("device");if(fields.length()!=8)throw new JSONException("Invalid device");
         for(int i=0;i<fields.length();i++){JSONArray cell=fields.getJSONArray(i);if(cell.length()!=2||!(cell.get(0) instanceof String)||!(cell.get(1) instanceof String)||cell.getString(0).length()>100||cell.getString(1).length()>110000)throw new JSONException("Invalid field");}
-        JSONArray items=d.getJSONArray("items");if(items.length()<1||items.length()>40)throw new JSONException("Invalid items");
+        JSONArray items=d.getJSONArray("items");if(items.length()<1||items.length()>41)throw new JSONException("Invalid items");
         for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);for(String key:new String[]{"concept","quantity","amount","application"})text(item,key,500,true);}
         JSONArray terms=d.getJSONArray("terms");if(terms.length()!=3)throw new JSONException("Invalid terms");
         for(int i=0;i<terms.length();i++)if(!(terms.get(i) instanceof String)||terms.getString(i).length()>4000)throw new JSONException("Invalid terms");

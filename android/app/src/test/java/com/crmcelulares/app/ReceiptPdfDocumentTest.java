@@ -30,6 +30,13 @@ public class ReceiptPdfDocumentTest {
     private JSONObject sample() throws Exception {
         try(InputStream input=getClass().getResourceAsStream("/receipt-vector.json")){assertNotNull(input);return new JSONObject(new String(input.readAllBytes(),StandardCharsets.UTF_8));}
     }
+    @Test public void thirtyChargedAccessoriesAndTenGiftsFitTheDocumentContract() throws Exception {
+        JSONObject d=sample();org.json.JSONArray items=new org.json.JSONArray();
+        JSONObject template=d.getJSONArray("items").getJSONObject(0);
+        for(int i=0;i<41;i++)items.put(new JSONObject(template.toString()));
+        d.put("items",items);ReceiptPdfDocument.validate(d);
+        items.put(new JSONObject(template.toString()));assertThrows(JSONException.class,()->ReceiptPdfDocument.validate(d));
+    }
     @Test public void customerPayloadDoesNotRequireAnInternalReceiptNumber() throws Exception {
         JSONObject d=sample();d.remove("number");ReceiptPdfDocument.validate(d);
     }

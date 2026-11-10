@@ -270,7 +270,7 @@
       groups=groupProducts(catalog.products);
       await Promise.all([imagesReady,plansReady]);
       paintHero(catalog);
-      nodes.capacity.replaceChildren(option('all','Toda capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
+      nodes.capacity.replaceChildren(option('all','Capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
       $('#updated').textContent='Inventario actualizado: '+new Intl.DateTimeFormat('es-SV',{dateStyle:'medium',timeStyle:'short',timeZone:'America/El_Salvador'}).format(new Date(catalog.updatedAt))+' · El Salvador';
       render();
@@ -318,6 +318,16 @@
   }
   let bankPositionFrame=null;
   function scheduleBankPosition(){if(!$('#bank-dropdown').open||bankPositionFrame!==null)return;bankPositionFrame=requestAnimationFrame(()=>{bankPositionFrame=null;positionBankMenu();});}
+  // Use the OS picker on touch devices (including iOS Safari). Keep the compact
+  // logo/name underneath; the transparent select owns all touch interaction.
+  const nativeBankPicker=window.matchMedia('(pointer: coarse)');
+  function syncBankPicker(){
+    const native=nativeBankPicker.matches,select=$('#payment-bank'),trigger=$('#bank-current');
+    select.hidden=!native;select.tabIndex=native?0:-1;select.setAttribute('aria-hidden',String(!native));
+    trigger.tabIndex=native?-1:0;trigger.setAttribute('aria-hidden',String(native));
+    $('#bank-picker').classList.toggle('native-bank-picker',native);$('#bank-dropdown').open=false;
+  }
+  syncBankPicker();nativeBankPicker.addEventListener('change',syncBankPicker);
   $('#bank-current').addEventListener('click',event=>{event.preventDefault();const dropdown=$('#bank-dropdown');dropdown.open=!dropdown.open;if(dropdown.open)positionBankMenu();});
   $('#bank-dropdown').addEventListener('toggle',()=>{if($('#bank-dropdown').open)positionBankMenu();});
   nodes.dialog.addEventListener('scroll',scheduleBankPosition,{passive:true});window.addEventListener('resize',scheduleBankPosition,{passive:true});

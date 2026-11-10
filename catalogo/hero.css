@@ -87,3 +87,31 @@
 }
 
 .hero-description.hero-delivery-note{font-size:12px;line-height:1.7}.hero-delivery-dot{display:inline-block;margin:0 4px;font-weight:900;font-size:14px;line-height:1;color:var(--ink)}
+
+/* Keep the three steps and the devices together on phone screens. */
+@media (max-width:720px){
+ .hero.hero-showcase{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px 8px;padding:25px 20px}
+ .hero-intro{display:contents}
+ .hero-kicker{grid-column:1/-1;grid-row:1}
+ .hero-title{grid-column:1;grid-row:2;align-self:center;margin:0;font-size:clamp(30px,8.4vw,44px);line-height:1.12;letter-spacing:-1.3px}
+ .hero-description.hero-delivery-note{grid-column:1/-1;grid-row:3;margin:0}
+ .hero-actions{grid-column:1/-1;grid-row:4;margin:0;gap:12px}
+ .hero-collection{grid-column:2;grid-row:2;width:100%;height:190px;margin:0}
+ .hero-halo{width:130px;height:130px;top:50%}
+ .hero-halo::before{inset:-12px}
+ .hero-pick{padding:7px;border-radius:12px}
+ .hero-pick-samsung{width:82px;left:0;top:4px}
+ .hero-pick-apple{width:86px;right:0;top:54px}
+ .hero-pick-samsung .hero-pick-photo{height:91px}
+ .hero-pick-apple .hero-pick-photo{height:96px}
+ .hero-pick figcaption{padding-top:5px}
+ .hero-pick figcaption>span{font-size:6px;letter-spacing:.7px}
+ .hero-pick strong{font-size:8px;line-height:1.3}
+}
+@media(max-width:360px){
+ .hero.hero-showcase{padding:22px 16px}
+ .hero-pick-samsung{width:73px;left:-1px}
+ .hero-pick-apple{width:77px;right:-1px}
+ .hero-pick-samsung .hero-pick-photo{height:82px}
+ .hero-pick-apple .hero-pick-photo{height:86px}
+}

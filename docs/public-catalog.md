@@ -143,3 +143,5 @@ Elegir un banco actualiza sus cuotas y el mensaje de WhatsApp; cambiarlo reinici
 Agrícola y Promerica presentan el símbolo original acompañado por su nombre en tipografía nativa más grande. El texto pequeño dentro de las imágenes no se usa como etiqueta, para mantener la legibilidad en pantallas estrechas y ambos temas. Los archivos originales siguen intactos.
 
 El selector de banco permanece en una sola fila. Los logos se abren en un menú superpuesto y se ocultan al elegir una opción, pulsar Escape o salir del selector. Abrir la lista no desplaza precios ni cuotas ni aumenta la altura del modal.
+
+La lista de bancos calcula el espacio visible dentro del diálogo y abre hacia arriba cuando no cabe debajo del selector. Su altura se limita al espacio disponible, con desplazamiento interno en pantallas bajas. Se reposiciona al desplazar/redimensionar y se cierra si el campo deja de estar visible. `scripts/test-catalog-bank-menu.cjs` verifica límites del menú, altura estable del modal, Escape y selección en móvil, escritorio y orientación horizontal.

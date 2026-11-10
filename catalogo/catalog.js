@@ -310,6 +310,22 @@
     grid.replaceChildren(fragment);
   }
   document.querySelectorAll('[name=payment]').forEach(input=>input.addEventListener('change',updatePayment));
+  function positionBankMenu(){
+    const dropdown=$('#bank-dropdown');if(!dropdown.open||!nodes.dialog.open)return;
+    const trigger=$('#bank-current').getBoundingClientRect(),dialog=nodes.dialog.getBoundingClientRect(),viewport=window.visualViewport;
+    const top=Math.max(dialog.top+12,(viewport?.offsetTop||0)+8),bottom=Math.min(dialog.bottom-12,(viewport?.offsetTop||0)+(viewport?.height||innerHeight)-8);
+    if(trigger.bottom<top||trigger.top>bottom){dropdown.open=false;return;}
+    const menu=$('#bank-choices'),above=Math.max(0,trigger.top-top-6),below=Math.max(0,bottom-trigger.bottom-6),needed=Math.min(260,menu.scrollHeight+2);
+    const opensAbove=below<needed&&above>below,space=opensAbove?above:below;
+    if(space<58){dropdown.open=false;return;}
+    dropdown.dataset.placement=opensAbove?'above':'below';menu.style.setProperty('--bank-menu-max-height',Math.floor(Math.min(260,space))+'px');
+  }
+  let bankPositionFrame=null;
+  function scheduleBankPosition(){if(!$('#bank-dropdown').open||bankPositionFrame!==null)return;bankPositionFrame=requestAnimationFrame(()=>{bankPositionFrame=null;positionBankMenu();});}
+  $('#bank-current').addEventListener('click',event=>{event.preventDefault();const dropdown=$('#bank-dropdown');dropdown.open=!dropdown.open;if(dropdown.open)positionBankMenu();});
+  $('#bank-dropdown').addEventListener('toggle',()=>{if($('#bank-dropdown').open)positionBankMenu();});
+  nodes.dialog.addEventListener('scroll',scheduleBankPosition,{passive:true});window.addEventListener('resize',scheduleBankPosition,{passive:true});
+  window.visualViewport?.addEventListener('resize',scheduleBankPosition,{passive:true});window.visualViewport?.addEventListener('scroll',scheduleBankPosition,{passive:true});
   document.addEventListener('click',event=>{const dropdown=$('#bank-dropdown');if(dropdown.open&&!dropdown.contains(event.target))dropdown.open=false;});
   $('#bank-dropdown').addEventListener('keydown',event=>{if(event.key==='Escape'&&event.currentTarget.open){event.preventDefault();event.stopPropagation();event.currentTarget.open=false;$('#bank-current').focus({preventScroll:true});}});
   $('#bank-dropdown').addEventListener('focusout',event=>{if(event.relatedTarget&&!event.currentTarget.contains(event.relatedTarget))event.currentTarget.open=false;});

@@ -12,7 +12,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   const config=JSON.parse(fs.readFileSync('catalogo/payment-plans.json','utf8'));
   assert.deepEqual(config.banks.map(b=>b.id),['agricola','bac','promerica','davivienda','cuscatlan']);
   const terms={agricola:[3,6,9,12],bac:[3,6,9,12],promerica:[3,6,9,12,18,24],davivienda:[3,6,9,12,18,24],cuscatlan:[3,6,9,12,18,24,36]};
-  config.banks.forEach(b=>{assert.deepEqual(b.installments,terms[b.id]);assert.match(b.name,/^Banco /);});
+  config.banks.forEach(b=>{assert.deepEqual(b.installments,terms[b.id]);b.id==='bac'?assert.equal(b.name,'BAC Credomatic'):assert.match(b.name,/^Banco /);});
   await page.goto(base);await page.locator('.card').first().waitFor();
   assert.equal(await page.locator('.promotion-legend').count(),0);
   const cards=await page.locator('.card').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,promo:c.querySelector('.price').textContent,regular:c.querySelector('.regular-price s').textContent,label:c.querySelector('.from').textContent,caption:c.querySelector('.cash-only').textContent})));

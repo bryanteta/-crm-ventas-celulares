@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-10T10:06:50.188Z",
+  "updatedAt": "2026-11-10T17:49:19.086Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1491,7 +1491,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 4,
+      "quantity": 3,
       "available": true
     },
     {
@@ -2091,24 +2091,6 @@
       "box": true,
       "ram": "",
       "priceCents": 133000,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "3b7d23bbe6c95438c345",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro Max",
-      "capacity": "256 GB",
-      "color": "Plata",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 165,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 134500,
       "quantity": 1,
       "available": true
     },

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-10T03:51:26.155Z",
+  "updatedAt": "2026-11-10T04:36:01.097Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -800,24 +800,6 @@
       "ram": "",
       "priceCents": 46000,
       "quantity": 4,
-      "available": true
-    },
-    {
-      "id": "333825923d9c31043d81",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Celeste",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 52000,
-      "quantity": 1,
       "available": true
     },
     {

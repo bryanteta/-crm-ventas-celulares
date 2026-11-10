@@ -921,6 +921,20 @@
       "width": 246,
       "height": 325
     },
+    "iPhone 14|Celeste": {
+      "model": "iPhone 14",
+      "color": "Celeste",
+      "officialColor": "blue",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_blue__c9pjeddi2qye_large.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-14-blue",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14-celeste.jpg",
+      "sha256": "345fbbbcfb741df9863f95017432a2448543aa9268ec49f735b5d6b4ce6b6fee",
+      "width": 306,
+      "height": 380
+    },
     "iPhone 14|Negro": {
       "model": "iPhone 14",
       "color": "Negro",
@@ -932,6 +946,20 @@
       "credit": "Apple",
       "path": "assets/products/iphone-14-negro.jpg",
       "sha256": "fc19f5ff13bd3067894b185d403d6e7f778ae4cc1fec8c965ea22a3d2f28aaad",
+      "width": 306,
+      "height": 380
+    },
+    "iPhone 15 Plus|Celeste": {
+      "model": "iPhone 15 Plus",
+      "color": "Celeste",
+      "officialColor": "blue",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_plus_blue__9fcof0t4lk2i_large.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-15-plus-blue",
+      "credit": "Apple",
+      "path": "assets/products/iphone-15-plus-celeste.jpg",
+      "sha256": "c5e7f7827f78439cc04937a8efd5b48f8aa13fc3786941f50ca88780bacc3684",
       "width": 306,
       "height": 380
     },

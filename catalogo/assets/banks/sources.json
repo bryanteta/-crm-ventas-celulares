@@ -1,0 +1,42 @@
+[
+  {
+    "bank": "agricola",
+    "originalFilename": "banco-agricola-logo-png_seeklogo-262051.webp",
+    "path": "assets/banks/agricola.webp",
+    "sha256": "3ee04eecf346b813a6627feec17d76960089b1ae454500dc6fabf77f17947d3b",
+    "source": "Archivo logos.zip proporcionado por el usuario",
+    "presentation": "Archivo original sin modificar; encuadre y acabado azul mediante CSS/SVG en el navegador."
+  },
+  {
+    "bank": "bac",
+    "originalFilename": "bac-credomatic-logo-png_seeklogo-342867.webp",
+    "path": "assets/banks/bac.webp",
+    "sha256": "a327cd8a4bfb4b7d97559f65d7e59d9cf58b000b5262ea7919f761d17d0c0ba7",
+    "source": "Archivo logos.zip proporcionado por el usuario",
+    "presentation": "Archivo original sin modificar; encuadre y acabado azul mediante CSS/SVG en el navegador."
+  },
+  {
+    "bank": "promerica",
+    "originalFilename": "banco-promerica-logo-png_seeklogo-226766.png",
+    "path": "assets/banks/promerica.png",
+    "sha256": "dceebcc67a6bc864d77f29b9b4da8c8dc0b8460a765d95dfadbeb3d382d2dd15",
+    "source": "Archivo logos.zip proporcionado por el usuario",
+    "presentation": "Archivo original sin modificar; encuadre y acabado azul mediante CSS/SVG en el navegador."
+  },
+  {
+    "bank": "davivienda",
+    "originalFilename": "Banco Davivienda.webp",
+    "path": "assets/banks/davivienda.webp",
+    "sha256": "0a1d33c0aae58f03f6d400b38384b86b8016cef165ddb70121f5ecbd723f603d",
+    "source": "Archivo logos.zip proporcionado por el usuario",
+    "presentation": "Archivo original sin modificar; encuadre y acabado azul mediante CSS/SVG en el navegador."
+  },
+  {
+    "bank": "cuscatlan",
+    "originalFilename": "bancocuscatlan.webp",
+    "path": "assets/banks/cuscatlan.webp",
+    "sha256": "26891cc8250698a84127882c89d60bd9c3e36f4ed7302c8dbcdc8b90eb0d5291",
+    "source": "Archivo logos.zip proporcionado por el usuario",
+    "presentation": "Archivo original sin modificar; encuadre y acabado azul mediante CSS/SVG en el navegador."
+  }
+]

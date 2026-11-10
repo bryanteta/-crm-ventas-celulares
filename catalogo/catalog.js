@@ -174,10 +174,28 @@
     for(const button of $('#detail-colors').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.variantId===p.id));
     updatePayment();
   }
+  function renderBanks(){
+    $('#bank-picker').hidden=!banks.length;
+    $('#bank-choices').replaceChildren(...banks.map(bank=>{
+      const button=document.createElement('button');button.type='button';button.className='bank-choice';button.dataset.bankId=bank.id;
+      button.setAttribute('aria-pressed','false');
+      const frame=document.createElement('span');frame.className='bank-logo';
+      const art=bank.logo,f=art?.framing;
+      if(art&&/^assets\/banks\/[a-z]+\.(?:png|webp)$/.test(art.path)&&f&&[art.width,art.height,f.x,f.y,f.width,f.height].every(Number.isFinite)&&art.width>0&&art.height>0&&f.x>=0&&f.y>=0&&f.width>0&&f.height>0&&f.x+f.width<=art.width&&f.y+f.height<=art.height){
+        const crop=document.createElement('span');crop.className='bank-logo-crop';const logo=document.createElement('img');logo.src=art.path;logo.alt='';logo.width=art.width;logo.height=art.height;crop.append(logo);frame.append(crop);framePhoto(logo,art);
+        logo.addEventListener('error',()=>{frame.hidden=true;},{once:true});
+      }else frame.hidden=true;
+      const name=document.createElement('span');name.textContent=bank.name;
+      button.append(frame,name);button.addEventListener('click',()=>{
+        $('#payment-bank').value=bank.id;$('#payment-bank').dispatchEvent(new Event('change',{bubbles:true}));
+      });return button;
+    }));
+  }
   function updatePayment(){
     const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);if(!p)return;
     const financed=$('[name=payment]:checked').value==='installments',regular=regularPrice(p.priceCents);
     const bank=banks.find(b=>b.id===$('#payment-bank').value),months=Number($('[name=installment-term]:checked')?.value||0);
+    for(const button of $('#bank-choices').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.bankId===bank?.id));
     renderInstallments(regular,bank,months);
     $('#financing').hidden=!financed;
     $('#detail-regular').hidden=financed;$('#detail-regular s').textContent=money(regular);
@@ -220,6 +238,7 @@
     activeGroup=group;
     $('[name=payment][value=cash]').checked=true;
     $('#payment-bank').replaceChildren(option('','Selecciona tu banco'),...banks.map(b=>option(b.id,b.name)));
+    renderBanks();
     resetInstallments();
     $('#detail-title').textContent=group.model;
     const sorted=[...group.variants].sort((a,b)=>a.priceCents-b.priceCents||collator.compare(a.capacity,b.capacity));

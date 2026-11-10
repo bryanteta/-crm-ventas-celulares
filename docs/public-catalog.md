@@ -133,3 +133,9 @@ La comprobación de integración contrastó 226 unidades de esta API con su fuen
 Las APIs de inventario de Samuel y Split no incluyen campos de imagen en sus respuestas actuales. Se conservan fotos oficiales locales por modelo y color. Se añadieron las equivalencias de iPhone 15 Pro Max Blanco → White Titanium y Gris → Natural Titanium, usando los mismos archivos oficiales ya verificados para esos acabados; el nombre del proveedor se mantiene en la vista. Samsung S26 Morado usa la galería oficial de Cobalt Violet, SKU SM-S942UZVEXAA, con vista frontal y trasera.
 
 En la consulta revisada solo permanece sin foto el iPhone 13 Pro cuyo color está por confirmar. No se asigna otro acabado para llenar ese espacio. Los archivos nuevos conservan sus bytes originales, fuente, dimensiones, encuadre y SHA-256 en `product-images.json`.
+
+## Selección de bancos con logos
+
+El selector de tasa cero muestra los cinco bancos en botones compactos con sus logos aportados en `logos.zip`, nombre visible y selección azul. Los archivos originales se conservan sin modificar en `catalogo/assets/banks/`; `sources.json` registra nombres de origen y SHA-256. El encuadre elimina visualmente márgenes sobrantes mediante CSS y el filtro SVG aplica el acabado azul, más claro en modo oscuro, sin cambiar las formas de los logos.
+
+Elegir un banco actualiza sus cuotas y el mensaje de WhatsApp; cambiarlo reinicia el plazo para evitar enviar una cuota de otro banco. Si una imagen falla, el nombre y la selección de cuotas siguen funcionando. `scripts/test-catalog-bank-logos.cjs` comprueba integridad, selección por teclado, cuotas/mensaje, encuadre, dos temas, tres tamaños y fallo de imágenes. Las cuotas e importes anteriores se conservan.

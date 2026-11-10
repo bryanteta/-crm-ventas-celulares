@@ -37,6 +37,17 @@ public class BusinessEngineTest {
         assertThrows(BusinessEngine.Problem.class,()->db.run(command("excess","saveWarranty","sale",new JSONObject().put("receipt",receipt)).put("expectedRevision","gift-save")));
         assertEquals(stable,db.rows.get(path).toString());
     }
+    @Test public void variableWarrantyDurationPersistsAndSaleEditsCannotResetIt()throws Exception{
+        Memory db=new Memory();db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",sale("sale",""))));
+        String path=BusinessEngine.path(UID,"sales","sale");JSONObject warranty=receipt(true).put("warrantyMonths",6);
+        db.run(command("warranty","saveWarranty","sale",new JSONObject().put("receipt",warranty)).put("expectedRevision","sell"));
+        assertEquals(6,db.rows.get(path).getJSONObject("record").getJSONObject("receipt").getInt("warrantyMonths"));
+        db.run(command("edit","editSale","sale",new JSONObject().put("patch",new JSONObject().put("client","Nombre corregido").put("receipt",receipt(false)))).put("expectedRevision","warranty"));
+        assertEquals(6,db.rows.get(path).getJSONObject("record").getJSONObject("receipt").getInt("warrantyMonths"));
+        String before=db.rows.get(path).toString();warranty.put("warrantyMonths",37);
+        assertThrows(BusinessEngine.Problem.class,()->db.run(command("invalid","saveWarranty","sale",new JSONObject().put("receipt",warranty)).put("expectedRevision","edit")));
+        assertEquals(before,db.rows.get(path).toString());
+    }
     @Test public void confirmationStampsActorAllocatesGlobalNumberAndDeductsTogether()throws Exception{
         Memory db=new Memory();add(db,"one",2);JSONObject result=db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",sale("sale","one"))));JSONObject r=result.getJSONObject("documents").getJSONArray("sales").getJSONObject(0).getJSONObject("record");assertEquals("1101",r.getString("saleNumber"));assertEquals("Ana",r.getString("sellerName"));assertEquals("draft-user",r.getString("draftSellerId"));assertEquals(1,db.rows.get(BusinessEngine.path(UID,"inventory","one")).getJSONObject("record").getLong("quantity"));assertEquals(1,db.rows.get("users/"+UID+"/suiteCounters/2026-11").getLong("sequence"));
     }

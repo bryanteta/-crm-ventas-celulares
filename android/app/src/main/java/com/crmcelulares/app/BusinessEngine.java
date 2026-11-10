@@ -66,7 +66,7 @@ final class BusinessEngine {
         String payment=text(r,"paymentMethod",30,true);require(java.util.Arrays.asList("Efectivo","Transferencia","Tasa cero","Tarjeta","Otro").contains(payment),"Revisa el método de pago.");
         if(payment.equals("Tasa cero")){text(r,"bank",80,true);integer(r,"months",1,60);}text(r,"customerNotes",1000,false);text(r,"channel",40,false);
         JSONArray serials=r.optJSONArray("serials");require(serials!=null&&serials.length()<=quantity,"Registra como máximo un IMEI por unidad; puedes dejarlo vacío.");Set<String> seen=new HashSet<>();for(int n=0;n<serials.length();n++){String s=serials.getString(n);require(!s.trim().isEmpty()&&s.length()<=100&&seen.add(s.replaceAll("\\s","").toUpperCase(java.util.Locale.ROOT)),"Revisa los IMEI; no deben repetirse.");}
-        require(integer(r,"warrantyMonths",3,3)==3&&r.optJSONArray("terms")!=null&&r.getJSONArray("terms").length()==3,"Revisa las condiciones de garantía.");
+        require(integer(r,"warrantyMonths",1,36)>=1&&r.optJSONArray("terms")!=null&&r.getJSONArray("terms").length()==3,"Revisa las condiciones de garantía.");
         for(int n=0;n<3;n++)require(r.getJSONArray("terms").getString(n).length()<=4000,"Revisa las condiciones de garantía.");
         JSONArray gifts=r.optJSONArray("gifts");require(gifts!=null&&gifts.length()<=10,"Revisa las cortesías.");for(int n=0;n<gifts.length();n++){text(gifts.getJSONObject(n),"name",150,true);integer(gifts.getJSONObject(n),"reference",0,MAX);}
     }

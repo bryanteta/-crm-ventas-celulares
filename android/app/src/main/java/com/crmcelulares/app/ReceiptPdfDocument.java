@@ -40,6 +40,10 @@ final class ReceiptPdfDocument {
     static void validate(JSONObject d) throws JSONException {
         if (d == null || d.optInt("version") != 1 || d.toString().length() > 200000) throw new JSONException("Invalid document");
         for (String key : new String[]{"client","model","deliveryDate","expires","payment","total","channel"}) text(d,key,500,true);
+        if(d.has("warrantyMonths")){
+            Object months=d.get("warrantyMonths");
+            if(!(months instanceof Number)||((Number)months).doubleValue()!=((Number)months).intValue()||((Number)months).intValue()<1||((Number)months).intValue()>36)throw new JSONException("Invalid warranty duration");
+        }
         text(d,"phone",40,false);text(d,"customerNotes",2000,false);d.getBoolean("cancelled");
         JSONArray fields=d.getJSONArray("device");if(fields.length()!=8)throw new JSONException("Invalid device");
         for(int i=0;i<fields.length();i++){JSONArray cell=fields.getJSONArray(i);if(cell.length()!=2||!(cell.get(0) instanceof String)||!(cell.get(1) instanceof String)||cell.getString(0).length()>100||cell.getString(1).length()>110000)throw new JSONException("Invalid field");}
@@ -141,7 +145,7 @@ final class ReceiptPdfDocument {
         JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
         row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
         y+=4;paragraph("Los artículos indicados como cortesía o regalía se entregaron sin costo adicional. Sus valores son referenciales y no son canjeables por efectivo, descuento posterior ni devolución independiente.",8,false,MUTED);
-        section("03  CONDICIONES DE GARANTÍA LUNIVO");paragraph("3 MESES CALENDARIO desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);
+        section("03  CONDICIONES DE GARANTÍA LUNIVO");int months=d.optInt("warrantyMonths",3);paragraph(months+(months==1?" MES":" MESES")+" CALENDARIO DE GARANTÍA desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);
         JSONArray terms=d.getJSONArray("terms");for(int i=0;i<terms.length();i++)paragraph(terms.getString(i),9.5f,false,NAVY);
         section("04  CONTROL Y VALIDEZ DEL COMPROBANTE");paragraph(d.getString("customerNotes"),9.5f,false,NAVY);paragraph("Canal: "+d.getString("channel"),8.5f,false,MUTED);
         JSONObject company=d.getJSONObject("company");ensure(50);y+=6;rule(y,Color.rgb(220,228,238));y+=9;

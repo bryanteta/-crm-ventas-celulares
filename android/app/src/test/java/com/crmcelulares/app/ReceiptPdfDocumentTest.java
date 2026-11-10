@@ -37,6 +37,10 @@ public class ReceiptPdfDocumentTest {
         d.put("items",items);ReceiptPdfDocument.validate(d);
         items.put(new JSONObject(template.toString()));assertThrows(JSONException.class,()->ReceiptPdfDocument.validate(d));
     }
+    @Test public void warrantyDurationIsBoundedAndOptionalForOlderPdfRequests() throws Exception {
+        for(int months:new int[]{1,3,6,36}){JSONObject d=sample().put("warrantyMonths",months);ReceiptPdfDocument.validate(d);}
+        for(Object months:new Object[]{0,37,1.5,"6"}){JSONObject d=sample().put("warrantyMonths",months);assertThrows(JSONException.class,()->ReceiptPdfDocument.validate(d));}
+    }
     @Test public void customerPayloadDoesNotRequireAnInternalReceiptNumber() throws Exception {
         JSONObject d=sample();d.remove("number");ReceiptPdfDocument.validate(d);
     }

@@ -78,7 +78,7 @@ service cloud.firestore {
         && text(r.get('phone',''),30) && text(r.get('customerNotes',''),1000)
         && r.paymentMethod in ['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro']
         && (r.paymentMethod!='Tasa cero' || (text(r.bank,80) && r.bank.size()>0 && safeInt(r.months,1,60)))
-        && r.serials is list && r.serials.size()<=quantity && r.warrantyMonths==3
+        && r.serials is list && r.serials.size()<=quantity && safeInt(r.warrantyMonths,1,36)
         && r.terms is list && r.terms.size()==3 && r.gifts is list && r.gifts.size()<=10;
     }
     function completeReceipt(r) {

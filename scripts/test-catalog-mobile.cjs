@@ -4,7 +4,8 @@ const plans=require('../catalogo/payment-plans.json');
 const engine=process.env.CATALOG_BROWSER==='webkit'?webkit:chromium;
 (async()=>{const browser=await engine.launch(engine===chromium?{executablePath:'/usr/bin/chromium',args:['--no-sandbox']}:{});try{
  for(const [width,height] of [[320,740],[390,844],[430,932],[844,390]]){
-  const page=await browser.newPage({...devices['iPhone 13'],viewport:{width,height}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(12000);
+  const ios=engine===webkit,profile=devices[ios?'iPhone 13':'Pixel 7'];
+  const page=await browser.newPage({...profile,viewport:{width,height}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(12000);
   await page.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/');await page.locator('.card').first().waitFor();
   a.equal(await page.locator('#headline').innerText(),'Recíbelo\nRevísalo\nPaga');
   a(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
@@ -16,12 +17,14 @@ const engine=process.env.CATALOG_BROWSER==='webkit'?webkit:chromium;
   await page.getByRole('button',{name:'Todos',exact:true}).tap();await page.locator('#capacity').selectOption('all');await page.locator('#sort').selectOption('model');
   await page.locator('#search').fill('iPhone 13');a(await page.locator('.card').count()>0);await page.locator('#search').fill('');await page.locator('#search').blur();
   await page.locator('.product-name').first().tap();a(await page.locator('#details').isVisible());await page.locator('#close').tap();await page.locator('.product-photo').first().tap();
-  await page.getByLabel('Tasa cero',{exact:false}).check();a.equal(await page.locator('#payment-bank').isVisible(),false);
+  await page.getByLabel('Tasa cero',{exact:false}).check();a.equal(await page.locator('#payment-bank').isVisible(),ios);a.equal(await page.locator('#bank-current').isVisible(),!ios);
   for(const bank of plans.banks){
+   if(ios){await page.locator('#payment-bank').selectOption(bank.id);}else{
    await page.locator('#bank-current').tap();a.equal(await page.locator('#bank-dropdown').evaluate(e=>e.open),true);
    const choice=page.locator('#bank-choices [data-bank-id="'+bank.id+'"]');
    await choice.scrollIntoViewIfNeeded();const logo=choice.locator('img');await logo.evaluate(e=>e.decode());a(await logo.isVisible());a.equal(await logo.getAttribute('src'),bank.logo.path);
-   await choice.tap();a.equal(await page.locator('#bank-dropdown').evaluate(e=>e.open),false);a.equal(await page.locator('#bank-current-content').innerText(),bank.name);a.deepEqual(await page.locator('[name=installment-term]').evaluateAll(es=>es.map(e=>Number(e.value))),bank.installments);
+   await choice.tap();}
+   a.equal(await page.locator('#bank-dropdown').evaluate(e=>e.open),false);a.equal(await page.locator('#bank-current-content').innerText(),bank.name);a.deepEqual(await page.locator('[name=installment-term]').evaluateAll(es=>es.map(e=>Number(e.value))),bank.installments);
    const term=bank.installments.at(-1);await page.locator('[name=installment-term][value="'+term+'"]').check();const url=new URL(await page.locator('#consult').getAttribute('href'));a.equal(url.hostname,'api.whatsapp.com');a(url.searchParams.get('text').includes(bank.name+' · '+term+' cuotas'));
   }
   await page.getByLabel('Al contado',{exact:false}).check();a.equal(await page.locator('#financing').isVisible(),false);await page.locator('#close').tap();
@@ -29,5 +32,5 @@ const engine=process.env.CATALOG_BROWSER==='webkit'?webkit:chromium;
   await page.locator('.hero-primary').evaluate(e=>Promise.all(e.getAnimations().map(a=>a.finished)));await page.evaluate(()=>scrollTo(0,0));if(width===390)await page.screenshot({path:'/workspace/artifacts/lunivo-mobile-'+engine.name()+'.png'});
   a.deepEqual(errors,[]);await page.close();
  }
- console.log('PASS '+engine.name()+': touch filters, search, sorting, product image/name, bank logos and touch picker, all banks/terms, WhatsApp message, cash switch, close, theme and responsive header.');
+ console.log('PASS '+engine.name()+': touch filters, search, sorting, product image/name, iOS system picker / Android logo menu, all banks/terms, WhatsApp message, cash switch, close, theme and responsive header.');
 }finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

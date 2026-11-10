@@ -62,3 +62,5 @@
 @media(pointer:coarse){
  :root[data-theme] .selects label select,#variant{-webkit-appearance:none;appearance:none;background-color:var(--surface);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:14px;padding-right:28px}
 }
+
+.ios-bank-picker #payment-bank{display:block;width:100%;min-height:48px;margin:0;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--ink);font-size:16px;line-height:1.4;-webkit-appearance:auto;appearance:auto}

@@ -318,6 +318,13 @@
   }
   let bankPositionFrame=null;
   function scheduleBankPosition(){if(!$('#bank-dropdown').open||bankPositionFrame!==null)return;bankPositionFrame=requestAnimationFrame(()=>{bankPositionFrame=null;positionBankMenu();});}
+  // iOS gets the real system select; Android and desktop keep the logo menu.
+  const iosBankPicker=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(iosBankPicker){
+    $('#bank-dropdown').hidden=true;
+    const select=$('#payment-bank');select.hidden=false;select.removeAttribute('aria-hidden');select.removeAttribute('tabindex');
+    $('#bank-picker').classList.add('ios-bank-picker');
+  }
   $('#bank-current').addEventListener('click',event=>{event.preventDefault();const dropdown=$('#bank-dropdown');dropdown.open=!dropdown.open;if(dropdown.open)positionBankMenu();});
   $('#bank-dropdown').addEventListener('toggle',()=>{if($('#bank-dropdown').open)positionBankMenu();});
   nodes.dialog.addEventListener('scroll',scheduleBankPosition,{passive:true});window.addEventListener('resize',scheduleBankPosition,{passive:true});

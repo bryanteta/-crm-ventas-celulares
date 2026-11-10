@@ -10,7 +10,7 @@ const fs=require('node:fs');
  const errors=[],requests=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
  await page.goto(base);await page.waitForFunction(()=>document.querySelector('#products').getAttribute('aria-busy')==='false');
- assert.equal(await page.locator('#headline').innerText(),'Recíbelo\nRevísalo\nPaga');assert.match(await page.locator('.hero-delivery-note').innerText(),/Pago contra entrega.*•.*Sin anticipos/);
+ assert.equal(await page.locator('#headline').innerText(),'Recíbelo.\nRevísalo.\nPaga.');assert.match(await page.locator('.hero-delivery-note').innerText(),/Pago contra entrega.*•.*Sin anticipos/);
  const selectedHero=await page.locator('.hero-pick:not([hidden])').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,model:c.dataset.featuredModel,color:c.dataset.featuredColor,reference:c.dataset.reference,src:c.querySelector('img').getAttribute('src'),alt:c.querySelector('img').alt})));
  const heroImages=JSON.parse(fs.readFileSync('catalogo/product-images.json','utf8')).products;
  assert.equal(selectedHero.length,2);assert.doesNotMatch(await page.locator('.hero-collection').innerText(),/Consultar disponibilidad/i);

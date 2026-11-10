@@ -140,10 +140,12 @@ El selector de tasa cero muestra los cinco bancos en botones compactos con sus l
 
 Elegir un banco actualiza sus cuotas y el mensaje de WhatsApp; cambiarlo reinicia el plazo para evitar enviar una cuota de otro banco. Si una imagen falla, el nombre y la selección de cuotas siguen funcionando. `scripts/test-catalog-bank-logos.cjs` comprueba integridad, selección por teclado, cuotas/mensaje, encuadre, dos temas, tres tamaños y fallo de imágenes. Las cuotas e importes anteriores se conservan.
 
-Agrícola y Promerica presentan el símbolo original acompañado por su nombre en tipografía nativa más grande. El texto pequeño dentro de las imágenes no se usa como etiqueta, para mantener la legibilidad en pantallas estrechas y ambos temas. Los archivos originales siguen intactos.
+Los cinco bancos presentan su símbolo original acompañado por el nombre en tipografía nativa uniforme: 12 px, peso 600 y color neutro. Los textos incrustados en las imágenes no se usan como etiquetas, para mantener la misma legibilidad y formato en todos los bancos. Los archivos originales siguen intactos.
 
 El selector de banco permanece en una sola fila. Los logos se abren en un menú superpuesto y se ocultan al elegir una opción, pulsar Escape o salir del selector. Abrir la lista no desplaza precios ni cuotas ni aumenta la altura del modal.
 
 La lista de bancos calcula el espacio visible dentro del diálogo y abre hacia arriba cuando no cabe debajo del selector. Su altura se limita al espacio disponible, con desplazamiento interno en pantallas bajas. Se reposiciona al desplazar/redimensionar y se cierra si el campo deja de estar visible. `scripts/test-catalog-bank-menu.cjs` verifica límites del menú, altura estable del modal, Escape y selección en móvil, escritorio y orientación horizontal.
 
 En la web se usa el nombre «BAC Credomatic», sin el prefijo Banco, tanto en el selector como en WhatsApp. Las letras de Agrícola y Promerica usan el color neutro del texto en ambos temas; sus símbolos conservan el azul.
+
+La portada muestra «Recíbelo», «Revísalo» y «Paga» en tres líneas. Debajo aparece en pequeño «Pago contra entrega • Sin anticipos», con un punto sólido entre ambas frases. El diseño se adapta a móvil y escritorio conservando los dos temas.

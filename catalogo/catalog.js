@@ -185,11 +185,7 @@
         const crop=document.createElement('span');crop.className='bank-logo-crop';const logo=document.createElement('img');logo.src=art.path;logo.alt='';logo.width=art.width;logo.height=art.height;crop.append(logo);frame.append(crop);framePhoto(logo,art);
         logo.addEventListener('error',()=>{frame.hidden=true;},{once:true});
       }else frame.hidden=true;
-      const name=document.createElement('span');name.className='bank-name';
-      if(['agricola','promerica'].includes(bank.id)){
-        button.classList.add('bank-symbol-choice');button.setAttribute('aria-label',bank.name);
-        const prefix=document.createElement('small'),title=document.createElement('strong');prefix.textContent='Banco';title.textContent=bank.id==='agricola'?'Agrícola':'Promerica';name.append(prefix,title);
-      }else name.textContent=bank.name;
+      const name=document.createElement('span');name.className='bank-name';name.textContent=bank.name;button.setAttribute('aria-label',bank.name);
       button.append(frame,name);button.addEventListener('click',()=>{
         $('#payment-bank').value=bank.id;$('#payment-bank').dispatchEvent(new Event('change',{bubbles:true}));$('#bank-dropdown').open=false;$('#bank-current').focus({preventScroll:true});
       });return button;

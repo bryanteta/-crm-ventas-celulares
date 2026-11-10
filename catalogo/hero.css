@@ -85,3 +85,5 @@
   .hero-pick-samsung { left: 6%; }
   .hero-pick-apple { right: 5%; }
 }
+
+.hero-description.hero-delivery-note{font-size:12px;line-height:1.7}.hero-delivery-dot{display:inline-block;margin:0 4px;font-weight:900;font-size:14px;line-height:1;color:var(--ink)}

@@ -37,7 +37,7 @@
         "framing": {
           "x": 24,
           "y": 206,
-          "width": 552,
+          "width": 204,
           "height": 187
         }
       }
@@ -81,10 +81,10 @@
         "width": 860,
         "height": 803,
         "framing": {
-          "x": 113,
+          "x": 300,
           "y": 248,
-          "width": 634,
-          "height": 307
+          "width": 255,
+          "height": 230
         }
       }
     },
@@ -107,7 +107,7 @@
         "framing": {
           "x": 0,
           "y": 0,
-          "width": 860,
+          "width": 181,
           "height": 165
         }
       }

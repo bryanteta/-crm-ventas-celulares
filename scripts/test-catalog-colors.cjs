@@ -3,7 +3,7 @@ const {chromium}=require('playwright'),a=require('node:assert/strict'),fs=requir
 (async()=>{
  const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
  try{
-  const chooseBank=(page,id)=>page.locator('#bank-choices [data-bank-id="'+id+'"]').click();
+  const chooseBank=async(page,id)=>{if(!await page.locator('#bank-dropdown').evaluate(e=>e.open))await page.locator('#bank-current').click();await page.locator('#bank-choices [data-bank-id="'+id+'"]').click();};
 const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/',source=JSON.parse(fs.readFileSync('catalogo/inventory.json'));
   const model={...source.products.find(p=>p.model==='iPhone 13'),manufacturer:'Apple',model:'iPhone 13',capacity:'128 GB',color:'Negro',condition:'Seminuevo',grade:'A',battery:'100%',priceCents:43000,quantity:2,cycles:null,sim:'Por confirmar',box:null,ram:'',observations:[]};
   let id=0;const item=extra=>({...model,...extra,id:(++id).toString(16).padStart(20,'0')});

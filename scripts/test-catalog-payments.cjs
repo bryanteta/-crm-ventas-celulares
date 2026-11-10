@@ -1,6 +1,6 @@
 'use strict';
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
-const chooseBank=(page,id)=>page.locator('#bank-choices [data-bank-id="'+id+'"]').click();
+const chooseBank=async(page,id)=>{if(!await page.locator('#bank-dropdown').evaluate(e=>e.open))await page.locator('#bank-current').click();await page.locator('#bank-choices [data-bank-id="'+id+'"]').click();};
 const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/';
 const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(n/100);
 (async()=>{

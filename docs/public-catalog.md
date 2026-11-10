@@ -139,3 +139,7 @@ En la consulta revisada solo permanece sin foto el iPhone 13 Pro cuyo color est�
 El selector de tasa cero muestra los cinco bancos en botones compactos con sus logos aportados en `logos.zip`, nombre visible y selección azul. Los archivos originales se conservan sin modificar en `catalogo/assets/banks/`; `sources.json` registra nombres de origen y SHA-256. El encuadre elimina visualmente márgenes sobrantes mediante CSS y el filtro SVG aplica el acabado azul, más claro en modo oscuro, sin cambiar las formas de los logos.
 
 Elegir un banco actualiza sus cuotas y el mensaje de WhatsApp; cambiarlo reinicia el plazo para evitar enviar una cuota de otro banco. Si una imagen falla, el nombre y la selección de cuotas siguen funcionando. `scripts/test-catalog-bank-logos.cjs` comprueba integridad, selección por teclado, cuotas/mensaje, encuadre, dos temas, tres tamaños y fallo de imágenes. Las cuotas e importes anteriores se conservan.
+
+Agrícola y Promerica presentan el símbolo original acompañado por su nombre en tipografía nativa más grande. El texto pequeño dentro de las imágenes no se usa como etiqueta, para mantener la legibilidad en pantallas estrechas y ambos temas. Los archivos originales siguen intactos.
+
+El selector de banco permanece en una sola fila. Los logos se abren en un menú superpuesto y se ocultan al elegir una opción, pulsar Escape o salir del selector. Abrir la lista no desplaza precios ni cuotas ni aumenta la altura del modal.

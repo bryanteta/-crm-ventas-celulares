@@ -175,7 +175,7 @@
     updatePayment();
   }
   function renderBanks(){
-    $('#bank-picker').hidden=!banks.length;
+    $('#bank-picker').hidden=!banks.length;$('#bank-dropdown').open=false;delete $('#bank-current-content').dataset.bankId;
     $('#bank-choices').replaceChildren(...banks.map(bank=>{
       const button=document.createElement('button');button.type='button';button.className='bank-choice';button.dataset.bankId=bank.id;
       button.setAttribute('aria-pressed','false');
@@ -185,19 +185,30 @@
         const crop=document.createElement('span');crop.className='bank-logo-crop';const logo=document.createElement('img');logo.src=art.path;logo.alt='';logo.width=art.width;logo.height=art.height;crop.append(logo);frame.append(crop);framePhoto(logo,art);
         logo.addEventListener('error',()=>{frame.hidden=true;},{once:true});
       }else frame.hidden=true;
-      const name=document.createElement('span');name.textContent=bank.name;
+      const name=document.createElement('span');name.className='bank-name';
+      if(['agricola','promerica'].includes(bank.id)){
+        button.classList.add('bank-symbol-choice');button.setAttribute('aria-label',bank.name);
+        const prefix=document.createElement('small'),title=document.createElement('strong');prefix.textContent='Banco';title.textContent=bank.id==='agricola'?'Agrícola':'Promerica';name.append(prefix,title);
+      }else name.textContent=bank.name;
       button.append(frame,name);button.addEventListener('click',()=>{
-        $('#payment-bank').value=bank.id;$('#payment-bank').dispatchEvent(new Event('change',{bubbles:true}));
+        $('#payment-bank').value=bank.id;$('#payment-bank').dispatchEvent(new Event('change',{bubbles:true}));$('#bank-dropdown').open=false;$('#bank-current').focus({preventScroll:true});
       });return button;
     }));
+  }
+  function showSelectedBank(bank){
+    const current=$('#bank-current-content'),id=bank?.id||'';if(current.dataset.bankId===id)return;current.dataset.bankId=id;
+    if(!bank){current.textContent='Selecciona tu banco';return;}
+    const art=$('#bank-choices [data-bank-id="'+id+'"] .bank-logo')?.cloneNode(true),name=document.createElement('span');name.className='bank-current-name';name.textContent=bank.name;current.replaceChildren();
+    if(art){const img=art.querySelector('img');if(img)img.addEventListener('error',()=>art.hidden=true,{once:true});current.append(art);}current.append(name);
   }
   function updatePayment(){
     const p=activeGroup?.variants.find(v=>v.id===nodes.variant.value);if(!p)return;
     const financed=$('[name=payment]:checked').value==='installments',regular=regularPrice(p.priceCents);
     const bank=banks.find(b=>b.id===$('#payment-bank').value),months=Number($('[name=installment-term]:checked')?.value||0);
     for(const button of $('#bank-choices').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.bankId===bank?.id));
+    showSelectedBank(bank);
     renderInstallments(regular,bank,months);
-    $('#financing').hidden=!financed;
+    $('#financing').hidden=!financed;if(!financed)$('#bank-dropdown').open=false;
     $('#detail-regular').hidden=financed;$('#detail-regular s').textContent=money(regular);
     $('#detail-price-label').textContent=financed?'Precio regular':'Precio promocional';
     $('#detail-payment-note').textContent=financed?'Total a pagar a tasa cero':'Precio exclusivo por pago de contado';
@@ -299,6 +310,9 @@
     grid.replaceChildren(fragment);
   }
   document.querySelectorAll('[name=payment]').forEach(input=>input.addEventListener('change',updatePayment));
+  document.addEventListener('click',event=>{const dropdown=$('#bank-dropdown');if(dropdown.open&&!dropdown.contains(event.target))dropdown.open=false;});
+  $('#bank-dropdown').addEventListener('keydown',event=>{if(event.key==='Escape'&&event.currentTarget.open){event.preventDefault();event.stopPropagation();event.currentTarget.open=false;$('#bank-current').focus({preventScroll:true});}});
+  $('#bank-dropdown').addEventListener('focusout',event=>{if(event.relatedTarget&&!event.currentTarget.contains(event.relatedTarget))event.currentTarget.open=false;});
   $('#payment-bank').addEventListener('change',()=>{resetInstallments();updatePayment();});
   $('#installment-grid').addEventListener('change',updatePayment);
   nodes.variant.addEventListener('change',showVariant);

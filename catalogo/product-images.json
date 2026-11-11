@@ -131,6 +131,44 @@
         "height": 382
       }
     },
+    "Samsung S24 Ultra|Gris": {
+      "model": "Samsung S24 Ultra",
+      "color": "Gris",
+      "officialColor": "Titanium Gray",
+      "sourceSku": "SM-S928BZTGEUB",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2401/gallery/uk-galaxy-s24-ultra-491396-sm-s928bztgeub-539464101?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-S928BZTGEUB/",
+      "credit": "Samsung",
+      "framing": {
+        "x": 104,
+        "y": 120,
+        "width": 383,
+        "height": 385
+      },
+      "path": "assets/products/samsung-s24-ultra-gris.png",
+      "sha256": "8a21aa79534c8a60cc3e01a6fedfbea36573fadafb3496cd1ad0bfff522698eb",
+      "width": 624,
+      "height": 624
+    },
+    "Samsung S24 Ultra|Negro": {
+      "model": "Samsung S24 Ultra",
+      "color": "Negro",
+      "officialColor": "Titanium Black",
+      "sourceSku": "SM-S928BZKGEUB",
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2401/gallery/uk-galaxy-s24-ultra-491396-sm-s928bzkgeub-539463970?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/support/model/SM-S928BZKGEUB/",
+      "credit": "Samsung",
+      "framing": {
+        "x": 104,
+        "y": 120,
+        "width": 383,
+        "height": 385
+      },
+      "path": "assets/products/samsung-s24-ultra-negro.png",
+      "sha256": "162427d83d437aac7b2c1a31adbbf6438b5d3d3c5922aa6498ce3a4de83c72e4",
+      "width": 624,
+      "height": 624
+    },
     "Samsung S25 FE|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s731uzkaxaa/gallery/us-galaxy-s25-fe-sm-s731-sm-s731uzkaxaa-548774008?$product-details-jpg$",
       "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s25/buy/",
@@ -809,6 +847,20 @@
       "width": 306,
       "height": 380
     },
+    "iPhone 13|Rosado": {
+      "model": "iPhone 13",
+      "color": "Rosado",
+      "officialColor": "pink",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pink__e3vv1er86eqa_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-13-pink",
+      "credit": "Apple",
+      "path": "assets/products/iphone-13-rosado.jpg",
+      "sha256": "e972cee45abe4eda1eaa96982b657737aeca25754f6a29c4e6a34d54e97f293e",
+      "width": 612,
+      "height": 760
+    },
     "iPhone 13|Verde": {
       "model": "iPhone 13",
       "color": "Verde",
@@ -934,6 +986,20 @@
       "sha256": "345fbbbcfb741df9863f95017432a2448543aa9268ec49f735b5d6b4ce6b6fee",
       "width": 306,
       "height": 380
+    },
+    "iPhone 14|Lila": {
+      "model": "iPhone 14",
+      "color": "Lila",
+      "officialColor": "purple",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_purple__cjajxy1iclg2_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+      "sourceSelector": ".image-compare-iphone-14-purple",
+      "credit": "Apple",
+      "path": "assets/products/iphone-14-lila.jpg",
+      "sha256": "edbbcb7362809f930f650378b04cad8754b4d23659fc75f07d510a42d2ce933b",
+      "width": 612,
+      "height": 760
     },
     "iPhone 14|Negro": {
       "model": "iPhone 14",

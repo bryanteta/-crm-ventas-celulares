@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-11T17:29:50.540Z",
+  "updatedAt": "2026-11-11T21:03:51.273Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -709,7 +709,7 @@
       "box": null,
       "ram": "",
       "priceCents": 59000,
-      "quantity": 4,
+      "quantity": 3,
       "available": true
     },
     {
@@ -1272,24 +1272,6 @@
       "ram": "",
       "priceCents": 76000,
       "quantity": 4,
-      "available": true
-    },
-    {
-      "id": "2547d2ae8662a07fdc56",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro",
-      "capacity": "128 GB",
-      "color": "Titanio natural",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 76000,
-      "quantity": 1,
       "available": true
     },
     {
@@ -2287,7 +2269,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 16,
+      "quantity": 15,
       "available": true
     },
     {
@@ -2345,6 +2327,42 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 1,
+      "available": true
+    },
+    {
+      "id": "764bc24264ec287274c8",
+      "manufacturer": "Samsung",
+      "model": "Samsung S24 Ultra",
+      "capacity": "256 GB",
+      "color": "Gris",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 75500,
+      "quantity": 16,
+      "available": true
+    },
+    {
+      "id": "327928a453347738eca4",
+      "manufacturer": "Samsung",
+      "model": "Samsung S24 Ultra",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 75500,
+      "quantity": 14,
       "available": true
     },
     {

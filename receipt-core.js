@@ -49,6 +49,25 @@ function accessoryRows(sale){
  return sale.accessories?[{concept:'Accesorios cobrados (registro anterior)',quantity:'1',amount:money(sale.accessories),application:'Accesorios'}]:[];
 }
 function giftsFor(sale){const ids=new Set((sale.accessoryItems||[]).map(i=>i.catalogId));return sale.receipt.gifts.filter(g=>!ids.has(g.name==='Cargador completo'?'charger':g.name==='Case'?'case':g.name==='Protector de pantalla'?'protector':g.name==='Caja genérica'?'box':''));}
+// Only extract device facts; supplier notes, costs and identifiers stay private.
+function deviceDefaults(item={}){
+ const clean=v=>typeof v==='string'?v.trim():'',known=v=>/^(?:(?:color|batería|bateria|capacidad)\s+)?(?:por confirmar|no definido|no disponible|n\/a|desconocido|pendiente|-)$/i.test(clean(v))?'':clean(v);
+ const model=clean(item.model),notes=clean(item.notes),description=model+' · '+notes;
+ const one=(text,pattern)=>{const values=[...new Map([...text.matchAll(pattern)].map(m=>[m[0].toLowerCase().replace(/\s/g,''),m[0].trim()])).values()];return values.length===1?values[0]:'';};
+ let brand=known(item.brand);if(/^iphone|apple$/i.test(brand))brand='Apple';
+ if(!brand){for(const [pattern,value]of [[/\b(?:iphone|ipad|apple)\b/i,'Apple'],[/\b(?:samsung|galaxy)\b|^S\d{2}\b|^Z\s*(?:Flip|Fold)/i,'Samsung'],[/\b(?:xiaomi|redmi|poco)\b/i,'Xiaomi'],[/\bhonor\b/i,'Honor'],[/\bhuawei\b/i,'Huawei'],[/\bmotorola\b/i,'Motorola'],[/\b(?:google|pixel)\b/i,'Google'],[/\boneplus\b/i,'OnePlus']])if(pattern.test(model)){brand=value;break;}}
+ const capacity=known(item.capacity)||one(description,/\b\d+\s*(?:GB|TB)\b/gi).replace(/\s*(GB|TB)$/i,(_,unit)=>' '+unit.toUpperCase());
+ const color=known(item.color)||one(description,/\b(?:titanio\s+(?:natural|negro|blanco|azul|desierto)|negro|blanco|azul|verde|rojo|rosa(?:do)?|morado|lila|gris|plateado|plata|dorado|celeste|amarillo|anaranjado|borgoña|burgundy)\b/gi);
+ const category=known(item.condition)||known(item.category);
+ function condition(value){if(/\b(?:no|sin)\s+(?:es\s+)?nuevo\b/i.test(value))return '';for(const [pattern,label]of [[/\breacondicionad[oa]\b|\brefurbished\b/i,'Reacondicionado'],[/\bopen[ -]*box\b/i,'Nuevo (Open Box)'],[/\bsemi[ -]?nuev[oa]\b|\bcomo nuevo\b/i,'Seminuevo'],[/\busad[oa]\b/i,'Usado'],[/\b(?:nuevo|sellado)\b/i,'Nuevo']])if(pattern.test(value))return label;return '';}
+ const state=condition(category)||condition(notes)||condition(model)||(/^(?:categor[ií]a\s*)?[ABC][+-]?$/i.test(category)?'Seminuevo':'');
+ const battery=known(item.battery)||one(description,/\b(?:100|[1-9]?\d)\s*%/g)||(brand==='Samsung'?'En excelentes condiciones':'');
+ const physical=known(item.physical)||one(description,/\bsin daños visibles\b|\bmarcas leves de uso\b|\brayones en (?:pantalla|marco)\b|\bgolpes en marco\b/gi);
+ return {brand,capacity,color,condition:state,battery,physical};
+}
+function completeDevice(receipt={},source={}){
+ const result={...receipt},defaults=deviceDefaults(source);for(const [key,value]of Object.entries(defaults))if(!String(result[key]??'').trim())result[key]=value;return result;
+}
 function receiptForSale(sale){return {...sale.receipt,deliveryDate:sale.date};}
 function documentData(sale){
  if(sale.status==='Borrador')throw Error('Confirma la venta antes de emitir un comprobante.');const r=receiptForSale(sale);validate(r,sale);
@@ -74,5 +93,5 @@ return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="v
 
 </style></head><body><article class="sheet">${sale.status==='Anulada'?'<div class="cancelled">COMPROBANTE ANULADO</div>':''}<header><div><img class="brand-logo" src="${esc(logo)}" alt="Logo LUNIVO"><div class="brand-name">LUNIVO</div></div><div class="heading"><h1>COMPROBANTE DE COMPRA<br>Y GARANTÍA</h1><p>Teléfonos de gama alta</p></div></header><p class="intro">Documento emitido por LUNIVO como comprobante de compra, entrega y respaldo de garantía. No requiere firma del cliente; registra la información comercial y técnica del equipo entregado.</p><div class="summary">${field('Fecha de venta',dateText(r.deliveryDate))}${field('Cliente',sale.client+(r.phone?'\n'+r.phone:''))}${field('Método de pago',payment(r))}</div><h2><span>01</span>DATOS DEL DISPOSITIVO ENTREGADO</h2><div class="device">${field('Marca / modelo',r.brand+' · '+sale.model)}${field('Capacidad',r.capacity)}${field('Color',r.color)}${field('Estado comercial',r.condition)}${field('Batería',r.battery)}${field('Estado físico',r.physical)}${field('IMEI / Serial',r.serials.length?r.serials.join('\n'):'No registrado (opcional)')}${field('Fecha de venta',dateText(r.deliveryDate))}</div><h2><span>02</span>PRECIO COBRADO Y BENEFICIOS ENTREGADOS</h2><table><thead><tr><th>Concepto</th><th>Cant.</th><th>Valor</th><th>Aplicación</th></tr></thead><tbody><tr><td>${esc(sale.model)}</td><td>${sale.quantity}</td><td>${money(sale.price*sale.quantity)}</td><td>Precio dispositivo</td></tr>${accessoryHtml}${giftRows}<tr class="total"><td colspan="2">TOTAL PAGADO POR EL CLIENTE</td><td>${money(sale.revenue)}</td><td>${esc(payment(r))}</td></tr></tbody></table><p class="footnote">Los artículos indicados como cortesía o regalía se entregaron sin costo adicional. Sus valores son referenciales y no son canjeables por efectivo, descuento posterior ni devolución independiente.</p><h2><span>03</span>CONDICIONES DE GARANTÍA LUNIVO</h2><div class="terms"><p class="expiry"><strong>${warrantyLabel(r.warrantyMonths)} DE GARANTÍA</strong> desde ${dateText(r.deliveryDate)}. Válida hasta ${dateText(expires(r.deliveryDate,r.warrantyMonths))}.</p>${termsFor(r).map(t=>`<p>${esc(t)}</p>`).join('')}</div><h2><span>04</span>CONTROL Y VALIDEZ DEL COMPROBANTE</h2><div class="observations">${esc(r.customerNotes||'Comprobante correspondiente a la compra y entrega del dispositivo detallado.')}</div><div class="control"><span>Canal: ${esc(r.channel||'Tienda')}</span></div><footer>${esc(company.name)} · WhatsApp ${esc(company.phone)}<br>Facebook ${esc(company.facebook)} · Instagram ${esc(company.instagram)} · TikTok ${esc(company.tiktok)}</footer></article></body></html>`;
 }
-return{receiptForSale,duration,warrantyLabel,termsFor,BANKS,bankInfo,fileName,TERMS,COMPANY,esc,date,expires,dateText,serials,number,allocate,validate,payment,documentData,html};
+return{deviceDefaults,completeDevice,receiptForSale,duration,warrantyLabel,termsFor,BANKS,bankInfo,fileName,TERMS,COMPANY,esc,date,expires,dateText,serials,number,allocate,validate,payment,documentData,html};
 });

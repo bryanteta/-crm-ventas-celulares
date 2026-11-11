@@ -21,3 +21,15 @@ test('courtesy limit and names agree with the native and cloud contract',()=>{co
 
 test('editable warranty duration updates calendar expiry, bold text and terms without mutating stored history',()=>{const s=sale();s.receipt.warrantyMonths=6;const before=JSON.stringify(s),doc=r.documentData(s),html=r.html(s);a.equal(doc.warrantyMonths,6);a.equal(doc.expires,'24/04/2027');a.match(doc.terms[0],/6 meses calendario/);a.match(html,/<strong>6 MESES CALENDARIO DE GARANTÍA<\/strong>/);a.doesNotMatch(html,/3 meses calendario/);a.equal(JSON.stringify(s),before);s.receipt.warrantyMonths=1;a.match(r.html(s),/1 MES CALENDARIO DE GARANTÍA/);a.match(r.documentData(s).terms[0],/1 mes calendario/);});
 test('variable calendar months handle month ends, leap years and reject unsupported durations',()=>{a.equal(r.expires('2026-01-31',1),'2026-02-28');a.equal(r.expires('2024-01-31',1),'2024-02-29');a.equal(r.expires('2024-02-29',12),'2025-02-28');a.equal(r.expires('2026-08-31',6),'2027-02-28');a.equal(r.expires('2026-11-09',36),'2029-11-09');for(const months of [0,-1,37,1.5,'6',NaN]){a.throws(()=>r.expires('2026-11-09',months));const s=sale();s.receipt.warrantyMonths=months;a.throws(()=>r.validate(s.receipt,s),/1 y 36/);}});
+test('warranty extracts provider device facts without copying private notes or serials',()=>{
+ const source={model:'iPhone 13',capacity:'128 GB',color:'Lila',notes:'Seminuevo · batería 97% · sin daños visibles · costo $300 · clave privada',serials:['secret-imei']};
+ a.deepEqual(r.deviceDefaults(source),{brand:'Apple',capacity:'128 GB',color:'Lila',condition:'Seminuevo',battery:'97%',physical:'sin daños visibles'});a(!JSON.stringify(r.deviceDefaults(source)).includes('privada'));
+ a.equal(r.deviceDefaults({model:'Samsung Galaxy S24 Ultra 256GB Negro',notes:'Open Box'}).battery,'En excelentes condiciones');a.equal(r.deviceDefaults({model:'Samsung Galaxy S24 Ultra 256GB Negro',notes:'Open Box'}).condition,'Nuevo (Open Box)');
+});
+test('warranty leaves ambiguous or unavailable inventory facts for review',()=>{
+ const d=r.deviceDefaults({model:'iPhone 13 128GB / 256GB',notes:'Negro / Blanco',color:'Por confirmar'});a.equal(d.capacity,'');a.equal(d.color,'');a.equal(d.battery,'');a.equal(d.physical,'');a.equal(d.condition,'');a.equal(r.deviceDefaults({model:'iPhone 13',notes:'No es nuevo'}).condition,'');
+});
+test('warranty completion preserves customer edits, payment, gifts, duration and frozen receipt',()=>{
+ const s=sale(),before=structuredClone(s.receipt);const completed=r.completeDevice(s.receipt,{model:'Samsung S24 256 GB Negro',notes:'Nuevo 100%'});a.deepEqual(completed,before);a.deepEqual(s.receipt,before);
+ const partial={color:'Dorado',phone:'7777 8888',paymentMethod:'Tasa cero',bank:'Banco Cuscatlán',months:36,warrantyMonths:6,serials:[],gifts:[{name:'Case',reference:0}]};const copy=structuredClone(partial);const out=r.completeDevice(partial,{model:'iPhone 14 128 GB Negro',notes:'Seminuevo 99%'});a.equal(out.brand,'Apple');a.equal(out.capacity,'128 GB');a.equal(out.color,'Dorado');a.equal(out.battery,'99%');for(const key of Object.keys(partial))a.deepEqual(out[key],copy[key]);a.deepEqual(partial,copy);
+});

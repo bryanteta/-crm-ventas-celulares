@@ -3,7 +3,7 @@ const path = require('node:path');
 const suites = [
   'inventory-sale-price-ui', 'default-markup-ui', 'experience-ui', 'simple-flows-ui', 'navigation-performance-ui', 'suite-ui', 'suite-integrity', 'inventory-ui', 'prepared-devices-ui', 'prepared-picker-ui', 'inventory-owners-ui',
   'provider-inventory-ui', 'compact-inventory-ui', 'phone-filters-ui', 'feeds-ui', 'accessories-ui', 'commission-removal-ui', 'sales-flow-ui', 'sale-edit-ui', 'receipt-integrity-ui',
-  'warranty-ui', 'receipt-actions-ui', 'settings-module-ui', 'updater-ui', 'appearance-warranty-ui', 'release-audit-ui', 'launch-ui', 'settings-notices', 'single-brand', 'profiles-ui',
+  'warranty-autofill-ui', 'warranty-ui', 'receipt-actions-ui', 'settings-module-ui', 'updater-ui', 'appearance-warranty-ui', 'release-audit-ui', 'launch-ui', 'settings-notices', 'single-brand', 'profiles-ui',
   'android-ui', 'storage', 'el-salvador'
 ];
 for (const name of suites) {

@@ -140,11 +140,15 @@ final class ReceiptPdfDocument {
         fields(new String[]{"Fecha de venta","Cliente","Método de pago"},new String[]{d.getString("deliveryDate"),d.getString("client")+(d.getString("phone").isEmpty()?"":"\n"+d.getString("phone")),d.getString("payment")},new float[]{.23f,.37f,.40f});
         section("01  DATOS DEL DISPOSITIVO ENTREGADO");JSONArray device=d.getJSONArray("device");
         for(int i=0;i<device.length();i+=2)fields(new String[]{device.getJSONArray(i).getString(0),device.getJSONArray(i+1).getString(0)},new String[]{device.getJSONArray(i).getString(1),device.getJSONArray(i+1).getString(1)},new float[]{.5f,.5f});
-        section("02  PRECIO COBRADO Y BENEFICIOS ENTREGADOS");float[] columns={.39f,.10f,.18f,.33f};
+        section("02  RESUMEN DE COMPRA · IMPORTES COBRADOS");float[] columns={.39f,.10f,.18f,.33f};
         row(new String[]{"Concepto","Cant.","Valor","Aplicación"},columns,NAVY,true,Color.WHITE,2);
-        JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
+        JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if("Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
         row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
-        y+=4;paragraph("Los artículos indicados como cortesía o regalía se entregaron sin costo adicional. Sus valores son referenciales y no son canjeables por efectivo, descuento posterior ni devolución independiente.",8,false,MUTED);
+        boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
+        if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Precio al cliente","Entrega"},columns,NAVY,true,Color.WHITE,2);
+            for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),"$0.00","Gratis"},columns,LIGHT,false,NAVY,2);}
+            y+=4;paragraph("Se entregan sin cobro y no se suman al total pagado. No son canjeables por efectivo ni tienen devolución independiente.",8,false,MUTED);
+        }
         section("03  CONDICIONES DE GARANTÍA LUNIVO");int months=d.optInt("warrantyMonths",3);paragraph(months+(months==1?" MES":" MESES")+" CALENDARIO DE GARANTÍA desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);
         JSONArray terms=d.getJSONArray("terms");for(int i=0;i<terms.length();i++)paragraph(terms.getString(i),9.5f,false,NAVY);
         section("04  CONTROL Y VALIDEZ DEL COMPROBANTE");paragraph(d.getString("customerNotes"),9.5f,false,NAVY);paragraph("Canal: "+d.getString("channel"),8.5f,false,MUTED);

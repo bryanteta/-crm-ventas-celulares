@@ -74,3 +74,16 @@
 .warranty-gifts{display:block}.warranty-gifts>.hint{font-size:12px;margin:4px 0 14px}.warranty-gift-extra{margin:12px 0}.warranty-gift-option:last-child{margin-bottom:12px}.warranty-gifts>button{min-height:44px}.warranty-gift-option .accessory-values label{min-width:0}.warranty-gift-extra label{min-width:0}
 
 .warranty-duration{font-weight:700}.warranty-duration:focus{font-weight:700}
+
+/* Charged accessories and gifts are separate editing and receipt sections. */
+#sale-accessories,.charged-accessory-summary{border:1px solid #c8d9f2;border-left:4px solid #3268b3;border-radius:13px;padding:14px;background:#f5f8ff}
+#sale-gifts,.warranty-gifts{border:1px solid #b9dfce;border-left:4px solid #298568;border-radius:13px;padding:14px;background:#f2faf6}
+.courtesy-badge{display:inline-block;padding:3px 8px;border-radius:20px;background:#dff2e8;color:#246b50;font-size:11px;margin-left:8px}
+#sale-gift-options .warranty-gifts{border:0;padding:10px 0 0;margin:0;background:transparent}
+.charged-accessory-summary h4{margin:0 0 8px;font-size:13px}.accessory-summary-row{display:flex;align-items:start;justify-content:space-between;gap:12px;margin:8px 0;font-size:12px}.accessory-summary-row span{min-width:0;overflow-wrap:anywhere}.accessory-summary-row strong{white-space:nowrap}
+.gift-reference{font-size:11px;min-width:0}.gift-reference>summary{font-size:11px;color:var(--muted);padding:8px 0}.gift-reference label{font-size:11px}.gift-reference input{margin-top:6px}
+:root[data-theme=dark] #sale-accessories,:root[data-theme=dark] .charged-accessory-summary{background:#172a43;border-color:#3a5b85;border-left-color:#8abaff}
+:root[data-theme=dark] #sale-gifts,:root[data-theme=dark] .warranty-gifts{background:#162f2a;border-color:#3a6555;border-left-color:#70cfa9}
+:root[data-theme=dark] .courtesy-badge{background:#214536;color:#a3e0c0}
+
+.gift-unavailable{opacity:.65}.gift-unavailable .accessory-pick small{font-style:italic}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-11T09:38:54.854Z",
+  "updatedAt": "2026-11-11T17:29:50.540Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -709,7 +709,7 @@
       "box": null,
       "ram": "",
       "priceCents": 59000,
-      "quantity": 7,
+      "quantity": 4,
       "available": true
     },
     {
@@ -817,7 +817,7 @@
       "box": null,
       "ram": "",
       "priceCents": 46000,
-      "quantity": 4,
+      "quantity": 3,
       "available": true
     },
     {
@@ -1821,6 +1821,24 @@
       "available": true
     },
     {
+      "id": "7149024163c1af6ed037",
+      "manufacturer": "Apple",
+      "model": "iPhone 16 Pro Max",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "91%",
+      "observations": [],
+      "cycles": 559,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 97500,
+      "quantity": 1,
+      "available": true
+    },
+    {
       "id": "8785517280f439480e5f",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
@@ -1983,24 +2001,6 @@
       "available": true
     },
     {
-      "id": "661ea79e9913064936fe",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "91%",
-      "observations": [],
-      "cycles": 559,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 98500,
-      "quantity": 1,
-      "available": true
-    },
-    {
       "id": "ce3913d94500b7aa5b6d",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro",
@@ -2069,26 +2069,6 @@
       "cycles": 13,
       "sim": "Por confirmar",
       "box": null,
-      "ram": "",
-      "priceCents": 133000,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "e0e64d0751644e8e5396",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro Max",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Open Box",
-      "grade": "",
-      "battery": "100%",
-      "observations": [
-        "Cable incluido"
-      ],
-      "cycles": 9,
-      "sim": "SIM física",
-      "box": true,
       "ram": "",
       "priceCents": 133000,
       "quantity": 1,
@@ -2307,7 +2287,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 19,
+      "quantity": 16,
       "available": true
     },
     {
@@ -2325,7 +2305,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 8,
+      "quantity": 7,
       "available": true
     },
     {
@@ -2343,7 +2323,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true
     },
     {
@@ -2404,7 +2384,7 @@
       "available": true
     },
     {
-      "id": "a58f8fccd124e9ea91b4",
+      "id": "d69e5b58aa63337a775d",
       "manufacturer": "Samsung",
       "model": "Samsung S25 FE",
       "capacity": "128 GB",
@@ -2417,25 +2397,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 51500,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "a77a1452a26c917b6daa",
-      "manufacturer": "Samsung",
-      "model": "Samsung S25 Ultra",
-      "capacity": "256 GB",
-      "color": "Celeste",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 85500,
+      "priceCents": 51000,
       "quantity": 1,
       "available": true
     },
@@ -2548,7 +2510,7 @@
       "available": true
     },
     {
-      "id": "2800b94b474cd5c877d4",
+      "id": "abd798756cc8ed7cb069",
       "manufacturer": "Samsung",
       "model": "Samsung S26 FE",
       "capacity": "128 GB",
@@ -2561,7 +2523,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 82500,
+      "priceCents": 77000,
       "quantity": 1,
       "available": true
     },
@@ -2620,7 +2582,7 @@
       "available": true
     },
     {
-      "id": "42fe0c3873f377749e0b",
+      "id": "0b3c6ed168a7a67d5c86",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 6",
       "capacity": "256 GB",
@@ -2633,12 +2595,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "12 GB",
-      "priceCents": 44000,
+      "priceCents": 42000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "75d5fed2865d1e842253",
+      "id": "6aeedd29349b8ad43318",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 7",
       "capacity": "512 GB",
@@ -2651,12 +2613,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 64000,
+      "priceCents": 63000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "8406fbcb04424c6c525a",
+      "id": "1ae75b496b5ca4d2c66d",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "256 GB",
@@ -2669,12 +2631,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "12 GB",
-      "priceCents": 59000,
+      "priceCents": 56000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "3606ed5c23d58b4c5772",
+      "id": "ddaf48ef62ff343dcd96",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "512 GB",
@@ -2687,12 +2649,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "12 GB",
-      "priceCents": 61000,
+      "priceCents": 57000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "ac96d90f752e07c472cf",
+      "id": "4ed134951bddd1646400",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 6",
       "capacity": "512 GB",
@@ -2705,7 +2667,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 71000,
+      "priceCents": 66000,
       "quantity": 1,
       "available": true
     }

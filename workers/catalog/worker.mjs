@@ -12,9 +12,9 @@ export class CatalogStore{
   }
   read(key){return this.ctx.storage.sql.exec('SELECT data FROM snapshots WHERE id = ?',key).toArray()[0]?.data||null;}
   write(key,value){this.ctx.storage.sql.exec('INSERT INTO snapshots (id,data) VALUES (?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data',key,value);}
-  async refresh(){
+  async refresh(scheduled=false){
     if(this.inflight)return this.inflight;
-    if(Date.now()-this.attempt<INTERVAL)return Boolean(this.latest);
+    if(!scheduled&&Date.now()-this.attempt<INTERVAL)return Boolean(this.latest);
     this.attempt=Date.now();this.write('attempt',String(this.attempt));
     this.inflight=(async()=>{
       try{
@@ -28,7 +28,7 @@ export class CatalogStore{
   }
   async fetch(request){
     const path=new URL(request.url).pathname;
-    if(path==='/refresh'&&request.method==='POST')return new Response(null,{status:await this.refresh()?204:503});
+    if(path==='/refresh'&&request.method==='POST')return new Response(null,{status:await this.refresh(true)?204:503});
     if(path==='/health')return Response.json({ready:Boolean(this.latest),configured:Boolean(this.env.SPLIT_INVENTORY_TOKEN?.trim()),updatedAt:this.latest?JSON.parse(this.latest).updatedAt:null,attemptedAt:this.attempt?new Date(this.attempt).toISOString():null},{headers:{...headers,'Cache-Control':'no-store'}});
     if(path!=='/inventory.json'||!['GET','HEAD'].includes(request.method))return new Response(null,{status:404});
     if(!this.latest)await this.refresh();

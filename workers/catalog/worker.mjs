@@ -44,7 +44,11 @@ export default{
     if(!['/inventory.json','/health'].includes(path))return new Response(null,{status:404});
     if(request.method==='OPTIONS')return new Response(null,{status:204,headers});
     if(!['GET','HEAD'].includes(request.method))return new Response(null,{status:405,headers:{...headers,Allow:'GET, HEAD, OPTIONS'}});
-    try{return await store(env).fetch(new Request('https://catalog.internal'+path,{method:request.method}));}catch{return unavailable();}
+    try{
+      const response=await store(env).fetch(new Request('https://catalog.internal'+path,{method:request.method}));
+      if(path==='/health'){const report=await response.json();return Response.json({...report,workerConfigured:Boolean(env.SPLIT_INVENTORY_TOKEN?.trim()),revision:'secret-check-2'},{headers:{...headers,'Cache-Control':'no-store'}});}
+      return response;
+    }catch{return unavailable();}
   },
   scheduled(event,env,ctx){ctx.waitUntil(store(env).fetch(new Request('https://catalog.internal/refresh',{method:'POST'})).then(r=>{if(!r.ok)console.error('Catalog refresh failed; previous public snapshot retained.');}));}
 };

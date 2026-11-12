@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),source=path.join(root,'catalogo');
 const output=path.resolve(process.argv[2]||path.join(root,'_catalog_site'));
 if(fs.existsSync(output))throw Error('Use a new output directory; refusing to overwrite existing files.');
-const entries=['index.html','catalog.js','styles.css','hero.css','theme.css','theme.js','inventory.json','product-images.json','payment-plans.json','assets'];
+const entries=['index.html','catalog.js','styles.css','hero.css','theme.css','theme.js','inventory.json','inventory-source.json','product-images.json','payment-plans.json','assets'];
 function safeCopy(from,to){
  const stat=fs.lstatSync(from);
  if(stat.isSymbolicLink())throw Error('Symlinks are not allowed in the public site.');

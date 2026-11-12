@@ -11,6 +11,7 @@ on:
       - 'scripts/refresh-public-catalog.py'
       - 'scripts/fetch-provider-snapshot.py'
       - 'scripts/build-public-catalog.cjs'
+      - 'scripts/catalog-core.cjs'
       - 'feeds-core.js'
       - 'sales-core.js'
       - 'catalogo/index.html'

@@ -6,12 +6,12 @@ test('Pages artifact serves the same public catalog at root and legacy path with
  try{
   const output=path.join(tmp,'site'),built=spawnSync(process.execPath,[script,output],{encoding:'utf8'});
   assert.equal(built.status,0,built.stderr);
-  for(const file of ['index.html','inventory.json','payment-plans.json','product-images.json','catalog.js','styles.css']){
+  for(const file of ['index.html','inventory.json','inventory-source.json','payment-plans.json','product-images.json','catalog.js','styles.css']){
    const original=fs.readFileSync(path.join(root,'catalogo',file));
    assert.deepEqual(fs.readFileSync(path.join(output,file)),original);
    if(file!=='index.html')assert.deepEqual(fs.readFileSync(path.join(output,'catalogo',file)),original);
   }
-  for(const excluded of ['android','app.js','app.css','suite.js','firestore.rules','.git','.github','docs'])assert.equal(fs.existsSync(path.join(output,excluded)),false);
+  for(const excluded of ['android','app.js','app.css','suite.js','firestore.rules','.git','.github','docs','workers'])assert.equal(fs.existsSync(path.join(output,excluded)),false);
   assert.match(fs.readFileSync(path.join(output,'index.html'),'utf8'),/id="products"/);
   assert.match(fs.readFileSync(path.join(output,'catalogo','index.html'),'utf8'),/location\.replace\('\.\.\/'/);
   assert.ok(fs.existsSync(path.join(output,'assets/logo.png')));

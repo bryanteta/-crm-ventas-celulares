@@ -1,0 +1,40 @@
+name: Verificar servicio de inventario Cloudflare
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/catalog/**'
+      - 'scripts/catalog-core.cjs'
+      - 'scripts/build-public-catalog.cjs'
+      - 'feeds-core.js'
+      - 'sales-core.js'
+      - '.github/workflows/test-live-catalog.yml'
+  pull_request:
+    paths:
+      - 'workers/catalog/**'
+      - 'scripts/catalog-core.cjs'
+      - 'scripts/build-public-catalog.cjs'
+      - 'feeds-core.js'
+      - 'sales-core.js'
+      - '.github/workflows/test-live-catalog.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm test
+      - run: npm ci
+        working-directory: workers/catalog
+      - run: npm test
+        working-directory: workers/catalog
+      - run: npm run test:runtime
+        working-directory: workers/catalog
+        env:
+          WRANGLER_SEND_METRICS: 'false'

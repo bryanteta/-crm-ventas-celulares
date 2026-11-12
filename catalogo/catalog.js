@@ -6,6 +6,21 @@
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let images={};
   const selectedColors=new Map();
+  let inventoryEndpoint='',lastInventoryCheck=0;
+  const inventorySourceReady=fetch('inventory-source.json',{cache:'no-cache',signal:AbortSignal.timeout(3000)}).then(async response=>{
+    if(!response.ok)return;const config=await response.json();if(config.version!==1||!config.endpoint)return;
+    const url=new URL(config.endpoint);
+    if(url.protocol==='https:'&&url.hostname.endsWith('.workers.dev')&&!url.username&&!url.password&&url.pathname==='/inventory.json'&&!url.search&&!url.hash)inventoryEndpoint=url.href;
+  }).catch(()=>{});
+  async function readInventory(){
+    await inventorySourceReady;
+    let freshest=null;
+    for(const url of [...(inventoryEndpoint?[inventoryEndpoint]:[]),'inventory.json']){
+      try{const response=await fetch(url,{cache:'no-cache',credentials:'omit',signal:AbortSignal.timeout(inventoryEndpoint===url?5000:15000)});if(response.ok){const data=valid(await response.json());if(!freshest||Date.parse(data.updatedAt)>Date.parse(freshest.updatedAt))freshest=data;if(url===inventoryEndpoint&&Date.now()-Date.parse(data.updatedAt)<15*60*1000)return data;}}catch{/* Fall back to the published public snapshot. */}
+    }
+    if(freshest)return freshest;throw Error('Inventario no disponible');
+  }
+
   // Apply 10% and round once to the nearest whole dollar (half rounds up).
   const regularPrice=cents=>Number((BigInt(cents)*11n+500n)/1000n)*100;
   let banks=[];
@@ -259,14 +274,13 @@
   }
   async function load(background=false){
     if(loading||background&&nodes.dialog.open)return;loading=true;
-    const previous=catalog;
+    const previous=catalog;lastInventoryCheck=Date.now();
     const previousCapacity=nodes.capacity.value;
     nodes.products.setAttribute('aria-busy','true');$('#error').hidden=true;$('#empty').hidden=true;$('#notice').hidden=true;
     if(!background){nodes.count.textContent='Cargando modelos…';$('#updated').textContent='Consultando catálogo…';}
     try{
-      const response=await fetch('inventory.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});
-      if(!response.ok)throw Error('No disponible');
-      catalog=valid(await response.json());
+      const incoming=await readInventory();
+      catalog=previous&&Date.parse(previous.updatedAt)>Date.parse(incoming.updatedAt)?previous:incoming;
       groups=groupProducts(catalog.products);
       await Promise.all([imagesReady,plansReady]);
       paintHero(catalog);
@@ -338,7 +352,7 @@
   $('#close').addEventListener('click',()=>nodes.dialog.close());
   nodes.dialog.addEventListener('click',event=>{if(event.target!==nodes.dialog)return;const r=nodes.dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)nodes.dialog.close();});
   $('#retry').addEventListener('click',()=>load());
-  setInterval(()=>{if(document.visibilityState==='visible')load(true);},5*60*1000);
+  setInterval(()=>{if(document.visibilityState==='visible'&&Date.now()-lastInventoryCheck>=(inventoryEndpoint?60:300)*1000)load(true);},60*1000);
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')load(true);});
   load();
 })();

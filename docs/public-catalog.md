@@ -153,3 +153,7 @@ La portada muestra «Recíbelo», «Revísalo» y «Paga» en tres líneas. Deba
 En iPhone/iPad se muestra el selector nativo real del sistema para elegir banco. En Android y escritorio se conserva el menú compacto con sus cinco logos originales azules, visibles en la lista y en el banco seleccionado. Los desplegables de capacidad, orden y variante usan 16 px para evitar el zoom de Safari. En escritorio se conserva el menú con logos, contenido dentro del modal.
 
 Prueba táctil: `node scripts/test-catalog-mobile.cjs`. Para WebKit: `CATALOG_BROWSER=webkit node scripts/test-catalog-mobile.cjs` (requiere WebKit de Playwright instalado). Comprueba filtros, orden, búsqueda, selección de bancos y cuotas, mensaje de WhatsApp, cambio a contado, cierre y tema, en cuatro tamaños. Es una prueba automatizada de motor WebKit, no una prueba en un iPhone físico.
+
+## Actualización independiente de GitHub Pages
+
+El servicio `workers/catalog` consulta ambas APIs cada cinco minutos y conserva en SQLite únicamente el catálogo público filtrado. La web está preparada para leer su `/inventory.json`, con respaldo estático de GitHub, comprobaciones cada minuto y preservación del diálogo/última lista reciente. La configuración inicial en `inventory-source.json` permanece vacía: el servicio requiere crear el Worker en la cuenta Cloudflare del propietario y guardar allí el secreto de Split antes de activar su URL pública. Guía: [Cloudflare](../workers/catalog/README.md).

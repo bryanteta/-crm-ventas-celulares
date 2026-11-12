@@ -17,3 +17,8 @@ android/provider-bootstrap.json
 
 # Generated GitHub Pages artifact.
 _catalog_site/
+
+# Local Cloudflare state and provider secrets.
+.wrangler/
+.dev.vars
+.dev.vars.*

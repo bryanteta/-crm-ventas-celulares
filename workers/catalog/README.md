@@ -2,7 +2,7 @@
 
 Servicio preparado para Cloudflare Workers Free, con un Durable Object respaldado por SQLite. Consulta las APIs de Samuel y Split cada cinco minutos. Reutiliza el mismo generador de catálogo que GitHub, con precio de proveedor + $80, agrupación por especificaciones y exclusión de datos privados. Solo almacena el JSON público completo.
 
-**Estado inicial:** `catalogo/inventory-source.json` tiene `endpoint` vacío. La web sigue leyendo su archivo de GitHub hasta conectar y verificar un Worker propio. No se ha desplegado este servicio en una cuenta desde la sesión de desarrollo.
+**Estado:** servicio desplegado en `https://lunivo-inventory.bra0307h.workers.dev` y URL configurada en `catalogo/inventory-source.json`. La web conserva el archivo de GitHub como respaldo. Se comprobó el catálogo público y la disponibilidad del secreto en producción, sin leer ni publicar su valor.
 
 ## Crear el Worker desde tu panel
 

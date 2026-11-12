@@ -1,4 +1,4 @@
 {
   "version": 1,
-  "endpoint": ""
+  "endpoint": "https://lunivo-inventory.bra0307h.workers.dev/inventory.json"
 }

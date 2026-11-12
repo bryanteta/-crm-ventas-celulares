@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-12T13:13:06.489Z",
+  "updatedAt": "2026-11-12T20:57:38.337Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -459,6 +459,24 @@
       "available": true
     },
     {
+      "id": "303ccab586a2c80b2a8e",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "128 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 48000,
+      "quantity": 1,
+      "available": true
+    },
+    {
       "id": "ba7f4623c8bac1e17633",
       "manufacturer": "Apple",
       "model": "iPhone 13",
@@ -473,7 +491,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 2,
+      "quantity": 3,
       "available": true
     },
     {
@@ -547,7 +565,7 @@
       "box": true,
       "ram": "",
       "priceCents": 49500,
-      "quantity": 3,
+      "quantity": 4,
       "available": true
     },
     {
@@ -893,24 +911,6 @@
       "available": true
     },
     {
-      "id": "397bdf22abe568575901",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro Max",
-      "capacity": "128 GB",
-      "color": "Verde",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 61000,
-      "quantity": 1,
-      "available": true
-    },
-    {
       "id": "a940993e85296643046e",
       "manufacturer": "Apple",
       "model": "iPhone 14",
@@ -1142,24 +1142,6 @@
       "ram": "",
       "priceCents": 73500,
       "quantity": 2,
-      "available": true
-    },
-    {
-      "id": "dc8f7c1e89299a9968b6",
-      "manufacturer": "Apple",
-      "model": "iPhone 14 Pro Max",
-      "capacity": "256 GB",
-      "color": "Dorado",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 74500,
-      "quantity": 1,
       "available": true
     },
     {
@@ -2249,24 +2231,6 @@
       "available": true
     },
     {
-      "id": "ce3913d94500b7aa5b6d",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Open Box",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 121000,
-      "quantity": 1,
-      "available": true
-    },
-    {
       "id": "00178614600d9d2cf7da",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
@@ -2319,24 +2283,6 @@
       "box": null,
       "ram": "",
       "priceCents": 133000,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "3865764fb1c51b021697",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro Max",
-      "capacity": "256 GB",
-      "color": "Plata",
-      "condition": "Nuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 141500,
       "quantity": 1,
       "available": true
     },
@@ -2395,6 +2341,24 @@
       "available": true
     },
     {
+      "id": "dc0bbae54abdb132435c",
+      "manufacturer": "Apple",
+      "model": "iPhone 18 Pro Max",
+      "capacity": "256 GB",
+      "color": "Borgoña",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 173000,
+      "quantity": 10,
+      "available": true
+    },
+    {
       "id": "ad89d4dbb3bd0b4872b5",
       "manufacturer": "Apple",
       "model": "iPhone 18 Pro Max",
@@ -2445,7 +2409,7 @@
       "box": null,
       "ram": "",
       "priceCents": 37000,
-      "quantity": 11,
+      "quantity": 10,
       "available": true
     },
     {
@@ -2574,7 +2538,7 @@
       "box": null,
       "ram": "",
       "priceCents": 75500,
-      "quantity": 16,
+      "quantity": 11,
       "available": true
     },
     {

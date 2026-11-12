@@ -141,3 +141,8 @@ test('photo framing stays within original images and keeps product asset bytes u
  for(const item of Object.values(m.products))if(item.framing){const f=item.framing;assert([f.x,f.y,f.width,f.height].every(Number.isFinite));assert(f.x>=0&&f.y>=0&&f.width>0&&f.height>0);assert(f.x+f.width<=item.width&&f.y+f.height<=item.height);}
  assert(m.products['Samsung S25 Ultra|Celeste'].framing.width<m.products['Samsung S25 Ultra|Celeste'].width);
 });
+test('new supplier aliases keep phone updates working while excluding watches',()=>{
+ const s=snapshot();s.providers.samuel.rows[0].model='GALAXY S24 ULTRA';s.providers.samuel.rows[0].color='TITANIO GRIS';s.providers.split.rows.push({...make('split'),id:'feed-split:watch',model:'APPLE WATCH SE 3 44MM',color:'',capacity:''});s.providers.split.total=2;
+ const d=buildCatalog(s);assert.equal(d.products.reduce((n,p)=>n+p.quantity,0),2);assert(!d.products.some(p=>/watch/i.test(p.model)));assert(d.products.some(p=>p.model==='Samsung S24 Ultra'&&p.color==='Gris'));
+ const core=require('../scripts/build-public-catalog.cjs');assert.equal(core.colorName('Naranja'),'Anaranjado');assert.deepEqual(core.modelName('Samsung Galaxy S24 Ultra'),{manufacturer:'Samsung',model:'Samsung S24 Ultra'});
+});

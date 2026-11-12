@@ -4,7 +4,7 @@ const {validate}=require('../feeds-core.js');
 const {suggestedPrice}=require('../sales-core.js');
 const title = s => s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 function modelName(raw) {
-  const s = String(raw).replace(/\s+/g, ' ').trim();
+  const s = String(raw).replace(/\s+/g, ' ').trim().replace(/^samsung\s+galaxy\s+/i,'Samsung ').replace(/^galaxy\s+/i,'Samsung ').replace(/^apple\s+(?=iphone\b)/i,'');
   let m = s.match(/^iphone\s*(\d{1,2}|SE)(?:\s+(pro\s*max|pro|plus|mini|air))?(?=\s|$)/i);
   if (m) return {manufacturer:'Apple', model:`iPhone ${m[1].toUpperCase()}${m[2] ? ' '+title(m[2].replace(/pro\s*max/i,'Pro Max')) : ''}`};
   m = s.match(/^samsung\s+(?:(z)\s*(fold|flip)\s*(\d{1,2})|((?:s|a|m|note)\s*\d{1,3})(?:\s*(ultra|fe|plus|\+))?)(?=\s|$)/i);
@@ -12,8 +12,9 @@ function modelName(raw) {
   throw Error('Modelo no reconocido: revisa la fuente antes de publicar.');
 }
 function colorName(raw) {
-  const colors = {blanco:'Blanco',white:'Blanco',negro:'Negro',black:'Negro',morado:'Morado',purple:'Morado',lila:'Lila',lilac:'Lila',lavanda:'Lila',lavender:'Lila',glaciar:'Glaciar',glacier:'Glaciar',verde:'Verde',green:'Verde',dorado:'Dorado',gold:'Dorado',azul:'Azul',blue:'Azul',rojo:'Rojo',red:'Rojo',celeste:'Celeste',amarillo:'Amarillo',yellow:'Amarillo',rosado:'Rosado',pink:'Rosado',rosa:'Rosado',desert:'Titanio desierto',gris:'Gris',gray:'Gris',grey:'Gris',anaranjado:'Anaranjado',orange:'Anaranjado',silver:'Plata',plata:'Plata',burgundy:'Borgoña',natural:'Titanio natural',titanio:'Titanio natural'};
+  const colors = {blanco:'Blanco',white:'Blanco',negro:'Negro',black:'Negro',morado:'Morado',purple:'Morado',lila:'Lila',lilac:'Lila',lavanda:'Lila',lavender:'Lila',glaciar:'Glaciar',glacier:'Glaciar',verde:'Verde',green:'Verde',dorado:'Dorado',gold:'Dorado',azul:'Azul',blue:'Azul',rojo:'Rojo',red:'Rojo',celeste:'Celeste',amarillo:'Amarillo',yellow:'Amarillo',rosado:'Rosado',pink:'Rosado',rosa:'Rosado',desert:'Titanio desierto',gris:'Gris',gray:'Gris',grey:'Gris',anaranjado:'Anaranjado',naranja:'Anaranjado',orange:'Anaranjado',silver:'Plata',plata:'Plata',burgundy:'Borgoña',natural:'Titanio natural',titanio:'Titanio natural'};
   const clean=String(raw).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  if(/\b(?:titanio|titanium)\s*(?:gris|gray|grey)\b|\b(?:gris|gray|grey)\s*(?:titanium|titanio)\b/.test(clean))return 'Gris';
   if(/\b(?:titanio|titanium)\s*(?:negro|black)\b|\b(?:black|negro)\s*(?:titanium|titanio)\b/.test(clean))return 'Negro';
   if(/\b(?:titanio|titanium)\s*(?:desierto|desert)\b|\bdesert\s*titanium\b/.test(clean))return 'Titanio desierto';
   const words=String(raw).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').match(/[a-z]+/g)||[];
@@ -35,6 +36,8 @@ function buildCatalog(snapshot, now=Date.now()) {
   for (const provider of ['samuel','split']) {
     const source=validate(provider,snapshot.providers?.[provider]);
     for (const r of source.rows) {
+      // This public catalog is for phones; wearables stay in the supplier/app.
+      if(/^(?:apple\s+watch|(?:samsung\s+)?galaxy\s+watch|samsung\s+watch)\b/i.test(r.model.trim()))continue;
       if (r.price<=0) throw Error('No se publican equipos sin un precio válido.');
       const device=modelName(r.model);
       if(r.color.trim()&&colorName(r.color)==='Color por confirmar')throw Error('El proveedor declara un color que el catálogo todavía no reconoce. Revisa su equivalencia antes de publicar; se conserva la lista anterior.');

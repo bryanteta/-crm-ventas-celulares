@@ -29,7 +29,7 @@ export class CatalogStore{
   async fetch(request){
     const path=new URL(request.url).pathname;
     if(path==='/refresh'&&request.method==='POST')return new Response(null,{status:await this.refresh()?204:503});
-    if(path==='/health')return Response.json({ready:Boolean(this.latest),updatedAt:this.latest?JSON.parse(this.latest).updatedAt:null},{headers:{...headers,'Cache-Control':'no-store'}});
+    if(path==='/health')return Response.json({ready:Boolean(this.latest),configured:Boolean(this.env.SPLIT_INVENTORY_TOKEN?.trim()),updatedAt:this.latest?JSON.parse(this.latest).updatedAt:null,attemptedAt:this.attempt?new Date(this.attempt).toISOString():null},{headers:{...headers,'Cache-Control':'no-store'}});
     if(path!=='/inventory.json'||!['GET','HEAD'].includes(request.method))return new Response(null,{status:404});
     if(!this.latest)await this.refresh();
     else if(Date.now()-Date.parse(JSON.parse(this.latest).updatedAt)>=INTERVAL&&Date.now()-this.attempt>=INTERVAL)this.ctx.waitUntil(this.refresh());

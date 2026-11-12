@@ -35,14 +35,16 @@
     }
     banks=data.banks;
   }).catch(()=>{});
-  const imagesReady=fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{
+  let lastImagesCheck=0;
+  function loadImages(){lastImagesCheck=Date.now();return fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{
     if(!r.ok)return;
     const data=await r.json();
     if(data.version!==2)return;
     for(const [key,item]of Object.entries(data.products||{})){
       if(key===item.model+'|'+item.color&&typeof item.color==='string'&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(item.path))images[key]=item;
     }
-  }).catch(()=>{});
+  }).catch(()=>{});}
+  const imagesReady=loadImages();
   const collator=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
   const batteryText=p=>p.manufacturer==='Samsung'?'en excelentes condiciones':(p.battery||'en excelente estado');
   const option=(value,label)=>{const item=document.createElement('option');item.value=value;item.textContent=label;return item;};
@@ -282,7 +284,7 @@
       const incoming=await readInventory();
       catalog=previous&&Date.parse(previous.updatedAt)>Date.parse(incoming.updatedAt)?previous:incoming;
       groups=groupProducts(catalog.products);
-      await Promise.all([imagesReady,plansReady]);
+      await Promise.all([Date.now()-lastImagesCheck>=5*60*1000?loadImages():imagesReady,plansReady]);
       paintHero(catalog);
       nodes.capacity.replaceChildren(option('all','Capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;

@@ -54,15 +54,19 @@ def download(entry):
     temporary.replace(target)
     return model, {**item, **framing, 'path': 'assets/products/' + filename, 'sha256': hashlib.sha256(data).hexdigest(), 'width': width, 'height': height}
 
-parser=argparse.ArgumentParser()
-parser.add_argument('--model',action='append',help='Download only the specified model (repeatable)')
-args=parser.parse_args()
-entries=[(model,item) for model,item in manifest['products'].items() if not args.model or item['model'] in args.model]
-if args.model and set(args.model)-{item['model'] for item in manifest['products'].values()}:
-    raise ValueError('Unknown model')
-with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-    results = list(pool.map(download, entries))
-manifest['products'].update(dict(results))
-manifest['products'] = dict(sorted(manifest['products'].items()))
-manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-print('Official model images saved:', len(results))
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--model',action='append',help='Download only the specified model (repeatable)')
+    args=parser.parse_args()
+    entries=[(model,item) for model,item in manifest['products'].items() if not args.model or item['model'] in args.model]
+    if args.model and set(args.model)-{item['model'] for item in manifest['products'].values()}:
+        raise ValueError('Unknown model')
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+        results = list(pool.map(download, entries))
+    manifest['products'].update(dict(results))
+    manifest['products'] = dict(sorted(manifest['products'].items()))
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    print('Official model images saved:', len(results))
+
+if __name__ == '__main__':
+    main()

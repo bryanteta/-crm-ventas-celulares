@@ -36,7 +36,7 @@ function buildCatalog(snapshot, now=Date.now()) {
   for (const provider of ['samuel','split']) {
     const source=validate(provider,snapshot.providers?.[provider]);
     for (const r of source.rows) {
-      // This public catalog is for phones; wearables stay in the supplier/app.
+      // This public catalog is for phones; wearables are excluded from the phone inventory.
       if(/^(?:apple\s+watch|(?:samsung\s+)?galaxy\s+watch|samsung\s+watch)\b/i.test(r.model.trim()))continue;
       if (r.price<=0) throw Error('No se publican equipos sin un precio válido.');
       const device=modelName(r.model);

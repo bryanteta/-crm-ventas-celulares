@@ -31,3 +31,15 @@ test('Samuel JSON API rejects HTML, malformed wrappers, missing columns, partial
  const now=Date.now(),base={columnas:['Modelo','Color','Capacidad','Batería','Categoría','Precio Venta','Observaciones'],filas:[['iPhone 13','Negro','128 GB','100%','A','350','']],ahora:now,leido:now};
  for(const data of ['<html>Login</html>',{c:'invalid'},{...base,filas:null},{...base,columnas:base.columnas.slice(1)},{...base,filas:[['short']]},{...base,filas:[[...base.filas[0].slice(0,5),'NaN','']]},{...base,filas:[[...base.filas[0].slice(0,5),'-1','']]},{...base,leido:'bad'},{...base,leido:now+300001},{...base,columnas:[...base.columnas.slice(0,6),'Modelo']}])a.throws(()=>core.samuelApi(data));
 });
+
+test('both live feeds and CSV exclude wearables while validating complete raw totals',()=>{
+ const watch=['Apple Watch SE 3 44MM','Negro','44MM','','44MM','A','$200.00','Disponible',''];
+ a.equal(core.samuel(sheet([row,watch])).total,1);
+ const now=Date.now(),data={columnas:['Modelo','Color','Capacidad','Batería','Categoría','Precio Venta','Observaciones'],filas:[['iPhone 13','Negro','128 GB','100%','A','350',''],['Apple Watch SE 3 44MM','Negro','44MM','','A','200','']],ahora:now,leido:now};
+ a.equal(core.samuelApi(data).total,1);
+ const raw=api();raw.items.push({id:3,origen:'SPLIT',modelo:'Galaxy Watch 7',precio:200,color:'Negro'});raw.total++;
+ a.equal(core.split(raw).total,2);a.throws(()=>core.split({...raw,total:2}),'excluding a watch must not allow a truncated phone response');
+ const cached=core.split(api()),wearable={...cached.rows[0],id:'feed-split:old-watch',model:'Apple Watch SE 3'};cached.rows.push(wearable);cached.total+=wearable.quantity;
+ const source={offers:[],sales:[{model:wearable.model}],inventory:[{model:wearable.model,quantity:1}]},next=core.replace(source,'split',cached,new Date().toISOString());
+ a.equal(next.offers.some(o=>/watch/i.test(o.model)),false);a.equal(next.providerFeeds.split.total,2);a.deepEqual(next.sales,source.sales);a.deepEqual(next.inventory,source.inventory);
+});

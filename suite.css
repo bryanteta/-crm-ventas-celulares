@@ -87,3 +87,5 @@
 :root[data-theme=dark] .courtesy-badge{background:#214536;color:#a3e0c0}
 
 .gift-unavailable{opacity:.65}.gift-unavailable .accessory-pick small{font-style:italic}
+
+.inventory-model-heading{grid-column:1/-1;font-size:.9rem;font-weight:700;margin:1.2rem 0 .2rem;padding:.3rem 0;color:inherit;letter-spacing:.01em}.inventory-model-heading:first-child{margin-top:.25rem}

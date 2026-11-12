@@ -7,15 +7,11 @@ const normalize=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036
 const details=o=>[o.model,o.capacity,o.color,o.category,o.battery,o.notes].filter(Boolean).join(' · ');
 const modelOrder=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
 let api=null,family='',rowCount=0;
-function modelKey(o){
- // Group by model for browsing only. Capacity, condition and price remain separate rows.
- let name=normalize(o.model.split(' · ')[0]);if(name.includes('iphone'))name=name.replace(/\bnormal\b/g,'');return name.replace(/\b(?:apple|samsung|galaxy)\b/g,'').replace(/\b\d+\s*(?:gb|tb|ram)\b/g,'').replace(/[-–—|]/g,' ').replace(/\s+/g,' ').trim();
-}
-function displayModel(o){let value=o.model.split(' · ')[0];if(o.capacity)value=value.replace(/\b\d+\s*(?:GB|TB)\b/gi,'');if(/iphone/i.test(value))value=value.replace(/\bnormal\b/gi,'');value=value.replace(/\b\d+\s*RAM\b/gi,'').trim().replace(/[-–—|]+$/g,'').replace(/\s+/g,' ').trim();if(value===value.toUpperCase())value=value.toLowerCase().replace(/\b[a-z]/g,c=>c.toUpperCase());return value.replace(/\biphone\b/gi,'iPhone').replace(/\bIphone Se\b/gi,'iPhone SE');}
-function specs(o){const seen=new Set();return[o.capacity,o.color,o.category,o.battery?'Batería '+o.battery:'',o.notes].filter(Boolean).flatMap(value=>value.split(' · ')).filter(value=>{const key=normalize(value).replace(/\s/g,'');if(!key||seen.has(key))return false;seen.add(key);return true;}).join(' · ');}
+const modelKey=core.devices.modelKey,displayModel=core.devices.model;
+function specs(o){const seen=new Set();return[core.devices.capacity(o),core.devices.color(o),o.category,o.battery?'Batería '+o.battery:'',o.notes].filter(Boolean).flatMap(value=>value.split(' · ')).filter(value=>{const key=normalize(value).replace(/\s/g,'');if(!key||seen.has(key))return false;seen.add(key);return true;}).join(' · ');}
 function rows(data){
- return [...data.offers.map(o=>({...o,provider:core.providerForOffer(o),supplier:core.supplierName(o)})),
- ...data.inventory.filter(item=>core.providerForOwner(item.ownerId)&&!data.providerFeeds?.[core.providerForOwner(item.ownerId)]).map(item=>({id:'provider-stock:'+item.id,stockId:item.id,ownerId:item.ownerId,provider:core.providerForOwner(item.ownerId),supplier:core.providerForOwner(item.ownerId)==='split'?'Split':'Samuel',model:item.model,price:item.cost,quantity:item.quantity,source:'stock',stock:item}))];
+ return [...data.offers.filter(o=>!core.devices.isWearable(o)).map(o=>({...o,provider:core.providerForOffer(o),supplier:core.supplierName(o)})),
+ ...data.inventory.filter(item=>!core.devices.isWearable(item)&&core.providerForOwner(item.ownerId)&&!data.providerFeeds?.[core.providerForOwner(item.ownerId)]).map(item=>({id:'provider-stock:'+item.id,stockId:item.id,ownerId:item.ownerId,provider:core.providerForOwner(item.ownerId),supplier:core.providerForOwner(item.ownerId)==='split'?'Split':'Samuel',model:item.model,price:item.cost,quantity:item.quantity,source:'stock',stock:item}))];
 }
 function link(choice,active){
  const a=el('a',undefined,'provider-card');a.href=choice.url;a.dataset.inventoryProvider=choice.id;
@@ -45,7 +41,7 @@ function render(data){
   const b=button(choice.id?choice.name:'Todo Split',()=>{const query=new URLSearchParams({provider:'split'});if(choice.id)query.set('owner',choice.id);location.hash='#ventas/proveedores?'+query;});b.dataset.providerOwner=choice.id;b.setAttribute('aria-pressed',String(choice.id===owner));ownFilters.append(b);
  }
  const all=rows(data);rowCount=all.length;const model=$('#provider-model'),oldModel=model.value,models=new Map();
- for(const row of all){const key=modelKey(row);if(key&&!models.has(key))models.set(key,row.model.split(' · ')[0]);}
+ for(const row of all){const key=modelKey(row);if(key&&!models.has(key))models.set(key,displayModel(row));}
  window.LunivoList.options(model,'Todos los modelos',[...models].sort((a,b)=>a[1].localeCompare(b[1],'es',{numeric:true})));model.value=oldModel;if(model.selectedIndex<0)model.value='';
  const base=all.filter(o=>(!provider||o.provider===provider)&&(!owner||o.ownerId===owner));
  const variant=$('#offer-variant'),oldVariant=variant.value,variants=new Map();for(const row of base)variants.set(core.variant(row),details(row));
@@ -55,12 +51,13 @@ function render(data){
  for(const b of document.querySelectorAll('[data-provider-family]'))b.setAttribute('aria-pressed',String(b.dataset.providerFamily===family));
  const filtered=base.filter(o=>(!family||core.phoneFamily(o)===family)&&(!model.value||modelKey(o)===model.value)&&(!variant.value||core.variant(o)===variant.value)&&(!$('#provider-available').checked||o.quantity>0)&&query.every(term=>normalize(details(o)+' '+o.supplier+' '+core.ownerName(o.ownerId)).includes(term)));
  const direction=$('#offer-sort').value==='model-desc'?-1:1;
- filtered.sort((a,b)=>direction*(modelOrder.compare(displayModel(a),displayModel(b))||modelOrder.compare(details(a),details(b)))||a.supplier.localeCompare(b.supplier,'es')||a.id.localeCompare(b.id));
+ filtered.sort((a,b)=>direction*(core.devices.compare(a,b)||modelOrder.compare(details(a),details(b)))||a.supplier.localeCompare(b.supplier,'es')||a.id.localeCompare(b.id));
  const units=filtered.reduce((n,o)=>n+o.quantity,0);$('#provider-results').textContent=units+' equipo'+(units===1?' disponible':'s disponibles')+(owner?' · '+core.ownerName(owner):provider==='samuel'?' · Samuel':provider==='split'?' · Split':'');
  const list=$('#offers-list'),openId=list.querySelector('[open]')?.dataset.offerId;list.replaceChildren();
  if(!filtered.length)list.append(el('p',all.length?'No hay equipos con esta búsqueda. Prueba otro modelo o quita los filtros en Más opciones.':'Actualiza el inventario para consultar los equipos de tus proveedores.','empty'));
  const count=window.LunivoList.limit(list,[location.hash,$('#offer-search').value,model.value,variant.value,family,$('#provider-available').checked,$('#offer-sort').value].join('|'));
- for(const o of filtered.slice(0,count)){
+ let previousModel='';for(const o of filtered.slice(0,count)){
+  const group=displayModel(o);if(group!==previousModel){const heading=el('h3',group,'inventory-model-heading');list.append(heading);previousModel=group;}
   const row=el('details',undefined,'suite-offer compact-device-card');row.dataset.offerId=o.id;row.dataset.provider=o.provider;if(o.stockId)row.dataset.providerStockId=o.stockId;row.open=o.id===openId;
   const parts=o.model.split(' · '),isStock=Boolean(o.stockId),splitOwner=o.provider==='split'&&['saul','javier'].includes(o.ownerId),summary=window.LunivoInventory.cardSummary({model:displayModel(o),description:isStock?[core.inventoryBrand(o.stock),...parts.slice(1)].join(' · '):specs(o),ownerName:isStock||splitOwner?core.ownerName(o.ownerId):o.supplier,ownerLabel:isStock||splitOwner?o.supplier+' · Dueño':'Proveedor',quantity:o.quantity,amount:core.suggestedPrice(o.price),purchasePrice:o.price});
   const ownerText=splitOwner?'Split · '+core.ownerName(o.ownerId):o.supplier;summary.querySelector('.device-card-owner').textContent=ownerText;summary.querySelector('.device-card-owner').setAttribute('aria-label','Proveedor: '+o.supplier+(o.ownerId?' · Dueño: '+core.ownerName(o.ownerId):''));summary.querySelector('.device-card-units').remove();summary.querySelector('.device-card-status').textContent=o.quantity>0?o.quantity+' disponible'+(o.quantity===1?'':'s'):'Agotado';

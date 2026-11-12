@@ -22,3 +22,6 @@ _catalog_site/
 .wrangler/
 .dev.vars
 .dev.vars.*
+
+__pycache__/
+*.pyc

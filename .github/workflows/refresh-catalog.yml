@@ -12,6 +12,7 @@ on:
       - 'scripts/fetch-provider-snapshot.py'
       - 'scripts/build-public-catalog.cjs'
       - 'scripts/catalog-core.cjs'
+      - 'device-core.js'
       - 'feeds-core.js'
       - 'sales-core.js'
       - 'catalogo/index.html'

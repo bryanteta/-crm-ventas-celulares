@@ -1,0 +1,28 @@
+import importlib.util
+import pathlib
+import unittest
+spec = importlib.util.spec_from_file_location('discovery', pathlib.Path(__file__).resolve().parent.parent / 'scripts/discover-catalog-images.py')
+d = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(d)
+
+class ExactImageTests(unittest.TestCase):
+    def test_apple_exact_selector_and_original_url(self):
+        css = '.image-compare-iphone-13-pink{background-image:url(/v/iphone/compare/an/images/pink_large_2x.jpg)}.image-compare-iphone-13-pro-black{background-image:url(/pro_large_2x.jpg)}'
+        candidates = d.apple_candidates(css, 'https://www.apple.com/style.css')
+        result = d.resolve({'model':'iPhone 13','color':'Rosado'}, candidates, {}, {})
+        self.assertEqual(result['sourceImage'], 'https://www.apple.com/v/iphone/compare/an/images/pink_large_2x.jpg')
+        self.assertIsNone(d.resolve({'model':'iPhone 13 Pro','color':'Rosado'}, candidates, {}, {}))
+        self.assertIsNone(d.resolve({'model':'iPhone 13','color':'Color por confirmar'}, candidates, {}, {}))
+    def test_no_guessing_ambiguous_finishes_or_overwriting_reviewed_color(self):
+        apple = {('iPhone 13','blue'):{}, ('iPhone 13','deepblue'):{}}
+        self.assertIsNone(d.resolve({'model':'iPhone 13','color':'Azul'}, apple, {}, {}))
+        self.assertIsNotNone(d.resolve({'model':'iPhone 13','color':'Azul'}, apple, {}, {'iPhone 13|Azul':{'officialColor':'blue'}}))
+    def test_samsung_uses_color_chip_and_model_metadata_not_random_gallery(self):
+        item={'fmyChipList':[{'fmyChipType':'COLOR','fmyChipName':'Sky Blue'}], 'largeUrl':'//images.samsung.com/skyblue', 'originPdpUrl':'/uk/galaxy-s26-ultra-sky-blue/', 'modelCode':'SM-test'}
+        data={'response':{'resultData':{'productList':[{'fmyMarketingName':'Galaxy S26 Ultra', 'modelList':[item]}]}}}
+        result=d.samsung_candidates(data)
+        self.assertEqual(result['Samsung S26 Ultra','Celeste']['sourceImage'],'https://images.samsung.com/skyblue?$624_624_PNG$')
+        self.assertNotIn(('Samsung S26','Celeste'),result)
+        item['largeUrl']='//untrusted.example/wrong';self.assertEqual(d.samsung_candidates(data),{})
+        item['largeUrl']='//images.samsung.com/a';item['fmyChipList'][0]['fmyChipName']='Unknown';self.assertEqual(d.samsung_candidates(data),{})
+if __name__ == '__main__':unittest.main()

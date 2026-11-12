@@ -1,4 +1,4 @@
-(function(root,factory){const core=factory();if(typeof module==='object'&&module.exports)module.exports=core;else root.LunivoSalesCore=core;})(typeof window==='object'?window:globalThis,()=>{
+(function(root,factory){const core=factory(typeof module==='object'&&module.exports?require('./device-core.js'):root.LunivoDevices);if(typeof module==='object'&&module.exports)module.exports=core;else root.LunivoSalesCore=core;})(typeof window==='object'?window:globalThis,(devices)=>{
  'use strict';
  function money(value){const s=String(value).trim();if(!/^\d{1,9}(?:\.\d{1,2})?$/.test(s))throw Error('Escribe un importe válido con hasta dos decimales.');const[a,b='']=s.split('.');return Number(a)*100+Number(b.padEnd(2,'0'));}
  const DEFAULT_MARKUP=8000;
@@ -13,7 +13,7 @@
  const providerFilter=value=>value==='tecnoshop'?'samuel':['samuel','split'].includes(value)?value:'';
  const providerForOffer=offer=>isTecnoShop(offer)||String(offer.supplier||'').trim().toLowerCase()==='samuel'?'samuel':/^split(?:\b|$)/i.test(offer.supplier||'')?'split':'other';
  const supplierName=offer=>providerForOffer(offer)==='samuel'?'Samuel':offer.supplier;
- const phoneFamily=item=>/\bi\s*phone\b/i.test(item.model||'')?'iphone':/samsung|galaxy/i.test((item.brand||'')+' '+(item.model||''))?'samsung':'';
+ const phoneFamily=devices.family;
  const ownerName=id=>OWNERS.find(o=>o.id===id)?.name||'Sin asignar';
  function inventoryBrand(item){if(item.brand?.trim())return item.brand.trim();const name=item.model||'';for(const[pattern,brand]of[[/iphone|apple/i,'Apple'],[/samsung|galaxy/i,'Samsung'],[/xiaomi|redmi|poco/i,'Xiaomi'],[/honor/i,'Honor'],[/huawei/i,'Huawei'],[/motorola|moto /i,'Motorola'],[/pixel|google/i,'Google']])if(pattern.test(name))return brand;return 'Sin marca';}
  function accessoryTotal(items){if(!Array.isArray(items)||items.length>30)throw Error('Revisa los accesorios de la venta.');const ids=new Set();let total=0;for(const item of items){if(!item||typeof item.id!=='string'||!item.id||ids.has(item.id)||typeof item.name!=='string'||!item.name.trim()||item.name.length>150||typeof item.catalogId!=='string'||!Number.isSafeInteger(item.price)||item.price<0)throw Error('Cada accesorio debe tener un nombre y precio válidos.');ids.add(item.id);total+=item.price;}if(!Number.isSafeInteger(total))throw Error('Importe demasiado grande.');return total;}
@@ -61,5 +61,5 @@
   if(before.stockDeducted&&before.stockId&&delta!==0){item=data.inventory.find(i=>i.id===before.stockId);if(!item)throw Error('El equipo ya no está en Mis equipos.');next=item.quantity+delta;if(!Number.isSafeInteger(next)||next<0||!Number.isSafeInteger(next*item.cost))throw Error('No hay suficientes unidades disponibles para este cambio.');}
   if(item)item.quantity=next;data.sales=data.sales.map(s=>s.id===id?r:s);return data;
  }
- return{DEFAULT_MARKUP,suggestedPrice,editSale,money,totals,variant,summary,validateSale,applyStock,phoneFamily,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop,providerForOwner,providerForOffer,providerFilter,supplierName};
+ return{devices,DEFAULT_MARKUP,suggestedPrice,editSale,money,totals,variant,summary,validateSale,applyStock,phoneFamily,OWNERS,ownerName,inventoryBrand,accessoryTotal,SPLIT_OWNERS,inSplit,isTecnoShop,providerForOwner,providerForOffer,providerFilter,supplierName};
 });

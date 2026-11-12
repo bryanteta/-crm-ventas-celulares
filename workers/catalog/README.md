@@ -36,7 +36,7 @@ Los cron son consultas periódicas, no eventos instantáneos del proveedor. Clou
 
 ## Evitar compilaciones innecesarias
 
-En **Settings → Builds → Build watch paths**, si aparece esa opción, limita las rutas a `workers/catalog/**`, `scripts/catalog-core.cjs`, `feeds-core.js` y `sales-core.js`. Así, los cambios de inventario estático de GitHub no vuelven a compilar el Worker. La actualización de los datos se ejecuta por cron independientemente de los builds.
+En **Settings → Builds → Build watch paths**, si aparece esa opción, limita las rutas a `workers/catalog/**`, `scripts/catalog-core.cjs`, `device-core.js`, `feeds-core.js` y `sales-core.js`. Así, los cambios de inventario estático de GitHub no vuelven a compilar el Worker. La actualización de los datos se ejecuta por cron independientemente de los builds.
 
 ## Desarrollo y verificación
 

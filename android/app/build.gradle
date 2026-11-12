@@ -16,8 +16,8 @@ android {
         applicationId 'com.crmcelulares.app'
         minSdk 26
         targetSdk 35
-        versionCode 54
-        versionName '1.7.19'
+        versionCode 55
+        versionName '1.7.20'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField 'String', 'FIREBASE_API_KEY', groovy.json.JsonOutput.toJson(firebaseConfig.getProperty('apiKey', ''))
         buildConfigField 'String', 'FIREBASE_PROJECT_ID', groovy.json.JsonOutput.toJson(firebaseConfig.getProperty('projectId', ''))
@@ -54,7 +54,7 @@ android {
 // Package the same interface used by browser development and functional tests.
 def prepareWebAssets = tasks.register('prepareWebAssets', Sync) {
     from(rootProject.projectDir.parentFile) {
-        include 'index.html', 'app.css', 'app.js', 'list-ui.js', 'data-store.js', 'sync-ui.js', 'profiles-ui.js', 'suite.js', 'sale-edit.js', 'prepared-devices.js', 'updater.js', 'suite-sync.js', 'sales-core.js', 'suite.css', 'launch.js', 'receipt-core.js', 'warranty.js', 'warranty-gifts.js', 'inventory.js', 'providers.js', 'feeds-core.js', 'feeds-ui.js', 'settings-ui.js', 'appearance.js', 'theme.css', 'experience.css', 'experience.js', 'accessories.js', 'assets/**'
+        include 'index.html', 'app.css', 'app.js', 'list-ui.js', 'data-store.js', 'sync-ui.js', 'profiles-ui.js', 'suite.js', 'sale-edit.js', 'prepared-devices.js', 'updater.js', 'suite-sync.js', 'device-core.js', 'sales-core.js', 'suite.css', 'launch.js', 'receipt-core.js', 'warranty.js', 'warranty-gifts.js', 'inventory.js', 'providers.js', 'feeds-core.js', 'feeds-ui.js', 'settings-ui.js', 'appearance.js', 'theme.css', 'experience.css', 'experience.js', 'accessories.js', 'assets/**'
     }
     if (!project.hasProperty('publicRelease')) { from(rootProject.file('provider-bootstrap.json')) { into 'assets' } }
     into(layout.buildDirectory.dir('generated/crmAssets/www'))

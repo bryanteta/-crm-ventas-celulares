@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-12T20:57:38.337Z",
+  "updatedAt": "2026-11-13T01:47:05.282Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -174,26 +174,6 @@
       "color": "Negro",
       "condition": "Seminuevo",
       "grade": "A+",
-      "battery": "100%",
-      "observations": [
-        "Aviso de pantalla"
-      ],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 35500,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "7cd8e7f73c5eb2487f53",
-      "manufacturer": "Apple",
-      "model": "iPhone 12",
-      "capacity": "64 GB",
-      "color": "Verde",
-      "condition": "Seminuevo",
-      "grade": "A",
       "battery": "100%",
       "observations": [
         "Aviso de pantalla"
@@ -1286,24 +1266,6 @@
       "ram": "",
       "priceCents": 69500,
       "quantity": 2,
-      "available": true
-    },
-    {
-      "id": "28b849636589ea61bbd5",
-      "manufacturer": "Apple",
-      "model": "iPhone 15",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 69500,
-      "quantity": 1,
       "available": true
     },
     {
@@ -2445,7 +2407,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 11,
+      "quantity": 9,
       "available": true
     },
     {
@@ -2463,7 +2425,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 15,
+      "quantity": 13,
       "available": true
     },
     {

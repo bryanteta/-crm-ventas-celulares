@@ -11,20 +11,20 @@ async function run(browserType,options){
  await p.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));
  await p.route(origin+'inventory.json',r=>r.fulfill({json:inventory}));
  await p.goto(origin);await p.locator('.view').first().click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
- a.equal(await p.locator('#gallery-counter').innerText(),'1 / 3');a.equal(await p.locator('#gallery-thumbs button').count(),3);
- await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Detalle de cámaras');
+ a.equal(await p.locator('#gallery-counter').innerText(),'1 / 2');a.equal(await p.locator('#gallery-thumbs button').count(),2);
+ const firstPhoto=await p.locator('#gallery-photo').getAttribute('src');await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista posterior');a.notEqual(await p.locator('#gallery-photo').getAttribute('src'),firstPhoto,'another perspective uses a different image file');
  await p.locator('#gallery-prev').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista general');
- await p.locator('#gallery-thumbs button').last().click();a.equal(await p.locator('#gallery-caption').innerText(),'Detalle de pantalla');
- await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / 3');
- await p.locator('#gallery-open').focus();await p.keyboard.press('ArrowRight');a.equal(await p.locator('#gallery-counter').innerText(),'2 / 3');
+ await p.locator('#gallery-thumbs button').last().click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista posterior');
+ await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / 2');
+ await p.locator('#gallery-open').focus();await p.keyboard.press('ArrowRight');a.equal(await p.locator('#gallery-counter').innerText(),'2 / 2');
  await p.locator('#gallery-open').click();a(await p.locator('#photo-viewer').isVisible());a(await p.locator('#details').isVisible());
  await p.locator('#zoom-in').click();a.equal(await p.locator('#zoom-level').innerText(),'150%');a(await p.locator('#zoom-viewport').evaluate(n=>n.scrollWidth>n.clientWidth));
  const panBox=await p.locator('#zoom-viewport').boundingBox(),panBefore=await p.locator('#zoom-viewport').evaluate(n=>n.scrollLeft);await p.mouse.move(panBox.x+panBox.width/2,panBox.y+panBox.height/2);await p.mouse.down();await p.mouse.move(panBox.x+panBox.width/2-50,panBox.y+panBox.height/2-40,{steps:4});await p.mouse.up();a.notEqual(await p.locator('#zoom-viewport').evaluate(n=>n.scrollLeft),panBefore,'enlarged photo can be dragged');
  for(let i=0;i<5;i++)await p.locator('#zoom-in').click();a.equal(await p.locator('#zoom-level').innerText(),'400%');a(await p.locator('#zoom-in').isDisabled());
  await p.locator('#zoom-reset').click();a.equal(await p.locator('#zoom-level').innerText(),'100%');a(await p.locator('#zoom-out').isDisabled());
- await p.locator('#zoom-next').click();a((await p.locator('#zoom-counter').innerText()).includes('Detalle de pantalla'));
+ await p.locator('#zoom-next').click();a((await p.locator('#zoom-counter').innerText()).includes('Vista general'));
  await p.keyboard.press('Escape');a(!(await p.locator('#photo-viewer').isVisible()));a(await p.locator('#details').isVisible());
- const colors=await p.locator('#detail-colors button').count();if(colors>1){await p.locator('#detail-colors button').nth(1).click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / 3');a((await p.locator('#gallery-photo').getAttribute('alt')).includes(await p.locator('#detail-colors button').nth(1).getAttribute('aria-label')));}
+ const colors=await p.locator('#detail-colors button').count();if(colors>1){await p.locator('#detail-colors button').nth(1).click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / 2');a((await p.locator('#gallery-photo').getAttribute('alt')).includes(await p.locator('#detail-colors button').nth(1).getAttribute('aria-label')));}
  // Exercise all widths/themes without changing the inventory or selected price.
  await p.locator('[name=payment][value=installments]').check();await p.evaluate(()=>{const s=document.querySelector('#payment-bank');s.value='cuscatlan';s.dispatchEvent(new Event('change',{bubbles:true}));});await p.locator('[name=installment-term][value="36"]').check();
  const price=await p.locator('#detail-price').innerText();
@@ -62,11 +62,11 @@ async function run(browserType,options){
  // A photo from another color, remote URL or malformed entry cannot enter a gallery.
  const first=inventory.products[0],key=first.model+'|'+first.color,original=pictures.products[key];
  await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{[key]:{...original,gallery:[{...original,path:'https://untrusted.invalid/wrong.jpg',label:'Wrong'},{...original,color:'Another color',path:'assets/products/wrong-color.jpg',label:'Wrong color'}]}}}}));
- await p.reload();await p.locator('.view').first().click();a.equal(await p.locator('#gallery-thumbs button').count(),3);a.equal(await p.getByRole('button',{name:'Wrong',exact:true}).count(),0);await p.locator('#close').click();
+ await p.reload();await p.locator('.view').first().click();a.equal(await p.locator('#gallery-thumbs button').count(),1);a(!(await p.locator('#gallery-thumbs').isVisible()),'one photo never creates fake repeated views');a(!(await p.locator('#gallery-controls').isVisible()));a.equal(await p.getByRole('button',{name:'Wrong',exact:true}).count(),0);await p.locator('#close').click();
  await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{}}}));await p.reload();await p.locator('.view').first().click();a(await p.locator('#gallery-empty').isVisible());a(!(await p.locator('#gallery-open').isVisible()));a(!(await p.locator('#gallery-controls').isVisible()));
- await p.locator('#close').click();await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{[key]:{...original,path:'assets/products/photo-unavailable.jpg',gallery:[]}}}}));await p.route('**/photo-unavailable.jpg*',r=>r.fulfill({status:404,body:''}));await p.reload();await p.locator('.view').first().click();await p.locator('#gallery-empty').waitFor({state:'visible'});a(await p.locator('#gallery-open').isDisabled());a((await p.locator('#gallery-empty').innerText()).includes('No pudimos cargar'));await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-counter').innerText(),'2 / 3');
+ await p.locator('#close').click();await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{[key]:{...original,path:'assets/products/photo-unavailable.jpg',gallery:[]}}}}));await p.route('**/photo-unavailable.jpg*',r=>r.fulfill({status:404,body:''}));await p.reload();await p.locator('.view').first().click();await p.locator('#gallery-empty').waitFor({state:'visible'});a(await p.locator('#gallery-open').isDisabled());a((await p.locator('#gallery-empty').innerText()).includes('No pudimos cargar'));a(!(await p.locator('#gallery-next').isVisible()));
  await p.locator('#close').click();await p.route('**/gallery.js*',r=>r.abort());await p.reload();await p.locator('.view').first().click();a(await p.locator('#details').isVisible(),'device details still work if gallery JS cannot load');a(!(await p.locator('#device-gallery').isVisible()));a((await p.locator('#consult').getAttribute('href')).startsWith('https://api.whatsapp.com/'));
- a.deepEqual(errors,[]);console.log('PASS '+browserType.name()+': exact-color gallery, official perspectives, close-ups, wrap, keyboard, thumbnails, zoom controls, pinch/swipe, nested dialogs, color reset, unchanged payments, responsive themes and safe missing/invalid images.');
+ a.deepEqual(errors,[]);console.log('PASS '+browserType.name()+': exact-color gallery, distinct official photos, no repeated crops, wrap, keyboard, thumbnails, zoom controls, pinch/swipe, nested dialogs, color reset, unchanged payments, responsive themes and safe missing/invalid images.');
  }finally{await browser.close()}
 }
 (async()=>{if(process.env.TEST_WEBKIT!=='only')await run(chromium,{executablePath:process.env.CI?undefined:'/usr/bin/chromium',args:['--no-sandbox']});if(process.env.TEST_WEBKIT)await run(webkit,{});})().catch(e=>{console.error(e);process.exitCode=1});

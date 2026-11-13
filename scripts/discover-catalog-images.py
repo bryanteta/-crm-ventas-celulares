@@ -35,13 +35,15 @@ def apple_candidates(css, base):
 APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight', 'graphite', 'spaceblack', 'blacktitanium'), 'Morado': ('purple',), 'Lila': ('purple',), 'Rosado': ('pink',), 'Rojo': ('red',), 'Verde': ('green',), 'Azul': ('blue', 'deepblue'), 'Celeste': ('blue', 'skyblue'), 'Amarillo': ('yellow',), 'Plata': ('silver',), 'Dorado': ('gold',), 'Anaranjado': ('cosmicorange', 'orange'), 'Titanio natural': ('naturaltitanium',), 'Titanio desierto': ('deserttitanium',)}
 SAMSUNG_COLORS = {'black': 'Negro', 'phantom black': 'Negro', 'titanium black': 'Negro', 'white': 'Blanco', 'phantom white': 'Blanco', 'titanium white silver': 'Blanco', 'gray': 'Gris', 'grey': 'Gris', 'titanium gray': 'Gris', 'titanium grey': 'Gris', 'silver': 'Plata', 'phantom silver': 'Plata', 'blue': 'Azul', 'navy': 'Azul', 'sky blue': 'Celeste', 'icyblue': 'Celeste', 'pink': 'Rosado', 'green': 'Verde', 'mint': 'Verde', 'yellow': 'Amarillo', 'cream': 'Crema', 'lavender': 'Lila'}
 
-def samsung_candidates(data):
+def samsung_candidates(data, include_unknown=False):
     result = {}
     rows = data['response']['resultData']['productList']
     for product in rows:
         name = re.sub(r'\s*\([^)]*\)', '', product['fmyMarketingName']).strip()
         name = re.sub(r'\s+5G$', '', name)
-        # Renewed and other editions are not silently mapped onto a base model.
+        name = re.sub(r'\s+Certified Re-Newed$', '', name)
+        name = re.sub(r'(\d)\+', r'\1 Plus', name)
+        # Keep unrelated hardware editions separate; renewed phones share the same exterior model.
         if not re.fullmatch(r'Galaxy (?:[SAM]\d+|Note\s?\d+|Z (?:Flip|Fold)\d+)(?: (?:Ultra|FE|Plus|\+))?', name):
             continue
         name = 'Samsung ' + name.removeprefix('Galaxy ')
@@ -50,8 +52,10 @@ def samsung_candidates(data):
             chips = [c for c in item.get('fmyChipList', []) if c.get('fmyChipType') == 'COLOR']
             if len(chips) != 1:
                 continue
+            page=item.get('originPdpUrl') or item.get('pdpUrl')
+            if not isinstance(page,str) or not page.startswith('/'):continue
             finish = chips[0]['fmyChipName']
-            color = SAMSUNG_COLORS.get(finish.lower())
+            color = SAMSUNG_COLORS.get(finish.lower()) or (finish if include_unknown else None)
             photo = item.get('largeUrl', '')
             if not color or not photo.startswith('//images.samsung.com/'):
                 continue
@@ -59,11 +63,12 @@ def samsung_candidates(data):
             for url, alt in zip(item.get('galleryImage') or [], item.get('galleryImageAlt') or []):
                 if not url.startswith('//images.samsung.com/') or item['modelCode'].lower() not in url.lower() or finish.lower() not in alt.lower():
                     continue
-                labels = [('DeviceBackL30', 'Parte posterior'), ('DeviceBackR30', 'Vista posterior lateral'), ('DeviceFrontL30', 'Vista frontal lateral'), ('DeviceFrontR30', 'Vista frontal lateral'), ('DeviceFront', 'Frente')]
-                label = next((label for marker, label in labels if marker.lower() in alt.lower()), None)
+                labels = [('closedback','Cerrado · reverso'), ('openfront','Abierto · frente'), ('openback','Abierto · reverso'), ('backl30','Parte posterior'), ('backr30','Vista posterior lateral'), ('frontl30','Vista frontal lateral'), ('frontr30','Vista frontal lateral opuesta'), ('front2','Frente'), ('front','Frente'), ('back','Reverso')]
+                normalized_alt=alt.lower().replace('devicepen','device')
+                label = next((label for marker,label in labels if re.search(r'\b(?:device)?'+marker+r'\b',normalized_alt)),None)
                 if label and not any(g['label'] == label for g in gallery):
                     gallery.append({'sourceImage': 'https:' + url + '?$900_900_PNG$', 'label': label})
-            result.setdefault((name, color), {'sourceImage': 'https:' + photo + '?$624_624_PNG$', 'sourcePage': 'https://www.samsung.com' + item['originPdpUrl'], 'sourceSku': item['modelCode'], 'credit': 'Samsung', 'officialColor': finish, 'gallerySources': gallery[:4]})
+            result.setdefault((name, color), {'sourceImage': 'https:' + photo + '?$624_624_PNG$', 'sourcePage': 'https://www.samsung.com' + page, 'sourceSku': item['modelCode'], 'credit': 'Samsung', 'officialColor': finish, 'gallerySources': gallery[:4]})
     return result
 
 def resolve(product, apple, samsung, reviewed):

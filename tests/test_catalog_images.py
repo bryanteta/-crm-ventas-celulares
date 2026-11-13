@@ -33,4 +33,14 @@ class ExactImageTests(unittest.TestCase):
         views=d.samsung_candidates(data)['Samsung S26 Ultra','Celeste']['gallerySources']
         self.assertEqual([v['label'] for v in views],['Parte posterior','Frente'])
         self.assertTrue(all('sm-123blue' in v['sourceImage'] for v in views))
+    def test_apple_store_matches_exact_model_and_finish_excluding_boxes_and_color_groups(self):
+        spec=importlib.util.spec_from_file_location('g', pathlib.Path(__file__).resolve().parent.parent / 'scripts/fetch-catalog-galleries.py')
+        g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
+        prefix='https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/'
+        page=' '.join(prefix+x for x in ['refurb-iphone-15-pro-bluetitanium-202412?wid=1000','refurb-iphone-15-pro-bluetitanium-202412_AV2?wid=1000','refurb-iphone-15-pro-bluetitanium-202412_AV1_GEO_US?wid=1000','refurb-iphone-og-202408?wid=1000'])
+        result=g.apple_store_candidates(page,'https://www.apple.com/shop/refurbished/iphone')
+        self.assertEqual(list(result),[('iPhone 15 Pro','bluetitanium')])
+        self.assertNotIn('AV',result['iPhone 15 Pro','bluetitanium']['sourceImage'])
+        self.assertIsNone(g.legacy_apple_candidate({'model':'iPhone 18 Pro','officialColor':'black'}))
+        self.assertIsNone(g.legacy_apple_candidate({'model':'iPhone 13','officialColor':'Color por confirmar'}))
 if __name__ == '__main__':unittest.main()

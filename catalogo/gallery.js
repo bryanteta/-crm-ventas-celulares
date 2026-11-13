@@ -35,18 +35,8 @@
     if(safe(picture)){
       const high=(Array.isArray(picture.gallery)?picture.gallery:[]).find(art=>safe(art)&&art.model===device.model&&art.color===device.color&&art.label==='Vista general en alta resolución');
       const general=high||picture;slides.push({...general,label:'Vista general'});
-      for(const art of (Array.isArray(picture.gallery)?picture.gallery:[]).slice(0,6))if(safe(art)&&art.model===device.model&&art.color===device.color&&!slides.some(s=>s.path===art.path))slides.push({...art,label:typeof art.label==='string'?art.label.slice(0,60):'Otra perspectiva'});
-      // The official Apple comparison photo contains both sides. Offer honest
-      // close-ups from that photo when individual manufacturer views are absent.
-      if(slides.length===1&&device.manufacturer==='Apple'&&/compare_iphone/.test(picture.sourceImage||'')){
-        const w=general.width,h=general.height;
-        slides.push({...general,label:'Detalle de cámaras',framing:{x:0,y:0,width:Math.ceil(w*.57),height:Math.ceil(h*.56)}});
-        slides.push({...general,label:'Detalle de pantalla',framing:{x:Math.floor(w*.37),y:0,width:w-Math.floor(w*.37),height:h}});
-      }else if(slides.length===1){
-        const base=general.framing||{x:0,y:0,width:general.width,height:general.height};
-        slides.push({...general,label:'Detalle superior',framing:{...base,height:Math.ceil(base.height*.6)}});
-        const offset=Math.floor(base.height*.4);slides.push({...general,label:'Detalle inferior',framing:{...base,y:base.y+offset,height:base.height-offset}});
-      }
+      for(const art of (Array.isArray(picture.gallery)?picture.gallery:[]).slice(0,6))if(safe(art)&&art.model===device.model&&art.color===device.color&&!slides.some(s=>s.path===art.path||(typeof s.sha256==='string'&&s.sha256===art.sha256)))slides.push({...art,label:typeof art.label==='string'?art.label.slice(0,60):'Otra perspectiva'});
+
     }
     section.setAttribute('aria-label','Fotos de '+device.model+', '+device.color);
     $('gallery-thumbs').replaceChildren();$('gallery-thumbs').hidden=slides.length<2;
@@ -55,7 +45,7 @@
       const crop=document.createElement('span');crop.className='gallery-crop';const img=document.createElement('img');img.alt='';img.loading='lazy';img.decoding='async';img.draggable=false;crop.append(img);b.append(crop);frame(img,art);img.src=src(art);b.addEventListener('click',()=>select(i));$('gallery-thumbs').append(b);
     }
     for(const id of ['gallery-prev','gallery-next','zoom-prev','zoom-next'])$(id).hidden=slides.length<2;
-    $('gallery-controls').hidden=!slides.length;stage.hidden=!slides.length;$('gallery-empty').hidden=Boolean(slides.length);
+    $('gallery-controls').hidden=slides.length<2;stage.hidden=!slides.length;$('gallery-empty').hidden=Boolean(slides.length);
     $('gallery-empty').textContent='Foto de este color pendiente';
     if(slides.length)select(0);
   }

@@ -129,7 +129,89 @@
         "y": 121,
         "width": 373,
         "height": 382
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s918uzkaxaa/gallery/us-galaxy-s23-s918-sm5s918uzkaxaa-thumb-549145891?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s23-ultra-certified-re-newed-256gb-sku-sm5s918uzkaxaa",
+          "sourceSku": "SM5S918UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Phantom Black",
+          "label": "Frente",
+          "model": "Samsung S23 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 350,
+            "y": 299,
+            "width": 201,
+            "height": 301
+          },
+          "path": "assets/products/samsung-s23-ultra-negro-gallery-1.png",
+          "sha256": "b6bb083baa25a481970a86cd27c826b49146d3ea728031cb7f8f85f9f5a41aa5",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s918uzkaxaa/gallery/us-galaxy-s23-s918-sm5s918uzkaxaa-thumb-549145892?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s23-ultra-certified-re-newed-256gb-sku-sm5s918uzkaxaa",
+          "sourceSku": "SM5S918UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Phantom Black",
+          "label": "Vista frontal lateral",
+          "model": "Samsung S23 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 355,
+            "y": 289,
+            "width": 187,
+            "height": 325
+          },
+          "path": "assets/products/samsung-s23-ultra-negro-gallery-2.png",
+          "sha256": "84d8197e79f2d6a984312f9c974353607225cb19fa24dae2fb0d9a4f69a1fbf0",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s918uzkaxaa/gallery/us-galaxy-s23-s918-sm5s918uzkaxaa-thumb-549145893?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s23-ultra-certified-re-newed-256gb-sku-sm5s918uzkaxaa",
+          "sourceSku": "SM5S918UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Phantom Black",
+          "label": "Vista frontal lateral opuesta",
+          "model": "Samsung S23 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 359,
+            "y": 289,
+            "width": 187,
+            "height": 325
+          },
+          "path": "assets/products/samsung-s23-ultra-negro-gallery-3.png",
+          "sha256": "7775ab758c6d2853ca34b593d7fd4520ab1b8c0c030ff059c7864529f89072e7",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s918uzkaxaa/gallery/us-galaxy-s23-s918-sm5s918uzkaxaa-thumb-549145894?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s23-ultra-certified-re-newed-256gb-sku-sm5s918uzkaxaa",
+          "sourceSku": "SM5S918UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Phantom Black",
+          "label": "Reverso",
+          "model": "Samsung S23 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 350,
+            "y": 299,
+            "width": 201,
+            "height": 301
+          },
+          "path": "assets/products/samsung-s23-ultra-negro-gallery-4.png",
+          "sha256": "173b42152963a03fc387248ae6c1d1bae56621582817742d629b09f7b4538e5d",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S24 Ultra|Gris": {
       "model": "Samsung S24 Ultra",
@@ -148,7 +230,89 @@
       "path": "assets/products/samsung-s24-ultra-gris.png",
       "sha256": "8a21aa79534c8a60cc3e01a6fedfbea36573fadafb3496cd1ad0bfff522698eb",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/latin/2401/gallery/latin-galaxy-s24-s928-sm-s928bztugto-thumb-539326289?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/latin/smartphones/galaxy-s/galaxy-s24-ultra-titanium-gray-512gb-sm-s928bztugto/",
+          "sourceSku": "SM-S928BZTUGTO",
+          "credit": "Samsung",
+          "officialColor": "Titanium Gray",
+          "label": "Reverso",
+          "model": "Samsung S24 Ultra",
+          "color": "Gris",
+          "framing": {
+            "x": 372,
+            "y": 298,
+            "width": 156,
+            "height": 305
+          },
+          "path": "assets/products/samsung-s24-ultra-gris-gallery-1.png",
+          "sha256": "769b5846fdeabb90c284ffcf5d5f1b691e6916fdad545008f89d7f59aeec2fb6",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/latin/2401/gallery/latin-galaxy-s24-s928-sm-s928bztugto-thumb-539326290?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/latin/smartphones/galaxy-s/galaxy-s24-ultra-titanium-gray-512gb-sm-s928bztugto/",
+          "sourceSku": "SM-S928BZTUGTO",
+          "credit": "Samsung",
+          "officialColor": "Titanium Gray",
+          "label": "Parte posterior",
+          "model": "Samsung S24 Ultra",
+          "color": "Gris",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s24-ultra-gris-gallery-2.png",
+          "sha256": "06ea72133954ac77ad9da8574ef6e7aec8a5dca484ae9a99b8cfe3dd011f0174",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/latin/2401/gallery/latin-galaxy-s24-s928-sm-s928bztugto-thumb-539326291?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/latin/smartphones/galaxy-s/galaxy-s24-ultra-titanium-gray-512gb-sm-s928bztugto/",
+          "sourceSku": "SM-S928BZTUGTO",
+          "credit": "Samsung",
+          "officialColor": "Titanium Gray",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S24 Ultra",
+          "color": "Gris",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s24-ultra-gris-gallery-3.png",
+          "sha256": "641890f8a77a16a9fbbcc2ddb4f51b7bf3eb341225fc5c83a14af696f7e0ee90",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/latin/2401/gallery/latin-galaxy-s24-s928-sm-s928bztugto-thumb-539326292?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/latin/smartphones/galaxy-s/galaxy-s24-ultra-titanium-gray-512gb-sm-s928bztugto/",
+          "sourceSku": "SM-S928BZTUGTO",
+          "credit": "Samsung",
+          "officialColor": "Titanium Gray",
+          "label": "Frente",
+          "model": "Samsung S24 Ultra",
+          "color": "Gris",
+          "framing": {
+            "x": 373,
+            "y": 298,
+            "width": 156,
+            "height": 305
+          },
+          "path": "assets/products/samsung-s24-ultra-gris-gallery-4.png",
+          "sha256": "41e8ab2f2c6c73b1166b671f2ad86270476c200000896cd7cc80d649c187b377",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S24 Ultra|Negro": {
       "model": "Samsung S24 Ultra",
@@ -167,7 +331,89 @@
       "path": "assets/products/samsung-s24-ultra-negro.png",
       "sha256": "162427d83d437aac7b2c1a31adbbf6438b5d3d3c5922aa6498ce3a4de83c72e4",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s928uzkexaa/gallery/us-galaxy-s24-s928-562376-sm5s928uzkexaa-thumb-548727662?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s24-ultra-certified-re-newed-256gb-sku-sm5s928uzkexaa",
+          "sourceSku": "SM5S928UZKEXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Reverso",
+          "model": "Samsung S24 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 372,
+            "y": 298,
+            "width": 156,
+            "height": 305
+          },
+          "path": "assets/products/samsung-s24-ultra-negro-gallery-1.png",
+          "sha256": "289d61f5f4786b2d1f1fb81fcf3cbce75a154ff6f449c81a199dbe6c6759fd21",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s928uzkexaa/gallery/us-galaxy-s24-s928-562376-sm5s928uzkexaa-thumb-548727663?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s24-ultra-certified-re-newed-256gb-sku-sm5s928uzkexaa",
+          "sourceSku": "SM5S928UZKEXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Parte posterior",
+          "model": "Samsung S24 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s24-ultra-negro-gallery-2.png",
+          "sha256": "e46ff5537c37ecc0846b13e541eb27e801740456602bb463dd3c5d5d9aff31ad",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s928uzkexaa/gallery/us-galaxy-s24-s928-562376-sm5s928uzkexaa-thumb-548727664?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s24-ultra-certified-re-newed-256gb-sku-sm5s928uzkexaa",
+          "sourceSku": "SM5S928UZKEXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S24 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s24-ultra-negro-gallery-3.png",
+          "sha256": "ce83e88a00c360449bdb6202a0d90864ca58e4ae5af8512d415eff4841e60459",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s928uzkexaa/gallery/us-galaxy-s24-s928-562376-sm5s928uzkexaa-thumb-548727665?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s24-ultra-certified-re-newed-256gb-sku-sm5s928uzkexaa",
+          "sourceSku": "SM5S928UZKEXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Frente",
+          "model": "Samsung S24 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 372,
+            "y": 298,
+            "width": 157,
+            "height": 305
+          },
+          "path": "assets/products/samsung-s24-ultra-negro-gallery-4.png",
+          "sha256": "de96577ceb6da2dd81ae9bd227fee5017c3ae23229d1df3aefcee996ff87c8cb",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S25 FE|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s731uzkaxaa/gallery/us-galaxy-s25-fe-sm-s731-sm-s731uzkaxaa-548774008?$product-details-jpg$",
@@ -187,7 +433,69 @@
         "y": 54,
         "width": 591,
         "height": 1173
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-s731bzkdeub/gallery/uk-galaxy-s25-fe-sm-s731-sm-s731bzkdeub-thumb-548911415?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s25-fe-jetblack-128gb-sm-s731bzkdeub/",
+          "sourceSku": "SM-S731BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Jetblack",
+          "label": "Parte posterior",
+          "model": "Samsung S25 FE",
+          "color": "Negro",
+          "framing": {
+            "x": 381,
+            "y": 294,
+            "width": 138,
+            "height": 312
+          },
+          "path": "assets/products/samsung-s25-fe-negro-gallery-2.png",
+          "sha256": "a734c682339d2bc2ea69dedad151cd484baa2c75894d84e767a16fec6c135e7b",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-s731bzkdeub/gallery/uk-galaxy-s25-fe-sm-s731-sm-s731bzkdeub-thumb-548911416?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s25-fe-jetblack-128gb-sm-s731bzkdeub/",
+          "sourceSku": "SM-S731BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Jetblack",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S25 FE",
+          "color": "Negro",
+          "framing": {
+            "x": 382,
+            "y": 294,
+            "width": 138,
+            "height": 312
+          },
+          "path": "assets/products/samsung-s25-fe-negro-gallery-3.png",
+          "sha256": "7f1aeeb07e850a0a82570df0cc002efa17e8a2b9da028fb5e5209bac3cea578a",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-s731bzkdeub/gallery/uk-galaxy-s25-fe-sm-s731-sm-s731bzkdeub-thumb-548911417?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s25-fe-jetblack-128gb-sm-s731bzkdeub/",
+          "sourceSku": "SM-S731BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Jetblack",
+          "label": "Frente",
+          "model": "Samsung S25 FE",
+          "color": "Negro",
+          "framing": {
+            "x": 375,
+            "y": 299,
+            "width": 152,
+            "height": 302
+          },
+          "path": "assets/products/samsung-s25-fe-negro-gallery-4.png",
+          "sha256": "f25465c70587d712a53f7a3a4f6a5a832b06565177faadd7c9442545ae50c85f",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S25 Ultra|Azul": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzbfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzbfxaa-548617513?$product-details-jpg$",
@@ -207,7 +515,89 @@
         "y": 48,
         "width": 1177,
         "height": 1186
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840776?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Reverso",
+          "model": "Samsung S25 Ultra",
+          "color": "Azul",
+          "framing": {
+            "x": 373,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s25-ultra-azul-gallery-1.png",
+          "sha256": "a6c08412b2d736619b565712bac4aa43e84a50bb16bddd7762010c4a41458288",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840760?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Parte posterior",
+          "model": "Samsung S25 Ultra",
+          "color": "Azul",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s25-ultra-azul-gallery-2.png",
+          "sha256": "f914b2bb5f299ffd96758999e86b782b1129ee98e7bd087d8ebce396a341f981",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840761?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S25 Ultra",
+          "color": "Azul",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s25-ultra-azul-gallery-3.png",
+          "sha256": "ff5db0eb0044e848af1f43621cc24d1500b65b7cc55ab834491735b13381d92d",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840762?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Frente",
+          "model": "Samsung S25 Ultra",
+          "color": "Azul",
+          "framing": {
+            "x": 374,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s25-ultra-azul-gallery-4.png",
+          "sha256": "2d0f64589797402be3599c0ba0031f87b71fb0c67aa82350cf655fc917336707",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S25 Ultra|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzbfxaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzbfxaa-548617513?$product-details-jpg$",
@@ -227,7 +617,89 @@
         "y": 48,
         "width": 1177,
         "height": 1186
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840776?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Reverso",
+          "model": "Samsung S25 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 373,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s25-ultra-celeste-gallery-1.png",
+          "sha256": "a6c08412b2d736619b565712bac4aa43e84a50bb16bddd7762010c4a41458288",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840760?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Parte posterior",
+          "model": "Samsung S25 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s25-ultra-celeste-gallery-2.png",
+          "sha256": "f914b2bb5f299ffd96758999e86b782b1129ee98e7bd087d8ebce396a341f981",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840761?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S25 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s25-ultra-celeste-gallery-3.png",
+          "sha256": "ff5db0eb0044e848af1f43621cc24d1500b65b7cc55ab834491735b13381d92d",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzbfxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzbfxaa-thumb-549840762?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-1tb-sku-sm5s938uzbfxaa",
+          "sourceSku": "SM5S938UZBFXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Silverblue",
+          "label": "Frente",
+          "model": "Samsung S25 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 374,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s25-ultra-celeste-gallery-4.png",
+          "sha256": "2d0f64589797402be3599c0ba0031f87b71fb0c67aa82350cf655fc917336707",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S25 Ultra|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s938uzkexaa/gallery/us-galaxy-s25-s938-536276-sm-s938uzkexaa-548617962?$product-details-jpg$",
@@ -247,7 +719,89 @@
         "y": 48,
         "width": 1177,
         "height": 1186
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzkaxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzkaxaa-thumb-549841019?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-256gb-sku-sm5s938uzkaxaa",
+          "sourceSku": "SM5S938UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Reverso",
+          "model": "Samsung S25 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 373,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s25-ultra-negro-gallery-1.png",
+          "sha256": "a7e40e4c0c355258a26045089526e0832a872e7745ab57098c027c315c8c9956",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzkaxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzkaxaa-thumb-549841020?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-256gb-sku-sm5s938uzkaxaa",
+          "sourceSku": "SM5S938UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Parte posterior",
+          "model": "Samsung S25 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s25-ultra-negro-gallery-2.png",
+          "sha256": "5ac62243a391b84799118790a7ac5ed183932422cb8c433e586a0010ff043bc4",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzkaxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzkaxaa-thumb-549841024?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-256gb-sku-sm5s938uzkaxaa",
+          "sourceSku": "SM5S938UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S25 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s25-ultra-negro-gallery-3.png",
+          "sha256": "7f13d6180ae3c6582e5ccdcd0670a03a40773d85e8a2195e4410d2348788a33b",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s938uzkaxaa/gallery/us-galaxy-s25-s938-570119-sm5s938uzkaxaa-thumb-549841025?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-ultra-certified-re-newed-256gb-sku-sm5s938uzkaxaa",
+          "sourceSku": "SM5S938UZKAXAA",
+          "credit": "Samsung",
+          "officialColor": "Titanium Black",
+          "label": "Frente",
+          "model": "Samsung S25 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 374,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s25-ultra-negro-gallery-4.png",
+          "sha256": "f3045ec0c8dac1b18236ab5eddd37433d0f6462e874e69909f431630788aa29f",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S25|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931ulbaxaa/gallery/us-galaxy-s25-s931-551170-sm-s931ulbaxaa-547068836?$product-details-jpg$",
@@ -267,7 +821,69 @@
         "y": 106,
         "width": 543,
         "height": 1068
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s931ulbexaa/gallery/us-galaxy-s25-s931-sm5s931ulbexaa-thumb-549766021?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-certified-re-newed-256gb-sku-sm5s931ulbexaa",
+          "sourceSku": "SM5S931ULBEXAA",
+          "credit": "Samsung",
+          "officialColor": "Icyblue",
+          "label": "Parte posterior",
+          "model": "Samsung S25",
+          "color": "Celeste",
+          "framing": {
+            "x": 386,
+            "y": 308,
+            "width": 129,
+            "height": 284
+          },
+          "path": "assets/products/samsung-s25-celeste-gallery-2.png",
+          "sha256": "a31fef978e1f3f4830aebdc27b529dd168103f8369928a0e614296eb5e66ce63",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s931ulbexaa/gallery/us-galaxy-s25-s931-sm5s931ulbexaa-thumb-549766022?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-certified-re-newed-256gb-sku-sm5s931ulbexaa",
+          "sourceSku": "SM5S931ULBEXAA",
+          "credit": "Samsung",
+          "officialColor": "Icyblue",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S25",
+          "color": "Celeste",
+          "framing": {
+            "x": 386,
+            "y": 308,
+            "width": 129,
+            "height": 284
+          },
+          "path": "assets/products/samsung-s25-celeste-gallery-3.png",
+          "sha256": "57d6f3b57e6738c171458b854d4e8ea3caf50f7bf572fc3a9ec901afb194b5cd",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5s931ulbexaa/gallery/us-galaxy-s25-s931-sm5s931ulbexaa-thumb-549766023?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s-series/certified-re-newed-store/buy/galaxy-s25-certified-re-newed-256gb-sku-sm5s931ulbexaa",
+          "sourceSku": "SM5S931ULBEXAA",
+          "credit": "Samsung",
+          "officialColor": "Icyblue",
+          "label": "Frente",
+          "model": "Samsung S25",
+          "color": "Celeste",
+          "framing": {
+            "x": 380,
+            "y": 311,
+            "width": 142,
+            "height": 278
+          },
+          "path": "assets/products/samsung-s25-celeste-gallery-4.png",
+          "sha256": "424b0900c0e029df6f66e19fe1f4439e7fb40afc76cb40214d8469df58229cae",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S25|Gris": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s931uzsaxaa/gallery/us-galaxy-s25-s931-551170-sm-s931uzsaxaa-547069570?$product-details-jpg$",
@@ -287,7 +903,69 @@
         "y": 106,
         "width": 543,
         "height": 1068
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm5s931bzsdeub/gallery/uk-galaxy-s25-s931-570905-570905-sm5s931bzsdeub-thumb-554842844?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s25-silver-shadow-128gb-certified-re-newed-sm5s931bzsdeub/",
+          "sourceSku": "SM5S931BZSDEUB",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Parte posterior",
+          "model": "Samsung S25",
+          "color": "Gris",
+          "framing": {
+            "x": 386,
+            "y": 308,
+            "width": 129,
+            "height": 284
+          },
+          "path": "assets/products/samsung-s25-gris-gallery-2.png",
+          "sha256": "ad9b5de51b77fe4dc4195940f6b763f761745d543e3d74a72daea591af658e0c",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm5s931bzsdeub/gallery/uk-galaxy-s25-s931-570905-570905-sm5s931bzsdeub-thumb-554842845?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s25-silver-shadow-128gb-certified-re-newed-sm5s931bzsdeub/",
+          "sourceSku": "SM5S931BZSDEUB",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S25",
+          "color": "Gris",
+          "framing": {
+            "x": 386,
+            "y": 308,
+            "width": 129,
+            "height": 284
+          },
+          "path": "assets/products/samsung-s25-gris-gallery-3.png",
+          "sha256": "d5e23736f1d18217b879de4a45d96b7836eefb9e54b3ac39b28ff48e2a7f4c8d",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm5s931bzsdeub/gallery/uk-galaxy-s25-s931-570905-570905-sm5s931bzsdeub-thumb-554842846?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s25-silver-shadow-128gb-certified-re-newed-sm5s931bzsdeub/",
+          "sourceSku": "SM5S931BZSDEUB",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Frente",
+          "model": "Samsung S25",
+          "color": "Gris",
+          "framing": {
+            "x": 380,
+            "y": 311,
+            "width": 142,
+            "height": 278
+          },
+          "path": "assets/products/samsung-s25-gris-gallery-4.png",
+          "sha256": "3d2ecdc2825e7ce7574c5596f98a4c4c18a0ec2d159cc93b30cea67233c422b5",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26 FE|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s741uzkaxaa/gallery/us-galaxy-s26-fe-sm-s741-sm-s741uzkaxaa-554292693?$product-details-jpg$",
@@ -307,7 +985,69 @@
         "y": 53,
         "width": 592,
         "height": 1174
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s741uzkaatt/gallery/us-galaxy-s26-fe-sm-s741-sm-s741uzkaatt-thumb-554292664?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-fe/buy/galaxy-s26-fe-128gb-at-t-sku-sm-s741uzkaatt",
+          "sourceSku": "SM-S741UZKAATT",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Parte posterior",
+          "model": "Samsung S26 FE",
+          "color": "Negro",
+          "framing": {
+            "x": 380,
+            "y": 292,
+            "width": 141,
+            "height": 316
+          },
+          "path": "assets/products/samsung-s26-fe-negro-gallery-2.png",
+          "sha256": "e1723cb934972b400cc9ca057cbbddf7d32a4bfe2b85fba855dddfbd914d0813",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s741uzkaatt/gallery/us-galaxy-s26-fe-sm-s741-sm-s741uzkaatt-thumb-554292665?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-fe/buy/galaxy-s26-fe-128gb-at-t-sku-sm-s741uzkaatt",
+          "sourceSku": "SM-S741UZKAATT",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26 FE",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 292,
+            "width": 142,
+            "height": 316
+          },
+          "path": "assets/products/samsung-s26-fe-negro-gallery-3.png",
+          "sha256": "7b4b3eedbaa7468f2740c15a5b8b63621f6f62e99d54810dd7dbcbe638db7029",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm-s741uzkaatt/gallery/us-galaxy-s26-fe-sm-s741-sm-s741uzkaatt-thumb-554292666?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-s26-fe/buy/galaxy-s26-fe-128gb-at-t-sku-sm-s741uzkaatt",
+          "sourceSku": "SM-S741UZKAATT",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Frente",
+          "model": "Samsung S26 FE",
+          "color": "Negro",
+          "framing": {
+            "x": 375,
+            "y": 299,
+            "width": 152,
+            "height": 302
+          },
+          "path": "assets/products/samsung-s26-fe-negro-gallery-4.png",
+          "sha256": "24670ce8156a66944c07a66e0f01e0fece6c28944b801bae1faa0ccdf4a5a5e2",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26 Plus|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s947-sm-s947uzkaxaa-550994730?$product-details-jpg$",
@@ -327,7 +1067,69 @@
         "y": 67,
         "width": 581,
         "height": 1146
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s947-578750-sm-s947bzkdeub-thumb-550901658?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-plus-black-256gb-sm-s947bzkdeub/",
+          "sourceSku": "SM-S947BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Parte posterior",
+          "model": "Samsung S26 Plus",
+          "color": "Negro",
+          "framing": {
+            "x": 382,
+            "y": 297,
+            "width": 137,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s26-plus-negro-gallery-2.png",
+          "sha256": "6eda5015d66583322a6878aa2fd04ba06623f8be15d07b9fb9bc0759750123a5",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s947-578750-sm-s947bzkdeub-thumb-550901659?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-plus-black-256gb-sm-s947bzkdeub/",
+          "sourceSku": "SM-S947BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26 Plus",
+          "color": "Negro",
+          "framing": {
+            "x": 382,
+            "y": 297,
+            "width": 137,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s26-plus-negro-gallery-3.png",
+          "sha256": "67e57c94e40eeb7e48e24cb5563a7a0e12f7c20a54ac97bafc74b6ec1194c1c3",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s947-578750-sm-s947bzkdeub-thumb-550901660?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-plus-black-256gb-sm-s947bzkdeub/",
+          "sourceSku": "SM-S947BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Frente",
+          "model": "Samsung S26 Plus",
+          "color": "Negro",
+          "framing": {
+            "x": 376,
+            "y": 302,
+            "width": 150,
+            "height": 296
+          },
+          "path": "assets/products/samsung-s26-plus-negro-gallery-4.png",
+          "sha256": "55c0c996a31116c41583bdc9be87e0c96088a06d0ae6470e2ba1a604c7b4b92d",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26 Ultra|Celeste": {
       "model": "Samsung S26 Ultra",
@@ -550,7 +1352,69 @@
         "y": 99,
         "width": 551,
         "height": 1082
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942blbgeub-thumb-550898978?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-sky-blue-256gb-sm-s942blbgeub/",
+          "sourceSku": "SM-S942BLBGEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Parte posterior",
+          "model": "Samsung S26",
+          "color": "Celeste",
+          "framing": {
+            "x": 386,
+            "y": 305,
+            "width": 130,
+            "height": 290
+          },
+          "path": "assets/products/samsung-s26-celeste-gallery-2.png",
+          "sha256": "169f6099272af4df08243a0b46c6d80837f980d74a5b58b233037dc907cfd890",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942blbgeub-thumb-550898979?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-sky-blue-256gb-sm-s942blbgeub/",
+          "sourceSku": "SM-S942BLBGEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26",
+          "color": "Celeste",
+          "framing": {
+            "x": 385,
+            "y": 305,
+            "width": 130,
+            "height": 290
+          },
+          "path": "assets/products/samsung-s26-celeste-gallery-3.png",
+          "sha256": "716050c7c593b7b8662643982c25d105cecd2c637eae548c92c723fa68420d55",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942blbgeub-thumb-550898980?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-sky-blue-256gb-sm-s942blbgeub/",
+          "sourceSku": "SM-S942BLBGEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Frente",
+          "model": "Samsung S26",
+          "color": "Celeste",
+          "framing": {
+            "x": 379,
+            "y": 310,
+            "width": 144,
+            "height": 280
+          },
+          "path": "assets/products/samsung-s26-celeste-gallery-4.png",
+          "sha256": "8b21b63fa069dd8ecf7b783268550d1372f019b5ce7af68942e8facdbd908588",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26|Morado": {
       "model": "Samsung S26",
@@ -570,7 +1434,89 @@
       "path": "assets/products/samsung-s26-morado.png",
       "sha256": "24ab1c7ce3752a85f4be2c81f7b66d98f63c2566a13d3c8696ad2400a0267b80",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzvheub-thumb-550899168?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-cobalt-violet-512gb-sm-s942bzvheub/",
+          "sourceSku": "SM-S942BZVHEUB",
+          "credit": "Samsung",
+          "officialColor": "Cobalt Violet",
+          "label": "Reverso",
+          "model": "Samsung S26",
+          "color": "Morado",
+          "framing": {
+            "x": 378,
+            "y": 310,
+            "width": 144,
+            "height": 280
+          },
+          "path": "assets/products/samsung-s26-morado-gallery-1.png",
+          "sha256": "7b19b6e3093e5a9f64e1271c20a1f7b89b66c4095ae73c354a4ff11fd568e1fd",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzvheub-thumb-550899169?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-cobalt-violet-512gb-sm-s942bzvheub/",
+          "sourceSku": "SM-S942BZVHEUB",
+          "credit": "Samsung",
+          "officialColor": "Cobalt Violet",
+          "label": "Parte posterior",
+          "model": "Samsung S26",
+          "color": "Morado",
+          "framing": {
+            "x": 386,
+            "y": 305,
+            "width": 130,
+            "height": 290
+          },
+          "path": "assets/products/samsung-s26-morado-gallery-2.png",
+          "sha256": "d9443b2b72e755d754b6a28d63914685898762b3f6eb266697d201f6fafc2816",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzvheub-thumb-550899170?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-cobalt-violet-512gb-sm-s942bzvheub/",
+          "sourceSku": "SM-S942BZVHEUB",
+          "credit": "Samsung",
+          "officialColor": "Cobalt Violet",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26",
+          "color": "Morado",
+          "framing": {
+            "x": 385,
+            "y": 305,
+            "width": 130,
+            "height": 290
+          },
+          "path": "assets/products/samsung-s26-morado-gallery-3.png",
+          "sha256": "f4d2f13536d220c49fd7c5f73ef7efb865f5d2cf35e0255f82e15c9de7c1cc29",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzvheub-thumb-550899167?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-cobalt-violet-512gb-sm-s942bzvheub/",
+          "sourceSku": "SM-S942BZVHEUB",
+          "credit": "Samsung",
+          "officialColor": "Cobalt Violet",
+          "label": "Frente",
+          "model": "Samsung S26",
+          "color": "Morado",
+          "framing": {
+            "x": 379,
+            "y": 310,
+            "width": 144,
+            "height": 280
+          },
+          "path": "assets/products/samsung-s26-morado-gallery-4.png",
+          "sha256": "8afb984662882e6ab86220ae0b8b773dd5d801169bec7b02485e528e10f499fa",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942uzkexaa-550995412?$product-details-jpg$",
@@ -590,7 +1536,69 @@
         "y": 99,
         "width": 551,
         "height": 1082
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzkgeub-thumb-550899058?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-black-256gb-sm-s942bzkgeub/",
+          "sourceSku": "SM-S942BZKGEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Parte posterior",
+          "model": "Samsung S26",
+          "color": "Negro",
+          "framing": {
+            "x": 386,
+            "y": 305,
+            "width": 130,
+            "height": 290
+          },
+          "path": "assets/products/samsung-s26-negro-gallery-2.png",
+          "sha256": "3d3c2cc27fd805ea8582a629718c2e6d08f47d44ed66e46724c14174cf2464cf",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzkgeub-thumb-550899059?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-black-256gb-sm-s942bzkgeub/",
+          "sourceSku": "SM-S942BZKGEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26",
+          "color": "Negro",
+          "framing": {
+            "x": 385,
+            "y": 305,
+            "width": 130,
+            "height": 290
+          },
+          "path": "assets/products/samsung-s26-negro-gallery-3.png",
+          "sha256": "19c86ad733e699b111b7dbcd8c6e8510c47a6e49cdea52d64a35eca686c54d43",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-s942-578733-sm-s942bzkgeub-thumb-550899060?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-black-256gb-sm-s942bzkgeub/",
+          "sourceSku": "SM-S942BZKGEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Frente",
+          "model": "Samsung S26",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 310,
+            "width": 144,
+            "height": 280
+          },
+          "path": "assets/products/samsung-s26-negro-gallery-4.png",
+          "sha256": "d93645e78b6ddaa8f3df57db94595a127e24e048577de0194b95af41f704ea0c",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung Z Flip 4|Amarillo": {
       "model": "Samsung Z Flip 4",
@@ -649,7 +1657,69 @@
         "y": 104,
         "width": 329,
         "height": 417
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f741uzsaxaa/gallery/us-galaxy-zflip6-f741-560393-560393-sm5f741uzsaxaa-thumb-548821821?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-flip6-certified-re-newed-256gb-sku-sm5f741uzsaxaa",
+          "sourceSku": "SM5F741UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Cerrado · reverso",
+          "model": "Samsung Z Flip 6",
+          "color": "Gris",
+          "framing": {
+            "x": 378,
+            "y": 369,
+            "width": 141,
+            "height": 165
+          },
+          "path": "assets/products/samsung-z-flip-6-gris-gallery-1.png",
+          "sha256": "1abcde423a579c9dfb49c5b00349980d416a240757b068ac42486dda5aa544c1",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f741uzsaxaa/gallery/us-galaxy-zflip6-f741-560393-560393-sm5f741uzsaxaa-thumb-548821814?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-flip6-certified-re-newed-256gb-sku-sm5f741uzsaxaa",
+          "sourceSku": "SM5F741UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Abierto · frente",
+          "model": "Samsung Z Flip 6",
+          "color": "Gris",
+          "framing": {
+            "x": 375,
+            "y": 290,
+            "width": 151,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-flip-6-gris-gallery-2.png",
+          "sha256": "67e9f3b38e48e44f3c78ba3974a0c7126993116fdf12f9a7b49b3524c710f275",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f741uzsaxaa/gallery/us-galaxy-zflip6-f741-560393-560393-sm5f741uzsaxaa-thumb-548821815?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-flip6-certified-re-newed-256gb-sku-sm5f741uzsaxaa",
+          "sourceSku": "SM5F741UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Abierto · reverso",
+          "model": "Samsung Z Flip 6",
+          "color": "Gris",
+          "framing": {
+            "x": 374,
+            "y": 290,
+            "width": 151,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-flip-6-gris-gallery-3.png",
+          "sha256": "c8c7e8147f2b15eb54d56bccf72235066c86c6ae94e31bf85db8082fbd1261ee",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung Z Flip 7|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/f2507/gallery/us-galaxy-zflip7-f766-sm-f766uzkaxaa-547905701?$product-details-jpg$",
@@ -669,7 +1739,69 @@
         "y": 0,
         "width": 1600,
         "height": 1200
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm5f766bzkheub/gallery/uk-galaxy-zflip7-f766-589955-sm5f766bzkheub-thumb-552582433?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-z/galaxy-z-flip7-jetblack-512gb-certified-re-newed-sm5f766bzkheub/",
+          "sourceSku": "SM5F766BZKHEUB",
+          "credit": "Samsung",
+          "officialColor": "Jetblack",
+          "label": "Cerrado · reverso",
+          "model": "Samsung Z Flip 7",
+          "color": "Negro",
+          "framing": {
+            "x": 376,
+            "y": 368,
+            "width": 148,
+            "height": 165
+          },
+          "path": "assets/products/samsung-z-flip-7-negro-gallery-1.png",
+          "sha256": "50614096e5f11b7427ac2f234463974c5e54ce6c7851b97924ad287bf6cdeb4a",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm5f766bzkheub/gallery/uk-galaxy-zflip7-f766-589955-sm5f766bzkheub-thumb-552582434?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-z/galaxy-z-flip7-jetblack-512gb-certified-re-newed-sm5f766bzkheub/",
+          "sourceSku": "SM5F766BZKHEUB",
+          "credit": "Samsung",
+          "officialColor": "Jetblack",
+          "label": "Abierto · frente",
+          "model": "Samsung Z Flip 7",
+          "color": "Negro",
+          "framing": {
+            "x": 373,
+            "y": 290,
+            "width": 155,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-flip-7-negro-gallery-2.png",
+          "sha256": "d29a3464a6aca223fb5ce7550a272d9e43a423db16d6c6e338f0bac5746adc5f",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm5f766bzkheub/gallery/uk-galaxy-zflip7-f766-589955-sm5f766bzkheub-thumb-552582435?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-z/galaxy-z-flip7-jetblack-512gb-certified-re-newed-sm5f766bzkheub/",
+          "sourceSku": "SM5F766BZKHEUB",
+          "credit": "Samsung",
+          "officialColor": "Jetblack",
+          "label": "Abierto · reverso",
+          "model": "Samsung Z Flip 7",
+          "color": "Negro",
+          "framing": {
+            "x": 373,
+            "y": 290,
+            "width": 155,
+            "height": 320
+          },
+          "path": "assets/products/samsung-z-flip-7-negro-gallery-3.png",
+          "sha256": "764a8b1b5ab422f631a3cbc9619e81be1db85f6512dea374a1139907ed11acf1",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung Z Fold 5|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/2307/gallery/uk-galaxy-z-fold5-f946-466188-sm-f946blbbeub-537168146?$624_624_PNG$",
@@ -706,7 +1838,89 @@
         "y": 109,
         "width": 300,
         "height": 406
-      }
+      },
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f956uzsaxaa/gallery/us-galaxy-z-fold6-f956-560396-560396-sm5f956uzsaxaa-thumb-548825809?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-fold6-certified-re-newed-256gb-sku-sm5f956uzsaxaa",
+          "sourceSku": "SM5F956UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Vista frontal lateral",
+          "model": "Samsung Z Fold 6",
+          "color": "Gris",
+          "framing": {
+            "x": 382,
+            "y": 290,
+            "width": 139,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-fold-6-gris-gallery-1.png",
+          "sha256": "09fb5c0e00d8f8628f65bb19220417bf3da5ca78844dfe2f6f6d5056842738a4",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f956uzsaxaa/gallery/us-galaxy-z-fold6-f956-560396-560396-sm5f956uzsaxaa-thumb-548825810?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-fold6-certified-re-newed-256gb-sku-sm5f956uzsaxaa",
+          "sourceSku": "SM5F956UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Reverso",
+          "model": "Samsung Z Fold 6",
+          "color": "Gris",
+          "framing": {
+            "x": 375,
+            "y": 290,
+            "width": 151,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-fold-6-gris-gallery-2.png",
+          "sha256": "3722a66cc9bdb0fdb8122d7ed25e59d296718f247eb83756a481cc5d1f0f5235",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f956uzsaxaa/gallery/us-galaxy-z-fold6-f956-560396-560396-sm5f956uzsaxaa-thumb-548825811?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-fold6-certified-re-newed-256gb-sku-sm5f956uzsaxaa",
+          "sourceSku": "SM5F956UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Parte posterior",
+          "model": "Samsung Z Fold 6",
+          "color": "Gris",
+          "framing": {
+            "x": 382,
+            "y": 290,
+            "width": 139,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-fold-6-gris-gallery-3.png",
+          "sha256": "5844d0fcf6395658625887792b76a77ba0befb40e8cbacb853333ef2e8084733",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/sm5f956uzsaxaa/gallery/us-galaxy-z-fold6-f956-560396-560396-sm5f956uzsaxaa-thumb-548825812?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/us/smartphones/galaxy-z-series/certified-re-newed-store/buy/galaxy-z-fold6-certified-re-newed-256gb-sku-sm5f956uzsaxaa",
+          "sourceSku": "SM5F956UZSAXAA",
+          "credit": "Samsung",
+          "officialColor": "Silver Shadow",
+          "label": "Abierto · reverso",
+          "model": "Samsung Z Fold 6",
+          "color": "Gris",
+          "framing": {
+            "x": 311,
+            "y": 290,
+            "width": 280,
+            "height": 321
+          },
+          "path": "assets/products/samsung-z-fold-6-gris-gallery-4.png",
+          "sha256": "f75b661d870ad15e88948f139dca8e396b7f07646f954a520110bd35def88e8a",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "iPhone 11 Pro Max|Blanco": {
       "model": "iPhone 11 Pro Max",
@@ -860,6 +2074,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-white-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 11",
+          "color": "Blanco",
+          "officialColor": "white",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-11-blanco-gallery-rear.jpg",
+          "sha256": "7c490ee4e897c9fe21d1409508cb114e5db6dde1fef38e273f9903b9cdcc1cf0",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -891,6 +2118,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-purple-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 11",
+          "color": "Morado",
+          "officialColor": "purple",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-11-morado-gallery-rear.jpg",
+          "sha256": "91afb340aaff84cf64c1f32f7b65277097f2527dbf5c80d1c82321ae9885b67b",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -922,6 +2162,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-black-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 11",
+          "color": "Negro",
+          "officialColor": "black",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-11-negro-gallery-rear.jpg",
+          "sha256": "ee6210ca8fd2fff8ec404ba49ec0a97721d7134127671e0b2db6ffd714df8341",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -935,7 +2188,22 @@
       "path": "assets/products/iphone-12-pro-max-dorado.jpg",
       "sha256": "58535a17e3a1aacf72eb3d0decd6d8b68f29750b13be2971df88e8526e91628c",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-max-gold-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 12 Pro Max",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-12-pro-max-dorado-gallery-rear.jpg",
+          "sha256": "6563da32a587cc83cf2238148a43effb26a044c5140c735bffe70d18952cfbbc",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 12 Pro Max|Negro": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone12_pro_max_graphite__b6j4sfia3yaa_large_2x.jpg",
@@ -947,7 +2215,22 @@
       "path": "assets/products/iphone-12-pro-max-negro.jpg",
       "sha256": "459f736e17bdd277a5acbea9a2a857ffdcf78c05e5b341fb75523d6d04f0cbff",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-max-graphite-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 12 Pro Max",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-12-pro-max-negro-gallery-rear.jpg",
+          "sha256": "1bc9ac13d247578dcd052f097065e58d95af867a3186ee4c0e250166d0c05e24",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 12 Pro|Negro": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone12_pro_graphite__exopjoz6u2ye_large_2x.jpg",
@@ -959,7 +2242,22 @@
       "path": "assets/products/iphone-12-pro-negro.jpg",
       "sha256": "971db8758b1f32545acd13e855795c4a283826834e9518cbe5a26bd1a4e7ec19",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-graphite-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 12 Pro",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-12-pro-negro-gallery-rear.jpg",
+          "sha256": "51131572b47c22bd265e8f0fbd2548b56114f6e68c0ac6b2c4068a36462ef626",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 12|Azul": {
       "model": "iPhone 12",
@@ -989,6 +2287,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-blue-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 12",
+          "color": "Azul",
+          "officialColor": "blue",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-12-azul-gallery-rear.jpg",
+          "sha256": "f0d1543eb81406b345f3cba61735b85ff2eff44b799f8872b31c0d95c968fadb",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1020,6 +2331,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-black-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 12",
+          "color": "Negro",
+          "officialColor": "black",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-12-negro-gallery-rear.jpg",
+          "sha256": "0965832c4195363f839af63b947f2757f907583f55487a5eb4124a44de51e6f2",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1051,6 +2375,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-green-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 12",
+          "color": "Verde",
+          "officialColor": "green",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-12-verde-gallery-rear.jpg",
+          "sha256": "1991f8bde22bb58753f02cc5c4ee51b2cfb3c7c45ffa5b4dab0d2bcb0257253d",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1125,6 +2462,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13 Pro Max",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-pro-max-negro-gallery-rear.jpg",
+          "sha256": "6f016fbba48b669017084b2a8834a84d507a8920e3ad661d5e2a4fcdae8905ce",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1218,6 +2568,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-silver-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13 Pro",
+          "color": "Blanco",
+          "officialColor": "silver",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-pro-blanco-gallery-rear.jpg",
+          "sha256": "fd171117280812804c0331a470061ccc00d76085bb78671dc6368d279a089570",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1280,6 +2643,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-gold-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13 Pro",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-pro-dorado-gallery-rear.jpg",
+          "sha256": "642111d751c8f4fce35f85f2a83d861d46d46ae4e27dbc836b3b16bbdd37b94d",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1311,6 +2687,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-graphite-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13 Pro",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-pro-negro-gallery-rear.jpg",
+          "sha256": "3a78179e5905aa85b87b3ac541e59bc2b6bff69cc1ac090e3b06cab784da88b0",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1355,7 +2744,22 @@
       "path": "assets/products/iphone-13-azul.jpg",
       "sha256": "277ff52194228ef830b5833c644a6b537ddd7a27a9b8572b851202bae7a37bf1",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-blue-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13",
+          "color": "Azul",
+          "officialColor": "blue",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-azul-gallery-rear.jpg",
+          "sha256": "d1948739ff7305669f3ea6743498819709b5662d85f25a3c16ae0226e39028eb",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 13|Blanco": {
       "model": "iPhone 13",
@@ -1385,6 +2789,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-starlight-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13",
+          "color": "Blanco",
+          "officialColor": "starlight",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-blanco-gallery-rear.jpg",
+          "sha256": "0331ab57b90fba8c3615f8af52bb5f22f81e1bac35376ae5d73473cc0e060fdd",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1416,6 +2833,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-blue-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-celeste-gallery-rear.jpg",
+          "sha256": "d1948739ff7305669f3ea6743498819709b5662d85f25a3c16ae0226e39028eb",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1447,6 +2877,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-midnight-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-negro-gallery-rear.jpg",
+          "sha256": "10cab8bcf8e61d082edd89625b3a0088ba7c5204209dcdd95f7309232e900119",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1493,7 +2936,22 @@
       "path": "assets/products/iphone-13-rosado.jpg",
       "sha256": "e972cee45abe4eda1eaa96982b657737aeca25754f6a29c4e6a34d54e97f293e",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pink-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-rosado-gallery-rear.jpg",
+          "sha256": "8a6803daeddadd6cf4f14ba39d9b162b223297cfe7ab855b7ee8e47ce7793c18",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 13|Verde": {
       "model": "iPhone 13",
@@ -1523,6 +2981,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-green-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 13",
+          "color": "Verde",
+          "officialColor": "green",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-13-verde-gallery-rear.jpg",
+          "sha256": "386abd6de7fbb9ea4fa4420b12efdce45c527875e84a4caff815c8853564402e",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1554,6 +3025,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-plus-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14 Plus",
+          "color": "Lila",
+          "officialColor": "purple",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-plus-lila-gallery-rear.jpg",
+          "sha256": "2b053b7781dfc887ed8dd343d2e2c694c30256c8dd8aa2da43cbabf5df65e872",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1585,6 +3069,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-gold-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14 Pro Max",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-pro-max-dorado-gallery-rear.jpg",
+          "sha256": "e82fd1520fb448adf52e745336eb4bb7e72f7d84649edb7c25197051baf37daf",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1616,6 +3113,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-deeppurple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14 Pro Max",
+          "color": "Morado",
+          "officialColor": "deeppurple",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-pro-max-morado-gallery-rear.jpg",
+          "sha256": "9013e6f11b37e78b698172f5fb64b054408f0da03b1bcb3b69ebc01d84edf2fb",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1647,6 +3157,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-spaceblack-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14 Pro Max",
+          "color": "Negro",
+          "officialColor": "spaceblack",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-pro-max-negro-gallery-rear.jpg",
+          "sha256": "01dac351c9139842fc5422dc3dd6dcd62149b3c338945b78e4281860f6fb6ecd",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1678,6 +3201,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-gold-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14 Pro",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-pro-dorado-gallery-rear.jpg",
+          "sha256": "6bbe4e5e381d6796584ab6ae25245e9cac5fdefc4b02ebc24457c8de6a237fff",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1709,6 +3245,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-spaceblack-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14 Pro",
+          "color": "Negro",
+          "officialColor": "spaceblack",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-pro-negro-gallery-rear.jpg",
+          "sha256": "4492ac2bac0e9398558538c9eb767318c5757f91c3ca7182c2dc270258f6ca03",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1740,6 +3289,19 @@
           "width": 492,
           "height": 650,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-starlight-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14",
+          "color": "Blanco",
+          "officialColor": "starlight",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-blanco-gallery-rear.jpg",
+          "sha256": "6a89a1f384199f74b4185f71d4dbb3cc88bfcd2e9a832c4230bf02b124af5adf",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1771,6 +3333,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-blue-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-celeste-gallery-rear.jpg",
+          "sha256": "f1892fe6682fa8d6ca9cf4d3e341a3194bad0926640dc03528dd2bc2de77fdb3",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1786,7 +3361,22 @@
       "path": "assets/products/iphone-14-lila.jpg",
       "sha256": "edbbcb7362809f930f650378b04cad8754b4d23659fc75f07d510a42d2ce933b",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14",
+          "color": "Lila",
+          "officialColor": "purple",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-lila-gallery-rear.jpg",
+          "sha256": "7a3aebacd8e19e24d3737d371614df8aa41c7645b5c3f4ba736c3c68259b3aa4",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 14|Morado": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_purple__cjajxy1iclg2_large_2x.jpg",
@@ -1798,7 +3388,22 @@
       "path": "assets/products/iphone-14-morado.jpg",
       "sha256": "edbbcb7362809f930f650378b04cad8754b4d23659fc75f07d510a42d2ce933b",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14",
+          "color": "Morado",
+          "officialColor": "purple",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-morado-gallery-rear.jpg",
+          "sha256": "7a3aebacd8e19e24d3737d371614df8aa41c7645b5c3f4ba736c3c68259b3aa4",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
     },
     "iPhone 14|Negro": {
       "model": "iPhone 14",
@@ -1828,6 +3433,19 @@
           "width": 612,
           "height": 760,
           "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-midnight-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
+          "model": "iPhone 14",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "credit": "Apple",
+          "label": "Vista posterior",
+          "path": "assets/products/iphone-14-negro-gallery-rear.jpg",
+          "sha256": "c28400b4d570c5b387b25ef764927d41caaf2a527c34811ac9a319a7da3bda42",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -1860,6 +3478,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-blue-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Plus|Negro": {
@@ -1891,6 +3512,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-black-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Plus|Rosado": {
@@ -1922,6 +3546,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-pink-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro Max|Azul": {
@@ -1953,6 +3580,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-max-bluetitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro Max|Blanco": {
@@ -1986,6 +3616,9 @@
           "aliasOf": "iPhone 15 Pro Max|Plata",
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-max-whitetitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro Max|Gris": {
@@ -2019,6 +3652,9 @@
           "aliasOf": "iPhone 15 Pro Max|Titanio natural",
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-max-naturaltitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro Max|Negro": {
@@ -2050,6 +3686,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-max-blacktitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro Max|Plata": {
@@ -2081,6 +3720,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-max-whitetitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro Max|Titanio natural": {
@@ -2112,6 +3754,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-max-naturaltitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro|Azul": {
@@ -2143,6 +3788,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-bluetitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro|Negro": {
@@ -2174,6 +3822,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-blacktitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Pro|Titanio natural": {
@@ -2205,6 +3856,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pro-naturaltitanium-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15|Amarillo": {
@@ -2236,6 +3890,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-yellow-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15|Celeste": {
@@ -2267,6 +3924,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-blue-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15|Negro": {
@@ -2298,6 +3958,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-black-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15|Rosado": {
@@ -2329,6 +3992,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-pink-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15|Verde": {
@@ -2341,7 +4007,11 @@
       "path": "assets/products/iphone-15-verde.jpg",
       "sha256": "0787b7adc368decff93c72644d5808e7856635a61821b0bb2bf266eeb7096d2f",
       "width": 612,
-      "height": 760
+      "height": 760,
+      "gallery": [],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-green-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
+      ]
     },
     "iPhone 16 Plus|Azul": {
       "model": "iPhone 16 Plus",
@@ -2372,6 +4042,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-plus-ultramarine-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Plus|Negro": {
@@ -2403,6 +4076,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-plus-black-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Plus|Rosado": {
@@ -2434,6 +4110,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-plus-pink-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Pro Max|Dorado": {
@@ -2465,6 +4144,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-pro-max-deserttitanium-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Pro Max|Gris": {
@@ -2496,6 +4178,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-pro-max-naturaltitanium-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Pro Max|Negro": {
@@ -2527,6 +4212,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-pro-max-blacktitanium-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Pro Max|Titanio desierto": {
@@ -2558,6 +4246,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-pro-max-deserttitanium-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Pro Max|Titanio natural": {
@@ -2589,6 +4280,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-pro-max-naturaltitanium-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16 Pro|Dorado": {
@@ -2713,6 +4407,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-white-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16|Negro": {
@@ -2744,6 +4441,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-black-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 16|Rosado": {
@@ -2775,6 +4475,9 @@
           "height": 760,
           "label": "Vista general en alta resolución"
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-16-pink-202509?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 17 Pro Max|Anaranjado": {

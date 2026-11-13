@@ -16,6 +16,8 @@ python3 scripts/discover-catalog-images.py
 
 La galería de «Ver equipo» usa `gallery` para vistas oficiales adicionales del mismo modelo y acabado. `fetch-catalog-galleries.py`, ejecutado en la misma tarea programada, descarga perspectivas de Samsung cuyos metadatos coinciden en modelo, color oficial y SKU, y versiones de mayor resolución de las comparaciones de Apple. No usa fotos de cajas ni de gamas completas como perspectivas de un color.
 
-Cuando el fabricante no publica fotos independientes, el carrusel ofrece la vista general y acercamientos explícitamente identificados de la misma foto. El zoom admite pellizcar, arrastrar, rueda, doble clic y controles de teclado; la navegación admite deslizar, miniaturas y flechas. La galería se reinicia al cambiar de color y no modifica precios ni cuotas.
+El carrusel solo incluye archivos de fotos distintas del modelo y color elegidos. No crea recortes para simular otras perspectivas. Si solo existe una foto verificada, muestra una imagen con zoom, sin flechas ni miniaturas repetidas. El zoom admite pellizcar, arrastrar, rueda, doble clic y controles de teclado; la navegación admite deslizar, miniaturas y flechas. La galería se reinicia al cambiar de color y no modifica precios ni cuotas.
 
 Verificación del carrusel: `npm run test:catalog-gallery`. Para incluir el motor de Safari, instalar WebKit de Playwright y ejecutar con `TEST_WEBKIT=1`.
+
+Las perspectivas posteriores de Apple proceden de sus fotos oficiales de producto, incluyendo las publicadas en la tienda de reacondicionados. Se excluyen imágenes AV, fotos de cajas y gamas completas. Para Samsung se consultan los catálogos oficiales de varias regiones y se exige coincidencia de modelo y acabado oficial antes de agregar una perspectiva.

@@ -20,7 +20,7 @@ output.mkdir(parents=True, exist_ok=True)
 
 def official(url):
     parsed = urllib.parse.urlparse(url)
-    return parsed.scheme == 'https' and any(parsed.hostname == host or (parsed.hostname or '').endswith('.' + host) for host in ('apple.com', 'samsung.com'))
+    return parsed.scheme == 'https' and any(parsed.hostname == host or (parsed.hostname or '').endswith('.' + host) for host in ('apple.com', 'samsung.com', 'store.storeimages.cdn-apple.com'))
 
 def download(entry):
     model, item = entry

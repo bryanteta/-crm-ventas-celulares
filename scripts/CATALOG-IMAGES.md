@@ -39,4 +39,8 @@ python3 scripts/import-bespoke-captures.py /tmp/lunivo-bespoke-capture/captures.
 node scripts/check-gallery-coverage.cjs
 ```
 
-La prueba de cobertura comprueba las vistas efectivamente mostradas, permite una única vista individual cuando es la única verificada y exige al menos tres archivos en las galerías generales de Samsung; comprueba hashes y encuadres y señala los registros sin color que el proveedor debe completar. La prueba del navegador también comprueba la cobertura completa, además de la navegación, el zoom y el desplazamiento de galerías largas.
+La prueba de cobertura comprueba las vistas efectivamente mostradas, exige al menos dos vistas individuales verificadas por iPhone conocido y exige al menos tres archivos en las galerías generales de Samsung; comprueba hashes y encuadres y señala los registros sin color que el proveedor debe completar. La prueba del navegador también comprueba la cobertura completa, además de la navegación, el zoom y el desplazamiento de galerías largas.
+
+`fetch-apple-device-galleries.py` agrega los detalles individuales de cámara publicados por Apple para las familias y los acabados revisados. Son archivos originales diferentes de las vistas de frente y reverso, no recortes creados para aumentar el contador. Su registro distingue los nombres de archivo de Sierra Blue, Alpine Green y (PRODUCT)RED de sus nombres comerciales. Se ejecuta con la actualización automática, conserva las asignaciones revisadas y deja pendientes las familias sin otra vista verificable.
+
+El iPhone 11 Pro Max verde incluye además dos fotos de prensa individuales publicadas por GSMArena, revisadas para ese modelo y acabado. Su registro conserva el enlace y el crédito; no se aplican a otros colores.

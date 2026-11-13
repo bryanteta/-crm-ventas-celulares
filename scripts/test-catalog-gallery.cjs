@@ -26,9 +26,10 @@ async function run(browserType,options){
  a.equal(await p.locator('#gallery-photo').getAttribute('src'),selected,'a late photo never overwrites the selected perspective');
  a.equal(await p.locator('#gallery-open').getAttribute('aria-busy'),'false');
  await p.unroute(pattern);await p.locator('#gallery-prev').click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
- a.equal(await p.locator('#gallery-thumbs button').count(),2,'iPhone 11 has one isolated front and one isolated back, without paired artboards');
+ a.equal(await p.locator('#gallery-thumbs button').count(),3,'iPhone 11 has an isolated front, back and manufacturer camera detail');
  const viewCount=await p.locator('#gallery-thumbs button').count();a(viewCount>=2,'front and back are separate individual photos');a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
  a.equal(await p.locator('#gallery-thumbs button[aria-label="Frente y reverso"]').count(),0,'a second paired general photo is not another perspective');
+ a.equal(await p.locator('#gallery-thumbs button[aria-label="Detalle de cámaras"]').count(),1,'additional Apple view is a genuine separate manufacturer asset');
  const firstPhoto=await p.locator('#gallery-photo').getAttribute('src');await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Reverso');a.notEqual(await p.locator('#gallery-photo').getAttribute('src'),firstPhoto,'another perspective uses a different image file');
  await p.locator('#gallery-prev').click();a.equal(await p.locator('#gallery-caption').innerText(),'Frente');
  await p.locator('#gallery-thumbs button').last().click();a.equal(await p.locator('#gallery-counter').innerText(),viewCount+' / '+viewCount);

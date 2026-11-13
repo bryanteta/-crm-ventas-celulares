@@ -15,6 +15,7 @@ on:
       - 'scripts/fetch-catalog-galleries.py'
       - 'scripts/expand-device-galleries.py'
       - 'scripts/press-device-galleries.py'
+      - 'scripts/fetch-apple-device-galleries.py'
       - 'scripts/discover-catalog-images.py'
       - 'tests/test_catalog_images.py'
       - '.github/workflows/test-catalog-gallery.yml'

@@ -52,6 +52,20 @@ class ExactImageTests(unittest.TestCase):
         self.assertEqual(len(records['midnight']),0)  # Paired primary image is not an extra perspective.
         self.assertEqual(e.swappie_records(page,'iPhone 13 Pro','https://swappie.com/'),{})
         self.assertEqual(e.refurbed_photos('<div data-instance-id="2"></div>',{'sku':'1','url':'https://www.refurbed.ie/p/test/'}),[])
+    def test_apple_details_use_exact_model_and_finish_without_paired_or_refurb_assets(self):
+        spec=importlib.util.spec_from_file_location('a',pathlib.Path(__file__).resolve().parent.parent/'scripts/fetch-apple-device-galleries.py');a=importlib.util.module_from_spec(spec);spec.loader.exec_module(a)
+        detail=a.candidate({'model':'iPhone 11','color':'Morado','officialColor':'purple'})
+        self.assertIn('/iphone11-purple-select-2019_AV2?',detail['sourceImage'])
+        self.assertTrue(detail['singleDevice'])
+        self.assertEqual(detail['label'],'Detalle de cámaras')
+        for model,finish,asset in [('iPhone 13 Pro','sierrablue','iphone-13-pro-blue-select_AV2'),('iPhone 13 Pro Max','alpinegreen','iphone-13-pro-max-green-select_AV2'),('iPhone 13','red','iphone-13-product-red-select-2021_AV2'),('iPhone 13','green','iphone-13-green-select_AV2')]:
+            self.assertIn('/'+asset+'?',a.candidate({'model':model,'color':'Reviewed finish','officialColor':finish})['sourceImage'])
+        self.assertIsNone(a.candidate({'model':'iPhone 11','color':'Color por confirmar','officialColor':''}))
+        self.assertIsNone(a.candidate({'model':'iPhone 11','color':'Bad','officialColor':'../../wrong'}))
+        self.assertIsNone(a.candidate({'model':'iPhone 99','color':'Negro','officialColor':'black'}))
+        self.assertEqual(len(a.reviewed_press_views({'model':'iPhone 11 Pro Max','color':'Verde','officialColor':'midnightgreen'})),2)
+        self.assertEqual(a.reviewed_press_views({'model':'iPhone 11 Pro Max','color':'Negro','officialColor':'spacegray'}),[])
+        self.assertEqual(a.reviewed_press_views({'model':'iPhone 12 Pro','color':'Verde','officialColor':'midnightgreen'}),[])
     def test_press_images_require_public_released_exact_color_product_files(self):
         spec=importlib.util.spec_from_file_location('p',pathlib.Path(__file__).resolve().parent.parent/'scripts/press-device-galleries.py');p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
         root={'isPublic':True,'embargoTime':'2022-01-01T00:00:00','imageUrl':'https://api.samsungmobilepress.com/api/v1/file/public'}

@@ -11,7 +11,7 @@ for(const [key,picture]of Object.entries(manifest.products)){
   if(!checked.has(p.path)){const bytes=fs.readFileSync(path.join(root,'catalogo',p.path));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),p.sha256,p.path);checked.add(p.path);}
   assert(p.width>0&&p.height>0);if(p.framing){const f=p.framing;assert(f.x>=0&&f.y>=0&&f.width>0&&f.height>0&&f.x+f.width<=p.width&&f.y+f.height<=p.height);}
  }
- assert(views.length>=(individual.length?1:3),key+' needs verified distinct images');
+ assert(views.length>=(individual.length?2:3),key+' needs verified distinct images');
  if(picture.model.startsWith('iPhone ')){assert(individual.length,'iPhone modal requires reviewed individual photos');assert(!picture.gallery.some(p=>p.label==='Frente y reverso'||p.credit==='Apple'&&p.label==='Vista posterior'),'no redundant paired photos');}minimum=Math.min(minimum,views.length);maximum=Math.max(maximum,views.length);
 }
 const missing=[...new Set(inventory.products.filter(p=>!manifest.products[p.model+'|'+p.color]).map(p=>p.model+' · '+p.capacity+' · '+p.color))];

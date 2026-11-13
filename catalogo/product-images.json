@@ -4184,6 +4184,34 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 11 Pro Max",
+          "color": "Verde",
+          "officialColor": "midnightgreen",
+          "sourceImage": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-pro-max-5.jpg",
+          "sourcePage": "https://www.gsmarena.com/apple_iphone_11_pro_max-pictures-9846.php",
+          "credit": "Apple · GSMArena",
+          "label": "Vista posterior lateral",
+          "singleDevice": true,
+          "path": "assets/products/iphone-11-pro-max-verde-apple-press-5.jpg",
+          "sha256": "63e58bd084ac705dd2d84c1f998f4efab91fcb02d4bec6631a0d70b1ece4c52a",
+          "width": 710,
+          "height": 568
+        },
+        {
+          "model": "iPhone 11 Pro Max",
+          "color": "Verde",
+          "officialColor": "midnightgreen",
+          "sourceImage": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-pro-max-6.jpg",
+          "sourcePage": "https://www.gsmarena.com/apple_iphone_11_pro_max-pictures-9846.php",
+          "credit": "Apple · GSMArena",
+          "label": "Detalle de cámaras · ángulo lateral",
+          "singleDevice": true,
+          "path": "assets/products/iphone-11-pro-max-verde-apple-press-6.jpg",
+          "sha256": "833ae77ece66c37a504c4f723fc696b1c6bd9527671858a5fa983049804643ab",
+          "width": 710,
+          "height": 369
         }
       ],
       "galleryRejectedSources": [
@@ -4244,6 +4272,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 11",
+          "color": "Blanco",
+          "officialColor": "white",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone11-white-select-2019_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-11-blanco-apple-camera-detail.jpg",
+          "sha256": "f4e5a974e533657f32cd97c961bbc19031e597cc7195a2c11d4fec1cd27b8499",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4305,6 +4353,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 11",
+          "color": "Morado",
+          "officialColor": "purple",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone11-purple-select-2019_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-11-morado-apple-camera-detail.jpg",
+          "sha256": "5a7001f805ef0d8551e9d03b70720b149137453ca3937bf4b40888170597a053",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4366,6 +4434,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 11",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone11-black-select-2019_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-11-negro-apple-camera-detail.jpg",
+          "sha256": "22c4b8f882df99a0ebaf627c488cc54a1ba1ecff792f50ea82aaf60845239356",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4559,6 +4647,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 12",
+          "color": "Azul",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-12-blue-select-2020_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-12-azul-apple-camera-detail.jpg",
+          "sha256": "52cdf0af3eb21178d4c8f643b4f65e763c7ea6301aac5b966f649014912bdba0",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 795,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4620,6 +4728,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 12",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-12-black-select-2020_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-12-negro-apple-camera-detail.jpg",
+          "sha256": "730f4a4fdc89a4f803a32b3d51742069fabd517db3946491526177c37fa68e80",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 363,
+            "width": 795,
+            "height": 476
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4681,6 +4809,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 12",
+          "color": "Verde",
+          "officialColor": "green",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-12-green-select-2020_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-12-verde-apple-camera-detail.jpg",
+          "sha256": "187b5c303ba7134261b4abb8c494f12e523b1dd3acc3cb50227f84a0744dc628",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 363,
+            "width": 795,
+            "height": 476
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4727,6 +4875,26 @@
           "sha256": "7a201c625b269fa0518ef1f266c83f30a10646c8d534fce5dd2808f34ed8429a",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13 Mini",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-mini-midnight-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-mini-negro-apple-camera-detail.jpg",
+          "sha256": "8f988fea70c0f2fc6c576e30089126f5848b419a8ab9e1a7cd9733c8043faa27",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 203,
+            "y": 361,
+            "width": 795,
+            "height": 478
+          }
         }
       ]
     },
@@ -4784,6 +4952,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Azul",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-max-blue-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-max-azul-apple-camera-detail.jpg",
+          "sha256": "eb85e321d103bd00ef656604ee82540012215c6f928e9bd4d4741aa000ea5432",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4844,6 +5032,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-max-graphite-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-max-negro-apple-camera-detail.jpg",
+          "sha256": "147f154f6fd43ea03966db627d10174cbcb80563673a489aba85c9ebf6ddaf16",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4905,6 +5113,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Verde",
+          "officialColor": "alpinegreen",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-max-green-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-max-verde-apple-camera-detail.jpg",
+          "sha256": "03c75f037947282e5a4baf3035d26092a85033b8991654d429c6f39ac9c65f31",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 361,
+            "width": 797,
+            "height": 478
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -4965,6 +5193,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Azul",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-blue-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-azul-apple-camera-detail.jpg",
+          "sha256": "2862eb75efa6cb83c2d097206f55cfa3f2b5c2cfd8fb429cead3e3ea8531b979",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 223,
+            "y": 363,
+            "width": 759,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5025,6 +5273,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Blanco",
+          "officialColor": "silver",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-silver-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-blanco-apple-camera-detail.jpg",
+          "sha256": "206061df979082e649a55acecd62cdbd6919b4e46eaed8070edfbc3b4972cb82",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 223,
+            "y": 364,
+            "width": 759,
+            "height": 474
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5086,6 +5354,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Celeste",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-blue-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-celeste-apple-camera-detail.jpg",
+          "sha256": "2862eb75efa6cb83c2d097206f55cfa3f2b5c2cfd8fb429cead3e3ea8531b979",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 223,
+            "y": 363,
+            "width": 759,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5146,6 +5434,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-gold-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-dorado-apple-camera-detail.jpg",
+          "sha256": "936eebeee6757a23e3f873b897c9f822156af5278fc6e0cc27666a0294047e11",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 223,
+            "y": 363,
+            "width": 759,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5207,6 +5515,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-graphite-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-negro-apple-camera-detail.jpg",
+          "sha256": "4cadd7941ae3e6d6f54a5415b70890d5b885973d614f8007e20bbdd039fdbbe1",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 223,
+            "y": 363,
+            "width": 759,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5268,6 +5596,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Verde",
+          "officialColor": "alpinegreen",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-green-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-verde-apple-camera-detail.jpg",
+          "sha256": "0b8c3bc721a7b11f4854a56ce0174e45f4325df5772b476ce10603dcf317a356",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 223,
+            "y": 363,
+            "width": 759,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5310,6 +5658,26 @@
           "sha256": "ee3ccff8ce2deb53608d48b7d0f6c727bd3b0c993e8953176148b6b31305e8ba",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Azul",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-blue-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-azul-apple-camera-detail.jpg",
+          "sha256": "dec51b7ea10a18550c9e86cfba66a5047d259d41c05bfd55909273e8fb9c7da9",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 206,
+            "y": 362,
+            "width": 792,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5370,6 +5738,26 @@
           "sha256": "bd386bccadadf7f8dc09f3ed3322e8646b04ebe4bb9ece3fd6f1da6a2c090f3e",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Blanco",
+          "officialColor": "starlight",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-starlight-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-blanco-apple-camera-detail.jpg",
+          "sha256": "af5e2372806a04d7792ec8ef245f2d1eeca652118f058643c433005fb9178cf2",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 206,
+            "y": 363,
+            "width": 792,
+            "height": 476
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5430,6 +5818,26 @@
           "sha256": "ee3ccff8ce2deb53608d48b7d0f6c727bd3b0c993e8953176148b6b31305e8ba",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-blue-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-celeste-apple-camera-detail.jpg",
+          "sha256": "dec51b7ea10a18550c9e86cfba66a5047d259d41c05bfd55909273e8fb9c7da9",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 206,
+            "y": 362,
+            "width": 792,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5490,6 +5898,26 @@
           "sha256": "7a201c625b269fa0518ef1f266c83f30a10646c8d534fce5dd2808f34ed8429a",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-midnight-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-negro-apple-camera-detail.jpg",
+          "sha256": "defb820ef7b7809921a38f68140ddb65ae8d0a9c5b93e895d30313d52f0f60d5",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 205,
+            "y": 362,
+            "width": 793,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5550,6 +5978,26 @@
           "sha256": "26cb055e5eab436d22142d92f85d7b67baedd7087da305b3b16478ce942a9a17",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Rojo",
+          "officialColor": "red",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-product-red-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-rojo-apple-camera-detail.jpg",
+          "sha256": "d3759ad7054aa5a36642f7e889e6f0f6146f8f4b5300dd4855c079f37777880b",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 205,
+            "y": 363,
+            "width": 793,
+            "height": 476
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5594,6 +6042,26 @@
           "sha256": "d418026944b89343040ae4275c888b632bb7d66135c6ed74ac5df393f11c3e84",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pink-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-rosado-apple-camera-detail.jpg",
+          "sha256": "10fbfcc069ef876553ca06408ed98128b12e6b6e9079efd43e949ff2074a988b",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 206,
+            "y": 363,
+            "width": 792,
+            "height": 476
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5654,6 +6122,26 @@
           "sha256": "fec15c736bf9e48013b65ec7650c154645c7f76ce02eaf7ff5dbf7f8aee40a73",
           "width": 1200,
           "height": 1200
+        },
+        {
+          "model": "iPhone 13",
+          "color": "Verde",
+          "officialColor": "green",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-green-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-verde-apple-camera-detail.jpg",
+          "sha256": "b414efebe6d966b114eaff14c8da63dcf0fbc80f43e27bb02b9444322ef20e5f",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 205,
+            "y": 363,
+            "width": 793,
+            "height": 476
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5715,6 +6203,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14 Plus",
+          "color": "Lila",
+          "officialColor": "purple",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-plus-purple-select-202209_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-plus-lila-apple-camera-detail.jpg",
+          "sha256": "4f9b78ce70d1a8dff6699831688e8c4ed2f5e890b085e0258c1b772166f00f24",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 203,
+            "y": 362,
+            "width": 796,
+            "height": 477
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5776,6 +6284,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-pro-max-gold-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-pro-max-dorado-apple-camera-detail.jpg",
+          "sha256": "83879a9289ebe9637a2085acf96e83d08d69208e44433ebb494ff3b5f27806bb",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 339,
+            "width": 755,
+            "height": 523
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5837,6 +6365,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Morado",
+          "officialColor": "deeppurple",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-pro-max-deeppurple-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-pro-max-morado-apple-camera-detail.jpg",
+          "sha256": "04e639719ba206032699c711c7dd9b3ea9be2d8cdd6648ad2669b2efb7c93e93",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 221,
+            "y": 339,
+            "width": 756,
+            "height": 523
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5898,6 +6446,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Negro",
+          "officialColor": "spaceblack",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-pro-max-spaceblack-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-pro-max-negro-apple-camera-detail.jpg",
+          "sha256": "fadf43baca581c3bf77fb6141a7bde4eeed35d8030f928dcf04f4aa1807e05e5",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 221,
+            "y": 339,
+            "width": 756,
+            "height": 523
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -5959,6 +6527,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14 Pro",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-pro-gold-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-pro-dorado-apple-camera-detail.jpg",
+          "sha256": "7ac8b21d2594fe9b44b24f76b822bc8d29972b9b62c9629554950720cae231d7",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 249,
+            "y": 340,
+            "width": 699,
+            "height": 521
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6020,6 +6608,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14 Pro",
+          "color": "Negro",
+          "officialColor": "spaceblack",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-pro-spaceblack-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-pro-negro-apple-camera-detail.jpg",
+          "sha256": "a09f08db9e2145390fd78373525cd72cefad317dccfbe02815480ebff8acf1a1",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 249,
+            "y": 340,
+            "width": 699,
+            "height": 521
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6081,6 +6689,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14",
+          "color": "Blanco",
+          "officialColor": "starlight",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-starlight-select-202209_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-blanco-apple-camera-detail.jpg",
+          "sha256": "6c9777a4c6cc55769575640294470629d6583b048f9786111f9f65576c4e6e3e",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 363,
+            "width": 762,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6142,6 +6770,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-blue-select-202209_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-celeste-apple-camera-detail.jpg",
+          "sha256": "d524c66424c0c171860292c1ed81411c881872021617ed7f749daec83496b930",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 363,
+            "width": 762,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6188,6 +6836,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14",
+          "color": "Lila",
+          "officialColor": "purple",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-purple-select-202209_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-lila-apple-camera-detail.jpg",
+          "sha256": "9131c0f037b942303089b2cf6dc2d3d77037d2dc5b017fca00d59730e6cc655e",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 363,
+            "width": 762,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6232,6 +6900,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14",
+          "color": "Morado",
+          "officialColor": "purple",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-purple-select-202209_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-morado-apple-camera-detail.jpg",
+          "sha256": "9131c0f037b942303089b2cf6dc2d3d77037d2dc5b017fca00d59730e6cc655e",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 363,
+            "width": 762,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6293,6 +6981,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 14",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-midnight-select-202209_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-negro-apple-camera-detail.jpg",
+          "sha256": "3f47c162b7b66043d558ec7524f93bdfe3b5aef62c3a8960c67f8a8db20c454a",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 363,
+            "width": 762,
+            "height": 475
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6354,6 +7062,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Plus",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-plus-blue-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-plus-celeste-apple-camera-detail.jpg",
+          "sha256": "236dae5bf0647315bcd0317bb60bee6590c9abf2933a9b01a83d6625b3bc3693",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 231,
+            "y": 331,
+            "width": 729,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6415,6 +7143,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Plus",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-plus-black-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-plus-negro-apple-camera-detail.jpg",
+          "sha256": "3c73cd81b58acdd20a57491dff0950533d0f31a81d2139913d7232a7b7d896a1",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 231,
+            "y": 331,
+            "width": 729,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6476,6 +7224,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Plus",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-plus-pink-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-plus-rosado-apple-camera-detail.jpg",
+          "sha256": "3626801de3932116f73d897b08a16fae909bd4e0d0f97683acabc54891208599",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 231,
+            "y": 331,
+            "width": 729,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6537,6 +7305,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Azul",
+          "officialColor": "bluetitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-max-bluetitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-max-azul-apple-camera-detail.jpg",
+          "sha256": "dec39c47ec5eab06c89e15b0ddd4a6d984f9f7567f4e3f7914916046f96b6ec9",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 338,
+            "width": 753,
+            "height": 524
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6600,6 +7388,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Blanco",
+          "officialColor": "whitetitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-max-whitetitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-max-blanco-apple-camera-detail.jpg",
+          "sha256": "0980f6f4f27ce8cae3ef76e5ef601d5f6fbb2df886135bb01411f8884e1d7e25",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 338,
+            "width": 753,
+            "height": 524
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6663,6 +7471,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Gris",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-max-naturaltitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-max-gris-apple-camera-detail.jpg",
+          "sha256": "fb1e922a471d77425d2654ca4d353c49ebff40a7d18b1fb2c6221d922a4fcaf3",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 338,
+            "width": 753,
+            "height": 524
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6724,6 +7552,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-max-blacktitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-max-negro-apple-camera-detail.jpg",
+          "sha256": "54d3771dbcec4d85e486f29aba630ded4d499d8b287331175990a4d10e7be0b7",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 338,
+            "width": 753,
+            "height": 524
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6785,6 +7633,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Plata",
+          "officialColor": "whitetitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-max-whitetitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-max-plata-apple-camera-detail.jpg",
+          "sha256": "0980f6f4f27ce8cae3ef76e5ef601d5f6fbb2df886135bb01411f8884e1d7e25",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 338,
+            "width": 753,
+            "height": 524
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6846,6 +7714,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Titanio natural",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-max-naturaltitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-max-titanio-natural-apple-camera-detail.jpg",
+          "sha256": "fb1e922a471d77425d2654ca4d353c49ebff40a7d18b1fb2c6221d922a4fcaf3",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 222,
+            "y": 338,
+            "width": 753,
+            "height": 524
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6907,6 +7795,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro",
+          "color": "Azul",
+          "officialColor": "bluetitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-bluetitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-azul-apple-camera-detail.jpg",
+          "sha256": "9ecd9d8ce15b2116a2a6abe1e95932e697f26b6b83615862de6970ac8f38b1eb",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 244,
+            "y": 340,
+            "width": 711,
+            "height": 521
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -6968,6 +7876,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-blacktitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-negro-apple-camera-detail.jpg",
+          "sha256": "a7d876ae478fb2eea31e586b0951e56dc333fa8025ae81736d54dffa6a4a3b5a",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 244,
+            "y": 340,
+            "width": 711,
+            "height": 521
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7029,6 +7957,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15 Pro",
+          "color": "Titanio natural",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pro-naturaltitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-pro-titanio-natural-apple-camera-detail.jpg",
+          "sha256": "6cbebc9c81f172ff44a1dbe957a2247e050c0596f7059eca84ccf4c5cc4eb73a",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 244,
+            "y": 340,
+            "width": 711,
+            "height": 521
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7090,6 +8038,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15",
+          "color": "Amarillo",
+          "officialColor": "yellow",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-yellow-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-amarillo-apple-camera-detail.jpg",
+          "sha256": "4b6892f4ddd300e89046dfd7321734e6126b3e0cddb3a946db115ada0641c379",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7151,6 +8119,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-blue-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-celeste-apple-camera-detail.jpg",
+          "sha256": "a03348baad57053b547b826f1b377a927b5840d250ac757f86a2a8fb7eba5256",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7212,6 +8200,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-black-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-negro-apple-camera-detail.jpg",
+          "sha256": "f8795ce3644f67f4ce71ee6e52268c7a14bb39408228fbff9c57ad7d04f6e7f7",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7273,6 +8281,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-pink-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-rosado-apple-camera-detail.jpg",
+          "sha256": "e89e508753d51d7b53dfb108eb8bad131ca2e5354552cd911f7964dc5a04d74a",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7317,6 +8345,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 15",
+          "color": "Verde",
+          "officialColor": "green",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-green-select-202309_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-15-verde-apple-camera-detail.jpg",
+          "sha256": "f3581b4ad4a79caeac5ae952b9b87d8afb7539d106c99ba97738ff457d6ae15c",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7378,6 +8426,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Plus",
+          "color": "Azul",
+          "officialColor": "ultramarine",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-plus-ultramarine-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-plus-azul-apple-camera-detail.jpg",
+          "sha256": "fc862caef81d61178f640b52129bf2cbb537d8c230b629441788f86f32a40cc1",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 235,
+            "y": 331,
+            "width": 730,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7439,6 +8507,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Plus",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-plus-black-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-plus-negro-apple-camera-detail.jpg",
+          "sha256": "6367e9f39ee500f058b34e12fd61162f0e34db0299f0b1ba6c72c11f85902d8c",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 235,
+            "y": 331,
+            "width": 730,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7500,6 +8588,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Plus",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-plus-pink-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-plus-rosado-apple-camera-detail.jpg",
+          "sha256": "7e6c4b6e807ab4dc21157aa1d92e0f6639397085830fb034502097295eb3e027",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 235,
+            "y": 331,
+            "width": 730,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7561,6 +8669,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Dorado",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-deserttitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-max-dorado-apple-camera-detail.jpg",
+          "sha256": "0beae7ac543195208364ab74b01e685a01ef4a88881457ffe0fcbba7cb8da57e",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 350,
+            "width": 760,
+            "height": 512
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7622,6 +8750,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Gris",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-naturaltitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-max-gris-apple-camera-detail.jpg",
+          "sha256": "b6a6a81fe67a87d95e82e0bafc2f9d12b6be38d954a97dc3ca4f90357451c1e1",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 350,
+            "width": 760,
+            "height": 512
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7683,6 +8831,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-blacktitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-max-negro-apple-camera-detail.jpg",
+          "sha256": "937cda8e06d06606a33bd2c29a271a31121eaa3870cc316d041908b1cd463f71",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 350,
+            "width": 760,
+            "height": 512
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7744,6 +8912,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Titanio desierto",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-deserttitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-max-titanio-desierto-apple-camera-detail.jpg",
+          "sha256": "0beae7ac543195208364ab74b01e685a01ef4a88881457ffe0fcbba7cb8da57e",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 350,
+            "width": 760,
+            "height": 512
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7805,6 +8993,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Titanio natural",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-naturaltitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-max-titanio-natural-apple-camera-detail.jpg",
+          "sha256": "b6a6a81fe67a87d95e82e0bafc2f9d12b6be38d954a97dc3ca4f90357451c1e1",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 220,
+            "y": 350,
+            "width": 760,
+            "height": 512
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7866,6 +9074,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro",
+          "color": "Dorado",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-deserttitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-dorado-apple-camera-detail.jpg",
+          "sha256": "d624317c81a7726e661a377be999aa4edc590d4fe94a21140595451c21af5950",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 249,
+            "y": 351,
+            "width": 702,
+            "height": 510
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7926,6 +9154,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-blacktitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-negro-apple-camera-detail.jpg",
+          "sha256": "6d4d73f6e92bf3c7dffd69778b53fa25fff8f412cf5b08561e5c9b566f3dba7b",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 249,
+            "y": 351,
+            "width": 702,
+            "height": 510
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -7986,6 +9234,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16 Pro",
+          "color": "Titanio desierto",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-deserttitanium-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-pro-titanio-desierto-apple-camera-detail.jpg",
+          "sha256": "d624317c81a7726e661a377be999aa4edc590d4fe94a21140595451c21af5950",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 249,
+            "y": 351,
+            "width": 702,
+            "height": 510
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8046,6 +9314,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16",
+          "color": "Blanco",
+          "officialColor": "white",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-white-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-blanco-apple-camera-detail.jpg",
+          "sha256": "1ad9fe0e18cc06b8533ffc94584a4fb788725b0260f4b3c483a0da404c76ec23",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8107,6 +9395,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-black-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-negro-apple-camera-detail.jpg",
+          "sha256": "95421378f718a04c22a289fd7a4c5a874e3539676acab74018b9d1d560a48df5",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8168,6 +9476,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 16",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pink-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-rosado-apple-camera-detail.jpg",
+          "sha256": "35d55c760b8d5311029ccb464571cc43e4d94a4f793cc38522c69e52d946e227",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8229,6 +9557,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Anaranjado",
+          "officialColor": "cosmicorange",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-finish-select-cosmicorange-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-max-anaranjado-apple-camera-detail.jpg",
+          "sha256": "7afe5c3cb391420099b25aeb44f4deec69ecc91af7246691e40f74ce720ee5ea",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 642,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8289,6 +9637,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Azul",
+          "officialColor": "deepblue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-finish-select-deepblue-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-max-azul-apple-camera-detail.jpg",
+          "sha256": "16b0a1f7896dac1690306cdbeea57a4fe06dc931efba2c5d953fb7425e6bddb8",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 642,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8349,6 +9717,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Blanco",
+          "officialColor": "silver",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-finish-select-silver-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-max-blanco-apple-camera-detail.jpg",
+          "sha256": "3b33a18a5394ce165913048129662090e6d69bca220416ce41e05852de8ffb44",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 642,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8409,6 +9797,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-finish-select-silver-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-max-plata-apple-camera-detail.jpg",
+          "sha256": "3b33a18a5394ce165913048129662090e6d69bca220416ce41e05852de8ffb44",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 642,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8452,6 +9860,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro",
+          "color": "Anaranjado",
+          "officialColor": "cosmicorange",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-finish-select-cosmicorange-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-anaranjado-apple-camera-detail.jpg",
+          "sha256": "547f3b6a38ac51cc70fd41d4124d7abcca7e8a04d075ed89d8b07ea0a2bf6565",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 278,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8512,6 +9940,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro",
+          "color": "Azul",
+          "officialColor": "deepblue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-finish-select-deepblue-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-azul-apple-camera-detail.jpg",
+          "sha256": "8cec7221d7963d55e65961eba386ea11b68ad9896f26a437460a601b3002430e",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 278,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8572,6 +10020,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 17 Pro",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-finish-select-silver-202509_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-17-pro-plata-apple-camera-detail.jpg",
+          "sha256": "c773b8ce90b27ea3487bcf5c043e4e8a2ca60a31f232b0b8ed0aef9a8fd06b17",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 278,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8632,6 +10100,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Borgoña",
+          "officialColor": "burgundy",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-max-finish-select-burgundy-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-max-borgona-apple-camera-detail.jpg",
+          "sha256": "fdd748ef7a0989450a2ec73bc7d337d4129dda07bb24f15b16c37cbab78f3dc0",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 643,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8692,6 +10180,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Celeste",
+          "officialColor": "glacier",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-max-finish-select-glacier-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-max-celeste-apple-camera-detail.jpg",
+          "sha256": "8fb6cf61523c21db3e7e6aa25685d38f93b8b9703becaec46cc94698a70d96f2",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 643,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8752,6 +10260,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-max-finish-select-silver-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-max-plata-apple-camera-detail.jpg",
+          "sha256": "ee72955c418a3370dcde20d4d0f5f4fc1ea2f01ac22b2514c70770b1ee5114ec",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 643,
+            "height": 569
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8812,6 +10340,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Celeste",
+          "officialColor": "glacier",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-glacier-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-celeste-apple-camera-detail.jpg",
+          "sha256": "f993e64eebd97bd0e59ad91d291ee43bd1a8939a4c3042510a4d0364088333db",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8872,6 +10420,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Glaciar",
+          "officialColor": "glacier",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-glacier-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-glaciar-apple-camera-detail.jpg",
+          "sha256": "f993e64eebd97bd0e59ad91d291ee43bd1a8939a4c3042510a4d0364088333db",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
         }
       ],
       "galleryRejectedSources": [
@@ -8932,6 +10500,26 @@
           "width": 1200,
           "height": 1200,
           "singleDevice": true
+        },
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-black-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-negro-apple-camera-detail.jpg",
+          "sha256": "d6c88b37cbff8c34440e1ad87bd7e236c10efc47e76fd31d2649d26ceb5ece0c",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
         }
       ],
       "galleryRejectedSources": [

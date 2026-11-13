@@ -11,6 +11,7 @@ on:
       - 'scripts/fetch-catalog-galleries.py'
       - 'scripts/expand-device-galleries.py'
       - 'scripts/press-device-galleries.py'
+      - 'scripts/fetch-apple-device-galleries.py'
       - '.github/workflows/refresh-catalog-images.yml'
 permissions:
   contents: write
@@ -35,6 +36,7 @@ jobs:
           python scripts/discover-catalog-images.py
           python scripts/fetch-catalog-galleries.py
           python scripts/expand-device-galleries.py
+          python scripts/fetch-apple-device-galleries.py
           python scripts/press-device-galleries.py
       - name: Guardar fotos verificadas
         run: |

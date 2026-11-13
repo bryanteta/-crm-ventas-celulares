@@ -111,3 +111,12 @@
  #details dl{margin-bottom:18px}
 }
 @media(max-height:500px) and (min-width:701px){#details .gallery-open{height:210px}}
+
+/* Series share the existing responsive card grid and card dimensions. */
+.catalog-series{grid-column:1/-1;min-width:0}
+.catalog-series+.catalog-series{margin-top:18px}
+.series-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0 16px;border-bottom:1px solid var(--border);margin:0 0 18px}
+.series-heading h3{margin:0;font-size:22px;font-weight:700;letter-spacing:-.6px;line-height:1.3}
+.series-heading>span{flex-shrink:0;font-size:11px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 10px;font-variant-numeric:tabular-nums}
+.series-products{min-width:0}
+@media(max-width:540px){.series-heading h3{font-size:20px}.series-heading{padding-bottom:12px;margin-bottom:14px}.catalog-series+.catalog-series{margin-top:12px}}

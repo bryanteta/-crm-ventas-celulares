@@ -125,16 +125,44 @@
     }
     return [...grouped.values()].flat();
   }
+  function deviceSeries(group){
+    const iphone=group.model.match(/^iPhone (\d+)\b/i);
+    if(group.manufacturer==='Apple'&&iphone)return {key:'apple-'+iphone[1],title:'iPhone '+iphone[1],manufacturer:'Apple'};
+    const galaxy=group.model.match(/^Samsung S(\d+)\b/i);
+    if(group.manufacturer==='Samsung'&&galaxy)return {key:'samsung-s'+galaxy[1],title:'Galaxy S'+galaxy[1],manufacturer:'Samsung'};
+    const foldable=group.model.match(/^Samsung Z (Flip|Fold)\b/i);
+    if(group.manufacturer==='Samsung'&&foldable)return {key:'samsung-z-'+foldable[1].toLowerCase(),title:'Galaxy Z '+foldable[1],manufacturer:'Samsung'};
+    return {key:group.manufacturer+'-'+group.model,title:group.model,manufacturer:group.manufacturer};
+  }
+  function seriesSection(series,stale){
+    const section=document.createElement('section');section.className='catalog-series';section.setAttribute('aria-label','Serie '+series.title);
+    const heading=document.createElement('div');heading.className='series-heading';
+    const title=document.createElement('h3');title.textContent=series.title;
+    const count=document.createElement('span'),units=series.groups.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
+    count.textContent=units?units+' equipo'+(units===1?'':'s'):(series.groups.length===1?'1 opción':series.groups.length+' opciones');
+    heading.append(title,count);
+    const grid=document.createElement('div');grid.className='products series-products';
+    for(const group of series.groups)grid.append(createCard(group,stale));
+    section.append(heading,grid);return section;
+  }
   function render(){
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
+    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
     const lowest=g=>Math.min(...g.variants.map(v=>v.priceCents));
-    matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||collator.compare(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||collator.compare(a.model,b.model):collator.compare(a.model,b.model));
+    const direction=nodes.sort.value==='model-desc'?-1:1;
+    matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||collator.compare(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||collator.compare(a.model,b.model):direction*collator.compare(a.model,b.model));
     const fragment=document.createDocumentFragment();
     const stale=Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000;
-    for(const group of matches){
-      fragment.append(createCard(group,stale));
-    }
+    if(['model','model-desc'].includes(nodes.sort.value)){
+      const series=new Map();
+      for(const group of matches){
+        const family=deviceSeries(group);
+        if(!series.has(family.key))series.set(family.key,{...family,groups:[]});
+        series.get(family.key).groups.push(group);
+      }
+      const ordered=[...series.values()].sort((a,b)=>(a.manufacturer==='Apple'?0:1)-(b.manufacturer==='Apple'?0:1)||direction*collator.compare(a.title,b.title));
+      for(const family of ordered)fragment.append(seriesSection(family,stale));
+    }else for(const group of matches)fragment.append(createCard(group,stale));
     nodes.products.replaceChildren(fragment);
     const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
     nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;

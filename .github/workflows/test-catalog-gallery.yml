@@ -8,6 +8,7 @@ on:
       - 'catalogo/index.html'
       - 'catalogo/styles.css'
       - 'scripts/test-catalog-gallery.cjs'
+      - 'scripts/test-catalog-series.cjs'
       - 'scripts/check-gallery-coverage.cjs'
       - 'scripts/bespoke-render-sources.json'
       - 'scripts/capture-bespoke-views.cjs'
@@ -38,3 +39,4 @@ jobs:
         run: |
           python3 -m http.server 8000 > /tmp/catalog-gallery-server.log 2>&1 &
           npm run test:catalog-gallery
+          npm run test:catalog-series

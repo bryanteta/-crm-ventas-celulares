@@ -63,7 +63,7 @@
   zoomPhoto.addEventListener('error',()=>{viewer.close();});
   $('gallery-prev').addEventListener('click',()=>move(-1));$('gallery-next').addEventListener('click',()=>move(1));
   $('zoom-prev').addEventListener('click',()=>move(-1));$('zoom-next').addEventListener('click',()=>move(1));
-  stage.addEventListener('click',()=>{if(suppressClick){suppressClick=false;return;}openZoom();});
+  stage.addEventListener('click',e=>{if(suppressClick&&e.detail!==0){suppressClick=false;return;}suppressClick=false;openZoom();});
   stage.addEventListener('pointerdown',e=>{gesture={id:e.pointerId,x:e.clientX,y:e.clientY};suppressClick=false;stage.setPointerCapture(e.pointerId);});
   stage.addEventListener('pointerup',e=>{if(!gesture||gesture.id!==e.pointerId)return;const x=e.clientX-gesture.x,y=e.clientY-gesture.y;gesture=null;if(Math.abs(x)>40&&Math.abs(x)>Math.abs(y)*1.3){suppressClick=true;move(x>0?-1:1);}});
   stage.addEventListener('pointercancel',()=>{gesture=null;});

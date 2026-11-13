@@ -2,6 +2,7 @@
 const {chromium,webkit}=require('playwright'),a=require('node:assert/strict');
 const source=require('../catalogo/inventory.json'),pictures=require('../catalogo/product-images.json');
 const origin='http://127.0.0.1:8000/catalogo/';
+const output=require('node:path').resolve(process.env.GALLERY_ARTIFACT_DIR||'test-results/gallery');require('node:fs').mkdirSync(output,{recursive:true});
 const base={...source.products[0],capacity:'64 GB',condition:'Seminuevo',grade:'A',battery:'100%',quantity:1,priceCents:30000,observations:[]};
 const inventory={...source,updatedAt:new Date().toISOString(),products:[{...base,id:'a'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Blanco'},{...base,id:'b'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Negro'},{...base,id:'c'.repeat(20),manufacturer:'Samsung',model:'Samsung S26 Ultra',color:'Celeste',capacity:'256 GB',battery:''}]};
 async function run(browserType,options){
@@ -37,7 +38,7 @@ async function run(browserType,options){
   await p.locator('#zoom-close').click();a.equal(await p.locator('#detail-price').innerText(),price);a.equal(await p.locator('#payment-bank').inputValue(),'cuscatlan');a(await p.locator('[name=installment-term][value="36"]').isChecked());
  }
  await p.setViewportSize({width:390,height:844});await p.evaluate(()=>document.documentElement.dataset.theme='light');
- await p.locator('#details').evaluate(d=>d.scrollTop=0);await p.screenshot({path:'/workspace/artifacts/catalog-gallery-'+browserType.name()+'.png'});
+ await p.locator('#details').evaluate(d=>d.scrollTop=0);await p.screenshot({path:require('node:path').join(output,'catalog-gallery-'+browserType.name()+'.png')});
  // Official Samsung metadata supplies real front/back/lateral photos.
  await p.locator('#close').click();await p.locator('#search').fill('Samsung S26 Ultra');await p.locator('.view').first().click();
  a((await p.locator('#gallery-thumbs button').count())>=3);const labels=await p.locator('#gallery-thumbs button').evaluateAll(bs=>bs.map(b=>b.getAttribute('aria-label')));a(labels.includes('Parte posterior'));a(labels.includes('Frente'));
@@ -55,7 +56,7 @@ async function run(browserType,options){
   await p.locator('#gallery-open').scrollIntoViewIfNeeded();const s=await p.locator('#gallery-open').boundingBox(),before=await p.locator('#gallery-counter').innerText();
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:s.x+s.width*.8,y:s.y+s.height/2,id:1}]});
   await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:s.x+s.width*.2,y:s.y+s.height/2,id:1}]});
-  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});a.notEqual(await p.locator('#gallery-counter').innerText(),before,'swipe advances photo');a(!(await p.locator('#photo-viewer').isVisible()),'swipe does not also open zoom');
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});a.notEqual(await p.locator('#gallery-counter').innerText(),before,'swipe advances photo');a(!(await p.locator('#photo-viewer').isVisible()),'swipe does not also open zoom');await p.locator('#gallery-open').focus();await p.keyboard.press('Enter');a(await p.locator('#photo-viewer').isVisible(),'keyboard zoom still works after swiping');await p.locator('#zoom-close').click();
  }else await p.locator('#zoom-close').click();
  await p.locator('#close').click();
  // A photo from another color, remote URL or malformed entry cannot enter a gallery.

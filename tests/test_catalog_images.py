@@ -25,4 +25,12 @@ class ExactImageTests(unittest.TestCase):
         self.assertNotIn(('Samsung S26','Celeste'),result)
         item['largeUrl']='//untrusted.example/wrong';self.assertEqual(d.samsung_candidates(data),{})
         item['largeUrl']='//images.samsung.com/a';item['fmyChipList'][0]['fmyChipName']='Unknown';self.assertEqual(d.samsung_candidates(data),{})
+    def test_gallery_requires_the_same_sku_and_color_and_skips_group_views(self):
+        item={'fmyChipList':[{'fmyChipType':'COLOR','fmyChipName':'Sky Blue'}], 'largeUrl':'//images.samsung.com/main', 'originPdpUrl':'/uk/s26/', 'modelCode':'SM-123BLUE',
+              'galleryImage':['//images.samsung.com/sm-123blue-back','//images.samsung.com/sm-123black-front','//images.samsung.com/sm-123blue-group','//images.samsung.com/sm-123blue-front'],
+              'galleryImageAlt':['Galaxy S26 Ultra DeviceBackL30 Sky Blue','Galaxy S26 Ultra DeviceFront Black','Galaxy S26 Ultra AllColors Sky Blue','Galaxy S26 Ultra DeviceFront Sky Blue']}
+        data={'response':{'resultData':{'productList':[{'fmyMarketingName':'Galaxy S26 Ultra','modelList':[item]}]}}}
+        views=d.samsung_candidates(data)['Samsung S26 Ultra','Celeste']['gallerySources']
+        self.assertEqual([v['label'] for v in views],['Parte posterior','Frente'])
+        self.assertTrue(all('sm-123blue' in v['sourceImage'] for v in views))
 if __name__ == '__main__':unittest.main()

@@ -10,7 +10,8 @@
     "test:business": "node tests/shared-business-ui.cjs",
     "test:catalog": "node scripts/test-public-catalog.cjs",
     "test:catalog-theme": "node scripts/test-catalog-theme.cjs",
-    "test:catalog-payments": "node scripts/test-catalog-payments.cjs"
+    "test:catalog-payments": "node scripts/test-catalog-payments.cjs",
+    "test:catalog-gallery": "node scripts/test-catalog-gallery.cjs"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "4.0.1",

@@ -347,7 +347,89 @@
       "path": "assets/products/samsung-s26-ultra-celeste.png",
       "sha256": "ba22696c2bf93f952e3524bb82134b689054fd0c408126144c7b66f7c31cc094",
       "width": 1920,
-      "height": 1280
+      "height": 1280,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948blbdeub-thumb-550747097?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-sky-blue-256gb-sm-s948blbdeub/",
+          "sourceSku": "SM-S948BLBDEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Parte posterior",
+          "model": "Samsung S26 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s26-ultra-celeste-gallery-1.png",
+          "sha256": "5c6d58ddef916871aa7b543b4cc434dc0f2b867e36b7a18fe52b04a7eec4e730",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948blbdeub-thumb-550747098?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-sky-blue-256gb-sm-s948blbdeub/",
+          "sourceSku": "SM-S948BLBDEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s26-ultra-celeste-gallery-2.png",
+          "sha256": "134680a09715eed04891d1aeef00c7a3279e435d7b602d39023aa1a48a56fd7c",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948blbdeub-thumb-550747099?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-sky-blue-256gb-sm-s948blbdeub/",
+          "sourceSku": "SM-S948BLBDEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Frente",
+          "model": "Samsung S26 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 374,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s26-ultra-celeste-gallery-3.png",
+          "sha256": "dca44f48dc8efc955786a4d2b10f411a5562447f3371cf1be79d36500c52c50d",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948blbdeub-thumb-550747100?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-sky-blue-256gb-sm-s948blbdeub/",
+          "sourceSku": "SM-S948BLBDEUB",
+          "credit": "Samsung",
+          "officialColor": "Sky Blue",
+          "label": "Vista frontal lateral",
+          "model": "Samsung S26 Ultra",
+          "color": "Celeste",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s26-ultra-celeste-gallery-4.png",
+          "sha256": "aedd3aa622ba1a313f773f31450f1467e5a41eb6a856bec9039c95beb0f8b436",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26 Ultra|Negro": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948bzkdeub-550747226?$624_624_PNG$",
@@ -366,7 +448,89 @@
       "path": "assets/products/samsung-s26-ultra-negro.png",
       "sha256": "3b64da7760de36dd4734e1506d342e986094631dc620c8326da8d229c534c0d8",
       "width": 624,
-      "height": 624
+      "height": 624,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948bzkdeub-thumb-550747208?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-black-256gb-sm-s948bzkdeub/",
+          "sourceSku": "SM-S948BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Parte posterior",
+          "model": "Samsung S26 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-s26-ultra-negro-gallery-1.png",
+          "sha256": "fa820fde2cec8b2a9aed438dd988ad9ce62ff1624bb9e869db7e956a5ebba113",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948bzkdeub-thumb-550747209?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-black-256gb-sm-s948bzkdeub/",
+          "sourceSku": "SM-S948BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung S26 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s26-ultra-negro-gallery-2.png",
+          "sha256": "f18f5187d618cbfbd5942ff95f936ff4e095073e4205077d59ae1e2ec1d89b15",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948bzkdeub-thumb-550747210?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-black-256gb-sm-s948bzkdeub/",
+          "sourceSku": "SM-S948BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Frente",
+          "model": "Samsung S26 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 374,
+            "y": 297,
+            "width": 154,
+            "height": 306
+          },
+          "path": "assets/products/samsung-s26-ultra-negro-gallery-3.png",
+          "sha256": "733aaa43be7c20d8e849f878a448638ed3939145bd18abe6695c38c5aaaf899d",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/s2602/gallery/uk-galaxy-s26-ultra-s948-577114-sm-s948bzkdeub-thumb-550747211?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-s/galaxy-s26-ultra-black-256gb-sm-s948bzkdeub/",
+          "sourceSku": "SM-S948BZKDEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista frontal lateral",
+          "model": "Samsung S26 Ultra",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 319
+          },
+          "path": "assets/products/samsung-s26-ultra-negro-gallery-4.png",
+          "sha256": "07104bc6449645faaf41f67ecae929318f2e7f5d9e156cb83f51317f4e2f1bea",
+          "width": 900,
+          "height": 900
+        }
+      ]
     },
     "Samsung S26|Celeste": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/us/s2602/gallery/us-galaxy-s26-s942-sm-s942ulbexaa-550995215?$product-details-jpg$",
@@ -556,7 +720,24 @@
       "path": "assets/products/iphone-11-pro-max-blanco.jpg",
       "sha256": "499aee6db530bde34526e2b0b9396d3399a2ccdda8ff8698b641c3ec4d790910",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11 Pro Max",
+          "color": "Blanco",
+          "officialColor": "silver",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_pro_max_silver__gex9b2t8hx2e_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-pro-max-silver",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-pro-max-blanco-gallery-1.jpg",
+          "sha256": "7fceaff6879dba20855032a19f8dcee77eeffb60c7f0cc3ede993ae064cbe0d2",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 11 Pro Max|Dorado": {
       "model": "iPhone 11 Pro Max",
@@ -570,7 +751,24 @@
       "path": "assets/products/iphone-11-pro-max-dorado.jpg",
       "sha256": "99580b6d1216142df50b1bcfab363aa781baf9d59bb8707763677427d39b6812",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11 Pro Max",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_pro_max_gold__fw9uqr5wdqa2_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-pro-max-gold",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-pro-max-dorado-gallery-1.jpg",
+          "sha256": "0d63d7fe8a4d13c75d7be0c5ea499507db2999b045e5d48c37195372acec1b55",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 11 Pro Max|Negro": {
       "model": "iPhone 11 Pro Max",
@@ -584,7 +782,24 @@
       "path": "assets/products/iphone-11-pro-max-negro.jpg",
       "sha256": "43c98d5e3941f58d0c9c76508697347eefd1140c1a983a56aacb81997ac9095c",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11 Pro Max",
+          "color": "Negro",
+          "officialColor": "spacegray",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_pro_max_spacegrey__dut95hfk3j42_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-pro-max-spacegray",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-pro-max-negro-gallery-1.jpg",
+          "sha256": "922264c7d7725acb6c4262e478542ab6dfe07d998ee7fe8b55a64595e3b094b0",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 11 Pro Max|Verde": {
       "model": "iPhone 11 Pro Max",
@@ -598,7 +813,24 @@
       "path": "assets/products/iphone-11-pro-max-verde.jpg",
       "sha256": "b020a8966de0e1fd1fff3ded4b4c7088ac42fb9391d0b844060bd5fb631d6d52",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11 Pro Max",
+          "color": "Verde",
+          "officialColor": "midnightgreen",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_pro_max_midnightgreen__dhu7a2mzfpoy_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-pro-max-midnightgreen",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-pro-max-verde-gallery-1.jpg",
+          "sha256": "b71c45b7cb126050d0c3fe6d19e4236ed3498df2d2a73c7801707c82601fbd3c",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 11|Blanco": {
       "model": "iPhone 11",
@@ -612,7 +844,24 @@
       "path": "assets/products/iphone-11-blanco.jpg",
       "sha256": "f97a42feb01eed29e2f7ad81e3614c4f64ee71eec59cf5c1cb7ae6499e673306",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11",
+          "color": "Blanco",
+          "officialColor": "white",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_white__c1bigtkwcsq6_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-white",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-blanco-gallery-1.jpg",
+          "sha256": "45b459660fa9e8710be9726c6fc11b7284c3f2f646a33f65e2583253f88963b6",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 11|Morado": {
       "model": "iPhone 11",
@@ -626,7 +875,24 @@
       "path": "assets/products/iphone-11-morado.jpg",
       "sha256": "952cf68a718fbe47911a17a9591d8dc1b630849778d15f3646c672dc49cde580",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11",
+          "color": "Morado",
+          "officialColor": "purple",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_purple__dncianr6j2uu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-purple",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-morado-gallery-1.jpg",
+          "sha256": "6c4a940ea72096383b4f5545a2706aeead9dd80d057d877778609c61feabb4cf",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 11|Negro": {
       "model": "iPhone 11",
@@ -640,7 +906,24 @@
       "path": "assets/products/iphone-11-negro.jpg",
       "sha256": "25d4111d3d252749cfe6e791c9f080b67ff6210a221074417b1b7cf30a3730d1",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 11",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone11_black__luskajpcyaaa_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-11-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-11-negro-gallery-1.jpg",
+          "sha256": "30a7cfc00d4cb906a6020e7591d5fba99dd384a90f9dc3157ac652f01b59613b",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 12 Pro Max|Dorado": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone12_pro_max_gold__bknb963nzyqa_large_2x.jpg",
@@ -690,7 +973,24 @@
       "path": "assets/products/iphone-12-azul.jpg",
       "sha256": "fc7c14f9399d31eefd4a3135e74cc50a150690f68b3a44805cc309820c58615e",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 12",
+          "color": "Azul",
+          "officialColor": "blue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone12_blue__ffk87fz4nuqi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-12-blue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-12-azul-gallery-1.jpg",
+          "sha256": "6db1fa88727266bc8ad588e3a7ae6f44d589ba8c3036b89b31a9ba9581810853",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 12|Negro": {
       "model": "iPhone 12",
@@ -704,7 +1004,24 @@
       "path": "assets/products/iphone-12-negro.jpg",
       "sha256": "da9e0d11dc85a6e0fa523d42cf8260de3a2e3013027520f10586e7c42e5c1d28",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 12",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone12_black__gj93q2eeofma_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-12-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-12-negro-gallery-1.jpg",
+          "sha256": "4114f60ef3909305f57cfa04cfdade71cc8531954c1b9cc9e460a7b50cff40eb",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 12|Verde": {
       "model": "iPhone 12",
@@ -718,7 +1035,24 @@
       "path": "assets/products/iphone-12-verde.jpg",
       "sha256": "aff5e375cbd4fe15e65858434e623b138f6202f799fb1d9a36a6d79622e5c4f6",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 12",
+          "color": "Verde",
+          "officialColor": "green",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone12_green__cua80qomesgi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-12-green",
+          "credit": "Apple",
+          "path": "assets/products/iphone-12-verde-gallery-1.jpg",
+          "sha256": "24b8fbed7364183adde4e5d27f5f2ceb138c5ff111638c8971d88f0d752e45bb",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Mini|Negro": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_mini_midnight__e8z05098gnma_large_2x.jpg",
@@ -744,7 +1078,24 @@
       "path": "assets/products/iphone-13-pro-max-azul.jpg",
       "sha256": "5321d13c4b6f90f8dd4705c7f4aed3ecab6e353f97d424f2e5973ed2c04cdb13",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Azul",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_sierra_blue__ccdnnwrapdau_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-max-sierrablue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-max-azul-gallery-1.jpg",
+          "sha256": "ce01d9230f3a1d17fd99fceec511aa49dd88c0dcd73500455af5d8fd5c7026ea",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro Max|Negro": {
       "model": "iPhone 13 Pro Max",
@@ -758,7 +1109,24 @@
       "path": "assets/products/iphone-13-pro-max-negro.jpg",
       "sha256": "7b0cbf00d85d5f341b3f60cb5f25a49a283ee5cef19460f01b4b762c12e71680",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_graphite__e0rjnrin6ncm_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-max-graphite",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-max-negro-gallery-1.jpg",
+          "sha256": "592f57ecad9cddf751ed752634a7f0a6aee07b0df1a205c0937693bd03c3984a",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro Max|Verde": {
       "model": "iPhone 13 Pro Max",
@@ -772,7 +1140,24 @@
       "path": "assets/products/iphone-13-pro-max-verde.jpg",
       "sha256": "f9e5fd5a537ab507571b3c6ae58f4f9291afc5f36b1590464fb5f8ba0f508d19",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Verde",
+          "officialColor": "alpinegreen",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_alpine_green__erdqy93lc18i_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-max-alpinegreen",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-max-verde-gallery-1.jpg",
+          "sha256": "972cd4ce0c5e2444d4f815f918dceb5a81b42ed6e9d04f88b580e0918ef602eb",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro|Azul": {
       "model": "iPhone 13 Pro",
@@ -786,7 +1171,24 @@
       "path": "assets/products/iphone-13-pro-azul.jpg",
       "sha256": "bf84782f88d3ac920088ca58dd057bcb3d83e2f45fff1bd9d2823f6ac45364fc",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Azul",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_sierra_blue__q5g805k09uym_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-sierrablue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-azul-gallery-1.jpg",
+          "sha256": "4ea1bc91895671aa9d8d2f11035667eec695747e9ef472043530f972b86f03b1",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro|Blanco": {
       "model": "iPhone 13 Pro",
@@ -800,7 +1202,24 @@
       "path": "assets/products/iphone-13-pro-blanco.jpg",
       "sha256": "9f5f48038d2544c8be683b3f9d7a8bb34f7cc43ec20a4a5b7be2a77c53b44c3f",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Blanco",
+          "officialColor": "silver",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_silver__dzq8ol0di7ee_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-silver",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-blanco-gallery-1.jpg",
+          "sha256": "c0aa0f5714fc45c598c4ebee6375a20b7bc2f0774be8b7374ce9ecc7b67dd2d9",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro|Celeste": {
       "model": "iPhone 13 Pro",
@@ -814,7 +1233,24 @@
       "path": "assets/products/iphone-13-pro-celeste.jpg",
       "sha256": "bf84782f88d3ac920088ca58dd057bcb3d83e2f45fff1bd9d2823f6ac45364fc",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Celeste",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_sierra_blue__q5g805k09uym_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-sierrablue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-celeste-gallery-1.jpg",
+          "sha256": "4ea1bc91895671aa9d8d2f11035667eec695747e9ef472043530f972b86f03b1",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro|Dorado": {
       "model": "iPhone 13 Pro",
@@ -828,7 +1264,24 @@
       "path": "assets/products/iphone-13-pro-dorado.jpg",
       "sha256": "a24a7fd14558ef6b32d28e96bd573d9ac56d816dacdaac6f4010cedca517da5f",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_gold__ea2j8y7hska6_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-gold",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-dorado-gallery-1.jpg",
+          "sha256": "2b23278e7aa551136041c90740bdceaa45752971f794c5096951783a76fe6199",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro|Negro": {
       "model": "iPhone 13 Pro",
@@ -842,7 +1295,24 @@
       "path": "assets/products/iphone-13-pro-negro.jpg",
       "sha256": "57a6d6cd2186a7ecbc2f8bb875c64186fd525a66111d786c880bb0f2ae048ff2",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Negro",
+          "officialColor": "graphite",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_graphite__1v1ipyvu1eae_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-graphite",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-negro-gallery-1.jpg",
+          "sha256": "f9c2d97f001ca16616e9671fa9aef9d3aa1aec92b22b8c94f1dcb29cfd9980af",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13 Pro|Verde": {
       "model": "iPhone 13 Pro",
@@ -856,7 +1326,24 @@
       "path": "assets/products/iphone-13-pro-verde.jpg",
       "sha256": "afd34a94ce851c92d35291c50599499fca0086d0d9534da91f06bfe861f16916",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro",
+          "color": "Verde",
+          "officialColor": "alpinegreen",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_alpine_green__d3ggyu8riw66_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-alpinegreen",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-verde-gallery-1.jpg",
+          "sha256": "005e7eb1e91c0a6eb483fd9505021b23e04aad73c11307314766f349778e8e25",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13|Azul": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_blue__dn52e83eu5yu_large_2x.jpg",
@@ -882,7 +1369,24 @@
       "path": "assets/products/iphone-13-blanco.jpg",
       "sha256": "3515cedd86eebd51da12b510ac3005fe2cfef6d34a46ae702ada2deefe5191b0",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13",
+          "color": "Blanco",
+          "officialColor": "starlight",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_starlight__135hisvufoim_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-starlight",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-blanco-gallery-1.jpg",
+          "sha256": "e71186dbadd56a5c8e71688b33135cdf31032d3c6a7c1887ffa5bf590d5879d4",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13|Celeste": {
       "model": "iPhone 13",
@@ -896,7 +1400,24 @@
       "path": "assets/products/iphone-13-celeste.jpg",
       "sha256": "dd044aec500eb6bfb79a88c1c391284d04b0891d0615566925c7c68aa609bcfe",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_blue__dn52e83eu5yu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-blue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-celeste-gallery-1.jpg",
+          "sha256": "277ff52194228ef830b5833c644a6b537ddd7a27a9b8572b851202bae7a37bf1",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13|Negro": {
       "model": "iPhone 13",
@@ -910,7 +1431,24 @@
       "path": "assets/products/iphone-13-negro.jpg",
       "sha256": "ffd80871f45363b1a3fb25f12f9fc0845ade7083b75fe158ac39e3c4726a6d92",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_midnight__dc2w8cyhc9iu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-midnight",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-negro-gallery-1.jpg",
+          "sha256": "d5d6c7542668c5a72e0ac050d4239bc809b67cf8135852f4099bb04130090fd9",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13|Rojo": {
       "model": "iPhone 13",
@@ -924,7 +1462,24 @@
       "path": "assets/products/iphone-13-rojo.jpg",
       "sha256": "21e8e18fd0844e44f90f7c7e3e59ece18e69ff92fc83fba5662dae0193f41c7c",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13",
+          "color": "Rojo",
+          "officialColor": "red",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_product_red__gmrn6xy6l4ya_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-red",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-rojo-gallery-1.jpg",
+          "sha256": "d5cb6e4ce35064b8eea4c0f7ada162a9ec3d750fad20d403788238c50d5c3d77",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 13|Rosado": {
       "model": "iPhone 13",
@@ -952,7 +1507,24 @@
       "path": "assets/products/iphone-13-verde.jpg",
       "sha256": "a34e873ded97ed4a8076254926af2376ed484d93acd9b9ad17c644996141c59f",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 13",
+          "color": "Verde",
+          "officialColor": "green",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_green__e9rhd84kj3yq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-green",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-verde-gallery-1.jpg",
+          "sha256": "64327ba6816c9eb5b8ad6fb823ce299ea1bd3862745ecda461767060f2fa07bf",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14 Plus|Lila": {
       "model": "iPhone 14 Plus",
@@ -966,7 +1538,24 @@
       "path": "assets/products/iphone-14-plus-lila.jpg",
       "sha256": "871977be1ce5d52c26c8f8625c7f56bf4891a731f3c4ecb4781c9b847b6336c3",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14 Plus",
+          "color": "Lila",
+          "officialColor": "purple",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_plus_purple__ebfjg5vvyu0y_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-plus-purple",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-plus-lila-gallery-1.jpg",
+          "sha256": "5a855c5df89987a8239fd3f42e5292a1b73e4e331c151921ebd4bc6a44c3d4f2",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14 Pro Max|Dorado": {
       "model": "iPhone 14 Pro Max",
@@ -980,7 +1569,24 @@
       "path": "assets/products/iphone-14-pro-max-dorado.jpg",
       "sha256": "7d363ba39e32682e3f8894ad65e05fd68f624647b77a2910285a7ba6d7d8b8a9",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_pro_max_gold__ssb2j2q92mi6_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-pro-max-gold",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-pro-max-dorado-gallery-1.jpg",
+          "sha256": "b401b8113671bee9b402140f14af55c136797da8665aba9d52a9835256ad5c8c",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14 Pro Max|Morado": {
       "model": "iPhone 14 Pro Max",
@@ -994,7 +1600,24 @@
       "path": "assets/products/iphone-14-pro-max-morado.jpg",
       "sha256": "2239f1d0670e1732220afad6b79f260fb95a5e50a3e2e0188ebdc0535ab59999",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Morado",
+          "officialColor": "deeppurple",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_pro_max_deep_purple__r2k8f3zaymi6_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-pro-max-deeppurple",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-pro-max-morado-gallery-1.jpg",
+          "sha256": "85d86cb149e05e62e6862a8ba495e516e85867c3b186c5abe23baadb5ff75c10",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14 Pro Max|Negro": {
       "model": "iPhone 14 Pro Max",
@@ -1008,7 +1631,24 @@
       "path": "assets/products/iphone-14-pro-max-negro.jpg",
       "sha256": "2235c3c922bdb8e42a25ba158f54d972fb4750f62aec401d7fc9bf032dc16134",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Negro",
+          "officialColor": "spaceblack",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_pro_max_space_black__dve23pjslceq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-pro-max-spaceblack",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-pro-max-negro-gallery-1.jpg",
+          "sha256": "a84134e890b303f1b84b752bc2c6a35447d7a00c4b7167b3f5cfdb06062706b7",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14 Pro|Dorado": {
       "model": "iPhone 14 Pro",
@@ -1022,7 +1662,24 @@
       "path": "assets/products/iphone-14-pro-dorado.jpg",
       "sha256": "413d999b2911174ccc7152520b8f2bc5333c3a29db6e2c986596b94310ce2af1",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14 Pro",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_pro_gold__cqyq3tm1zuxe_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-pro-gold",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-pro-dorado-gallery-1.jpg",
+          "sha256": "1eabf3a50764a5e3a386808a35d8028fdbfa7594685a272d06642d37a0a0af22",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14 Pro|Negro": {
       "model": "iPhone 14 Pro",
@@ -1036,7 +1693,24 @@
       "path": "assets/products/iphone-14-pro-negro.jpg",
       "sha256": "1a093515a8891468770e97191874845e4238164fba3ee135041dd886cb2e9628",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14 Pro",
+          "color": "Negro",
+          "officialColor": "spaceblack",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_pro_space_black__dym2kqku7n6u_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-pro-spaceblack",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-pro-negro-gallery-1.jpg",
+          "sha256": "039c830f06edf151d1f7f159b521bca8e128a2dbf4cde459230e3ef62bbf5e41",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14|Blanco": {
       "model": "iPhone 14",
@@ -1050,7 +1724,24 @@
       "path": "assets/products/iphone-14-blanco.jpg",
       "sha256": "639d4ae75c1f7107f91a5ab0f134405227aa9e867b1fed1b1dd519bf334ae388",
       "width": 246,
-      "height": 325
+      "height": 325,
+      "gallery": [
+        {
+          "model": "iPhone 14",
+          "color": "Blanco",
+          "officialColor": "starlight",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_starlight__f6rbukewn0mu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-starlight",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-blanco-gallery-1.jpg",
+          "sha256": "7d2ac3bb4ed9ff1925f35064d1927966cd092c42ec3bb5faed958f1df338dbfb",
+          "width": 492,
+          "height": 650,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14|Celeste": {
       "model": "iPhone 14",
@@ -1064,7 +1755,24 @@
       "path": "assets/products/iphone-14-celeste.jpg",
       "sha256": "345fbbbcfb741df9863f95017432a2448543aa9268ec49f735b5d6b4ce6b6fee",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_blue__c9pjeddi2qye_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-blue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-celeste-gallery-1.jpg",
+          "sha256": "7233b7f9417e9954d0a70a1af14e3400b280d7a7b5b93763b96bfed9df6cbdb4",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 14|Lila": {
       "model": "iPhone 14",
@@ -1104,7 +1812,24 @@
       "path": "assets/products/iphone-14-negro.jpg",
       "sha256": "fc19f5ff13bd3067894b185d403d6e7f778ae4cc1fec8c965ea22a3d2f28aaad",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 14",
+          "color": "Negro",
+          "officialColor": "midnight",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_midnight__bvwj36frtody_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-14-midnight",
+          "credit": "Apple",
+          "path": "assets/products/iphone-14-negro-gallery-1.jpg",
+          "sha256": "0845bf2b99fa6019bc0ae05031e90267d62ccf954cecc03fb5cd744576a297a9",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Plus|Celeste": {
       "model": "iPhone 15 Plus",
@@ -1118,7 +1843,24 @@
       "path": "assets/products/iphone-15-plus-celeste.jpg",
       "sha256": "c5e7f7827f78439cc04937a8efd5b48f8aa13fc3786941f50ca88780bacc3684",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Plus",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_plus_blue__9fcof0t4lk2i_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-plus-blue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-plus-celeste-gallery-1.jpg",
+          "sha256": "307a7adc9ed40e5633061e0b6aa9043a1aaa9011b6511a72e6ef8d2f37e1fbd6",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Plus|Negro": {
       "model": "iPhone 15 Plus",
@@ -1132,7 +1874,24 @@
       "path": "assets/products/iphone-15-plus-negro.jpg",
       "sha256": "72e9a1ef461b7f0bdf4ed681a6b540d56f9d27b018ec1c0e4014e15c5319fc6e",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Plus",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_plus_black__chh9za6pd2vm_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-plus-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-plus-negro-gallery-1.jpg",
+          "sha256": "4043cbb584fac9f12bed02af273cd96f45e313a410131a2e9e0eff27604c5687",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Plus|Rosado": {
       "model": "iPhone 15 Plus",
@@ -1146,7 +1905,24 @@
       "path": "assets/products/iphone-15-plus-rosado.jpg",
       "sha256": "c30133097a052b39a2a2f31ade5a2fdb7d5b91654e943cdfce9be1ae3ca3c410",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Plus",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_plus_pink__fai0b9il6cq6_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-plus-pink",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-plus-rosado-gallery-1.jpg",
+          "sha256": "f4844cd0e5e464ccbe66c74243666b7dfcba0cc73cac66ec64fb2d5a9c0b769e",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro Max|Azul": {
       "model": "iPhone 15 Pro Max",
@@ -1160,7 +1936,24 @@
       "path": "assets/products/iphone-15-pro-max-azul.jpg",
       "sha256": "40602effd367c86704543f1b7e394e666ffa4ef37cfc44ab315cd8bf805a00d6",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Azul",
+          "officialColor": "bluetitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_blue_titanium__c8xeminnbm82_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-max-bluetitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-max-azul-gallery-1.jpg",
+          "sha256": "c5c57f403299932ea66c1e1d6ee1dfa32f492bcc73f67b757552026fb3b884fd",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro Max|Blanco": {
       "model": "iPhone 15 Pro Max",
@@ -1175,7 +1968,25 @@
       "sha256": "e91927622c63cc7cb03b65ac4f0b5b2dd5032acaeb8aabe342b193473a2b2437",
       "width": 306,
       "height": 380,
-      "aliasOf": "iPhone 15 Pro Max|Plata"
+      "aliasOf": "iPhone 15 Pro Max|Plata",
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Blanco",
+          "officialColor": "whitetitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_white_titanium__citdiqo2e0gi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-max-whitetitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-max-blanco-gallery-1.jpg",
+          "sha256": "a9b0ab86b0e7cbd54e85a18015341410370132b0830b80039740918a4712411d",
+          "width": 612,
+          "height": 760,
+          "aliasOf": "iPhone 15 Pro Max|Plata",
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro Max|Gris": {
       "model": "iPhone 15 Pro Max",
@@ -1190,7 +2001,25 @@
       "sha256": "46dc29362d67383a0c5ac8d5441ae03dbd3a4a098c15ad4674acceb3577ed0ef",
       "width": 306,
       "height": 380,
-      "aliasOf": "iPhone 15 Pro Max|Titanio natural"
+      "aliasOf": "iPhone 15 Pro Max|Titanio natural",
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Gris",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_natural_titanium__byvhspupwiuq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-max-naturaltitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-max-gris-gallery-1.jpg",
+          "sha256": "90e8153bc4ca2dc845fd9224b2b416cca68bd8bc6da305935dfc75044f0dcff3",
+          "width": 612,
+          "height": 760,
+          "aliasOf": "iPhone 15 Pro Max|Titanio natural",
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro Max|Negro": {
       "model": "iPhone 15 Pro Max",
@@ -1204,7 +2033,24 @@
       "path": "assets/products/iphone-15-pro-max-negro.jpg",
       "sha256": "1132ca8564cf31dd69558c79fb02a2836737924f723101ee59d8fb7fd5c8419f",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_black_titanium__djidfm1dcmie_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-max-blacktitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-max-negro-gallery-1.jpg",
+          "sha256": "7c6a991c47e6fa1c6838c7a9c39a486d7ed5c4ef79597e5a29a99be7e0eb77b4",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro Max|Plata": {
       "model": "iPhone 15 Pro Max",
@@ -1218,7 +2064,24 @@
       "path": "assets/products/iphone-15-pro-max-plata.jpg",
       "sha256": "e91927622c63cc7cb03b65ac4f0b5b2dd5032acaeb8aabe342b193473a2b2437",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Plata",
+          "officialColor": "whitetitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_white_titanium__citdiqo2e0gi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-max-whitetitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-max-plata-gallery-1.jpg",
+          "sha256": "a9b0ab86b0e7cbd54e85a18015341410370132b0830b80039740918a4712411d",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro Max|Titanio natural": {
       "model": "iPhone 15 Pro Max",
@@ -1232,7 +2095,24 @@
       "path": "assets/products/iphone-15-pro-max-titanio-natural.jpg",
       "sha256": "46dc29362d67383a0c5ac8d5441ae03dbd3a4a098c15ad4674acceb3577ed0ef",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro Max",
+          "color": "Titanio natural",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_max_natural_titanium__byvhspupwiuq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-max-naturaltitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-max-titanio-natural-gallery-1.jpg",
+          "sha256": "90e8153bc4ca2dc845fd9224b2b416cca68bd8bc6da305935dfc75044f0dcff3",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro|Azul": {
       "model": "iPhone 15 Pro",
@@ -1246,7 +2126,24 @@
       "path": "assets/products/iphone-15-pro-azul.jpg",
       "sha256": "f6118bc0ffa3e41bb845dd1401ef8bf05c6ae6437808c0cef5b34887d48053d2",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro",
+          "color": "Azul",
+          "officialColor": "bluetitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_blue_titanium__bima7n6vpb0i_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-bluetitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-azul-gallery-1.jpg",
+          "sha256": "82d2cf137c68d8d79d0ec1fa952b16bbf0ae1b122efc78f8e75cdde61b88ba71",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro|Negro": {
       "model": "iPhone 15 Pro",
@@ -1260,7 +2157,24 @@
       "path": "assets/products/iphone-15-pro-negro.jpg",
       "sha256": "b61b7dddb6e1bc044e7a87875f76689fda7392dceb129c0ee8369a4ac263cb1f",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_black_titanium__etz96gq8ruoi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-blacktitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-negro-gallery-1.jpg",
+          "sha256": "ee10fb5119f0906b8b3bd6bbbb93b15f1396f8ee2979be4f4a56dc9d49430207",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15 Pro|Titanio natural": {
       "model": "iPhone 15 Pro",
@@ -1274,7 +2188,24 @@
       "path": "assets/products/iphone-15-pro-titanio-natural.jpg",
       "sha256": "2546d1147f2576dd95364b33a22d6a100090f4c82569354e4d904b00e4550faa",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15 Pro",
+          "color": "Titanio natural",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pro_natural_titanium__scqfo7q20n2i_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pro-naturaltitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-pro-titanio-natural-gallery-1.jpg",
+          "sha256": "8689cd6edc1bce61a70a0a253b436176898bbf18f1a4cf468b67507f91935798",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15|Amarillo": {
       "model": "iPhone 15",
@@ -1288,7 +2219,24 @@
       "path": "assets/products/iphone-15-amarillo.jpg",
       "sha256": "a469f48e72015bc1281fdcd029fad3dd06488d7a331903dfaa8af89f9114cb31",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15",
+          "color": "Amarillo",
+          "officialColor": "yellow",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_yellow__bqka09cyvqia_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-yellow",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-amarillo-gallery-1.jpg",
+          "sha256": "16d499980bb83704a3b7c4bf693c8118a8441ee4828642f99c95e283539e8f13",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15|Celeste": {
       "model": "iPhone 15",
@@ -1302,7 +2250,24 @@
       "path": "assets/products/iphone-15-celeste.jpg",
       "sha256": "527e0cf7293dc21ecbcc8cb6892392d3ed0623a347b991b378a1564a456e0933",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15",
+          "color": "Celeste",
+          "officialColor": "blue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_blue__cq4qefddyl8i_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-blue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-celeste-gallery-1.jpg",
+          "sha256": "3ef23f82466e379171b4f34713609724e692439ff07c934bca638bd8f8229aa3",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15|Negro": {
       "model": "iPhone 15",
@@ -1316,7 +2281,24 @@
       "path": "assets/products/iphone-15-negro.jpg",
       "sha256": "589853e1a32cf988e8d46506131ae2a949a3d9ce226786f78ea23bbdce37c659",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_black__eer8kwdkdjyq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-negro-gallery-1.jpg",
+          "sha256": "ca2ca50b0fbfa1395d86194a0172bd5e8d021583e62d8bf94c4cd26dbdacdcd3",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15|Rosado": {
       "model": "iPhone 15",
@@ -1330,7 +2312,24 @@
       "path": "assets/products/iphone-15-rosado.jpg",
       "sha256": "e87087c49148dd6199dc7443303a80a578564a46f9e95fcf517d3880664b47e5",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 15",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_pink__d2gop48s2aye_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-15-pink",
+          "credit": "Apple",
+          "path": "assets/products/iphone-15-rosado-gallery-1.jpg",
+          "sha256": "011b7719c172c4dd0b09d764798152b4d603385912842dc94bf87e36da435084",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 15|Verde": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone15_green__f6r83449uoyi_large_2x.jpg",
@@ -1356,7 +2355,24 @@
       "path": "assets/products/iphone-16-plus-azul.jpg",
       "sha256": "8c4baeea393fcd6c4dc35429fe6d3af120e376f461eebc20423926c1b1797dc4",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Plus",
+          "color": "Azul",
+          "officialColor": "ultramarine",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_plus_ultramarine__fedlzqf2pmqi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-plus-ultramarine",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-plus-azul-gallery-1.jpg",
+          "sha256": "ac7b0f0340d1d2ea745f8d625d576b3f0ee3a8aaa8c096be4db3028a71e351c7",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Plus|Negro": {
       "model": "iPhone 16 Plus",
@@ -1370,7 +2386,24 @@
       "path": "assets/products/iphone-16-plus-negro.jpg",
       "sha256": "92db6b32bac4b0458d4e7bd4cebbef9c6ad475c863b186e305b2b9d6b27ad0c5",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Plus",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_plus_black__fzb15ieuikey_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-plus-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-plus-negro-gallery-1.jpg",
+          "sha256": "ccb0a8bce2961f25cca621304fb5187fe0cf319ba5909c7949b7ca4a172e91c1",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Plus|Rosado": {
       "model": "iPhone 16 Plus",
@@ -1384,7 +2417,24 @@
       "path": "assets/products/iphone-16-plus-rosado.jpg",
       "sha256": "c2fb13a0d341eb776a1f0aea4e88a06f3d4eb5ee8e4bfaa3725669c023010e25",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Plus",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_plus_pink__egpda1o8qu82_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-plus-pink",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-plus-rosado-gallery-1.jpg",
+          "sha256": "e676c481e9b4047e81d778cb74a38fe37076cf1c0aaca5562fa4f1d118bb98de",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro Max|Dorado": {
       "model": "iPhone 16 Pro Max",
@@ -1398,7 +2448,24 @@
       "path": "assets/products/iphone-16-pro-max-dorado.jpg",
       "sha256": "bec7b129b4569200b818f0f4d6d690c64dedd6cc87f50c2dcd145a9435f5869a",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Dorado",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_max_desert_titanium__f8058hcu01ua_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-max-deserttitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-max-dorado-gallery-1.jpg",
+          "sha256": "51b164486225ccbd9d91b04a8d8711eb2074561c3d29c304f687ebcee8c66a4e",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro Max|Gris": {
       "model": "iPhone 16 Pro Max",
@@ -1412,7 +2479,24 @@
       "path": "assets/products/iphone-16-pro-max-gris.jpg",
       "sha256": "b878b92bc07aa9479a11b95d6ffd791331847cacf1a64f566f8c63a77cff4822",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Gris",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_max_natural_titanium__finz5cbww0mm_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-max-naturaltitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-max-gris-gallery-1.jpg",
+          "sha256": "d134dd88fcdce70bf41dab092a1006c8f24500ee33358a0964e8ae19f3e9b334",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro Max|Negro": {
       "model": "iPhone 16 Pro Max",
@@ -1426,7 +2510,24 @@
       "path": "assets/products/iphone-16-pro-max-negro.jpg",
       "sha256": "b7fb47cbe84565d77bb02b921111b87a5f72b10ca15a115097c3f609cde5d534",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_max_black_titanium__evlilxt8g2mq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-max-blacktitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-max-negro-gallery-1.jpg",
+          "sha256": "59460953756d534bb156a28db3af393b855d85398e73b75506c535a4183e796f",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro Max|Titanio desierto": {
       "model": "iPhone 16 Pro Max",
@@ -1440,7 +2541,24 @@
       "path": "assets/products/iphone-16-pro-max-titanio-desierto.jpg",
       "sha256": "bec7b129b4569200b818f0f4d6d690c64dedd6cc87f50c2dcd145a9435f5869a",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Titanio desierto",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_max_desert_titanium__f8058hcu01ua_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-max-deserttitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-max-titanio-desierto-gallery-1.jpg",
+          "sha256": "51b164486225ccbd9d91b04a8d8711eb2074561c3d29c304f687ebcee8c66a4e",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro Max|Titanio natural": {
       "model": "iPhone 16 Pro Max",
@@ -1454,7 +2572,24 @@
       "path": "assets/products/iphone-16-pro-max-titanio-natural.jpg",
       "sha256": "b878b92bc07aa9479a11b95d6ffd791331847cacf1a64f566f8c63a77cff4822",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro Max",
+          "color": "Titanio natural",
+          "officialColor": "naturaltitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_max_natural_titanium__finz5cbww0mm_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-max-naturaltitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-max-titanio-natural-gallery-1.jpg",
+          "sha256": "d134dd88fcdce70bf41dab092a1006c8f24500ee33358a0964e8ae19f3e9b334",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro|Dorado": {
       "model": "iPhone 16 Pro",
@@ -1468,7 +2603,24 @@
       "path": "assets/products/iphone-16-pro-dorado.jpg",
       "sha256": "659705975082dcd98efd0dd1eea36b5db358ffe8ffc7852f115f8d62ebc38583",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro",
+          "color": "Dorado",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_desert_titanium__ftixjyyve6qi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-deserttitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-dorado-gallery-1.jpg",
+          "sha256": "d1440d9c9cd28ac8327de82ae28244c589de0e9bace9a6213362e007394a44c7",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro|Negro": {
       "model": "iPhone 16 Pro",
@@ -1482,7 +2634,24 @@
       "path": "assets/products/iphone-16-pro-negro.jpg",
       "sha256": "812fd8c5f5452700e78d153baaaee282b639737edcd4e4b89338718335e1e538",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro",
+          "color": "Negro",
+          "officialColor": "blacktitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_black_titanium__c7t71uah5qky_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-blacktitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-negro-gallery-1.jpg",
+          "sha256": "bbedd0365349673d1119c54f2229f277576318ff3d320f21ecea5aac697cf0d0",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16 Pro|Titanio desierto": {
       "model": "iPhone 16 Pro",
@@ -1496,7 +2665,24 @@
       "path": "assets/products/iphone-16-pro-titanio-desierto.jpg",
       "sha256": "659705975082dcd98efd0dd1eea36b5db358ffe8ffc7852f115f8d62ebc38583",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16 Pro",
+          "color": "Titanio desierto",
+          "officialColor": "deserttitanium",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pro_desert_titanium__ftixjyyve6qi_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pro-deserttitanium",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-pro-titanio-desierto-gallery-1.jpg",
+          "sha256": "d1440d9c9cd28ac8327de82ae28244c589de0e9bace9a6213362e007394a44c7",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16|Blanco": {
       "model": "iPhone 16",
@@ -1510,7 +2696,24 @@
       "path": "assets/products/iphone-16-blanco.jpg",
       "sha256": "7835cf7cfa7c3b472943a8150b4e15820f0a2ebc291f0ddd8979fce0b1f67f6a",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16",
+          "color": "Blanco",
+          "officialColor": "white",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_white__dcn5vobxo7ki_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-white",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-blanco-gallery-1.jpg",
+          "sha256": "60316c7ddd8cbc5cce5f51e7c09a5f8dd39392b6e69050d76a2f81fa547aa9c8",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16|Negro": {
       "model": "iPhone 16",
@@ -1524,7 +2727,24 @@
       "path": "assets/products/iphone-16-negro.jpg",
       "sha256": "8d15fce21c6eadf3afabdc5207965ae7e2a84e475eac5f2da89f99c466e57817",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_black__bedc0hlw316q_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-negro-gallery-1.jpg",
+          "sha256": "c1f72f26417ff13597c7c2079a65f8b1df942efc66ca83e458b938f3f985564d",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 16|Rosado": {
       "model": "iPhone 16",
@@ -1538,7 +2758,24 @@
       "path": "assets/products/iphone-16-rosado.jpg",
       "sha256": "0c1dba7cb15ab2126b83d53edf319f59f0187404b5631f135dfa84e048359c0c",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 16",
+          "color": "Rosado",
+          "officialColor": "pink",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_pink__fzr1z22a7m2q_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-16-pink",
+          "credit": "Apple",
+          "path": "assets/products/iphone-16-rosado-gallery-1.jpg",
+          "sha256": "b576d720fa5ce85602c4aa362131904e733465b675b3a20c342d729730679ed9",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 17 Pro Max|Anaranjado": {
       "model": "iPhone 17 Pro Max",
@@ -1552,7 +2789,24 @@
       "path": "assets/products/iphone-17-pro-max-anaranjado.jpg",
       "sha256": "7776d30e45bcb4076d9de90a0d36a9fded40b43488fbdb67379b97d9cb0ba22b",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Anaranjado",
+          "officialColor": "cosmicorange",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_max_cosmic_orange__d7yolstz8cmu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-17-pro-max-cosmicorange",
+          "credit": "Apple",
+          "path": "assets/products/iphone-17-pro-max-anaranjado-gallery-1.jpg",
+          "sha256": "00b41a6146964446e0e0c3be591803f124840ddd8a2f76952145bb84530f9313",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 17 Pro Max|Azul": {
       "model": "iPhone 17 Pro Max",
@@ -1566,7 +2820,24 @@
       "path": "assets/products/iphone-17-pro-max-azul.jpg",
       "sha256": "0da968a4049ce68b5a2cfe61eaeaf4be5a54c9992fbf48a84d8c159ff62e130a",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Azul",
+          "officialColor": "deepblue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_max_deep_blue__frgcd836v866_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-17-pro-max-deepblue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-17-pro-max-azul-gallery-1.jpg",
+          "sha256": "6e293a1923f7496949c07c8b0a658f19de5d218df31aafec3060403db662a8eb",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 17 Pro Max|Blanco": {
       "model": "iPhone 17 Pro Max",
@@ -1580,7 +2851,24 @@
       "path": "assets/products/iphone-17-pro-max-blanco.jpg",
       "sha256": "e5f12c89f52f9f44e2ea607458d378c44e7defae005c2db12e5c5f25b242d7c5",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Blanco",
+          "officialColor": "silver",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_max_silver__dtw5i9e8osmu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-17-pro-max-silver",
+          "credit": "Apple",
+          "path": "assets/products/iphone-17-pro-max-blanco-gallery-1.jpg",
+          "sha256": "948be69dec7958fe35d4e2cf9065196d8d556c9448b28c2e20f7113a53ceffd6",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 17 Pro Max|Plata": {
       "model": "iPhone 17 Pro Max",
@@ -1594,7 +2882,24 @@
       "path": "assets/products/iphone-17-pro-max-plata.jpg",
       "sha256": "e5f12c89f52f9f44e2ea607458d378c44e7defae005c2db12e5c5f25b242d7c5",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 17 Pro Max",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_max_silver__dtw5i9e8osmu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-17-pro-max-silver",
+          "credit": "Apple",
+          "path": "assets/products/iphone-17-pro-max-plata-gallery-1.jpg",
+          "sha256": "948be69dec7958fe35d4e2cf9065196d8d556c9448b28c2e20f7113a53ceffd6",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 17 Pro|Anaranjado": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_cosmic_orange__dm1qripnvq82_large_2x.jpg",
@@ -1620,7 +2925,24 @@
       "path": "assets/products/iphone-17-pro-azul.jpg",
       "sha256": "ee324e0d9f98728c1ffd4cae2718ab411b1592315c922bb479c15c9082984ad3",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 17 Pro",
+          "color": "Azul",
+          "officialColor": "deepblue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_deep_blue__dz8sfcp4h742_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-17-pro-deepblue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-17-pro-azul-gallery-1.jpg",
+          "sha256": "a9c809af63a2111fd96b2463942020711a9ae58a10242f5bda41907a7cbc0d76",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 17 Pro|Plata": {
       "model": "iPhone 17 Pro",
@@ -1634,7 +2956,24 @@
       "path": "assets/products/iphone-17-pro-plata.jpg",
       "sha256": "46e9d95fa55657c2cb13a1d464d4c8a291112b90813b0d17422b8d89b91a31af",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 17 Pro",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone17_pro_silver__c7bbt5uwieye_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-17-pro-silver",
+          "credit": "Apple",
+          "path": "assets/products/iphone-17-pro-plata-gallery-1.jpg",
+          "sha256": "0077ef65153a072c40dfbf3274aadbd276b388c61c64e8641c88f0bef6c8722d",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 18 Pro Max|Borgoña": {
       "model": "iPhone 18 Pro Max",
@@ -1648,7 +2987,24 @@
       "path": "assets/products/iphone-18-pro-max-borgona.jpg",
       "sha256": "6cf7c3527112456af2b339373594180c13ca0b01100d6842b3edc00175a498e5",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Borgoña",
+          "officialColor": "burgundy",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_max_burgundy__dcz67l4005oy_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-18-pro-max-burgundy",
+          "credit": "Apple",
+          "path": "assets/products/iphone-18-pro-max-borgona-gallery-1.jpg",
+          "sha256": "ca3ad819a0362f1be76f5654ffb80624bc1038d20b92c0a53c0d0543a9f0624d",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 18 Pro Max|Celeste": {
       "model": "iPhone 18 Pro Max",
@@ -1662,7 +3018,24 @@
       "path": "assets/products/iphone-18-pro-max-celeste.jpg",
       "sha256": "9d7942a4a5794df93ce5d2bfc6c0ffcd52093c6946055cd0f39ec63174e3400b",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Celeste",
+          "officialColor": "glacier",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_max_glacier__f6f28qwmryuu_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-18-pro-max-glacier",
+          "credit": "Apple",
+          "path": "assets/products/iphone-18-pro-max-celeste-gallery-1.jpg",
+          "sha256": "6b105cf7e84fc088f7c1de79cb838c93800dc7c9a386da36b81a7ab49b801078",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 18 Pro Max|Plata": {
       "model": "iPhone 18 Pro Max",
@@ -1676,7 +3049,24 @@
       "path": "assets/products/iphone-18-pro-max-plata.jpg",
       "sha256": "9cb8cc13702ad3aff732229982cfbf07d2aefd0fd2dbe09a2047ed7d6429e862",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_max_silver__bkvexz4dqd36_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-18-pro-max-silver",
+          "credit": "Apple",
+          "path": "assets/products/iphone-18-pro-max-plata-gallery-1.jpg",
+          "sha256": "c844a502cf01a78a8881490da086d9aaba2bb80f561fa911690a4fd54820c46d",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 18 Pro|Celeste": {
       "model": "iPhone 18 Pro",
@@ -1690,7 +3080,24 @@
       "path": "assets/products/iphone-18-pro-celeste.jpg",
       "sha256": "6ca900968464ab6138b20e2b477cbe36fd552022d353c9cab12aa9ab62521251",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Celeste",
+          "officialColor": "glacier",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_glacier__f830jkql73iy_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-18-pro-glacier",
+          "credit": "Apple",
+          "path": "assets/products/iphone-18-pro-celeste-gallery-1.jpg",
+          "sha256": "c057454dbf8d31d1def8a5b4e48972325c5de9566e4d340cae43a11adcccce30",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 18 Pro|Glaciar": {
       "model": "iPhone 18 Pro",
@@ -1704,7 +3111,24 @@
       "path": "assets/products/iphone-18-pro-celeste.jpg",
       "sha256": "6ca900968464ab6138b20e2b477cbe36fd552022d353c9cab12aa9ab62521251",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Glaciar",
+          "officialColor": "glacier",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_glacier__f830jkql73iy_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-18-pro-glacier",
+          "credit": "Apple",
+          "path": "assets/products/iphone-18-pro-glaciar-gallery-1.jpg",
+          "sha256": "c057454dbf8d31d1def8a5b4e48972325c5de9566e4d340cae43a11adcccce30",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     },
     "iPhone 18 Pro|Negro": {
       "model": "iPhone 18 Pro",
@@ -1718,7 +3142,24 @@
       "path": "assets/products/iphone-18-pro-negro.jpg",
       "sha256": "af8a0a71025e75a91fc1397ee8a963173b7f7867e9f45055989da288740fad59",
       "width": 306,
-      "height": 380
+      "height": 380,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_black__f7t3q1k8wfiq_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-18-pro-black",
+          "credit": "Apple",
+          "path": "assets/products/iphone-18-pro-negro-gallery-1.jpg",
+          "sha256": "36302aef55a3c4c4e1e4c6a500b45f157bdb93d297bb2a3e781fcaf353190b61",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        }
+      ]
     }
   },
   "unavailable": {

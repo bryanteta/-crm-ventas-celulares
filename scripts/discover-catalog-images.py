@@ -55,7 +55,15 @@ def samsung_candidates(data):
             photo = item.get('largeUrl', '')
             if not color or not photo.startswith('//images.samsung.com/'):
                 continue
-            result.setdefault((name, color), {'sourceImage': 'https:' + photo + '?$624_624_PNG$', 'sourcePage': 'https://www.samsung.com' + item['originPdpUrl'], 'sourceSku': item['modelCode'], 'credit': 'Samsung', 'officialColor': finish})
+            gallery = []
+            for url, alt in zip(item.get('galleryImage') or [], item.get('galleryImageAlt') or []):
+                if not url.startswith('//images.samsung.com/') or item['modelCode'].lower() not in url.lower() or finish.lower() not in alt.lower():
+                    continue
+                labels = [('DeviceBackL30', 'Parte posterior'), ('DeviceBackR30', 'Vista posterior lateral'), ('DeviceFrontL30', 'Vista frontal lateral'), ('DeviceFrontR30', 'Vista frontal lateral'), ('DeviceFront', 'Frente')]
+                label = next((label for marker, label in labels if marker.lower() in alt.lower()), None)
+                if label and not any(g['label'] == label for g in gallery):
+                    gallery.append({'sourceImage': 'https:' + url + '?$900_900_PNG$', 'label': label})
+            result.setdefault((name, color), {'sourceImage': 'https:' + photo + '?$624_624_PNG$', 'sourcePage': 'https://www.samsung.com' + item['originPdpUrl'], 'sourceSku': item['modelCode'], 'credit': 'Samsung', 'officialColor': finish, 'gallerySources': gallery[:4]})
     return result
 
 def resolve(product, apple, samsung, reviewed):

@@ -1,0 +1,33 @@
+name: Verificar galería del catálogo
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'catalogo/gallery.js'
+      - 'catalogo/catalog.js'
+      - 'catalogo/index.html'
+      - 'catalogo/styles.css'
+      - 'scripts/test-catalog-gallery.cjs'
+      - 'scripts/fetch-catalog-galleries.py'
+      - 'scripts/discover-catalog-images.py'
+      - 'tests/test_catalog_images.py'
+      - '.github/workflows/test-catalog-gallery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: python3 -m unittest discover -s tests -p test_catalog_images.py
+      - name: Probar carrusel y zoom en navegador
+        run: |
+          python3 -m http.server 8000 > /tmp/catalog-gallery-server.log 2>&1 &
+          npm run test:catalog-gallery

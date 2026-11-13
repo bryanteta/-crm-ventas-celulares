@@ -66,10 +66,6 @@ def main():
                 key=(model,normalize(candidate['officialColor']))
                 if len(candidate.get('gallerySources',[]))>len(samsung.get(key,{}).get('gallerySources',[])):
                     samsung[key]=candidate
-    apple={}
-    for page in ['https://www.apple.com/shop/refurbished/iphone','https://www.apple.com/uk/shop/refurbished/iphone']:
-        try:apple.update(apple_store_candidates(discovery.read(page),page))
-        except Exception:print('Apple store unavailable; existing photos preserved.')
     tasks=[]
     for key,item in manifest['products'].items():
         if item['model'].startswith('Samsung '):
@@ -81,10 +77,9 @@ def main():
             for i,view in enumerate(candidate.get('gallerySources',[])):
                 if view['sourceImage'] in item.get('galleryRejectedSources',[]) or any(g.get('sourceImage')==view['sourceImage'] for g in item.get('gallery',[])):continue
                 tasks.append((key,i,{**candidate,**view,'model':item['model'],'color':item['color']}))
-        elif item['model'].startswith('iPhone '):
-            if any(p.get('label')=='Vista posterior' for p in item.get('gallery',[])):continue
-            candidate=apple.get((item['model'],item.get('officialColor','').lower())) or legacy_apple_candidate(item)
-            if candidate and candidate['sourceImage'] not in item.get('galleryRejectedSources',[]):tasks.append((key,'rear',{**candidate,'model':item['model'],'color':item['color'],'officialColor':item.get('officialColor',''),'credit':'Apple','label':'Vista posterior'}))
+        # Apple's unqualified refurbished assets show front AND back together.
+        # They repeat the comparison photo rather than adding a rear-only view.
+        # Individual Apple perspectives are collected by expand-device-galleries.py.
     def save(task):
         key,index,item=task
         # Keep gallery assets separate from the card photo. Preserve original bytes.

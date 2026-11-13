@@ -24,11 +24,11 @@ def swappie_records(page,model,source):
     result={}
     for color in data.get('modelAvailabilityData',{}).get('colors',[]):
         records=[]
-        for field,label in [('primaryImage','Frente y reverso'),('secondaryImage','Reverso'),('tertiaryImage','Frente')]:
+        for field,label in [('secondaryImage','Reverso'),('tertiaryImage','Frente')]:
             name=(color.get(field) or {}).get('imageLink','')
             if not re.fullmatch(r'[A-Za-z0-9_.-]+\.(?:png|jpg|webp)',name):continue
             if norm(model) not in norm(name) or norm(color.get('color','')) not in norm(name):continue
-            records.append({'sourceImage':'https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/'+name,'sourcePage':source,'credit':'Swappie','label':label})
+            records.append({'sourceImage':'https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/'+name,'sourcePage':source,'credit':'Swappie','label':label,'singleDevice':label=='Reverso' or norm(model) not in ['iphone13','iphone13mini']})
         result[norm(color.get('color',''))]=records
     return result
 

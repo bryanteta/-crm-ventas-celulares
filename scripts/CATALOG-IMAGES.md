@@ -20,7 +20,7 @@ El carrusel solo incluye archivos de fotos distintas del modelo y color elegidos
 
 Verificación del carrusel: `npm run test:catalog-gallery`. Para incluir el motor de Safari, instalar WebKit de Playwright y ejecutar con `TEST_WEBKIT=1`.
 
-Las perspectivas posteriores de Apple proceden de sus fotos oficiales de producto, incluyendo las publicadas en la tienda de reacondicionados. Se excluyen imágenes AV, fotos de cajas y gamas completas. Para Samsung se consultan los catálogos oficiales de varias regiones y se exige coincidencia de modelo y acabado oficial antes de agregar una perspectiva.
+En los iPhone, el modal prioriza las fotos individuales revisadas (`singleDevice`), mostrando frente y reverso por separado. Las composiciones de Apple con dos teléfonos se conservan para las tarjetas del catálogo; las composiciones adicionales de reacondicionados y el `primaryImage` de Swappie no se importan como nuevas perspectivas. Si solo hay una vista individual verificada, no se añaden fotos repetidas para aumentar el contador. Para Samsung se consultan los catálogos oficiales de varias regiones y se exige coincidencia de modelo y acabado oficial antes de agregar una perspectiva.
 
 La ampliación usa también galerías estructuradas de Swappie y Refurbed: exige que el modelo de la página coincida, que cada imagen corresponda al acabado indicado y, en Refurbed, que la variante seleccionada conserve el SKU esperado. Guarda el crédito y la página de origen por foto. Ante un límite HTTP 429 detiene las consultas a esa fuente durante la ejecución y conserva las imágenes anteriores.
 
@@ -39,4 +39,4 @@ python3 scripts/import-bespoke-captures.py /tmp/lunivo-bespoke-capture/captures.
 node scripts/check-gallery-coverage.cjs
 ```
 
-La prueba de cobertura exige al menos tres archivos distintos por cada modelo y color conocidos, comprueba hashes y encuadres y señala los registros sin color que el proveedor debe completar. La prueba del navegador también comprueba la cobertura completa, además de la navegación, el zoom y el desplazamiento de galerías largas.
+La prueba de cobertura comprueba las vistas efectivamente mostradas, permite una única vista individual cuando es la única verificada y exige al menos tres archivos en las galerías generales de Samsung; comprueba hashes y encuadres y señala los registros sin color que el proveedor debe completar. La prueba del navegador también comprueba la cobertura completa, además de la navegación, el zoom y el desplazamiento de galerías largas.

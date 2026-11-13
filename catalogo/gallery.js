@@ -46,9 +46,13 @@
   function show(device,picture){
     if(viewer.open)viewer.close();section.hidden=false;product=device;index=0;slides=[];
     if(safe(picture)){
-      const high=(Array.isArray(picture.gallery)?picture.gallery:[]).find(art=>safe(art)&&art.model===device.model&&art.color===device.color&&art.label==='Vista general en alta resolución');
-      const general=high||picture;slides.push({...general,label:'Vista general'});
-      for(const art of (Array.isArray(picture.gallery)?picture.gallery:[]).slice(0,10))if(safe(art)&&art.model===device.model&&art.color===device.color&&!slides.some(s=>s.path===art.path||(typeof s.sha256==='string'&&s.sha256===art.sha256)))slides.push({...art,label:typeof art.label==='string'?art.label.slice(0,60):'Otra perspectiva'});
+      const views=(Array.isArray(picture.gallery)?picture.gallery:[]).filter(art=>safe(art)&&art.model===device.model&&art.color===device.color);
+      // Reviewed individual views take precedence over paired front/back artboards.
+      // Keep the comparison artboard for catalog cards, never repeat it in the modal.
+      const individual=views.filter(art=>art.singleDevice===true).sort((a,b)=>Number(b.label==='Frente')-Number(a.label==='Frente'));
+      const high=views.find(art=>art.label==='Vista general en alta resolución');
+      const candidates=individual.length?individual:[{...(high||picture),label:'Vista general'},...views];
+      for(const art of candidates.slice(0,11))if(!slides.some(s=>s.path===art.path||(typeof s.sha256==='string'&&s.sha256===art.sha256)))slides.push({...art,label:typeof art.label==='string'?art.label.slice(0,60):'Otra perspectiva'});
 
     }
     section.setAttribute('aria-label','Fotos de '+device.model+', '+device.color);

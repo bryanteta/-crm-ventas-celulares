@@ -5,14 +5,14 @@ const source=require('../catalogo/inventory.json'),pictures=require('../catalogo
 const origin='http://127.0.0.1:8000/catalogo/';
 const output=require('node:path').resolve(process.env.GALLERY_ARTIFACT_DIR||'test-results/gallery');require('node:fs').mkdirSync(output,{recursive:true});
 const base={...source.products[0],capacity:'64 GB',condition:'Seminuevo',grade:'A',battery:'100%',quantity:1,priceCents:30000,observations:[]};
-const inventory={...source,updatedAt:new Date().toISOString(),products:[{...base,id:'a'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Blanco'},{...base,id:'b'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Negro'},{...base,id:'c'.repeat(20),manufacturer:'Samsung',model:'Samsung S26 Ultra',color:'Celeste',capacity:'256 GB',battery:''},{...base,id:'d'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Blanco',capacity:'256 GB',battery:'',priceCents:31000},{...base,id:'e'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Amarillo',capacity:'256 GB',battery:'',priceCents:31000}]};
+const inventory={...source,updatedAt:new Date().toISOString(),products:[{...base,id:'a'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Blanco'},{...base,id:'b'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Morado'},{...base,id:'c'.repeat(20),manufacturer:'Samsung',model:'Samsung S26 Ultra',color:'Celeste',capacity:'256 GB',battery:''},{...base,id:'d'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Blanco',capacity:'256 GB',battery:'',priceCents:31000},{...base,id:'e'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Amarillo',capacity:'256 GB',battery:'',priceCents:31000}]};
 async function run(browserType,options){
  const browser=await browserType.launch(options);try{
  const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));
  await p.route(origin+'inventory.json',r=>r.fulfill({json:inventory}));
  // Delay the initial photo, then select another: late pixels must never replace it.
- const initial=pictures.products['iPhone 11|Blanco'].gallery.find(a=>a.label==='Vista general en alta resolución');
+ const initial=pictures.products['iPhone 11|Blanco'].gallery.find(a=>a.singleDevice&&a.label==='Frente');
  let release;const gate=new Promise(r=>release=r),pattern='**/'+initial.path+'*';
  await p.route(pattern,async route=>{await gate;await route.continue();});
  await p.goto(origin);await p.locator('.view').first().click();
@@ -26,9 +26,11 @@ async function run(browserType,options){
  a.equal(await p.locator('#gallery-photo').getAttribute('src'),selected,'a late photo never overwrites the selected perspective');
  a.equal(await p.locator('#gallery-open').getAttribute('aria-busy'),'false');
  await p.unroute(pattern);await p.locator('#gallery-prev').click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
- const viewCount=await p.locator('#gallery-thumbs button').count();a(viewCount>=3,'device gets more than two real photos');a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
- const firstPhoto=await p.locator('#gallery-photo').getAttribute('src');await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista posterior');a.notEqual(await p.locator('#gallery-photo').getAttribute('src'),firstPhoto,'another perspective uses a different image file');
- await p.locator('#gallery-prev').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista general');
+ a.equal(await p.locator('#gallery-thumbs button').count(),2,'iPhone 11 has one isolated front and one isolated back, without paired artboards');
+ const viewCount=await p.locator('#gallery-thumbs button').count();a(viewCount>=2,'front and back are separate individual photos');a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
+ a.equal(await p.locator('#gallery-thumbs button[aria-label="Frente y reverso"]').count(),0,'a second paired general photo is not another perspective');
+ const firstPhoto=await p.locator('#gallery-photo').getAttribute('src');await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Reverso');a.notEqual(await p.locator('#gallery-photo').getAttribute('src'),firstPhoto,'another perspective uses a different image file');
+ await p.locator('#gallery-prev').click();a.equal(await p.locator('#gallery-caption').innerText(),'Frente');
  await p.locator('#gallery-thumbs button').last().click();a.equal(await p.locator('#gallery-counter').innerText(),viewCount+' / '+viewCount);
  await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
  await p.locator('#gallery-open').focus();await p.keyboard.press('ArrowRight');a.equal(await p.locator('#gallery-counter').innerText(),'2 / '+viewCount);
@@ -37,7 +39,7 @@ async function run(browserType,options){
  const panBox=await p.locator('#zoom-viewport').boundingBox(),panBefore=await p.locator('#zoom-viewport').evaluate(n=>n.scrollLeft);await p.mouse.move(panBox.x+panBox.width/2,panBox.y+panBox.height/2);await p.mouse.down();await p.mouse.move(panBox.x+panBox.width/2-50,panBox.y+panBox.height/2-40,{steps:4});await p.mouse.up();a.notEqual(await p.locator('#zoom-viewport').evaluate(n=>n.scrollLeft),panBefore,'enlarged photo can be dragged');
  for(let i=0;i<5;i++)await p.locator('#zoom-in').click();a.equal(await p.locator('#zoom-level').innerText(),'400%');a(await p.locator('#zoom-in').isDisabled());
  await p.locator('#zoom-reset').click();a.equal(await p.locator('#zoom-level').innerText(),'100%');a(await p.locator('#zoom-out').isDisabled());
- await p.locator('#zoom-next').click();a((await p.locator('#zoom-counter').innerText()).startsWith('3 / '+viewCount));
+ await p.locator('#zoom-next').click();a((await p.locator('#zoom-counter').innerText()).startsWith((2%viewCount+1)+' / '+viewCount));
  await p.keyboard.press('Escape');a(!(await p.locator('#photo-viewer').isVisible()));a(await p.locator('#details').isVisible());
  const colors=await p.locator('#detail-colors button').count();if(colors>1){await p.locator('#detail-colors button').nth(1).click();a((await p.locator('#gallery-counter').innerText()).startsWith('1 / '));a((await p.locator('#gallery-photo').getAttribute('alt')).includes(await p.locator('#detail-colors button').nth(1).getAttribute('aria-label')));}
  // Exercise all widths/themes without changing the inventory or selected price.

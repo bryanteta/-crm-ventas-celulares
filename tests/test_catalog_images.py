@@ -49,7 +49,7 @@ class ExactImageTests(unittest.TestCase):
         data={'productPageData':{'selectedProduct':{'modelName':'iPhone 13'},'modelAvailabilityData':{'colors':[{'color':'Midnight','primaryImage':{'imageLink':'swappie-iphone-13-midnight.png'},'secondaryImage':{'imageLink':'swappie-iphone-13-blue-back.png'},'tertiaryImage':{'imageLink':'https://untrusted.example/front.png'}}]}}}
         page='<script>window.__INITIAL__DATA__ = '+json.dumps(data)+';</script>'
         records=e.swappie_records(page,'iPhone 13','https://swappie.com/us/iphone/iphone-13/')
-        self.assertEqual(len(records['midnight']),1)
+        self.assertEqual(len(records['midnight']),0)  # Paired primary image is not an extra perspective.
         self.assertEqual(e.swappie_records(page,'iPhone 13 Pro','https://swappie.com/'),{})
         self.assertEqual(e.refurbed_photos('<div data-instance-id="2"></div>',{'sku':'1','url':'https://www.refurbed.ie/p/test/'}),[])
     def test_press_images_require_public_released_exact_color_product_files(self):

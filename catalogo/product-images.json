@@ -3980,18 +3980,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-silver.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-11-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 11 Pro Max",
-          "color": "Blanco",
-          "path": "assets/products/iphone-11-pro-max-blanco-view-a9eea6d640.png",
-          "sha256": "9d3d3ebd19974748ab6a68e70f56b9aa8aae64b256e6dacc0d4b5623ffa602f2",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-silver-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-11-pro-max/",
           "credit": "Swappie",
@@ -4001,7 +3989,8 @@
           "path": "assets/products/iphone-11-pro-max-blanco-view-449ad330c0.png",
           "sha256": "cd9cb664a36036750321f19e8b358f0b2eb14bf9c34749a0fcef704d34abff13",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-silver-front.png",
@@ -4013,8 +4002,12 @@
           "path": "assets/products/iphone-11-pro-max-blanco-view-12a3e417be.png",
           "sha256": "2239f30d87e8602491e4e5209651da851465b1a6ac0c126b302cf5d45da01ce4",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-silver.png"
       ]
     },
     "iPhone 11 Pro Max|Dorado": {
@@ -4047,18 +4040,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-gold.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-11-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 11 Pro Max",
-          "color": "Dorado",
-          "path": "assets/products/iphone-11-pro-max-dorado-view-9d223d6de4.png",
-          "sha256": "2961a91deec6bbe91ff49c4afae2572378e4f182a60dc8014757d30b4ca250da",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-gold-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-11-pro-max/",
           "credit": "Swappie",
@@ -4068,7 +4049,8 @@
           "path": "assets/products/iphone-11-pro-max-dorado-view-69c20e7b66.png",
           "sha256": "98cda5be3acca2ae382112fb5344dea851d3e1119103299156e2d3894a77ff08",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-gold-front.png",
@@ -4080,8 +4062,12 @@
           "path": "assets/products/iphone-11-pro-max-dorado-view-ebbfabc798.png",
           "sha256": "82028f767dd4becedc114982d7a8f4440e7c93282f15b7b43f348be9657f41a1",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-gold.png"
       ]
     },
     "iPhone 11 Pro Max|Negro": {
@@ -4114,18 +4100,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-space-gray.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-11-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 11 Pro Max",
-          "color": "Negro",
-          "path": "assets/products/iphone-11-pro-max-negro-view-ae89aa795e.png",
-          "sha256": "5fc8c6207c2be58ea80d7e3b56549372eb91a5977bcc6e857698ed6f1fc5bc27",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-space-gray-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-11-pro-max/",
           "credit": "Swappie",
@@ -4135,7 +4109,8 @@
           "path": "assets/products/iphone-11-pro-max-negro-view-dd6eb04dcd.png",
           "sha256": "d22449ff9617f7d9f3c86ae1c146c8f6add5694d5da78b13e5d5db741e8ff8ed",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-space-gray-front.png",
@@ -4147,8 +4122,12 @@
           "path": "assets/products/iphone-11-pro-max-negro-view-c4898aa51f.png",
           "sha256": "1838c10497821d79403e6e269bd26870c5d6b3c5402d4565070a7a2940c45fca",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-space-gray.png"
       ]
     },
     "iPhone 11 Pro Max|Verde": {
@@ -4190,7 +4169,8 @@
           "path": "assets/products/iphone-11-pro-max-verde-view-ffb1357c10.png",
           "sha256": "98d8b4a642e8b7f63e2b28c3012c2f17544c0f0c9d881d4a768db1cbdf04a3a8",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-pro-max-midnight-green-front.png",
@@ -4202,7 +4182,8 @@
           "path": "assets/products/iphone-11-pro-max-verde-view-80a6133a11.png",
           "sha256": "aeaf5767bce1ee854177899d9e32da5285ba6792b04e92477eb877e475853503",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -4239,19 +4220,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-white-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 11",
-          "color": "Blanco",
-          "officialColor": "white",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-11-blanco-gallery-rear.jpg",
-          "sha256": "7c490ee4e897c9fe21d1409508cb114e5db6dde1fef38e273f9903b9cdcc1cf0",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-white-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-11/",
           "credit": "Swappie",
@@ -4261,7 +4229,8 @@
           "path": "assets/products/iphone-11-blanco-view-9a5b1d9a7a.png",
           "sha256": "b4a62b1b9bcd43ad9ad6e4cd3a943a0f98a51303dd97b1be4a7a395411c5a16b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-white-front.png",
@@ -4273,11 +4242,13 @@
           "path": "assets/products/iphone-11-blanco-view-b7f603c313.png",
           "sha256": "8046124c60440d5dfb39ca82272742e61d0741d8043ef84b47aad455aeaffd53",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-white.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-white.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-white-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 11|Morado": {
@@ -4310,31 +4281,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-purple-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 11",
-          "color": "Morado",
-          "officialColor": "purple",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-11-morado-gallery-rear.jpg",
-          "sha256": "91afb340aaff84cf64c1f32f7b65277097f2527dbf5c80d1c82321ae9885b67b",
-          "width": 1200,
-          "height": 1200
-        },
-        {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-purple.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-11/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 11",
-          "color": "Morado",
-          "path": "assets/products/iphone-11-morado-view-0538cf54a0.png",
-          "sha256": "4ee47c7c3cd3e4c4887360b2fa8779d95b125d5691269311c1babb12cd4d8356",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-purple-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-11/",
           "credit": "Swappie",
@@ -4344,7 +4290,8 @@
           "path": "assets/products/iphone-11-morado-view-be225c8e14.png",
           "sha256": "b4d2540e72313955952ebc4df1d43aff1649d596fb43d955e757b37ea9063105",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-purple-front.png",
@@ -4356,8 +4303,13 @@
           "path": "assets/products/iphone-11-morado-view-b00cec64cc.png",
           "sha256": "3fad3ef8d257396d2f0267548e2da0207d4cd48f63c67e570d788524165c65bc",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-purple-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-purple.png"
       ]
     },
     "iPhone 11|Negro": {
@@ -4390,31 +4342,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-black-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 11",
-          "color": "Negro",
-          "officialColor": "black",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-11-negro-gallery-rear.jpg",
-          "sha256": "ee6210ca8fd2fff8ec404ba49ec0a97721d7134127671e0b2db6ffd714df8341",
-          "width": 1200,
-          "height": 1200
-        },
-        {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-black.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-11/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 11",
-          "color": "Negro",
-          "path": "assets/products/iphone-11-negro-view-e86c38d16b.png",
-          "sha256": "9fc3bbfa9176d8c7da7a21de99f06e22f780d881b3a1fd08019a9d96eee0ea93",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-black-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-11/",
           "credit": "Swappie",
@@ -4424,7 +4351,8 @@
           "path": "assets/products/iphone-11-negro-view-796d1a9d78.png",
           "sha256": "04dab683dace3f9956e459ee8d197594624993f39119316aa6c30c3a62774154",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-black-front.png",
@@ -4436,8 +4364,13 @@
           "path": "assets/products/iphone-11-negro-view-817ceb48fa.png",
           "sha256": "c64d81d2915cf622477a4f6e2dff12fc328a3a9132552dad90d66623fed1ecc4",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone11-black-2019?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-11-black.png"
       ]
     },
     "iPhone 12 Pro Max|Dorado": {
@@ -4453,19 +4386,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-max-gold-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 12 Pro Max",
-          "color": "Dorado",
-          "officialColor": "gold",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-12-pro-max-dorado-gallery-rear.jpg",
-          "sha256": "6563da32a587cc83cf2238148a43effb26a044c5140c735bffe70d18952cfbbc",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-gold-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-12-pro-max/",
           "credit": "Swappie",
@@ -4475,7 +4395,8 @@
           "path": "assets/products/iphone-12-pro-max-dorado-view-1a6d867b1d.png",
           "sha256": "a9104381313b69218b8298bfa96725db8a281b55bf6780b8c0876e7338c9e3ef",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-gold-front.png",
@@ -4487,11 +4408,13 @@
           "path": "assets/products/iphone-12-pro-max-dorado-view-790eaa4dc0.png",
           "sha256": "dfb052b956df09a827cae2ffb1ce3e0421908e419561d87c231ee075f5fad80d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-gold.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-gold.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-max-gold-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 12 Pro Max|Negro": {
@@ -4507,19 +4430,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-max-graphite-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 12 Pro Max",
-          "color": "Negro",
-          "officialColor": "graphite",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-12-pro-max-negro-gallery-rear.jpg",
-          "sha256": "1bc9ac13d247578dcd052f097065e58d95af867a3186ee4c0e250166d0c05e24",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-graphite-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-12-pro-max/",
           "credit": "Swappie",
@@ -4529,7 +4439,8 @@
           "path": "assets/products/iphone-12-pro-max-negro-view-88faf9babf.png",
           "sha256": "d11ed6b62490bf09ecddd29cf8c386c6c5ef42047657dafe28df7419a19fcfb6",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-graphite-front.png",
@@ -4541,11 +4452,13 @@
           "path": "assets/products/iphone-12-pro-max-negro-view-a895456618.png",
           "sha256": "152ba54ce3731c1be9631b701665273021a5bf3323f724aff5c55ca5ed40b8af",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-graphite.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-max-graphite.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-max-graphite-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 12 Pro|Negro": {
@@ -4561,19 +4474,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-graphite-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 12 Pro",
-          "color": "Negro",
-          "officialColor": "graphite",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-12-pro-negro-gallery-rear.jpg",
-          "sha256": "51131572b47c22bd265e8f0fbd2548b56114f6e68c0ac6b2c4068a36462ef626",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-graphite-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-12-pro/",
           "credit": "Swappie",
@@ -4583,7 +4483,8 @@
           "path": "assets/products/iphone-12-pro-negro-view-1edb27d197.png",
           "sha256": "a358c8df175b8a72aad7fd56a8ce54f5f14adbb729b2156978bc6cf91bbf1649",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-graphite-front.png",
@@ -4595,11 +4496,13 @@
           "path": "assets/products/iphone-12-pro-negro-view-b65b0ad4b5.png",
           "sha256": "ea9e1e8a6f421f90ac94abb28bfe027469c9861d89cbaf3da6118e7042992e4c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-graphite.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-pro-graphite.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-pro-graphite-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 12|Azul": {
@@ -4632,19 +4535,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-blue-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 12",
-          "color": "Azul",
-          "officialColor": "blue",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-12-azul-gallery-rear.jpg",
-          "sha256": "f0d1543eb81406b345f3cba61735b85ff2eff44b799f8872b31c0d95c968fadb",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-12/",
           "credit": "Swappie",
@@ -4654,7 +4544,8 @@
           "path": "assets/products/iphone-12-azul-view-4cc7ba6d1b.png",
           "sha256": "2000cf7f063e42082377668a496b46b43b584c7cc7bb5b61e14b7323e0655eae",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-blue-front.png",
@@ -4666,11 +4557,13 @@
           "path": "assets/products/iphone-12-azul-view-6683448162.png",
           "sha256": "8c3a76a5c45f90fd0bf584044c197e12f288dfa82cde43fef01d223aff5b862a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-blue.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-blue.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-blue-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 12|Negro": {
@@ -4703,19 +4596,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-black-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 12",
-          "color": "Negro",
-          "officialColor": "black",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-12-negro-gallery-rear.jpg",
-          "sha256": "0965832c4195363f839af63b947f2757f907583f55487a5eb4124a44de51e6f2",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-black-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-12/",
           "credit": "Swappie",
@@ -4725,7 +4605,8 @@
           "path": "assets/products/iphone-12-negro-view-7fcb68053c.png",
           "sha256": "64f83811ecabc01b7bc5b125772ae0ffd7b70f7d92fcdc0f4b8b7dcee443eb6e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-black-front.png",
@@ -4737,11 +4618,13 @@
           "path": "assets/products/iphone-12-negro-view-59f6fc3e5c.png",
           "sha256": "1fda8c5c725a3608d7fe7c9771a4ca2fbfd237c28b6a7b1b265a8cbbcf861b5c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-black.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-black.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-black-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 12|Verde": {
@@ -4774,19 +4657,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-green-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 12",
-          "color": "Verde",
-          "officialColor": "green",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-12-verde-gallery-rear.jpg",
-          "sha256": "1991f8bde22bb58753f02cc5c4ee51b2cfb3c7c45ffa5b4dab0d2bcb0257253d",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-green-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-12/",
           "credit": "Swappie",
@@ -4796,7 +4666,8 @@
           "path": "assets/products/iphone-12-verde-view-edcd7da786.png",
           "sha256": "8a191478578273ac005ff476d13c9619a62cf449bf0b80e54a8336ed35be2080",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-green-front.png",
@@ -4808,11 +4679,13 @@
           "path": "assets/products/iphone-12-verde-view-5497fd6866.png",
           "sha256": "a145436e89be6f1e519661881f7f897595e349e1aa51b3b32e217c5e1feeb4e1",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-green.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-green.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-green-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13 Mini|Negro": {
@@ -4840,7 +4713,8 @@
           "path": "assets/products/iphone-13-mini-negro-view-1aa59a27d6.png",
           "sha256": "c76e94b27eab4402e1a2bba107cbb11cfbabcc9140f7e0fe999b0880dc4dedc7",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-mini-midnight-front.png",
@@ -4886,18 +4760,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 13 Pro Max",
-          "color": "Azul",
-          "path": "assets/products/iphone-13-pro-max-azul-view-352bbf8a07.png",
-          "sha256": "c39583a6624a9083d61c8f57801be866b100705008d5f7607c08d339269c804e",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
           "credit": "Swappie",
@@ -4907,7 +4769,8 @@
           "path": "assets/products/iphone-13-pro-max-azul-view-4496ed822b.png",
           "sha256": "21aae4fde5841a1ff76fb6eecb88690ffc404decdeba742b015460f13ccca9d2",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue-front.png",
@@ -4919,8 +4782,12 @@
           "path": "assets/products/iphone-13-pro-max-azul-view-d7ab2447a9.png",
           "sha256": "f1cb0f1a9a7fb40801670ae0559814487a48d902bd26c7d724e87e8fd7087e27",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue.png"
       ]
     },
     "iPhone 13 Pro Max|Negro": {
@@ -4953,19 +4820,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13 Pro Max",
-          "color": "Negro",
-          "officialColor": "graphite",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-pro-max-negro-gallery-rear.jpg",
-          "sha256": "6f016fbba48b669017084b2a8834a84d507a8920e3ad661d5e2a4fcdae8905ce",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-graphite-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
           "credit": "Swappie",
@@ -4975,7 +4829,8 @@
           "path": "assets/products/iphone-13-pro-max-negro-view-c7439c843a.png",
           "sha256": "5976071d44334cc52d195b45b5423137a3cf372e1590c6591c5be49cd748cc06",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-graphite-front.png",
@@ -4987,11 +4842,13 @@
           "path": "assets/products/iphone-13-pro-max-negro-view-f18cf6756d.png",
           "sha256": "07fabd0835029a83f3447f2ceb352f53ff45ca9c7cd7485e421728c597c9f557",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-graphite.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-graphite.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-max-graphite-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13 Pro Max|Verde": {
@@ -5033,7 +4890,8 @@
           "path": "assets/products/iphone-13-pro-max-verde-view-b8839cb5e0.png",
           "sha256": "25dff5cdaf30949b99487a816744167cb924c111d839622cf9955b871ab45f89",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-alpine-green-front.png",
@@ -5045,7 +4903,8 @@
           "path": "assets/products/iphone-13-pro-max-verde-view-75e9d2f497.png",
           "sha256": "8e77bb0239c98bc7a4adeb0d31a20d7ab55b663bf3bf5ccba2460e3e6f53cb1d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -5091,7 +4950,8 @@
           "path": "assets/products/iphone-13-pro-azul-view-bcc3f20122.png",
           "sha256": "37a97c8955b3ab5808ee44880fe40a4354d707d5f550578925d1aa44599c66aa",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-sierra-blue-front.png",
@@ -5103,7 +4963,8 @@
           "path": "assets/products/iphone-13-pro-azul-view-0a3aa2bcb1.png",
           "sha256": "f1cb0f1a9a7fb40801670ae0559814487a48d902bd26c7d724e87e8fd7087e27",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -5140,19 +5001,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-silver-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13 Pro",
-          "color": "Blanco",
-          "officialColor": "silver",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-pro-blanco-gallery-rear.jpg",
-          "sha256": "fd171117280812804c0331a470061ccc00d76085bb78671dc6368d279a089570",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-silver-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro/",
           "credit": "Swappie",
@@ -5162,7 +5010,8 @@
           "path": "assets/products/iphone-13-pro-blanco-view-69ea4ea115.png",
           "sha256": "b2f6343f892561a08907ac41adfe1a6b3311b24a0827c3880fea17aff04a8823",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-silver-front.png",
@@ -5174,11 +5023,13 @@
           "path": "assets/products/iphone-13-pro-blanco-view-bd0208f241.png",
           "sha256": "cc862fa2d4ac8aee2dd4ff0088865351db5bc807f08805fda9ebf09f84bea061",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-silver.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-silver.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-silver-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13 Pro|Celeste": {
@@ -5220,7 +5071,8 @@
           "path": "assets/products/iphone-13-pro-celeste-view-bcc3f20122.png",
           "sha256": "37a97c8955b3ab5808ee44880fe40a4354d707d5f550578925d1aa44599c66aa",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-sierra-blue-front.png",
@@ -5232,7 +5084,8 @@
           "path": "assets/products/iphone-13-pro-celeste-view-0a3aa2bcb1.png",
           "sha256": "f1cb0f1a9a7fb40801670ae0559814487a48d902bd26c7d724e87e8fd7087e27",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -5269,19 +5122,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-gold-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13 Pro",
-          "color": "Dorado",
-          "officialColor": "gold",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-pro-dorado-gallery-rear.jpg",
-          "sha256": "642111d751c8f4fce35f85f2a83d861d46d46ae4e27dbc836b3b16bbdd37b94d",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-gold-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro/",
           "credit": "Swappie",
@@ -5291,7 +5131,8 @@
           "path": "assets/products/iphone-13-pro-dorado-view-888300518d.png",
           "sha256": "ea36f05eca04a111f181d243f88c62c2fc12d0f90a9a3ffaf13f99c72880cace",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-gold-front.png",
@@ -5303,11 +5144,13 @@
           "path": "assets/products/iphone-13-pro-dorado-view-4605062e90.png",
           "sha256": "a0f631f7d629dacd5cea1a1d0dc8e477f27cb62a323b84bcc13012701e71708a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-gold.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-gold.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-gold-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13 Pro|Negro": {
@@ -5340,19 +5183,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-graphite-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13 Pro",
-          "color": "Negro",
-          "officialColor": "graphite",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-pro-negro-gallery-rear.jpg",
-          "sha256": "3a78179e5905aa85b87b3ac541e59bc2b6bff69cc1ac090e3b06cab784da88b0",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-graphite-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro/",
           "credit": "Swappie",
@@ -5362,7 +5192,8 @@
           "path": "assets/products/iphone-13-pro-negro-view-bd8d287f10.png",
           "sha256": "fcf51515cdecaaddd3cc5a6652ab1ffa9717c02a1695d100b31e900a5987dea1",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-graphite-front.png",
@@ -5374,11 +5205,13 @@
           "path": "assets/products/iphone-13-pro-negro-view-d1e1b104ea.png",
           "sha256": "07fabd0835029a83f3447f2ceb352f53ff45ca9c7cd7485e421728c597c9f557",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-graphite.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-graphite.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pro-graphite-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13 Pro|Verde": {
@@ -5420,7 +5253,8 @@
           "path": "assets/products/iphone-13-pro-verde-view-c80b5876a3.png",
           "sha256": "31b7c2f1392946b45efb840f3bd8660328d3f4a12c5bd85240224190f082636b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-alpine-green-front.png",
@@ -5432,7 +5266,8 @@
           "path": "assets/products/iphone-13-pro-verde-view-a0137971bd.png",
           "sha256": "8e77bb0239c98bc7a4adeb0d31a20d7ab55b663bf3bf5ccba2460e3e6f53cb1d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -5452,19 +5287,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-blue-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13",
-          "color": "Azul",
-          "officialColor": "blue",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-azul-gallery-rear.jpg",
-          "sha256": "d1948739ff7305669f3ea6743498819709b5662d85f25a3c16ae0226e39028eb",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13/",
           "credit": "Swappie",
@@ -5474,7 +5296,8 @@
           "path": "assets/products/iphone-13-azul-view-b655018074.png",
           "sha256": "3e2c89111d5b2a4a078efe8056c1020ec2987a3a26d31a1a2d51473c4e30066d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue-front.png",
@@ -5490,7 +5313,8 @@
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-blue-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13|Blanco": {
@@ -5523,19 +5347,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-starlight-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13",
-          "color": "Blanco",
-          "officialColor": "starlight",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-blanco-gallery-rear.jpg",
-          "sha256": "0331ab57b90fba8c3615f8af52bb5f22f81e1bac35376ae5d73473cc0e060fdd",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-starlight-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13/",
           "credit": "Swappie",
@@ -5545,7 +5356,8 @@
           "path": "assets/products/iphone-13-blanco-view-63add9254a.png",
           "sha256": "f517be1f172eef95d5610013cb247cee1de0f411c05ce2a76f13ca7688147756",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-starlight-front.png",
@@ -5561,7 +5373,8 @@
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-starlight.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-starlight.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-starlight-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13|Celeste": {
@@ -5594,19 +5407,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-blue-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13",
-          "color": "Celeste",
-          "officialColor": "blue",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-celeste-gallery-rear.jpg",
-          "sha256": "d1948739ff7305669f3ea6743498819709b5662d85f25a3c16ae0226e39028eb",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13/",
           "credit": "Swappie",
@@ -5616,7 +5416,8 @@
           "path": "assets/products/iphone-13-celeste-view-b655018074.png",
           "sha256": "3e2c89111d5b2a4a078efe8056c1020ec2987a3a26d31a1a2d51473c4e30066d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue-front.png",
@@ -5632,7 +5433,8 @@
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-blue.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-blue-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13|Negro": {
@@ -5665,19 +5467,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-midnight-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13",
-          "color": "Negro",
-          "officialColor": "midnight",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-negro-gallery-rear.jpg",
-          "sha256": "10cab8bcf8e61d082edd89625b3a0088ba7c5204209dcdd95f7309232e900119",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-midnight-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13/",
           "credit": "Swappie",
@@ -5687,7 +5476,8 @@
           "path": "assets/products/iphone-13-negro-view-96de156bf7.png",
           "sha256": "2f8185dd31705192464cac0636b5a6230f433c2b1e32550a72eed7062b007607",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-midnight-front.png",
@@ -5703,7 +5493,8 @@
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-midnight.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-midnight.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-midnight-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13|Rojo": {
@@ -5745,7 +5536,8 @@
           "path": "assets/products/iphone-13-rojo-view-302228408a.png",
           "sha256": "5736c2a0a46b0726cd3ea349506b6a9583f1c32719cc999031e40539aec64161",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-red-front.png",
@@ -5779,19 +5571,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pink-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13",
-          "color": "Rosado",
-          "officialColor": "pink",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-rosado-gallery-rear.jpg",
-          "sha256": "8a6803daeddadd6cf4f14ba39d9b162b223297cfe7ab855b7ee8e47ce7793c18",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pink-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13/",
           "credit": "Swappie",
@@ -5801,7 +5580,8 @@
           "path": "assets/products/iphone-13-rosado-view-ffe3233cd7.png",
           "sha256": "6edad484e215331d081091feaff56cb57d30721bf6e6a3bdddbe0b2f39c9eaa2",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pink-front.png",
@@ -5817,7 +5597,8 @@
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pink.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pink.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-pink-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 13|Verde": {
@@ -5850,19 +5631,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-green-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 13",
-          "color": "Verde",
-          "officialColor": "green",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-13-verde-gallery-rear.jpg",
-          "sha256": "386abd6de7fbb9ea4fa4420b12efdce45c527875e84a4caff815c8853564402e",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-green-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-13/",
           "credit": "Swappie",
@@ -5872,7 +5640,8 @@
           "path": "assets/products/iphone-13-verde-view-5b99c80b4a.png",
           "sha256": "a30668750306dd4b927781ba3d184ef016d61f93372e54017cccf9abef03a4c5",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-green-front.png",
@@ -5888,7 +5657,8 @@
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-green.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-green.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-13-green-2023?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14 Plus|Lila": {
@@ -5921,31 +5691,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-plus-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14 Plus",
-          "color": "Lila",
-          "officialColor": "purple",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-plus-lila-gallery-rear.jpg",
-          "sha256": "2b053b7781dfc887ed8dd343d2e2c694c30256c8dd8aa2da43cbabf5df65e872",
-          "width": 1200,
-          "height": 1200
-        },
-        {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-plus-purple.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-14-plus/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 14 Plus",
-          "color": "Lila",
-          "path": "assets/products/iphone-14-plus-lila-view-51c188eefa.png",
-          "sha256": "45ab11537298d65fbbb67a3e8137437c6ad58dc4674276bb4ec3e1043e60722f",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-plus-purple-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14-plus/",
           "credit": "Swappie",
@@ -5955,7 +5700,8 @@
           "path": "assets/products/iphone-14-plus-lila-view-7fed4bd6c3.png",
           "sha256": "bc9ce6834c9c640225b45c6d267ab86a449231e389a3df3583153ea7d8b40a11",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-plus-purple-front.png",
@@ -5967,8 +5713,13 @@
           "path": "assets/products/iphone-14-plus-lila-view-430f75b9a0.png",
           "sha256": "c619db765d5b08c66051031742b20881795130b6134022c5ff4bb94b3063f373",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-plus-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-plus-purple.png"
       ]
     },
     "iPhone 14 Pro Max|Dorado": {
@@ -6001,31 +5752,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-gold-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14 Pro Max",
-          "color": "Dorado",
-          "officialColor": "gold",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-pro-max-dorado-gallery-rear.jpg",
-          "sha256": "e82fd1520fb448adf52e745336eb4bb7e72f7d84649edb7c25197051baf37daf",
-          "width": 1200,
-          "height": 1200
-        },
-        {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-gold.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 14 Pro Max",
-          "color": "Dorado",
-          "path": "assets/products/iphone-14-pro-max-dorado-view-46e54b2292.png",
-          "sha256": "c9afd4242ac7df1eeec51ecd0ef3ef80c266e048a2edf30905b48e3aebd2694e",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-gold-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
           "credit": "Swappie",
@@ -6035,7 +5761,8 @@
           "path": "assets/products/iphone-14-pro-max-dorado-view-f705aca55c.png",
           "sha256": "e3a221ff900c3ee6786a18eda10cf8ff507053b94a1317bc39e4ef1390669bb5",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-gold-front.png",
@@ -6047,8 +5774,13 @@
           "path": "assets/products/iphone-14-pro-max-dorado-view-643343c14f.png",
           "sha256": "712f5f9c261ffcf9b786e7582566b78d85fec5d82dae4275bdb30ca41f5dc601",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-gold-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-gold.png"
       ]
     },
     "iPhone 14 Pro Max|Morado": {
@@ -6081,31 +5813,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-deeppurple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14 Pro Max",
-          "color": "Morado",
-          "officialColor": "deeppurple",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-pro-max-morado-gallery-rear.jpg",
-          "sha256": "9013e6f11b37e78b698172f5fb64b054408f0da03b1bcb3b69ebc01d84edf2fb",
-          "width": 1200,
-          "height": 1200
-        },
-        {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-deep-purple.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 14 Pro Max",
-          "color": "Morado",
-          "path": "assets/products/iphone-14-pro-max-morado-view-5f2e0b5dea.png",
-          "sha256": "a545be688ab8970acecb9d63622ea8a70faa3a8a3306d8f5b21b50dcde9f1fa2",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-deep-purple-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
           "credit": "Swappie",
@@ -6115,7 +5822,8 @@
           "path": "assets/products/iphone-14-pro-max-morado-view-29e44f1241.png",
           "sha256": "047bb04277c40c5a105eb69835fdea3cab73a650a499bf369bba9e5632df5653",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-deep-purple-front.png",
@@ -6127,8 +5835,13 @@
           "path": "assets/products/iphone-14-pro-max-morado-view-51891661a4.png",
           "sha256": "12aa86384d9747aa4bf3151e73b6ee4665579e3a8aebadd9b7abd3fa8889d36d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-deeppurple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-deep-purple.png"
       ]
     },
     "iPhone 14 Pro Max|Negro": {
@@ -6161,31 +5874,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-spaceblack-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14 Pro Max",
-          "color": "Negro",
-          "officialColor": "spaceblack",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-pro-max-negro-gallery-rear.jpg",
-          "sha256": "01dac351c9139842fc5422dc3dd6dcd62149b3c338945b78e4281860f6fb6ecd",
-          "width": 1200,
-          "height": 1200
-        },
-        {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-space-black.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 14 Pro Max",
-          "color": "Negro",
-          "path": "assets/products/iphone-14-pro-max-negro-view-04e7c4649a.png",
-          "sha256": "70ac6d2cedfe1f4365f69551c0155b415ad3eae50c9480783a1213170c87a136",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-space-black-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
           "credit": "Swappie",
@@ -6195,7 +5883,8 @@
           "path": "assets/products/iphone-14-pro-max-negro-view-6538ba7b20.png",
           "sha256": "8eef174138e8910db7d13b92dc746f7c1d7132af326b6b66c506c321dfa73967",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-space-black-front.png",
@@ -6207,8 +5896,13 @@
           "path": "assets/products/iphone-14-pro-max-negro-view-4238378c73.png",
           "sha256": "35594d1fa86368683ee7e2461af2fa7663953953031a3a4b23b78e807bbbcd13",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-max-spaceblack-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-space-black.png"
       ]
     },
     "iPhone 14 Pro|Dorado": {
@@ -6241,19 +5935,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-gold-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14 Pro",
-          "color": "Dorado",
-          "officialColor": "gold",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-pro-dorado-gallery-rear.jpg",
-          "sha256": "6bbe4e5e381d6796584ab6ae25245e9cac5fdefc4b02ebc24457c8de6a237fff",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-gold-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro/",
           "credit": "Swappie",
@@ -6263,7 +5944,8 @@
           "path": "assets/products/iphone-14-pro-dorado-view-6bae0286f8.png",
           "sha256": "1bd10075eea399a895100a8c27edd726d56afe41e6389cd9816d71758be40a06",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-gold-front.png",
@@ -6275,11 +5957,13 @@
           "path": "assets/products/iphone-14-pro-dorado-view-017d051d85.png",
           "sha256": "712f5f9c261ffcf9b786e7582566b78d85fec5d82dae4275bdb30ca41f5dc601",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-gold.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-gold.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-gold-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14 Pro|Negro": {
@@ -6312,19 +5996,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-spaceblack-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14 Pro",
-          "color": "Negro",
-          "officialColor": "spaceblack",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-pro-negro-gallery-rear.jpg",
-          "sha256": "4492ac2bac0e9398558538c9eb767318c5757f91c3ca7182c2dc270258f6ca03",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-space-black-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro/",
           "credit": "Swappie",
@@ -6334,7 +6005,8 @@
           "path": "assets/products/iphone-14-pro-negro-view-473eef7e4d.png",
           "sha256": "09f732f60cb42173d5c4bdd9b8b2c9a839e86cd3c12c1a352725ea5b6213e867",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-space-black-front.png",
@@ -6346,11 +6018,13 @@
           "path": "assets/products/iphone-14-pro-negro-view-a0f3f6fb99.png",
           "sha256": "35594d1fa86368683ee7e2461af2fa7663953953031a3a4b23b78e807bbbcd13",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-space-black.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-space-black.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-pro-spaceblack-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14|Blanco": {
@@ -6383,19 +6057,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-starlight-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14",
-          "color": "Blanco",
-          "officialColor": "starlight",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-blanco-gallery-rear.jpg",
-          "sha256": "6a89a1f384199f74b4185f71d4dbb3cc88bfcd2e9a832c4230bf02b124af5adf",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-starlight-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14/",
           "credit": "Swappie",
@@ -6405,7 +6066,8 @@
           "path": "assets/products/iphone-14-blanco-view-95aa2fcfa1.png",
           "sha256": "cc3ce6f7ef44efae65d070d614ff56c1d330fabc44a999a57c2d9e341ee6eb25",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-starlight-front.png",
@@ -6417,11 +6079,13 @@
           "path": "assets/products/iphone-14-blanco-view-d395eb752c.png",
           "sha256": "19732b25cb4d0d9be197c645c91d11e9b351242dcda24f341d685951eb730ba0",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-starlight.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-starlight.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-starlight-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14|Celeste": {
@@ -6454,19 +6118,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-blue-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14",
-          "color": "Celeste",
-          "officialColor": "blue",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-celeste-gallery-rear.jpg",
-          "sha256": "f1892fe6682fa8d6ca9cf4d3e341a3194bad0926640dc03528dd2bc2de77fdb3",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14/",
           "credit": "Swappie",
@@ -6476,7 +6127,8 @@
           "path": "assets/products/iphone-14-celeste-view-f623304ee9.png",
           "sha256": "5ace95967dc8ab19806a1b6b7153a0f8305066c0c7ad5142f110db06a4f980a6",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-blue-front.png",
@@ -6488,11 +6140,13 @@
           "path": "assets/products/iphone-14-celeste-view-4c3d9d3980.png",
           "sha256": "20ed8b8720439d70c3b4f5daf4dfa83ea638abab94919a1527ef27f4e9aa183b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-blue.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-blue.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-blue-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14|Lila": {
@@ -6510,19 +6164,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14",
-          "color": "Lila",
-          "officialColor": "purple",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-lila-gallery-rear.jpg",
-          "sha256": "7a3aebacd8e19e24d3737d371614df8aa41c7645b5c3f4ba736c3c68259b3aa4",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14/",
           "credit": "Swappie",
@@ -6532,7 +6173,8 @@
           "path": "assets/products/iphone-14-lila-view-b9bfb69c83.png",
           "sha256": "b5c67f25bd1c75518af7dfaf7ad61098e9747a6c2933880d7428738680125625",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple-front.png",
@@ -6544,11 +6186,13 @@
           "path": "assets/products/iphone-14-lila-view-17cb10a1ad.png",
           "sha256": "c619db765d5b08c66051031742b20881795130b6134022c5ff4bb94b3063f373",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14|Morado": {
@@ -6564,19 +6208,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14",
-          "color": "Morado",
-          "officialColor": "purple",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-morado-gallery-rear.jpg",
-          "sha256": "7a3aebacd8e19e24d3737d371614df8aa41c7645b5c3f4ba736c3c68259b3aa4",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14/",
           "credit": "Swappie",
@@ -6586,7 +6217,8 @@
           "path": "assets/products/iphone-14-morado-view-b9bfb69c83.png",
           "sha256": "b5c67f25bd1c75518af7dfaf7ad61098e9747a6c2933880d7428738680125625",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple-front.png",
@@ -6598,11 +6230,13 @@
           "path": "assets/products/iphone-14-morado-view-17cb10a1ad.png",
           "sha256": "c619db765d5b08c66051031742b20881795130b6134022c5ff4bb94b3063f373",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-purple.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-purple-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 14|Negro": {
@@ -6635,19 +6269,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-midnight-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90",
-          "sourcePage": "https://www.apple.com/shop/refurbished/iphone",
-          "model": "iPhone 14",
-          "color": "Negro",
-          "officialColor": "midnight",
-          "credit": "Apple",
-          "label": "Vista posterior",
-          "path": "assets/products/iphone-14-negro-gallery-rear.jpg",
-          "sha256": "c28400b4d570c5b387b25ef764927d41caaf2a527c34811ac9a319a7da3bda42",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-midnight-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-14/",
           "credit": "Swappie",
@@ -6657,7 +6278,8 @@
           "path": "assets/products/iphone-14-negro-view-9e4508dade.png",
           "sha256": "4967a20f5d12d8a8a32ed26bcdc33dbcd21049d31b7cc905d483b28ba5506efd",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-midnight-front.png",
@@ -6669,11 +6291,13 @@
           "path": "assets/products/iphone-14-negro-view-ea6ec96f3c.png",
           "sha256": "1ce326d867209219fb9bb509478ea21866d0b28dbc7830fda79a6f4f09d874cc",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-midnight.png"
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-midnight.png",
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-14-midnight-202404?wid=1200&hei=1200&fmt=jpeg&qlt=90"
       ]
     },
     "iPhone 15 Plus|Celeste": {
@@ -6706,18 +6330,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-blue.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-15-plus/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 15 Plus",
-          "color": "Celeste",
-          "path": "assets/products/iphone-15-plus-celeste-view-827e642796.png",
-          "sha256": "294d699918f88917c0a6b4580e361b2e7430269d7a4b077d886abb1bcced7ede",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-15-plus/",
           "credit": "Swappie",
@@ -6727,7 +6339,8 @@
           "path": "assets/products/iphone-15-plus-celeste-view-86649b79e3.png",
           "sha256": "388a2cc006160e11a93df70ef35b334454668cd4cf5073ad17f283c44054333a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-blue-front.png",
@@ -6739,11 +6352,13 @@
           "path": "assets/products/iphone-15-plus-celeste-view-a5808937d6.png",
           "sha256": "872248adedbc6facbe5f74b9dd6742f815c2ca803e4689c3b53765422b45ef5b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-blue-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-blue-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-blue.png"
       ]
     },
     "iPhone 15 Plus|Negro": {
@@ -6776,18 +6391,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-black.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-15-plus/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 15 Plus",
-          "color": "Negro",
-          "path": "assets/products/iphone-15-plus-negro-view-2c97326e7e.png",
-          "sha256": "b8da53bde6e618b84615a5e1869e814d01e0b7706020263d49484a21c3362a36",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-black-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-15-plus/",
           "credit": "Swappie",
@@ -6797,7 +6400,8 @@
           "path": "assets/products/iphone-15-plus-negro-view-f2c169792d.png",
           "sha256": "af0ae870553e88455af21fa1f63f79918fc52afd16d0dbfbedadfd28f3dc00fb",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-black-front.png",
@@ -6809,11 +6413,13 @@
           "path": "assets/products/iphone-15-plus-negro-view-e967ad1b2c.png",
           "sha256": "8d4e0121084a3ac09cbc0be00761bcdc299b940db9b7d109612418a66af25f8c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-black-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-black-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-black.png"
       ]
     },
     "iPhone 15 Plus|Rosado": {
@@ -6846,18 +6452,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-pink.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-15-plus/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 15 Plus",
-          "color": "Rosado",
-          "path": "assets/products/iphone-15-plus-rosado-view-3773151f0f.png",
-          "sha256": "d13c1f163d9fe4b5197fe14f3e5e8f0f737e102c152a75354a6959a29e59e732",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-pink-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-15-plus/",
           "credit": "Swappie",
@@ -6867,7 +6461,8 @@
           "path": "assets/products/iphone-15-plus-rosado-view-9038abb4f4.png",
           "sha256": "4c48cabdddd1abd4757a17205f86c0f77c565ce0034b1b62daecffd9524c0d54",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-pink-front.png",
@@ -6879,11 +6474,13 @@
           "path": "assets/products/iphone-15-plus-rosado-view-00e5598c06.png",
           "sha256": "526fa311fa9d125eb7ff9e571ad818278ae9eb9f01ffb679289a59aa0a18dc20",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
-        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-pink-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90"
+        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-15-plus-pink-202412?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-plus-pink.png"
       ]
     },
     "iPhone 15 Pro Max|Azul": {
@@ -6925,7 +6522,8 @@
           "path": "assets/products/iphone-15-pro-max-azul-view-b939a88c6f.png",
           "sha256": "54b84eb50f09342f4d305dfaca4ee44c7beef6dd46df3124e3c3da9a7c534dd5",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-max-blue-titanium-front.png",
@@ -6937,7 +6535,8 @@
           "path": "assets/products/iphone-15-pro-max-azul-view-dac1e93979.png",
           "sha256": "6566b6e560c5088b62119d1df8e523660cc1d477f41b2a2658a9023b5e073bb4",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -6986,7 +6585,8 @@
           "path": "assets/products/iphone-15-pro-max-blanco-view-52c084bf26.png",
           "sha256": "cb931607145b8fed3a03d30e287ccd942a0d5433a74e92b49d63f242ddf3a0d5",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-max-white-titanium-front.png",
@@ -6998,7 +6598,8 @@
           "path": "assets/products/iphone-15-pro-max-blanco-view-11a19876d7.png",
           "sha256": "f331fba4ccc758e22fa4357bdce7a8ac15aa4ef6b1cd869c6a2ef941707a89ec",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7047,7 +6648,8 @@
           "path": "assets/products/iphone-15-pro-max-gris-view-1279b7d210.png",
           "sha256": "4dab2ac71d03f72ae00b4af8e654c718e8cc4e96a0526e353b51565155c3994e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-max-natural-titanium-front.png",
@@ -7059,7 +6661,8 @@
           "path": "assets/products/iphone-15-pro-max-gris-view-2cd5a31614.png",
           "sha256": "f30c4a87786414f2c47d2bcdd0bc240fea7f390c4566479c3900dc921247f353",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7106,7 +6709,8 @@
           "path": "assets/products/iphone-15-pro-max-negro-view-ab5a21c800.png",
           "sha256": "69d717be98344fdb4c9c323d2018420f3858406bfbc45079c9a2d54dbc7e936c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-max-black-titanium-front.png",
@@ -7118,7 +6722,8 @@
           "path": "assets/products/iphone-15-pro-max-negro-view-8933941ebf.png",
           "sha256": "471d8acb33da72f358be06370a8124b47b3c7d0bac4c0f465404eda861113df1",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7165,7 +6770,8 @@
           "path": "assets/products/iphone-15-pro-max-plata-view-52c084bf26.png",
           "sha256": "cb931607145b8fed3a03d30e287ccd942a0d5433a74e92b49d63f242ddf3a0d5",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-max-white-titanium-front.png",
@@ -7177,7 +6783,8 @@
           "path": "assets/products/iphone-15-pro-max-plata-view-11a19876d7.png",
           "sha256": "f331fba4ccc758e22fa4357bdce7a8ac15aa4ef6b1cd869c6a2ef941707a89ec",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7224,7 +6831,8 @@
           "path": "assets/products/iphone-15-pro-max-titanio-natural-view-1279b7d210.png",
           "sha256": "4dab2ac71d03f72ae00b4af8e654c718e8cc4e96a0526e353b51565155c3994e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-max-natural-titanium-front.png",
@@ -7236,7 +6844,8 @@
           "path": "assets/products/iphone-15-pro-max-titanio-natural-view-2cd5a31614.png",
           "sha256": "f30c4a87786414f2c47d2bcdd0bc240fea7f390c4566479c3900dc921247f353",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7283,7 +6892,8 @@
           "path": "assets/products/iphone-15-pro-azul-view-fc487cb656.png",
           "sha256": "d0d36503dd14cc40b18032ee3949375b82838eb286591fee5da6877f3cf17c78",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-blue-titanium-front.png",
@@ -7295,7 +6905,8 @@
           "path": "assets/products/iphone-15-pro-azul-view-ed2b69aea3.png",
           "sha256": "6566b6e560c5088b62119d1df8e523660cc1d477f41b2a2658a9023b5e073bb4",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7342,7 +6953,8 @@
           "path": "assets/products/iphone-15-pro-negro-view-28c0ae166f.png",
           "sha256": "2470f7d3a83deb0d5f3145ad1ef8cbb17b870a6b7805a18ec26d47ab48dd38f4",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-black-titanium-front.png",
@@ -7354,7 +6966,8 @@
           "path": "assets/products/iphone-15-pro-negro-view-e4415dee84.png",
           "sha256": "471d8acb33da72f358be06370a8124b47b3c7d0bac4c0f465404eda861113df1",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7401,7 +7014,8 @@
           "path": "assets/products/iphone-15-pro-titanio-natural-view-7496115849.png",
           "sha256": "e9a2c0d4052e96c74cdb80af1fdc49eb74b0de39f683e5ffa6fd305a83c64810",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pro-natural-titanium-front.png",
@@ -7413,7 +7027,8 @@
           "path": "assets/products/iphone-15-pro-titanio-natural-view-9d35816e1f.png",
           "sha256": "f30c4a87786414f2c47d2bcdd0bc240fea7f390c4566479c3900dc921247f353",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7460,7 +7075,8 @@
           "path": "assets/products/iphone-15-amarillo-view-64f584d76a.png",
           "sha256": "299d32495c9eaf3b412f43cfd0dd99c88f6a1958705b5343f9189780e706376e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-yellow-front.png",
@@ -7472,7 +7088,8 @@
           "path": "assets/products/iphone-15-amarillo-view-fb4c1afd4b.png",
           "sha256": "71e72004ec4978071108490f223213dc5ff3665b1a9cf34a97b967d16ae83c71",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7519,7 +7136,8 @@
           "path": "assets/products/iphone-15-celeste-view-7831a593e3.png",
           "sha256": "b7a2c3640848ca87d6981ab215da530cf94f97d274e607f12809b30eb011eac8",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-blue-front.png",
@@ -7531,7 +7149,8 @@
           "path": "assets/products/iphone-15-celeste-view-c9109b34f7.png",
           "sha256": "872248adedbc6facbe5f74b9dd6742f815c2ca803e4689c3b53765422b45ef5b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7578,7 +7197,8 @@
           "path": "assets/products/iphone-15-negro-view-23443197d2.png",
           "sha256": "645b11a1470df000e390c061c726ea527150c607da5b020a1650f9eb6cd6423a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-black-front.png",
@@ -7590,7 +7210,8 @@
           "path": "assets/products/iphone-15-negro-view-857afb5d4d.png",
           "sha256": "8d4e0121084a3ac09cbc0be00761bcdc299b940db9b7d109612418a66af25f8c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7637,7 +7258,8 @@
           "path": "assets/products/iphone-15-rosado-view-9dc862b54b.png",
           "sha256": "234cb0304ae2543b06fd7a08aff47ae1d019e7ca87a75cadecfca4ed6c936de5",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-pink-front.png",
@@ -7649,7 +7271,8 @@
           "path": "assets/products/iphone-15-rosado-view-4270955a30.png",
           "sha256": "526fa311fa9d125eb7ff9e571ad818278ae9eb9f01ffb679289a59aa0a18dc20",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7679,7 +7302,8 @@
           "path": "assets/products/iphone-15-verde-view-183e6fdbbf.png",
           "sha256": "76906eb82110f1662bbb531c58dd3b545b8d4cc0de8a21329f65332821557e58",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-15-green-front.png",
@@ -7691,7 +7315,8 @@
           "path": "assets/products/iphone-15-verde-view-9e4c3971db.png",
           "sha256": "f9fb33f49a1591f6693c632cf04b43fece8ccdfef66223ddf07b4c5bdb1a7fc6",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7738,7 +7363,8 @@
           "path": "assets/products/iphone-16-plus-azul-view-94ea2deb40.png",
           "sha256": "95a22ef68892dc325200e7f081681683c64ed2f348dc5539db78ef637ac9f49a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-plus-ultramarine-front.png",
@@ -7750,7 +7376,8 @@
           "path": "assets/products/iphone-16-plus-azul-view-abe9aff1ca.png",
           "sha256": "d659d8a8dc66a0c1081055aa103666c9ae273f0a745f25c941bee6f76858da5e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7797,7 +7424,8 @@
           "path": "assets/products/iphone-16-plus-negro-view-f1d805d38a.png",
           "sha256": "78cf61ee43ec473adccc9350d5f20377363b431d8e4c744269eb7987e0d39842",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-plus-black-front.png",
@@ -7809,7 +7437,8 @@
           "path": "assets/products/iphone-16-plus-negro-view-fbff997deb.png",
           "sha256": "5b2e35e81460374990e127324ddd1a8ac4b33b07ae016b7f316b779e2615cc34",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7856,7 +7485,8 @@
           "path": "assets/products/iphone-16-plus-rosado-view-0b08938bf1.png",
           "sha256": "1baf23963155d330a2018d2ff01f21f005aaaffd7f1b8c295928d74555167139",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-plus-pink-front.png",
@@ -7868,7 +7498,8 @@
           "path": "assets/products/iphone-16-plus-rosado-view-95edc3a33a.png",
           "sha256": "de6ad34d0a956664f1717262666a6f85c0e483d5023d5c29f30da0a349793695",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7915,7 +7546,8 @@
           "path": "assets/products/iphone-16-pro-max-dorado-view-729f9688a5.png",
           "sha256": "da3832f72d7d727157cbd76ef2a70475ec69abe0c3c5c0341a45993f420a8e32",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-max-desert-titanium-front.png",
@@ -7927,7 +7559,8 @@
           "path": "assets/products/iphone-16-pro-max-dorado-view-c9068822bb.png",
           "sha256": "3693f45f2ac5406bb9eede89a4a4212801f50d3f2e57bdb29a62655de0e85eba",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -7974,7 +7607,8 @@
           "path": "assets/products/iphone-16-pro-max-gris-view-7c144086a1.png",
           "sha256": "1725f3a3d015a55e2a7d6d19e0c74c95bc0d7fc769574e45b23db8ea2b9798f6",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-max-natural-titanium-front.png",
@@ -7986,7 +7620,8 @@
           "path": "assets/products/iphone-16-pro-max-gris-view-9848dc85b8.png",
           "sha256": "7ee22b7f76ced14d44cf7d9e8ab4e4f785884eb0cc5414da49544c310c21196d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8033,7 +7668,8 @@
           "path": "assets/products/iphone-16-pro-max-negro-view-3f14800b3e.png",
           "sha256": "6f6aceb63211365cc1af44a49db42e0d8620486b6dc9956d74a99de8fdfdc21b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-max-black-titanium-front.png",
@@ -8045,7 +7681,8 @@
           "path": "assets/products/iphone-16-pro-max-negro-view-a5a2547878.png",
           "sha256": "f0c3ff01e963ff73f13ba86fc414e1ed819d4b8d5fd0581016e2cdb063619f08",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8092,7 +7729,8 @@
           "path": "assets/products/iphone-16-pro-max-titanio-desierto-view-729f9688a5.png",
           "sha256": "da3832f72d7d727157cbd76ef2a70475ec69abe0c3c5c0341a45993f420a8e32",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-max-desert-titanium-front.png",
@@ -8104,7 +7742,8 @@
           "path": "assets/products/iphone-16-pro-max-titanio-desierto-view-c9068822bb.png",
           "sha256": "3693f45f2ac5406bb9eede89a4a4212801f50d3f2e57bdb29a62655de0e85eba",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8151,7 +7790,8 @@
           "path": "assets/products/iphone-16-pro-max-titanio-natural-view-7c144086a1.png",
           "sha256": "1725f3a3d015a55e2a7d6d19e0c74c95bc0d7fc769574e45b23db8ea2b9798f6",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-max-natural-titanium-front.png",
@@ -8163,7 +7803,8 @@
           "path": "assets/products/iphone-16-pro-max-titanio-natural-view-9848dc85b8.png",
           "sha256": "7ee22b7f76ced14d44cf7d9e8ab4e4f785884eb0cc5414da49544c310c21196d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8210,7 +7851,8 @@
           "path": "assets/products/iphone-16-pro-dorado-view-e24d0842b0.png",
           "sha256": "a298a3974f427cc36f1532922f1f0ff7ddf999f3885938235c11da5a4d94268e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-desert-titanium-front.png",
@@ -8222,7 +7864,8 @@
           "path": "assets/products/iphone-16-pro-dorado-view-ee24b1524d.png",
           "sha256": "3693f45f2ac5406bb9eede89a4a4212801f50d3f2e57bdb29a62655de0e85eba",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8268,7 +7911,8 @@
           "path": "assets/products/iphone-16-pro-negro-view-9ca759b9f0.png",
           "sha256": "e1c4d022c2b8c12787fa61fb2aad3e69110b180d6bcef8a2563bfbe98c5fcdda",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-black-titanium-front.png",
@@ -8280,7 +7924,8 @@
           "path": "assets/products/iphone-16-pro-negro-view-3f7307ac1f.png",
           "sha256": "eab1b61bee847dd674f2741226c1a754516c2008e0ab17a9d87a9112a76051ac",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8326,7 +7971,8 @@
           "path": "assets/products/iphone-16-pro-titanio-desierto-view-e24d0842b0.png",
           "sha256": "a298a3974f427cc36f1532922f1f0ff7ddf999f3885938235c11da5a4d94268e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-desert-titanium-front.png",
@@ -8338,7 +7984,8 @@
           "path": "assets/products/iphone-16-pro-titanio-desierto-view-ee24b1524d.png",
           "sha256": "3693f45f2ac5406bb9eede89a4a4212801f50d3f2e57bdb29a62655de0e85eba",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8384,7 +8031,8 @@
           "path": "assets/products/iphone-16-blanco-view-3d25736d1e.png",
           "sha256": "8150f1c2562f5ad6d2cb8d8f8dd9aaa8c1083df195d348d246f16ecd2b576bd8",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-white-front.png",
@@ -8396,7 +8044,8 @@
           "path": "assets/products/iphone-16-blanco-view-bc47555835.png",
           "sha256": "8b76401911fbd81247823908c6fc2951b60f71dc535c175e8b2a85fde0a9d035",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8443,7 +8092,8 @@
           "path": "assets/products/iphone-16-negro-view-aee097e844.png",
           "sha256": "ea225bca70f126a78f31d3dd2fe47811c56b413af72d84f8ed86dade3382bd24",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-black-front.png",
@@ -8455,7 +8105,8 @@
           "path": "assets/products/iphone-16-negro-view-f53379291c.png",
           "sha256": "5b2e35e81460374990e127324ddd1a8ac4b33b07ae016b7f316b779e2615cc34",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8502,7 +8153,8 @@
           "path": "assets/products/iphone-16-rosado-view-ec1b3adaa1.png",
           "sha256": "a6d8ebdb1aecb4b46dae71b55de2addcefe6c6a0472d59c283b2cfbf71910c90",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pink-front.png",
@@ -8514,7 +8166,8 @@
           "path": "assets/products/iphone-16-rosado-view-29b0718696.png",
           "sha256": "de6ad34d0a956664f1717262666a6f85c0e483d5023d5c29f30da0a349793695",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8552,18 +8205,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-cosmic-orange.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 17 Pro Max",
-          "color": "Anaranjado",
-          "path": "assets/products/iphone-17-pro-max-anaranjado-view-f23e1da263.png",
-          "sha256": "3b32f25be86516f2bef4036619495c30d2df92fbc7e114d3e98e5cde4d1c4b3f",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-cosmic-orange-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
           "credit": "Swappie",
@@ -8573,7 +8214,8 @@
           "path": "assets/products/iphone-17-pro-max-anaranjado-view-ea3fb0f5cd.png",
           "sha256": "e8d171df6d49e803db54a86fd39c46c8faf840e7a562f93a7ae691773d6eb126",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-cosmic-orange-front.png",
@@ -8585,8 +8227,12 @@
           "path": "assets/products/iphone-17-pro-max-anaranjado-view-3622d6320a.png",
           "sha256": "1d89ea31722108efee90b7aca9dba36ddaf18e8c9af6dd46cff38bb680941721",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-cosmic-orange.png"
       ]
     },
     "iPhone 17 Pro Max|Azul": {
@@ -8619,18 +8265,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-deep-blue.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 17 Pro Max",
-          "color": "Azul",
-          "path": "assets/products/iphone-17-pro-max-azul-view-9757ccd218.png",
-          "sha256": "539d7e008425d4014e3e52aa35f1632bc54420fe8062852e40f27c99e4d3e37a",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-deep-blue-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
           "credit": "Swappie",
@@ -8640,7 +8274,8 @@
           "path": "assets/products/iphone-17-pro-max-azul-view-fa98e44b6d.png",
           "sha256": "5af205d926ce50abbf10ba1aae49247731bba634b17aba1e9daf5e675a3e0774",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-deep-blue-front.png",
@@ -8652,8 +8287,12 @@
           "path": "assets/products/iphone-17-pro-max-azul-view-cbddc46e81.png",
           "sha256": "9779bf142154d5a6909d27fffe7c5c7aaefc436fd049b30de040a910ccc47483",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-deep-blue.png"
       ]
     },
     "iPhone 17 Pro Max|Blanco": {
@@ -8686,18 +8325,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 17 Pro Max",
-          "color": "Blanco",
-          "path": "assets/products/iphone-17-pro-max-blanco-view-93cf71168f.png",
-          "sha256": "36c61e9c7ab9e5e1f9c3e3b82ee86401f64351e410849a75ecd9ed3630c71fb2",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
           "credit": "Swappie",
@@ -8707,7 +8334,8 @@
           "path": "assets/products/iphone-17-pro-max-blanco-view-b1d530fc74.png",
           "sha256": "8bcd5ff30b56d26973499901a45138496eb29dae7ccbf4f93e8fe862a8269c2b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver-front.png",
@@ -8719,8 +8347,12 @@
           "path": "assets/products/iphone-17-pro-max-blanco-view-096275a85a.png",
           "sha256": "4995ad2fe71705a6781df596f63c2bb99a068eb969bcd5a2373bf20d20cfc80d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver.png"
       ]
     },
     "iPhone 17 Pro Max|Plata": {
@@ -8753,18 +8385,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 17 Pro Max",
-          "color": "Plata",
-          "path": "assets/products/iphone-17-pro-max-plata-view-93cf71168f.png",
-          "sha256": "36c61e9c7ab9e5e1f9c3e3b82ee86401f64351e410849a75ecd9ed3630c71fb2",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro-max/",
           "credit": "Swappie",
@@ -8774,7 +8394,8 @@
           "path": "assets/products/iphone-17-pro-max-plata-view-b1d530fc74.png",
           "sha256": "8bcd5ff30b56d26973499901a45138496eb29dae7ccbf4f93e8fe862a8269c2b",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver-front.png",
@@ -8786,8 +8407,12 @@
           "path": "assets/products/iphone-17-pro-max-plata-view-096275a85a.png",
           "sha256": "4995ad2fe71705a6781df596f63c2bb99a068eb969bcd5a2373bf20d20cfc80d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-max-silver.png"
       ]
     },
     "iPhone 17 Pro|Anaranjado": {
@@ -8803,18 +8428,6 @@
       "height": 760,
       "gallery": [
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-cosmic-orange.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 17 Pro",
-          "color": "Anaranjado",
-          "path": "assets/products/iphone-17-pro-anaranjado-view-8d81cdaeb3.png",
-          "sha256": "3b32f25be86516f2bef4036619495c30d2df92fbc7e114d3e98e5cde4d1c4b3f",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-cosmic-orange-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro/",
           "credit": "Swappie",
@@ -8824,7 +8437,8 @@
           "path": "assets/products/iphone-17-pro-anaranjado-view-772517a98c.png",
           "sha256": "6ce0cef3e4154c7eb62bd422df9e9022d3b94c265f4f4caf70f05c9b32273d6d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-cosmic-orange-front.png",
@@ -8836,8 +8450,12 @@
           "path": "assets/products/iphone-17-pro-anaranjado-view-a7349f8659.png",
           "sha256": "1d89ea31722108efee90b7aca9dba36ddaf18e8c9af6dd46cff38bb680941721",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-cosmic-orange.png"
       ]
     },
     "iPhone 17 Pro|Azul": {
@@ -8879,7 +8497,8 @@
           "path": "assets/products/iphone-17-pro-azul-view-f4a1b6bc2a.png",
           "sha256": "bf0adb434c1e713bad311f26218d163f13db4be3f6a585ce728c3af7145b061e",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-deep-blue-front.png",
@@ -8891,7 +8510,8 @@
           "path": "assets/products/iphone-17-pro-azul-view-42de099c4a.png",
           "sha256": "9779bf142154d5a6909d27fffe7c5c7aaefc436fd049b30de040a910ccc47483",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -8928,18 +8548,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-silver.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 17 Pro",
-          "color": "Plata",
-          "path": "assets/products/iphone-17-pro-plata-view-bbaa120c16.png",
-          "sha256": "36c61e9c7ab9e5e1f9c3e3b82ee86401f64351e410849a75ecd9ed3630c71fb2",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-silver-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-17-pro/",
           "credit": "Swappie",
@@ -8949,7 +8557,8 @@
           "path": "assets/products/iphone-17-pro-plata-view-7e88f2ee4d.png",
           "sha256": "3820155b394596951236a22ac16e992799d82ed23057bf7d3cb9ebd87a52016a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-silver-front.png",
@@ -8961,8 +8570,12 @@
           "path": "assets/products/iphone-17-pro-plata-view-fd73b3b034.png",
           "sha256": "4995ad2fe71705a6781df596f63c2bb99a068eb969bcd5a2373bf20d20cfc80d",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-17-pro-silver.png"
       ]
     },
     "iPhone 18 Pro Max|Borgoña": {
@@ -9004,7 +8617,8 @@
           "path": "assets/products/iphone-18-pro-max-borgona-view-67b7314b39.png",
           "sha256": "e58767da07c0f0343d416c0ad28fd07855e534638a3cb73c661364a1ddefdf81",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-burgundy-front.png",
@@ -9016,7 +8630,8 @@
           "path": "assets/products/iphone-18-pro-max-borgona-view-6385ef4edc.png",
           "sha256": "948e4c3ada30084d6253be8db402574016f76be662953ebac8ccc921d76ffba8",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [
@@ -9053,18 +8668,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-glacier.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 18 Pro Max",
-          "color": "Celeste",
-          "path": "assets/products/iphone-18-pro-max-celeste-view-2becb818e6.png",
-          "sha256": "daa8c6bac1bb694158310eec2752a53663ae5e1f8ee9ce9efd010db3d80b418b",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-glacier-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro-max/",
           "credit": "Swappie",
@@ -9074,7 +8677,8 @@
           "path": "assets/products/iphone-18-pro-max-celeste-view-0b3ed35e0d.png",
           "sha256": "ad4b4fb8fabb024e27bf5ad1dde86b2daf457e202ccbaff55b8cc61ff03c202c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-glacier-front.png",
@@ -9086,8 +8690,12 @@
           "path": "assets/products/iphone-18-pro-max-celeste-view-bd268a59fd.png",
           "sha256": "a51d37a83da8dfbe128c397d64cfc30d87b27ab1968e319556c7b12b5127c204",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-glacier.png"
       ]
     },
     "iPhone 18 Pro Max|Plata": {
@@ -9120,18 +8728,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-silver.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro-max/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 18 Pro Max",
-          "color": "Plata",
-          "path": "assets/products/iphone-18-pro-max-plata-view-a8b7c10510.png",
-          "sha256": "1a30981aaf9ee553e51f9eac7239e4a095f79bc638ab075ecabf7ac561c1f69d",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-silver-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro-max/",
           "credit": "Swappie",
@@ -9141,7 +8737,8 @@
           "path": "assets/products/iphone-18-pro-max-plata-view-b86708ac6d.png",
           "sha256": "612dfe72e6fa739a0bb7b36e217b18791190e81334bc6a231dcb4fd859f277eb",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-silver-front.png",
@@ -9153,8 +8750,12 @@
           "path": "assets/products/iphone-18-pro-max-plata-view-9c2eb7ddaa.png",
           "sha256": "f6450d02d94f952c8c047bd65ba132d661725dcf9d9b69028731893bc9533e1a",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-silver.png"
       ]
     },
     "iPhone 18 Pro|Celeste": {
@@ -9187,18 +8788,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 18 Pro",
-          "color": "Celeste",
-          "path": "assets/products/iphone-18-pro-celeste-view-bb8bf86d4a.png",
-          "sha256": "daa8c6bac1bb694158310eec2752a53663ae5e1f8ee9ce9efd010db3d80b418b",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro/",
           "credit": "Swappie",
@@ -9208,7 +8797,8 @@
           "path": "assets/products/iphone-18-pro-celeste-view-69de42c5d4.png",
           "sha256": "ad4b4fb8fabb024e27bf5ad1dde86b2daf457e202ccbaff55b8cc61ff03c202c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier-front.png",
@@ -9220,8 +8810,12 @@
           "path": "assets/products/iphone-18-pro-celeste-view-381a77ddcd.png",
           "sha256": "a51d37a83da8dfbe128c397d64cfc30d87b27ab1968e319556c7b12b5127c204",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier.png"
       ]
     },
     "iPhone 18 Pro|Glaciar": {
@@ -9254,18 +8848,6 @@
           "label": "Vista general en alta resolución"
         },
         {
-          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier.png",
-          "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro/",
-          "credit": "Swappie",
-          "label": "Frente y reverso",
-          "model": "iPhone 18 Pro",
-          "color": "Glaciar",
-          "path": "assets/products/iphone-18-pro-glaciar-view-bb8bf86d4a.png",
-          "sha256": "daa8c6bac1bb694158310eec2752a53663ae5e1f8ee9ce9efd010db3d80b418b",
-          "width": 1200,
-          "height": 1200
-        },
-        {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier-back.png",
           "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro/",
           "credit": "Swappie",
@@ -9275,7 +8857,8 @@
           "path": "assets/products/iphone-18-pro-glaciar-view-69de42c5d4.png",
           "sha256": "ad4b4fb8fabb024e27bf5ad1dde86b2daf457e202ccbaff55b8cc61ff03c202c",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier-front.png",
@@ -9287,8 +8870,12 @@
           "path": "assets/products/iphone-18-pro-glaciar-view-381a77ddcd.png",
           "sha256": "a51d37a83da8dfbe128c397d64cfc30d87b27ab1968e319556c7b12b5127c204",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
+      ],
+      "galleryRejectedSources": [
+        "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-glacier.png"
       ]
     },
     "iPhone 18 Pro|Negro": {
@@ -9330,7 +8917,8 @@
           "path": "assets/products/iphone-18-pro-negro-view-4ccb5328f0.png",
           "sha256": "d0fa62108b1a8ba0c9cab71a41fb51e1d3ad8a01a775014eb15e62024c454cd7",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         },
         {
           "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-black-front.png",
@@ -9342,7 +8930,8 @@
           "path": "assets/products/iphone-18-pro-negro-view-d2f49885dd.png",
           "sha256": "88586306aaf7c608c4844c6737ab19605cf4c2ceedf4fcbf082224bcc2d1a497",
           "width": 1200,
-          "height": 1200
+          "height": 1200,
+          "singleDevice": true
         }
       ],
       "galleryRejectedSources": [

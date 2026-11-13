@@ -10532,6 +10532,11 @@
       "model": "iPhone 13 Pro",
       "color": "Color por confirmar",
       "reason": "Color sin confirmar"
+    },
+    "iPhone 16 Pro Max|Plata": {
+      "model": "iPhone 16 Pro Max",
+      "color": "Plata",
+      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }
 }

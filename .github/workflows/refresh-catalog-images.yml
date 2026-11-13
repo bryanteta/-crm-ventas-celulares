@@ -1,4 +1,4 @@
-name: Actualizar fotos oficiales del catálogo
+name: Actualizar galerías del catálogo
 on:
   schedule:
     - cron: '12,27,42,57 * * * *'
@@ -9,6 +9,8 @@ on:
       - 'scripts/discover-catalog-images.py'
       - 'scripts/fetch-catalog-images.py'
       - 'scripts/fetch-catalog-galleries.py'
+      - 'scripts/expand-device-galleries.py'
+      - 'scripts/press-device-galleries.py'
       - '.github/workflows/refresh-catalog-images.yml'
 permissions:
   contents: write
@@ -32,6 +34,8 @@ jobs:
         run: |
           python scripts/discover-catalog-images.py
           python scripts/fetch-catalog-galleries.py
+          python scripts/expand-device-galleries.py
+          python scripts/press-device-galleries.py
       - name: Guardar fotos verificadas
         run: |
           git config user.name 'github-actions[bot]'

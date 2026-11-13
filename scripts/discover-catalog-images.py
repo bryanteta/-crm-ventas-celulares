@@ -53,7 +53,10 @@ def samsung_candidates(data, include_unknown=False):
             if len(chips) != 1:
                 continue
             page=item.get('originPdpUrl') or item.get('pdpUrl')
-            if not isinstance(page,str) or not page.startswith('/'):continue
+            if not isinstance(page,str) or not page.startswith('/'):
+                region=data.get('response',{}).get('resultData',{}).get('common',{}).get('siteCode','uk')
+                if not re.fullmatch('[a-z]{2,8}',region):continue
+                page='https://searchapi.samsung.com/v6/front/b2c/product/finder/global?type=01010000&siteCode='+region+'&start=1&num=100&sort=onlineavail&onlyFilterInfoYN=N'
             finish = chips[0]['fmyChipName']
             color = SAMSUNG_COLORS.get(finish.lower()) or (finish if include_unknown else None)
             photo = item.get('largeUrl', '')
@@ -68,7 +71,7 @@ def samsung_candidates(data, include_unknown=False):
                 label = next((label for marker,label in labels if re.search(r'\b(?:device)?'+marker+r'\b',normalized_alt)),None)
                 if label and not any(g['label'] == label for g in gallery):
                     gallery.append({'sourceImage': 'https:' + url + '?$900_900_PNG$', 'label': label})
-            result.setdefault((name, color), {'sourceImage': 'https:' + photo + '?$624_624_PNG$', 'sourcePage': 'https://www.samsung.com' + page, 'sourceSku': item['modelCode'], 'credit': 'Samsung', 'officialColor': finish, 'gallerySources': gallery[:4]})
+            result.setdefault((name, color), {'sourceImage': 'https:' + photo + '?$624_624_PNG$', 'sourcePage': ('https://www.samsung.com'+page if page.startswith('/') else page), 'sourceSku': item['modelCode'], 'credit': 'Samsung', 'officialColor': finish, 'gallerySources': gallery[:8]})
     return result
 
 def resolve(product, apple, samsung, reviewed):

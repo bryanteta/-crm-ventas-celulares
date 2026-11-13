@@ -17,7 +17,7 @@
     if(!slides.length)return;index=(next+slides.length)%slides.length;failed=false;
     draw(photo,slides[index]);photo.hidden=false;$('gallery-empty').hidden=true;stage.disabled=false;
     const label=slides[index].label;$('gallery-caption').textContent=label;$('gallery-counter').textContent=(index+1)+' / '+slides.length;
-    for(const [i,b] of [...$('gallery-thumbs').children].entries())b.setAttribute('aria-pressed',String(i===index));
+    for(const [i,b] of [...$('gallery-thumbs').children].entries()){b.setAttribute('aria-pressed',String(i===index));if(i===index)$('gallery-thumbs').scrollLeft=b.offsetLeft-($('gallery-thumbs').clientWidth-b.offsetWidth)/2;}
     if(viewer.open){draw(zoomPhoto,slides[index]);resetZoom();updateViewerLabel();}
   }
   function updateViewerLabel(){$('zoom-title').textContent=product.model+' · '+product.color;$('zoom-counter').textContent=(index+1)+' / '+slides.length+' · '+slides[index].label;}
@@ -35,7 +35,7 @@
     if(safe(picture)){
       const high=(Array.isArray(picture.gallery)?picture.gallery:[]).find(art=>safe(art)&&art.model===device.model&&art.color===device.color&&art.label==='Vista general en alta resolución');
       const general=high||picture;slides.push({...general,label:'Vista general'});
-      for(const art of (Array.isArray(picture.gallery)?picture.gallery:[]).slice(0,6))if(safe(art)&&art.model===device.model&&art.color===device.color&&!slides.some(s=>s.path===art.path||(typeof s.sha256==='string'&&s.sha256===art.sha256)))slides.push({...art,label:typeof art.label==='string'?art.label.slice(0,60):'Otra perspectiva'});
+      for(const art of (Array.isArray(picture.gallery)?picture.gallery:[]).slice(0,10))if(safe(art)&&art.model===device.model&&art.color===device.color&&!slides.some(s=>s.path===art.path||(typeof s.sha256==='string'&&s.sha256===art.sha256)))slides.push({...art,label:typeof art.label==='string'?art.label.slice(0,60):'Otra perspectiva'});
 
     }
     section.setAttribute('aria-label','Fotos de '+device.model+', '+device.color);

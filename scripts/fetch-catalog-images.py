@@ -20,12 +20,12 @@ output.mkdir(parents=True, exist_ok=True)
 
 def official(url):
     parsed = urllib.parse.urlparse(url)
-    return parsed.scheme == 'https' and any(parsed.hostname == host or (parsed.hostname or '').endswith('.' + host) for host in ('apple.com', 'samsung.com', 'store.storeimages.cdn-apple.com'))
+    return parsed.scheme == 'https' and any(parsed.hostname == host or (parsed.hostname or '').endswith('.' + host) for host in ('apple.com', 'samsung.com', 'store.storeimages.cdn-apple.com', 'swappie.com', 'refurbed.ie', 'files.refurbed.com', 'samsungmobilepress.com'))
 
 def download(entry):
     model, item = entry
     if not official(item['sourceImage']) or not official(item['sourcePage']):
-        raise ValueError('Image source must be an official Apple or Samsung URL')
+        raise ValueError('Image source must be a reviewed manufacturer or product retailer')
     request = urllib.request.Request(item['sourceImage'], headers={'User-Agent': 'Mozilla/5.0', 'Accept': 'image/*'})
     with urllib.request.urlopen(request, timeout=35) as response:
         if not official(response.url):

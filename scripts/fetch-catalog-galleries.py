@@ -5,6 +5,7 @@ import importlib.util
 import json
 import pathlib
 import re
+import hashlib
 
 ROOT=pathlib.Path(__file__).resolve().parent.parent
 
@@ -72,13 +73,13 @@ def main():
     tasks=[]
     for key,item in manifest['products'].items():
         if item['model'].startswith('Samsung '):
-            if item.get('gallery'):continue
             candidate=samsung.get((item['model'],normalize(item.get('officialColor',''))))
             if not candidate:continue
             # A different regional SKU is allowed only with the same official
             # finish; a local color nickname alone cannot substitute a finish.
             if normalize(item.get('officialColor',''))!=normalize(candidate['officialColor']):continue
             for i,view in enumerate(candidate.get('gallerySources',[])):
+                if view['sourceImage'] in item.get('galleryRejectedSources',[]) or any(g.get('sourceImage')==view['sourceImage'] for g in item.get('gallery',[])):continue
                 tasks.append((key,i,{**candidate,**view,'model':item['model'],'color':item['color']}))
         elif item['model'].startswith('iPhone '):
             if any(p.get('label')=='Vista posterior' for p in item.get('gallery',[])):continue
@@ -88,11 +89,11 @@ def main():
         key,index,item=task
         # Keep gallery assets separate from the card photo. Preserve original bytes.
         try:
-            _,saved=download((key+' gallery '+('rear' if index=='rear' else str(index+1)),item))
+            _,saved=download((key+' gallery '+('rear' if index=='rear' else hashlib.sha256(item['sourceImage'].encode()).hexdigest()[:10]),item))
             saved.pop('gallerySources',None);saved.pop('gallery',None)
             parent=manifest['products'][key]
             reference=next((p for p in parent.get('gallery',[]) if p.get('label')=='Vista general en alta resolución'),parent)
-            if repeated_photo(reference,saved):
+            if any(repeated_photo(old,saved) for old in [reference]+[a for a in parent.get('gallery',[]) if a.get('label')!='Vista general en alta resolución']):
                 (ROOT/'catalogo'/saved['path']).unlink(missing_ok=True);return key,None,item['sourceImage']
             return key,saved,None
         except Exception:

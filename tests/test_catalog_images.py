@@ -43,4 +43,19 @@ class ExactImageTests(unittest.TestCase):
         self.assertNotIn('AV',result['iPhone 15 Pro','bluetitanium']['sourceImage'])
         self.assertIsNone(g.legacy_apple_candidate({'model':'iPhone 18 Pro','officialColor':'black'}))
         self.assertIsNone(g.legacy_apple_candidate({'model':'iPhone 13','officialColor':'Color por confirmar'}))
+    def test_retailer_gallery_requires_exact_model_color_and_safe_filename(self):
+        spec=importlib.util.spec_from_file_location('e',pathlib.Path(__file__).resolve().parent.parent/'scripts/expand-device-galleries.py');e=importlib.util.module_from_spec(spec);spec.loader.exec_module(e)
+        import json
+        data={'productPageData':{'selectedProduct':{'modelName':'iPhone 13'},'modelAvailabilityData':{'colors':[{'color':'Midnight','primaryImage':{'imageLink':'swappie-iphone-13-midnight.png'},'secondaryImage':{'imageLink':'swappie-iphone-13-blue-back.png'},'tertiaryImage':{'imageLink':'https://untrusted.example/front.png'}}]}}}
+        page='<script>window.__INITIAL__DATA__ = '+json.dumps(data)+';</script>'
+        records=e.swappie_records(page,'iPhone 13','https://swappie.com/us/iphone/iphone-13/')
+        self.assertEqual(len(records['midnight']),1)
+        self.assertEqual(e.swappie_records(page,'iPhone 13 Pro','https://swappie.com/'),{})
+        self.assertEqual(e.refurbed_photos('<div data-instance-id="2"></div>',{'sku':'1','url':'https://www.refurbed.ie/p/test/'}),[])
+    def test_press_images_require_public_released_exact_color_product_files(self):
+        spec=importlib.util.spec_from_file_location('p',pathlib.Path(__file__).resolve().parent.parent/'scripts/press-device-galleries.py');p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
+        root={'isPublic':True,'embargoTime':'2022-01-01T00:00:00','imageUrl':'https://api.samsungmobilepress.com/api/v1/file/public'}
+        rows=[{'item':{**root,'filename':'001_galaxys22ultra_device_front_burgundy.jpg'}},{'item':{**root,'filename':'002_galaxys22ultra_device_back_phantomblack.jpg'}},{'item':{**root,'filename':'003_galaxys22ultra_pen_front_burgundy.jpg'}},{'item':{**root,'isPublic':False,'filename':'004_galaxys22ultra_device_back_burgundy.jpg'}},{'item':{**root,'embargoTime':'2099-01-01T00:00:00','filename':'005_galaxys22ultra_l_side_burgundy.jpg'}}]
+        self.assertEqual([v['label'] for v in p.matching_views(rows,'Samsung S22 Ultra','Burgundy')],['Frente'])
+        self.assertEqual(p.matching_views(rows,'Samsung Z Flip 4','Bespoke White/White (Silver frame)'),[])
 if __name__ == '__main__':unittest.main()

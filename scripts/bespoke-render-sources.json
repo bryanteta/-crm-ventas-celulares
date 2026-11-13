@@ -1,0 +1,29 @@
+{
+  "sourcePage": "https://www.samsung.com/my/mobile/galaxy-bespoke/galaxy-z-flip4/",
+  "files": {
+    "viewer/v3d.js": {
+      "url": "https://www.samsung.com/samsung/resources/global/galaxy-bespoke/viewer/dist/v3d.js",
+      "sha256": "f990238ee6e925c70814686c6a6d8c6721e450f228183fa46cac05e83a4532fb"
+    },
+    "viewer/FlipViewer.js": {
+      "url": "https://www.samsung.com/samsung/resources/global/galaxy-bespoke/viewer/packages/FlipViewer.js",
+      "sha256": "cf4e1097723f4b9984e8a5609e13befb4f7cb288169fa72d26b5dd3dd47b66fb"
+    },
+    "viewer/draco_decoder.js": {
+      "url": "https://images.samsung.com/common/refrigerators/da360/draco/draco_decoder.js",
+      "sha256": "b7cdb401323bd65e2f21164201b28a14ad947fdc1764bb309b39eeeac685766c"
+    },
+    "assets/models/b4-studio-v2-cp.glb": {
+      "url": "https://images.samsung.com/global/flip4/bespoke-studio/models/b4-studio-v2-cp.glb",
+      "sha256": "c9cb7439345bf148fbb0605a383cd794bdf278d294a4bf0aadd07d0cf1149853"
+    },
+    "assets/models/b4-screen.jpg": {
+      "url": "https://images.samsung.com/global/flip4/bespoke-studio/models/b4-screen.jpg",
+      "sha256": "8f39dda0de62f1655dfafd675dd8919dfca9796149b591d74c7fceb646f3c020"
+    },
+    "assets/models/hdr/env-bespoke-flip.hdr": {
+      "url": "https://images.samsung.com/global/flip4/bespoke-studio/models/hdr/env-bespoke-flip.hdr",
+      "sha256": "a9db2e4b31e4d8040792183fc830cf179f978a3aab0108fb8b6b6c8adeaea244"
+    }
+  }
+}

@@ -1,30 +1,31 @@
 'use strict';
 const {chromium,webkit}=require('playwright'),a=require('node:assert/strict');
+require('./check-gallery-coverage.cjs');
 const source=require('../catalogo/inventory.json'),pictures=require('../catalogo/product-images.json');
 const origin='http://127.0.0.1:8000/catalogo/';
 const output=require('node:path').resolve(process.env.GALLERY_ARTIFACT_DIR||'test-results/gallery');require('node:fs').mkdirSync(output,{recursive:true});
 const base={...source.products[0],capacity:'64 GB',condition:'Seminuevo',grade:'A',battery:'100%',quantity:1,priceCents:30000,observations:[]};
-const inventory={...source,updatedAt:new Date().toISOString(),products:[{...base,id:'a'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Blanco'},{...base,id:'b'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Negro'},{...base,id:'c'.repeat(20),manufacturer:'Samsung',model:'Samsung S26 Ultra',color:'Celeste',capacity:'256 GB',battery:''}]};
+const inventory={...source,updatedAt:new Date().toISOString(),products:[{...base,id:'a'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Blanco'},{...base,id:'b'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Negro'},{...base,id:'c'.repeat(20),manufacturer:'Samsung',model:'Samsung S26 Ultra',color:'Celeste',capacity:'256 GB',battery:''},{...base,id:'d'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Blanco',capacity:'256 GB',battery:'',priceCents:31000},{...base,id:'e'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Amarillo',capacity:'256 GB',battery:'',priceCents:31000}]};
 async function run(browserType,options){
  const browser=await browserType.launch(options);try{
  const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));
  await p.route(origin+'inventory.json',r=>r.fulfill({json:inventory}));
  await p.goto(origin);await p.locator('.view').first().click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
- a.equal(await p.locator('#gallery-counter').innerText(),'1 / 2');a.equal(await p.locator('#gallery-thumbs button').count(),2);
+ const viewCount=await p.locator('#gallery-thumbs button').count();a(viewCount>=3,'device gets more than two real photos');a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
  const firstPhoto=await p.locator('#gallery-photo').getAttribute('src');await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista posterior');a.notEqual(await p.locator('#gallery-photo').getAttribute('src'),firstPhoto,'another perspective uses a different image file');
  await p.locator('#gallery-prev').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista general');
- await p.locator('#gallery-thumbs button').last().click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista posterior');
- await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / 2');
- await p.locator('#gallery-open').focus();await p.keyboard.press('ArrowRight');a.equal(await p.locator('#gallery-counter').innerText(),'2 / 2');
+ await p.locator('#gallery-thumbs button').last().click();a.equal(await p.locator('#gallery-counter').innerText(),viewCount+' / '+viewCount);
+ await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
+ await p.locator('#gallery-open').focus();await p.keyboard.press('ArrowRight');a.equal(await p.locator('#gallery-counter').innerText(),'2 / '+viewCount);
  await p.locator('#gallery-open').click();a(await p.locator('#photo-viewer').isVisible());a(await p.locator('#details').isVisible());
  await p.locator('#zoom-in').click();a.equal(await p.locator('#zoom-level').innerText(),'150%');a(await p.locator('#zoom-viewport').evaluate(n=>n.scrollWidth>n.clientWidth));
  const panBox=await p.locator('#zoom-viewport').boundingBox(),panBefore=await p.locator('#zoom-viewport').evaluate(n=>n.scrollLeft);await p.mouse.move(panBox.x+panBox.width/2,panBox.y+panBox.height/2);await p.mouse.down();await p.mouse.move(panBox.x+panBox.width/2-50,panBox.y+panBox.height/2-40,{steps:4});await p.mouse.up();a.notEqual(await p.locator('#zoom-viewport').evaluate(n=>n.scrollLeft),panBefore,'enlarged photo can be dragged');
  for(let i=0;i<5;i++)await p.locator('#zoom-in').click();a.equal(await p.locator('#zoom-level').innerText(),'400%');a(await p.locator('#zoom-in').isDisabled());
  await p.locator('#zoom-reset').click();a.equal(await p.locator('#zoom-level').innerText(),'100%');a(await p.locator('#zoom-out').isDisabled());
- await p.locator('#zoom-next').click();a((await p.locator('#zoom-counter').innerText()).includes('Vista general'));
+ await p.locator('#zoom-next').click();a((await p.locator('#zoom-counter').innerText()).startsWith('3 / '+viewCount));
  await p.keyboard.press('Escape');a(!(await p.locator('#photo-viewer').isVisible()));a(await p.locator('#details').isVisible());
- const colors=await p.locator('#detail-colors button').count();if(colors>1){await p.locator('#detail-colors button').nth(1).click();a.equal(await p.locator('#gallery-counter').innerText(),'1 / 2');a((await p.locator('#gallery-photo').getAttribute('alt')).includes(await p.locator('#detail-colors button').nth(1).getAttribute('aria-label')));}
+ const colors=await p.locator('#detail-colors button').count();if(colors>1){await p.locator('#detail-colors button').nth(1).click();a((await p.locator('#gallery-counter').innerText()).startsWith('1 / '));a((await p.locator('#gallery-photo').getAttribute('alt')).includes(await p.locator('#detail-colors button').nth(1).getAttribute('aria-label')));}
  // Exercise all widths/themes without changing the inventory or selected price.
  await p.locator('[name=payment][value=installments]').check();await p.evaluate(()=>{const s=document.querySelector('#payment-bank');s.value='cuscatlan';s.dispatchEvent(new Event('change',{bubbles:true}));});await p.locator('[name=installment-term][value="36"]').check();
  const price=await p.locator('#detail-price').innerText();
@@ -39,6 +40,7 @@ async function run(browserType,options){
  }
  await p.setViewportSize({width:390,height:844});await p.evaluate(()=>document.documentElement.dataset.theme='light');
  await p.locator('#details').evaluate(d=>d.scrollTop=0);await p.screenshot({path:require('node:path').join(output,'catalog-gallery-'+browserType.name()+'.png')});
+ await p.locator('#gallery-thumbs button').last().click();a(await p.locator('#gallery-thumbs').evaluate(n=>n.scrollLeft>0||n.scrollWidth<=n.clientWidth),'long thumbnail strip remains scrollable');
  // Official Samsung metadata supplies real front/back/lateral photos.
  await p.locator('#close').click();await p.locator('#search').fill('Samsung S26 Ultra');await p.locator('.view').first().click();
  a((await p.locator('#gallery-thumbs button').count())>=3);const labels=await p.locator('#gallery-thumbs button').evaluateAll(bs=>bs.map(b=>b.getAttribute('aria-label')));a(labels.includes('Parte posterior'));a(labels.includes('Frente'));
@@ -59,6 +61,7 @@ async function run(browserType,options){
   await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});a.notEqual(await p.locator('#gallery-counter').innerText(),before,'swipe advances photo');a(!(await p.locator('#photo-viewer').isVisible()),'swipe does not also open zoom');await p.locator('#gallery-open').focus();await p.keyboard.press('Enter');a(await p.locator('#photo-viewer').isVisible(),'keyboard zoom still works after swiping');await p.locator('#zoom-close').click();
  }else await p.locator('#zoom-close').click();
  await p.locator('#close').click();
+ await p.locator('#search').fill('Samsung Z Flip 4');await p.locator('.view').first().click();for(const color of ['Blanco','Amarillo']){await p.locator('#detail-colors button[aria-label="'+color+'"]').click();a((await p.locator('#gallery-thumbs button').count())>=4,'Bespoke model receives its own manufacturer views');await p.locator('#gallery-thumbs button[aria-label="Semiplegado · vista lateral"]').click();await p.locator('#gallery-photo').evaluate(i=>i.decode());a((await p.locator('#gallery-photo').getAttribute('alt')).includes(color));await p.locator('#gallery-open').click();await p.locator('#zoom-photo').evaluate(i=>i.decode());await p.locator('#zoom-close').click();}await p.locator('#close').click();
  // A photo from another color, remote URL or malformed entry cannot enter a gallery.
  const first=inventory.products[0],key=first.model+'|'+first.color,original=pictures.products[key];
  await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{[key]:{...original,gallery:[{...original,path:'https://untrusted.invalid/wrong.jpg',label:'Wrong'},{...original,color:'Another color',path:'assets/products/wrong-color.jpg',label:'Wrong color'}]}}}}));
@@ -66,7 +69,7 @@ async function run(browserType,options){
  await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{}}}));await p.reload();await p.locator('.view').first().click();a(await p.locator('#gallery-empty').isVisible());a(!(await p.locator('#gallery-open').isVisible()));a(!(await p.locator('#gallery-controls').isVisible()));
  await p.locator('#close').click();await p.route('**/product-images.json',r=>r.fulfill({json:{version:2,products:{[key]:{...original,path:'assets/products/photo-unavailable.jpg',gallery:[]}}}}));await p.route('**/photo-unavailable.jpg*',r=>r.fulfill({status:404,body:''}));await p.reload();await p.locator('.view').first().click();await p.locator('#gallery-empty').waitFor({state:'visible'});a(await p.locator('#gallery-open').isDisabled());a((await p.locator('#gallery-empty').innerText()).includes('No pudimos cargar'));a(!(await p.locator('#gallery-next').isVisible()));
  await p.locator('#close').click();await p.route('**/gallery.js*',r=>r.abort());await p.reload();await p.locator('.view').first().click();a(await p.locator('#details').isVisible(),'device details still work if gallery JS cannot load');a(!(await p.locator('#device-gallery').isVisible()));a((await p.locator('#consult').getAttribute('href')).startsWith('https://api.whatsapp.com/'));
- a.deepEqual(errors,[]);console.log('PASS '+browserType.name()+': exact-color gallery, distinct official photos, no repeated crops, wrap, keyboard, thumbnails, zoom controls, pinch/swipe, nested dialogs, color reset, unchanged payments, responsive themes and safe missing/invalid images.');
+ a.deepEqual(errors,[]);console.log('PASS '+browserType.name()+': exact-color gallery, distinct product photos, no repeated crops, wrap, keyboard, thumbnails, zoom controls, pinch/swipe, nested dialogs, color reset, unchanged payments, responsive themes and safe missing/invalid images.');
  }finally{await browser.close()}
 }
 (async()=>{if(process.env.TEST_WEBKIT!=='only')await run(chromium,{executablePath:process.env.CI?undefined:'/usr/bin/chromium',args:['--no-sandbox']});if(process.env.TEST_WEBKIT)await run(webkit,{});})().catch(e=>{console.error(e);process.exitCode=1});

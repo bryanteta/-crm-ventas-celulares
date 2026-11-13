@@ -188,7 +188,7 @@
     const fragment=document.createDocumentFragment();
     for(const [name,value]of specs){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);fragment.append(row);}
     $('#specs').replaceChildren(fragment);
-    window.LunivoProductGallery.show(p,images[p.model+'|'+p.color]);
+    window.LunivoProductGallery?.show(p,images[p.model+'|'+p.color]);
     for(const button of $('#detail-colors').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.variantId===p.id));
     updatePayment();
   }

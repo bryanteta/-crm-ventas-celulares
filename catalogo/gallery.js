@@ -31,7 +31,7 @@
   }
   function openZoom(){if(failed||!slides.length)return;draw(zoomPhoto,slides[index]);resetZoom();updateViewerLabel();viewer.showModal();}
   function show(device,picture){
-    if(viewer.open)viewer.close();product=device;index=0;slides=[];
+    if(viewer.open)viewer.close();section.hidden=false;product=device;index=0;slides=[];
     if(safe(picture)){
       const high=(Array.isArray(picture.gallery)?picture.gallery:[]).find(art=>safe(art)&&art.model===device.model&&art.color===device.color&&art.label==='Vista general en alta resolución');
       const general=high||picture;slides.push({...general,label:'Vista general'});

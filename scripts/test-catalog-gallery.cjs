@@ -11,7 +11,21 @@ async function run(browserType,options){
  const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));
  await p.route(origin+'inventory.json',r=>r.fulfill({json:inventory}));
- await p.goto(origin);await p.locator('.view').first().click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
+ // Delay the initial photo, then select another: late pixels must never replace it.
+ const initial=pictures.products['iPhone 11|Blanco'].gallery.find(a=>a.label==='Vista general en alta resolución');
+ let release;const gate=new Promise(r=>release=r),pattern='**/'+initial.path+'*';
+ await p.route(pattern,async route=>{await gate;await route.continue();});
+ await p.goto(origin);await p.locator('.view').first().click();
+ a.equal(await p.locator('#gallery-open').getAttribute('aria-busy'),'true');
+ a.equal(await p.locator('#gallery-photo').evaluate(i=>getComputedStyle(i).visibility),'hidden','old pixels stay hidden while the next image loads');
+ await p.locator('#gallery-next').click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
+ await p.waitForFunction(()=>document.querySelector('#gallery-photo').style.visibility==='visible');
+ const selected=await p.locator('#gallery-photo').getAttribute('src');
+ const pendingResponse=p.waitForResponse(r=>r.url().includes(initial.path));release();await (await pendingResponse).finished();
+ await p.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ a.equal(await p.locator('#gallery-photo').getAttribute('src'),selected,'a late photo never overwrites the selected perspective');
+ a.equal(await p.locator('#gallery-open').getAttribute('aria-busy'),'false');
+ await p.unroute(pattern);await p.locator('#gallery-prev').click();await p.locator('#gallery-photo').evaluate(img=>img.decode());
  const viewCount=await p.locator('#gallery-thumbs button').count();a(viewCount>=3,'device gets more than two real photos');a.equal(await p.locator('#gallery-counter').innerText(),'1 / '+viewCount);
  const firstPhoto=await p.locator('#gallery-photo').getAttribute('src');await p.locator('#gallery-next').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista posterior');a.notEqual(await p.locator('#gallery-photo').getAttribute('src'),firstPhoto,'another perspective uses a different image file');
  await p.locator('#gallery-prev').click();a.equal(await p.locator('#gallery-caption').innerText(),'Vista general');
@@ -33,6 +47,9 @@ async function run(browserType,options){
   await p.setViewportSize({width,height:900});await p.evaluate(t=>document.documentElement.dataset.theme=t,theme);
   a(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal page overflow');
   a(await p.locator('#details').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'no horizontal dialog overflow');
+  await p.locator('#details').evaluate(d=>d.scrollTop=d.scrollHeight);
+  a(await p.locator('#close').evaluate(b=>{const r=b.getBoundingClientRect(),d=document.querySelector('#details').getBoundingClientRect();return r.top>=d.top&&r.bottom<=d.bottom;}),'close remains reachable after scrolling');
+  await p.locator('#details').evaluate(d=>d.scrollTop=0);
   await p.locator('#gallery-open').click();await p.locator('#zoom-in').click();
   a(await p.locator('#photo-viewer').evaluate(d=>d.scrollWidth<=d.clientWidth+1),'zoom scroll stays inside viewport');
   a(await p.locator('#zoom-photo').evaluate(img=>img.getBoundingClientRect().width>0),'zoom photo has dimensions');

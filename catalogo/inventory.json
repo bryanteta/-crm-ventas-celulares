@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-14T16:05:44.671Z",
+  "updatedAt": "2026-11-14T16:28:17.520Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -400,24 +400,6 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 15,
-      "available": true
-    },
-    {
-      "id": "68bc1b8ccdfd867acfba",
-      "manufacturer": "Apple",
-      "model": "iPhone 13",
-      "capacity": "128 GB",
-      "color": "Rojo",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 43000,
-      "quantity": 1,
       "available": true
     },
     {
@@ -835,24 +817,6 @@
       "box": true,
       "ram": "",
       "priceCents": 57500,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "64e47668d3d15b2e0d70",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro Max",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 59000,
       "quantity": 1,
       "available": true
     },
@@ -2553,7 +2517,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 10,
+      "quantity": 9,
       "available": true
     },
     {

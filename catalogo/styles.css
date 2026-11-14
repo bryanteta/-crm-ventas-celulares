@@ -140,3 +140,10 @@
 .back-to-top{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:10;display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid #ffffff40;border-radius:50%;background:#2563eb;color:#fff;box-shadow:0 4px 16px #14213b33;transition:background .2s,transform .2s}
 .back-to-top:hover{background:#1d4ed8;transform:translateY(-2px)}
 .back-to-top:focus-visible{outline-color:var(--ink)}
+
+.share-device{display:inline-grid;place-items:center;flex:0 0 40px;width:40px;height:40px;padding:0;margin-left:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--accent)}
+.share-device:hover{border-color:var(--accent);background:var(--bg)}
+.share-status{position:fixed;left:50%;bottom:calc(82px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;max-width:calc(100% - 32px);width:max-content;margin:0;padding:12px 18px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:var(--ink);box-shadow:0 4px 20px #14213b26;font-size:13px;text-align:center}
+.card-bottom>.card-prices{flex-basis:100%}.card-bottom>.card-actions{display:flex;flex-direction:row;align-items:center;gap:6px;width:100%;min-width:0}.card-actions .view{width:auto;min-width:0;min-height:44px;flex:0 1 auto}.card-actions .share-device{width:44px;height:44px;flex-basis:44px}.share-device .ui-icon{width:20px;height:20px}
+@media(max-width:720px){.card-actions .view{padding-inline:7px;gap:4px}}
+@media(max-width:350px){.card-actions .view .ui-icon{display:none}}

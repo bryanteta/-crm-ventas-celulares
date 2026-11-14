@@ -213,6 +213,37 @@
     nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
     $('#empty').hidden=matches.length!==0;
   }
+  let shareStatusTimer,handledDeviceLink='';
+  const deviceSignatures=new Map();
+  function shareStatus(text){const status=$('#share-status');clearTimeout(shareStatusTimer);status.textContent=text;status.hidden=false;shareStatusTimer=setTimeout(()=>{status.hidden=true;},6000);}
+  // Exclude stock and price so a shared link survives routine inventory updates.
+  async function deviceSignature(p){
+    const specs=JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,p.cycles??null,p.sim||'Por confirmar',p.box??null,p.ram||'',[...p.observations].sort()]);
+    const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(specs));
+    return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,24);
+  }
+  async function shareDevice(device){
+    const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('equipo',device.id);url.searchParams.set('version',deviceSignatures.get(device.id));
+    if(navigator.share){try{await navigator.share({title:device.model+' · '+device.capacity+' · '+device.color,text:'Mira este dispositivo en Lunivo',url:url.href});return;}catch(error){if(error.name==='AbortError')return;}}
+    try{await navigator.clipboard.writeText(url.href);shareStatus('Enlace copiado. Ya puedes compartirlo.');}
+    catch{window.prompt('Copia el enlace de este dispositivo:',url.href);}
+  }
+  async function openSharedDevice(){
+    const params=new URL(location.href).searchParams,id=params.get('equipo');
+    if(!id||!catalog||handledDeviceLink===location.search)return;
+    handledDeviceLink=location.search;
+    if(!/^[a-f0-9]{20}$/.test(id))return;
+    let device=catalog.products.find(p=>p.id===id);
+    const signature=params.get('version');
+    if(!device&&/^[a-f0-9]{24}$/.test(signature||'')){
+      const matches=catalog.products.filter(p=>deviceSignatures.get(p.id)===signature);
+      if(matches.length===1)device=matches[0];
+    }
+    if(!device){shareStatus('Este dispositivo ya no está disponible. Explora los equipos del catálogo.');return;}
+    const group=groups.find(g=>g.variants.some(p=>p.id===device.id));
+    if(group){selectedColors.set(group.key,device.id);render();const card=nodes.products.querySelector('[data-product-id="'+device.id+'"]');card?.scrollIntoView({block:'center',behavior:'instant'});if(nodes.dialog.open)nodes.dialog.close();openDetails(group,device.id);}
+  }
+  window.addEventListener('popstate',()=>{handledDeviceLink='';void openSharedDevice().catch(()=>shareStatus('No se pudo abrir el dispositivo. Intenta nuevamente.'));});
   function createCard(group,stale){
       const card=$('#card').content.firstElementChild.cloneNode(true);
       card.classList.toggle('samsung',group.manufacturer==='Samsung');card.dataset.versionModel=group.model;
@@ -238,6 +269,8 @@
         button.setAttribute('aria-haspopup','dialog');
         button.addEventListener('click',()=>openDetails(group,card.dataset.productId));
       }
+      const share=card.querySelector('.share-device');share.setAttribute('aria-label',`Compartir ${group.model}, ${device.capacity}, ${device.color}`);
+      share.addEventListener('click',()=>{void shareDevice(device).catch(()=>shareStatus('No se pudo compartir el enlace. Intenta nuevamente.'));});
       const colors=card.querySelector('.color-options');
       colors.setAttribute('aria-label','Colores de '+group.model);
       colors.append(colorButtons(group.variants,device.id,(v)=>{
@@ -360,11 +393,15 @@
       catalog=previous&&Date.parse(previous.updatedAt)>Date.parse(incoming.updatedAt)?previous:incoming;
       groups=groupProducts(catalog.products);
       await Promise.all([Date.now()-lastImagesCheck>=5*60*1000?loadImages():imagesReady,plansReady]);
+      // Prepare links before a tap so iOS keeps the user gesture for native sharing.
+      deviceSignatures.clear();
+      await Promise.all(catalog.products.map(async p=>{deviceSignatures.set(p.id,await deviceSignature(p));}));
       paintHero(catalog);
       nodes.capacity.replaceChildren(option('all','Capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
       if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
       $('#updated').textContent='Inventario actualizado: '+new Intl.DateTimeFormat('es-SV',{dateStyle:'medium',timeStyle:'short',timeZone:'America/El_Salvador'}).format(new Date(catalog.updatedAt))+' · El Salvador';
       render();
+      await openSharedDevice();
     }catch{
       if(background&&previous){catalog=previous;render();$('#notice').textContent='No pudimos comprobar la última actualización. Se conserva la lista anterior; confirma disponibilidad por WhatsApp.';$('#notice').hidden=false;return;}
       catalog=null;groups=[];nodes.products.replaceChildren();nodes.count.textContent='Inventario no disponible';$('#updated').textContent='No se pudo consultar la lista';$('#error').hidden=false;

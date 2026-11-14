@@ -133,5 +133,5 @@
 :root[data-theme=dark] .version-option[aria-pressed=true]{color:#10243d}
 @media(max-width:760px){.selects{order:3}#version-bar{order:2}.version-option{font-size:13px;padding:10px 15px}.model-version>h4{font-size:14px}}
 
-.brands button{display:inline-flex;align-items:center;justify-content:center;gap:7px}.brand-count{font-size:11px;font-weight:600;opacity:.75;font-variant-numeric:tabular-nums}
+.brands button{display:inline-flex;align-items:center;justify-content:center;gap:7px}
 @media(max-width:760px){.brands button{padding-inline:12px;gap:6px}}

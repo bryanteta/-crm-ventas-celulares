@@ -138,11 +138,6 @@
   function versionName(model){return model.replace(/^Samsung /,'Galaxy ');}
   function versionLabel(model,family){const name=versionName(model);return family.title.startsWith('Galaxy Z ')?name.replace(/^Galaxy /,''):(name.slice(family.title.length).trim()||'Estándar');}
   function renderVersions(){
-    for(const b of document.querySelectorAll('[data-brand]')){
-      if(b.dataset.brand==='all')continue;
-      let count=b.querySelector('.brand-count');if(!count){count=document.createElement('span');count.className='brand-count';count.setAttribute('aria-hidden','true');b.append(count);}
-      count.textContent=String(catalog.products.filter(p=>p.manufacturer===b.dataset.brand).reduce((n,p)=>n+(p.quantity||0),0));
-    }
     const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all';if(bar.hidden)return;
     const models=[...new Set(groups.filter(g=>g.manufacturer===brand).map(g=>g.model))].sort(collator.compare);
     const removed=selectedVersion!=='all'&&!models.includes(selectedVersion);if(removed)selectedVersion='all';

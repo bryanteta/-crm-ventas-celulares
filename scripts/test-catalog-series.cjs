@@ -22,7 +22,6 @@ async function run(type){
   const ids=await p.locator('#products .color-swatch').evaluateAll(bs=>bs.map(b=>b.dataset.variantId));a.deepEqual(ids.sort(),products.map(p=>p.id).sort());a.match(await p.locator('#count').innerText(),/15 equipos/);
   a.deepEqual(await p.getByRole('region',{name:'Serie iPhone 11',exact:true}).locator('.model-version>h4').allTextContents(),['Estándar','Pro Max']);
   await p.getByRole('button',{name:'iPhone',exact:true}).click();a(await p.locator('#version-bar').isVisible());a.equal(await p.locator('#version-list button').count(),6);
-  a.equal(await p.locator('[data-brand=Apple] .brand-count').innerText(),'9');
   await choose('iPhone 13 Pro');a.equal(await p.locator('.product-name').innerText(),'iPhone 13 Pro');a.equal(await p.locator('#version-list [aria-pressed=true]').innerText(),'iPhone 13 Pro');
   a(await p.locator('#version-list').evaluate(n=>n.scrollLeft>0),'choosing a distant version keeps its chip in view');
   await p.locator('.view').click();a.equal(await p.locator('#detail-title').innerText(),'iPhone 13 Pro');await p.locator('#close').click();
@@ -47,7 +46,7 @@ async function run(type){
   inventory={...inventory,updatedAt:new Date(Date.parse(inventory.updatedAt)+1000).toISOString(),products:[...products.filter(p=>!p.model.startsWith('iPhone 11')&&p.model!=='Samsung S25 Ultra'),{...products[1],id:'f'.repeat(20),model:'iPhone 14'}]};
   await p.clock.fastForward(301000);await p.waitForFunction(()=>document.querySelector('#version-list [aria-pressed=true]').dataset.version==='all');a.equal(await p.locator('#version-list').getByRole('button',{name:'Galaxy S25 Ultra',exact:true}).count(),0);
   await p.getByRole('button',{name:'Todos',exact:true}).click();a(!(await titles()).includes('iPhone 11'));a((await titles()).includes('iPhone 14'));a.deepEqual(errors,[]);
-  console.log('PASS '+type.name()+': horizontal version chips, brand counts, one-tap filtering/reset, keyboard, stock and version groups, price sorting, responsive light/dark layouts and live updates.');
+  console.log('PASS '+type.name()+': horizontal version chips, one-tap filtering/reset, keyboard, stock and version groups, price sorting, responsive light/dark layouts and live updates.');
  }finally{await browser.close();}
 }
 (async()=>{if(process.env.TEST_WEBKIT!=='only')await run(chromium);if(process.env.TEST_WEBKIT)await run(webkit);})().catch(e=>{console.error(e);process.exitCode=1});

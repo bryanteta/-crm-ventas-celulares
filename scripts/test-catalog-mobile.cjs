@@ -13,7 +13,7 @@ const engine=process.env.CATALOG_BROWSER==='webkit'?webkit:chromium;
   for(const id of ['capacity','sort'])a.equal(await page.locator('#'+id).evaluate(e=>getComputedStyle(e).fontSize),'16px');
   await page.locator('#capacity').selectOption('128 GB');a((await page.locator('.card .summary').allTextContents()).every(t=>t.includes('128 GB')));
   await page.locator('#sort').selectOption('high');const prices=await page.locator('.card .price').allTextContents();const values=prices.map(p=>Number(p.replace(/[^\d.]/g,'')));a(values.every((v,i)=>!i||values[i-1]>=v));
-  await page.getByRole('button',{name:'Samsung',exact:true}).tap();if(await page.locator('#version-drawer').evaluate(d=>d.open))await page.locator('#versions-close').tap();a((await page.locator('.card h3').allTextContents()).every(t=>t.startsWith('Samsung')));
+  await page.getByRole('button',{name:'Samsung',exact:true}).tap();a((await page.locator('.card h3').allTextContents()).every(t=>t.startsWith('Samsung')));
   await page.getByRole('button',{name:'Todos',exact:true}).tap();await page.locator('#capacity').selectOption('all');await page.locator('#sort').selectOption('model');
   await page.locator('#search').fill('iPhone 13');a(await page.locator('.card').count()>0);await page.locator('#search').fill('');await page.locator('#search').blur();
   await page.locator('.product-name').first().tap();a(await page.locator('#details').isVisible());await page.locator('#close').tap();await page.locator('.product-photo').first().tap();

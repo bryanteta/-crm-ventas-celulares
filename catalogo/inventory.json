@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-14T15:01:08.665Z",
+  "updatedAt": "2026-11-14T15:06:45.504Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -2302,6 +2302,24 @@
       "ram": "",
       "priceCents": 173000,
       "quantity": 10,
+      "available": true
+    },
+    {
+      "id": "3785ca29bea21ccab120",
+      "manufacturer": "Apple",
+      "model": "iPhone 18 Pro Max",
+      "capacity": "256 GB",
+      "color": "Borgoña",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 179000,
+      "quantity": 1,
       "available": true
     },
     {

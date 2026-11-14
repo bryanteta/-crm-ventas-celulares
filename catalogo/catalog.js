@@ -431,5 +431,15 @@
   $('#retry').addEventListener('click',()=>load());
   setInterval(()=>{if(document.visibilityState==='visible'&&Date.now()-lastInventoryCheck>=(inventoryEndpoint?60:300)*1000)load(true);},60*1000);
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')load(true);});
+  const backToTop=$('#back-to-top');
+  function updateBackToTop(){backToTop.hidden=window.scrollY<500;}
+  window.addEventListener('scroll',updateBackToTop,{passive:true});
+  window.addEventListener('pageshow',updateBackToTop);
+  backToTop.addEventListener('click',()=>{
+    const heading=document.querySelector('h1');
+    if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+    window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
+  });
+  updateBackToTop();
   load();
 })();

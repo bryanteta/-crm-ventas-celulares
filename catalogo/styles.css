@@ -136,3 +136,7 @@
 @media(max-width:760px){.brands button{padding-inline:12px;gap:6px}}
 
 .model-version,.card{scroll-margin-top:20px}
+
+.back-to-top{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:10;display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid #ffffff40;border-radius:50%;background:#2563eb;color:#fff;box-shadow:0 4px 16px #14213b33;transition:background .2s,transform .2s}
+.back-to-top:hover{background:#1d4ed8;transform:translateY(-2px)}
+.back-to-top:focus-visible{outline-color:var(--ink)}

@@ -2,7 +2,7 @@
 const {chromium,webkit}=require('playwright'),a=require('node:assert/strict');
 require('./check-gallery-coverage.cjs');
 const source=require('../catalogo/inventory.json'),pictures=require('../catalogo/product-images.json');
-const origin='http://127.0.0.1:8000/catalogo/';
+const origin=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/';
 const output=require('node:path').resolve(process.env.GALLERY_ARTIFACT_DIR||'test-results/gallery');require('node:fs').mkdirSync(output,{recursive:true});
 const base={...source.products[0],capacity:'64 GB',condition:'Seminuevo',grade:'A',battery:'100%',quantity:1,priceCents:30000,observations:[]};
 const inventory={...source,updatedAt:new Date().toISOString(),products:[{...base,id:'a'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Blanco'},{...base,id:'b'.repeat(20),manufacturer:'Apple',model:'iPhone 11',color:'Morado'},{...base,id:'c'.repeat(20),manufacturer:'Samsung',model:'Samsung S26 Ultra',color:'Celeste',capacity:'256 GB',battery:''},{...base,id:'d'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Blanco',capacity:'256 GB',battery:'',priceCents:31000},{...base,id:'e'.repeat(20),manufacturer:'Samsung',model:'Samsung Z Flip 4',color:'Amarillo',capacity:'256 GB',battery:'',priceCents:31000}]};

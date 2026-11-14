@@ -71,7 +71,7 @@ const fs=require('node:fs');
   assert(await page.locator('.hero-primary').isVisible());
   const layout=await page.locator('.hero-primary').evaluate(el=>{const a=el.getBoundingClientRect(),h=document.querySelector('.hero').getBoundingClientRect();return a.left>=h.left&&a.right<=h.right;});assert(layout,`Hero action clipped at ${width}`);
   await page.locator('.view').first().click();
-  assert(await page.evaluate(()=>{const r=document.querySelector('dialog').getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;}));
+  assert(await page.evaluate(()=>{const r=document.querySelector('#details').getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;}));
   if(width===412)await page.screenshot({path:'/workspace/artifacts/lunivo-catalogo-detalle.png'});
   await page.locator('#close').click();
   if(width===412)await page.screenshot({path:'/workspace/artifacts/lunivo-catalogo-movil.png'});

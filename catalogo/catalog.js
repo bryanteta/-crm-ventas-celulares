@@ -5,6 +5,7 @@
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let selectedVersion='all',versionSignature='';
+  let versionObserver=null;const visibleVersions=new Set();
   let images={};
   const selectedColors=new Map();
   let inventoryEndpoint='',lastInventoryCheck=0;
@@ -137,6 +138,23 @@
   }
   function versionName(model){return model.replace(/^Samsung /,'Galaxy ');}
   function versionLabel(model,family){const name=versionName(model);return family.title.startsWith('Galaxy Z ')?name.replace(/^Galaxy /,''):(name.slice(family.title.length).trim()||'Estándar');}
+  function navigationHeight(){const height=Math.ceil($('#catalog-navigation').getBoundingClientRect().height);document.documentElement.style.setProperty('--catalog-nav-height',height+'px');return height;}
+  const navResize=new ResizeObserver(navigationHeight);navResize.observe($('#catalog-navigation'));
+  function markVersion(model,center=false){
+    selectedVersion=model;const nav=$('#version-list');
+    for(const b of nav.children){const active=b.dataset.version===model;b.setAttribute('aria-pressed',String(active));if(active&&center)nav.scrollTo({left:b.offsetLeft-(nav.clientWidth-b.offsetWidth)/2,behavior:'instant'});}
+  }
+  function watchVersions(){
+    versionObserver?.disconnect();visibleVersions.clear();if(brand==='all')return;
+    const headerHeight=navigationHeight(),sections=[...nodes.products.querySelectorAll('.model-version')],targets=sections.length?sections:[...nodes.products.querySelectorAll('.card')];
+    versionObserver=new IntersectionObserver(entries=>{
+      for(const entry of entries){if(entry.isIntersecting)visibleVersions.add(entry.target);else visibleVersions.delete(entry.target);}
+      const boundary=$('#catalog-navigation').getBoundingClientRect().bottom+8,visible=[...visibleVersions].filter(n=>n.isConnected).map(n=>({node:n,rect:n.getBoundingClientRect()})).filter(n=>n.rect.bottom>boundary).sort((a,b)=>a.rect.top-b.rect.top);
+      const current=visible.find(n=>n.rect.top<=boundary&&n.rect.bottom>boundary)||visible[0];
+      if(current&&current.node.dataset.versionModel!==selectedVersion)markVersion(current.node.dataset.versionModel,true);
+    },{rootMargin:'-'+(headerHeight+8)+'px 0px -50% 0px',threshold:0});
+    for(const target of targets)versionObserver.observe(target);
+  }
   function renderVersions(){
     const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all';if(bar.hidden)return;
     const models=[...new Set(groups.filter(g=>g.manufacturer===brand).map(g=>g.model))].sort(collator.compare);
@@ -146,10 +164,9 @@
     if(signature!==versionSignature){
       const previousScroll=nav.dataset.brand===brand&&!removed?nav.scrollLeft:0;versionSignature=signature;const focused=nav.contains(document.activeElement)?document.activeElement.dataset.version:null,fragment=document.createDocumentFragment();
       function button(text,model){const b=document.createElement('button');b.type='button';b.className='version-option';b.textContent=text;b.dataset.version=model;return b;}
-      const all=button('Todos','all');all.setAttribute('aria-label','Todos los '+label);fragment.append(all);
-      for(const model of models)fragment.append(button(versionName(model),model));
+      for(const model of models){const b=button(model.replace(/^(?:iPhone|Samsung)\s+/,''),model);b.setAttribute('aria-label',versionName(model));fragment.append(b);}
       nav.replaceChildren(fragment);nav.dataset.brand=brand;nav.scrollLeft=previousScroll;
-      if(focused){const next=[...nav.children].find(b=>b.dataset.version===focused)||all;next.focus({preventScroll:true});}
+      if(focused){const next=[...nav.children].find(b=>b.dataset.version===focused)||nav.firstElementChild;if(next)next.focus({preventScroll:true});}
     }
     for(const b of nav.children)b.setAttribute('aria-pressed',String(b.dataset.version===selectedVersion));
   }
@@ -163,6 +180,7 @@
     else renderVersions();
     const nav=$('#version-list');nav.scrollTo({left:b.offsetLeft-(nav.clientWidth-b.offsetWidth)/2,behavior:'instant'});
     if(target){
+      navigationHeight();
       if(event.detail===0){target.tabIndex=-1;target.focus({preventScroll:true});}
       target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
     }
@@ -208,7 +226,7 @@
       const ordered=[...series.values()].sort((a,b)=>(a.manufacturer==='Apple'?0:1)-(b.manufacturer==='Apple'?0:1)||direction*collator.compare(a.title,b.title));
       for(const family of ordered)fragment.append(seriesSection(family,stale));
     }else for(const group of matches)fragment.append(createCard(group,stale));
-    nodes.products.replaceChildren(fragment);
+    nodes.products.replaceChildren(fragment);navigationHeight();watchVersions();
     const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
     nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
     $('#empty').hidden=matches.length!==0;
@@ -374,7 +392,7 @@
   nodes.search.addEventListener('input',()=>{if(catalog)render();});
   nodes.capacity.addEventListener('change',()=>{if(catalog)render();});
   nodes.sort.addEventListener('change',()=>{if(catalog)render();});
-  document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;}}));
+  document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;navigationHeight();nodes.products.scrollIntoView({block:'start',behavior:'instant'});}}));
   $('#reset').addEventListener('click',()=>{brand='all';selectedVersion='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
   function resetInstallments(){
     $('#installment-grid').replaceChildren();delete $('#installment-grid').dataset.plan;$('#installment-options').hidden=true;

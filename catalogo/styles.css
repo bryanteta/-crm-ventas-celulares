@@ -135,4 +135,15 @@
 .brands button{display:inline-flex;align-items:center;justify-content:center;gap:7px}
 @media(max-width:760px){.brands button{padding-inline:12px;gap:6px}}
 
-.model-version,.card{scroll-margin-top:20px}
+.model-version,.card,#products{scroll-margin-top:var(--catalog-nav-height,108px)}
+
+/* Keep only the compact brand/model navigation in view while browsing. */
+#filters.catalog-filters{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}
+.catalog-filters .selects{width:auto;min-width:0}.catalog-filters .selects label{min-width:0}
+.catalog-navigation{position:sticky;top:0;z-index:4;background:var(--bg);padding:10px 0 4px;margin-top:14px;border-bottom:1px solid var(--border)}
+.catalog-navigation .brands{width:auto;display:inline-flex;max-width:100%}
+.catalog-navigation .brands button{min-height:42px;padding:9px 18px;font-size:12px}
+.catalog-navigation #version-bar{margin-top:8px}
+.catalog-navigation #version-list{padding-bottom:8px;gap:7px}
+.catalog-navigation .version-option{min-height:40px;padding:9px 14px;font-size:12px}
+@media(max-width:720px){#filters.catalog-filters{grid-template-columns:minmax(0,1fr)}.catalog-filters .selects{width:100%}.catalog-navigation .brands{display:flex;width:100%}.catalog-navigation .brands button{padding:9px 12px}.catalog-navigation{margin-top:12px}}

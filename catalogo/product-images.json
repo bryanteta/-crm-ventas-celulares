@@ -10537,6 +10537,11 @@
       "model": "iPhone 16 Pro Max",
       "color": "Plata",
       "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
+    },
+    "iPhone 16|Azul": {
+      "model": "iPhone 16",
+      "color": "Azul",
+      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }
 }

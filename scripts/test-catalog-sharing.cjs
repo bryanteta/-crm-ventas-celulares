@@ -40,7 +40,9 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8800/catalogo/';
    const rect=await share.boundingBox(),card=await page.locator('.card').first().boundingBox();
    assert(rect.x>=card.x&&rect.x+rect.width<=card.x+card.width,'share stays inside card at '+width);
    assert(rect.height>=44,'touch target');
-   const view=await page.locator('.card .view').first().boundingBox();assert(Math.abs(view.y-rect.y)<2,'actions stay on one row at '+width);
+   assert.equal(await share.innerText(),'Compartir');
+   const summary=await page.locator('.card .summary').first().boundingBox(),colors=await page.locator('.card .color-options').first().boundingBox();
+   assert(rect.y>=summary.y+summary.height&&rect.y+rect.height<=colors.y,'share appears below device description at '+width);
   }
   assert.deepEqual(errors,[]);console.log('PASS: copy, native share, exact color, direct opening, price updates, removed device and responsive share buttons.');
  }finally{await browser.close();}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-14T15:06:45.504Z",
+  "updatedAt": "2026-11-14T15:15:59.016Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -2319,7 +2319,7 @@
       "box": null,
       "ram": "",
       "priceCents": 179000,
-      "quantity": 1,
+      "quantity": 2,
       "available": true
     },
     {

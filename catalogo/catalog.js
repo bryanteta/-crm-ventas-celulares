@@ -155,8 +155,17 @@
   }
   $('#version-list').addEventListener('click',event=>{
     const b=event.target.closest('button[data-version]');if(!b||!catalog)return;
-    selectedVersion=b.dataset.version;render();
+    selectedVersion=b.dataset.version;
+    function destination(){return selectedVersion==='all'?nodes.products:[...nodes.products.querySelectorAll('.model-version')].find(n=>n.dataset.versionModel===selectedVersion)||[...nodes.products.querySelectorAll('.card')].find(n=>n.dataset.versionModel===selectedVersion);}
+    let target=destination();
+    // Clear restrictive search/capacity filters only when they hide the destination.
+    if(!target){nodes.search.value='';nodes.capacity.value='all';render();target=destination();}
+    else renderVersions();
     const nav=$('#version-list');nav.scrollTo({left:b.offsetLeft-(nav.clientWidth-b.offsetWidth)/2,behavior:'instant'});
+    if(target){
+      if(event.detail===0){target.tabIndex=-1;target.focus({preventScroll:true});}
+      target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
+    }
   });
   $('#version-list').addEventListener('keydown',event=>{
     if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
@@ -173,7 +182,7 @@
     const versions=new Map();
     for(const group of series.groups){if(!versions.has(group.model))versions.set(group.model,[]);versions.get(group.model).push(group);}
     for(const [model,options]of versions){
-      const version=document.createElement('section');version.className='model-version';version.setAttribute('aria-label','Versión '+model);
+      const version=document.createElement('section');version.className='model-version';version.dataset.versionModel=model;version.setAttribute('aria-label','Versión '+model);
       const name=document.createElement('h4');name.textContent=versionLabel(model,series);
       const cards=document.createElement('div');cards.className='products version-products';for(const group of options)cards.append(createCard(group,stale));
       version.append(name,cards);grid.append(version);
@@ -183,7 +192,7 @@
   function render(){
     renderVersions();
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&(selectedVersion==='all'||g.model===selectedVersion)&&g.variants.length);
+    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
     const lowest=g=>Math.min(...g.variants.map(v=>v.priceCents));
     const direction=nodes.sort.value==='model-desc'?-1:1;
     matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||collator.compare(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||collator.compare(a.model,b.model):direction*collator.compare(a.model,b.model));
@@ -206,7 +215,7 @@
   }
   function createCard(group,stale){
       const card=$('#card').content.firstElementChild.cloneNode(true);
-      card.classList.toggle('samsung',group.manufacturer==='Samsung');
+      card.classList.toggle('samsung',group.manufacturer==='Samsung');card.dataset.versionModel=group.model;
       card.querySelector('.manufacturer').textContent=group.manufacturer==='Apple'?'iPhone · Lunivo':'Samsung · Lunivo';
       card.querySelector('.product-name').textContent=group.model;
       const device=group.variants.find(v=>v.id===selectedColors.get(group.key))||group.variants[0];

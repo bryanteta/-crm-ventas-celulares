@@ -134,3 +134,5 @@
 
 .brands button{display:inline-flex;align-items:center;justify-content:center;gap:7px}
 @media(max-width:760px){.brands button{padding-inline:12px;gap:6px}}
+
+.model-version,.card{scroll-margin-top:20px}

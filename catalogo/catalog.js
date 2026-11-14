@@ -168,9 +168,7 @@
     const section=document.createElement('section');section.className='catalog-series';section.setAttribute('aria-label','Serie '+series.title);
     const heading=document.createElement('div');heading.className='series-heading';
     const title=document.createElement('h3');title.textContent=series.title;
-    const count=document.createElement('span'),units=series.groups.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
-    count.textContent=units?units+' equipo'+(units===1?'':'s'):(series.groups.length===1?'1 opción':series.groups.length+' opciones');
-    heading.append(title,count);
+    heading.append(title);
     const grid=document.createElement('div');grid.className='products series-products';
     const versions=new Map();
     for(const group of series.groups){if(!versions.has(group.model))versions.set(group.model,[]);versions.get(group.model).push(group);}

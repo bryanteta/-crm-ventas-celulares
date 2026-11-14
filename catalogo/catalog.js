@@ -214,6 +214,9 @@
     $('#empty').hidden=matches.length!==0;
   }
   let shareStatusTimer,handledDeviceLink='';
+  let previewPages={},lastPreviewCheck=0;
+  function loadPreviewPages(){lastPreviewCheck=Date.now();return fetch('share-pages.json',{cache:'no-cache',signal:AbortSignal.timeout(3000)}).then(async r=>{if(r.ok){const data=await r.json();if(data.version===1&&data.products)previewPages=data.products;}}).catch(()=>{});}
+  const previewPagesReady=loadPreviewPages();
   const deviceSignatures=new Map();
   function shareStatus(text){const status=$('#share-status');clearTimeout(shareStatusTimer);status.textContent=text;status.hidden=false;shareStatusTimer=setTimeout(()=>{status.hidden=true;},6000);}
   // Exclude stock and price so a shared link survives routine inventory updates.
@@ -224,7 +227,9 @@
   }
   async function shareDevice(device){
     const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('equipo',device.id);url.searchParams.set('version',deviceSignatures.get(device.id));
-    if(navigator.share){try{await navigator.share({title:device.model+' · '+device.capacity+' · '+device.color,text:'Mira este dispositivo en Lunivo',url:url.href});return;}catch(error){if(error.name==='AbortError')return;}}
+    const preview=previewPages[device.id];
+    if(preview&&preview.path==='/equipo/'+device.id+'/'){url.pathname=preview.path;url.searchParams.delete('equipo');}
+    if(navigator.share){try{await navigator.share({title:device.model+' · '+device.capacity+' · '+device.color,url:url.href});return;}catch(error){if(error.name==='AbortError')return;}}
     try{await navigator.clipboard.writeText(url.href);shareStatus('Enlace copiado. Ya puedes compartirlo.');}
     catch{window.prompt('Copia el enlace de este dispositivo:',url.href);}
   }
@@ -394,6 +399,7 @@
       groups=groupProducts(catalog.products);
       await Promise.all([Date.now()-lastImagesCheck>=5*60*1000?loadImages():imagesReady,plansReady]);
       // Prepare links before a tap so iOS keeps the user gesture for native sharing.
+      await (Date.now()-lastPreviewCheck>=5*60*1000?loadPreviewPages():previewPagesReady);
       deviceSignatures.clear();
       await Promise.all(catalog.products.map(async p=>{deviceSignatures.set(p.id,await deviceSignature(p));}));
       paintHero(catalog);

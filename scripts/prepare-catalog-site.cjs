@@ -24,5 +24,6 @@ fs.writeFileSync(path.join(output,'catalogo','index.html'),`<!doctype html>
 <title>Catálogo Lunivo</title><link rel="canonical" href="../"><meta http-equiv="refresh" content="0; url=../">
 <script>location.replace('../' + location.search + location.hash);</script></head>
 <body><p><a href="../">Abrir el catálogo de Lunivo</a></p></body></html>\n`);
+require('./catalog-share-pages.cjs').prepareSharePages(source,output);
 fs.writeFileSync(path.join(output,'.nojekyll'),'');
 console.log('Public catalog prepared at root; legacy links redirect to root.');

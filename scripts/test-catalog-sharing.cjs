@@ -44,6 +44,25 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8800/catalogo/';
    const summary=await page.locator('.card .summary').first().boundingBox(),colors=await page.locator('.card .color-options').first().boundingBox();
    assert(rect.y>=summary.y+summary.height&&rect.y+rect.height<=colors.y,'share appears below device description at '+width);
   }
+  if(process.env.CATALOG_PREVIEW_TEST_URL){
+   const previewPage=await browser.newPage({viewport:{width:390,height:844}}),product=source.products[0];
+   await previewPage.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));
+   await previewPage.route('**/inventory.json',r=>r.fulfill({json:source}));
+   await previewPage.addInitScript(()=>{Object.defineProperty(navigator,'share',{value:undefined});Object.defineProperty(navigator,'clipboard',{value:{writeText:async text=>{window.copiedLink=text;}}});});
+   await previewPage.goto(process.env.CATALOG_PREVIEW_TEST_URL);await previewPage.locator('.card').first().waitFor();
+   await previewPage.locator('[data-variant-id="'+product.id+'"]').click();
+   await previewPage.locator('[data-product-id="'+product.id+'"] .share-device').click();await previewPage.waitForFunction(()=>window.copiedLink);
+   const shared=await previewPage.evaluate(()=>window.copiedLink),manifest=await (await previewPage.request.get(new URL('share-pages.json',shared).origin+'/share-pages.json')).json();
+   assert.equal(new URL(shared).pathname,'/equipo/'+product.id+'/');
+   assert.equal(new URL(shared).searchParams.get('version'),manifest.products[product.id].signature);
+   const response=await previewPage.request.get(shared),html=await response.text();assert.equal(response.status(),200);
+   assert(html.includes('property="og:title" content="'+product.model+' '+product.capacity));
+   assert(html.includes('property="og:image" content="https://lunivosv.com/assets/'));
+   assert(html.includes('name="twitter:card" content="summary_large_image"'));
+   await previewPage.goto(shared);await previewPage.locator('#details[open]').waitFor();
+   assert.equal(await previewPage.locator('#variant').inputValue(),product.id);
+   await previewPage.close();console.log('PASS: published preview URL, crawler-readable product metadata, matching signature and browser redirect to exact device.');
+  }
   assert.deepEqual(errors,[]);console.log('PASS: copy, native share, exact color, direct opening, price updates, removed device and responsive share buttons.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

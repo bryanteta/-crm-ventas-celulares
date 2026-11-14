@@ -6,6 +6,7 @@ on:
     paths:
       - 'catalogo/**'
       - 'scripts/prepare-catalog-site.cjs'
+      - 'scripts/catalog-share-pages.cjs'
       - '.github/workflows/deploy-catalog.yml'
   workflow_dispatch:
   # A GITHUB_TOKEN commit does not trigger push workflows. A successful refresh

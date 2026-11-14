@@ -244,6 +244,9 @@
       const matches=catalog.products.filter(p=>deviceSignatures.get(p.id)===signature);
       if(matches.length===1)device=matches[0];
     }
+    // A shared link opens once; refreshing this tab should return to browsing.
+    const catalogUrl=new URL(location.href);catalogUrl.searchParams.delete('equipo');catalogUrl.searchParams.delete('version');
+    history.replaceState(history.state,'',catalogUrl.pathname+catalogUrl.search+catalogUrl.hash);
     if(!device){shareStatus('Este dispositivo ya no está disponible. Explora los equipos del catálogo.');return;}
     const group=groups.find(g=>g.variants.some(p=>p.id===device.id));
     if(group){selectedColors.set(group.key,device.id);render();const card=nodes.products.querySelector('[data-product-id="'+device.id+'"]');card?.scrollIntoView({block:'center',behavior:'instant'});if(nodes.dialog.open)nodes.dialog.close();openDetails(group,device.id);}

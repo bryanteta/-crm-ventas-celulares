@@ -25,7 +25,19 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8800/catalogo/';
   assert.equal(await page.locator('#details').evaluate(n=>n.open),false,'copy does not open product');
   await page.goto(link);await page.locator('#details[open]').waitFor();
   assert.equal(await page.locator('#variant').inputValue(),second.id,'shared color is selected');
-  await page.locator('#close').click();
+  assert.equal(new URL(page.url()).searchParams.has('equipo'),false,'shared selection is consumed from the address');
+  assert.equal(new URL(page.url()).searchParams.has('version'),false);
+  for(const exit of ['close','escape','backdrop']){
+   if(exit!=='close'){await page.goto(link);await page.locator('#details[open]').waitFor();}
+   if(exit==='close')await page.locator('#close').click();
+   else if(exit==='escape')await page.keyboard.press('Escape');
+   else await page.mouse.click(1,1);
+   await page.locator('#details').waitFor({state:'hidden'});
+   await page.reload();await page.waitForFunction(()=>document.querySelector('#products').getAttribute('aria-busy')==='false');
+   assert.equal(await page.locator('#details').evaluate(n=>n.open),false,'refresh after '+exit+' stays in catalog');
+   assert.equal(await page.locator('#products .color-swatch').count(),2,'full catalog remains after closing');
+  }
+  await page.goto(link);await page.locator('#details[open]').waitFor();await page.locator('#close').click();
   await page.evaluate(()=>Object.defineProperty(navigator,'share',{value:async data=>{window.sharedData=data;},configurable:true}));
   await page.locator('.share-device').first().click();await page.waitForFunction(()=>window.sharedData);
   assert.equal(new URL(await page.evaluate(()=>window.sharedData.url)).searchParams.get('equipo'),second.id);
@@ -61,6 +73,10 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8800/catalogo/';
    assert(html.includes('name="twitter:card" content="summary_large_image"'));
    await previewPage.goto(shared);await previewPage.locator('#details[open]').waitFor();
    assert.equal(await previewPage.locator('#variant').inputValue(),product.id);
+   assert.equal(new URL(previewPage.url()).searchParams.has('equipo'),false);
+   await previewPage.locator('#close').click();await previewPage.reload();
+   await previewPage.waitForFunction(()=>document.querySelector('#products').getAttribute('aria-busy')==='false');
+   assert.equal(await previewPage.locator('#details').evaluate(n=>n.open),false,'preview link refresh stays in catalog after close');
    await previewPage.close();console.log('PASS: published preview URL, crawler-readable product metadata, matching signature and browser redirect to exact device.');
   }
   assert.deepEqual(errors,[]);console.log('PASS: copy, native share, exact color, direct opening, price updates, removed device and responsive share buttons.');

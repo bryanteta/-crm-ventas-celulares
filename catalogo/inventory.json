@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-14T16:41:52.402Z",
+  "updatedAt": "2026-11-14T20:41:50.160Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -167,26 +167,6 @@
       "available": true
     },
     {
-      "id": "8aec9c36b47ca2813bf3",
-      "manufacturer": "Apple",
-      "model": "iPhone 12",
-      "capacity": "64 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [
-        "Aviso de pantalla"
-      ],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 35500,
-      "quantity": 1,
-      "available": true
-    },
-    {
       "id": "0130a2f350f82daa2789",
       "manufacturer": "Apple",
       "model": "iPhone 12",
@@ -201,7 +181,7 @@
       "box": null,
       "ram": "",
       "priceCents": 35500,
-      "quantity": 1,
+      "quantity": 2,
       "available": true
     },
     {
@@ -1979,7 +1959,7 @@
       "available": true
     },
     {
-      "id": "7b555ba446492cf4c585",
+      "id": "afc0f36a9203a819eb60",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -1992,7 +1972,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 92000,
+      "priceCents": 91000,
       "quantity": 1,
       "available": true
     },
@@ -2033,25 +2013,7 @@
       "available": true
     },
     {
-      "id": "98983b90e5b348bcb731",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Plata",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "90%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 93500,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "7149024163c1af6ed037",
+      "id": "729757b0e591a6360a3e",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -2064,7 +2026,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 97500,
+      "priceCents": 94500,
       "quantity": 1,
       "available": true
     },
@@ -2077,24 +2039,6 @@
       "condition": "Seminuevo",
       "grade": "A+",
       "battery": "98%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 98000,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "a15495b18a0a208f75ae",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Dorado",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "96%",
       "observations": [],
       "cycles": null,
       "sim": "Por confirmar",
@@ -2553,7 +2497,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 7,
+      "quantity": 6,
       "available": true
     },
     {
@@ -2610,7 +2554,7 @@
       "box": null,
       "ram": "",
       "priceCents": 75500,
-      "quantity": 11,
+      "quantity": 10,
       "available": true
     },
     {
@@ -2920,7 +2864,7 @@
       "available": true
     },
     {
-      "id": "6aeedd29349b8ad43318",
+      "id": "003f3e2f31ed7ba1bb63",
       "manufacturer": "Samsung",
       "model": "Samsung Z Flip 7",
       "capacity": "512 GB",
@@ -2933,12 +2877,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 63000,
+      "priceCents": 61000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "1ae75b496b5ca4d2c66d",
+      "id": "79b3e625695c8158163c",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "256 GB",
@@ -2951,12 +2895,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "12 GB",
-      "priceCents": 56000,
+      "priceCents": 54000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "ddaf48ef62ff343dcd96",
+      "id": "221fe4edf5d2a106baa4",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
       "capacity": "512 GB",
@@ -2969,12 +2913,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "12 GB",
-      "priceCents": 57000,
+      "priceCents": 54000,
       "quantity": 1,
       "available": true
     },
     {
-      "id": "4ed134951bddd1646400",
+      "id": "b00a016fc7c685f98993",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 6",
       "capacity": "512 GB",
@@ -2987,7 +2931,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 66000,
+      "priceCents": 64000,
       "quantity": 1,
       "available": true
     }

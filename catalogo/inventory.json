@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-15T04:12:51.201Z",
+  "updatedAt": "2026-11-15T07:08:56.400Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -595,7 +595,7 @@
       ]
     },
     {
-      "id": "7e38f6f2a9990e70bc0d",
+      "id": "ac152db25f63210de157",
       "manufacturer": "Apple",
       "model": "iPhone 13 Mini",
       "capacity": "256 GB",
@@ -608,7 +608,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 36000,
+      "priceCents": 40500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -1122,7 +1122,7 @@
       ]
     },
     {
-      "id": "b4e9b093ec2911d81959",
+      "id": "10d0989ac08536041c05",
       "manufacturer": "Apple",
       "model": "iPhone 14 Plus",
       "capacity": "128 GB",
@@ -1135,7 +1135,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 48500,
+      "priceCents": 46500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -1921,11 +1921,11 @@
       ]
     },
     {
-      "id": "e1abc51ff6d67bb1f99e",
+      "id": "41b63312ffcb17a4fcf6",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio natural",
+      "color": "Plata",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -1942,11 +1942,11 @@
       ]
     },
     {
-      "id": "41b63312ffcb17a4fcf6",
+      "id": "e1abc51ff6d67bb1f99e",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Plata",
+      "color": "Titanio natural",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -3188,7 +3188,7 @@
       ]
     },
     {
-      "id": "04b74150ce2d491f855c",
+      "id": "f523c564dcd27f8564a4",
       "manufacturer": "Samsung",
       "model": "Samsung S25 Ultra",
       "capacity": "256 GB",
@@ -3201,7 +3201,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 110500,
+      "priceCents": 105900,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -3272,7 +3272,7 @@
       ]
     },
     {
-      "id": "abd798756cc8ed7cb069",
+      "id": "cccbfa15d027203e1836",
       "manufacturer": "Samsung",
       "model": "Samsung S26 FE",
       "capacity": "128 GB",
@@ -3285,7 +3285,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 77000,
+      "priceCents": 81500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -3293,7 +3293,7 @@
       ]
     },
     {
-      "id": "5698a0a404ae3a962594",
+      "id": "60a091a320f94463af4e",
       "manufacturer": "Samsung",
       "model": "Samsung S26 Plus",
       "capacity": "256 GB",
@@ -3306,7 +3306,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 88000,
+      "priceCents": 83000,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -3419,10 +3419,10 @@
       ]
     },
     {
-      "id": "79b3e625695c8158163c",
+      "id": "221fe4edf5d2a106baa4",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
-      "capacity": "256 GB",
+      "capacity": "512 GB",
       "color": "Celeste",
       "condition": "Seminuevo",
       "grade": "",
@@ -3440,10 +3440,10 @@
       ]
     },
     {
-      "id": "221fe4edf5d2a106baa4",
+      "id": "98f0758ef33d666aa883",
       "manufacturer": "Samsung",
       "model": "Samsung Z Fold 5",
-      "capacity": "512 GB",
+      "capacity": "256 GB",
       "color": "Celeste",
       "condition": "Seminuevo",
       "grade": "",
@@ -3453,7 +3453,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "12 GB",
-      "priceCents": 54000,
+      "priceCents": 54500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [

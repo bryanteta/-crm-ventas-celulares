@@ -76,9 +76,10 @@ function buildCatalog(snapshot, now=Date.now()) {
       // Keep those units separate rather than assuming unknown conditions match.
       const descriptionIdentity=r.notes.normalize('NFC').trim().toLocaleLowerCase('es').replace(/\s+/g,' ');
       const key=JSON.stringify({...specs,priceCents,descriptionIdentity});
+      const sourceInitial=provider==='samuel'?'T':r.ownerId==='javier'?'J':'S';
       const existing=products.get(key);
-      if(existing) existing.quantity+=r.quantity;
-      else products.set(key,{id:createHash('sha256').update(key).digest('hex').slice(0,20),...specs,priceCents,quantity:r.quantity,available:true});
+      if(existing){existing.quantity+=r.quantity;if(!existing.sourceInitials.includes(sourceInitial)){existing.sourceInitials.push(sourceInitial);existing.sourceInitials.sort((a,b)=>'TSJ'.indexOf(a)-'TSJ'.indexOf(b));}}
+      else products.set(key,{id:createHash('sha256').update(key).digest('hex').slice(0,20),...specs,priceCents,quantity:r.quantity,available:true,sourceInitials:[sourceInitial]});
     }
   }
   return {schemaVersion:1,brand:'Lunivo',currency:'USD',updatedAt:new Date(checked).toISOString(),products:[...products.values()].sort((a,b)=>a.model.localeCompare(b.model,'es',{numeric:true})||a.priceCents-b.priceCents)};

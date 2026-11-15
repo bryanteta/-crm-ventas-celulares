@@ -9,7 +9,7 @@ test('publishes only customer fields, canonical models and final retail price',(
  assert.equal(out.products.length,1);
  const product=out.products[0];
  assert.equal(product.priceCents,55500);assert.equal(product.model,'iPhone 13 Pro');assert.equal(product.capacity,'128 GB');assert.equal(product.quantity,2);
- assert.deepEqual(Object.keys(product).sort(),['id','manufacturer','model','capacity','color','condition','grade','battery','priceCents','available','observations','quantity','cycles','sim','box','ram'].sort());
+ assert.deepEqual(Object.keys(product).sort(),['id','manufacturer','model','capacity','color','condition','grade','battery','priceCents','available','observations','quantity','cycles','sim','box','ram','sourceInitials'].sort());
  assert.doesNotMatch(JSON.stringify(out),/Samuel|Split|saul|private|123456789012345|47500|128GB475/i);
 });
 test('preserves every unit and price; combines only identical public variants at identical prices',()=>{
@@ -145,4 +145,14 @@ test('new supplier aliases keep phone updates working while excluding watches',(
  const s=snapshot();s.providers.samuel.rows[0].model='GALAXY S24 ULTRA';s.providers.samuel.rows[0].color='TITANIO GRIS';s.providers.split.rows.push({...make('split'),id:'feed-split:watch',model:'APPLE WATCH SE 3 44MM',color:'',capacity:''});s.providers.split.total=2;
  const d=buildCatalog(s);assert.equal(d.products.reduce((n,p)=>n+p.quantity,0),2);assert(!d.products.some(p=>/watch/i.test(p.model)));assert(d.products.some(p=>p.model==='Samsung S24 Ultra'&&p.color==='Gris'));
  const core=require('../scripts/build-public-catalog.cjs');assert.equal(core.colorName('Naranja'),'Anaranjado');assert.deepEqual(core.modelName('Samsung Galaxy S24 Ultra'),{manufacturer:'Samsung',model:'Samsung S24 Ultra'});
+});
+test('public source initials distinguish TecnoShop, Split/Saúl and Javier without changing device IDs or double-counting stock',()=>{
+ const s=snapshot(),before=buildCatalog(s);
+ assert.deepEqual(before.products[0].sourceInitials,['T','S']);
+ s.providers.split.rows.push(make('split',{id:'feed-split:javier',ownerId:'javier',quantity:3}));s.providers.split.total=4;
+ const combined=buildCatalog(s).products[0];
+ assert.equal(combined.id,before.products[0].id);assert.equal(combined.quantity,5);
+ assert.deepEqual(combined.sourceInitials,['T','S','J']);
+ s.providers.samuel={rows:[],total:0};s.providers.split.rows=[s.providers.split.rows[1]];s.providers.split.total=3;
+ assert.deepEqual(buildCatalog(s).products[0].sourceInitials,['J']);
 });

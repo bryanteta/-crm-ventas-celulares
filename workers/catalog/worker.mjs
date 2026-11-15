@@ -46,7 +46,7 @@ export default{
     if(!['GET','HEAD'].includes(request.method))return new Response(null,{status:405,headers:{...headers,Allow:'GET, HEAD, OPTIONS'}});
     try{
       const response=await store(env).fetch(new Request('https://catalog.internal'+path,{method:request.method}));
-      if(path==='/health'){const report=await response.json();return Response.json({...report,workerConfigured:Boolean(env.SPLIT_INVENTORY_TOKEN?.trim()),revision:'secret-check-2'},{headers:{...headers,'Cache-Control':'no-store'}});}
+      if(path==='/health'){const report=await response.json();return Response.json({...report,workerConfigured:Boolean(env.SPLIT_INVENTORY_TOKEN?.trim()),revision:'source-initials-1'},{headers:{...headers,'Cache-Control':'no-store'}});}
       return response;
     }catch{return unavailable();}
   },

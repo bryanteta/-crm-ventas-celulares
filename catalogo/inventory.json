@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-15T02:29:16.473Z",
+  "updatedAt": "2026-11-15T02:35:59.898Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1855,6 +1855,90 @@
       "available": true,
       "sourceInitials": [
         "T"
+      ]
+    },
+    {
+      "id": "c1eeec222d702ae5a138",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "90%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 83650,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
+      "id": "8cf6c4a65afbc38be56a",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 84350,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
+      "id": "a96c812526f9aca71f6d",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "80%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 84650,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
+      "id": "b4caca6f8820578f3d3f",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Plata",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "87%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 84650,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
       ]
     },
     {

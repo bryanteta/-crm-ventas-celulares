@@ -36,11 +36,13 @@
     }
     banks=data.banks;
   }).catch(()=>{});
-  let lastImagesCheck=0;
-  function loadImages(){lastImagesCheck=Date.now();return fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{
+  let lastImagesCheck=0,lastImagesAttempt=0;
+  let pendingImageKeys=new Set();
+  function loadImages(){lastImagesAttempt=Date.now();return fetch('product-images.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(async r=>{
     if(!r.ok)return;
     const data=await r.json();
     if(data.version!==2)return;
+    lastImagesCheck=Date.now();pendingImageKeys=new Set(Object.keys(data.unavailable||{}));
     for(const [key,item]of Object.entries(data.products||{})){
       if(key===item.model+'|'+item.color&&typeof item.color==='string'&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(item.path))images[key]=item;
     }
@@ -404,7 +406,9 @@
       const incoming=await readInventory();
       catalog=previous&&Date.parse(previous.updatedAt)>Date.parse(incoming.updatedAt)?previous:incoming;
       groups=groupProducts(catalog.products);
-      await Promise.all([Date.now()-lastImagesCheck>=5*60*1000?loadImages():imagesReady,plansReady]);
+      const newPhotos=catalog.products.some(p=>{const key=p.model+'|'+p.color;return !images[key]&&!pendingImageKeys.has(key);});
+      const refreshPhotos=Date.now()-lastImagesAttempt>=60*1000&&(newPhotos||Date.now()-lastImagesCheck>=5*60*1000);
+      await Promise.all([refreshPhotos?loadImages():imagesReady,plansReady]);
       // Prepare links before a tap so iOS keeps the user gesture for native sharing.
       await (Date.now()-lastPreviewCheck>=5*60*1000?loadPreviewPages():previewPagesReady);
       deviceSignatures.clear();

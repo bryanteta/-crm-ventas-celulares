@@ -6473,6 +6473,66 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-space-black.png"
       ]
     },
+    "iPhone 14 Pro Max|Plata": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone14_pro_max_silver__esuba240yvqu_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "silver",
+      "model": "iPhone 14 Pro Max",
+      "color": "Plata",
+      "path": "assets/products/iphone-14-pro-max-plata.jpg",
+      "sha256": "ab66d0e5af04c82694976341c4e4fd178e470e4a9332dc9e874f62ed73d3b8a0",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-silver-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "singleDevice": true,
+          "model": "iPhone 14 Pro Max",
+          "color": "Plata",
+          "path": "assets/products/iphone-14-pro-max-plata-view-339d3117da.png",
+          "sha256": "86fdfbce88b29c062ff7a38f20896b02db452da86b6913d6e580d8e9cc5d0294",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-14-pro-max-silver-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-14-pro-max/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "singleDevice": true,
+          "model": "iPhone 14 Pro Max",
+          "color": "Plata",
+          "path": "assets/products/iphone-14-pro-max-plata-view-ea436fa6ec.png",
+          "sha256": "04155f4ab044e1ecd65614bb0735815c8e0ac1bacb7713c0229205557f107bbd",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "model": "iPhone 14 Pro Max",
+          "color": "Plata",
+          "officialColor": "silver",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-pro-max-silver-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-14-pro-max-plata-apple-camera-detail.jpg",
+          "sha256": "2d8d4287d777b357d601397ab25e3fb828aaab7d2c58a024a12bb33d17ba4952",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 221,
+            "y": 339,
+            "width": 756,
+            "height": 523
+          }
+        }
+      ]
+    },
     "iPhone 14 Pro|Dorado": {
       "model": "iPhone 14 Pro",
       "color": "Dorado",
@@ -9260,6 +9320,66 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pro-desert-titanium.png"
       ]
     },
+    "iPhone 16|Azul": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone16_ultramarine__sr260qois4am_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "ultramarine",
+      "model": "iPhone 16",
+      "color": "Azul",
+      "path": "assets/products/iphone-16-azul.jpg",
+      "sha256": "4244f2d2def929202abad73386249e4bc0f14ffb236b386cc233ab026843fbec",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-ultramarine-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-16/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "singleDevice": true,
+          "model": "iPhone 16",
+          "color": "Azul",
+          "path": "assets/products/iphone-16-azul-view-5fb5fbaf37.png",
+          "sha256": "2d7e3cf8fe3af08dbcda7405d4ac254a3acab25974c11b9a756f85c677dc36ac",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-ultramarine-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-16/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "singleDevice": true,
+          "model": "iPhone 16",
+          "color": "Azul",
+          "path": "assets/products/iphone-16-azul-view-148bbd8520.png",
+          "sha256": "d659d8a8dc66a0c1081055aa103666c9ae273f0a745f25c941bee6f76858da5e",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "model": "iPhone 16",
+          "color": "Azul",
+          "officialColor": "ultramarine",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-ultramarine-select-202409_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-16-azul-apple-camera-detail.jpg",
+          "sha256": "b408fa416d85835798626fec254ffe39faf4c96d34a4602036fcba76b3680f51",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 237,
+            "y": 331,
+            "width": 726,
+            "height": 539
+          }
+        }
+      ]
+    },
     "iPhone 16|Blanco": {
       "model": "iPhone 16",
       "color": "Blanco",
@@ -10536,11 +10656,6 @@
     "iPhone 16 Pro Max|Plata": {
       "model": "iPhone 16 Pro Max",
       "color": "Plata",
-      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
-    },
-    "iPhone 16|Azul": {
-      "model": "iPhone 16",
-      "color": "Azul",
       "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }

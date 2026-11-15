@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: '12,27,42,57 * * * *'
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Actualizar inventario público de Lunivo']
+    types: [completed]
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -20,6 +24,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   images:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

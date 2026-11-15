@@ -9,6 +9,7 @@ on:
       - 'catalogo/styles.css'
       - 'scripts/test-catalog-gallery.cjs'
       - 'scripts/test-catalog-series.cjs'
+      - 'scripts/test-catalog-image-refresh.cjs'
       - 'scripts/check-gallery-coverage.cjs'
       - 'scripts/bespoke-render-sources.json'
       - 'scripts/capture-bespoke-views.cjs'
@@ -40,3 +41,4 @@ jobs:
           python3 -m http.server 8000 > /tmp/catalog-gallery-server.log 2>&1 &
           npm run test:catalog-gallery
           npm run test:catalog-series
+          CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-image-refresh.cjs

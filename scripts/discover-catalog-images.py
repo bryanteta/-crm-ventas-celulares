@@ -33,6 +33,9 @@ def apple_candidates(css, base):
     return result
 
 APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight', 'graphite', 'spaceblack', 'blacktitanium'), 'Morado': ('purple',), 'Lila': ('purple',), 'Rosado': ('pink',), 'Rojo': ('red',), 'Verde': ('green',), 'Azul': ('blue', 'deepblue'), 'Celeste': ('blue', 'skyblue'), 'Amarillo': ('yellow',), 'Plata': ('silver',), 'Dorado': ('gold',), 'Anaranjado': ('cosmicorange', 'orange'), 'Titanio natural': ('naturaltitanium',), 'Titanio desierto': ('deserttitanium',)}
+# Apple names the blue finish on this family Ultramarine; keep the match model-specific.
+APPLE_MODEL_COLORS = {('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
+
 SAMSUNG_COLORS = {'black': 'Negro', 'phantom black': 'Negro', 'titanium black': 'Negro', 'white': 'Blanco', 'phantom white': 'Blanco', 'titanium white silver': 'Blanco', 'gray': 'Gris', 'grey': 'Gris', 'titanium gray': 'Gris', 'titanium grey': 'Gris', 'silver': 'Plata', 'phantom silver': 'Plata', 'blue': 'Azul', 'navy': 'Azul', 'sky blue': 'Celeste', 'icyblue': 'Celeste', 'pink': 'Rosado', 'green': 'Verde', 'mint': 'Verde', 'yellow': 'Amarillo', 'cream': 'Crema', 'lavender': 'Lila'}
 
 def samsung_candidates(data, include_unknown=False):
@@ -79,7 +82,7 @@ def resolve(product, apple, samsung, reviewed):
     if color == 'Color por confirmar' or '/' in color:
         return None
     if model.startswith('iPhone '):
-        finishes = APPLE_COLORS.get(color, ())
+        finishes = APPLE_MODEL_COLORS.get((model, color), APPLE_COLORS.get(color, ()))
         # Keep a reviewed model-specific interpretation when one already exists.
         known = reviewed.get(model + '|' + color, {}).get('officialColor')
         if known:

@@ -17,6 +17,12 @@ class ExactImageTests(unittest.TestCase):
         apple = {('iPhone 13','blue'):{}, ('iPhone 13','deepblue'):{}}
         self.assertIsNone(d.resolve({'model':'iPhone 13','color':'Azul'}, apple, {}, {}))
         self.assertIsNotNone(d.resolve({'model':'iPhone 13','color':'Azul'}, apple, {}, {'iPhone 13|Azul':{'officialColor':'blue'}}))
+    def test_iphone_16_blue_uses_only_the_official_ultramarine_finish(self):
+        apple = {('iPhone 16','ultramarine'):{'sourceImage':'https://www.apple.com/ultramarine.jpg'}, ('iPhone 16','teal'):{}, ('iPhone 15','ultramarine'):{}}
+        result=d.resolve({'model':'iPhone 16','color':'Azul'},apple,{},{})
+        self.assertEqual(result['sourceImage'],'https://www.apple.com/ultramarine.jpg')
+        self.assertIsNone(d.resolve({'model':'iPhone 15','color':'Azul'},apple,{},{}))
+        self.assertIsNone(d.resolve({'model':'iPhone 16','color':'Color por confirmar'},apple,{},{}))
     def test_samsung_uses_color_chip_and_model_metadata_not_random_gallery(self):
         item={'fmyChipList':[{'fmyChipType':'COLOR','fmyChipName':'Sky Blue'}], 'largeUrl':'//images.samsung.com/skyblue', 'originPdpUrl':'/uk/galaxy-s26-ultra-sky-blue/', 'modelCode':'SM-test'}
         data={'response':{'resultData':{'productList':[{'fmyMarketingName':'Galaxy S26 Ultra', 'modelList':[item]}]}}}

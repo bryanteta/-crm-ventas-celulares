@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-15T00:26:19.818Z",
+  "updatedAt": "2026-11-15T02:29:16.473Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -20,7 +20,10 @@
       "ram": "",
       "priceCents": 31500,
       "quantity": 5,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "f3cddd5487354b98c416",
@@ -38,7 +41,10 @@
       "ram": "",
       "priceCents": 31500,
       "quantity": 15,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "7e8663b0da4ca0911905",
@@ -56,7 +62,10 @@
       "ram": "",
       "priceCents": 34000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "7cd042fe600d6a06673e",
@@ -74,7 +83,10 @@
       "ram": "",
       "priceCents": 34000,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "597a3e8a30421c7a8ba1",
@@ -92,7 +104,10 @@
       "ram": "",
       "priceCents": 38000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "b41d3b33eb2e79c3d8d6",
@@ -110,7 +125,10 @@
       "ram": "",
       "priceCents": 38000,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d3c09340d0013602f26d",
@@ -128,7 +146,10 @@
       "ram": "",
       "priceCents": 38000,
       "quantity": 9,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "bebeec5d1361f0ff8e71",
@@ -146,7 +167,10 @@
       "ram": "",
       "priceCents": 38000,
       "quantity": 6,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d1bbda0cbae43d0305c2",
@@ -164,7 +188,10 @@
       "ram": "",
       "priceCents": 41500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "0130a2f350f82daa2789",
@@ -182,7 +209,10 @@
       "ram": "",
       "priceCents": 35500,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "424a86163a2ff5bba356",
@@ -200,7 +230,10 @@
       "ram": "",
       "priceCents": 35500,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "4fed3fec16ad4d1d2352",
@@ -218,7 +251,10 @@
       "ram": "",
       "priceCents": 46500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "278f43649b81f01e843d",
@@ -236,7 +272,10 @@
       "ram": "",
       "priceCents": 50000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "9b8888a77d9e84f08efd",
@@ -254,7 +293,10 @@
       "ram": "",
       "priceCents": 51500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "a345832e5908a4556bca",
@@ -272,7 +314,10 @@
       "ram": "",
       "priceCents": 42500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "76920e3801eb1453382c",
@@ -290,7 +335,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "a67c6b00abbdca2a0a14",
@@ -308,7 +356,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "35526196d32f1b9fc45e",
@@ -326,7 +377,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "647f6994094992265d89",
@@ -344,7 +398,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "80eac781215404cd2278",
@@ -362,7 +419,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "c69b47ddb118eac6d063",
@@ -380,7 +440,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 15,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "7b190d4b3a3fc2589e0a",
@@ -398,7 +461,10 @@
       "ram": "",
       "priceCents": 46500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "303ccab586a2c80b2a8e",
@@ -416,7 +482,10 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "ba7f4623c8bac1e17633",
@@ -434,7 +503,10 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "3815e2e51a0c67d8e34d",
@@ -452,7 +524,10 @@
       "ram": "",
       "priceCents": 49000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "25083f0ba626a340d221",
@@ -470,7 +545,10 @@
       "ram": "",
       "priceCents": 49000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "bad231c25f04bc7f5988",
@@ -490,7 +568,10 @@
       "ram": "",
       "priceCents": 49000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "97894e37aeeee1a019ea",
@@ -508,10 +589,13 @@
       "ram": "",
       "priceCents": 49500,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
-      "id": "723c7b622b44dfa4e918",
+      "id": "7e38f6f2a9990e70bc0d",
       "manufacturer": "Apple",
       "model": "iPhone 13 Mini",
       "capacity": "256 GB",
@@ -524,9 +608,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 35000,
+      "priceCents": 36000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "5d118016b52947dc1593",
@@ -544,7 +631,10 @@
       "ram": "",
       "priceCents": 49000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "aaa0e82aa7e16729239c",
@@ -562,7 +652,10 @@
       "ram": "",
       "priceCents": 53000,
       "quantity": 7,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "3e5afc849e9bf834c2ec",
@@ -580,7 +673,10 @@
       "ram": "",
       "priceCents": 53000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "52c0d826d8656d5f6c38",
@@ -598,7 +694,10 @@
       "ram": "",
       "priceCents": 53000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "125cc02529c3e12bda60",
@@ -616,7 +715,10 @@
       "ram": "",
       "priceCents": 55000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "db1e9d1225ebe2ed1fa9",
@@ -634,7 +736,10 @@
       "ram": "",
       "priceCents": 55500,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "7475b2156a57b329d3de",
@@ -652,7 +757,10 @@
       "ram": "",
       "priceCents": 55500,
       "quantity": 5,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "499ca30b692c5fba3d90",
@@ -670,7 +778,10 @@
       "ram": "",
       "priceCents": 55500,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "47761492dc9d6aaff115",
@@ -690,7 +801,10 @@
       "ram": "",
       "priceCents": 55500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "f15d5cbe31bff3fed3ee",
@@ -708,7 +822,10 @@
       "ram": "",
       "priceCents": 55500,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "4434c2309f793f8e7a2b",
@@ -726,7 +843,10 @@
       "ram": "",
       "priceCents": 56000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "3bad02a20c1c9799ea37",
@@ -744,7 +864,10 @@
       "ram": "",
       "priceCents": 57000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "1e9ab3291c2f523dfddb",
@@ -762,7 +885,10 @@
       "ram": "",
       "priceCents": 57000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "ca88399a20affa5875ed",
@@ -780,7 +906,10 @@
       "ram": "",
       "priceCents": 59000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "8e110b00eb933cc837d5",
@@ -798,7 +927,10 @@
       "ram": "",
       "priceCents": 57500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "42f1a5a1ee18c0c5f724",
@@ -816,7 +948,10 @@
       "ram": "",
       "priceCents": 59000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "8dafd65697c9f58d11e4",
@@ -834,7 +969,10 @@
       "ram": "",
       "priceCents": 61000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "a940993e85296643046e",
@@ -852,7 +990,10 @@
       "ram": "",
       "priceCents": 45000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "754a5660f99e4103e0ab",
@@ -870,7 +1011,10 @@
       "ram": "",
       "priceCents": 45000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "b9e842c42f085d2a1b47",
@@ -888,7 +1032,10 @@
       "ram": "",
       "priceCents": 46000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "f428dcade3ef39d14c1e",
@@ -906,7 +1053,10 @@
       "ram": "",
       "priceCents": 46000,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "0caa47511e01bdb8a578",
@@ -924,7 +1074,10 @@
       "ram": "",
       "priceCents": 51000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "333825923d9c31043d81",
@@ -942,7 +1095,10 @@
       "ram": "",
       "priceCents": 52000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "26ce44f97596c06bede8",
@@ -960,7 +1116,10 @@
       "ram": "",
       "priceCents": 53000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "b4e9b093ec2911d81959",
@@ -978,7 +1137,10 @@
       "ram": "",
       "priceCents": 48500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "aa055888e8c8397b3ac1",
@@ -996,7 +1158,10 @@
       "ram": "",
       "priceCents": 56000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "59c1a2d99d30206b5334",
@@ -1014,7 +1179,10 @@
       "ram": "",
       "priceCents": 64000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "1e9fba80a07bac2ddffd",
@@ -1032,7 +1200,10 @@
       "ram": "",
       "priceCents": 64000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "c10c7992597a763fbf54",
@@ -1050,7 +1221,10 @@
       "ram": "",
       "priceCents": 65000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "8949d0367fb57437cf1f",
@@ -1068,7 +1242,10 @@
       "ram": "",
       "priceCents": 73500,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "626f9b9c2a01f0646bd1",
@@ -1086,7 +1263,10 @@
       "ram": "",
       "priceCents": 57000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "cdff299d9e9c51e7f60c",
@@ -1104,7 +1284,10 @@
       "ram": "",
       "priceCents": 58000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "0942efec16ed0ca4a4f4",
@@ -1122,7 +1305,10 @@
       "ram": "",
       "priceCents": 64500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "af4172c5c335635ad381",
@@ -1140,7 +1326,10 @@
       "ram": "",
       "priceCents": 68500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "7e20b57bd3e642491f30",
@@ -1158,7 +1347,10 @@
       "ram": "",
       "priceCents": 69500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "90399fbb8aa5e6ae8aef",
@@ -1176,7 +1368,10 @@
       "ram": "",
       "priceCents": 69500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "420e567212040ea3f57f",
@@ -1194,7 +1389,10 @@
       "ram": "",
       "priceCents": 70500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "2fd96c7bc964029b6eda",
@@ -1212,7 +1410,10 @@
       "ram": "",
       "priceCents": 65500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "871a7247bfc015c89efb",
@@ -1230,7 +1431,10 @@
       "ram": "",
       "priceCents": 68000,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d94d472a7973c4cef9e5",
@@ -1248,7 +1452,10 @@
       "ram": "",
       "priceCents": 68000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d59bf20aa9532e67b36e",
@@ -1266,7 +1473,10 @@
       "ram": "",
       "priceCents": 69500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "8e8db3dc86b9819d1ecf",
@@ -1284,7 +1494,10 @@
       "ram": "",
       "priceCents": 69500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "5e43396ca823c28764c6",
@@ -1302,7 +1515,10 @@
       "ram": "",
       "priceCents": 70500,
       "quantity": 14,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "6dc79aaa1cef36340c04",
@@ -1320,7 +1536,10 @@
       "ram": "",
       "priceCents": 76000,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "04179fdf077aeaaf5ff0",
@@ -1338,7 +1557,10 @@
       "ram": "",
       "priceCents": 76000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "5d54b1fd0b5d67dac1fd",
@@ -1356,25 +1578,10 @@
       "ram": "",
       "priceCents": 77500,
       "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "eb84d580e7cf63f710d8",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 80000,
-      "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "2fd4414ed05e291c9dfe",
@@ -1392,7 +1599,10 @@
       "ram": "",
       "priceCents": 80500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "a4dc3369e3af1efc9aac",
@@ -1410,7 +1620,10 @@
       "ram": "",
       "priceCents": 80500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "47361043f603debcd8e5",
@@ -1430,10 +1643,13 @@
       "ram": "",
       "priceCents": 80500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
-      "id": "7a4ef1e1ac534aaeb5e7",
+      "id": "0d990974d0a6afba6bde",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -1446,9 +1662,12 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 81000,
+      "priceCents": 81650,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "fe6bcc28a19c7516003b",
@@ -1468,7 +1687,31 @@
       "ram": "",
       "priceCents": 82500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
+    },
+    {
+      "id": "a635456fdbdb8fc6d711",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Azul",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 82650,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "3d9baf5f092f5c0bab06",
@@ -1489,7 +1732,10 @@
       "ram": "",
       "priceCents": 83000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "eb31179be84754d4ebe8",
@@ -1511,7 +1757,10 @@
       "ram": "",
       "priceCents": 83000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "afae55d4b3d870d8e528",
@@ -1533,7 +1782,10 @@
       "ram": "",
       "priceCents": 83000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "9766ae84db27988b95f8",
@@ -1553,7 +1805,10 @@
       "ram": "",
       "priceCents": 83000,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "c886872f077de441fa4b",
@@ -1574,7 +1829,10 @@
       "ram": "",
       "priceCents": 83000,
       "quantity": 5,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "981639add53e9a9bfa65",
@@ -1594,7 +1852,10 @@
       "ram": "",
       "priceCents": 83000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "42bb24003de2117f2fdb",
@@ -1612,7 +1873,10 @@
       "ram": "",
       "priceCents": 86000,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "eda99a5575bebd32d95c",
@@ -1630,7 +1894,10 @@
       "ram": "",
       "priceCents": 86000,
       "quantity": 3,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "acaac21900ca39906b02",
@@ -1648,7 +1915,10 @@
       "ram": "",
       "priceCents": 86000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "403ecc198b542647c081",
@@ -1666,7 +1936,10 @@
       "ram": "",
       "priceCents": 86000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "9deee173b5d949936a28",
@@ -1684,7 +1957,10 @@
       "ram": "",
       "priceCents": 86500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "0fe5e1ac396140f4ccef",
@@ -1702,7 +1978,10 @@
       "ram": "",
       "priceCents": 87000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "8c8d253647dd1febd3ca",
@@ -1720,7 +1999,10 @@
       "ram": "",
       "priceCents": 71500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "e6b8d10e20cebc9602d2",
@@ -1738,7 +2020,10 @@
       "ram": "",
       "priceCents": 73500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "fa536bbc98f9ba95e206",
@@ -1756,7 +2041,10 @@
       "ram": "",
       "priceCents": 74500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "88884d4749ce699d800b",
@@ -1774,7 +2062,10 @@
       "ram": "",
       "priceCents": 77000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "2933f275669a06bc68d5",
@@ -1792,7 +2083,10 @@
       "ram": "",
       "priceCents": 80500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "e88ff8e463dd87dfe54f",
@@ -1812,7 +2106,10 @@
       "ram": "",
       "priceCents": 72500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "6d78be82bb95400220e6",
@@ -1830,7 +2127,10 @@
       "ram": "",
       "priceCents": 74000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "10f0c7794d7e54dd01a4",
@@ -1848,7 +2148,10 @@
       "ram": "",
       "priceCents": 78000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "c9d60f18e583cbe990a1",
@@ -1866,7 +2169,10 @@
       "ram": "",
       "priceCents": 83500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "ddd455ac0a6f0f7569e2",
@@ -1884,7 +2190,10 @@
       "ram": "",
       "priceCents": 85000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "97f545bfe7ffd63d5db4",
@@ -1902,7 +2211,10 @@
       "ram": "",
       "priceCents": 85000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "dd0b5a1f6d0aa0701218",
@@ -1920,7 +2232,10 @@
       "ram": "",
       "priceCents": 87000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "b27e543a924803ca8202",
@@ -1938,7 +2253,10 @@
       "ram": "",
       "priceCents": 87000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "afc0f36a9203a819eb60",
@@ -1956,7 +2274,10 @@
       "ram": "",
       "priceCents": 91000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "1ec3bbfbf3202dd87632",
@@ -1974,7 +2295,10 @@
       "ram": "",
       "priceCents": 93500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "2b28dd685c7ac073cced",
@@ -1992,7 +2316,10 @@
       "ram": "",
       "priceCents": 93500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "729757b0e591a6360a3e",
@@ -2010,7 +2337,10 @@
       "ram": "",
       "priceCents": 94500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "61758670d55b2e54e308",
@@ -2028,7 +2358,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "8a9d7572bea0b2a45ef5",
@@ -2046,7 +2379,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "852b2642af996cd00e79",
@@ -2064,7 +2400,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "f5b6d38f018af5a316ba",
@@ -2082,7 +2421,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d55f2908bb8f842298da",
@@ -2100,7 +2442,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "4e93604489f49da5d057",
@@ -2118,7 +2463,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "0b93d363f6e0da45c06e",
@@ -2136,7 +2484,10 @@
       "ram": "",
       "priceCents": 98000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "cdb6685ce03d229845d6",
@@ -2154,7 +2505,10 @@
       "ram": "",
       "priceCents": 115000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "0cc7c7456559b7daeee6",
@@ -2172,7 +2526,10 @@
       "ram": "",
       "priceCents": 121500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "00178614600d9d2cf7da",
@@ -2192,7 +2549,10 @@
       "ram": "",
       "priceCents": 128000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d53fc3188d96c333b788",
@@ -2210,7 +2570,10 @@
       "ram": "",
       "priceCents": 130500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "ca18356b138204e75ae8",
@@ -2228,7 +2591,10 @@
       "ram": "",
       "priceCents": 131000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "9473065b985ce0d4331f",
@@ -2246,7 +2612,10 @@
       "ram": "",
       "priceCents": 133000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "a88bc35a163c5317c8a6",
@@ -2264,7 +2633,10 @@
       "ram": "",
       "priceCents": 139500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "abd8f34b43de2c8ff36d",
@@ -2282,7 +2654,10 @@
       "ram": "",
       "priceCents": 160500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "8e4626a169861a73a2bd",
@@ -2300,7 +2675,10 @@
       "ram": "",
       "priceCents": 151500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "52391581a91983f994ca",
@@ -2318,7 +2696,10 @@
       "ram": "",
       "priceCents": 161500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "dc0bbae54abdb132435c",
@@ -2336,7 +2717,10 @@
       "ram": "",
       "priceCents": 173000,
       "quantity": 8,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "3785ca29bea21ccab120",
@@ -2354,7 +2738,10 @@
       "ram": "",
       "priceCents": 179000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
     },
     {
       "id": "ad89d4dbb3bd0b4872b5",
@@ -2372,7 +2759,10 @@
       "ram": "",
       "priceCents": 183500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "a56fd6a83bfb2418dec5",
@@ -2390,7 +2780,10 @@
       "ram": "",
       "priceCents": 185000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "72e90066d9a1c803dd2d",
@@ -2408,7 +2801,10 @@
       "ram": "",
       "priceCents": 37000,
       "quantity": 10,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "94a9ed918f63892125ab",
@@ -2426,7 +2822,10 @@
       "ram": "",
       "priceCents": 37000,
       "quantity": 9,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "596e7864fffd1a4f0df3",
@@ -2444,7 +2843,10 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 5,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "68b317a74dc54477c439",
@@ -2462,7 +2864,10 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 12,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "c1e0498542f268110419",
@@ -2480,7 +2885,10 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 4,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "e5ec40880f420fb1f4dc",
@@ -2498,7 +2906,10 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "642f2d13ee7c138134da",
@@ -2519,7 +2930,10 @@
       "ram": "",
       "priceCents": 48000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "764bc24264ec287274c8",
@@ -2537,7 +2951,10 @@
       "ram": "",
       "priceCents": 75500,
       "quantity": 10,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "327928a453347738eca4",
@@ -2555,7 +2972,10 @@
       "ram": "",
       "priceCents": 75500,
       "quantity": 14,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "f65453e09ecaa0e3b877",
@@ -2573,7 +2993,10 @@
       "ram": "",
       "priceCents": 83500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "112bb735dc53419445a2",
@@ -2591,7 +3014,10 @@
       "ram": "",
       "priceCents": 53000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "d69e5b58aa63337a775d",
@@ -2609,7 +3035,10 @@
       "ram": "",
       "priceCents": 51000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "3b168df3f8c805087cfb",
@@ -2627,7 +3056,10 @@
       "ram": "",
       "priceCents": 85500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "e2b24c03285e4eed33ae",
@@ -2645,7 +3077,10 @@
       "ram": "",
       "priceCents": 87000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "04b74150ce2d491f855c",
@@ -2663,7 +3098,10 @@
       "ram": "",
       "priceCents": 110500,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "87d950bbd7740111107e",
@@ -2681,7 +3119,10 @@
       "ram": "",
       "priceCents": 68000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "629d24adaef1b820b0df",
@@ -2699,7 +3140,10 @@
       "ram": "",
       "priceCents": 68000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "c649ef0aefc53eb7a680",
@@ -2717,7 +3161,10 @@
       "ram": "12 GB",
       "priceCents": 74000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "abd798756cc8ed7cb069",
@@ -2735,7 +3182,10 @@
       "ram": "",
       "priceCents": 77000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "5698a0a404ae3a962594",
@@ -2753,7 +3203,10 @@
       "ram": "",
       "priceCents": 88000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "3f0a400062d5730ad7b7",
@@ -2771,7 +3224,10 @@
       "ram": "",
       "priceCents": 111000,
       "quantity": 2,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "7f1508d79194d72d68eb",
@@ -2789,7 +3245,10 @@
       "ram": "",
       "priceCents": 36000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "08060a5e360610a646c9",
@@ -2807,7 +3266,10 @@
       "ram": "",
       "priceCents": 36000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
     },
     {
       "id": "0b3c6ed168a7a67d5c86",
@@ -2825,7 +3287,10 @@
       "ram": "12 GB",
       "priceCents": 42000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "003f3e2f31ed7ba1bb63",
@@ -2843,7 +3308,10 @@
       "ram": "",
       "priceCents": 61000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "79b3e625695c8158163c",
@@ -2861,7 +3329,10 @@
       "ram": "12 GB",
       "priceCents": 54000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "221fe4edf5d2a106baa4",
@@ -2879,7 +3350,10 @@
       "ram": "12 GB",
       "priceCents": 54000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     },
     {
       "id": "b00a016fc7c685f98993",
@@ -2897,7 +3371,10 @@
       "ram": "",
       "priceCents": 64000,
       "quantity": 1,
-      "available": true
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
     }
   ]
 }

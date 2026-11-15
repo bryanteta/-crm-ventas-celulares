@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-15T02:38:18.260Z",
+  "updatedAt": "2026-11-15T04:12:51.201Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1227,6 +1227,48 @@
       ]
     },
     {
+      "id": "ff2f5ae0755d06fed46d",
+      "manufacturer": "Apple",
+      "model": "iPhone 14 Pro Max",
+      "capacity": "128 GB",
+      "color": "Plata",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 68500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
+      "id": "4004b6f2b5c93a58cef1",
+      "manufacturer": "Apple",
+      "model": "iPhone 14 Pro Max",
+      "capacity": "128 GB",
+      "color": "Plata",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 68500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
       "id": "8949d0367fb57437cf1f",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
@@ -1325,27 +1367,6 @@
       "box": true,
       "ram": "",
       "priceCents": 68500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
-      "id": "7e20b57bd3e642491f30",
-      "manufacturer": "Apple",
-      "model": "iPhone 15",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 22,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 69500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -1649,27 +1670,6 @@
       ]
     },
     {
-      "id": "0d990974d0a6afba6bde",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 81650,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "S"
-      ]
-    },
-    {
       "id": "fe6bcc28a19c7516003b",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
@@ -1858,14 +1858,14 @@
       ]
     },
     {
-      "id": "c1eeec222d702ae5a138",
+      "id": "bad87e917e275ff9b865",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio natural",
+      "color": "Azul",
       "condition": "Seminuevo",
       "grade": "",
-      "battery": "90%",
+      "battery": "100%",
       "observations": [],
       "cycles": null,
       "sim": "Por confirmar",
@@ -1900,14 +1900,14 @@
       ]
     },
     {
-      "id": "a96c812526f9aca71f6d",
+      "id": "8baf46b870ae4c69daff",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
       "color": "Titanio natural",
       "condition": "Seminuevo",
       "grade": "",
-      "battery": "80%",
+      "battery": "100%",
       "observations": [],
       "cycles": null,
       "sim": "Por confirmar",
@@ -1921,20 +1921,41 @@
       ]
     },
     {
-      "id": "b4caca6f8820578f3d3f",
+      "id": "e1abc51ff6d67bb1f99e",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Titanio natural",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 85650,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
+      "id": "41b63312ffcb17a4fcf6",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
       "color": "Plata",
       "condition": "Seminuevo",
       "grade": "",
-      "battery": "87%",
+      "battery": "100%",
       "observations": [],
       "cycles": null,
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 84650,
+      "priceCents": 85650,
       "quantity": 1,
       "available": true,
       "sourceInitials": [

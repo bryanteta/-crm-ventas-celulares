@@ -360,8 +360,10 @@
     $('#installment-summary').hidden=!summary;
     const color=p.color.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const colorIcon=/verde/.test(color)?'🟢':/negro|grafito/.test(color)?'⚫️':/blanco|plata/.test(color)?'⚪️':/azul|celeste/.test(color)?'🔵':/morado|lila|violeta/.test(color)?'🟣':/rojo/.test(color)?'🔴':/anaranjado|naranja/.test(color)?'🟠':/amarillo|dorado/.test(color)?'🟡':'🔘';
+    const initials=p.sourceInitials||[];
+    $('#consult-label').textContent=['Consultar este equipo',...initials].join(' · ');
     const deviceLines=[
-      '📲 '+p.model+' - '+p.capacity,
+      ['📲 '+p.model+' - '+p.capacity,...initials].join(' · '),
       '⭐️ Estado: '+p.condition+(p.grade?', categoría '+p.grade:''),
       '🔋 Batería '+batteryText(p),
       colorIcon+' Color '+p.color

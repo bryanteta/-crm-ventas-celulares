@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-14T20:41:50.160Z",
+  "updatedAt": "2026-11-15T00:26:19.818Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -73,7 +73,7 @@
       "box": null,
       "ram": "",
       "priceCents": 34000,
-      "quantity": 5,
+      "quantity": 4,
       "available": true
     },
     {
@@ -837,24 +837,6 @@
       "available": true
     },
     {
-      "id": "ee9a40dc5f0b29037425",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro Max",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 61000,
-      "quantity": 1,
-      "available": true
-    },
-    {
       "id": "a940993e85296643046e",
       "manufacturer": "Apple",
       "model": "iPhone 14",
@@ -1319,7 +1301,7 @@
       "box": null,
       "ram": "",
       "priceCents": 70500,
-      "quantity": 15,
+      "quantity": 14,
       "available": true
     },
     {
@@ -2353,7 +2335,7 @@
       "box": null,
       "ram": "",
       "priceCents": 173000,
-      "quantity": 10,
+      "quantity": 8,
       "available": true
     },
     {
@@ -2461,7 +2443,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 9,
+      "quantity": 5,
       "available": true
     },
     {
@@ -2479,7 +2461,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 13,
+      "quantity": 12,
       "available": true
     },
     {
@@ -2497,7 +2479,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 6,
+      "quantity": 4,
       "available": true
     },
     {
@@ -2590,24 +2572,6 @@
       "box": null,
       "ram": "",
       "priceCents": 83500,
-      "quantity": 1,
-      "available": true
-    },
-    {
-      "id": "8883fc8e732a991f055f",
-      "manufacturer": "Samsung",
-      "model": "Samsung S25",
-      "capacity": "128 GB",
-      "color": "Gris",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "12 GB",
-      "priceCents": 52000,
       "quantity": 1,
       "available": true
     },

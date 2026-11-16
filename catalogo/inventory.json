@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-16T06:51:13.366Z",
+  "updatedAt": "2026-11-16T16:41:38.875Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -933,6 +933,27 @@
       ]
     },
     {
+      "id": "e03c0e9e45c547b421c6",
+      "manufacturer": "Apple",
+      "model": "iPhone 13 Pro Max",
+      "capacity": "128 GB",
+      "color": "Celeste",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 59000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
       "id": "42f1a5a1ee18c0c5f724",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
@@ -975,6 +996,27 @@
       ]
     },
     {
+      "id": "cdfab0b3bfdcc1212fed",
+      "manufacturer": "Apple",
+      "model": "iPhone 14",
+      "capacity": "128 GB",
+      "color": "Celeste",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
       "id": "a940993e85296643046e",
       "manufacturer": "Apple",
       "model": "iPhone 14",
@@ -982,6 +1024,27 @@
       "color": "Morado",
       "condition": "Seminuevo",
       "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "cecc9d243ba2d03f8f07",
+      "manufacturer": "Apple",
+      "model": "iPhone 14",
+      "capacity": "128 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "A",
       "battery": "100%",
       "observations": [],
       "cycles": null,
@@ -1266,6 +1329,27 @@
       "available": true,
       "sourceInitials": [
         "S"
+      ]
+    },
+    {
+      "id": "e3fdd10151c552c117af",
+      "manufacturer": "Apple",
+      "model": "iPhone 14 Pro Max",
+      "capacity": "1 TB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 70500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
       ]
     },
     {
@@ -1977,7 +2061,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "J"

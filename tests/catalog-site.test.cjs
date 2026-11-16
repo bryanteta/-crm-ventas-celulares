@@ -28,6 +28,27 @@ test('Pages artifact serves the same public catalog at root and legacy path with
    assert(!page.includes('http-equiv="refresh"'),'crawlers must read product metadata before any browser redirect');
   }
   assert(fs.readFileSync(path.join(output,'404.html'),'utf8').includes("params.set('equipo',match[1])"));
+  // The original page and every existing runtime file must remain byte-for-byte identical.
+  for(const file of ['index.html','catalog.js','gallery.js','styles.css','hero.css','theme.css','theme.js','payment-plans.json','inventory-source.json']){
+   assert.deepEqual(fs.readFileSync(path.join(output,file)),fs.readFileSync(path.join(root,'catalogo',file)),file+' unchanged');
+  }
+  const robots=fs.readFileSync(path.join(output,'robots.txt'),'utf8'),sitemap=fs.readFileSync(path.join(output,'sitemap.xml'),'utf8');
+  assert(robots.includes('User-agent: *'));assert(robots.includes('Allow: /'));assert(robots.includes('Sitemap: https://lunivosv.com/sitemap.xml'));
+  const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+  assert.equal(urls.length,new Set(inventory.products.map(p=>p.model)).size+2);assert.equal(new Set(urls).size,urls.length);
+  assert(urls.includes('https://lunivosv.com/'));assert(urls.includes('https://lunivosv.com/modelos/'));
+  assert(urls.every(url=>!/[?#]/.test(url)&&!url.includes('/equipo/')&&!url.includes('/catalogo/')));
+  const variants=[];
+  for(const url of urls.filter(url=>url!=='https://lunivosv.com/')){
+   const html=fs.readFileSync(path.join(output,new URL(url).pathname,'index.html'),'utf8');
+   assert(html.includes('<link rel="canonical" href="'+url+'">'));assert(html.includes('name="robots" content="index,follow,max-image-preview:large"'));
+   assert(!html.includes('location.replace('),'model search pages display actual inventory without redirects');
+   for(const script of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)){
+    const graph=JSON.parse(script[1])['@graph'];for(const item of graph){if(item['@type']==='ProductGroup')variants.push(...item.hasVariant);}
+   }
+  }
+  assert.equal(variants.length,inventory.products.length);
+  for(const variant of variants){const device=inventory.products.find(p=>p.id===variant.sku);assert(device);assert.equal(variant.offers.price,(device.priceCents/100).toFixed(2));assert.equal(variant.offers.priceCurrency,'USD');assert.equal(variant.color,device.color);assert.equal(variant.size,device.capacity);}
   fs.writeFileSync(path.join(output,'keep.txt'),'preserve');
   const duplicate=spawnSync(process.execPath,[script,output],{encoding:'utf8'});
   assert.notEqual(duplicate.status,0);assert.equal(fs.readFileSync(path.join(output,'keep.txt'),'utf8'),'preserve');

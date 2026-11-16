@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-16T00:09:14.267Z",
+  "updatedAt": "2026-11-16T06:51:13.366Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1577,7 +1577,7 @@
       "box": true,
       "ram": "",
       "priceCents": 76000,
-      "quantity": 1,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "J"
@@ -2235,6 +2235,27 @@
       "available": true,
       "sourceInitials": [
         "S"
+      ]
+    },
+    {
+      "id": "0f8a911832890b76ed22",
+      "manufacturer": "Apple",
+      "model": "iPhone 16 Plus",
+      "capacity": "128 GB",
+      "color": "Rosado",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "97%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 80500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
       ]
     },
     {

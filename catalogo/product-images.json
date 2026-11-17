@@ -4978,6 +4978,40 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue.png"
       ]
     },
+    "iPhone 13 Pro Max|Dorado": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_gold__dpkma79ndo8y_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "gold",
+      "model": "iPhone 13 Pro Max",
+      "color": "Dorado",
+      "path": "assets/products/iphone-13-pro-max-dorado.jpg",
+      "sha256": "2840eec42e329a2d72d0a38cedda9f178b26233e8c3fe79b141eb71456979193",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Dorado",
+          "officialColor": "gold",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-max-gold-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-max-dorado-apple-camera-detail.jpg",
+          "sha256": "2e73513b726ef7359c08e83eb83d31ef2084546e0954e13c506f4faaeaceba65",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
+        }
+      ]
+    },
     "iPhone 13 Pro Max|Negro": {
       "model": "iPhone 13 Pro Max",
       "color": "Negro",

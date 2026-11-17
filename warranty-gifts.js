@@ -3,7 +3,7 @@ const catalog=[['charger','Cargador completo','Cable y cubo',2500],['protector',
 function create(container,prefix){
  const fieldset=document.createElement('fieldset');fieldset.className='wide warranty-gifts';
  const legend=document.createElement('legend');legend.textContent='Accesorios de cortesía';
- const hint=document.createElement('p');hint.className='hint';hint.textContent='Regalos para el cliente: $0.00. No aumentan el total de la venta. Los accesorios cobrados se muestran por separado.';
+ const hint=document.createElement('p');hint.className='hint';hint.textContent='Indica el valor de cada regalo. Se muestra como referencia en la garantía; el cliente paga $0.00 y no aumenta el total.';
  const list=document.createElement('div'),custom=document.createElement('div'),message=document.createElement('p'),add=document.createElement('button');
  message.id=prefix+'-gift-error';message.className='hint';message.setAttribute('role','status');add.id=prefix+'-gift-add';add.type='button';add.className='secondary';add.textContent='+ Otra cortesía';
  fieldset.append(legend,hint,list,custom,add,message);container.append(fieldset);
@@ -16,7 +16,7 @@ function create(container,prefix){
   const row=document.createElement('div');row.className='accessory-option warranty-gift-option';
   const label=document.createElement('label');label.className='accessory-pick';const check=document.createElement('input');check.type='checkbox';check.id=prefix+'-gift-'+id;
   const copy=document.createElement('span'),title=document.createElement('strong'),detail=document.createElement('small');title.textContent=name;detail.textContent=description+' · Gratis';copy.append(title,detail);label.append(check,copy);
-  const values=document.createElement('div');values.className='accessory-values';const priceLabel=document.createElement('label');priceLabel.textContent='Valor referencial $ (no se cobra)';const amount=document.createElement('input');amount.id=prefix+'-gift-price-'+id;amount.type='number';amount.min='0';amount.step='.01';amount.value=(reference/100).toFixed(2);amount.setAttribute('aria-label','Valor referencial de '+name);priceLabel.append(amount);const referenceDetails=document.createElement('details'),referenceTitle=document.createElement('summary');referenceDetails.className='gift-reference';referenceTitle.textContent='Referencia interna (opcional)';referenceDetails.append(referenceTitle,priceLabel);values.append(referenceDetails);
+  const values=document.createElement('div');values.className='accessory-values';const priceLabel=document.createElement('label');priceLabel.textContent='Valor del regalo $ (no se cobra)';const amount=document.createElement('input');amount.id=prefix+'-gift-price-'+id;amount.type='number';amount.min='0';amount.step='.01';amount.value=(reference/100).toFixed(2);amount.setAttribute('aria-label','Valor referencial de '+name);priceLabel.append(amount);values.append(priceLabel);
   const entry={check,amount,values,row,name,reference,detail,description};rows.set(id,entry);row.append(label,values);list.append(row);toggle(entry);
   check.addEventListener('change',()=>{message.textContent='';if(count()>10){check.checked=false;message.textContent='Puedes registrar hasta 10 cortesías en una garantía.';}toggle(entry);updateLimit();});
  }
@@ -24,10 +24,10 @@ function create(container,prefix){
   custom.replaceChildren();
   for(const item of extras){
    const row=document.createElement('div');row.className='accessory-extra warranty-gift-extra';const nameLabel=document.createElement('label');nameLabel.textContent='Otro accesorio de cortesía';const name=document.createElement('input');name.id=prefix+'-gift-name-'+item.id;name.maxLength=150;name.placeholder='Ej. Audífonos';name.value=item.name;nameLabel.append(name);
-   const priceLabel=document.createElement('label');priceLabel.textContent='Valor referencial $ (no se cobra)';const amount=document.createElement('input');amount.id=prefix+'-gift-extra-price-'+item.id;amount.type='number';amount.min='0';amount.step='.01';amount.value=item.amount;priceLabel.append(amount);
+   const priceLabel=document.createElement('label');priceLabel.textContent='Valor del regalo $ (no se cobra)';const amount=document.createElement('input');amount.id=prefix+'-gift-extra-price-'+item.id;amount.type='number';amount.min='0';amount.step='.01';amount.value=item.amount;priceLabel.append(amount);
    const remove=document.createElement('button');remove.type='button';remove.className='secondary';remove.textContent='Quitar';remove.setAttribute('aria-label','Quitar cortesía '+(item.name||'adicional'));remove.addEventListener('click',()=>{for(const input of row.querySelectorAll('input'))input.dispatchEvent(new Event('input',{bubbles:true}));extras=extras.filter(v=>v!==item);renderExtras();message.textContent='';signal();add.focus();});
    name.addEventListener('input',()=>{item.name=name.value;remove.setAttribute('aria-label','Quitar cortesía '+(item.name||'adicional'));});amount.addEventListener('input',()=>item.amount=amount.value);
-   const referenceDetails=document.createElement('details'),referenceTitle=document.createElement('summary');referenceDetails.className='gift-reference';referenceTitle.textContent='Referencia interna (opcional)';referenceDetails.append(referenceTitle,priceLabel);row.append(nameLabel,referenceDetails,remove);custom.append(row);
+   row.append(nameLabel,priceLabel,remove);custom.append(row);
   }
   updateLimit();
  }

@@ -36,6 +36,8 @@ final class ReceiptPdfDocument {
     private Canvas canvas;
     private float y;
     private int pageCount;
+    private boolean measuring;
+    private float contentScale=1;
 
     static void validate(JSONObject d) throws JSONException {
         if (d == null || d.optInt("version") != 1 || d.toString().length() > 200000) throw new JSONException("Invalid document");
@@ -48,7 +50,7 @@ final class ReceiptPdfDocument {
         JSONArray fields=d.getJSONArray("device");if(fields.length()!=8)throw new JSONException("Invalid device");
         for(int i=0;i<fields.length();i++){JSONArray cell=fields.getJSONArray(i);if(cell.length()!=2||!(cell.get(0) instanceof String)||!(cell.get(1) instanceof String)||cell.getString(0).length()>100||cell.getString(1).length()>110000)throw new JSONException("Invalid field");}
         JSONArray items=d.getJSONArray("items");if(items.length()<1||items.length()>41)throw new JSONException("Invalid items");
-        for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);for(String key:new String[]{"concept","quantity","amount","application"})text(item,key,500,true);}
+        for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);for(String key:new String[]{"concept","quantity","amount","application"})text(item,key,500,true);if(item.has("reference"))text(item,"reference",50,true);}
         JSONArray terms=d.getJSONArray("terms");if(terms.length()!=3)throw new JSONException("Invalid terms");
         for(int i=0;i<terms.length();i++)if(!(terms.get(i) instanceof String)||terms.getString(i).length()>4000)throw new JSONException("Invalid terms");
         JSONObject company=d.getJSONObject("company");for(String key:new String[]{"name","phone","facebook","instagram","tiktok"})text(company,key,200,true);
@@ -60,7 +62,9 @@ final class ReceiptPdfDocument {
         validate(data);ReceiptPdfDocument writer=new ReceiptPdfDocument();
         byte[] bytes;int pages;
         try {
-            writer.render(context,data);
+            writer.measuring=true;writer.render(context,data);
+            writer.contentScale=Math.min(1,(BOTTOM-MARGIN)/Math.max(1,writer.y-MARGIN));
+            writer.measuring=false;writer.render(context,data);
             java.io.ByteArrayOutputStream buffer=new java.io.ByteArrayOutputStream();
             writer.pdf.writeTo(buffer);
             bytes=buffer.toByteArray();pages=writer.pageCount;
@@ -79,49 +83,34 @@ final class ReceiptPdfDocument {
     private void rule(float top,int color){shape.setColor(color);shape.setStrokeWidth(.6f);canvas.drawLine(MARGIN,top,WIDTH-MARGIN,top,shape);}
     private void finishPage(){
         if(page==null)return;
+        canvas.restore();
         TextPaint footer=paint(7.5f,false,MUTED);String label="LUNIVO · Página "+pageCount;
         canvas.drawText(label,WIDTH-MARGIN-footer.measureText(label),HEIGHT-15,footer);pdf.finishPage(page);page=null;
     }
     private void newPage(){
         if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException();
-        finishPage();page=pdf.startPage(new PdfDocument.PageInfo.Builder(WIDTH,HEIGHT,++pageCount).create());canvas=page.getCanvas();y=MARGIN;
+        if(measuring){canvas=new Canvas();y=MARGIN;return;}
+        finishPage();page=pdf.startPage(new PdfDocument.PageInfo.Builder(WIDTH,HEIGHT,++pageCount).create());canvas=page.getCanvas();canvas.save();canvas.translate(MARGIN,MARGIN);canvas.scale(contentScale,contentScale);canvas.translate(-MARGIN,-MARGIN);y=MARGIN;
         if(pageCount>1){TextPaint p=paint(9,true,BLUE);canvas.drawText("LUNIVO · COMPROBANTE",MARGIN,y+10,p);rule(y+20,Color.rgb(220,228,238));y+=32;}
     }
-    private void ensure(float height){if(y+height>BOTTOM)newPage();}
+    private void ensure(float height){/* All content is measured and scaled to one page. */}
     private void section(String text){ensure(46);y+=6;StaticLayout title=layout(text,CONTENT,paint(10,true,BLUE),Layout.Alignment.ALIGN_NORMAL);draw(title,MARGIN,y);y+=title.getHeight()+7;}
     private void draw(StaticLayout text,float x,float top){canvas.save();canvas.translate(x,top);text.draw(canvas);canvas.restore();}
     private void paragraph(String text,float size,boolean bold,int color){
         StaticLayout lines=layout(text,CONTENT,paint(size,bold,color),Layout.Alignment.ALIGN_NORMAL);
-        int first=0;
-        while(first<lines.getLineCount()){
-            ensure(lines.getLineBottom(first)-lines.getLineTop(first));
-            int last=first;float offset=lines.getLineTop(first),available=BOTTOM-y;
-            while(last+1<lines.getLineCount()&&lines.getLineBottom(last+1)-offset<=available)last++;
-            float height=lines.getLineBottom(last)-offset;
-            canvas.save();canvas.clipRect(MARGIN,y,WIDTH-MARGIN,y+height);draw(lines,MARGIN,y-offset);canvas.restore();y+=height;
-            first=last+1;if(first<lines.getLineCount())newPage();
-        }
-        y+=5;
+        draw(lines,MARGIN,y);y+=lines.getHeight()+5;
     }
     private CharSequence field(String label,String value){
         String title=label.toUpperCase(Locale.ROOT);SpannableString text=new SpannableString(title+"\n"+value);
         text.setSpan(new AbsoluteSizeSpan(8),0,title.length(),0);text.setSpan(new ForegroundColorSpan(MUTED),0,title.length(),0);text.setSpan(new StyleSpan(Typeface.BOLD),title.length()+1,text.length(),0);return text;
     }
-    // Large text cells continue on subsequent pages instead of shrinking or truncating the document.
+    // Keep complete cells together; the final page transform fits the full document.
     private void row(CharSequence[] text,float[] weights,int background,boolean bold,int color,int rightColumn){
         StaticLayout[] layouts=new StaticLayout[text.length];float[] widths=new float[text.length];float height=0;
         for(int i=0;i<text.length;i++){widths[i]=CONTENT*weights[i];layouts[i]=layout(text[i],widths[i]-14,paint(9.5f,bold,color),i==rightColumn?Layout.Alignment.ALIGN_OPPOSITE:Layout.Alignment.ALIGN_NORMAL);height=Math.max(height,layouts[i].getHeight()+10);}
-        if(height<=BOTTOM-64)ensure(height);
-        float offset=0;
-        while(offset<height){
-            ensure(26);float chunk=Math.min(height-offset,BOTTOM-y);
-            // Do not split a line at a page boundary; backgrounds may extend beyond the final text line.
-            if(chunk<height-offset){float boundary=Float.MAX_VALUE;for(StaticLayout cell:layouts)for(int line=0;line<cell.getLineCount();line++){float top=5+cell.getLineTop(line),bottom=5+cell.getLineBottom(line);if(top<offset+chunk&&bottom>offset+chunk)boundary=Math.min(boundary,top-offset);}if(boundary!=Float.MAX_VALUE&&boundary>0)chunk=boundary;}
-            float x=MARGIN;
-            for(int i=0;i<text.length;i++){rectangle(x,y,widths[i]-.7f,chunk,background);canvas.save();canvas.clipRect(x+7,y,x+widths[i]-7,y+chunk);draw(layouts[i],x+7,y+5-offset);canvas.restore();x+=widths[i];}
-            y+=chunk;offset+=chunk;if(offset<height)newPage();
-        }
-        y+=1;
+        float x=MARGIN;
+        for(int i=0;i<text.length;i++){rectangle(x,y,widths[i]-.7f,height,background);draw(layouts[i],x+7,y+5);x+=widths[i];}
+        y+=height+1;
     }
     private void fields(String[] labels,String[] values,float[] weights){CharSequence[] text=new CharSequence[labels.length];for(int i=0;i<labels.length;i++)text[i]=field(labels[i],values[i]);row(text,weights,LIGHT,false,NAVY,-1);}
     private void render(Context context,JSONObject d)throws IOException,JSONException {
@@ -145,9 +134,9 @@ final class ReceiptPdfDocument {
         JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if("Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
         row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
         boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
-        if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Precio al cliente","Entrega"},columns,NAVY,true,Color.WHITE,2);
-            for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),"$0.00","Gratis"},columns,LIGHT,false,NAVY,2);}
-            y+=4;paragraph("Se entregan sin cobro y no se suman al total pagado. No son canjeables por efectivo ni tienen devolución independiente.",8,false,MUTED);
+        if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Cobro al cliente"},columns,NAVY,true,Color.WHITE,2);
+            for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Gratis · $0.00"},columns,LIGHT,false,NAVY,2);}
+            y+=4;paragraph("Los valores son referenciales: se entregan gratis y no se suman al total pagado. No son canjeables por efectivo ni tienen devolución independiente.",8,false,MUTED);
         }
         section("03  CONDICIONES DE GARANTÍA LUNIVO");int months=d.optInt("warrantyMonths",3);paragraph(months+(months==1?" MES":" MESES")+" CALENDARIO DE GARANTÍA desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);
         JSONArray terms=d.getJSONArray("terms");for(int i=0;i<terms.length();i++)paragraph(terms.getString(i),9.5f,false,NAVY);

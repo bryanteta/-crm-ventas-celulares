@@ -52,14 +52,16 @@
     {
       "concept": "Cargador completo",
       "quantity": "1",
-      "amount": "$25.00",
-      "application": "Cortesía LUNIVO"
+      "amount": "$0.00",
+      "application": "Cortesía LUNIVO",
+      "reference": "$25.00"
     },
     {
       "concept": "Protector de pantalla",
       "quantity": "1",
-      "amount": "$10.00",
-      "application": "Cortesía LUNIVO"
+      "amount": "$0.00",
+      "application": "Cortesía LUNIVO",
+      "reference": "$10.00"
     }
   ],
   "total": "$740.00",

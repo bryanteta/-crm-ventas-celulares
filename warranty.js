@@ -35,6 +35,17 @@ function entry(sale){const r=core.completeDevice(collect('sale-receipt',sale,sal
 function prefill(offer){const prefix='sale-receipt',values=core.deviceDefaults(offer);for(const key of['brand','capacity','color','condition','battery','physical','serials']){const input=$('#'+prefix+'-'+key);input.value=values[key]||'';syncChoice(input);}}
 
 const surface=$('#warranty-preview').attachShadow({mode:'open'});
+// Measure the complete print layout, then fit every field on one A4 page without clipping.
+function fitPage(html){
+ const doc=new DOMParser().parseFromString(html,'text/html'),host=document.createElement('div');
+ host.style.cssText='position:fixed;left:-10000px;top:0;width:190mm;visibility:hidden;pointer-events:none';
+ const root=host.attachShadow({mode:'closed'}),style=document.createElement('style');
+ style.textContent=doc.querySelector('style').textContent.replace(/@media screen/g,'@media (width:0px)').replace(/@media print/g,'@media all')+':host{display:block;font:8.2pt/1.28 Arial,sans-serif}.sheet{width:190mm;max-width:none;margin:0}';
+ root.append(style,document.importNode(doc.querySelector('.sheet'),true));document.body.append(host);
+ const height=root.querySelector('.sheet').getBoundingClientRect().height;host.remove();
+ const scale=Math.min(1,(270*96/25.4-2)/Math.max(1,height));
+ return html.replace('</style>','@media print{html{zoom:'+scale.toFixed(5)+'}.sheet{width:190mm;max-width:none}}\n</style>');
+}
 function renderPreview(html){
  const doc=new DOMParser().parseFromString(html,'text/html'),style=document.createElement('style');
  style.textContent=doc.querySelector('style').textContent+':host{display:block;color:#20334d;background:white;font:11px/1.45 Arial,sans-serif;padding:18px;box-sizing:border-box}:host([hidden]){display:none}.sheet{width:100%;min-width:0}';
@@ -43,12 +54,13 @@ function renderPreview(html){
 function editor(show){$('#warranty-editor').hidden=!show;$('#warranty-toolbar').hidden=show||!currentHtml;$('#warranty-preview').hidden=show||!currentHtml;$('#warranty-edit-cancel').hidden=!currentHtml;syncDocumentContext();}
 function syncGifts(sale){giftEditors.receipt.exclude(sale.accessoryItems||[]);
  let block=$('#warranty-charged-accessories');if(!block){block=document.createElement('section');block.id='warranty-charged-accessories';block.className='wide charged-accessory-summary';$('#warranty-fields .warranty-gifts').before(block);}
- const items=(sale.accessoryItems||[]).filter(i=>i.price>0),title=document.createElement('h4'),hint=document.createElement('p');title.textContent='Accesorios cobrados en la venta';hint.className='hint';hint.textContent='Ya incluidos en el total. Se cambian desde Editar venta.';block.replaceChildren(title,hint);
- if(!items.length){const text=document.createElement('p');text.textContent=sale.accessories>0?'Accesorios del registro anterior: '+new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(sale.accessories/100):'No se cobraron accesorios.';block.append(text);}
+ const items=(sale.accessoryItems||[]).filter(i=>i.price>0&&!LunivoSalesCore.isShipping(i)),title=document.createElement('h4'),hint=document.createElement('p');title.textContent='Accesorios cobrados en la venta';hint.className='hint';hint.textContent='Ya incluidos en el total. Se cambian desde Editar venta.';block.replaceChildren(title,hint);
+ if(!items.length){const text=document.createElement('p');text.textContent=sale.accessoryItems===undefined&&sale.accessories>0?'Accesorios del registro anterior: '+new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(sale.accessories/100):'No se cobraron accesorios.';block.append(text);}
  for(const item of items){const row=document.createElement('p'),name=document.createElement('span'),price=document.createElement('strong');row.className='accessory-summary-row';name.textContent=item.name;price.textContent=new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(item.price/100);row.append(name,price);block.append(row);}
+ const shipping=LunivoSalesCore.shippingTotal(sale);if(shipping){const row=document.createElement('p');row.textContent='Envío cobrado: '+new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).format(shipping/100);block.append(row);}
 }
 function preview(sale){try{
- previewDocument=JSON.stringify(core.documentData(sale));currentHtml=core.html(sale);renderPreview(currentHtml);$('#warranty-print').disabled=false;$('#warranty-export').disabled=false;
+ previewDocument=JSON.stringify(core.documentData(sale));currentHtml=fitPage(core.html(sale));renderPreview(currentHtml);$('#warranty-print').disabled=false;$('#warranty-export').disabled=false;
  $('#warranty-ready-copy').textContent='Válida hasta '+core.dateText(core.expires(sale.date,sale.receipt.warrantyMonths));
  $('#warranty-edit').hidden=sale.status==='Anulada';$('#warranty-message').textContent=sale.status==='Anulada'?'Este comprobante se imprimirá como ANULADO.':'';editor(false);
  }catch(e){currentHtml='';surface.replaceChildren();$('#warranty-print').disabled=true;$('#warranty-export').disabled=true;$('#warranty-message').textContent=sale.status==='Anulada'?'Esta venta fue anulada y no tiene un comprobante completo.':'Completa los datos del equipo y guarda para ver el comprobante.';editor(sale.status!=='Anulada');}syncDocumentContext();}
@@ -103,5 +115,5 @@ window.addEventListener('lunivo-suite-committed',event=>{if(event.detail.recover
 $('#warranty-print').addEventListener('click',event=>output('receiptPrint',event));
 $('#warranty-export').addEventListener('click',event=>output('receiptExport',event));
 window.addEventListener('lunivo-document-status',event=>{if(lastOutput&&event.detail.requestId===lastOutput.requestId&&lastOutput.saleId===currentId&&lastOutput.account===window.LunivoStore.account()&&lastOutput.document===previewDocument&&!dirty&&$('#warranty-editor').hidden&&shown())$('#warranty-message').textContent=event.detail.message;});
-window.LunivoWarranty={addChoices,initPayment,setPayment,paymentUI,connect(value){api=value},entry,reset(){fill('sale-receipt');},loadEntry(r,items=[]){fill('sale-receipt',r);giftEditors['sale-receipt'].exclude(items)},excludeSaleGifts(items){giftEditors['sale-receipt'].exclude(items)},prefill,open,ensure(id){let changed=false;try{changed=!dirty&&previewDocument&&JSON.stringify(core.documentData(api.read().sales.find(s=>s.id===id)))!==previewDocument;}catch{}if(id!==currentId||(!dirty&&baseRevision!==window.LunivoSuiteCloud?.revision('sales',id))||changed)load(id);syncDocumentContext();},clear};fill('sale-receipt');clear();
+window.LunivoWarranty={fitPage,addChoices,initPayment,setPayment,paymentUI,connect(value){api=value},entry,reset(){fill('sale-receipt');},loadEntry(r,items=[]){fill('sale-receipt',r);giftEditors['sale-receipt'].exclude(items)},excludeSaleGifts(items){giftEditors['sale-receipt'].exclude(items)},prefill,open,ensure(id){let changed=false;try{changed=!dirty&&previewDocument&&JSON.stringify(core.documentData(api.read().sales.find(s=>s.id===id)))!==previewDocument;}catch{}if(id!==currentId||(!dirty&&baseRevision!==window.LunivoSuiteCloud?.revision('sales',id))||changed)load(id);syncDocumentContext();},clear};fill('sale-receipt');clear();
 })();

@@ -56,6 +56,7 @@ function renderDetail(data,id){
  currentSaleId=id;
  const heading=el('div',undefined,'sale-detail-heading');heading.append(el('span',r.status,'sale-status status-'+r.status.toLowerCase()),el('p',r.saleNumber?'Venta #'+r.saleNumber:'Venta anterior'),el('h3',r.client),el('p',r.model));target.append(heading);
  const metrics=el('div',undefined,'suite-metrics sale-detail-metrics');metric(metrics,'Total del cliente',money(r.revenue),r.quantity+' equipo(s)');metric(metrics,'Equipo de',r.stockOwnerName||(r.offerId?'Proveedor':'Venta manual'),r.stockId?'Inventario registrado':'Sin descuento de inventario');target.append(metrics);
+ if(core.shippingTotal(r))target.append(el('p','Envío cobrado: '+money(core.shippingTotal(r)),'hint'));
  target.append(el('p',r.date+' · Registrada por '+r.sellerName,'hint'));if(r.saleEditedByName)target.append(el('p','Venta editada por '+r.saleEditedByName,'hint'));if(r.status==='Confirmada'&&!r.hidden)target.append(button('Editar venta',()=>window.LunivoSaleEdit.open(r.id),'secondary'));
  const actions=el('div',undefined,'sale-next-step');
  if(r.status==='Borrador')actions.append(el('h4','Termina de registrar esta venta'),button('Continuar borrador',()=>loadDraft(r),''));

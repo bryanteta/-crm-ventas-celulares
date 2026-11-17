@@ -32,17 +32,27 @@ public class ReceiptPdfDocumentInstrumentedTest {
             assertEquals(pages,renderer.getPageCount());try(PdfRenderer.Page page=renderer.openPage(0)){assertEquals(595,page.getWidth());assertEquals(842,page.getHeight());}
         }
     }
-    @Test public void longFieldsContinueAcrossPagesAndFileRemainsReadable()throws Exception{
+    @Test public void longFieldsFitOnePageAndFileRemainsReadable()throws Exception{
         JSONObject data=sample();StringBuilder serials=new StringBuilder();for(int i=0;i<500;i++)serials.append("IMEI-").append(i).append("\n");data.getJSONArray("device").getJSONArray(6).put(1,serials.toString());data.put("customerNotes","Observación final: último equipo entregado y revisado.");
         File file=new File(context.getExternalFilesDir(null),"receipt-quality-long.pdf");int pages;try(OutputStream output=new FileOutputStream(file)){pages=ReceiptPdfDocument.write(context,data,output);}
-        assertTrue(pages>1);try(ParcelFileDescriptor descriptor=ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);PdfRenderer renderer=new PdfRenderer(descriptor)){assertEquals(pages,renderer.getPageCount());}
+        assertEquals(1,pages);try(ParcelFileDescriptor descriptor=ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);PdfRenderer renderer=new PdfRenderer(descriptor)){assertEquals(pages,renderer.getPageCount());}
     }
     @Test public void detailedAccessoriesKeepTheirNamesAndTotalInTheNativeDocument()throws Exception{
         JSONObject data;try(InputStream input=InstrumentationRegistry.getInstrumentation().getContext().getAssets().open("receipt-accessories.json")){data=new JSONObject(new String(input.readAllBytes(),StandardCharsets.UTF_8));}
         assertEquals("$791.00",data.getString("total"));assertEquals(7,data.getJSONArray("items").length());
         File file=new File(context.getExternalFilesDir(null),"receipt-quality-accessories.pdf");
-        try(OutputStream output=new FileOutputStream(file)){assertTrue(ReceiptPdfDocument.write(context,data,output)>=1);}
-        try(ParcelFileDescriptor descriptor=ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);PdfRenderer renderer=new PdfRenderer(descriptor)){assertTrue(renderer.getPageCount()>=1);}
+        try(OutputStream output=new FileOutputStream(file)){assertEquals(1,ReceiptPdfDocument.write(context,data,output));}
+        try(ParcelFileDescriptor descriptor=ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);PdfRenderer renderer=new PdfRenderer(descriptor)){assertEquals(1,renderer.getPageCount());}
+    }
+    @Test public void maximumChargedLinesShippingAndTenReferenceGiftsRemainOnePage()throws Exception{
+        JSONObject data=sample();org.json.JSONArray items=new org.json.JSONArray();items.put(data.getJSONArray("items").getJSONObject(0));
+        for(int i=1;i<=29;i++)items.put(new JSONObject().put("concept","Accesorio cobrado "+i).put("quantity","1").put("amount","$2.00").put("application","Accesorio"));
+        items.put(new JSONObject().put("concept","Envío").put("quantity","1").put("amount","$7.25").put("application","Envío"));
+        for(int i=1;i<=10;i++)items.put(new JSONObject().put("concept","Regalo de cortesía "+i).put("quantity","1").put("amount","$0.00").put("reference","$10.00").put("application","Cortesía LUNIVO"));
+        data.put("items",items).put("total","$805.25").put("customerNotes","Observaciones del cliente: comprobante completo de entrega. FIN DE OBSERVACIONES");
+        File file=new File(context.getExternalFilesDir(null),"receipt-quality-shipping-gifts.pdf");
+        try(OutputStream output=new FileOutputStream(file)){assertEquals(1,ReceiptPdfDocument.write(context,data,output));}
+        try(ParcelFileDescriptor descriptor=ParcelFileDescriptor.open(file,ParcelFileDescriptor.MODE_READ_ONLY);PdfRenderer renderer=new PdfRenderer(descriptor)){assertEquals(1,renderer.getPageCount());}
     }
     @Test public void anOutputFailurePropagatesInsteadOfReportingSaved()throws Exception{
         JSONObject data=sample();assertThrows(IOException.class,()->ReceiptPdfDocument.write(context,data,new OutputStream(){@Override public void write(int b)throws IOException{throw new IOException("full");}@Override public void write(byte[] b,int start,int length)throws IOException{throw new IOException("full");}}));

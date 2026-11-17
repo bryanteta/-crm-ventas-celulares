@@ -134,8 +134,8 @@ final class ReceiptPdfDocument {
         JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if("Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
         row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
         boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
-        if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Cobro al cliente"},columns,NAVY,true,Color.WHITE,2);
-            for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Gratis · $0.00"},columns,LIGHT,false,NAVY,2);}
+        if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Entrega"},columns,NAVY,true,Color.WHITE,2);
+            for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Cortesía"},columns,LIGHT,false,NAVY,2);}
             y+=4;paragraph("Los valores son referenciales: se entregan gratis y no se suman al total pagado. No son canjeables por efectivo ni tienen devolución independiente.",8,false,MUTED);
         }
         section("03  CONDICIONES DE GARANTÍA LUNIVO");int months=d.optInt("warrantyMonths",3);paragraph(months+(months==1?" MES":" MESES")+" CALENDARIO DE GARANTÍA desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);

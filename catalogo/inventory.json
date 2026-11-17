@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-17T00:32:09.939Z",
+  "updatedAt": "2026-11-17T03:00:30.537Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -864,27 +864,6 @@
       "ram": "",
       "priceCents": 57000,
       "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
-      "id": "1e9ab3291c2f523dfddb",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 57000,
-      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "J"
@@ -2152,6 +2131,27 @@
       ]
     },
     {
+      "id": "9deee173b5d949936a28",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": 0,
+      "sim": "SIM física",
+      "box": true,
+      "ram": "",
+      "priceCents": 86500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
+    },
+    {
       "id": "0fe5e1ac396140f4ccef",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
@@ -2926,7 +2926,7 @@
       "box": null,
       "ram": "",
       "priceCents": 179000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"

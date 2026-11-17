@@ -76,7 +76,11 @@ final class ReceiptPdfDocument {
         TextPaint p=new TextPaint(Paint.ANTI_ALIAS_FLAG|Paint.SUBPIXEL_TEXT_FLAG);p.setTextSize(size);p.setColor(color);p.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));return p;
     }
     private StaticLayout layout(CharSequence text,float width,TextPaint paint,Layout.Alignment alignment) {
+        return layout(text,width,paint,alignment,false);
+    }
+    private StaticLayout layout(CharSequence text,float width,TextPaint paint,Layout.Alignment alignment,boolean justify) {
         return StaticLayout.Builder.obtain(text,0,text.length(),paint,Math.max(1,(int)width)).setAlignment(alignment)
+                .setJustificationMode(justify?Layout.JUSTIFICATION_MODE_INTER_WORD:Layout.JUSTIFICATION_MODE_NONE)
                 .setIncludePad(false).setLineSpacing(1.5f,1f).build();
     }
     private void rectangle(float x,float top,float width,float height,int color){shape.setColor(color);shape.setStyle(Paint.Style.FILL);canvas.drawRect(x,top,x+width,top+height,shape);}
@@ -97,7 +101,10 @@ final class ReceiptPdfDocument {
     private void section(String text){ensure(46);y+=6;StaticLayout title=layout(text,CONTENT,paint(10,true,BLUE),Layout.Alignment.ALIGN_NORMAL);draw(title,MARGIN,y);y+=title.getHeight()+7;}
     private void draw(StaticLayout text,float x,float top){canvas.save();canvas.translate(x,top);text.draw(canvas);canvas.restore();}
     private void paragraph(String text,float size,boolean bold,int color){
-        StaticLayout lines=layout(text,CONTENT,paint(size,bold,color),Layout.Alignment.ALIGN_NORMAL);
+        paragraph(text,size,bold,color,false);
+    }
+    private void paragraph(String text,float size,boolean bold,int color,boolean justify){
+        StaticLayout lines=layout(text,CONTENT,paint(size,bold,color),Layout.Alignment.ALIGN_NORMAL,justify);
         draw(lines,MARGIN,y);y+=lines.getHeight()+5;
     }
     private CharSequence field(String label,String value){
@@ -136,11 +143,11 @@ final class ReceiptPdfDocument {
         boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
         if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Entrega"},columns,NAVY,true,Color.WHITE,2);
             for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Cortesía"},columns,LIGHT,false,NAVY,2);}
-            y+=4;paragraph("Los valores son referenciales: se entregan gratis y no se suman al total pagado. No son canjeables por efectivo ni tienen devolución independiente.",8,false,MUTED);
+            y+=4;paragraph("Los valores son referenciales: se entregan gratis y no se suman al total pagado. No son canjeables por efectivo ni tienen devolución independiente.",8,false,MUTED,true);
         }
         section("03  CONDICIONES DE GARANTÍA LUNIVO");int months=d.optInt("warrantyMonths",3);paragraph(months+(months==1?" MES":" MESES")+" CALENDARIO DE GARANTÍA desde "+d.getString("deliveryDate")+". Válida hasta "+d.getString("expires")+".",10,true,BLUE);
-        JSONArray terms=d.getJSONArray("terms");for(int i=0;i<terms.length();i++)paragraph(terms.getString(i),9.5f,false,NAVY);
-        section("04  CONTROL Y VALIDEZ DEL COMPROBANTE");paragraph(d.getString("customerNotes"),9.5f,false,NAVY);paragraph("Canal: "+d.getString("channel"),8.5f,false,MUTED);
+        JSONArray terms=d.getJSONArray("terms");for(int i=0;i<terms.length();i++)paragraph(terms.getString(i),9.5f,false,NAVY,true);
+        section("04  CONTROL Y VALIDEZ DEL COMPROBANTE");paragraph(d.getString("customerNotes"),9.5f,false,NAVY,true);paragraph("Canal: "+d.getString("channel"),8.5f,false,MUTED);
         JSONObject company=d.getJSONObject("company");ensure(50);y+=6;rule(y,Color.rgb(220,228,238));y+=9;
         paragraph(company.getString("name")+" · WhatsApp "+company.getString("phone")+"\nFacebook "+company.getString("facebook")+" · Instagram "+company.getString("instagram")+" · TikTok "+company.getString("tiktok"),8.5f,false,MUTED);
         finishPage();

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-17T03:00:30.537Z",
+  "updatedAt": "2026-11-17T08:27:25.569Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -2124,27 +2124,6 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
-      "id": "9deee173b5d949936a28",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 86500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [

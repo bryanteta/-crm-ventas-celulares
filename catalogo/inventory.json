@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-16T16:41:38.875Z",
+  "updatedAt": "2026-11-17T00:32:09.939Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -930,6 +930,27 @@
       "available": true,
       "sourceInitials": [
         "S"
+      ]
+    },
+    {
+      "id": "78d978bee3fc95ae2ea6",
+      "manufacturer": "Apple",
+      "model": "iPhone 13 Pro Max",
+      "capacity": "128 GB",
+      "color": "Dorado",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 59000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
       ]
     },
     {
@@ -2082,7 +2103,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "J"
@@ -2124,27 +2145,6 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
-      "id": "9deee173b5d949936a28",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 86500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -2233,27 +2233,6 @@
       "available": true,
       "sourceInitials": [
         "J"
-      ]
-    },
-    {
-      "id": "88884d4749ce699d800b",
-      "manufacturer": "Apple",
-      "model": "iPhone 16",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Open Box",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 2,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 77000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "S"
       ]
     },
     {
@@ -3031,7 +3010,7 @@
       "box": null,
       "ram": "",
       "priceCents": 37000,
-      "quantity": 9,
+      "quantity": 8,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3052,7 +3031,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 5,
+      "quantity": 4,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3094,7 +3073,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 4,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "T"

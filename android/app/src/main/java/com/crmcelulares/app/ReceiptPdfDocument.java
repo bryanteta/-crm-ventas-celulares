@@ -80,7 +80,8 @@ final class ReceiptPdfDocument {
     }
     private StaticLayout layout(CharSequence text,float width,TextPaint paint,Layout.Alignment alignment,boolean justify) {
         return StaticLayout.Builder.obtain(text,0,text.length(),paint,Math.max(1,(int)width)).setAlignment(alignment)
-                .setJustificationMode(justify?Layout.JUSTIFICATION_MODE_INTER_WORD:Layout.JUSTIFICATION_MODE_NONE)
+                // API 26 values: 1 = inter-word, 0 = none; compatible with the newer LineBreaker annotation.
+                .setJustificationMode(justify?1:0)
                 .setIncludePad(false).setLineSpacing(1.5f,1f).build();
     }
     private void rectangle(float x,float top,float width,float height,int color){shape.setColor(color);shape.setStyle(Paint.Style.FILL);canvas.drawRect(x,top,x+width,top+height,shape);}

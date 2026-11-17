@@ -12,6 +12,7 @@ import android.graphics.pdf.PdfDocument;
 import android.text.Layout;
 import android.text.SpannableString;
 import android.text.StaticLayout;
+import android.graphics.text.LineBreaker;
 import android.text.TextPaint;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
@@ -80,8 +81,7 @@ final class ReceiptPdfDocument {
     }
     private StaticLayout layout(CharSequence text,float width,TextPaint paint,Layout.Alignment alignment,boolean justify) {
         return StaticLayout.Builder.obtain(text,0,text.length(),paint,Math.max(1,(int)width)).setAlignment(alignment)
-                // API 26 values: 1 = inter-word, 0 = none; compatible with the newer LineBreaker annotation.
-                .setJustificationMode(justify?1:0)
+                .setJustificationMode(justify?LineBreaker.JUSTIFICATION_MODE_INTER_WORD:LineBreaker.JUSTIFICATION_MODE_NONE)
                 .setIncludePad(false).setLineSpacing(1.5f,1f).build();
     }
     private void rectangle(float x,float top,float width,float height,int color){shape.setColor(color);shape.setStyle(Paint.Style.FILL);canvas.drawRect(x,top,x+width,top+height,shape);}

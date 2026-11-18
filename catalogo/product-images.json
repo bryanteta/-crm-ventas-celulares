@@ -5084,6 +5084,32 @@
             "width": 797,
             "height": 477
           }
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-gold-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "singleDevice": true,
+          "model": "iPhone 13 Pro Max",
+          "color": "Dorado",
+          "path": "assets/products/iphone-13-pro-max-dorado-view-30b248fc3d.png",
+          "sha256": "56326f51fe35174549023f17693d6f2e6a58dfa33193d2ba2b5067030aabbcb9",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-gold-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "singleDevice": true,
+          "model": "iPhone 13 Pro Max",
+          "color": "Dorado",
+          "path": "assets/products/iphone-13-pro-max-dorado-view-6d4eee14ee.png",
+          "sha256": "a0f631f7d629dacd5cea1a1d0dc8e477f27cb62a323b84bcc13012701e71708a",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-18T07:54:54.338Z",
+  "updatedAt": "2026-11-18T17:12:29.148Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -763,29 +763,6 @@
       ]
     },
     {
-      "id": "47761492dc9d6aaff115",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro",
-      "capacity": "256 GB",
-      "color": "Blanco",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [
-        "Aviso de batería"
-      ],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 55500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "f15d5cbe31bff3fed3ee",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
@@ -938,6 +915,27 @@
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Celeste",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 59000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "b6d1cc3e8cf9507fd2de",
+      "manufacturer": "Apple",
+      "model": "iPhone 13 Pro Max",
+      "capacity": "128 GB",
+      "color": "Dorado",
       "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
@@ -2029,20 +2027,20 @@
       ]
     },
     {
-      "id": "403ecc198b542647c081",
+      "id": "9deee173b5d949936a28",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Plata",
+      "color": "Negro",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
       "cycles": 0,
-      "sim": "Por confirmar",
+      "sim": "SIM física",
       "box": true,
       "ram": "",
-      "priceCents": 86000,
+      "priceCents": 86500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -3016,7 +3014,7 @@
       "box": null,
       "ram": "",
       "priceCents": 75500,
-      "quantity": 14,
+      "quantity": 13,
       "available": true,
       "sourceInitials": [
         "T"

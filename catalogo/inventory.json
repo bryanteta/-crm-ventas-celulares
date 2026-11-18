@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-18T17:12:29.148Z",
+  "updatedAt": "2026-11-18T21:04:59.619Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -334,7 +334,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 1,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "T"
@@ -355,7 +355,91 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 1,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "f0840daf7ab3b87a9e06",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 43000,
+      "quantity": 11,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "b838d0283d298b8894de",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "128 GB",
+      "color": "Celeste",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 43000,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "6e45a013f1a32a17b175",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "128 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 43000,
+      "quantity": 10,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "ca5771d55f82a45b10f4",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "128 GB",
+      "color": "Rosado",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 43000,
+      "quantity": 6,
       "available": true,
       "sourceInitials": [
         "T"
@@ -440,6 +524,132 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 15,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "58dbbecee6333bd1319a",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45500,
+      "quantity": 8,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "8ffb5badbfb8122eb82d",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "256 GB",
+      "color": "Celeste",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45500,
+      "quantity": 4,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "0bb2409fd6d9b93229f5",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "256 GB",
+      "color": "Verde",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45500,
+      "quantity": 2,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "921d2199d4cc69de06d1",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "256 GB",
+      "color": "Rojo",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "8089b92f86d26f691dc5",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "256 GB",
+      "color": "Rosado",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45500,
+      "quantity": 7,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "1262d358695803a3dd71",
+      "manufacturer": "Apple",
+      "model": "iPhone 13",
+      "capacity": "256 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 45500,
+      "quantity": 12,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2993,7 +3203,7 @@
       "box": null,
       "ram": "",
       "priceCents": 75500,
-      "quantity": 9,
+      "quantity": 8,
       "available": true,
       "sourceInitials": [
         "T"

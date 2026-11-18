@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-18T21:06:55.153Z",
+  "updatedAt": "2026-11-18T23:26:26.856Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -805,11 +805,11 @@
       ]
     },
     {
-      "id": "ac152db25f63210de157",
+      "id": "258488b8c7760d04d3f9",
       "manufacturer": "Apple",
       "model": "iPhone 13 Mini",
       "capacity": "256 GB",
-      "color": "Negro",
+      "color": "Azul",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -945,7 +945,7 @@
       "box": null,
       "ram": "",
       "priceCents": 55500,
-      "quantity": 5,
+      "quantity": 4,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1125,27 +1125,6 @@
       "model": "iPhone 13 Pro Max",
       "capacity": "128 GB",
       "color": "Celeste",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 59000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "b6d1cc3e8cf9507fd2de",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro Max",
-      "capacity": "128 GB",
-      "color": "Dorado",
       "condition": "Seminuevo",
       "grade": "A",
       "battery": "100%",
@@ -1666,27 +1645,6 @@
       "available": true,
       "sourceInitials": [
         "J"
-      ]
-    },
-    {
-      "id": "2fd96c7bc964029b6eda",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Plus",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 65500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
       ]
     },
     {
@@ -3015,6 +2973,69 @@
       "available": true,
       "sourceInitials": [
         "S"
+      ]
+    },
+    {
+      "id": "60b1037be1c6b71d2716",
+      "manufacturer": "Samsung",
+      "model": "Samsung A17",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 29000,
+      "quantity": 8,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "6e301e0ac83a3766b7aa",
+      "manufacturer": "Samsung",
+      "model": "Samsung A17",
+      "capacity": "128 GB",
+      "color": "Celeste",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 29000,
+      "quantity": 10,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "81719debab45aeeaf203",
+      "manufacturer": "Samsung",
+      "model": "Samsung A17",
+      "capacity": "128 GB",
+      "color": "Gris",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 29000,
+      "quantity": 7,
+      "available": true,
+      "sourceInitials": [
+        "T"
       ]
     },
     {

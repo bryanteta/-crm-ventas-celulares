@@ -157,3 +157,9 @@ Prueba táctil: `node scripts/test-catalog-mobile.cjs`. Para WebKit: `CATALOG_BR
 ## Actualización independiente de GitHub Pages
 
 El servicio `workers/catalog` consulta ambas APIs cada cinco minutos y conserva en SQLite únicamente el catálogo público filtrado. La web está preparada para leer su `/inventory.json`, con respaldo estático de GitHub, comprobaciones cada minuto y preservación del diálogo/última lista reciente. La configuración de `inventory-source.json` apunta a `https://lunivo-inventory.bra0307h.workers.dev/inventory.json`; el servicio está desplegado y su secreto de Split fue verificado en producción. El catálogo público excluye relojes y acepta los nombres equivalentes Galaxy/Samsung, naranja/anaranjado y titanio gris. Guía: [Cloudflare](../workers/catalog/README.md).
+
+## Fotos cuando cambia el nombre de un color
+
+El acabado Sierra Blue de iPhone 13 Pro y Pro Max reconoce «Celeste» además de la referencia revisada «Azul». Las imágenes verificadas del mismo modelo/acabado y sus perspectivas se reutilizan cuando Apple retira una ficha del comparador. Nunca se toma la foto de otro modelo para resolver un color.
+
+Si el proveedor no indica color («Color por confirmar»), las tarjetas muestran una foto ilustrativa del modelo exacto y mantienen visible que el color está por confirmar. En el carrusel se identifica como «Color ilustrativo». No se modifica el color ni el stock del inventario. Un color conocido sin referencia verificada permanece pendiente; no recibe la foto de otro acabado.

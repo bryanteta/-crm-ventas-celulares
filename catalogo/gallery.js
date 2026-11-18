@@ -29,7 +29,7 @@
   function select(next){
     if(!slides.length)return;index=(next+slides.length)%slides.length;failed=false;
     draw(photo,slides[index]);photo.hidden=false;$('gallery-empty').hidden=true;stage.disabled=false;
-    const label=slides[index].label;$('gallery-caption').textContent=label;$('gallery-counter').textContent=(index+1)+' / '+slides.length;
+    const label=slides[index].label+(product.color==='Color por confirmar'?' · Color ilustrativo':'');$('gallery-caption').textContent=label;$('gallery-counter').textContent=(index+1)+' / '+slides.length;
     for(const [i,b] of [...$('gallery-thumbs').children].entries()){b.setAttribute('aria-pressed',String(i===index));if(i===index)$('gallery-thumbs').scrollLeft=b.offsetLeft-($('gallery-thumbs').clientWidth-b.offsetWidth)/2;}
     if(viewer.open){draw(zoomPhoto,slides[index]);resetZoom();updateViewerLabel();}
   }
@@ -46,7 +46,7 @@
   function show(device,picture){
     if(viewer.open)viewer.close();section.hidden=false;product=device;index=0;slides=[];
     if(safe(picture)){
-      const views=(Array.isArray(picture.gallery)?picture.gallery:[]).filter(art=>safe(art)&&art.model===device.model&&art.color===device.color);
+      const views=(Array.isArray(picture.gallery)?picture.gallery:[]).filter(art=>safe(art)&&art.model===device.model&&(art.color===device.color||device.color==='Color por confirmar'));
       // Reviewed individual views take precedence over paired front/back artboards.
       // Keep the comparison artboard for catalog cards, never repeat it in the modal.
       const individual=views.filter(art=>art.singleDevice===true).sort((a,b)=>Number(b.label==='Frente')-Number(a.label==='Frente'));

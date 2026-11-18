@@ -4978,6 +4978,81 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue.png"
       ]
     },
+    "iPhone 13 Pro Max|Celeste": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_sierra_blue__ccdnnwrapdau_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "sierrablue",
+      "model": "iPhone 13 Pro Max",
+      "color": "Celeste",
+      "path": "assets/products/iphone-13-pro-max-celeste.jpg",
+      "sha256": "ce01d9230f3a1d17fd99fceec511aa49dd88c0dcd73500455af5d8fd5c7026ea",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Celeste",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_sierra_blue__ccdnnwrapdau_large_2x.jpg",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "sourceStylesheet": "https://www.apple.com/v/iphone/compare/an/built/styles/overview.built.css",
+          "sourceSelector": ".image-compare-iphone-13-pro-max-sierrablue",
+          "credit": "Apple",
+          "path": "assets/products/iphone-13-pro-max-azul-gallery-1.jpg",
+          "sha256": "ce01d9230f3a1d17fd99fceec511aa49dd88c0dcd73500455af5d8fd5c7026ea",
+          "width": 612,
+          "height": 760,
+          "label": "Vista general en alta resolución"
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "model": "iPhone 13 Pro Max",
+          "color": "Celeste",
+          "path": "assets/products/iphone-13-pro-max-azul-view-4496ed822b.png",
+          "sha256": "21aae4fde5841a1ff76fb6eecb88690ffc404decdeba742b015460f13ccca9d2",
+          "width": 1200,
+          "height": 1200,
+          "singleDevice": true
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-pro-max-sierra-blue-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-13-pro-max/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "model": "iPhone 13 Pro Max",
+          "color": "Celeste",
+          "path": "assets/products/iphone-13-pro-max-azul-view-d7ab2447a9.png",
+          "sha256": "f1cb0f1a9a7fb40801670ae0559814487a48d902bd26c7d724e87e8fd7087e27",
+          "width": 1200,
+          "height": 1200,
+          "singleDevice": true
+        },
+        {
+          "model": "iPhone 13 Pro Max",
+          "color": "Celeste",
+          "officialColor": "sierrablue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-pro-max-blue-select_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-pro-max-azul-apple-camera-detail.jpg",
+          "sha256": "eb85e321d103bd00ef656604ee82540012215c6f928e9bd4d4741aa000ea5432",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 202,
+            "y": 362,
+            "width": 797,
+            "height": 477
+          }
+        }
+      ]
+    },
     "iPhone 13 Pro Max|Dorado": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_pro_max_gold__dpkma79ndo8y_large_2x.jpg",
       "sourcePage": "https://www.apple.com/iphone/compare/",
@@ -10690,11 +10765,6 @@
     "iPhone 16 Pro Max|Plata": {
       "model": "iPhone 16 Pro Max",
       "color": "Plata",
-      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
-    },
-    "iPhone 13 Pro Max|Celeste": {
-      "model": "iPhone 13 Pro Max",
-      "color": "Celeste",
       "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }

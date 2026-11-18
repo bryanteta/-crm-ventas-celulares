@@ -48,6 +48,12 @@
     }
   }).catch(()=>{});}
   const imagesReady=loadImages();
+  function pictureFor(device){
+    const exact=images[device.model+'|'+device.color];
+    if(exact||device.color!=='Color por confirmar')return exact;
+    // Illustrate the exact model without assigning a color to the supplier's unit.
+    return images[device.model+'|Negro']||Object.values(images).find(art=>art.model===device.model);
+  }
   const collator=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
   const batteryText=p=>p.manufacturer==='Samsung'?'en excelentes condiciones':(p.battery||'en excelente estado');
   const option=(value,label)=>{const item=document.createElement('option');item.value=value;item.textContent=label;return item;};
@@ -264,7 +270,7 @@
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
       const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'','Batería '+batteryText(device),device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
-      const image=card.querySelector('.product-image'),picture=images[device.model+'|'+device.color];
+      const image=card.querySelector('.product-image'),picture=pictureFor(device);
       const origins=device.sourceInitials||[],photoCaption=card.querySelector('.image-caption'),originCaption=[device.color,...origins].join(' · ');
       if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent='Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
       else{photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
@@ -306,7 +312,7 @@
     const fragment=document.createDocumentFragment();
     for(const [name,value]of specs){const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);fragment.append(row);}
     $('#specs').replaceChildren(fragment);
-    window.LunivoProductGallery?.show(p,images[p.model+'|'+p.color]);
+    window.LunivoProductGallery?.show(p,pictureFor(p));
     for(const button of $('#detail-colors').querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.variantId===p.id));
     updatePayment();
   }

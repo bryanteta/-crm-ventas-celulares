@@ -40,5 +40,6 @@ jobs:
         run: |
           python3 -m http.server 8000 > /tmp/catalog-gallery-server.log 2>&1 &
           npm run test:catalog-gallery
+          CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-missing-images.cjs
           npm run test:catalog-series
           CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-image-refresh.cjs

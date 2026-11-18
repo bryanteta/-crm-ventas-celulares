@@ -34,7 +34,7 @@ def apple_candidates(css, base):
 
 APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight', 'graphite', 'spaceblack', 'blacktitanium'), 'Morado': ('purple',), 'Lila': ('purple',), 'Rosado': ('pink',), 'Rojo': ('red',), 'Verde': ('green',), 'Azul': ('blue', 'deepblue'), 'Celeste': ('blue', 'skyblue'), 'Amarillo': ('yellow',), 'Plata': ('silver',), 'Dorado': ('gold',), 'Anaranjado': ('cosmicorange', 'orange'), 'Titanio natural': ('naturaltitanium',), 'Titanio desierto': ('deserttitanium',)}
 # Apple names the blue finish on this family Ultramarine; keep the match model-specific.
-APPLE_MODEL_COLORS = {('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
+APPLE_MODEL_COLORS = {('iPhone 13 Pro', 'Celeste'): ('sierrablue',), ('iPhone 13 Pro Max', 'Celeste'): ('sierrablue',), ('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
 
 SAMSUNG_COLORS = {'black': 'Negro', 'phantom black': 'Negro', 'titanium black': 'Negro', 'white': 'Blanco', 'phantom white': 'Blanco', 'titanium white silver': 'Blanco', 'gray': 'Gris', 'grey': 'Gris', 'titanium gray': 'Gris', 'titanium grey': 'Gris', 'silver': 'Plata', 'phantom silver': 'Plata', 'blue': 'Azul', 'navy': 'Azul', 'sky blue': 'Celeste', 'icyblue': 'Celeste', 'pink': 'Rosado', 'green': 'Verde', 'mint': 'Verde', 'yellow': 'Amarillo', 'cream': 'Crema', 'lavender': 'Lila'}
 
@@ -88,9 +88,20 @@ def resolve(product, apple, samsung, reviewed):
         if known:
             finishes = (known,)
         matches = [apple[model, finish] for finish in finishes if (model, finish) in apple]
+        if not matches:
+            # Retired Apple compare pages may omit a finish already verified locally.
+            matches = [item for item in reviewed.values() if item.get('model') == model and item.get('officialColor') in finishes]
+            matches = list({item['sourceImage']: item for item in matches}.values())
         if len(matches) != 1:
             return None
-        return {**matches[0], 'model': model, 'color': color}
+        result = {**matches[0], 'model': model, 'color': color}
+        if 'gallery' not in result:
+            sibling = next((item for item in reviewed.values() if item.get('model') == model and item.get('officialColor') == result.get('officialColor') and item.get('gallery')), None)
+            if sibling:
+                result['gallery'] = sibling['gallery']
+        if 'gallery' in result:
+            result['gallery'] = [{**art, 'color': color} for art in result['gallery']]
+        return result
     candidate = samsung.get((model, color))
     return {**candidate, 'model': model, 'color': color} if candidate else None
 

@@ -1,6 +1,340 @@
 {
   "version": 2,
   "products": {
+    "Samsung A17|Gris": {
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-548472718?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+      "sourceSku": "SM-A176BZAAEUB",
+      "credit": "Samsung",
+      "officialColor": "Gray",
+      "gallerySources": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472710?$900_900_PNG$",
+          "label": "Reverso"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472711?$900_900_PNG$",
+          "label": "Parte posterior"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472712?$900_900_PNG$",
+          "label": "Vista posterior lateral"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472713?$900_900_PNG$",
+          "label": "Frente"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472709?$900_900_PNG$",
+          "label": "Vista frontal lateral"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472714?$900_900_PNG$",
+          "label": "Vista frontal lateral opuesta"
+        }
+      ],
+      "model": "Samsung A17",
+      "color": "Gris",
+      "framing": {
+        "x": 150,
+        "y": 118,
+        "width": 325,
+        "height": 388
+      },
+      "path": "assets/products/samsung-a17-gris.png",
+      "sha256": "e5ca81703b86d86094b2424a037525f4c291d28e7fbf7777d62750c2bd1d9ddd",
+      "width": 624,
+      "height": 624,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472710?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+          "sourceSku": "SM-A176BZAAEUB",
+          "credit": "Samsung",
+          "officialColor": "Gray",
+          "label": "Reverso",
+          "model": "Samsung A17",
+          "color": "Gris",
+          "framing": {
+            "x": 372,
+            "y": 296,
+            "width": 156,
+            "height": 308
+          },
+          "path": "assets/products/samsung-a17-gris-gallery-608897e282.png",
+          "sha256": "6bf3d5e21909acd4e915454eda2c0892e67b3c1ada354e8e981eaaf23471e2ca",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472711?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+          "sourceSku": "SM-A176BZAAEUB",
+          "credit": "Samsung",
+          "officialColor": "Gray",
+          "label": "Parte posterior",
+          "model": "Samsung A17",
+          "color": "Gris",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-a17-gris-gallery-736048fbb9.png",
+          "sha256": "62fdff0a92f935bab4423532ff87f6f5f38f8c0bbae7f06c1fc8c8417ae539fd",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472712?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+          "sourceSku": "SM-A176BZAAEUB",
+          "credit": "Samsung",
+          "officialColor": "Gray",
+          "label": "Vista posterior lateral",
+          "model": "Samsung A17",
+          "color": "Gris",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-a17-gris-gallery-5a0b3a03df.png",
+          "sha256": "ef5c8f7342f5b97ce6c4b9ba1bbd2eee9bade5612d70f862bc236e753f28c430",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472713?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+          "sourceSku": "SM-A176BZAAEUB",
+          "credit": "Samsung",
+          "officialColor": "Gray",
+          "label": "Frente",
+          "model": "Samsung A17",
+          "color": "Gris",
+          "framing": {
+            "x": 374,
+            "y": 296,
+            "width": 155,
+            "height": 308
+          },
+          "path": "assets/products/samsung-a17-gris-gallery-97c821055f.png",
+          "sha256": "3e141b7500d058c6701ede34e74077caf1c07edd23087bcdc68e09c64ae14b99",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472709?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+          "sourceSku": "SM-A176BZAAEUB",
+          "credit": "Samsung",
+          "officialColor": "Gray",
+          "label": "Vista frontal lateral",
+          "model": "Samsung A17",
+          "color": "Gris",
+          "framing": {
+            "x": 379,
+            "y": 290,
+            "width": 142,
+            "height": 320
+          },
+          "path": "assets/products/samsung-a17-gris-gallery-4cfbcd56e5.png",
+          "sha256": "4704e3b00b2c34aa1d64be97421799853386fe78a62d483e9026ffdaf51b5d2c",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-thumb-548472714?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
+          "sourceSku": "SM-A176BZAAEUB",
+          "credit": "Samsung",
+          "officialColor": "Gray",
+          "label": "Vista frontal lateral opuesta",
+          "model": "Samsung A17",
+          "color": "Gris",
+          "framing": {
+            "x": 380,
+            "y": 290,
+            "width": 142,
+            "height": 320
+          },
+          "path": "assets/products/samsung-a17-gris-gallery-01945f9d55.png",
+          "sha256": "f5e9d1a79590da7d95718432f2da55ceccb6a5d4a905220832476bbdaf8c822e",
+          "width": 900,
+          "height": 900
+        }
+      ]
+    },
+    "Samsung A17|Negro": {
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-548472756?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+      "sourceSku": "SM-A176BZKAEUB",
+      "credit": "Samsung",
+      "officialColor": "Black",
+      "gallerySources": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472747?$900_900_PNG$",
+          "label": "Reverso"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472748?$900_900_PNG$",
+          "label": "Parte posterior"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472749?$900_900_PNG$",
+          "label": "Vista posterior lateral"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472750?$900_900_PNG$",
+          "label": "Frente"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472751?$900_900_PNG$",
+          "label": "Vista frontal lateral"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472752?$900_900_PNG$",
+          "label": "Vista frontal lateral opuesta"
+        }
+      ],
+      "model": "Samsung A17",
+      "color": "Negro",
+      "framing": {
+        "x": 150,
+        "y": 118,
+        "width": 325,
+        "height": 388
+      },
+      "path": "assets/products/samsung-a17-negro.png",
+      "sha256": "12e9d45a10f19fd4e7d9b57c401439fff48fae8766ff2009207ef13cd72a99d0",
+      "width": 624,
+      "height": 624,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472747?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+          "sourceSku": "SM-A176BZKAEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Reverso",
+          "model": "Samsung A17",
+          "color": "Negro",
+          "framing": {
+            "x": 372,
+            "y": 296,
+            "width": 156,
+            "height": 308
+          },
+          "path": "assets/products/samsung-a17-negro-gallery-ea91f1a16a.png",
+          "sha256": "cf672da4f0272ba3d8d2dfa72802ba93d1172358f2a71dbf0b42796d2b629d99",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472748?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+          "sourceSku": "SM-A176BZKAEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Parte posterior",
+          "model": "Samsung A17",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-a17-negro-gallery-7263f29af8.png",
+          "sha256": "5cf59b5d17cc6e88d3223c015ec9728a57c98fdfb58094690ba5cf84f1d2376b",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472749?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+          "sourceSku": "SM-A176BZKAEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista posterior lateral",
+          "model": "Samsung A17",
+          "color": "Negro",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-a17-negro-gallery-abff571184.png",
+          "sha256": "864c3dea2a14c1ce89c159a6166f44a3503b1b57fea575e1048fcee3df8c8496",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472750?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+          "sourceSku": "SM-A176BZKAEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Frente",
+          "model": "Samsung A17",
+          "color": "Negro",
+          "framing": {
+            "x": 374,
+            "y": 296,
+            "width": 155,
+            "height": 308
+          },
+          "path": "assets/products/samsung-a17-negro-gallery-ee9a32e3ca.png",
+          "sha256": "c423710033d51b07e96f2f66f6ad6f6080cf80e2a57c425f88e0c6ed573fc42b",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472751?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+          "sourceSku": "SM-A176BZKAEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista frontal lateral",
+          "model": "Samsung A17",
+          "color": "Negro",
+          "framing": {
+            "x": 379,
+            "y": 290,
+            "width": 142,
+            "height": 320
+          },
+          "path": "assets/products/samsung-a17-negro-gallery-541c23afef.png",
+          "sha256": "3dea486051f6fd68ca6380e36d8b03fdcb6b32fa2eb62c63d89ff996a3dd06af",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzkaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzkaeub-thumb-548472752?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-black-128gb-sm-a176bzkaeub/",
+          "sourceSku": "SM-A176BZKAEUB",
+          "credit": "Samsung",
+          "officialColor": "Black",
+          "label": "Vista frontal lateral opuesta",
+          "model": "Samsung A17",
+          "color": "Negro",
+          "framing": {
+            "x": 380,
+            "y": 290,
+            "width": 142,
+            "height": 320
+          },
+          "path": "assets/products/samsung-a17-negro-gallery-c8d9bd4cf1.png",
+          "sha256": "68d4fcd0137be1359e857620f9ff5cbcbf8772c67646351f869d6a377f913bec",
+          "width": 900,
+          "height": 900
+        }
+      ]
+    },
     "Samsung S21 Ultra|Negro": {
       "model": "Samsung S21 Ultra",
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/galaxy-s21/gallery/uk-galaxy-s21-ultra-5g-g988-sm-g998bzkdeua-368887916?$624_624_PNG$",
@@ -4834,6 +5168,40 @@
       "galleryRejectedSources": [
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-12-green.png",
         "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-iphone-12-green-2020?wid=1200&hei=1200&fmt=jpeg&qlt=90"
+      ]
+    },
+    "iPhone 13 Mini|Azul": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone13_mini_blue__e1ohuf2klquu_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "blue",
+      "model": "iPhone 13 Mini",
+      "color": "Azul",
+      "path": "assets/products/iphone-13-mini-azul.jpg",
+      "sha256": "82f66c7e51d67e487dd30329b5666c5d9f365e8cf347e49eb7bfbba86a75fe0f",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "model": "iPhone 13 Mini",
+          "color": "Azul",
+          "officialColor": "blue",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-13-mini-blue-select-2021_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-13-mini-azul-apple-camera-detail.jpg",
+          "sha256": "80d655ebcc426dcb726d42b9a6d41c2360f8fdd23350968c2ff1cf500e38abf4",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 203,
+            "y": 361,
+            "width": 795,
+            "height": 478
+          }
+        }
       ]
     },
     "iPhone 13 Mini|Negro": {
@@ -10791,6 +11159,11 @@
     "iPhone 16 Pro Max|Plata": {
       "model": "iPhone 16 Pro Max",
       "color": "Plata",
+      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
+    },
+    "Samsung A17|Celeste": {
+      "model": "Samsung A17",
+      "color": "Celeste",
       "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }

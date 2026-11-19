@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-19T13:51:53.130Z",
+  "updatedAt": "2026-11-19T21:57:29.457Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -233,27 +233,6 @@
       "available": true,
       "sourceInitials": [
         "T"
-      ]
-    },
-    {
-      "id": "4fed3fec16ad4d1d2352",
-      "manufacturer": "Apple",
-      "model": "iPhone 12 Pro",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 46500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
       ]
     },
     {
@@ -1008,27 +987,6 @@
       "box": true,
       "ram": "",
       "priceCents": 56000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
-      "id": "3bad02a20c1c9799ea37",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 57000,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -2020,7 +1978,7 @@
       "box": null,
       "ram": "",
       "priceCents": 83000,
-      "quantity": 1,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2787,27 +2745,6 @@
       ]
     },
     {
-      "id": "d53fc3188d96c333b788",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro Max",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "99%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 130500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
       "id": "ca18356b138204e75ae8",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
@@ -3053,7 +2990,7 @@
       "box": null,
       "ram": "",
       "priceCents": 37000,
-      "quantity": 9,
+      "quantity": 8,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3074,7 +3011,7 @@
       "box": null,
       "ram": "",
       "priceCents": 37000,
-      "quantity": 8,
+      "quantity": 7,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3095,7 +3032,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"

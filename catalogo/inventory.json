@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-19T21:57:29.457Z",
+  "updatedAt": "2026-11-20T03:05:40.635Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -313,7 +313,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -334,7 +334,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -398,27 +398,6 @@
       "ram": "",
       "priceCents": 43000,
       "quantity": 10,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "ca5771d55f82a45b10f4",
-      "manufacturer": "Apple",
-      "model": "iPhone 13",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 43000,
-      "quantity": 6,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1162,27 +1141,6 @@
       ]
     },
     {
-      "id": "a940993e85296643046e",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Morado",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 45000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "cecc9d243ba2d03f8f07",
       "manufacturer": "Apple",
       "model": "iPhone 14",
@@ -1302,27 +1260,6 @@
       "box": true,
       "ram": "",
       "priceCents": 52000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
-      "id": "26ce44f97596c06bede8",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Lila",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 53000,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -1620,7 +1557,7 @@
       "box": false,
       "ram": "",
       "priceCents": 68000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1641,7 +1578,7 @@
       "box": false,
       "ram": "",
       "priceCents": 68000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2048,11 +1985,11 @@
       ]
     },
     {
-      "id": "41b63312ffcb17a4fcf6",
+      "id": "e1abc51ff6d67bb1f99e",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Plata",
+      "color": "Titanio natural",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -2069,11 +2006,11 @@
       ]
     },
     {
-      "id": "e1abc51ff6d67bb1f99e",
+      "id": "41b63312ffcb17a4fcf6",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio natural",
+      "color": "Plata",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -3074,7 +3011,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 10,
+      "quantity": 5,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3161,7 +3098,7 @@
       "box": null,
       "ram": "",
       "priceCents": 75500,
-      "quantity": 8,
+      "quantity": 7,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3480,27 +3417,6 @@
       "available": true,
       "sourceInitials": [
         "T"
-      ]
-    },
-    {
-      "id": "0b3c6ed168a7a67d5c86",
-      "manufacturer": "Samsung",
-      "model": "Samsung Z Flip 6",
-      "capacity": "256 GB",
-      "color": "Gris",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "12 GB",
-      "priceCents": 42000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "S"
       ]
     },
     {

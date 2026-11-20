@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-20T19:15:15.551Z",
+  "updatedAt": "2026-11-20T23:54:58.973Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -40,7 +40,7 @@
       "box": null,
       "ram": "",
       "priceCents": 31500,
-      "quantity": 15,
+      "quantity": 14,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1218,7 +1218,7 @@
       "box": null,
       "ram": "",
       "priceCents": 46000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1306,30 +1306,6 @@
       "available": true,
       "sourceInitials": [
         "J"
-      ]
-    },
-    {
-      "id": "df0218f8473f5d5d1f56",
-      "manufacturer": "Apple",
-      "model": "iPhone 14 Pro Max",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [
-        "Aviso de batería",
-        "Aviso de pantalla"
-      ],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 63000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
       ]
     },
     {
@@ -2928,27 +2904,6 @@
       "ram": "",
       "priceCents": 37000,
       "quantity": 7,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "596e7864fffd1a4f0df3",
-      "manufacturer": "Samsung",
-      "model": "Samsung S22 Ultra",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "B+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 43000,
-      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"

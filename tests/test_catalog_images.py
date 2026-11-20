@@ -39,6 +39,15 @@ class ExactImageTests(unittest.TestCase):
         self.assertNotIn(('Samsung S26','Celeste'),result)
         item['largeUrl']='//untrusted.example/wrong';self.assertEqual(d.samsung_candidates(data),{})
         item['largeUrl']='//images.samsung.com/a';item['fmyChipList'][0]['fmyChipName']='Unknown';self.assertEqual(d.samsung_candidates(data),{})
+    def test_samsung_light_blue_resolves_the_a17_celeste_automatically(self):
+        item={'fmyChipList':[{'fmyChipType':'COLOR','fmyChipName':'Light Blue'}], 'largeUrl':'//images.samsung.com/a17-light-blue', 'originPdpUrl':'/uk/smartphones/galaxy-a/galaxy-a17-light-blue/', 'modelCode':'SM-A175FLBBEUB'}
+        data={'response':{'resultData':{'productList':[{'fmyMarketingName':'Galaxy A17','modelList':[item]}]}}}
+        candidates=d.samsung_candidates(data)
+        result=d.resolve({'model':'Samsung A17','color':'Celeste'},{},candidates,{})
+        self.assertEqual(result['officialColor'],'Light Blue')
+        self.assertEqual(result['sourceSku'],'SM-A175FLBBEUB')
+        self.assertIsNone(d.resolve({'model':'Samsung A17','color':'Azul'},{},candidates,{}))
+
     def test_gallery_requires_the_same_sku_and_color_and_skips_group_views(self):
         item={'fmyChipList':[{'fmyChipType':'COLOR','fmyChipName':'Sky Blue'}], 'largeUrl':'//images.samsung.com/main', 'originPdpUrl':'/uk/s26/', 'modelCode':'SM-123BLUE',
               'galleryImage':['//images.samsung.com/sm-123blue-back','//images.samsung.com/sm-123black-front','//images.samsung.com/sm-123blue-group','//images.samsung.com/sm-123blue-front'],

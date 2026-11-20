@@ -36,7 +36,7 @@ APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight',
 # Apple names the blue finish on this family Ultramarine; keep the match model-specific.
 APPLE_MODEL_COLORS = {('iPhone 13 Pro', 'Celeste'): ('sierrablue',), ('iPhone 13 Pro Max', 'Celeste'): ('sierrablue',), ('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
 
-SAMSUNG_COLORS = {'black': 'Negro', 'phantom black': 'Negro', 'titanium black': 'Negro', 'white': 'Blanco', 'phantom white': 'Blanco', 'titanium white silver': 'Blanco', 'gray': 'Gris', 'grey': 'Gris', 'titanium gray': 'Gris', 'titanium grey': 'Gris', 'silver': 'Plata', 'phantom silver': 'Plata', 'blue': 'Azul', 'navy': 'Azul', 'sky blue': 'Celeste', 'icyblue': 'Celeste', 'pink': 'Rosado', 'green': 'Verde', 'mint': 'Verde', 'yellow': 'Amarillo', 'cream': 'Crema', 'lavender': 'Lila'}
+SAMSUNG_COLORS = {'black': 'Negro', 'phantom black': 'Negro', 'titanium black': 'Negro', 'white': 'Blanco', 'phantom white': 'Blanco', 'titanium white silver': 'Blanco', 'gray': 'Gris', 'grey': 'Gris', 'titanium gray': 'Gris', 'titanium grey': 'Gris', 'silver': 'Plata', 'phantom silver': 'Plata', 'blue': 'Azul', 'navy': 'Azul', 'sky blue': 'Celeste', 'light blue': 'Celeste', 'icyblue': 'Celeste', 'pink': 'Rosado', 'green': 'Verde', 'mint': 'Verde', 'yellow': 'Amarillo', 'cream': 'Crema', 'lavender': 'Lila'}
 
 def samsung_candidates(data, include_unknown=False):
     result = {}

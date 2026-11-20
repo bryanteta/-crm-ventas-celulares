@@ -1,6 +1,173 @@
 {
   "version": 2,
   "products": {
+    "Samsung A17|Celeste": {
+      "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-549236953?$624_624_PNG$",
+      "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+      "sourceSku": "SM-A175FLBBEUB",
+      "credit": "Samsung",
+      "officialColor": "Light Blue",
+      "gallerySources": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236945?$900_900_PNG$",
+          "label": "Parte posterior"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236944?$900_900_PNG$",
+          "label": "Vista posterior lateral"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236946?$900_900_PNG$",
+          "label": "Reverso"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236947?$900_900_PNG$",
+          "label": "Frente"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236948?$900_900_PNG$",
+          "label": "Vista frontal lateral"
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236949?$900_900_PNG$",
+          "label": "Vista frontal lateral opuesta"
+        }
+      ],
+      "model": "Samsung A17",
+      "color": "Celeste",
+      "framing": {
+        "x": 150,
+        "y": 118,
+        "width": 325,
+        "height": 388
+      },
+      "path": "assets/products/samsung-a17-celeste.png",
+      "sha256": "fec387fc44e1e9be9d9b781aeb1f073fbf8e9ad56f624566745cb7e1b98ffaf8",
+      "width": 624,
+      "height": 624,
+      "gallery": [
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236945?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+          "sourceSku": "SM-A175FLBBEUB",
+          "credit": "Samsung",
+          "officialColor": "Light Blue",
+          "label": "Parte posterior",
+          "model": "Samsung A17",
+          "color": "Celeste",
+          "framing": {
+            "x": 379,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-a17-celeste-gallery-e8dae937c5.png",
+          "sha256": "3e52d4ce0acba3bda0d8b08ec6258efca19b36b063ca627104ced7660d3347b4",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236944?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+          "sourceSku": "SM-A175FLBBEUB",
+          "credit": "Samsung",
+          "officialColor": "Light Blue",
+          "label": "Vista posterior lateral",
+          "model": "Samsung A17",
+          "color": "Celeste",
+          "framing": {
+            "x": 380,
+            "y": 291,
+            "width": 142,
+            "height": 318
+          },
+          "path": "assets/products/samsung-a17-celeste-gallery-7355fb88e4.png",
+          "sha256": "ebeab2cfac3a93289c86266ed94340120288873df0256490d0eefb9b0ee3566f",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236946?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+          "sourceSku": "SM-A175FLBBEUB",
+          "credit": "Samsung",
+          "officialColor": "Light Blue",
+          "label": "Reverso",
+          "model": "Samsung A17",
+          "color": "Celeste",
+          "framing": {
+            "x": 372,
+            "y": 296,
+            "width": 156,
+            "height": 308
+          },
+          "path": "assets/products/samsung-a17-celeste-gallery-c819cc0151.png",
+          "sha256": "d2fcb9e41f53cd75f24c367b2085657de8cfcdf21c1161cc761a1c263df227d8",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236947?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+          "sourceSku": "SM-A175FLBBEUB",
+          "credit": "Samsung",
+          "officialColor": "Light Blue",
+          "label": "Frente",
+          "model": "Samsung A17",
+          "color": "Celeste",
+          "framing": {
+            "x": 374,
+            "y": 296,
+            "width": 155,
+            "height": 308
+          },
+          "path": "assets/products/samsung-a17-celeste-gallery-a719a4d36a.png",
+          "sha256": "e057a6b1d37633617b3097a8faea7a35fbe324b56855a6b9de833f004eb456eb",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236948?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+          "sourceSku": "SM-A175FLBBEUB",
+          "credit": "Samsung",
+          "officialColor": "Light Blue",
+          "label": "Vista frontal lateral",
+          "model": "Samsung A17",
+          "color": "Celeste",
+          "framing": {
+            "x": 379,
+            "y": 290,
+            "width": 142,
+            "height": 320
+          },
+          "path": "assets/products/samsung-a17-celeste-gallery-b3d40dda15.png",
+          "sha256": "a34be0429ff56cebc94117140f236aeeec71627d69f35568341ff3b84c04ff8e",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a175flbbeub/gallery/uk-galaxy-a17-sm-a175-sm-a175flbbeub-thumb-549236949?$900_900_PNG$",
+          "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-light-blue-128gb-sm-a175flbbeub/",
+          "sourceSku": "SM-A175FLBBEUB",
+          "credit": "Samsung",
+          "officialColor": "Light Blue",
+          "label": "Vista frontal lateral opuesta",
+          "model": "Samsung A17",
+          "color": "Celeste",
+          "framing": {
+            "x": 380,
+            "y": 290,
+            "width": 142,
+            "height": 320
+          },
+          "path": "assets/products/samsung-a17-celeste-gallery-853f2d8d6d.png",
+          "sha256": "023b472cbecf9cc9d57ce3aba517ffd24975c8018f714fd3fa6cd0a77d31cb04",
+          "width": 900,
+          "height": 900
+        }
+      ]
+    },
     "Samsung A17|Gris": {
       "sourceImage": "https://images.samsung.com/is/image/samsung/p6pim/uk/sm-a176bzaaeub/gallery/uk-galaxy-a17-5g-sm-a176-sm-a176bzaaeub-548472718?$624_624_PNG$",
       "sourcePage": "https://www.samsung.com/uk/smartphones/galaxy-a/galaxy-a17-5g-grey-128gb-sm-a176bzaaeub/",
@@ -5201,6 +5368,32 @@
             "width": 795,
             "height": 478
           }
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-mini-blue-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-13-mini/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "singleDevice": true,
+          "model": "iPhone 13 Mini",
+          "color": "Azul",
+          "path": "assets/products/iphone-13-mini-azul-view-5bb1929bd6.png",
+          "sha256": "644686da31973427b1ef5f3564a5f3edac21d0a961f6674628d711bb5cb7d3ed",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-13-mini-blue-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-13-mini/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "singleDevice": false,
+          "model": "iPhone 13 Mini",
+          "color": "Azul",
+          "path": "assets/products/iphone-13-mini-azul-view-d447d81a75.png",
+          "sha256": "ee3ccff8ce2deb53608d48b7d0f6c727bd3b0c993e8953176148b6b31305e8ba",
+          "width": 1200,
+          "height": 1200
         }
       ]
     },
@@ -11159,11 +11352,6 @@
     "iPhone 16 Pro Max|Plata": {
       "model": "iPhone 16 Pro Max",
       "color": "Plata",
-      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
-    },
-    "Samsung A17|Celeste": {
-      "model": "Samsung A17",
-      "color": "Celeste",
       "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }

@@ -38,3 +38,9 @@ test('charged lines and courtesy references are separate in both PDF representat
  a.equal(doc.total,'$760.00');a.equal(doc.items.filter(i=>i.concept==='Cargador completo · Cable y cubo').length,1);a.equal(doc.items.filter(i=>i.concept==='Soporte antiguo').length,1);a(doc.items.filter(i=>i.application==='Cortesía LUNIVO').every(i=>i.amount==='$0.00'));a.equal(doc.items.find(i=>i.concept==='Case').reference,'$99,999.00');a.equal(doc.total,'$760.00');
  const [paid,free]=html.split('<h2 class="courtesy-heading">');a(!paid.includes('Soporte antiguo'));a(!paid.includes('<td>Case</td>'));a(free.includes('Soporte antiguo'));a(free.includes('<td>Case</td>'));a(!free.includes('$20.00'));a(html.includes('$99,999.00'));a(html.includes('Valor referencial'));a(free.includes('<td>Cortesía</td>'));a(!free.includes('$0.00'));a(!free.includes('Cobro al cliente'));a.equal(JSON.stringify(s),before);
 });
+test('mixed cash/transfer advances are itemized without changing sale totals',()=>{
+ const s=sale();s.receipt.paymentAdvance=20000;s.receipt.advanceMethod='Transferencia';const before=JSON.stringify(s),doc=r.documentData(s),html=r.html(s);
+ a.equal(doc.total,'$740.00');a.match(doc.payment,/Abono recibido: \$200\.00 \(Transferencia\)/);a.match(doc.payment,/Saldo a tasa cero: \$540\.00/);a.match(doc.payment,/12 cuotas/);a(html.includes('Saldo a tasa cero: $540.00'));a.equal(JSON.stringify(s),before);
+ for(const amount of [-1,74000,74001,1.5]){s.receipt.paymentAdvance=amount;a.throws(()=>r.documentData(s));}
+ s.receipt.paymentAdvance=20000;s.receipt.paymentMethod='Efectivo';a.throws(()=>r.documentData(s));s.receipt.paymentMethod='Tasa cero';s.receipt.advanceMethod='Otro';a.throws(()=>r.documentData(s));
+});

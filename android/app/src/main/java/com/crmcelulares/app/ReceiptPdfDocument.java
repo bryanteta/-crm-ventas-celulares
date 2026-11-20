@@ -48,6 +48,7 @@ final class ReceiptPdfDocument {
             if(!(months instanceof Number)||((Number)months).doubleValue()!=((Number)months).intValue()||((Number)months).intValue()<1||((Number)months).intValue()>36)throw new JSONException("Invalid warranty duration");
         }
         text(d,"phone",40,false);text(d,"customerNotes",2000,false);d.getBoolean("cancelled");
+        if(d.has("paymentSummary"))text(d,"paymentSummary",500,true);
         JSONArray fields=d.getJSONArray("device");if(fields.length()!=8)throw new JSONException("Invalid device");
         for(int i=0;i<fields.length();i++){JSONArray cell=fields.getJSONArray(i);if(cell.length()!=2||!(cell.get(0) instanceof String)||!(cell.get(1) instanceof String)||cell.getString(0).length()>100||cell.getString(1).length()>110000)throw new JSONException("Invalid field");}
         JSONArray items=d.getJSONArray("items");if(items.length()<1||items.length()>41)throw new JSONException("Invalid items");
@@ -140,7 +141,7 @@ final class ReceiptPdfDocument {
         section("02  RESUMEN DE COMPRA · IMPORTES COBRADOS");float[] columns={.39f,.10f,.18f,.33f};
         row(new String[]{"Concepto","Cant.","Valor","Aplicación"},columns,NAVY,true,Color.WHITE,2);
         JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if("Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
-        row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
+        row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.optString("paymentSummary",d.getString("payment"))},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
         boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
         if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Entrega"},columns,NAVY,true,Color.WHITE,2);
             for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Cortesía"},columns,LIGHT,false,NAVY,2);}

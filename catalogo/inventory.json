@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-20T11:29:42.555Z",
+  "updatedAt": "2026-11-20T19:15:15.551Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1309,27 +1309,6 @@
       ]
     },
     {
-      "id": "c10c7992597a763fbf54",
-      "manufacturer": "Apple",
-      "model": "iPhone 14 Pro",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 65000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
       "id": "df0218f8473f5d5d1f56",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
@@ -2062,7 +2041,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 2,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "J"
@@ -2125,7 +2104,7 @@
       "box": true,
       "ram": "",
       "priceCents": 87000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"

@@ -5,7 +5,7 @@ function create(id,familyButtons){
  const brands=document.querySelector(familyButtons).parentElement,wrapper=document.createElement('div'),nav=document.createElement('nav');
  wrapper.className='app-device-navigation';brands.before(wrapper);wrapper.append(brands,nav);nav.id=id;nav.className='device-version-scroll';nav.hidden=true;
  const back=document.createElement('button');back.type='button';back.id=id+'-return';back.className='device-menu-return';back.hidden=true;back.setAttribute('aria-label','Subir al menú de dispositivos');back.title='Subir al menú';
- const arrow=document.createElementNS('http://www.w3.org/2000/svg','svg'),path=document.createElementNS('http://www.w3.org/2000/svg','path');arrow.setAttribute('viewBox','0 0 24 24');arrow.setAttribute('aria-hidden','true');path.setAttribute('d','M12 19V5m-6 6 6-6 6 6');arrow.append(path);const label=document.createElement('span');label.textContent='Menú';back.append(arrow,label);document.body.append(back);
+ const arrow=document.createElementNS('http://www.w3.org/2000/svg','svg'),path=document.createElementNS('http://www.w3.org/2000/svg','path');arrow.setAttribute('viewBox','0 0 24 24');arrow.setAttribute('aria-hidden','true');path.setAttribute('d','M12 19V5m-6 6 6-6 6 6');arrow.append(path);back.append(arrow);document.body.append(back);
  let frame=null;
  function updateBack(){frame=null;const editing=document.activeElement?.matches('input,textarea,select,[contenteditable=true]');back.hidden=!wrapper.getClientRects().length||wrapper.getBoundingClientRect().bottom>=-Math.max(500,innerHeight*.7)||Boolean(document.querySelector('dialog[open]'))||editing;}
  function scheduleBack(){if(frame===null)frame=requestAnimationFrame(updateBack);}

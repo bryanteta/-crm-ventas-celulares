@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-21T16:33:10.398Z",
+  "updatedAt": "2026-11-21T21:43:50.280Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -334,7 +334,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 11,
+      "quantity": 6,
       "available": true,
       "sourceInitials": [
         "T"
@@ -355,7 +355,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 3,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -376,7 +376,7 @@
       "box": null,
       "ram": "",
       "priceCents": 43000,
-      "quantity": 10,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "T"
@@ -565,7 +565,7 @@
       "box": null,
       "ram": "",
       "priceCents": 45500,
-      "quantity": 7,
+      "quantity": 4,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1042,48 +1042,6 @@
       ]
     },
     {
-      "id": "78d978bee3fc95ae2ea6",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro Max",
-      "capacity": "128 GB",
-      "color": "Dorado",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 59000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "a0194fa0784923d56cba",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro Max",
-      "capacity": "128 GB",
-      "color": "Celeste",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 59000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "e03c0e9e45c547b421c6",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro Max",
@@ -1147,48 +1105,6 @@
       ]
     },
     {
-      "id": "cdfab0b3bfdcc1212fed",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Celeste",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 45000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "cecc9d243ba2d03f8f07",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Blanco",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 45000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "754a5660f99e4103e0ab",
       "manufacturer": "Apple",
       "model": "iPhone 14",
@@ -1224,7 +1140,7 @@
       "box": null,
       "ram": "",
       "priceCents": 46000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1245,7 +1161,7 @@
       "box": null,
       "ram": "",
       "priceCents": 46000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1333,6 +1249,27 @@
       "available": true,
       "sourceInitials": [
         "J"
+      ]
+    },
+    {
+      "id": "ef009e7c652ea29faeb5",
+      "manufacturer": "Apple",
+      "model": "iPhone 14 Pro Max",
+      "capacity": "256 GB",
+      "color": "Morado",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 68000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
       ]
     },
     {
@@ -1540,27 +1477,6 @@
       "ram": "",
       "priceCents": 68000,
       "quantity": 2,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "d94d472a7973c4cef9e5",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Plus",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Open Box",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": false,
-      "ram": "",
-      "priceCents": 68000,
-      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1850,7 +1766,7 @@
       "box": null,
       "ram": "",
       "priceCents": 83000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1874,7 +1790,7 @@
       "box": null,
       "ram": "",
       "priceCents": 83000,
-      "quantity": 5,
+      "quantity": 4,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2072,20 +1988,20 @@
       ]
     },
     {
-      "id": "0fe5e1ac396140f4ccef",
+      "id": "53d55b445e703c370044",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
-      "capacity": "512 GB",
+      "capacity": "256 GB",
       "color": "Titanio natural",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
       "observations": [],
       "cycles": 0,
-      "sim": "Por confirmar",
+      "sim": "SIM física",
       "box": true,
       "ram": "",
-      "priceCents": 87000,
+      "priceCents": 86500,
       "quantity": 2,
       "available": true,
       "sourceInitials": [
@@ -2214,6 +2130,27 @@
       "box": null,
       "ram": "",
       "priceCents": 74000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ]
+    },
+    {
+      "id": "5fee5dfd1ad1347ca4ca",
+      "manufacturer": "Apple",
+      "model": "iPhone 16 Plus",
+      "capacity": "128 GB",
+      "color": "Rosado",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "89%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 77000,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -2428,6 +2365,48 @@
       "available": true,
       "sourceInitials": [
         "S"
+      ]
+    },
+    {
+      "id": "7afcb02f0477181ab35d",
+      "manufacturer": "Apple",
+      "model": "iPhone 16 Pro Max",
+      "capacity": "256 GB",
+      "color": "Titanio desierto",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "96%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 94500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
+    },
+    {
+      "id": "1a89a171bd5d1e2d2fb1",
+      "manufacturer": "Apple",
+      "model": "iPhone 16 Pro Max",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "99%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 95000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
       ]
     },
     {
@@ -2951,7 +2930,7 @@
       "box": null,
       "ram": "",
       "priceCents": 37000,
-      "quantity": 8,
+      "quantity": 7,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2979,27 +2958,6 @@
       ]
     },
     {
-      "id": "fcad0934f1702f80dec5",
-      "manufacturer": "Samsung",
-      "model": "Samsung S22 Ultra",
-      "capacity": "128 GB",
-      "color": "Verde",
-      "condition": "Seminuevo",
-      "grade": "B+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 43000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "68b317a74dc54477c439",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
@@ -3014,7 +2972,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 5,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3035,28 +2993,7 @@
       "box": null,
       "ram": "",
       "priceCents": 48000,
-      "quantity": 3,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "e5ec40880f420fb1f4dc",
-      "manufacturer": "Samsung",
-      "model": "Samsung S22 Ultra",
-      "capacity": "128 GB",
-      "color": "Blanco",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 48000,
-      "quantity": 1,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -3084,6 +3021,27 @@
       "available": true,
       "sourceInitials": [
         "T"
+      ]
+    },
+    {
+      "id": "5e5c83111fb74e60e7e2",
+      "manufacturer": "Samsung",
+      "model": "Samsung S23 Ultra",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 58500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
       ]
     },
     {
@@ -3122,10 +3080,31 @@
       "box": null,
       "ram": "",
       "priceCents": 75500,
-      "quantity": 13,
+      "quantity": 10,
       "available": true,
       "sourceInitials": [
         "T"
+      ]
+    },
+    {
+      "id": "d865dd4ec09e8ec46a7c",
+      "manufacturer": "Samsung",
+      "model": "Samsung S24 Ultra",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Open Box",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 81000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
       ]
     },
     {
@@ -3339,7 +3318,7 @@
       ]
     },
     {
-      "id": "60a091a320f94463af4e",
+      "id": "1ac61fdbf07c26efab4d",
       "manufacturer": "Samsung",
       "model": "Samsung S26 Plus",
       "capacity": "256 GB",
@@ -3352,7 +3331,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 83000,
+      "priceCents": 85000,
       "quantity": 1,
       "available": true,
       "sourceInitials": [

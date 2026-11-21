@@ -24,3 +24,5 @@ No se necesitan tokens GitHub dentro de la app. Las credenciales para publicar s
 La primera versión del actualizador debe instalarse manualmente; las versiones antiguas no lo pueden recibir por sí solas. La versión 1.7.1 añade campos de precios preparados a firestore.rules y requiere publicar ese archivo completo en Firebase. La publicación de un APK no despliega reglas ni cambia datos. Las verificaciones automáticas se complementan con una prueba física de instalación en Android, permisos del sistema y firma conservada.
 
 La versión 1.7.24 incorpora abono en efectivo/transferencia más saldo a tasa cero. Para editar estos importes en ventas sincronizadas hay que publicar el archivo `firestore.rules` actualizado. Consulta [Abono y saldo a tasa cero](mixed-payments.md).
+
+La versión 1.7.26 separa los pagos en la garantía y agrega `advanceBank`, banco propio para la transferencia del abono. Publicar las reglas actualizadas también habilita editar ese banco en ventas sincronizadas.

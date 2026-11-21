@@ -10,8 +10,8 @@ const {doc,setDoc,getDoc,runTransaction,serverTimestamp}=require('firebase/fires
  const receipt={version:1,number:'',deliveryDate:'2026-11-05',brand:'Apple',capacity:'128 GB',color:'Negro',condition:'Seminuevo',battery:'100%',physical:'Sin daños visibles',serials:[],phone:'',paymentMethod:'Tasa cero',bank:'Banco Cuscatlán',months:12,warrantyMonths:3,terms:['Uno','Dos','Tres'],gifts:[],paymentAdvance:10000,advanceMethod:'Efectivo'};
  const sale={id:'sale',client:'Cliente',model:'iPhone 14',date:'2026-11-05',quantity:1,price:45000,cost:35000,expenses:0,accessories:0,accessoryCost:0,revenue:45000,purchase:35000,profit:10000,commission:0,commissionEnabled:false,status:'Confirmada',stockId:'',offerId:'',paidAt:null,sellerId:'ana',sellerName:'Ana',createdAt:new Date().toISOString(),receipt};
  console.log('confirm');await execute(command('confirm','confirmSale',{sale}));
- console.log('edit');await execute(command('edit','editSale',{patch:{receipt:{...receipt,paymentAdvance:15000,advanceMethod:'Transferencia'}}},'confirm'));
- let row=(await getDoc(doc(db,'users',uid,'suiteSales',id))).data().record;a.equal(row.revenue,45000);a.equal(row.receipt.paymentAdvance,15000);a.equal(row.receipt.advanceMethod,'Transferencia');
+ console.log('edit');await execute(command('edit','editSale',{patch:{receipt:{...receipt,paymentAdvance:15000,advanceMethod:'Transferencia',advanceBank:'Banco Agrícola'}}},'confirm'));
+ let row=(await getDoc(doc(db,'users',uid,'suiteSales',id))).data().record;a.equal(row.revenue,45000);a.equal(row.receipt.paymentAdvance,15000);a.equal(row.receipt.advanceMethod,'Transferencia');a.equal(row.receipt.advanceBank,'Banco Agrícola');
  await assertFails(execute(command('tamper','editSale',{patch:{receipt:{...receipt,paymentAdvance:20000}}},'edit'),true));
  console.log('warranty');await execute(command('warranty','saveWarranty',{receipt:{...row.receipt,paymentAdvance:20000}},'edit'));
  row=(await getDoc(doc(db,'users',uid,'suiteSales',id))).data().record;a.equal(row.receipt.paymentAdvance,20000);a.equal(row.revenue,45000);

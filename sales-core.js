@@ -19,6 +19,7 @@
  function accessoryTotal(items){if(!Array.isArray(items)||items.length>30)throw Error('Revisa los accesorios de la venta.');const ids=new Set();let total=0;for(const item of items){if(!item||typeof item.id!=='string'||!item.id||ids.has(item.id)||typeof item.name!=='string'||!item.name.trim()||item.name.length>150||typeof item.catalogId!=='string'||!Number.isSafeInteger(item.price)||item.price<0)throw Error('Cada accesorio debe tener un nombre y precio válidos.');ids.add(item.id);total+=item.price;}if(!Number.isSafeInteger(total))throw Error('Importe demasiado grande.');return total;}
  function paymentParts(receipt,total){
   const advance=receipt.paymentAdvance??0;
+  if(receipt.advanceBank!==undefined&&(typeof receipt.advanceBank!=='string'||receipt.advanceBank.length>80))throw Error('Revisa el banco de la transferencia del abono.');
   if(!Number.isSafeInteger(total)||total<0||!Number.isSafeInteger(advance)||advance<0||advance>total)throw Error('El abono no puede superar el total de la venta.');
   if(advance>0&&(receipt.paymentMethod!=='Tasa cero'||advance===total||!['Efectivo','Transferencia'].includes(receipt.advanceMethod)))throw Error('Revisa el abono y su método; debe quedar un saldo para tasa cero.');
   return {advance,balance:total-advance};
@@ -59,7 +60,7 @@
   if(before.stockId&&(r.model!==before.model||r.cost!==before.cost))throw Error('El modelo y costo del equipo propio se conservan. Para cambiar de equipo, anula la venta y registra otra.');
   if(r.accessoryItems!==undefined)r.accessories=accessoryTotal(r.accessoryItems);
   Object.assign(r,totals(r));
-  const receipt=JSON.parse(JSON.stringify(before.receipt||patch.receipt||{}));for(const key of ['phone','paymentMethod','bank','months','channel','paymentAdvance','advanceMethod'])if(patch.receipt&&Object.hasOwn(patch.receipt,key))receipt[key]=patch.receipt[key];
+  const receipt=JSON.parse(JSON.stringify(before.receipt||patch.receipt||{}));for(const key of ['phone','paymentMethod','bank','months','channel','paymentAdvance','advanceMethod','advanceBank'])if(patch.receipt&&Object.hasOwn(patch.receipt,key))receipt[key]=patch.receipt[key];
   receipt.number=r.saleNumber||receipt.number||'';receipt.deliveryDate=r.date;
   if(receipt.phone&&!/^[+\d\s().-]{7,30}$/.test(receipt.phone))throw Error('Revisa el número de contacto.');
   if(!['Efectivo','Transferencia','Tasa cero','Tarjeta','Otro'].includes(receipt.paymentMethod))throw Error('Selecciona el método de pago.');

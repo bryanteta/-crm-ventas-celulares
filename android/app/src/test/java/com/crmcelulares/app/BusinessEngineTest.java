@@ -29,9 +29,9 @@ public class BusinessEngineTest {
     @Test public void mixedPaymentSurvivesWarrantyAndEditingWithoutIncreasingRevenue()throws Exception{
         Memory db=new Memory();JSONObject mixed=sale("sale","");mixed.getJSONObject("receipt").put("paymentMethod","Tasa cero").put("bank","Banco Cuscatlán").put("months",12).put("paymentAdvance",10000).put("advanceMethod","Efectivo");
         db.run(command("sell","confirmSale","sale",new JSONObject().put("sale",mixed)));
-        JSONObject contact=receipt(false).put("paymentMethod","Tasa cero").put("bank","Banco Cuscatlán").put("months",12).put("paymentAdvance",15000).put("advanceMethod","Transferencia");
+        JSONObject contact=receipt(false).put("paymentMethod","Tasa cero").put("bank","Banco Cuscatlán").put("months",12).put("paymentAdvance",15000).put("advanceMethod","Transferencia").put("advanceBank","Banco Agrícola");
         db.run(command("edit","editSale","sale",new JSONObject().put("patch",new JSONObject().put("receipt",contact))).put("expectedRevision","sell"));
-        JSONObject saved=db.rows.get(BusinessEngine.path(UID,"sales","sale")).getJSONObject("record");assertEquals(45000,saved.getLong("revenue"));assertEquals(15000,saved.getJSONObject("receipt").getLong("paymentAdvance"));assertEquals("Transferencia",saved.getJSONObject("receipt").getString("advanceMethod"));
+        JSONObject saved=db.rows.get(BusinessEngine.path(UID,"sales","sale")).getJSONObject("record");assertEquals(45000,saved.getLong("revenue"));assertEquals(15000,saved.getJSONObject("receipt").getLong("paymentAdvance"));assertEquals("Transferencia",saved.getJSONObject("receipt").getString("advanceMethod"));assertEquals("Banco Agrícola",saved.getJSONObject("receipt").getString("advanceBank"));
         contact.put("paymentAdvance",45001);assertThrows(BusinessEngine.Problem.class,()->db.run(command("bad","editSale","sale",new JSONObject().put("patch",new JSONObject().put("receipt",contact))).put("expectedRevision","edit")));
     }
     @Test public void customWarrantyGiftsKeepFinancialAmountsAndRejectAnEleventhItemAtomically()throws Exception{

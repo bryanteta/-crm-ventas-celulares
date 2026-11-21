@@ -30,6 +30,13 @@ public class ReceiptPdfDocumentTest {
     private JSONObject sample() throws Exception {
         try(InputStream input=getClass().getResourceAsStream("/receipt-vector.json")){assertNotNull(input);return new JSONObject(new String(input.readAllBytes(),StandardCharsets.UTF_8));}
     }
+    @Test public void splitPaymentRowsHaveSeparateBanksAndAreOptionalForOlderDocuments()throws Exception{
+        JSONObject d=sample();ReceiptPdfDocument.validate(d);
+        JSONObject transfer=new JSONObject().put("method","Transferencia").put("amount","$250.00").put("bank","Banco Agrícola").put("terms","—");
+        JSONObject financed=new JSONObject().put("method","Tasa cero").put("amount","$490.00").put("bank","Banco Cuscatlán").put("terms","12 cuotas");
+        org.json.JSONArray payments=new org.json.JSONArray().put(transfer).put(financed);d.put("paymentLines",payments);ReceiptPdfDocument.validate(d);
+        payments.put(transfer);assertThrows(JSONException.class,()->ReceiptPdfDocument.validate(d));
+    }
     @Test public void thirtyChargedAccessoriesAndTenGiftsFitTheDocumentContract() throws Exception {
         JSONObject d=sample();org.json.JSONArray items=new org.json.JSONArray();
         JSONObject template=d.getJSONArray("items").getJSONObject(0);

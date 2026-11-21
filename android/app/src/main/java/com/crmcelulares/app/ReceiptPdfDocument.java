@@ -49,6 +49,7 @@ final class ReceiptPdfDocument {
         }
         text(d,"phone",40,false);text(d,"customerNotes",2000,false);d.getBoolean("cancelled");
         if(d.has("paymentSummary"))text(d,"paymentSummary",500,true);
+        if(d.has("paymentLines")){JSONArray payments=d.getJSONArray("paymentLines");if(payments.length()!=0&&payments.length()!=2)throw new JSONException("Invalid payment lines");for(int i=0;i<payments.length();i++)for(String key:new String[]{"method","amount","bank","terms"})text(payments.getJSONObject(i),key,500,true);}
         JSONArray fields=d.getJSONArray("device");if(fields.length()!=8)throw new JSONException("Invalid device");
         for(int i=0;i<fields.length();i++){JSONArray cell=fields.getJSONArray(i);if(cell.length()!=2||!(cell.get(0) instanceof String)||!(cell.get(1) instanceof String)||cell.getString(0).length()>100||cell.getString(1).length()>110000)throw new JSONException("Invalid field");}
         JSONArray items=d.getJSONArray("items");if(items.length()<1||items.length()>41)throw new JSONException("Invalid items");
@@ -141,7 +142,9 @@ final class ReceiptPdfDocument {
         section("02  RESUMEN DE COMPRA · IMPORTES COBRADOS");float[] columns={.39f,.10f,.18f,.33f};
         row(new String[]{"Concepto","Cant.","Valor","Aplicación"},columns,NAVY,true,Color.WHITE,2);
         JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if("Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
-        row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
+        JSONArray payments=d.optJSONArray("paymentLines");boolean split=payments!=null&&payments.length()==2;
+        row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),split?d.optString("paymentSummary","Pago dividido"):d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
+        if(split){section("DETALLE DEL PAGO");float[] paymentColumns={.24f,.18f,.40f,.18f};row(new String[]{"Forma de pago","Monto","Banco","Cuotas"},paymentColumns,NAVY,true,Color.WHITE,1);for(int i=0;i<payments.length();i++){JSONObject line=payments.getJSONObject(i);row(new String[]{line.getString("method"),line.getString("amount"),line.getString("bank"),line.getString("terms")},paymentColumns,LIGHT,false,NAVY,1);}}
         boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
         if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Entrega"},columns,NAVY,true,Color.WHITE,2);
             for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Cortesía"},columns,LIGHT,false,NAVY,2);}

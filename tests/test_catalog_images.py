@@ -6,6 +6,14 @@ d = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(d)
 
 class ExactImageTests(unittest.TestCase):
+    def test_lettered_iphone_and_model_specific_coral(self):
+        css = '.image-compare-iphone-xr-coral{background-image:url("/xr-coral_large_2x.jpg")} .image-compare-iphone-xr-black{background-image:url("/xr-black_large_2x.jpg")}'
+        candidates = d.apple_candidates(css, 'https://www.apple.com/style.css')
+        result = d.resolve({'model':'iPhone XR','color':'Anaranjado'}, candidates, {}, {})
+        self.assertEqual(result['officialColor'], 'coral')
+        self.assertIsNotNone(d.resolve({'model':'iPhone XR','color':'Negro'}, candidates, {}, {}))
+        self.assertIsNone(d.resolve({'model':'iPhone 17 Pro','color':'Anaranjado'}, candidates, {}, {}))
+
     def test_apple_exact_selector_and_original_url(self):
         css = '.image-compare-iphone-13-pink{background-image:url(/v/iphone/compare/an/images/pink_large_2x.jpg)}.image-compare-iphone-13-pro-black{background-image:url(/pro_large_2x.jpg)}'
         candidates = d.apple_candidates(css, 'https://www.apple.com/style.css')

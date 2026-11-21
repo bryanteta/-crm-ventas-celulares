@@ -171,3 +171,9 @@ Samsung «Light Blue» se traduce a «Celeste» durante el descubrimiento autom�
 En anchos de escritorio (desde 701 px), la columna de fotos, miniaturas y colores permanece fija debajo del encabezado del detalle mientras se desplaza la información y el financiamiento. Su altura se adapta al espacio de la ventana; el encabezado se mide al abrir o cambiar de tamaño, no en cada desplazamiento. En móvil continúa el diseño de una sola columna y la galería se desplaza normalmente. Cambiar perspectiva no altera banco, cuotas ni precio seleccionados.
 
 Validación: `node scripts/test-catalog-sticky-gallery.cjs`, con tres tamaños de escritorio y móvil, desplazamiento real hasta las cuotas, perspectiva siguiente, selección de 36 cuotas y ausencia de desbordamiento horizontal.
+
+### iPhone XR y generaciones con letras
+
+El catálogo y la barra de versiones colocan X, XS y XR antes de iPhone 11, en lugar de enviarlos al final por orden alfabético. El XR mantiene sus cuatro colores y existencias del proveedor. La búsqueda y los precios siguen usando las mismas variantes.
+
+El descubridor reconoce los selectores oficiales de Apple para modelos con letras. En XR, «Anaranjado» corresponde al acabado oficial Coral, sin aplicar esa equivalencia a otros modelos. Las fotos de tarjeta proceden de Apple; las dos perspectivas individuales del modal proceden de las fichas verificadas de Refurbed del mismo modelo y color. `scripts/test-catalog-xr.cjs` comprueba orden, navegación sin búsqueda, cuatro fotos, carrusel y ampliación en móvil y escritorio.

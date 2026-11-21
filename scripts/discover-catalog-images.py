@@ -27,14 +27,14 @@ def apple_candidates(css, base):
         url = re.search(r'background-image\s*:\s*url\([\'\"]?([^\)\'\"]+)', body)
         if not url or '_large_2x.' not in url[1]:
             continue
-        for model, finish in re.findall(r'\.image-compare-iphone-(\d+(?:-pro-max|-pro|-plus|-mini|-air)?)-([a-z]+)(?=[\s,:.{]|$)', selector):
-            name = 'iPhone ' + model.replace('-', ' ').title()
+        for model, finish in re.findall(r'\.image-compare-iphone-((?:\d+|xr|xs|x|se)(?:-pro-max|-pro|-plus|-mini|-air)?)-([a-z]+)(?=[\s,:.{]|$)', selector):
+            name = 'iPhone ' + (model.upper() if model in ('xr', 'xs', 'x', 'se') else model.replace('-', ' ').title())
             result[name, finish] = {'sourceImage': urllib.parse.urljoin(base, url[1]), 'sourcePage': 'https://www.apple.com/iphone/compare/', 'credit': 'Apple', 'officialColor': finish}
     return result
 
 APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight', 'graphite', 'spaceblack', 'blacktitanium'), 'Morado': ('purple',), 'Lila': ('purple',), 'Rosado': ('pink',), 'Rojo': ('red',), 'Verde': ('green',), 'Azul': ('blue', 'deepblue'), 'Celeste': ('blue', 'skyblue'), 'Amarillo': ('yellow',), 'Plata': ('silver',), 'Dorado': ('gold',), 'Anaranjado': ('cosmicorange', 'orange'), 'Titanio natural': ('naturaltitanium',), 'Titanio desierto': ('deserttitanium',)}
 # Apple names the blue finish on this family Ultramarine; keep the match model-specific.
-APPLE_MODEL_COLORS = {('iPhone 13 Pro', 'Celeste'): ('sierrablue',), ('iPhone 13 Pro Max', 'Celeste'): ('sierrablue',), ('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
+APPLE_MODEL_COLORS = {('iPhone XR', 'Anaranjado'): ('coral',),('iPhone 13 Pro', 'Celeste'): ('sierrablue',), ('iPhone 13 Pro Max', 'Celeste'): ('sierrablue',), ('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
 
 SAMSUNG_COLORS = {'black': 'Negro', 'phantom black': 'Negro', 'titanium black': 'Negro', 'white': 'Blanco', 'phantom white': 'Blanco', 'titanium white silver': 'Blanco', 'gray': 'Gris', 'grey': 'Gris', 'titanium gray': 'Gris', 'titanium grey': 'Gris', 'silver': 'Plata', 'phantom silver': 'Plata', 'blue': 'Azul', 'navy': 'Azul', 'sky blue': 'Celeste', 'light blue': 'Celeste', 'icyblue': 'Celeste', 'pink': 'Rosado', 'green': 'Verde', 'mint': 'Verde', 'yellow': 'Amarillo', 'cream': 'Crema', 'lavender': 'Lila'}
 

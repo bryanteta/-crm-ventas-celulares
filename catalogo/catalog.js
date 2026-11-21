@@ -60,6 +60,12 @@
     return images[device.model+'|Negro']||Object.values(images).find(art=>art.model===device.model);
   }
   const collator=new Intl.Collator('es',{numeric:true,sensitivity:'base'});
+  // Lettered iPhones belong to their generation, before the numbered 11 family.
+  function compareModels(a,b){
+    const generation=model=>{const m=model.match(/^iPhone (\d+|XR|XS|X|SE)\b/i);return m?({X:10,XS:10.1,XR:10.2,SE:9}[m[1].toUpperCase()]??Number(m[1])):null;};
+    const left=generation(a),right=generation(b);
+    return left!==null&&right!==null?(left-right||collator.compare(a,b)):collator.compare(a,b);
+  }
   const batteryText=p=>p.manufacturer==='Samsung'?'en excelentes condiciones':(p.battery||'en excelente estado');
   const option=(value,label)=>{const item=document.createElement('option');item.value=value;item.textContent=label;return item;};
   function valid(data) {
@@ -153,7 +159,7 @@
   function versionLabel(model,family){const name=versionName(model);return family.title.startsWith('Galaxy Z ')?name.replace(/^Galaxy /,''):(name.slice(family.title.length).trim()||'Estándar');}
   function renderVersions(){
     const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all';if(bar.hidden)return;
-    const models=[...new Set(groups.filter(g=>g.manufacturer===brand).map(g=>g.model))].sort(collator.compare);
+    const models=[...new Set(groups.filter(g=>g.manufacturer===brand).map(g=>g.model))].sort(compareModels);
     const removed=selectedVersion!=='all'&&!models.includes(selectedVersion);if(removed)selectedVersion='all';
     const label=brand==='Apple'?'iPhone':'Samsung',signature=JSON.stringify([brand,models]);
     bar.setAttribute('aria-label','Versiones de '+label);
@@ -209,7 +215,7 @@
     const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
     const lowest=g=>Math.min(...g.variants.map(v=>v.priceCents));
     const direction=nodes.sort.value==='model-desc'?-1:1;
-    matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||collator.compare(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||collator.compare(a.model,b.model):direction*collator.compare(a.model,b.model));
+    matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||compareModels(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||compareModels(a.model,b.model):direction*compareModels(a.model,b.model));
     const fragment=document.createDocumentFragment();
     const stale=Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000;
     if(['model','model-desc'].includes(nodes.sort.value)){
@@ -219,7 +225,7 @@
         if(!series.has(family.key))series.set(family.key,{...family,groups:[]});
         series.get(family.key).groups.push(group);
       }
-      const ordered=[...series.values()].sort((a,b)=>(a.manufacturer==='Apple'?0:1)-(b.manufacturer==='Apple'?0:1)||direction*collator.compare(a.title,b.title));
+      const ordered=[...series.values()].sort((a,b)=>(a.manufacturer==='Apple'?0:1)-(b.manufacturer==='Apple'?0:1)||direction*compareModels(a.title,b.title));
       for(const family of ordered)fragment.append(seriesSection(family,stale));
     }else for(const group of matches)fragment.append(createCard(group,stale));
     nodes.products.replaceChildren(fragment);

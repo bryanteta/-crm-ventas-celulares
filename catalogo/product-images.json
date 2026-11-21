@@ -11341,6 +11341,166 @@
       "galleryRejectedSources": [
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-black.png"
       ]
+    },
+    "iPhone XR|Anaranjado": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphoneXR_coral__ckmesqgoxryq_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "coral",
+      "model": "iPhone XR",
+      "color": "Anaranjado",
+      "path": "assets/products/iphone-xr-anaranjado.jpg",
+      "sha256": "8fc65b14b761def75565df69681c6fc355c53411a7f9158bc03773e9c17503f6",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-koralle-1562582289.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2695b/?offer=12970609",
+          "credit": "Refurbed",
+          "label": "Vista frontal lateral",
+          "model": "iPhone XR",
+          "color": "Anaranjado",
+          "path": "assets/products/iphone-xr-anaranjado-view-1176aed26f.jpg",
+          "sha256": "5708fc53dd9ddcdf8fe71f8fdcabc529d51985ee3c781ac43425d5a6ed99ab63",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        },
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-koralle-1562582292.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2695b/?offer=12970609",
+          "credit": "Refurbed",
+          "label": "Vista posterior lateral",
+          "model": "iPhone XR",
+          "color": "Anaranjado",
+          "path": "assets/products/iphone-xr-anaranjado-view-c16219a915.jpg",
+          "sha256": "9959731717a038e34e1a9d21b6d752bddf24a86202e1a703694d1cd432a8baab",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        }
+      ]
+    },
+    "iPhone XR|Blanco": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphoneXR_white__gi0q02dhesey_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "white",
+      "model": "iPhone XR",
+      "color": "Blanco",
+      "path": "assets/products/iphone-xr-blanco.jpg",
+      "sha256": "288cf5ec938d80a0b98bf717518af5524241cadf62b7d7d2aa1640750dc9c328",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-weiss-1562582441.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2686aa/?offer=20050534",
+          "credit": "Refurbed",
+          "label": "Vista frontal lateral",
+          "model": "iPhone XR",
+          "color": "Blanco",
+          "path": "assets/products/iphone-xr-blanco-view-9c7303ddb3.jpg",
+          "sha256": "dfdd47cd550e2396017baac9488a7d37687493cebcfc26678ef3e6f760b10b02",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        },
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-weiss-1562582444.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2686aa/?offer=20050534",
+          "credit": "Refurbed",
+          "label": "Vista posterior lateral",
+          "model": "iPhone XR",
+          "color": "Blanco",
+          "path": "assets/products/iphone-xr-blanco-view-8e361dc1f5.jpg",
+          "sha256": "5fe2bc5cd2a50a9c1c3b57f614c5382f502c23f1a9964dbaaf16b241085af499",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        }
+      ]
+    },
+    "iPhone XR|Negro": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphoneXR_black__5fvlyykx3bm6_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "black",
+      "model": "iPhone XR",
+      "color": "Negro",
+      "path": "assets/products/iphone-xr-negro.jpg",
+      "sha256": "756000a3b3203617e09c86c00e4fbd2fd7417a88734ab64f44e47b2d6a2faf7d",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-schwarz-1562582390.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2680aa/?offer=21803789",
+          "credit": "Refurbed",
+          "label": "Vista frontal lateral",
+          "model": "iPhone XR",
+          "color": "Negro",
+          "path": "assets/products/iphone-xr-negro-view-159ff600c6.jpg",
+          "sha256": "d8f1f15b823dd403af6af785295423dbdde75cc3b0e318c9c369beb882abaa24",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        },
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-schwarz-1562582392.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2680aa/?offer=21803789",
+          "credit": "Refurbed",
+          "label": "Vista posterior lateral",
+          "model": "iPhone XR",
+          "color": "Negro",
+          "path": "assets/products/iphone-xr-negro-view-7df66c5c8e.jpg",
+          "sha256": "42b1718193191511c187dddb2d451933e67b207d3f1eea1cd03910328eb71951",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        }
+      ]
+    },
+    "iPhone XR|Rojo": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphoneXR_red__bm4kf4exy4mu_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "red",
+      "model": "iPhone XR",
+      "color": "Rojo",
+      "path": "assets/products/iphone-xr-rojo.jpg",
+      "sha256": "a4281b129fab3481f43925c79169591a15b3a61423c71b2075ce9911cf0454b6",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-rot-1562582338.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2689aa/?offer=20050538",
+          "credit": "Refurbed",
+          "label": "Vista frontal lateral",
+          "model": "iPhone XR",
+          "color": "Rojo",
+          "path": "assets/products/iphone-xr-rojo-view-778fb9323a.jpg",
+          "sha256": "90ca35eadb9ec9382e66a909d99417d4da77c1aefa904271db60ac17a292fb37",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        },
+        {
+          "sourceImage": "https://files.refurbed.com/ii/64-gb-rot-1562582340.jpg?t=resize&w=1200&h=1200",
+          "sourcePage": "https://www.refurbed.ie/p/iphone-xr/2689aa/?offer=20050538",
+          "credit": "Refurbed",
+          "label": "Vista posterior lateral",
+          "model": "iPhone XR",
+          "color": "Rojo",
+          "path": "assets/products/iphone-xr-rojo-view-57e80f4b68.jpg",
+          "sha256": "8f089345b177cb8c598b8bb7a5130987cbf2385a10c7bcc56c8778e69fe12214",
+          "width": 235,
+          "height": 653,
+          "singleDevice": true
+        }
+      ]
     }
   },
   "unavailable": {

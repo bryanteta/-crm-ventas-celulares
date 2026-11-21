@@ -165,3 +165,9 @@ El acabado Sierra Blue de iPhone 13 Pro y Pro Max reconoce «Celeste» además d
 Si el proveedor no indica color («Color por confirmar»), las tarjetas muestran una foto ilustrativa del modelo exacto y mantienen visible que el color está por confirmar. En el carrusel se identifica como «Color ilustrativo». No se modifica el color ni el stock del inventario. Un color conocido sin referencia verificada permanece pendiente; no recibe la foto de otro acabado.
 
 Samsung «Light Blue» se traduce a «Celeste» durante el descubrimiento automático. El A17 utiliza fotos oficiales del SKU SM-A175FLBBEUB, con sus perspectivas del mismo acabado; no se sustituye por la versión azul oscura.
+
+## Galería visible al elegir cuotas en computadora
+
+En anchos de escritorio (desde 701 px), la columna de fotos, miniaturas y colores permanece fija debajo del encabezado del detalle mientras se desplaza la información y el financiamiento. Su altura se adapta al espacio de la ventana; el encabezado se mide al abrir o cambiar de tamaño, no en cada desplazamiento. En móvil continúa el diseño de una sola columna y la galería se desplaza normalmente. Cambiar perspectiva no altera banco, cuotas ni precio seleccionados.
+
+Validación: `node scripts/test-catalog-sticky-gallery.cjs`, con tres tamaños de escritorio y móvil, desplazamiento real hasta las cuotas, perspectiva siguiente, selección de 36 cuotas y ausencia de desbordamiento horizontal.

@@ -3,6 +3,11 @@
   const $ = selector => document.querySelector(selector);
   const money = value => new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(value/100);
   const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
+  // Keep the desktop gallery below the heading even when a long model name wraps.
+  const detailHeading=nodes.dialog.querySelector('.dialog-heading');
+  const sizeDetailHeading=()=>{const height=detailHeading.getBoundingClientRect().height;if(height>0&&nodes.dialog.style.getPropertyValue('--detail-heading-height')!==height+'px')nodes.dialog.style.setProperty('--detail-heading-height',height+'px');};
+  if('ResizeObserver' in window)new ResizeObserver(sizeDetailHeading).observe(detailHeading);
+  else window.addEventListener('resize',sizeDetailHeading);
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
   let selectedVersion='all',versionSignature='';
   let images={};
@@ -400,6 +405,7 @@
     $('#detail-colors').replaceChildren(colorButtons(sorted,nodes.variant.value,(v)=>{nodes.variant.value=v.id;selectedColors.set(group.key,v.id);showVariant();const card=nodes.products.querySelector('[data-variant-id="'+v.id+'"]')?.closest('.card');if(card)card.replaceWith(createCard(group,Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000));}));
     showVariant();
     nodes.dialog.showModal();
+    sizeDetailHeading();
     nodes.dialog.scrollTop=0;
   }
   async function load(background=false){

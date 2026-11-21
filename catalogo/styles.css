@@ -146,3 +146,10 @@
 .share-device .ui-icon{width:19px;height:19px;flex-basis:19px}
 @media(max-width:720px){.share-device{font-size:13px;gap:6px}}
 .share-status{position:fixed;left:50%;bottom:calc(82px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;max-width:calc(100% - 32px);width:max-content;margin:0;padding:12px 18px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:var(--ink);box-shadow:0 4px 20px #14213b26;font-size:13px;text-align:center}
+
+/* On desktop the product stays beside the financing controls while the dialog scrolls. */
+@media(min-width:701px){
+ #details .detail-layout{align-items:start}
+ #details .detail-media{position:sticky;top:calc(var(--detail-heading-height,100px) + 24px);align-self:start;max-height:calc(92dvh - var(--detail-heading-height,100px) - 48px);overflow-y:auto;scrollbar-width:thin}
+ #details .gallery-open{height:clamp(96px,calc(92dvh - var(--detail-heading-height,100px) - 230px),294px)}
+}

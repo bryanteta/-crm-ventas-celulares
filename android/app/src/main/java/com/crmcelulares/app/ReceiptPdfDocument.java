@@ -135,13 +135,13 @@ final class ReceiptPdfDocument {
         StaticLayout sub=layout("Teléfonos de gama alta",CONTENT-150,paint(9,false,MUTED),Layout.Alignment.ALIGN_OPPOSITE);draw(sub,MARGIN+150,headerY+heading.getHeight()+12);
         y=headerY+85;rule(y,BLUE);y+=10;
         paragraph("Documento emitido por LUNIVO como comprobante de compra, entrega y respaldo de garantía. No requiere firma del cliente; registra la información comercial y técnica del equipo entregado.",8.5f,false,MUTED);
-        fields(new String[]{"Fecha de venta","Cliente","Método de pago"},new String[]{d.getString("deliveryDate"),d.getString("client")+(d.getString("phone").isEmpty()?"":"\n"+d.getString("phone")),d.getString("payment")},new float[]{.23f,.37f,.40f});
+        fields(new String[]{"Fecha de venta","Cliente","Método de pago"},new String[]{d.getString("deliveryDate"),d.getString("client")+(d.getString("phone").isEmpty()?"":"\n"+d.getString("phone")),d.optString("paymentSummary",d.getString("payment"))},new float[]{.23f,.37f,.40f});
         section("01  DATOS DEL DISPOSITIVO ENTREGADO");JSONArray device=d.getJSONArray("device");
         for(int i=0;i<device.length();i+=2)fields(new String[]{device.getJSONArray(i).getString(0),device.getJSONArray(i+1).getString(0)},new String[]{device.getJSONArray(i).getString(1),device.getJSONArray(i+1).getString(1)},new float[]{.5f,.5f});
         section("02  RESUMEN DE COMPRA · IMPORTES COBRADOS");float[] columns={.39f,.10f,.18f,.33f};
         row(new String[]{"Concepto","Cant.","Valor","Aplicación"},columns,NAVY,true,Color.WHITE,2);
         JSONArray items=d.getJSONArray("items");for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if("Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.getString("amount"),item.getString("application")},columns,i%2==0?Color.WHITE:LIGHT,false,NAVY,2);}
-        row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.optString("paymentSummary",d.getString("payment"))},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
+        row(new String[]{"TOTAL PAGADO POR EL CLIENTE",d.getString("total"),d.getString("payment")},new float[]{.49f,.18f,.33f},Color.rgb(232,240,251),true,NAVY,1);
         boolean hasGifts=false;for(int i=0;i<items.length();i++)if("Cortesía LUNIVO".equals(items.getJSONObject(i).getString("application")))hasGifts=true;
         if(hasGifts){section("ACCESORIOS DE CORTESÍA · SIN COSTO");row(new String[]{"Accesorio","Cant.","Valor referencial","Entrega"},columns,NAVY,true,Color.WHITE,2);
             for(int i=0;i<items.length();i++){JSONObject item=items.getJSONObject(i);if(!"Cortesía LUNIVO".equals(item.getString("application")))continue;row(new String[]{item.getString("concept"),item.getString("quantity"),item.optString("reference","$0.00"),"Cortesía"},columns,LIGHT,false,NAVY,2);}

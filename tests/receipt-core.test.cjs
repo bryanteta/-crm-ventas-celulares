@@ -40,7 +40,7 @@ test('charged lines and courtesy references are separate in both PDF representat
 });
 test('mixed cash/transfer advances are itemized without changing sale totals',()=>{
  const s=sale();s.receipt.paymentAdvance=20000;s.receipt.advanceMethod='Transferencia';const before=JSON.stringify(s),doc=r.documentData(s),html=r.html(s);
- a.equal(doc.total,'$740.00');a.match(doc.payment,/Abono recibido: \$200\.00 \(Transferencia\)/);a.match(doc.payment,/Saldo a tasa cero: \$540\.00/);a.match(doc.payment,/12 cuotas/);a(html.includes('Saldo a tasa cero: $540.00'));a.equal(JSON.stringify(s),before);
+ a.equal(doc.total,'$740.00');a.match(doc.payment,/\$200\.00 por transferencia/);a.match(doc.payment,/\$540\.00 a tasa cero/);a.match(doc.payment,/12 cuotas/);a.equal(doc.paymentSummary,'Pago dividido');a(html.includes('$540.00 a tasa cero'));a(!html.includes('Abono recibido:'));a(!html.includes('(Transferencia)'));const heading=html.split('DATOS DEL DISPOSITIVO ENTREGADO')[0];a(heading.includes('Pago dividido'));a(!heading.includes('$200.00'));s.receipt.advanceMethod='Efectivo';a.match(r.documentData(s).payment,/\$200\.00 en efectivo/);s.receipt.advanceMethod='Transferencia';a.equal(JSON.stringify(s),before);
  for(const amount of [-1,74000,74001,1.5]){s.receipt.paymentAdvance=amount;a.throws(()=>r.documentData(s));}
  s.receipt.paymentAdvance=20000;s.receipt.paymentMethod='Efectivo';a.throws(()=>r.documentData(s));s.receipt.paymentMethod='Tasa cero';s.receipt.advanceMethod='Otro';a.throws(()=>r.documentData(s));
 });

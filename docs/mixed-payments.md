@@ -6,7 +6,7 @@ El saldo se calcula sobre el total de la venta, incluidos accesorios cobrados y 
 
 El desglose se conserva al guardar borradores, confirmar, recargar y editar. Aparece en el detalle de venta y en la garantía: abono recibido, método del abono, saldo a tasa cero, banco y cuotas. Se conserva la garantía de una página A4, las cortesías con su valor y las condiciones justificadas.
 
-Los campos opcionales del recibo son `paymentAdvance` (centavos enteros) y `advanceMethod` (Efectivo o Transferencia). Los recibos anteriores, sin estos campos, mantienen su comportamiento. El documento PDF admite un `paymentSummary` opcional para evitar repetir el desglose en el total.
+Los campos opcionales del recibo son `paymentAdvance` (centavos enteros) y `advanceMethod` (Efectivo o Transferencia). Los recibos anteriores, sin estos campos, mantienen su comportamiento. Desde 1.7.25, el campo de cabecera muestra únicamente «Pago dividido». Junto al total se detallan «$250.00 en efectivo» o «$250.00 por transferencia», el saldo a tasa cero, banco y cuotas, sin «Abono recibido» ni paréntesis. El documento PDF admite un `paymentSummary` opcional para la etiqueta de cabecera.
 
 ## Activar la sincronización
 

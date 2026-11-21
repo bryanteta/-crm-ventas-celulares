@@ -40,7 +40,7 @@ function render(data,requested,requestedProvider='',jumpModel,keyboard=false){ro
   body.append(el('p','Precio: '+money(cost)+' · Venta: '+money(core.suggestedPrice(cost)),'hint'));if(item.prepared)body.append(el('p','Referencia de '+item.preset.supplier+'. Confirma disponibilidad antes de vender.','hint'));if(item.salePrice!==undefined)body.append(el('p','Mi precio guardado: '+money(item.salePrice),'hint'));const actions=el('div',undefined,'inventory-item-actions');const sell=button('Vender',()=>api.sell(item));sell.className='';sell.disabled=!item.prepared&&item.quantity===0;actions.append(sell);const more=el('details',undefined,'action-options'),moreBody=el('div',undefined,'action-options-body');more.append(el('summary','Más opciones'),moreBody);if(!item.prepared)moreBody.append(button('+ Unidades',()=>api.restock(item.id),'Agregar unidades'));moreBody.append(button(item.prepared?'Cambiar precio':'Organizar',()=>organize(item)));actions.append(more);body.append(actions);row.append(body);accordion(row,list);list.append(row);
  }
  window.LunivoList.more(list,rows.length,()=>render(api.read(),owner,provider));
- versionMenu.update(family,owned.filter(i=>i.prepared||$('#inventory-exhausted').checked||i.quantity>0),provider+'|'+owner,(key,keys)=>render(api.read(),owner,provider,key,keys));
+ versionMenu.update(family,owned.filter(i=>i.prepared||$('#inventory-exhausted').checked||i.quantity>0),provider+'|'+owner,(key,keys)=>{if(!versionMenu.scroll(list,key,keys))render(api.read(),owner,provider,key,keys);});
  if(jumpModel!==undefined)versionMenu.scroll(list,jumpModel,keyboard);
  providerCards(data);
 }

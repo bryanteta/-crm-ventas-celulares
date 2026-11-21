@@ -46,7 +46,7 @@ function render(data,jumpModel,keyboard=false){
  const base=all.filter(o=>(!provider||o.provider===provider)&&(!owner||o.ownerId===owner));
  const variant=$('#offer-variant'),oldVariant=variant.value,variants=new Map();for(const row of base)variants.set(core.variant(row),details(row));
  window.LunivoList.options(variant,'Todas las variantes',[...variants]);variant.value=oldVariant;if(variant.selectedIndex<0)variant.value='';
- const filterCount=Number(Boolean(model.value))+Number(Boolean(variant.value))+Number($('#provider-available').checked)+Number($('#offer-sort').value!=='model');$('#provider-more-filters>summary').textContent='Más opciones'+(filterCount?' · '+filterCount+' filtro(s)':'');
+ const filterCount=Number(Boolean(model.value))+Number(Boolean(variant.value))+Number($('#provider-available').checked)+Number($('#offer-sort').value!=='model');$('#provider-more-filters>summary').textContent='Filtros'+(filterCount?' · '+filterCount:'');
  const query=normalize($('#offer-search').value).split(' ').filter(Boolean);
  for(const b of document.querySelectorAll('[data-provider-family]'))b.setAttribute('aria-pressed',String(b.dataset.providerFamily===family));
  const filtered=base.filter(o=>(!family||core.phoneFamily(o)===family)&&(!model.value||modelKey(o)===model.value)&&(!variant.value||core.variant(o)===variant.value)&&(!$('#provider-available').checked||o.quantity>0)&&query.every(term=>normalize(details(o)+' '+o.supplier+' '+core.ownerName(o.ownerId)).includes(term)));
@@ -72,7 +72,7 @@ function render(data,jumpModel,keyboard=false){
  window.LunivoList.more(list,filtered.length,()=>render(api.read()));
  $('#catalog-load').hidden=Boolean(data.providerFeeds?.samuel);$('#catalog-source').hidden=Boolean(data.providerFeeds?.samuel||data.providerFeeds?.split);
  $('#catalog-source').textContent='Samuel: API de TecnoShop · Split: Saúl y Javier. Precios y disponibilidad del proveedor en la última consulta. Confirma las existencias antes de vender.';
- versionMenu.update(family,base.filter(o=>!$('#provider-available').checked||o.quantity>0),provider+'|'+owner,(key,keys)=>render(api.read(),key,keys));
+ versionMenu.update(family,base.filter(o=>!$('#provider-available').checked||o.quantity>0),provider+'|'+owner,(key,keys)=>{if(!versionMenu.scroll(list,key,keys))render(api.read(),key,keys);});
  if(jumpModel!==undefined)versionMenu.scroll(list,jumpModel,keyboard);
  shortcuts(data);
 }

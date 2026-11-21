@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-21T08:14:30.263Z",
+  "updatedAt": "2026-11-21T16:23:49.472Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -110,27 +110,6 @@
       ]
     },
     {
-      "id": "b41d3b33eb2e79c3d8d6",
-      "manufacturer": "Apple",
-      "model": "iPhone 11 Pro Max",
-      "capacity": "64 GB",
-      "color": "Verde",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 38000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "d3c09340d0013602f26d",
       "manufacturer": "Apple",
       "model": "iPhone 11 Pro Max",
@@ -145,7 +124,7 @@
       "box": null,
       "ram": "",
       "priceCents": 38000,
-      "quantity": 7,
+      "quantity": 5,
       "available": true,
       "sourceInitials": [
         "T"
@@ -166,7 +145,7 @@
       "box": null,
       "ram": "",
       "priceCents": 38000,
-      "quantity": 5,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "T"
@@ -826,27 +805,6 @@
       ]
     },
     {
-      "id": "3e5afc849e9bf834c2ec",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro",
-      "capacity": "128 GB",
-      "color": "Dorado",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 53000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "52c0d826d8656d5f6c38",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
@@ -903,7 +861,30 @@
       "box": null,
       "ram": "",
       "priceCents": 55500,
-      "quantity": 4,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "8a144008bb73505b17d7",
+      "manufacturer": "Apple",
+      "model": "iPhone 13 Pro",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [
+        "Aviso de pantalla"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 55500,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -931,6 +912,29 @@
       ]
     },
     {
+      "id": "47761492dc9d6aaff115",
+      "manufacturer": "Apple",
+      "model": "iPhone 13 Pro",
+      "capacity": "256 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "A+",
+      "battery": "100%",
+      "observations": [
+        "Aviso de batería"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 55500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
       "id": "f15d5cbe31bff3fed3ee",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
@@ -945,7 +949,30 @@
       "box": null,
       "ram": "",
       "priceCents": 55500,
-      "quantity": 2,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "88a31aff37fb083f493a",
+      "manufacturer": "Apple",
+      "model": "iPhone 13 Pro",
+      "capacity": "256 GB",
+      "color": "Dorado",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [
+        "Aviso de cámara"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 55500,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2760,6 +2787,90 @@
       "available": true,
       "sourceInitials": [
         "S"
+      ]
+    },
+    {
+      "id": "d2900676eff33da6bbae",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "64 GB",
+      "color": "Anaranjado",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 26500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "731922df08d7b06e21cb",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "64 GB",
+      "color": "Rojo",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 26500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "cd654ba06411ddf52d08",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "64 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 26500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "ac66b1d7782aefcbfc84",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "64 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 26500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
       ]
     },
     {

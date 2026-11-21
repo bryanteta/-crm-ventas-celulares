@@ -1,5 +1,6 @@
 exports.options = async page => {
   const section = page.locator('#provider-more-filters');
+  await section.evaluate(e => { e.hidden=false; });
   if (!await section.evaluate(e => e.open)) await section.locator(':scope > summary').click();
 };
 exports.load = async page => {

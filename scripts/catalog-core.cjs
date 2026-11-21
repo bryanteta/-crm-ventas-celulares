@@ -5,7 +5,7 @@ const {suggestedPrice}=require('../sales-core.js');
 const title = s => s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
 function modelName(raw) {
   const s = String(raw).replace(/\s+/g, ' ').trim().replace(/^samsung\s+galaxy\s+/i,'Samsung ').replace(/^galaxy\s+/i,'Samsung ').replace(/^apple\s+(?=iphone\b)/i,'');
-  let m = s.match(/^iphone\s*(\d{1,2}|SE)(?:\s+(pro\s*max|pro|plus|mini|air))?(?=\s|$)/i);
+  let m = s.match(/^iphone\s*(\d{1,2}|SE|XR|XS|X)(?:\s+(pro\s*max|pro|plus|mini|air))?(?=\s|$)/i);
   if (m) return {manufacturer:'Apple', model:`iPhone ${m[1].toUpperCase()}${m[2] ? ' '+title(m[2].replace(/pro\s*max/i,'Pro Max')) : ''}`};
   m = s.match(/^samsung\s+(?:(z)\s*(fold|flip)\s*(\d{1,2})|((?:s|a|m|note)\s*\d{1,3})(?:\s*(ultra|fe|plus|\+))?)(?=\s|$)/i);
   if (m) return {manufacturer:'Samsung', model:'Samsung '+(m[1] ? `Z ${title(m[2])} ${m[3]}` : m[4].replace(/\s/g,'').toUpperCase().replace('NOTE','Note ')+(m[5] ? ' '+(m[5].toLowerCase()==='fe'?'FE':title(m[5])) : ''))};

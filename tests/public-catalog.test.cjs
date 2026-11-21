@@ -156,3 +156,14 @@ test('public source initials distinguish TecnoShop, Split/Saúl and Javier witho
  s.providers.samuel={rows:[],total:0};s.providers.split.rows=[s.providers.split.rows[1]];s.providers.split.total=3;
  assert.deepEqual(buildCatalog(s).products[0].sourceInitials,['J']);
 });
+
+test('accepts the provider iPhone XR without blocking a complete inventory refresh',()=>{
+ const s=snapshot();s.providers.samuel.rows[0].model='iPhone XR';
+ const out=buildCatalog(s);assert.equal(out.products.length,2);
+ assert.equal(out.products.find(p=>p.model==='iPhone XR').manufacturer,'Apple');
+ assert.equal(out.products.reduce((n,p)=>n+p.quantity,0),2);
+ assert.equal(modelName('Apple iPhone XR 128GB').model,'iPhone XR');
+ assert.equal(modelName('iPhone XS').model,'iPhone XS');
+ assert.equal(modelName('iPhone X').model,'iPhone X');
+ assert.throws(()=>modelName('iPhone XRandom'));
+});

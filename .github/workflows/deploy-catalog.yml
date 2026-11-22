@@ -8,6 +8,8 @@ on:
       - 'scripts/prepare-catalog-site.cjs'
       - 'scripts/catalog-share-pages.cjs'
       - 'scripts/catalog-seo.cjs'
+      - 'scripts/wait-pages-artifact.cjs'
+      - 'tests/pages-artifact.test.cjs'
       - '.github/workflows/deploy-catalog.yml'
   workflow_dispatch:
   # A GITHUB_TOKEN commit does not trigger push workflows. A successful refresh
@@ -19,6 +21,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -54,13 +57,22 @@ jobs:
             echo '::notice::Preparado. Para publicar el catálogo en la raíz, selecciona Settings > Pages > Source > GitHub Actions. Se conserva el sitio actual.'
           fi
       - name: Preparar catálogo público en la raíz
-        run: node scripts/prepare-catalog-site.cjs
+        run: |
+          node --test tests/pages-artifact.test.cjs
+          node scripts/prepare-catalog-site.cjs
       - uses: actions/configure-pages@v5
         if: steps.site.outputs.enabled == 'true'
       - uses: actions/upload-pages-artifact@v3
+        id: upload
         if: steps.site.outputs.enabled == 'true'
         with:
           path: _catalog_site
+      - name: Esperar disponibilidad del archivo de esta ejecución
+        if: steps.site.outputs.enabled == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
+        run: node scripts/wait-pages-artifact.cjs
       - name: Publicar en GitHub Pages
         id: deployment
         if: steps.site.outputs.enabled == 'true'

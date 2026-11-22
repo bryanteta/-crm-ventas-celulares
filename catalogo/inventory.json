@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-22T17:05:36.489Z",
+  "updatedAt": "2026-11-22T22:27:26.414Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1820,11 +1820,11 @@
       ]
     },
     {
-      "id": "e1abc51ff6d67bb1f99e",
+      "id": "41b63312ffcb17a4fcf6",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Titanio natural",
+      "color": "Plata",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -1841,11 +1841,11 @@
       ]
     },
     {
-      "id": "41b63312ffcb17a4fcf6",
+      "id": "e1abc51ff6d67bb1f99e",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
-      "color": "Plata",
+      "color": "Titanio natural",
       "condition": "Seminuevo",
       "grade": "",
       "battery": "100%",
@@ -1876,7 +1876,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"
@@ -1897,7 +1897,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"
@@ -2092,27 +2092,6 @@
       "available": true,
       "sourceInitials": [
         "S"
-      ]
-    },
-    {
-      "id": "0f8a911832890b76ed22",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Plus",
-      "capacity": "128 GB",
-      "color": "Rosado",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "97%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 80500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
       ]
     },
     {
@@ -3042,27 +3021,6 @@
       "available": true,
       "sourceInitials": [
         "T"
-      ]
-    },
-    {
-      "id": "d69e5b58aa63337a775d",
-      "manufacturer": "Samsung",
-      "model": "Samsung S25 FE",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 51000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "S"
       ]
     },
     {

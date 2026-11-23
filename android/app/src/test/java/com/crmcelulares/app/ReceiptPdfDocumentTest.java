@@ -30,6 +30,24 @@ public class ReceiptPdfDocumentTest {
     private JSONObject sample() throws Exception {
         try(InputStream input=getClass().getResourceAsStream("/receipt-vector.json")){assertNotNull(input);return new JSONObject(new String(input.readAllBytes(),StandardCharsets.UTF_8));}
     }
+    @Test @GraphicsMode(GraphicsMode.Mode.NATIVE)
+    public void fittingThePrintedBodyKeepsEqualHorizontalMargins() {
+        for(float scale:new float[]{1f,.85f,.5f,.25f}){
+            android.graphics.Bitmap bitmap=android.graphics.Bitmap.createBitmap(595,842,android.graphics.Bitmap.Config.ARGB_8888);
+            bitmap.eraseColor(android.graphics.Color.WHITE);
+            android.graphics.Canvas canvas=new android.graphics.Canvas(bitmap);
+            ReceiptPdfDocument.applyPageTransform(canvas,scale);
+            android.graphics.Paint ink=new android.graphics.Paint();ink.setColor(android.graphics.Color.BLUE);
+            canvas.drawRect(32,32,563,132,ink);
+            int left=-1,last=-1;
+            for(int x=0;x<595;x++)if(bitmap.getPixel(x,40)==android.graphics.Color.BLUE){if(left<0)left=x;last=x;}
+            assertTrue("Content must remain on the page",left>=32&&last<563);
+            assertEquals("Equal horizontal margins at scale "+scale,left,594-last,1);
+            assertEquals("The top margin is preserved",android.graphics.Color.WHITE,bitmap.getPixel(297,31));
+            assertEquals(android.graphics.Color.BLUE,bitmap.getPixel(297,33));
+            bitmap.recycle();
+        }
+    }
     @Test public void splitPaymentRowsHaveSeparateBanksAndAreOptionalForOlderDocuments()throws Exception{
         JSONObject d=sample();ReceiptPdfDocument.validate(d);
         JSONObject transfer=new JSONObject().put("method","Transferencia").put("amount","$250.00").put("bank","Banco Agrícola").put("terms","—");

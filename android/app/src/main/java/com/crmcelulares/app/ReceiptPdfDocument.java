@@ -97,8 +97,13 @@ final class ReceiptPdfDocument {
     private void newPage(){
         if(Thread.currentThread().isInterrupted())throw new java.util.concurrent.CancellationException();
         if(measuring){canvas=new Canvas();y=MARGIN;return;}
-        finishPage();page=pdf.startPage(new PdfDocument.PageInfo.Builder(WIDTH,HEIGHT,++pageCount).create());canvas=page.getCanvas();canvas.save();canvas.translate(MARGIN,MARGIN);canvas.scale(contentScale,contentScale);canvas.translate(-MARGIN,-MARGIN);y=MARGIN;
+        finishPage();page=pdf.startPage(new PdfDocument.PageInfo.Builder(WIDTH,HEIGHT,++pageCount).create());canvas=page.getCanvas();canvas.save();
+        // Fit long receipts around the page's horizontal center, not its left margin.
+        applyPageTransform(canvas,contentScale);y=MARGIN;
         if(pageCount>1){TextPaint p=paint(9,true,BLUE);canvas.drawText("LUNIVO · COMPROBANTE",MARGIN,y+10,p);rule(y+20,Color.rgb(220,228,238));y+=32;}
+    }
+    static void applyPageTransform(Canvas target,float scale){
+        target.translate(WIDTH/2f,MARGIN);target.scale(scale,scale);target.translate(-WIDTH/2f,-MARGIN);
     }
     private void ensure(float height){/* All content is measured and scaled to one page. */}
     private void section(String text){ensure(46);y+=6;StaticLayout title=layout(text,CONTENT,paint(10,true,BLUE),Layout.Alignment.ALIGN_NORMAL);draw(title,MARGIN,y);y+=title.getHeight()+7;}

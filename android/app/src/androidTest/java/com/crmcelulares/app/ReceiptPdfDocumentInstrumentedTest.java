@@ -24,6 +24,39 @@ public class ReceiptPdfDocumentInstrumentedTest {
     private JSONObject sample()throws Exception{
         try(InputStream input=InstrumentationRegistry.getInstrumentation().getContext().getAssets().open("receipt-vector.json")){return new JSONObject(new String(input.readAllBytes(),StandardCharsets.UTF_8));}
     }
+    @Test
+    public void splitPaymentPdfStaysCenteredWhenFittedToOnePage() throws Exception {
+        for(int extraItems:new int[]{0,20}){
+            JSONObject data=sample().put("paymentSummary","Pago dividido");
+            data.put("paymentLines",new org.json.JSONArray()
+                .put(new JSONObject().put("method","Transferencia").put("amount","$250.00").put("bank","Banco Agrícola").put("terms","—"))
+                .put(new JSONObject().put("method","Tasa cero").put("amount","$490.00").put("bank","Banco Cuscatlán").put("terms","36 cuotas")));
+            for(int i=0;i<extraItems;i++)data.getJSONArray("items").put(new JSONObject().put("concept","Accesorio "+i).put("quantity","1").put("amount","$2.00").put("application","Accesorio"));
+            File file=new File(context.getExternalFilesDir(null),"garantia-dividida-"+extraItems+".pdf");
+            try{
+                try(OutputStream output=new FileOutputStream(file)){assertEquals(1,ReceiptPdfDocument.write(context,data,output));}
+                try(android.os.ParcelFileDescriptor descriptor=android.os.ParcelFileDescriptor.open(file,android.os.ParcelFileDescriptor.MODE_READ_ONLY);
+                    android.graphics.pdf.PdfRenderer renderer=new android.graphics.pdf.PdfRenderer(descriptor);
+                    android.graphics.pdf.PdfRenderer.Page page=renderer.openPage(0)){
+                    assertEquals(1,renderer.getPageCount());
+                    android.graphics.Bitmap bitmap=android.graphics.Bitmap.createBitmap(595,842,android.graphics.Bitmap.Config.ARGB_8888);
+                    bitmap.eraseColor(android.graphics.Color.WHITE);page.render(bitmap,null,null,android.graphics.pdf.PdfRenderer.Page.RENDER_MODE_FOR_PRINT);
+                    int widest=0,left=0,right=0;
+                    for(int y=30;y<790;y++){
+                        int first=-1,last=-1;
+                        for(int x=0;x<595;x++){
+                            int pixel=bitmap.getPixel(x,y);
+                            if(android.graphics.Color.blue(pixel)>android.graphics.Color.red(pixel)+30&&android.graphics.Color.red(pixel)<100){if(first<0)first=x;last=x;}
+                        }
+                        if(first>=0&&last-first>widest){widest=last-first;left=first;right=594-last;}
+                    }
+                    bitmap.recycle();assertTrue("Printed rules and tables must be present",widest>200);
+                    assertTrue("Equal page margins after fitting: left="+left+", right="+right,Math.abs(left-right)<=2);
+                    if(extraItems>0)assertTrue("The long split-payment document was scaled",widest<500);
+                }
+            }finally{/* Keep the generated sample for visual review. */}
+        }
+    }
     @Test public void nativePdfHasA4PagesAndWritesAnActualPdf()throws Exception{
         File file=new File(context.getExternalFilesDir(null),"receipt-quality-example.pdf");
         int pages;try(OutputStream output=new FileOutputStream(file)){pages=ReceiptPdfDocument.write(context,sample(),output);}

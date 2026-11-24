@@ -15,7 +15,7 @@ async function paint(){
  $('#recovery-cloud').hidden=!LunivoSuiteCloud.enabled();$('#recovery-local').hidden=LunivoSuiteCloud.enabled()||['open-failed','quota','transient'].includes(d.code);$('#recovery-floor-label').hidden=$('#recovery-local').hidden;$('#recovery-new-local').hidden=$('#recovery-local').hidden;
  }catch(error){message(error.message);}
 }
-async function work(action){if(busy)return;busy=true;document.querySelectorAll('[data-recovery-action]').forEach(b=>b.disabled=true);try{await action();}catch(error){message(error.name==='QuotaExceededError'?'No hay espacio para guardar la copia previa. Exporta los datos para recuperación y libera espacio sin borrar los datos de Lunivo.':error.message);}finally{busy=false;document.querySelectorAll('[data-recovery-action]').forEach(b=>b.disabled=false);if(!preview)$('#recovery-confirm').disabled=true;}}
+async function work(action){if(busy)return;busy=true;$('#recovery-cancel').disabled=true;$('#recovery-accept').disabled=true;document.querySelectorAll('[data-recovery-action]').forEach(b=>b.disabled=true);try{await action();}catch(error){message(error.name==='QuotaExceededError'?'No hay espacio para guardar la copia previa. Exporta los datos para recuperación y libera espacio sin borrar los datos de Lunivo.':error.message);}finally{busy=false;$('#recovery-cancel').disabled=false;$('#recovery-accept').disabled=false;document.querySelectorAll('[data-recovery-action]').forEach(b=>b.disabled=false);if(!preview)$('#recovery-confirm').disabled=true;}}
 function summary(data){return `${data.sales.length} ventas · ${data.inventory.length} lotes de inventario. Correlativos: ${Object.entries(data.receiptCounters||{}).map(([m,n])=>m+': '+n).join(', ')||'sin registros'}.`;}
 function prepare(copy,result,type,snapshot=null){
  const k=key();if(copy.accountKey!==k)throw Error('La cuenta cambió.');
@@ -34,7 +34,7 @@ $('#recovery-confirm').addEventListener('click',()=>work(async()=>{
  const planned=preview;if(!planned||planned.key!==key()||!$('#recovery-accept').checked)throw Error('Prepara y confirma la vista previa.');
  message('Verificando y guardando una copia previa…');
  if(planned.type==='cloud'){const fresh=await LunivoSuiteCloud.recoverySnapshot(core.operations(planned.copy).map(op=>op.id));if(stableSnapshot(fresh)!==stableSnapshot(planned.snapshot)){clear();throw Error('La nube cambió. Consulta otra vista previa antes de restaurar.');}}
- await store.restore(planned.key,planned.data,{reason:'user-'+planned.type+'-recovery',expected:planned.signature,guard:()=>key()===planned.key});
+ await store.restore(planned.key,planned.data,{reason:'user-'+planned.type+'-recovery',expected:planned.signature,guard:()=>key()===planned.key&&preview===planned});
  clear();message('Recuperación verificada.');LunivoSuite.render();if(planned.type==='cloud')LunivoSuiteCloud.recovered();
 }));
 const transfers=new Map();window.addEventListener('lunivo-backup',event=>{const r=event.detail,p=transfers.get(r?.requestId);if(p)p(r);});
@@ -65,8 +65,8 @@ async function importBackup(){const k=key(),text=await readBackup();if(k!==key()
 for(const id of ['recovery-import','storage-import'])$('#'+id).addEventListener('click',()=>work(importBackup));
 $('#backup-import-accept').addEventListener('change',()=>$('#backup-import-save').disabled=!imported||!$('#backup-import-accept').checked);
 $('#backup-import-cancel').addEventListener('click',()=>{imported=null;$('#backup-import-dialog').close();});
-$('#backup-import-dialog').addEventListener('cancel',()=>{imported=null;});
-$('#backup-import-save').addEventListener('click',async()=>{if(busy||!imported||!$('#backup-import-accept').checked)return;const plan=imported;busy=true;$('#backup-import-save').disabled=true;try{if(plan.key!==key())throw Error('La cuenta cambió.');await store.restore(plan.key,plan.result.data,{reason:'backup-import',importedBackup:plan.backup,expected:store.signature(plan.copy),guard:()=>key()===plan.key});imported=null;$('#backup-import-dialog').close();LunivoSuite.render();LunivoApp.notice('Respaldo importado y verificado. La nube no se modificó.');}catch(error){$('#backup-import-message').textContent=error.name==='QuotaExceededError'?'No hay espacio para conservar las copias. Libera espacio sin borrar datos de Lunivo.':error.message;}finally{busy=false;$('#backup-import-save').disabled=!imported;}});
+$('#backup-import-dialog').addEventListener('cancel',event=>{if(busy){event.preventDefault();return;}imported=null;});
+$('#backup-import-save').addEventListener('click',async()=>{if(busy||!imported||!$('#backup-import-accept').checked)return;const plan=imported;busy=true;$('#backup-import-cancel').disabled=true;$('#backup-import-accept').disabled=true;$('#backup-import-save').disabled=true;try{if(plan.key!==key())throw Error('La cuenta cambió.');await store.restore(plan.key,plan.result.data,{reason:'backup-import',importedBackup:plan.backup,expected:store.signature(plan.copy),guard:()=>key()===plan.key&&imported===plan});imported=null;$('#backup-import-dialog').close();LunivoSuite.render();LunivoApp.notice('Respaldo importado y verificado. La nube no se modificó.');}catch(error){$('#backup-import-message').textContent=error.name==='QuotaExceededError'?'No hay espacio para conservar las copias. Libera espacio sin borrar datos de Lunivo.':error.message;}finally{busy=false;$('#backup-import-cancel').disabled=false;$('#backup-import-accept').disabled=false;$('#backup-import-save').disabled=!imported;}});
 
 window.LunivoRecoveryUI={paint};
 })();

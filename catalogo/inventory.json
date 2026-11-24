@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-23T12:23:17.518Z",
+  "updatedAt": "2026-11-24T00:19:42.267Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -41,27 +41,6 @@
       "ram": "",
       "priceCents": 31500,
       "quantity": 14,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "7e8663b0da4ca0911905",
-      "manufacturer": "Apple",
-      "model": "iPhone 11",
-      "capacity": "128 GB",
-      "color": "Morado",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 34000,
-      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -124,7 +103,7 @@
       "box": null,
       "ram": "",
       "priceCents": 38000,
-      "quantity": 5,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "T"
@@ -145,7 +124,7 @@
       "box": null,
       "ram": "",
       "priceCents": 38000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -565,7 +544,7 @@
       "box": null,
       "ram": "",
       "priceCents": 45500,
-      "quantity": 12,
+      "quantity": 11,
       "available": true,
       "sourceInitials": [
         "T"
@@ -777,28 +756,7 @@
       "box": null,
       "ram": "",
       "priceCents": 53000,
-      "quantity": 6,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
-      "id": "52c0d826d8656d5f6c38",
-      "manufacturer": "Apple",
-      "model": "iPhone 13 Pro",
-      "capacity": "128 GB",
-      "color": "Verde",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 53000,
-      "quantity": 1,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1084,27 +1042,6 @@
       ]
     },
     {
-      "id": "b9e842c42f085d2a1b47",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "SIM física y eSIM",
-      "box": null,
-      "ram": "",
-      "priceCents": 46000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "f428dcade3ef39d14c1e",
       "manufacturer": "Apple",
       "model": "iPhone 14",
@@ -1189,27 +1126,6 @@
       ]
     },
     {
-      "id": "1e9fba80a07bac2ddffd",
-      "manufacturer": "Apple",
-      "model": "iPhone 14 Pro",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 64000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
       "id": "ef009e7c652ea29faeb5",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
@@ -1266,7 +1182,7 @@
       "box": true,
       "ram": "",
       "priceCents": 73500,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"
@@ -1525,27 +1441,6 @@
       ]
     },
     {
-      "id": "5d54b1fd0b5d67dac1fd",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 77500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ]
-    },
-    {
       "id": "47361043f603debcd8e5",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
@@ -1687,29 +1582,6 @@
       ]
     },
     {
-      "id": "9766ae84db27988b95f8",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "512 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [
-        "Aviso de pantalla"
-      ],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 83000,
-      "quantity": 2,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ]
-    },
-    {
       "id": "c886872f077de441fa4b",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
@@ -1750,7 +1622,30 @@
       "box": null,
       "ram": "",
       "priceCents": 83000,
-      "quantity": 2,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ]
+    },
+    {
+      "id": "9766ae84db27988b95f8",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "512 GB",
+      "color": "Azul",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [
+        "Aviso de pantalla"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 83000,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1939,7 +1834,7 @@
       "box": true,
       "ram": "",
       "priceCents": 86500,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"
@@ -1981,6 +1876,27 @@
       "box": true,
       "ram": "",
       "priceCents": 73500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ]
+    },
+    {
+      "id": "930c424a00703577af8a",
+      "manufacturer": "Apple",
+      "model": "iPhone 16",
+      "capacity": "128 GB",
+      "color": "Rosado",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "89%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 74500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -2302,27 +2218,6 @@
       "available": true,
       "sourceInitials": [
         "J"
-      ]
-    },
-    {
-      "id": "61758670d55b2e54e308",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Gris",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "98%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 98000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
       ]
     },
     {

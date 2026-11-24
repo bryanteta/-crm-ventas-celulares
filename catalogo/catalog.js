@@ -9,7 +9,7 @@
   if('ResizeObserver' in window)new ResizeObserver(sizeDetailHeading).observe(detailHeading);
   else window.addEventListener('resize',sizeDetailHeading);
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
-  let selectedVersion='all',versionSignature='';
+  let selectedVersion='all',versionSignature='',recentOnly=false;
   let images={};
   const selectedColors=new Map();
   let inventoryEndpoint='',lastInventoryCheck=0;
@@ -20,11 +20,11 @@
   }).catch(()=>{});
   async function readInventory(){
     await inventorySourceReady;
-    let freshest=null;
+    let freshest=null;const arrivals=new Map();
     for(const url of [...(inventoryEndpoint?[inventoryEndpoint]:[]),'inventory.json']){
-      try{const response=await fetch(url,{cache:'no-cache',credentials:'omit',signal:AbortSignal.timeout(inventoryEndpoint===url?5000:15000)});if(response.ok){const data=valid(await response.json());if(!freshest||Date.parse(data.updatedAt)>Date.parse(freshest.updatedAt))freshest=data;if(url===inventoryEndpoint&&Date.now()-Date.parse(data.updatedAt)<15*60*1000)return data;}}catch{/* Fall back to the published public snapshot. */}
+      try{const response=await fetch(url,{cache:'no-cache',credentials:'omit',signal:AbortSignal.timeout(inventoryEndpoint===url?5000:15000)});if(response.ok){const data=valid(await response.json());for(const p of data.products)if(p.addedAt)arrivals.set(p.id,p.addedAt);if(!freshest||Date.parse(data.updatedAt)>Date.parse(freshest.updatedAt))freshest=data;}}catch{/* Fall back to the published public snapshot. */}
     }
-    if(freshest)return freshest;throw Error('Inventario no disponible');
+    if(freshest){for(const p of freshest.products)if(!p.addedAt&&arrivals.has(p.id))p.addedAt=arrivals.get(p.id);return freshest;}throw Error('Inventario no disponible');
   }
 
   // Apply 10% and round once to the nearest whole dollar (half rounds up).
@@ -75,6 +75,7 @@
       if(!p||typeof p.id!=='string'||!/^[a-f0-9]{20}$/.test(p.id)||ids.has(p.id)||!['Apple','Samsung'].includes(p.manufacturer)||typeof p.model!=='string'||!p.model.length||p.model.length>80||!Number.isSafeInteger(p.priceCents)||p.priceCents<=0||!Number.isSafeInteger(regularPrice(p.priceCents))||p.available!==true)throw Error('Equipo inválido');
       for(const key of ['capacity','color','condition','grade','battery'])if(typeof p[key]!=='string'||p[key].length>100)throw Error('Detalle inválido');
       if(p.quantity!==undefined&&(!Number.isSafeInteger(p.quantity)||p.quantity<1))throw Error('Existencias inválidas');
+      if(p.addedAt!==undefined&&(!Number.isFinite(Date.parse(p.addedAt))||Date.parse(p.addedAt)>Date.parse(data.updatedAt)))throw Error('Fecha de incorporación inválida');
       if(p.sourceInitials!==undefined&&(!Array.isArray(p.sourceInitials)||!p.sourceInitials.length||p.sourceInitials.length>3||p.sourceInitials.some(v=>!['T','S','J'].includes(v))||new Set(p.sourceInitials).size!==p.sourceInitials.length))throw Error('Origen inválido');
       if(p.cycles!==undefined&&p.cycles!==null&&(!Number.isSafeInteger(p.cycles)||p.cycles<0))throw Error('Ciclos inválidos');
       if(p.sim!==undefined&&!['SIM física','SIM física y eSIM','eSIM','Por confirmar'].includes(p.sim))throw Error('SIM inválida');
@@ -158,7 +159,7 @@
   function versionName(model){return model.replace(/^Samsung /,'Galaxy ');}
   function versionLabel(model,family){const name=versionName(model);return family.title.startsWith('Galaxy Z ')?name.replace(/^Galaxy /,''):(name.slice(family.title.length).trim()||'Estándar');}
   function renderVersions(){
-    const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all';if(bar.hidden)return;
+    const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all'||recentOnly;if(bar.hidden)return;
     const models=[...new Set(groups.filter(g=>g.manufacturer===brand).map(g=>g.model))].sort(compareModels);
     const removed=selectedVersion!=='all'&&!models.includes(selectedVersion);if(removed)selectedVersion='all';
     const label=brand==='Apple'?'iPhone':'Samsung',signature=JSON.stringify([brand,models]);
@@ -212,13 +213,15 @@
   function render(){
     renderVersions();
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
+    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(!recentOnly||(Date.parse(v.addedAt)>Date.now()-7*24*60*60*1000))&&(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
     const lowest=g=>Math.min(...g.variants.map(v=>v.priceCents));
     const direction=nodes.sort.value==='model-desc'?-1:1;
     matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||compareModels(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||compareModels(a.model,b.model):direction*compareModels(a.model,b.model));
+    if(recentOnly)matches.sort((a,b)=>Math.max(...b.variants.map(v=>Date.parse(v.addedAt)||0))-Math.max(...a.variants.map(v=>Date.parse(v.addedAt)||0))||compareModels(a.model,b.model));
+    $('#recent-filter').setAttribute('aria-pressed',String(recentOnly));
     const fragment=document.createDocumentFragment();
     const stale=Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000;
-    if(['model','model-desc'].includes(nodes.sort.value)){
+    if(!recentOnly&&['model','model-desc'].includes(nodes.sort.value)){
       const series=new Map();
       for(const group of matches){
         const family=deviceSeries(group);
@@ -233,6 +236,8 @@
     nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
     $('#empty').hidden=matches.length!==0;
   }
+  function updateViewers(){if(document.visibilityState==='hidden')return;const n=1+Math.floor(Math.random()*6);$('#viewer-count').textContent=n+' '+(n===1?'persona viendo':'personas viendo')+' ahora';}
+  updateViewers();setInterval(updateViewers,25000);
   let shareStatusTimer,handledDeviceLink='';
   let previewPages={},lastPreviewCheck=0;
   function loadPreviewPages(){lastPreviewCheck=Date.now();return fetch('share-pages.json',{cache:'no-cache',signal:AbortSignal.timeout(3000)}).then(async r=>{if(r.ok){const data=await r.json();if(data.version===1&&data.products)previewPages=data.products;}}).catch(()=>{});}
@@ -275,9 +280,9 @@
   function createCard(group,stale){
       const card=$('#card').content.firstElementChild.cloneNode(true);
       card.classList.toggle('samsung',group.manufacturer==='Samsung');card.dataset.versionModel=group.model;
-      card.querySelector('.manufacturer').textContent=group.manufacturer==='Apple'?'iPhone · Lunivo':'Samsung · Lunivo';
-      card.querySelector('.product-name').textContent=group.model;
       const device=group.variants.find(v=>v.id===selectedColors.get(group.key))||group.variants[0];
+      card.querySelector('.manufacturer').textContent=[group.manufacturer==='Apple'?'iPhone':'Samsung','Lunivo',...(device.sourceInitials||[])].join(' · ');
+      card.querySelector('.product-name').textContent=group.model;
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
       const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'','Batería '+batteryText(device),device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
@@ -380,7 +385,8 @@
     const color=p.color.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
     const colorIcon=/verde/.test(color)?'🟢':/negro|grafito/.test(color)?'⚫️':/blanco|plata/.test(color)?'⚪️':/azul|celeste/.test(color)?'🔵':/morado|lila|violeta/.test(color)?'🟣':/rojo/.test(color)?'🔴':/anaranjado|naranja/.test(color)?'🟠':/amarillo|dorado/.test(color)?'🟡':'🔘';
     const initials=p.sourceInitials||[];
-    $('#detail-note').textContent=['Confirmaremos el estado y la disponibilidad contigo antes de la compra.',...initials].join(' · ');
+    $('#detail-note').textContent='Confirmaremos el estado y la disponibilidad contigo antes de la compra.';
+    $('#consult-label').textContent=['Consultar este equipo',...initials].join(' · ');
     const deviceLines=[
       ['📲 '+p.model+' - '+p.capacity,...initials].join(' · '),
       '⭐️ Estado: '+p.condition+(p.grade?', categoría '+p.grade:''),
@@ -446,8 +452,9 @@
   nodes.search.addEventListener('input',()=>{if(catalog)render();});
   nodes.capacity.addEventListener('change',()=>{if(catalog)render();});
   nodes.sort.addEventListener('change',()=>{if(catalog)render();});
-  document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;}}));
-  $('#reset').addEventListener('click',()=>{brand='all';selectedVersion='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
+  document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{recentOnly=false;brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;}}));
+  $('#recent-filter').addEventListener('click',()=>{recentOnly=true;brand='all';selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed','false'));if(catalog)render();});
+  $('#reset').addEventListener('click',()=>{recentOnly=false;brand='all';selectedVersion='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
   function resetInstallments(){
     $('#installment-grid').replaceChildren();delete $('#installment-grid').dataset.plan;$('#installment-options').hidden=true;
   }

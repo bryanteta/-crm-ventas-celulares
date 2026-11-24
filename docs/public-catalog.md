@@ -177,3 +177,11 @@ Validación: `node scripts/test-catalog-sticky-gallery.cjs`, con tres tamaños d
 El catálogo y la barra de versiones colocan X, XS y XR antes de iPhone 11, en lugar de enviarlos al final por orden alfabético. El XR mantiene sus cuatro colores y existencias del proveedor. La búsqueda y los precios siguen usando las mismas variantes.
 
 El descubridor reconoce los selectores oficiales de Apple para modelos con letras. En XR, «Anaranjado» corresponde al acabado oficial Coral, sin aplicar esa equivalencia a otros modelos. Las fotos de tarjeta proceden de Apple; las dos perspectivas individuales del modal proceden de las fichas verificadas de Refurbed del mismo modelo y color. `scripts/test-catalog-xr.cjs` comprueba orden, navegación sin búsqueda, cuatro fotos, carrusel y ampliación en móvil y escritorio.
+
+### Incorporaciones recientes y origen
+
+La opción «Agregados recientemente» muestra variantes incorporadas durante los últimos siete días, de más nueva a más antigua. `addedAt` se conserva entre actualizaciones de GitHub y del Worker. Un cambio de precio, cantidad o proveedor disponible no reinicia la fecha de una variante con las mismas características. Las fechas iniciales se recuperaron del historial versionado de inventario; no se usa el orden del proveedor como fecha. La primera captura sin historial establece una base, sin marcar todo el inventario como recién agregado.
+
+La web combina fechas del respaldo estático con el catálogo de existencias más reciente sin recuperar equipos vendidos. Las iniciales T, S y J aparecen en la tarjeta, pie de imagen, botón de consulta y mensaje. Se mantienen las existencias y los importes originales.
+
+El indicador «personas viendo ahora» es un contador aleatorio solicitado por el propietario: toma valores de 1 a 6 y se actualiza cada 25 segundos con la pestaña visible. No realiza medición de visitantes ni comparte datos del navegador.

@@ -6,7 +6,8 @@ const {buildCatalog}=catalog;
 if (require.main===module) {
   const [input,output]=process.argv.slice(2);
   if (!input || !output) throw Error('Uso: node scripts/build-public-catalog.cjs CAPTURA_PRIVADA SALIDA_PUBLICA');
-  const catalog=buildCatalog(JSON.parse(fs.readFileSync(input,'utf8')));
+  const previous=fs.existsSync(output)?JSON.parse(fs.readFileSync(output,'utf8')):null;
+  const catalog=buildCatalog(JSON.parse(fs.readFileSync(input,'utf8')),Date.now(),previous);
   fs.mkdirSync(path.dirname(output),{recursive:true});
   const temporary=output+'.tmp';
   fs.writeFileSync(temporary,JSON.stringify(catalog,null,2)+'\n');

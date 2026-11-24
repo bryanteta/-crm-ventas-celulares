@@ -167,3 +167,14 @@ test('accepts the provider iPhone XR without blocking a complete inventory refre
  assert.equal(modelName('iPhone X').model,'iPhone X');
  assert.throws(()=>modelName('iPhone XRandom'));
 });
+
+test('arrival dates survive refreshes and price changes; only new variants get a new date',()=>{
+ const s=snapshot(),first=buildCatalog(s),date=new Date(Date.parse(s.checkedAt)-86400000).toISOString();
+ first.products.forEach(p=>p.addedAt=date);
+ assert(buildCatalog(s,Date.now(),first).products.every(p=>p.addedAt===date));
+ for(const provider of Object.values(s.providers))provider.rows[0].price+=1000;
+ assert(buildCatalog(s,Date.now(),first).products.every(p=>p.addedAt===date));
+ s.providers.split.rows[0].color='Blanco';
+ const next=buildCatalog(s,Date.now(),first);assert.equal(next.products.find(p=>p.color==='Blanco').addedAt,s.checkedAt);assert.equal(next.products.find(p=>p.color==='Negro').addedAt,date);
+ const baseline=buildCatalog(s);assert(buildCatalog(s,Date.now(),baseline).products.every(p=>!p.addedAt),'migration does not pretend old inventory is newly added');
+});

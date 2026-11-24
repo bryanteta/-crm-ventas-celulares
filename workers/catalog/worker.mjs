@@ -18,7 +18,7 @@ export class CatalogStore{
     this.attempt=Date.now();this.write('attempt',String(this.attempt));
     this.inflight=(async()=>{
       try{
-        const output=await collectCatalog(this.env.SPLIT_INVENTORY_TOKEN),body=JSON.stringify(output);
+        const output=await collectCatalog(this.env.SPLIT_INVENTORY_TOKEN,{previous:this.latest?JSON.parse(this.latest):null}),body=JSON.stringify(output);
         if(new TextEncoder().encode(body).byteLength>1024*1024)throw Error('Public snapshot too large');
         this.write('public',body);this.latest=body;return true;
       }catch{return false;} // Never log raw responses, keys or supplier prices.

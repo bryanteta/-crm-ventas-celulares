@@ -17,7 +17,7 @@ La clave se envía únicamente por HTTPS en el encabezado Authorization. No se g
 
 ## Usar el editor
 
-Busca por modelo, capacidad, color o proveedor y selecciona una variante. El precio editable es el precio final **al contado**, en USD; el regular y las cuotas mantienen la regla existente. Los equipos con las mismas características y proveedor comparten el ajuste; no se modifican cantidades ni las APIs originales.
+El panel muestra cada registro disponible del inventario, sin ocultar variantes que comparten un ajuste. El resumen distingue unidades, variantes y modelos. La lista ordena iPhone por generación (incluido XR), seguido de Samsung. Busca por modelo, capacidad, color o proveedor, o usa los filtros de marca y proveedor. En móvil, selecciona una variante para abrir el editor y vuelve a la lista con «Volver a dispositivos». Al entrar o recargar se consulta el inventario actualizado, respetando el intervalo compartido de cinco minutos; si el proveedor falla, se conserva y se identifica la última lista guardada. El precio editable es el precio final **al contado**, en USD; el regular y las cuotas mantienen la regla existente. Los equipos con las mismas características y proveedor comparten el ajuste; no se modifican cantidades ni las APIs originales.
 
 Pega hasta ocho enlaces públicos HTTPS, uno por línea. Deben abrir directamente una imagen, no una página con un botón de descarga. La primera será la principal. «Comprobar fotos» muestra las vistas antes de guardar. Los enlaces privados de Drive o enlaces que vencen pueden dejar de funcionar para los visitantes.
 

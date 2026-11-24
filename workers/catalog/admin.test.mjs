@@ -35,3 +35,12 @@ test('invalid prices, unsafe URLs, wrong product keys and oversized requests do 
 test('storage failure never reports a successful save or discards previous edits',async()=>{
  const s=setup();const payload=await input();await s.object.fetch(request('/admin/customizations','PUT',payload));const before=s.rows.get('customizations');s.setFail();const failed=await s.object.fetch(request('/admin/customizations','DELETE',{key:payload.key,expectedRevision:1}));assert.equal(failed.status,503);assert.equal(s.rows.get('customizations'),before);
 });
+test('admin awaits stale inventory refresh and preserves every source row with a shared edit key',async()=>{
+ const {object}=setup();object.latest=JSON.stringify({...source,updatedAt:'2020-01-01T00:00:00Z'});let refreshed=false;
+ object.refresh=async()=>{await new Promise(resolve=>setTimeout(resolve,5));refreshed=true;object.latest=JSON.stringify({...source,updatedAt:new Date().toISOString(),products:[source.products[0],{...source.products[0],id:'2'.repeat(20),priceCents:44000}]});return true;};
+ const data=await (await object.fetch(request())).json();assert(refreshed);assert.equal(data.cached,false);assert.equal(data.products.length,2);assert.equal(data.products[0].customizationKey,data.products[1].customizationKey);assert.notEqual(data.products[0].id,data.products[1].id);
+});
+test('admin retains the last complete inventory when providers cannot refresh',async()=>{
+ const {object}=setup();object.latest=JSON.stringify({...source,updatedAt:'2020-01-01T00:00:00Z'});object.refresh=async()=>false;
+ const response=await object.fetch(request());assert.equal(response.status,200);const data=await response.json();assert.equal(data.cached,true);assert.equal(data.products.length,1);
+});

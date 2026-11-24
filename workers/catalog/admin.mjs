@@ -1,4 +1,5 @@
 import custom from '../../catalogo/customization-core.js';
+import {INTERVAL} from './service.mjs';
 const LIMIT=32768,ORIGINS=new Set(['https://lunivosv.com','https://www.lunivosv.com']);
 function response(data,status=200,origin=''){return Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Vary':'Origin',...(origin?{'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Methods':'GET, PUT, DELETE, OPTIONS','Access-Control-Allow-Headers':'Authorization, Content-Type'}:{})}});}
 async function body(request){
@@ -22,9 +23,10 @@ export async function adminRequest(request,store){
  if(!await authorized(request,store.env))return response({error:'La clave no es válida.'},401,origin);
  const path=new URL(request.url).pathname;
  if(path==='/admin/catalog'&&request.method==='GET'){
-  if(!store.latest)await store.refresh();if(!store.latest)return response({error:'No se pudo consultar el inventario. Intenta nuevamente.'},503,origin);
+  if(!store.latest||Date.now()-Date.parse(JSON.parse(store.latest).updatedAt)>=INTERVAL)await store.refresh();
+  if(!store.latest)return response({error:'No se pudo consultar el inventario. Intenta nuevamente.'},503,origin);
   const inventory=JSON.parse(store.latest),products=await Promise.all(inventory.products.map(async p=>({...p,customizationKey:await custom.key(p)})));
-  return response({version:1,products,customizations:getCustomizations(store)},200,origin);
+  return response({version:1,updatedAt:inventory.updatedAt,cached:Date.now()-Date.parse(inventory.updatedAt)>=INTERVAL,products,customizations:getCustomizations(store)},200,origin);
  }
  if(path!=='/admin/customizations'||!['PUT','DELETE'].includes(request.method))return response({error:'Ruta no disponible.'},404,origin);
  try{

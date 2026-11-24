@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-24T20:43:17.337Z",
+  "updatedAt": "2026-11-24T22:04:07.349Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -504,28 +504,6 @@
       "ram": "",
       "priceCents": 45500,
       "quantity": 4,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ],
-      "addedAt": "2026-11-18T21:04:59.619Z"
-    },
-    {
-      "id": "0bb2409fd6d9b93229f5",
-      "manufacturer": "Apple",
-      "model": "iPhone 13",
-      "capacity": "256 GB",
-      "color": "Verde",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 45500,
-      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"

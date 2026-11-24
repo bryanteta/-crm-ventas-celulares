@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-24T10:11:05.788Z",
+  "updatedAt": "2026-11-24T16:00:39.704Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1656,6 +1656,30 @@
       "addedAt": "2026-11-08T18:37:02.466Z"
     },
     {
+      "id": "9766ae84db27988b95f8",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro Max",
+      "capacity": "512 GB",
+      "color": "Azul",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [
+        "Aviso de pantalla"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 83000,
+      "quantity": 2,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-08T18:37:02.466Z"
+    },
+    {
       "id": "c886872f077de441fa4b",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
@@ -1682,30 +1706,6 @@
     },
     {
       "id": "981639add53e9a9bfa65",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "512 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [
-        "Aviso de pantalla"
-      ],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 83000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
-      "id": "9766ae84db27988b95f8",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "512 GB",

@@ -47,7 +47,11 @@ Al abrir una cuenta, si existe el blob anterior en `localStorage`:
 
 Si el blob no se puede leer, no se toca y la suite muestra el mismo error de siempre. Si una versión
 anterior (o una pestaña antigua) vuelve a escribir el formato anterior, se adopta como la copia más
-reciente con el mismo procedimiento. La validación de registros sigue en `read()`, sin cambios.
+reciente con el mismo procedimiento, **combinándola** con lo ya migrado: esa versión anterior no veía
+las ventas de IndexedDB, así que reemplazar perdería las que no conocía. Las ventas e inventario se
+unen por `id` (gana la copia del formato anterior, escrita más tarde) y `receiptCounters` conserva el
+mayor número de cada mes, para no repetir correlativos. Así, publicar por error una versión anterior
+y volver a actualizar no borra ventas (`tests/storage-rollback-ui.cjs`). La validación de registros sigue en `read()`, sin cambios.
 
 ## Ajustes
 

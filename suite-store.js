@@ -38,6 +38,19 @@ function split(data){
  return{sales,order,rest:JSON.stringify({...data,sales:0})};
 }
 function join(parts){const data=JSON.parse(parts.rest),sales=[];for(const id of parts.order){const json=parts.sales.get(id);if(json===undefined)throw Error('Falta una venta guardada. No borres los datos de la app.');sales.push(JSON.parse(json));}data.sales=sales;return data;}
+// The old format reappears only if an older version wrote it after migration. That version
+// could not see the sales already moved here, so its copy is merged in instead of replacing
+// them: records are combined by id (the legacy copy wins, it was written last) and receipt
+// counters keep the highest number so correlatives are never reused.
+function mergeLegacy(current,legacy){
+ if(!current||!legacy||typeof legacy!=='object'||!Array.isArray(legacy.sales))return legacy;
+ const byId=(first,second)=>{const out=Array.isArray(first)?[...first]:[],ids=new Set(out.map(r=>r&&r.id));for(const r of Array.isArray(second)?second:[])if(!(r&&typeof r.id==='string'&&ids.has(r.id)))out.push(r);return out;};
+ const merged={...current,...legacy,sales:byId(legacy.sales,current.sales)};
+ if(Array.isArray(current.inventory)||Array.isArray(legacy.inventory))merged.inventory=byId(legacy.inventory,current.inventory);
+ const counters={...(current.receiptCounters||{})};for(const[month,n]of Object.entries(legacy.receiptCounters||{}))counters[month]=Math.max(Number(counters[month])||0,Number(n)||0);
+ if(Object.keys(counters).length)merged.receiptCounters=counters;
+ return merged;
+}
 const same=(a,b)=>a.rest===b.rest&&a.order.length===b.order.length&&a.order.every((id,n)=>id===b.order[n])&&a.sales.size===b.sales.size&&[...a.sales].every(([id,json])=>b.sales.get(id)===json);
 // Rows to write: those that differ from the last saved copy, plus rows other unfinished commits touched.
 function changes(next,base,touched){
@@ -78,8 +91,8 @@ async function load(key){
  }
  const stored=await recover(db,key,await readParts(db,key));
  if(legacy===null)return{data:stored?join(stored):JSON.parse(EMPTY),committed:stored,backend:'indexedDB',exists:Boolean(stored)};
- // A legacy blob exists only before migration, or if an older version wrote after it: it is the newest copy.
- const parts=split(JSON.parse(legacy));
+ // A legacy blob exists only before migration, or if an older version wrote after it: merge it in.
+ const parts=split(stored?mergeLegacy(join(stored),JSON.parse(legacy)):JSON.parse(legacy));
  if(!stored||!same(stored,parts)){
   const tx=db.transaction(['state','sales','backups'],'readwrite'),finished=done(tx);
   if(stored)tx.objectStore('backups').put({savedAt:new Date().toISOString(),reason:'legacy-import',data:JSON.stringify(join(stored))},[key,new Date().toISOString()]);
@@ -128,11 +141,11 @@ function set(key,data){
  if(e.backend==='localStorage'){localStorage.setItem(key,JSON.stringify(data));e.data=data;e.exists=true;e.version++;return Promise.resolve();}
  const promise=persist(e,split(data));e.data=data;e.exists=true;return promise;
 }
-// The previous format reappears only if an older version or tab wrote it after migration: adopt it as the newest copy.
+// The previous format reappears only if an older version or tab wrote it after migration: merge it in.
 function adopt(e){
  if(e.backend!=='indexedDB')return;let raw=null;try{raw=localStorage.getItem(e.key);}catch{}
  if(raw===null||raw===e.adopting)return;
- const data=JSON.parse(raw),backup=e.committed?{savedAt:new Date().toISOString(),reason:'legacy-import',data:JSON.stringify(join(e.committed))}:null;
+ const data=mergeLegacy(e.data,JSON.parse(raw)),backup=e.committed?{savedAt:new Date().toISOString(),reason:'legacy-import',data:JSON.stringify(join(e.committed))}:null;
  persist(e,split(data),{full:true,backup}).then(()=>{try{if(localStorage.getItem(e.key)===raw)localStorage.removeItem(e.key);}catch{}},()=>{}).finally(()=>{if(e.adopting===raw)e.adopting=null;});
  e.data=data;e.exists=true;e.adopting=raw;
 }

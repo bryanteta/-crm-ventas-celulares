@@ -173,7 +173,8 @@ public final class MainActivity extends Activity {
                         if (!mainFrame || !"https://appassets.androidplatform.net".equals(origin.toString())) return;
                         try {
                             String payload = message.getData();
-                            if (payload == null || payload.length() > 4096) return;
+                            // Web price edits keep saved photo links, which can exceed a few KB.
+                            if (payload == null || payload.length() > 48 * 1024) return;
                             inventoryBridge.handle(new JSONObject(payload), response -> runOnUiThread(() -> {
                                 if (!isDestroyed()) {
                                     try { reply.postMessage(response.toString()); } catch (RuntimeException ignored) { /* Page closed. */ }

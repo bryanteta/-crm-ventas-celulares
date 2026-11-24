@@ -16,6 +16,8 @@ App Android y prototipo web para gestionar seguimientos, inventarios, ventas y g
 
 Con sesión iniciada en Android, **ventas confirmadas, garantías y Mis equipos se comparten por cuenta**. La confirmación exige conexión y un perfil activo; guarda al vendedor, descuenta existencias y asigna un correlativo común en una transacción. Los borradores, cotizaciones y cachés de proveedores siguen locales. El modo sin cuenta conserva el funcionamiento local. Follows y los perfiles mantienen su sincronización existente. Los dueños del inventario son categorías de organización; no representan cuentas ni permisos individuales. Los inventarios externos se consultan mediante HTTPS y se conservan en el teléfono; no requieren lecturas de Firebase. No se importan PDFs nuevos automáticamente.
 
+**Precios de la web:** las tarjetas de proveedores muestran el mismo precio que la web pública y permiten cambiarlo desde la app con la clave de administración del catálogo guardada en Ajustes. La venta se sugiere con ese precio. Ver [administración del catálogo](docs/catalog-administration.md#precios-de-la-web-desde-la-app-android).
+
 ## Desarrollo web
 
 Requiere Node.js 20 o superior, Python 3 y Chromium/Chrome.

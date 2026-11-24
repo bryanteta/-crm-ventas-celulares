@@ -4,10 +4,10 @@ const $=s=>document.querySelector(s),core=window.LunivoFeedCore,bridge=window.Lu
 let api=null,scope=null,bootstrapAttempted=false,keyKnown=false,configured=false,stateRequested=false,bootstrapBusy=false;
 let errors={},working=new Set(),attempted=new Map(),keyWorking=false,keyVersion=0,keyProblem='';const pending=new Map(),TTL=10*60*1000;
 const account=()=>window.LunivoStore.account()||'local',active=()=>['#ventas','#ventas/proveedores','#ventas/inventario'].includes(location.hash.split('?')[0]);
-function native(type,fields={}){
+function native(type,fields={},slow='El proveedor tardó demasiado. Se conserva la lista guardada.'){
  if(!bridge)return Promise.reject(Error('Abre Lunivo para Android para actualizar los inventarios.'));
  const id=crypto.randomUUID(),requestScope=scope;
- return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{pending.delete(id);reject(Error('El proveedor tardó demasiado. Se conserva la lista guardada.'));},40000);pending.set(id,{resolve,reject,timer,scope:requestScope});try{bridge.postMessage(JSON.stringify({type,id,scope:requestScope,...fields}));}catch{clearTimeout(timer);pending.delete(id);reject(Error('No se pudo iniciar la conexión.'));}});
+ return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{pending.delete(id);reject(Error(slow));},40000);pending.set(id,{resolve,reject,timer,scope:requestScope});try{bridge.postMessage(JSON.stringify({type,id,scope:requestScope,...fields}));}catch{clearTimeout(timer);pending.delete(id);reject(Error('No se pudo iniciar la conexión.'));}});
 }
 if(bridge)bridge.onmessage=event=>{try{const data=JSON.parse(event.data),p=pending.get(data.id);if(!p)return;pending.delete(data.id);clearTimeout(p.timer);if(data.scope!==p.scope||data.scope!==account())p.reject(Error('La cuenta cambió.'));else if(data.ok)p.resolve(data);else p.reject(Error(data.message||'No se pudo actualizar. Se conserva la lista anterior.'));}catch{/* Ignore unrelated or malformed messages. */}};
 function ensureScope(){
@@ -46,5 +46,6 @@ $('#provider-refresh').addEventListener('click',async()=>{if(!keyKnown)await sta
 $('#split-feed-form').addEventListener('submit',async event=>{event.preventDefault();if(!api||!api.ready()||keyWorking||!event.target.reportValidity())return;ensureScope();const expected=scope,key=$('#split-feed-key').value.trim();if(!/^[A-Za-z0-9_-]{8,256}$/.test(key)){keyProblem='Revisa la clave: usa entre 8 y 256 letras, números, guiones o guiones bajos.';paint(api.read());$('#split-feed-key').focus();return;}const version=++keyVersion;keyWorking=true;keyProblem='';$('#split-feed-key').value='';paint(api.read());try{const r=await native('saveKey',{key});if(current(expected)&&version===keyVersion){configured=r.configured;keyKnown=true;delete errors.split;attempted.delete('split');refresh('split',true);}}catch(e){if(current(expected)&&version===keyVersion)keyProblem=e.message;}finally{if(current(expected)&&version===keyVersion){keyWorking=false;paint(api.read());}}});
 $('#split-feed-forget').addEventListener('click',async()=>{if(!api||!api.ready()||keyWorking)return;ensureScope();const expected=scope,version=++keyVersion;keyWorking=true;keyProblem='';paint(api.read());try{await native('clearKey');if(current(expected)&&version===keyVersion){configured=false;keyKnown=true;delete errors.split;}}catch(e){if(current(expected)&&version===keyVersion)keyProblem=e.message;}finally{if(current(expected)&&version===keyVersion){keyWorking=false;paint(api.read());}}});
 for(const type of['hashchange','lunivo-cloud'])window.addEventListener(type,()=>{if(api){try{render(api.read());}catch{/* The suite reports damaged data. */}}});
-window.LunivoFeeds={connect(value){api=value;},render};
+// The web price module shares this channel so both use one reply handler and account scope.
+window.LunivoFeeds={connect(value){api=value;},render,native(type,fields,slow){if(!api||!api.ready())return Promise.reject(Error('Espera a que termine de cargar la app.'));ensureScope();return native(type,fields,slow);},available:()=>Boolean(bridge)};
 })();

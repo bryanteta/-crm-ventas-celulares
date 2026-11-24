@@ -58,6 +58,8 @@ export async function adminRequest(request,store){
  if(retry){const limited=response({error:'Demasiados intentos de acceso. Espera cinco minutos e intenta nuevamente.'},429,origin);limited.headers.set('Retry-After',String(retry));return limited;}
  if(!validCredential)return response({error:'La clave no es válida.'},401,origin);
  const path=new URL(request.url).pathname;
+ // Lets the Android app confirm a saved key without loading or refreshing inventory.
+ if(path==='/admin/session'&&request.method==='GET')return response({ok:true},200,origin);
  if(path==='/admin/backup'&&request.method==='GET'){
   const saved=record(store),state=custom.state(saved);return response({format:'lunivo-catalog-backup',version:1,exportedAt:new Date().toISOString(),customizations:state,adminMetadata:metadata(saved,state)},200,origin);
  }

@@ -1,6 +1,23 @@
 {
   "version": 1,
-  "revision": 0,
-  "updatedAt": null,
-  "overrides": {}
+  "revision": 5,
+  "updatedAt": "2026-11-24T17:00:01.935Z",
+  "overrides": {
+    "71b80666bc38f2e24c1feba249ea0117": {
+      "priceCents": 25000,
+      "images": []
+    },
+    "d843e05f2f061a1a4b8b4e051a68586e": {
+      "priceCents": 25000,
+      "images": []
+    },
+    "1e8425518661d52b306dda5b87d652a5": {
+      "priceCents": 25000,
+      "images": []
+    },
+    "44eeab4de916bf536918bd4da55be34f": {
+      "priceCents": 25000,
+      "images": []
+    }
+  }
 }

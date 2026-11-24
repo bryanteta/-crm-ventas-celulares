@@ -23,7 +23,11 @@ if(width<701){
  const r=await rail.boundingBox();await p.touchscreen.tap(r.x+4,r.y+r.height-4);
  const touchedLeft=await rail.evaluate(e=>e.scrollLeft);await p.clock.runFor(1500);a.equal(await rail.evaluate(e=>e.scrollLeft),touchedLeft,'touch pauses movement without jumping back');
  await p.clock.runFor(2300);a(Math.abs(await rail.evaluate(e=>e.scrollLeft)-touchedLeft)>2,'motion resumes after two seconds of inactivity');
- await rail.dispatchEvent('pointerdown',{pointerId:2,pointerType:'touch'});await rail.evaluate(e=>e.scrollLeft+=35);const manualLeft=await rail.evaluate(e=>e.scrollLeft);await p.clock.runFor(4000);a.equal(await rail.evaluate(e=>e.scrollLeft),manualLeft,'motion cannot resume while the finger is held down');
+ await rail.dispatchEvent('pointerdown',{pointerId:2,pointerType:'touch'});
+ // Scroll events are delivered by the browser, outside Playwright's fake clock.
+ // Observe the manual scroll before releasing the pointer and measuring idle;
+ // otherwise a late scroll event restarts the idle timer midway through runFor.
+ const manualLeft=await rail.evaluate(e=>new Promise(resolve=>{const delta=e.scrollWidth-e.clientWidth-e.scrollLeft>35?35:-35;e.addEventListener('scroll',()=>resolve(e.scrollLeft),{once:true});e.scrollLeft+=delta;}));await p.clock.runFor(4000);a.equal(await rail.evaluate(e=>e.scrollLeft),manualLeft,'motion cannot resume while the finger is held down');
  await p.evaluate(()=>window.dispatchEvent(new PointerEvent('pointerup',{pointerId:2,pointerType:'touch'})));await p.clock.runFor(1500);a.equal(await rail.evaluate(e=>e.scrollLeft),manualLeft,'idle time starts after release');
  await p.clock.runFor(2300);a(Math.abs(await rail.evaluate(e=>e.scrollLeft)-manualLeft)>2,'motion resumes from the manually chosen position');
  await rail.dispatchEvent('wheel');await p.getByRole('button',{name:'iPhone',exact:true}).click();await p.getByRole('button',{name:'Todos',exact:true}).click();const refreshedLeft=await rail.evaluate(e=>e.scrollLeft);await p.clock.runFor(1000);a.equal(await rail.evaluate(e=>e.scrollLeft),refreshedLeft,'rendering respects the idle pause');

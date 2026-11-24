@@ -21,9 +21,11 @@ test('preserves every unit and price; combines only identical public variants at
  const combined=buildCatalog(s);assert.equal(combined.products.length,1);assert.equal(combined.products[0].quantity,6);
 });
 test('requires both valid recent sources and rejects free-form model names',()=>{
- for(const change of [s=>delete s.providers.split,s=>s.providers.samuel.total=99,s=>s.checkedAt='invalid',s=>s.checkedAt='2020-01-01',s=>s.providers.split.rows[0].price=0,s=>s.providers.split.rows[0].model='Contact Samuel for price 475']){
+ for(const change of [s=>delete s.providers.split,s=>s.providers.samuel.total=99,s=>s.checkedAt='invalid',s=>s.checkedAt='2020-01-01',s=>s.providers.split.rows[0].price=0]){
  const s=snapshot();change(s);assert.throws(()=>buildCatalog(s));
  }
+ {const s=snapshot(),skipped=[];s.providers.split.rows[0].model='Contact Samuel for price 475';const built=buildCatalog(s,Date.now(),null,skipped);
+  assert.equal(skipped.length,1,'free-form names are reported');assert.equal(built.products.some(p=>/Contact/.test(p.model)),false,'and never published');}
  assert.equal(modelName('SAMSUNG S25 NORMAL 128GB 12RAM').model,'Samsung S25');
  assert.equal(modelName('SAMSUNG Z FLIP 6 256GB 12 RAM').model,'Samsung Z Flip 6');
  assert.equal(modelName('IPHONE 16 NORMAL 128GB - 2 CICLOS OPEN BOX').model,'iPhone 16');

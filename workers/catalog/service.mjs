@@ -22,12 +22,12 @@ async function readProvider(url,headers,fetcher,google=false){
     return new TextDecoder().decode(bytes);
   }
 }
-export async function collectCatalog(token,{fetcher=fetch,now=Date.now,previous=null}={}){
+export async function collectCatalog(token,{fetcher=fetch,now=Date.now,previous=null,skipped=[]}={}){
   if(typeof token!=='string'||!token.trim())throw Error('Provider secret missing');
   const [samuel,split]=await Promise.all([
     readProvider(SAMUEL,{Accept:'application/json'},fetcher,true),
     readProvider(SPLIT,{Accept:'application/json','X-API-Key':token},fetcher)
   ]);
   const checked=now();
-  return catalog.buildCatalog({version:1,checkedAt:new Date(checked).toISOString(),providers:{samuel:feeds.samuelApi(samuel),split:feeds.split(split)}},checked,previous);
+  return catalog.buildCatalog({version:1,checkedAt:new Date(checked).toISOString(),providers:{samuel:feeds.samuelApi(samuel),split:feeds.split(split)}},checked,previous,skipped);
 }

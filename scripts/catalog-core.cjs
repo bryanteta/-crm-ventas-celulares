@@ -3,14 +3,21 @@ const {createHash}=require('node:crypto');
 const {validate}=require('../feeds-core.js');
 const catalogIdentity=require('../catalog-identity.js');
 const {modelName,colorName,conditionName}=catalogIdentity;
-function buildCatalog(snapshot, now=Date.now(), previous=null) {
+// Public logs and /health only get a short model label: no amounts or symbols.
+const reportedModel=raw=>String(raw).replace(/[$€]\s*\d[\d.,]*|\d[\d.,]*\s*(?:usd|\$)/gi,' ').replace(/[^\p{L}\p{N}+ ]/gu,' ').replace(/\s+/g,' ').trim().slice(0,40)||'Sin nombre';
+// Rows with an unrecognized phone model are left out of this publication and
+// reported in `skipped` ({provider, model}) so the workflow log and the
+// Worker's /health show them. Any other refusal still fails the whole build.
+function buildCatalog(snapshot, now=Date.now(), previous=null, skipped=[]) {
   const checked=Date.parse(snapshot?.checkedAt);
   if (snapshot?.version!==1 || !Number.isFinite(checked) || checked>now+300000 || now-checked>24*60*60*1000) throw Error('Usa una captura completa de las últimas 24 horas.');
   const products=new Map();
   for (const provider of ['samuel','split']) {
     const source=validate(provider,snapshot.providers?.[provider]);
     for (const r of source.rows) {
-      const item=catalogIdentity.describe(provider,r);
+      let item;
+      try{item=catalogIdentity.describe(provider,r);}
+      catch(error){if(error?.code!=='unknown-model')throw error;skipped.push({provider,model:reportedModel(r.model)});continue;}
       if(!item)continue;
       const {specs,priceCents,mergeKey:key,sourceInitial}=item;
       const existing=products.get(key);

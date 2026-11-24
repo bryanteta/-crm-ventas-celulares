@@ -4,13 +4,26 @@
 // both compute the same published product, ID and customization key per row.
 const {suggestedPrice}=sales;
 const title = s => s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+// Devices outside the phone catalog: skipped silently instead of failing.
+const NOT_LISTED=/^(?:apple\s+)?(?:ipad|airpods|macbook|imac|mac\s+mini|apple\s+(?:watch|tv|pencil)|pencil)\b|^(?:samsung\s+)?(?:galaxy\s+)?(?:tab|buds|watch|book|ring)\b|^samsung\s+watch\b|^(?:google\s+)?pixel\b|^(?:xiaomi|redmi|poco|motorola|moto|huawei|honor|oppo|vivo|realme|oneplus|infinix|tecno|zte)\b/i;
+const notListed=raw=>NOT_LISTED.test(String(raw).replace(/\s+/g,' ').trim());
+function unknownModel(){const error=Error('Modelo no reconocido: revisa la fuente antes de publicar.');error.code='unknown-model';return error;}
 function modelName(raw) {
   const s = String(raw).replace(/\s+/g, ' ').trim().replace(/^samsung\s+galaxy\s+/i,'Samsung ').replace(/^galaxy\s+/i,'Samsung ').replace(/^apple\s+(?=iphone\b)/i,'');
-  let m = s.match(/^iphone\s*(\d{1,2}|SE|XR|XS|X)(?:\s+(pro\s*max|pro|plus|mini|air))?(?=\s|$)/i);
-  if (m) return {manufacturer:'Apple', model:`iPhone ${m[1].toUpperCase()}${m[2] ? ' '+title(m[2].replace(/pro\s*max/i,'Pro Max')) : ''}`};
-  m = s.match(/^samsung\s+(?:(z)\s*(fold|flip)\s*(\d{1,2})|((?:s|a|m|note)\s*\d{1,3})(?:\s*(ultra|fe|plus|\+))?)(?=\s|$)/i);
-  if (m) return {manufacturer:'Samsung', model:'Samsung '+(m[1] ? `Z ${title(m[2])} ${m[3]}` : m[4].replace(/\s/g,'').toUpperCase().replace('NOTE','Note ')+(m[5] ? ' '+(m[5].toLowerCase()==='fe'?'FE':title(m[5])) : ''))};
-  throw Error('Modelo no reconocido: revisa la fuente antes de publicar.');
+  // Apple sells it as "iPhone Air"; providers also write "iPhone 17 Air".
+  // Both publish under the existing name so images and adjustments still match.
+  if (/^iphone\s*air(?=\s|$)/i.test(s)) return {manufacturer:'Apple', model:'iPhone 17 Air'};
+  let m = s.match(/^iphone\s*(?:(\d{1,2})(e)?|(SE|XR|XS|X))(?:\s+(pro\s*max|pro|plus|mini|air|max))?(?=\s|$)/i);
+  if (m && (!m[4] || !/^max$/i.test(m[4]) || /^xs$/i.test(m[3]||''))) {
+    const base = m[1] ? m[1]+(m[2] ? 'e' : '') : m[3].toUpperCase();
+    return {manufacturer:'Apple', model:`iPhone ${base}${m[4] ? ' '+title(m[4].replace(/pro\s*max/i,'Pro Max')) : ''}`};
+  }
+  m = s.match(/^samsung\s+(?:(z)\s*(fold|flip)\s*(\d{1,2})|((?:s|a|m|note)\s*\d{1,3})(?:\s*(ultra|fe|plus|edge|\+))?)(?=\s|$)/i);
+  if (m) {
+    const edition = !m[5] ? '' : /^fe$/i.test(m[5]) ? ' FE' : m[5]==='+' ? ' Plus' : ' '+title(m[5]);
+    return {manufacturer:'Samsung', model:'Samsung '+(m[1] ? `Z ${title(m[2])} ${m[3]}` : m[4].replace(/\s/g,'').toUpperCase().replace('NOTE','Note ')+edition)};
+  }
+  throw unknownModel();
 }
 function colorName(raw) {
   const colors = {blanco:'Blanco',white:'Blanco',negro:'Negro',black:'Negro',morado:'Morado',purple:'Morado',lila:'Lila',lilac:'Lila',lavanda:'Lila',lavender:'Lila',glaciar:'Glaciar',glacier:'Glaciar',verde:'Verde',green:'Verde',dorado:'Dorado',gold:'Dorado',azul:'Azul',blue:'Azul',rojo:'Rojo',red:'Rojo',celeste:'Celeste',amarillo:'Amarillo',yellow:'Amarillo',rosado:'Rosado',pink:'Rosado',rosa:'Rosado',desert:'Titanio desierto',gris:'Gris',gray:'Gris',grey:'Gris',anaranjado:'Anaranjado',naranja:'Anaranjado',orange:'Anaranjado',silver:'Plata',plata:'Plata',burgundy:'Borgoña',natural:'Titanio natural',titanio:'Titanio natural'};
@@ -31,10 +44,12 @@ function conditionName(category, notes, model) {
   return classify(category)||classify(notes)||classify(model)||'Seminuevo';
 }
 // Describe one validated provider row as the public catalog publishes it.
-// Returns null for rows the phone catalog never lists; throws for rows the
-// catalog refuses to publish (the build then keeps its previous snapshot).
+// Returns null for rows the phone catalog never lists (watches, tablets,
+// accessories, other brands). Throws for rows the catalog refuses to publish;
+// an unrecognized phone model throws with code 'unknown-model' so the build
+// can skip that row with a visible warning instead of freezing the catalog.
 function describe(provider, r) {
-  if(/^(?:apple\s+watch|(?:samsung\s+)?galaxy\s+watch|samsung\s+watch)\b/i.test(r.model.trim()))return null;
+  if(notListed(r.model))return null;
   if (r.price<=0) throw Error('No se publican equipos sin un precio válido.');
   const device=modelName(r.model);
   if(r.color.trim()&&colorName(r.color)==='Color por confirmar')throw Error('El proveedor declara un color que el catálogo todavía no reconoce. Revisa su equivalencia antes de publicar; se conserva la lista anterior.');
@@ -92,5 +107,5 @@ function group(entries) {
   }
   return {products,rows,skipped};
 }
-return {modelName,colorName,conditionName,describe,group};
+return {modelName,colorName,conditionName,describe,group,notListed};
 });

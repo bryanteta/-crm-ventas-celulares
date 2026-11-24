@@ -19,9 +19,13 @@ export class CatalogStore{
     this.attempt=Date.now();this.write('attempt',String(this.attempt));
     this.inflight=(async()=>{
       try{
-        const output=await collectCatalog(this.env.SPLIT_INVENTORY_TOKEN,{previous:this.latest?JSON.parse(this.latest):null}),body=JSON.stringify(output);
+        const skipped=[],output=await collectCatalog(this.env.SPLIT_INVENTORY_TOKEN,{previous:this.latest?JSON.parse(this.latest):null,skipped}),body=JSON.stringify(output);
         if(new TextEncoder().encode(body).byteLength>1024*1024)throw Error('Public snapshot too large');
-        this.write('public',body);this.latest=body;return true;
+        this.write('public',body);this.latest=body;
+        // Only model names: never prices or raw provider responses.
+        this.write('skipped',JSON.stringify(skipped.slice(0,50)));
+        if(skipped.length)console.warn(`Catalog refresh skipped ${skipped.length} unrecognized model(s): ${[...new Set(skipped.map(s=>s.model))].slice(0,10).join(', ')}`);
+        return true;
       }catch{return false;} // Never log raw responses, keys or supplier prices.
       finally{this.inflight=null;}
     })();
@@ -32,7 +36,7 @@ export class CatalogStore{
     if(path.startsWith('/admin/'))return adminRequest(request,this);
     if(path==='/customizations.json'&&['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:JSON.stringify(getCustomizations(this)),{headers:{...headers,'Cache-Control':'public, max-age=30'}});
     if(path==='/refresh'&&request.method==='POST')return new Response(null,{status:await this.refresh(true)?204:503});
-    if(path==='/health')return Response.json({ready:Boolean(this.latest),configured:Boolean(this.env.SPLIT_INVENTORY_TOKEN?.trim()),updatedAt:this.latest?JSON.parse(this.latest).updatedAt:null,attemptedAt:this.attempt?new Date(this.attempt).toISOString():null},{headers:{...headers,'Cache-Control':'no-store'}});
+    if(path==='/health')return Response.json({ready:Boolean(this.latest),configured:Boolean(this.env.SPLIT_INVENTORY_TOKEN?.trim()),updatedAt:this.latest?JSON.parse(this.latest).updatedAt:null,attemptedAt:this.attempt?new Date(this.attempt).toISOString():null,skippedModels:JSON.parse(this.read('skipped')||'[]')},{headers:{...headers,'Cache-Control':'no-store'}});
     if(path!=='/inventory.json'||!['GET','HEAD'].includes(request.method))return new Response(null,{status:404});
     if(!this.latest)await this.refresh();
     else if(Date.now()-Date.parse(JSON.parse(this.latest).updatedAt)>=INTERVAL&&Date.now()-this.attempt>=INTERVAL)this.ctx.waitUntil(this.refresh());

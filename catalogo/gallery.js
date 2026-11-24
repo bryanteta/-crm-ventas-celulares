@@ -17,7 +17,7 @@
   const renders=new WeakMap();
   function draw(img,art){
     const request={};renders.set(img,request);img.style.visibility='hidden';
-    frame(img,art);img.style.visibility='hidden';img.src=src(art);
+    frame(img,art);img.style.visibility='hidden';img.referrerPolicy=art.custom?'no-referrer':'strict-origin-when-cross-origin';img.src=src(art);
     img.alt=product.model+', '+(product.imageIllustrative?'color ilustrativo':product.color)+' · '+art.label;
     const loading=img===photo?stage:img===zoomPhoto?viewport:null;
     if(loading)loading.setAttribute('aria-busy','true');

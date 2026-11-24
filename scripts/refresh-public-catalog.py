@@ -25,7 +25,6 @@ try:
         body = response.read(1024 * 1024 + 1)
     if len(body) > 1024 * 1024:
         raise ValueError('Oversized public configuration')
-    program = r"const fs=require('node:fs'),core=require('./catalogo/customization-core.js'),file='catalogo/customizations.json',next=core.state(JSON.parse(fs.readFileSync(0,'utf8'))),old=fs.existsSync(file)?core.state(JSON.parse(fs.readFileSync(file,'utf8'))):core.empty();if(next.revision>=old.revision){fs.writeFileSync(file+'.tmp',JSON.stringify(next,null,2)+'\n');fs.renameSync(file+'.tmp',file);console.log('Ediciones públicas sincronizadas.');}"
-    subprocess.run(['node','-e',program], input=body, cwd=root, capture_output=True, check=True)
+    subprocess.run(['node', str(root / 'scripts/sync-catalog-customizations.cjs')], input=body, cwd=root, capture_output=True, check=True)
 except Exception:
     print('Se conserva la última copia válida de las ediciones públicas.')

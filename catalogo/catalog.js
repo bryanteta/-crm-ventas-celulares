@@ -28,12 +28,13 @@
   }
 
   const customizationCore=window.LunivoCatalogCustomizations;
-  let lastCustomizations=customizationCore?.empty();
+  let customizationSnapshot={state:customizationCore?.empty(),liveSeen:false};
   async function customizeInventory(inventory){
     if(!customizationCore)return inventory;
     const urls=['customizations.json',...(inventoryEndpoint?[new URL('/customizations.json',inventoryEndpoint).href]:[])];
-    const snapshots=await Promise.all(urls.map(async url=>{try{const r=await fetch(url,{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(5000)});return r.ok?customizationCore.state(await r.json()):null;}catch{return null;}}));
-    for(const state of snapshots)if(state&&state.revision>=lastCustomizations.revision)lastCustomizations=state;
+    const snapshots=await Promise.all(urls.map(async url=>{try{const r=await fetch(url,{cache:'default',credentials:'omit',signal:AbortSignal.timeout(5000)});return r.ok?customizationCore.state(await r.json()):null;}catch{return null;}}));
+    customizationSnapshot=customizationCore.chooseSnapshot(customizationSnapshot,snapshots[0],snapshots[1]);
+    const lastCustomizations=customizationSnapshot.state;
     const keys=await Promise.all(inventory.products.map(p=>customizationCore.key(p)));
     return {...inventory,products:inventory.products.map((p,i)=>customizationCore.apply(p,lastCustomizations.overrides[keys[i]]))};
   }
@@ -316,7 +317,7 @@
   function shareStatus(text){const status=$('#share-status');clearTimeout(shareStatusTimer);status.textContent=text;status.hidden=false;shareStatusTimer=setTimeout(()=>{status.hidden=true;},6000);}
   // Exclude stock and price so a shared link survives routine inventory updates.
   async function deviceSignature(p){
-    const specs=JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,p.cycles??null,p.sim||'Por confirmar',p.box??null,p.ram||'',[...p.observations].sort()]);
+    const specs=customizationCore.specification(p);
     const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(specs));
     return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,24);
   }
@@ -358,7 +359,7 @@
       card.querySelector('.variant-specs').textContent=details.join(' · ');
       const image=card.querySelector('.product-image'),picture=pictureFor(device);
       const origins=device.sourceInitials||[],photoCaption=card.querySelector('.image-caption'),originCaption=[device.color,...origins].join(' · ');
-      if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=picture.custom?device.model+', '+device.color+' · imagen de referencia':picture.colorIllustrative?device.model+' · imagen del modelo, color ilustrativo':device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent=picture.colorIllustrative?['Imagen del modelo · Color ilustrativo',...origins].join(' · '):'Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
+      if(picture){framePhoto(image,picture);image.referrerPolicy=picture.custom?'no-referrer':'strict-origin-when-cross-origin';image.src=picture.path;image.alt=picture.custom?device.model+', '+device.color+' · imagen de referencia':picture.colorIllustrative?device.model+' · imagen del modelo, color ilustrativo':device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent=picture.colorIllustrative?['Imagen del modelo · Color ilustrativo',...origins].join(' · '):'Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
       else{photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);

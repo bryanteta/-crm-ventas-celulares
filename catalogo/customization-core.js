@@ -1,6 +1,7 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.LunivoCatalogCustomizations=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
  'use strict';
- function identity(p){return JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,p.cycles??null,p.sim||'Por confirmar',p.box??null,p.ram||'',[...(p.observations||[])].sort(),[...(p.sourceInitials||[])].sort()]);}
+ function specification(p){return JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,p.cycles??null,p.sim||'Por confirmar',p.box??null,p.ram||'',[...(p.observations||[])].sort()]);}
+ function identity(p){return JSON.stringify([...JSON.parse(specification(p)),[...(p.sourceInitials||[])].sort()]);}
  async function key(p){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(identity(p)));return [...new Uint8Array(bytes)].map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,32);}
  function imageUrl(value){
   if(typeof value!=='string'||value.length>2048||/[\u0000-\u0020]/.test(value))return false;
@@ -25,5 +26,13 @@
  }
  function empty(){return {version:1,revision:0,updatedAt:null,overrides:{}};}
  function apply(p,edit){const price=p.automaticPriceCents??p.priceCents;const result={...p,priceCents:edit?.priceCents??price,automaticPriceCents:price};delete result.customImages;if(edit?.images?.length)result.customImages=edit.images.map(a=>({...a}));return result;}
- return {identity,key,imageUrl,patch,state,empty,apply};
+ // A healthy live service is authoritative, even after its revision resets.
+ // Once live data was seen, an outage cannot resurrect an older static edit.
+ function chooseSnapshot(previous,published,live){
+  if(live)return {state:state(live),liveSeen:true};
+  if(previous?.liveSeen)return previous;
+  const current=previous?.state||empty();
+  return {state:published&&published.revision>=current.revision?state(published):current,liveSeen:false};
+ }
+ return {specification,identity,key,imageUrl,patch,state,empty,apply,chooseSnapshot};
 });

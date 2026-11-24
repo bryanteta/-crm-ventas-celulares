@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
 const origin='https://lunivosv.com';
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function signature(p){return createHash('sha256').update(JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,p.cycles??null,p.sim||'Por confirmar',p.box??null,p.ram||'',[...p.observations].sort()])).digest('hex').slice(0,24);}
+function signature(p){return createHash('sha256').update(require('../catalogo/customization-core.js').specification(p)).digest('hex').slice(0,24);}
 function prepareSharePages(source,output){
  const inventory=require('./catalog-customizations.cjs').readCatalog(source);
  const images=JSON.parse(fs.readFileSync(path.join(source,'product-images.json'),'utf8')).products;
@@ -27,7 +27,7 @@ function prepareSharePages(source,output){
 ${exact?`<meta property="og:image:width" content="${Number(picture.width)}"><meta property="og:image:height" content="${Number(picture.height)}">`:''}
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escape(title)}"><meta name="twitter:description" content="${escape(description)}"><meta name="twitter:image" content="${escape(image)}">
 <script>location.replace(${JSON.stringify(target)});</script></head>
-<body><main><h1>${escape(title)}</h1><img src="${escape(image)}" alt="${escape(p.model+' · '+p.color)}" width="400" style="max-width:100%;height:auto"><p>${escape(description)}</p><a href="${escape(target)}">Ver este dispositivo en Lunivo</a></main></body></html>\n`);
+<body><main><h1>${escape(title)}</h1><img referrerpolicy="no-referrer" src="${escape(image)}" alt="${escape(p.model+' · '+p.color)}" width="400" style="max-width:100%;height:auto"><p>${escape(description)}</p><a href="${escape(target)}">Ver este dispositivo en Lunivo</a></main></body></html>\n`);
   manifest.products[p.id]={path:route,signature:sig};
  }
  fs.writeFileSync(path.join(output,'share-pages.json'),JSON.stringify(manifest));

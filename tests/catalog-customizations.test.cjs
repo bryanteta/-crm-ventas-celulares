@@ -17,3 +17,19 @@ test('shared previews and model pages use saved retail prices and public image l
  try{const source=path.join(tmp,'source'),out=path.join(tmp,'out');fs.mkdirSync(source);fs.mkdirSync(out);const file=path.join(source,'inventory.json');const original=JSON.stringify({schemaVersion:1,brand:'Lunivo',currency:'USD',updatedAt:new Date().toISOString(),products:[p]});fs.writeFileSync(file,original);fs.writeFileSync(path.join(source,'product-images.json'),JSON.stringify({version:2,products:{}}));const state=custom.empty();state.revision=1;state.updatedAt=new Date().toISOString();state.overrides[key(p)]={priceCents:55599,images:[{url:'https://images.example.com/phone.jpg',width:600,height:800,label:'Frente'}]};fs.writeFileSync(path.join(source,'customizations.json'),JSON.stringify(state));require('../scripts/catalog-share-pages.cjs').prepareSharePages(source,out);require('../scripts/catalog-seo.cjs').prepareSeo(source,out);const shared=fs.readFileSync(path.join(out,'equipo',p.id,'index.html'),'utf8'),model=fs.readFileSync(path.join(out,'modelos/iphone-13/index.html'),'utf8');assert(shared.includes('$555.99'));assert(shared.includes('https://images.example.com/phone.jpg'));assert(model.includes('"price":"555.99"'));assert(model.includes('src="https://images.example.com/phone.jpg"'));assert.equal(fs.readFileSync(file,'utf8'),original);
  }finally{fs.rmSync(tmp,{recursive:true,force:true});}
 });
+test('a healthy worker wins after a revision reset; outages retain the last live state instead of resurrecting published edits',()=>{
+ const snapshot=revision=>({...custom.empty(),revision});const published=snapshot(80),live=snapshot(0);
+ let selected=custom.chooseSnapshot(null,published,null);assert.equal(selected.state.revision,80);assert.equal(selected.liveSeen,false);
+ selected=custom.chooseSnapshot(selected,published,live);assert.equal(selected.state.revision,0);assert.equal(selected.liveSeen,true);
+ selected=custom.chooseSnapshot(selected,published,null);assert.equal(selected.state.revision,0);
+ assert.equal(custom.chooseSnapshot(selected,published,snapshot(1)).state.revision,1);
+});
+test('synchronization accepts a validated live reset and preserves the previous file on invalid input or write failure',()=>{
+ const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),{sync}=require('../scripts/sync-catalog-customizations.cjs'),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'lunivo-sync-test-')),file=path.join(tmp,'customizations.json');
+ try{fs.writeFileSync(file,JSON.stringify({...custom.empty(),revision:80}));sync(JSON.stringify(custom.empty()),file);assert.equal(JSON.parse(fs.readFileSync(file)).revision,0);const before=fs.readFileSync(file,'utf8');for(const input of ['invalid',JSON.stringify({version:1}),JSON.stringify({...custom.empty(),overrides:{bad:{}}})]){assert.throws(()=>sync(input,file));assert.equal(fs.readFileSync(file,'utf8'),before);}fs.mkdirSync(file+'.tmp');assert.throws(()=>sync(JSON.stringify({...custom.empty(),revision:1}),file));assert.equal(fs.readFileSync(file,'utf8'),before);
+ }finally{fs.rmSync(tmp,{recursive:true,force:true});}
+});
+test('shared links retain their specification signature and edits stay separated when providers or condition change',async()=>{
+ const {signature}=require('../scripts/catalog-share-pages.cjs'),crypto=require('crypto'),old=JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,null,'Por confirmar',null,'',[]]);assert.equal(custom.specification(p),old);assert.equal(signature(p),crypto.createHash('sha256').update(old).digest('hex').slice(0,24));
+ for(const change of [{sourceInitials:['T','S']},{battery:'90%'},{cycles:500},{observations:['Aviso de pantalla']}])assert.notEqual(await custom.key({...p,...change}),await custom.key(p));
+});

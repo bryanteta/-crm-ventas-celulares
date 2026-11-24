@@ -44,3 +44,35 @@ test('admin retains the last complete inventory when providers cannot refresh',a
  const {object}=setup();object.latest=JSON.stringify({...source,updatedAt:'2020-01-01T00:00:00Z'});object.refresh=async()=>false;
  const response=await object.fetch(request());assert.equal(response.status,200);const data=await response.json();assert.equal(data.cached,true);assert.equal(data.products.length,1);
 });
+test('different keys can be edited concurrently; same-key conflicts remain protected and no-op deletes do not advance revision',async()=>{
+ const {object}=setup(),first=await input(),other={...source.products[0],id:'2'.repeat(20),color:'Blanco'};
+ object.latest=JSON.stringify({...source,products:[source.products[0],other]});
+ assert.equal((await object.fetch(request('/admin/customizations','PUT',{...first,expectedEdit:null}))).status,200);
+ const second={...first,key:await custom.key(other),productId:other.id,expectedEdit:null};
+ assert.equal((await object.fetch(request('/admin/customizations','PUT',second))).status,200);
+ assert.equal((await object.fetch(request('/admin/customizations','PUT',{...first,expectedEdit:null}))).status,409);
+ const missing=await (await object.fetch(request('/admin/customizations','DELETE',{key:'f'.repeat(32),expectedRevision:0}))).json();assert.equal(missing.customizations.revision,2);assert.equal(Object.keys(missing.customizations.overrides).length,2);
+});
+test('typed keys and product IDs are required; an unavailable inventory reports 503 rather than a changed device',async()=>{
+ const {object}=setup(),payload=await input();for(const change of [{key:[payload.key]},{productId:[payload.productId]},{expectedEdit:[]}])assert.equal((await object.fetch(request('/admin/customizations','PUT',{...payload,...change}))).status,400);
+ object.latest=null;object.refresh=async()=>false;assert.equal((await object.fetch(request('/admin/customizations','PUT',payload))).status,503);
+});
+test('saved context survives provider/specification changes; orphaned edits can be explicitly reassigned or removed',async()=>{
+ const {object,rows}=setup(),payload=await input();await object.fetch(request('/admin/customizations','PUT',payload));
+ const changed={...source.products[0],id:'2'.repeat(20),battery:'95%',sourceInitials:['T','S'],priceCents:55000};object.latest=JSON.stringify({...source,products:[changed]});
+ const list=await (await object.fetch(request())).json();assert.notEqual(list.products[0].customizationKey,payload.key);assert.equal(list.customizations.overrides[payload.key].priceCents,49900);assert.equal(list.adminMetadata[payload.key].automaticPriceCentsAtEdit,43000);assert.deepEqual(list.adminMetadata[payload.key].product.sourceInitials,['T']);
+ const moved=await object.fetch(request('/admin/customizations','PUT',{key:list.products[0].customizationKey,productId:changed.id,fromKey:payload.key,expectedRevision:1,patch:edit}));assert.equal(moved.status,200);const next=await moved.json();assert(!next.customizations.overrides[payload.key]);assert.equal(next.adminMetadata[list.products[0].customizationKey].automaticPriceCentsAtEdit,55000);
+ const persisted=JSON.parse(rows.get('customizations'));assert(persisted.adminMetadata);
+ const publicData=await (await object.fetch(new Request('https://fixture/customizations.json'))).json();assert(!('adminMetadata' in publicData));
+ const deleted=await object.fetch(request('/admin/customizations','DELETE',{key:list.products[0].customizationKey,expectedRevision:2}));assert.equal(deleted.status,200);assert.deepEqual((await deleted.json()).adminMetadata,{});
+});
+test('the 1000-edit limit is explicit and removing an orphan restores capacity without deleting other edits',async()=>{
+ const {object,rows}=setup(),payload=await input(),overrides={};for(let i=1;i<=1000;i++)overrides[i.toString(16).padStart(32,'0')]={priceCents:49900,images:[]};
+ rows.set('customizations',JSON.stringify({version:1,revision:1,updatedAt:new Date().toISOString(),overrides}));const before=rows.get('customizations');
+ const full=await object.fetch(request('/admin/customizations','PUT',{...payload,expectedRevision:1}));assert.equal(full.status,413);assert.match((await full.json()).error,/1000/);assert.equal(rows.get('customizations'),before);
+ const remove=await object.fetch(request('/admin/customizations','DELETE',{key:'1'.padStart(32,'0'),expectedRevision:1}));assert.equal(remove.status,200);
+ assert.equal((await object.fetch(request('/admin/customizations','PUT',{...payload,expectedRevision:2}))).status,200);assert.equal(Object.keys(JSON.parse(rows.get('customizations')).overrides).length,1000);
+});
+test('public snapshots are briefly cacheable while authenticated responses remain private',async()=>{
+ const {object}=setup();assert.equal((await object.fetch(request())).headers.get('Cache-Control'),'no-store');const r=await object.fetch(new Request('https://fixture/customizations.json'));assert.equal(r.headers.get('Cache-Control'),'public, max-age=30');
+});

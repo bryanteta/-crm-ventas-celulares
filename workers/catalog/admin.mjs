@@ -25,8 +25,8 @@ function metadata(value,state){
 function limitedLogin(store,request,success=false){
  const now=Date.now(),ip=request.headers.get('CF-Connecting-IP')?.slice(0,80)||'unknown';store.failedLogins??=new Map();
  for(const [key,entry]of store.failedLogins)if(entry.until<=now)store.failedLogins.delete(key);
- const previous=store.failedLogins.get(ip);if(previous?.count>=10)return Math.ceil((previous.until-now)/1000);
  if(success){store.failedLogins.delete(ip);return 0;}
+ const previous=store.failedLogins.get(ip);if(previous?.count>=10)return Math.ceil((previous.until-now)/1000);
  if(!previous&&store.failedLogins.size>=1000)store.failedLogins.delete(store.failedLogins.keys().next().value);
  store.failedLogins.set(ip,{count:(previous?.count||0)+1,until:previous?.until||now+5*60*1000});return 0;
 }
@@ -34,7 +34,7 @@ async function backupMetadata(snapshot){
  const result={};for(const [key,value]of Object.entries(snapshot.adminMetadata)){
   if(!snapshot.customizations.overrides[key]||!value||typeof value!=='object'||Array.isArray(value)||!value.product)throw Error('Contexto de respaldo inválido.');
   const product=custom.context(value.product);
-  if(!['Apple','Samsung'].includes(product.manufacturer)||['model','capacity','color','condition'].some(field=>typeof product[field]!=='string'||product[field].length>160)||['grade','battery','sim','ram'].some(field=>product[field]!=null&&(typeof product[field]!=='string'||product[field].length>160))||!Array.isArray(product.sourceInitials)||!product.sourceInitials.length||product.sourceInitials.length>3||product.sourceInitials.some(v=>!Object.hasOwn(custom.providerNames,v))||new Set(product.sourceInitials).size!==product.sourceInitials.length||product.observations!==undefined&&(!Array.isArray(product.observations)||product.observations.length>30||product.observations.some(v=>typeof v!=='string'||v.length>1000))||product.cycles!=null&&(!Number.isSafeInteger(product.cycles)||product.cycles<0)||product.box!=null&&typeof product.box!=='boolean'||await custom.key(product)!==key)throw Error('Equipo de respaldo inválido.');
+  if(typeof product.manufacturer!=='string'||!product.manufacturer.trim()||product.manufacturer.length>80||['model','capacity','color','condition'].some(field=>typeof product[field]!=='string'||product[field].length>160)||['grade','battery','sim','ram'].some(field=>product[field]!=null&&(typeof product[field]!=='string'||product[field].length>160))||!Array.isArray(product.sourceInitials)||!product.sourceInitials.length||product.sourceInitials.length>3||product.sourceInitials.some(v=>!Object.hasOwn(custom.providerNames,v))||new Set(product.sourceInitials).size!==product.sourceInitials.length||product.observations!==undefined&&(!Array.isArray(product.observations)||product.observations.length>30||product.observations.some(v=>typeof v!=='string'||v.length>1000))||product.cycles!=null&&(!Number.isSafeInteger(product.cycles)||product.cycles<0)||product.box!=null&&typeof product.box!=='boolean'||await custom.key(product)!==key)throw Error('Equipo de respaldo inválido.');
   const range=value.automaticPriceRangeAtEdit||{min:value.automaticPriceCentsAtEdit,max:value.automaticPriceCentsAtEdit};
   if(!Number.isSafeInteger(range.min)||!Number.isSafeInteger(range.max)||range.min<100||range.max<range.min||typeof value.savedAt!=='string'||!Number.isFinite(Date.parse(value.savedAt)))throw Error('Referencia de respaldo inválida.');
   result[key]={product,automaticPriceCentsAtEdit:range.max,automaticPriceRangeAtEdit:{min:range.min,max:range.max},savedAt:value.savedAt};

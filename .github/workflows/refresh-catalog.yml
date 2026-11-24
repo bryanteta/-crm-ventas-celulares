@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       allow_customization_reset:
-        description: 'Confirmar reinicio o reducción masiva de ajustes (conserva respaldo previo)'
+        description: 'Confirmar reinicio de revisión o fecha de los ajustes (conserva respaldo previo)'
         type: boolean
         default: false
   push:

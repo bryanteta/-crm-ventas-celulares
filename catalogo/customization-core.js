@@ -45,5 +45,14 @@
   }
   return {customizations:state(value),adminMetadata:{}};
  }
- return {specification,identity,key,imageUrl,patch,state,empty,apply,chooseSnapshot,providerNames,context,priceRanges,backup};
+ function importImpact(current,incoming,currentMetadata={},incomingMetadata={}){
+  const result={total:0,added:0,overwritten:0,newer:0,unknownDates:0};
+  for(const key of Object.keys(incoming.overrides)){
+   result.total++;if(!Object.hasOwn(current.overrides,key)){result.added++;continue;}
+   result.overwritten++;const old=currentMetadata[key]?.savedAt,next=incomingMetadata[key]?.savedAt;
+   const before=typeof old==='string'?Date.parse(old):NaN,after=typeof next==='string'?Date.parse(next):NaN;
+   if(!Number.isFinite(before)||!Number.isFinite(after))result.unknownDates++;else if(before>after)result.newer++;
+  }return result;
+ }
+ return {specification,identity,key,imageUrl,patch,state,empty,apply,chooseSnapshot,providerNames,context,priceRanges,backup,importImpact};
 });

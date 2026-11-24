@@ -44,7 +44,7 @@ export default{
   async fetch(request,env){
     const path=new URL(request.url).pathname;
     if(path==='/')return Response.json({service:'Lunivo',inventory:'/inventory.json',status:'/health'},{headers});
-    if(['/admin/catalog','/admin/customizations'].includes(path)){
+    if(['/admin/catalog','/admin/customizations','/admin/backup','/admin/import'].includes(path)){
       try{return await store(env).fetch(new Request('https://catalog.internal'+path,request));}catch{return unavailable();}
     }
     if(!['/inventory.json','/health','/customizations.json'].includes(path))return new Response(null,{status:404});

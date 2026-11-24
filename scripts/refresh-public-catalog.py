@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Refresh the public catalog without storing private source data in the checkout."""
+import os
 import pathlib
 import subprocess
 import tempfile
@@ -25,6 +26,11 @@ try:
         body = response.read(1024 * 1024 + 1)
     if len(body) > 1024 * 1024:
         raise ValueError('Oversized public configuration')
-    subprocess.run(['node', str(root / 'scripts/sync-catalog-customizations.cjs')], input=body, cwd=root, capture_output=True, check=True)
+    subprocess.run(['node', str(root / 'scripts/sync-catalog-customizations.cjs'), 'catalogo/customizations.json'] + (['--allow-reset'] if os.environ.get('ALLOW_CUSTOMIZATION_RESET') == 'true' else []), input=body, cwd=root, capture_output=True, check=True)
+except subprocess.CalledProcessError as error:
+    if b'RESET_REQUIRES_CONFIRMATION' in (error.stderr or b''):
+        print('::warning::Posible reinicio o reducción masiva de ajustes: se conserva el respaldo. Para confirmarlo usa allow_customization_reset en la ejecución manual.')
+    else:
+        print('Se conserva la última copia válida de las ediciones públicas.')
 except Exception:
     print('Se conserva la última copia válida de las ediciones públicas.')

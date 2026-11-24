@@ -34,5 +34,16 @@
   const current=previous?.state||empty();
   return {state:published&&published.revision>=current.revision?state(published):current,liveSeen:false};
  }
- return {specification,identity,key,imageUrl,patch,state,empty,apply,chooseSnapshot};
+ const providerNames=Object.freeze({T:'TecnoShop',S:'Split',J:'Javier'});
+ function context(p){const result={};for(const field of ['manufacturer','model','capacity','color','condition','grade','battery','cycles','sim','box','ram','observations','sourceInitials'])if(p[field]!==undefined)result[field]=p[field];return JSON.parse(JSON.stringify(result));}
+ function priceRanges(rows){const ranges=new Map();for(const row of rows){const price=row.product.priceCents,range=ranges.get(row.key);if(range){range.min=Math.min(range.min,price);range.max=Math.max(range.max,price);}else ranges.set(row.key,{min:price,max:price});}return ranges;}
+ function backup(value){
+  if(value?.format==='lunivo-catalog-backup'){
+   if(value.version!==1||Object.keys(value).some(k=>!['format','version','exportedAt','customizations','adminMetadata'].includes(k)))throw Error('Respaldo inválido.');
+   const metadata=value.adminMetadata||{};if(typeof metadata!=='object'||Array.isArray(metadata)||Object.keys(metadata).length>1000)throw Error('Contexto de respaldo inválido.');
+   return {customizations:state(value.customizations),adminMetadata:metadata};
+  }
+  return {customizations:state(value),adminMetadata:{}};
+ }
+ return {specification,identity,key,imageUrl,patch,state,empty,apply,chooseSnapshot,providerNames,context,priceRanges,backup};
 });

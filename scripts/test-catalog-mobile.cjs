@@ -6,7 +6,7 @@ const engine=process.env.CATALOG_BROWSER==='webkit'?webkit:chromium;
  for(const [width,height] of [[320,740],[390,844],[430,932],[844,390]]){
   const ios=engine===webkit,profile=devices[ios?'iPhone 13':'Pixel 7'];
   const page=await browser.newPage({...profile,viewport:{width,height}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(12000);
-  await page.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/');await page.locator('.card').first().waitFor();
+  await require('./catalog-test-fixtures.cjs').withoutCustomizations(page);await page.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/');await page.locator('.card').first().waitFor();
   a.equal(await page.locator('#headline').innerText(),'Recíbelo\nRevísalo\nPaga');
   a(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   if(width<721){a(await page.evaluate(()=>{const text=document.querySelector('#headline').getBoundingClientRect(),art=document.querySelector('.hero-collection').getBoundingClientRect();return art.left>=text.right&&Math.min(text.bottom,art.bottom)>Math.max(text.top,art.top)}),'phones sit alongside the steps');}

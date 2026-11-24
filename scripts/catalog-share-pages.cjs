@@ -4,7 +4,7 @@ const origin='https://lunivosv.com';
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function signature(p){return createHash('sha256').update(JSON.stringify([p.manufacturer,p.model,p.capacity,p.color,p.condition,p.grade,p.battery,p.cycles??null,p.sim||'Por confirmar',p.box??null,p.ram||'',[...p.observations].sort()])).digest('hex').slice(0,24);}
 function prepareSharePages(source,output){
- const inventory=JSON.parse(fs.readFileSync(path.join(source,'inventory.json'),'utf8'));
+ const inventory=require('./catalog-customizations.cjs').readCatalog(source);
  const images=JSON.parse(fs.readFileSync(path.join(source,'product-images.json'),'utf8')).products;
  const manifest={version:1,products:{}};
  const money=cents=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:cents%100?2:0}).format(cents/100);
@@ -15,7 +15,7 @@ function prepareSharePages(source,output){
   const description=[p.condition,p.color,p.grade?'Categoría '+p.grade:'',p.manufacturer==='Samsung'?'Batería en excelentes condiciones':p.battery?'Batería '+p.battery:'',...p.observations].filter(Boolean).join(' · ')+'. Precio promocional al contado. Consulta disponibilidad y condiciones de compra.';
   const picture=images[p.model+'|'+p.color];
   const exact=picture&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(picture.path);
-  const image=origin+'/'+(exact?picture.path:'assets/logo.png');
+  const image=p.customImages?.[0]?.url||origin+'/'+(exact?picture.path:'assets/logo.png');
   const target='/?'+new URLSearchParams({equipo:p.id,version:sig});
   const folder=path.join(output,'equipo',p.id);fs.mkdirSync(folder,{recursive:true});
   fs.writeFileSync(path.join(folder,'index.html'),`<!doctype html>

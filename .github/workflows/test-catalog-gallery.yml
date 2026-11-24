@@ -3,6 +3,8 @@ on:
   push:
     branches: [main]
     paths:
+      - 'catalogo/customization-core.js'
+      - 'scripts/catalog-test-fixtures.cjs'
       - 'catalogo/gallery.js'
       - 'catalogo/catalog.js'
       - 'catalogo/index.html'

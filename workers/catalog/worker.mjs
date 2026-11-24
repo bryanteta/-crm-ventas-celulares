@@ -1,4 +1,5 @@
 import {collectCatalog,INTERVAL} from './service.mjs';
+import {adminRequest,getCustomizations} from './admin.mjs';
 const headers={'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET, HEAD, OPTIONS','X-Content-Type-Options':'nosniff'};
 const unavailable=()=>new Response(JSON.stringify({error:'Catálogo temporalmente no disponible'}),{status:503,headers:{...headers,'Cache-Control':'no-store'}});
 
@@ -28,6 +29,8 @@ export class CatalogStore{
   }
   async fetch(request){
     const path=new URL(request.url).pathname;
+    if(path.startsWith('/admin/'))return adminRequest(request,this);
+    if(path==='/customizations.json'&&['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:JSON.stringify(getCustomizations(this)),{headers:{...headers,'Cache-Control':'no-store'}});
     if(path==='/refresh'&&request.method==='POST')return new Response(null,{status:await this.refresh(true)?204:503});
     if(path==='/health')return Response.json({ready:Boolean(this.latest),configured:Boolean(this.env.SPLIT_INVENTORY_TOKEN?.trim()),updatedAt:this.latest?JSON.parse(this.latest).updatedAt:null,attemptedAt:this.attempt?new Date(this.attempt).toISOString():null},{headers:{...headers,'Cache-Control':'no-store'}});
     if(path!=='/inventory.json'||!['GET','HEAD'].includes(request.method))return new Response(null,{status:404});
@@ -41,12 +44,15 @@ export default{
   async fetch(request,env){
     const path=new URL(request.url).pathname;
     if(path==='/')return Response.json({service:'Lunivo',inventory:'/inventory.json',status:'/health'},{headers});
-    if(!['/inventory.json','/health'].includes(path))return new Response(null,{status:404});
+    if(['/admin/catalog','/admin/customizations'].includes(path)){
+      try{return await store(env).fetch(new Request('https://catalog.internal'+path,request));}catch{return unavailable();}
+    }
+    if(!['/inventory.json','/health','/customizations.json'].includes(path))return new Response(null,{status:404});
     if(request.method==='OPTIONS')return new Response(null,{status:204,headers});
     if(!['GET','HEAD'].includes(request.method))return new Response(null,{status:405,headers:{...headers,Allow:'GET, HEAD, OPTIONS'}});
     try{
       const response=await store(env).fetch(new Request('https://catalog.internal'+path,{method:request.method}));
-      if(path==='/health'){const report=await response.json();return Response.json({...report,workerConfigured:Boolean(env.SPLIT_INVENTORY_TOKEN?.trim()),revision:'source-initials-1'},{headers:{...headers,'Cache-Control':'no-store'}});}
+      if(path==='/health'){const report=await response.json();return Response.json({...report,workerConfigured:Boolean(env.SPLIT_INVENTORY_TOKEN?.trim()),adminConfigured:typeof env.CATALOG_ADMIN_TOKEN==='string'&&env.CATALOG_ADMIN_TOKEN.trim().length>=32,revision:'catalog-admin-1'},{headers:{...headers,'Cache-Control':'no-store'}});}
       return response;
     }catch{return unavailable();}
   },

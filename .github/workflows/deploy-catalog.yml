@@ -8,6 +8,7 @@ on:
       - 'scripts/prepare-catalog-site.cjs'
       - 'scripts/catalog-share-pages.cjs'
       - 'scripts/catalog-seo.cjs'
+      - 'scripts/catalog-customizations.cjs'
       - 'scripts/deploy-pages-rest.cjs'
       - 'tests/pages-deployment.test.cjs'
       - '.github/workflows/deploy-catalog.yml'

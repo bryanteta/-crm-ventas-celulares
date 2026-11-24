@@ -174,3 +174,5 @@
 @media(max-width:720px){.site-footer{margin:36px 12px 0;padding:25px 22px 20px}.site-footer .footer-main{grid-template-columns:1fr;gap:22px;padding:25px 0}.site-footer .footer-contact{width:100%;justify-content:space-between}.footer-navigation{align-items:flex-start;gap:4px;flex-direction:column;padding:9px 0}.site-footer .social-links{gap:24px}.site-footer .footer-bottom{flex-direction:column;gap:12px}.site-footer .footer-currency{align-self:flex-start}}
 
 @media(min-width:721px){.site-footer .footer-bottom{padding-right:60px}}
+
+.site-footer .footer-admin{display:inline-block;margin-top:7px;font-size:10px;color:#b8c5df;min-height:28px;padding:4px 0}.site-footer .footer-admin:hover{color:#fff;text-decoration:underline}

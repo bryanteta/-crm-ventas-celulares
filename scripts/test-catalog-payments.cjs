@@ -13,7 +13,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   assert.deepEqual(config.banks.map(b=>b.id),['agricola','bac','promerica','davivienda','cuscatlan']);
   const terms={agricola:[3,6,9,12],bac:[3,6,9,12],promerica:[3,6,9,12,18,24],davivienda:[3,6,9,12,18,24],cuscatlan:[3,6,9,12,18,24,36]};
   config.banks.forEach(b=>{assert.deepEqual(b.installments,terms[b.id]);b.id==='bac'?assert.equal(b.name,'BAC Credomatic'):assert.match(b.name,/^Banco /);});
-  await page.goto(base);await page.locator('.card').first().waitFor();
+  await require('./catalog-test-fixtures.cjs').withoutCustomizations(page);await page.goto(base);await page.locator('.card').first().waitFor();
   assert.equal(await page.locator('.promotion-legend').count(),0);
   const cards=await page.locator('.card').evaluateAll(cards=>cards.map(c=>({id:c.dataset.productId,promo:c.querySelector('.price').textContent,regular:c.querySelector('.regular-price s').textContent,label:c.querySelector('.from').textContent,caption:c.querySelector('.cash-only').textContent})));
   for(const card of cards){
@@ -81,7 +81,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   await page.locator('#products').scrollIntoViewIfNeeded();await page.screenshot({path:'/workspace/artifacts/lunivo-precios-promocionales.png'});
   const rounding=await browser.newPage();
   await rounding.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[{...source.products[0],priceCents:10005}]}}));
-  await rounding.goto(base);await rounding.locator('.card').waitFor();
+  await require('./catalog-test-fixtures.cjs').withoutCustomizations(rounding);await rounding.goto(base);await rounding.locator('.card').waitFor();
   assert.equal(await rounding.locator('.price').textContent(),'$100.05');assert.equal(await rounding.locator('.regular-price s').first().textContent(),'$110.00');
   await rounding.locator('.view').click();await rounding.getByLabel('Tasa cero',{exact:false}).check();
   await chooseBank(rounding,'bac');await rounding.locator('[name=installment-term][value="12"]').check();
@@ -92,7 +92,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   }
   const sample=await browser.newPage();
   const quote={...source.products[0],sourceInitials:['T'],model:'iPhone 11 Pro Max',capacity:'64 GB',color:'Verde',condition:'Seminuevo',grade:'A',battery:'100%',priceCents:38000,cycles:null,sim:'Por confirmar',ram:'',box:null,observations:[]};
-  await sample.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[quote]}}));await sample.goto(base);await sample.locator('.card').waitFor();await sample.locator('.product-name').click();await sample.getByLabel('Tasa cero',{exact:false}).check();await chooseBank(sample,'cuscatlan');await sample.locator('[name=installment-term][value="36"]').check();
+  await sample.route('**/inventory.json',r=>r.fulfill({json:{...source,products:[quote]}}));await require('./catalog-test-fixtures.cjs').withoutCustomizations(sample);await sample.goto(base);await sample.locator('.card').waitFor();await sample.locator('.product-name').click();await sample.getByLabel('Tasa cero',{exact:false}).check();await chooseBank(sample,'cuscatlan');await sample.locator('[name=installment-term][value="36"]').check();
   const expected=['Hola 👋 Lunivo, me interesa el siguiente dispositivo:','','📲 iPhone 11 Pro Max - 64 GB · T','⭐️ Estado: Seminuevo, categoría A','🔋 Batería 100%','🟢 Color Verde','','💰 A tasa cero, precio regular: $418.00','🏦 Banco Cuscatlán · 36 cuotas - $11.61','','¿Cómo realizo la compra?'].join('\n');
   const whatsappUrl=new URL(await sample.locator('#consult').getAttribute('href'));assert.equal(whatsappUrl.origin,'https://api.whatsapp.com');assert.equal(whatsappUrl.pathname,'/send');assert.equal(whatsappUrl.searchParams.get('phone'),'50376241930');assert.equal(whatsappUrl.searchParams.get('text'),expected);assert(whatsappUrl.href.includes('%F0%9F%91%8B'));assert(!whatsappUrl.href.includes('%EF%BF%BD'));
   await sample.getByLabel('Al contado',{exact:false}).check();const cashMessage=new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text');assert(cashMessage.includes('💰 Al contado, precio promocional: $380.00'));assert(!cashMessage.includes('🏦'));
@@ -104,7 +104,7 @@ const money=n=>new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD'}).
   assert.doesNotMatch(await sample.locator('#variant').textContent(),/95%/);assert.match(await sample.locator('#variant').textContent(),/Batería en excelentes condiciones/);
   const samsungMessage=new URL(await sample.locator('#consult').getAttribute('href')).searchParams.get('text');assert(samsungMessage.includes('🔋 Batería en excelentes condiciones'));assert(!samsungMessage.includes('95%'));
   const failure=await browser.newPage();await failure.route('**/payment-plans.json',r=>r.fulfill({status:500,body:''}));
-  await failure.goto(base);await failure.locator('.card').first().waitFor();await failure.locator('.view').first().click();await failure.getByLabel('Tasa cero',{exact:false}).check();
+  await require('./catalog-test-fixtures.cjs').withoutCustomizations(failure);await failure.goto(base);await failure.locator('.card').first().waitFor();await failure.locator('.view').first().click();await failure.getByLabel('Tasa cero',{exact:false}).check();
   assert.match(await failure.locator('#installment-summary').textContent(),/No se pudieron cargar/);
   assert.equal(await failure.locator('#installment-options').isVisible(),false);
   assert.deepEqual(errors,[]);

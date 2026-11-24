@@ -27,6 +27,17 @@
     if(freshest){for(const p of freshest.products)if(!p.addedAt&&arrivals.has(p.id))p.addedAt=arrivals.get(p.id);return freshest;}throw Error('Inventario no disponible');
   }
 
+  const customizationCore=window.LunivoCatalogCustomizations;
+  let lastCustomizations=customizationCore?.empty();
+  async function customizeInventory(inventory){
+    if(!customizationCore)return inventory;
+    const urls=['customizations.json',...(inventoryEndpoint?[new URL('/customizations.json',inventoryEndpoint).href]:[])];
+    const snapshots=await Promise.all(urls.map(async url=>{try{const r=await fetch(url,{cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(5000)});return r.ok?customizationCore.state(await r.json()):null;}catch{return null;}}));
+    for(const state of snapshots)if(state&&state.revision>=lastCustomizations.revision)lastCustomizations=state;
+    const keys=await Promise.all(inventory.products.map(p=>customizationCore.key(p)));
+    return {...inventory,products:inventory.products.map((p,i)=>customizationCore.apply(p,lastCustomizations.overrides[keys[i]]))};
+  }
+
   // Apply 10% and round once to the nearest whole dollar (half rounds up).
   const regularPrice=cents=>Number((BigInt(cents)*11n+500n)/1000n)*100;
   let banks=[];
@@ -54,6 +65,7 @@
   }).catch(()=>{});}
   const imagesReady=loadImages();
   function pictureFor(device){
+    if(device.customImages?.length){const gallery=device.customImages.map(a=>({...a,path:a.url,custom:true,model:device.model,color:device.color}));return {...gallery[0],gallery};}
     const exact=images[device.model+'|'+device.color];
     if(exact)return exact;
     const reference=images[device.model+'|Color por confirmar'];
@@ -346,7 +358,7 @@
       card.querySelector('.variant-specs').textContent=details.join(' · ');
       const image=card.querySelector('.product-image'),picture=pictureFor(device);
       const origins=device.sourceInitials||[],photoCaption=card.querySelector('.image-caption'),originCaption=[device.color,...origins].join(' · ');
-      if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=picture.colorIllustrative?device.model+' · imagen del modelo, color ilustrativo':device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent=picture.colorIllustrative?['Imagen del modelo · Color ilustrativo',...origins].join(' · '):'Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
+      if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=picture.custom?device.model+', '+device.color+' · imagen de referencia':picture.colorIllustrative?device.model+' · imagen del modelo, color ilustrativo':device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent=picture.colorIllustrative?['Imagen del modelo · Color ilustrativo',...origins].join(' · '):'Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
       else{photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
@@ -485,7 +497,7 @@
     if(!background){nodes.count.textContent='Cargando modelos…';$('#updated').textContent='Consultando catálogo…';}
     try{
       const incoming=await readInventory();
-      catalog=previous&&Date.parse(previous.updatedAt)>Date.parse(incoming.updatedAt)?previous:incoming;
+      catalog=await customizeInventory(previous&&Date.parse(previous.updatedAt)>Date.parse(incoming.updatedAt)?previous:incoming);
       groups=groupProducts(catalog.products);
       const newPhotos=catalog.products.some(p=>{const key=p.model+'|'+p.color;return !images[key]&&!pendingImageKeys.has(key);});
       const refreshPhotos=Date.now()-lastImagesAttempt>=60*1000&&(newPhotos||Date.now()-lastImagesCheck>=5*60*1000);

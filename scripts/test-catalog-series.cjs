@@ -15,7 +15,7 @@ async function run(type){
   const p=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),errors=[];p.on('pageerror',e=>errors.push(e.message));
   let inventory={...source,updatedAt:new Date().toISOString(),products};
   await p.clock.install();await p.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));await p.route('**/inventory.json',r=>r.fulfill({json:inventory}));
-  await p.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/');await p.locator('.card').first().waitFor();
+  await require('./catalog-test-fixtures.cjs').withoutCustomizations(p);await p.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/');await p.locator('.card').first().waitFor();
   const titles=()=>p.locator('.series-heading h3').allTextContents();
   const choose=async name=>{
    const button=p.locator('#version-list').getByRole('button',{name,exact:true}),model=await button.getAttribute('data-version');await button.click();

@@ -16,7 +16,7 @@ const complete={version:2,products:{...initial.products,[next.model+'|'+next.col
    await page.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint}}));
    await page.route('**/inventory.json',r=>r.fulfill({json:{...source,updatedAt:new Date().toISOString(),products}}));
    await page.route('**/product-images.json',r=>{imageRequests++;return initialFailure&&imageRequests===1?r.fulfill({status:503,body:'temporarily unavailable'}):r.fulfill({json:imageRequests===1?initial:complete});});
-   await page.goto(base);await page.locator('.card').waitFor();
+   await require('./catalog-test-fixtures.cjs').withoutCustomizations(page);await page.goto(base);await page.locator('.card').waitFor();
    if(initialFailure)assert.equal(await page.locator('.product-image').isVisible(),false);
    else products=[first,next];
    await page.clock.runFor(121000);

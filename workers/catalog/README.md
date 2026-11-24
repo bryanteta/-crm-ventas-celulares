@@ -36,7 +36,7 @@ Los cron son consultas periódicas, no eventos instantáneos del proveedor. Clou
 
 ## Evitar compilaciones innecesarias
 
-En **Settings → Builds → Build watch paths**, si aparece esa opción, limita las rutas a `workers/catalog/**`, `scripts/catalog-core.cjs`, `device-core.js`, `feeds-core.js` y `sales-core.js`. Así, los cambios de inventario estático de GitHub no vuelven a compilar el Worker. La actualización de los datos se ejecuta por cron independientemente de los builds.
+En **Settings → Builds → Build watch paths**, si aparece esa opción, limita las rutas a `workers/catalog/**`, `catalogo/customization-core.js`, `scripts/catalog-core.cjs`, `device-core.js`, `feeds-core.js` y `sales-core.js`. Así, los cambios de inventario estático de GitHub no vuelven a compilar el Worker. La actualización de los datos se ejecuta por cron independientemente de los builds.
 
 ## Desarrollo y verificación
 
@@ -53,3 +53,7 @@ La clave local, si se necesita, va en `.dev.vars` (ignorado por Git). Nunca va e
 `npm test` comprueba ambas APIs, +$80, datos vacíos válidos, privacidad, redirects, caché global y conservación ante errores de proveedor/almacenamiento. `test:runtime` compila y ejecuta el Worker con SQLite real en el entorno local de Cloudflare, incluyendo persistencia tras reinicio. Desde la raíz, `node scripts/test-catalog-live.cjs` verifica el cliente con Cloudflare, respaldo, listas antiguas y diálogo estable.
 
 Si la clave se guardó por error en las variables cifradas de Build, el comando `npm run deploy` la copia al secreto de runtime únicamente durante un Build de producción de Cloudflare en `main`. Se pasa por la entrada estándar del CLI, sin escribirla en archivos ni imprimirla. Fuera de ese entorno no se sincronizan secretos de la máquina de desarrollo.
+
+## Administración de precios y fotos
+
+El panel público de acceso está en `https://lunivosv.com/admin.html`. Para habilitar escrituras se necesita un Secret de ejecución `CATALOG_ADMIN_TOKEN` de al menos 32 caracteres. Si falta, las rutas administrativas permanecen cerradas. No sustituye el secreto de Split. Los ajustes viven en SQLite separados del inventario automático y sobreviven a los refrescos y despliegues. Ver [guía de administración](../../docs/catalog-administration.md).

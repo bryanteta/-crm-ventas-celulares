@@ -4,6 +4,13 @@ on:
     branches: [main]
     paths:
       - 'workers/catalog/**'
+      - 'catalogo/admin*'
+      - 'catalogo/customization-core.js'
+      - 'catalogo/catalog.js'
+      - 'catalogo/gallery.js'
+      - 'scripts/catalog-customizations.cjs'
+      - 'scripts/test-catalog-admin.cjs'
+      - 'tests/catalog-customizations.test.cjs'
       - 'scripts/catalog-core.cjs'
       - 'scripts/build-public-catalog.cjs'
       - 'device-core.js'
@@ -13,6 +20,13 @@ on:
   pull_request:
     paths:
       - 'workers/catalog/**'
+      - 'catalogo/admin*'
+      - 'catalogo/customization-core.js'
+      - 'catalogo/catalog.js'
+      - 'catalogo/gallery.js'
+      - 'scripts/catalog-customizations.cjs'
+      - 'scripts/test-catalog-admin.cjs'
+      - 'tests/catalog-customizations.test.cjs'
       - 'scripts/catalog-core.cjs'
       - 'scripts/build-public-catalog.cjs'
       - 'device-core.js'
@@ -40,3 +54,8 @@ jobs:
         working-directory: workers/catalog
         env:
           WRANGLER_SEND_METRICS: 'false'
+      - run: npx playwright install --with-deps chromium
+      - name: Probar administración y catálogo con el Worker real
+        run: |
+          python3 -m http.server 8000 > /tmp/admin-http.log 2>&1 &
+          node scripts/test-catalog-admin.cjs

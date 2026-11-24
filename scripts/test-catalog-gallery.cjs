@@ -15,7 +15,7 @@ async function run(browserType,options){
  const initial=pictures.products['iPhone 11|Blanco'].gallery.find(a=>a.singleDevice&&a.label==='Frente');
  let release;const gate=new Promise(r=>release=r),pattern='**/'+initial.path+'*';
  await p.route(pattern,async route=>{await gate;await route.continue();});
- await p.goto(origin);await p.locator('.view').first().click();
+ await require('./catalog-test-fixtures.cjs').withoutCustomizations(p);await p.goto(origin);await p.locator('.view').first().click();
  a.equal(await p.locator('#gallery-open').getAttribute('aria-busy'),'true');
  a.equal(await p.locator('#gallery-photo').evaluate(i=>getComputedStyle(i).visibility),'hidden','old pixels stay hidden while the next image loads');
  await p.locator('#gallery-next').click();await p.locator('#gallery-photo').evaluate(img=>img.decode());

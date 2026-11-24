@@ -203,3 +203,7 @@ Esto evita la segunda búsqueda mediante Twirp de `deploy-pages@v4`, que devolv�
 Los GET temporales se reintentan con límite, sin repetir a ciegas el POST de creación. Los errores reales de permisos o contenido siguen fallando. Si el despliegue no termina dentro del plazo, se solicita su cancelación. El token OIDC se oculta y no se registran cuerpos de peticiones. `tests/pages-deployment.test.cjs` cubre estas condiciones y se ejecuta dentro del workflow antes de preparar el sitio. Este cambio no modifica el diseño ni los datos del catálogo.
 
 El footer se presenta como un único panel de marca con una acción de WhatsApp, una fila común para inventario/redes y un cierre legal. Se adapta a una columna en móvil y conserva los enlaces y la ausencia de un número de teléfono visible.
+
+### Administración privada del catálogo
+
+[Guía de precios y fotos](catalog-administration.md). El panel `admin.html` permite editar el precio final al contado y hasta ocho enlaces de fotos por variante. Las ediciones se guardan en el Worker, se aplican sobre el inventario más reciente y se pueden restaurar a automático. Las cantidades y los datos de la app permanecen en sus fuentes originales. El panel necesita configurar un Secret nuevo en Cloudflare; sin él, no permite leer ni escribir sus rutas administrativas.

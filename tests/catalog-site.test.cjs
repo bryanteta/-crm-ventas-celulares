@@ -16,13 +16,13 @@ test('Pages artifact serves the same public catalog at root and legacy path with
   assert.match(fs.readFileSync(path.join(output,'catalogo','index.html'),'utf8'),/location\.replace\('\.\.\/'/);
   assert.ok(fs.existsSync(path.join(output,'assets/logo.png')));
   assert.ok(fs.existsSync(path.join(output,'.nojekyll')));
-  const inventory=JSON.parse(fs.readFileSync(path.join(root,'catalogo/inventory.json'))),previews=JSON.parse(fs.readFileSync(path.join(output,'share-pages.json')));
+  const inventory=require('../scripts/catalog-customizations.cjs').readCatalog(path.join(root,'catalogo')),previews=JSON.parse(fs.readFileSync(path.join(output,'share-pages.json')));
   assert.equal(Object.keys(previews.products).length,inventory.products.length);
   for(const product of inventory.products){
    const entry=previews.products[product.id];assert.equal(entry.path,'/equipo/'+product.id+'/');
    const page=fs.readFileSync(path.join(output,entry.path,'index.html'),'utf8');
    assert.match(page,/<meta property="og:title" content="[^"\n]+LUNIVO">/);
-   assert.match(page,/<meta property="og:image" content="https:\/\/lunivosv\.com\/assets\//);
+   if(product.customImages?.length)assert(page.includes(product.customImages[0].url.replace(/&/g,'&amp;')));else assert.match(page,/<meta property="og:image" content="https:\/\/lunivosv\.com\/assets\//);
    assert(page.includes('Precio promocional al contado.'));
    assert(page.includes('equipo='+product.id+'&version='+entry.signature));
    assert(!page.includes('http-equiv="refresh"'),'crawlers must read product metadata before any browser redirect');

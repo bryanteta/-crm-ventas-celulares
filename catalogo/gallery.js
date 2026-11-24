@@ -3,7 +3,7 @@
   const $=id=>document.getElementById(id),section=$('device-gallery'),stage=$('gallery-open'),photo=$('gallery-photo'),viewer=$('photo-viewer'),viewport=$('zoom-viewport'),canvas=$('zoom-canvas'),zoomPhoto=$('zoom-photo');
   let slides=[],index=0,product=null,scale=1,failed=false,gesture=null,suppressClick=false;
   const points=new Map();let pinchDistance=0,drag=null;
-  const safe=art=>art&&typeof art.path==='string'&&/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(art.path)&&[art.width,art.height].every(n=>Number.isFinite(n)&&n>0);
+  const safe=art=>art&&typeof art.path==='string'&&(/^assets\/products\/[a-z0-9-]+\.(?:png|jpg|webp)$/.test(art.path)||art.custom===true&&window.LunivoCatalogCustomizations?.imageUrl(art.path))&&[art.width,art.height].every(n=>Number.isFinite(n)&&n>0);
   function frame(img,art){
     img.removeAttribute('style');img.parentElement.removeAttribute('style');
     const f=art.framing||{x:0,y:0,width:art.width,height:art.height};

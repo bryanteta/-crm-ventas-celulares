@@ -7,7 +7,7 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/';
  const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
  const context=await browser.newContext({colorScheme:'light',viewport:{width:1140,height:1000}});
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base);await page.locator('.card').first().waitFor();
+ await require('./catalog-test-fixtures.cjs').withoutCustomizations(page);await page.goto(base);await page.locator('.card').first().waitFor();
  assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
  await page.getByRole('button',{name:'Activar modo oscuro',exact:true}).click();
  assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
@@ -35,13 +35,13 @@ const base=process.env.CATALOG_TEST_URL||'http://127.0.0.1:8000/catalogo/';
  }
  await page.locator('.view').first().click();assert.equal(await page.locator('#details').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(21, 30, 48)');assert(await contrast('#consult')>=4.5);
  await page.screenshot({path:'/workspace/artifacts/lunivo-modo-oscuro-detalles.png'});await page.locator('#close').click();
- const other=await context.newPage();await other.goto(base);assert.equal(await other.locator('html').getAttribute('data-theme'),'dark');await other.getByRole('button',{name:'Activar modo claro',exact:true}).click();await page.waitForFunction(()=>document.documentElement.dataset.theme==='light');
+ const other=await context.newPage();await require('./catalog-test-fixtures.cjs').withoutCustomizations(other);await other.goto(base);assert.equal(await other.locator('html').getAttribute('data-theme'),'dark');await other.getByRole('button',{name:'Activar modo claro',exact:true}).click();await page.waitForFunction(()=>document.documentElement.dataset.theme==='light');
  await other.reload();assert.equal(await other.locator('html').getAttribute('data-theme'),'light');
- const system=await browser.newContext({colorScheme:'dark'}),systemPage=await system.newPage();await systemPage.goto(base);assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
+ const system=await browser.newContext({colorScheme:'dark'}),systemPage=await system.newPage();await require('./catalog-test-fixtures.cjs').withoutCustomizations(systemPage);await systemPage.goto(base);assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
  await systemPage.emulateMedia({colorScheme:'light'});await systemPage.emulateMedia({colorScheme:'dark'});assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
  await systemPage.getByRole('button',{name:'Activar modo oscuro',exact:true}).click();await systemPage.reload();assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'dark');
  await systemPage.evaluate(()=>localStorage.removeItem('lunivo-catalog-theme'));await systemPage.reload();assert.equal(await systemPage.locator('html').getAttribute('data-theme'),'light');
- const blocked=await browser.newContext({colorScheme:'dark'});await blocked.addInitScript(()=>{Storage.prototype.getItem=()=>{throw Error('Storage blocked')};Storage.prototype.setItem=()=>{throw Error('Storage blocked')};});const blockedPage=await blocked.newPage();blockedPage.on('pageerror',e=>errors.push(e.message));await blockedPage.goto(base);await blockedPage.locator('.card').first().waitFor();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');await blockedPage.getByRole('button',{name:'Activar modo oscuro',exact:true}).click();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'dark');await blockedPage.reload();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');
+ const blocked=await browser.newContext({colorScheme:'dark'});await blocked.addInitScript(()=>{Storage.prototype.getItem=()=>{throw Error('Storage blocked')};Storage.prototype.setItem=()=>{throw Error('Storage blocked')};});const blockedPage=await blocked.newPage();blockedPage.on('pageerror',e=>errors.push(e.message));await require('./catalog-test-fixtures.cjs').withoutCustomizations(blockedPage);await blockedPage.goto(base);await blockedPage.locator('.card').first().waitFor();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');await blockedPage.getByRole('button',{name:'Activar modo oscuro',exact:true}).click();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'dark');await blockedPage.reload();assert.equal(await blockedPage.locator('html').getAttribute('data-theme'),'light');
  for(const theme of ['light','dark']){
   await page.evaluate(t=>{document.documentElement.dataset.theme=t;},theme);
   for(const width of [320,412,840,1140]){

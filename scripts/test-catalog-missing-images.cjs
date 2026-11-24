@@ -6,7 +6,7 @@ const {chromium}=require('playwright'),a=require('node:assert/strict'),source=re
  const products=[{...seed,id:'11111111111111111111',color:'Color por confirmar'}, {...seed,id:'22222222222222222222',model:'iPhone 13 Pro Max',color:'Celeste'}, {...seed,id:'33333333333333333333',model:'iPhone 13 Pro',color:'Amarillo'}, {...seed,id:'44444444444444444444',manufacturer:'Samsung',model:'Samsung A17',color:'Celeste'}];
  await page.route('**/inventory-source.json',r=>r.fulfill({json:{version:1,endpoint:''}}));
  await page.route('**/inventory.json',r=>r.fulfill({json:{...source,updatedAt:new Date().toISOString(),products}}));
- await page.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8800/catalogo/');await page.locator('.card').first().waitFor();
+ await require('./catalog-test-fixtures.cjs').withoutCustomizations(page);await page.goto(process.env.CATALOG_TEST_URL||'http://127.0.0.1:8800/catalogo/');await page.locator('.card').first().waitFor();
  for(const item of [products[0],products[1],products[3]]){
   const card=page.locator('[data-product-id="'+item.id+'"]');const image=card.locator('.product-image');
   await image.scrollIntoViewIfNeeded();await a.doesNotReject(()=>image.evaluate(img=>img.decode()));a(await image.evaluate(img=>img.naturalWidth>0));

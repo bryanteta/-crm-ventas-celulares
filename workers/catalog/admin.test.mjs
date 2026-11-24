@@ -104,3 +104,12 @@ test('failed logins are bounded per connecting IP and expire; backups and import
 test('complete backups accept another manufacturer while preserving context-key integrity',async()=>{
  const {object}=setup(),product={...source.products[0],manufacturer:'Google',model:'Pixel 9'},key=await custom.key(product),snapshot={format:'lunivo-catalog-backup',version:1,customizations:{...custom.empty(),overrides:{[key]:edit}},adminMetadata:{[key]:{product:custom.context(product),automaticPriceCentsAtEdit:43000,savedAt:'2026-01-01T00:00:00Z'}}};const result=await object.fetch(request('/admin/import','PUT',{expectedRevision:0,snapshot}));assert.equal(result.status,200);assert.equal((await result.json()).adminMetadata[key].product.manufacturer,'Google');
 });
+test('the app session check confirms only a valid key, touches no inventory or edits and shares the login limit',async()=>{
+ const {object,env,rows}=setup(),before=JSON.stringify([...rows]);let refreshed=0;object.refresh=async()=>{refreshed++;return true;};
+ const ok=await worker.fetch(request('/admin/session','GET',undefined,token,''),env);assert.equal(ok.status,200);assert.deepEqual(await ok.json(),{ok:true});assert.equal(ok.headers.get('Cache-Control'),'no-store');
+ assert.equal((await worker.fetch(request('/admin/session','GET',undefined,'wrong-key',''),env)).status,401);
+ assert.equal((await worker.fetch(request('/admin/session','POST',{},token,''),env)).status,404);
+ assert.equal(refreshed,0);assert.equal(JSON.stringify([...rows]),before);
+ const attempt=credential=>{const r=request('/admin/session','GET',undefined,credential,'');r.headers.set('CF-Connecting-IP','9.9.9.9');return r;};
+ for(let i=0;i<10;i++)assert.equal((await object.fetch(attempt('wrong'))).status,401);assert.equal((await object.fetch(attempt('wrong'))).status,429);
+});

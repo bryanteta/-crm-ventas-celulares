@@ -89,3 +89,6 @@
 .gift-unavailable{opacity:.65}.gift-unavailable .accessory-pick small{font-style:italic}
 
 .inventory-model-heading{grid-column:1/-1;font-size:.9rem;font-weight:700;margin:1.2rem 0 .2rem;padding:.3rem 0;color:inherit;letter-spacing:.01em}.inventory-model-heading:first-child{margin-top:.25rem}
+
+/* Web catalog price shared with the public site (card editor). */
+.web-price-details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}.web-price-details>summary{cursor:pointer;font-weight:600;font-size:13px;min-height:36px;display:flex;align-items:center}.web-price-editor{display:grid;gap:8px;padding-top:6px}.web-price-editor button{min-height:44px}.web-price-editor form{display:grid;gap:8px}.web-price-editor .actions{display:grid;gap:8px}.web-price-title{margin:0;font-weight:600;font-size:13px}.web-price-editor .hint{margin:0}.web-price-editor .hint.error{color:#a62f3b;font-weight:600}

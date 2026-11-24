@@ -18,6 +18,7 @@ on:
       - 'scripts/fetch-provider-snapshot.py'
       - 'scripts/build-public-catalog.cjs'
       - 'scripts/catalog-core.cjs'
+      - 'catalog-identity.js'
       - 'catalogo/customization-core.js'
       - 'device-core.js'
       - 'feeds-core.js'

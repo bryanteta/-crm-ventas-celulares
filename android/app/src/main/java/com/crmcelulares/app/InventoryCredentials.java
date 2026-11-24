@@ -15,10 +15,20 @@ import javax.crypto.spec.GCMParameterSpec;
 
 final class InventoryCredentials {
     interface Keys { SecretKey get() throws GeneralSecurityException; }
+    static final String SPLIT_PATTERN = "[A-Za-z0-9_-]{8,256}";
+    // Catalog administration keys are random strings chosen in Cloudflare: any
+    // printable ASCII without spaces, as long as the Worker's 32-character minimum.
+    static final String CATALOG_PATTERN = "[\\x21-\\x7E]{32,1000}";
     private final SharedPreferences prefs;
     private final Keys keys;
+    private final String pattern;
+    private final String invalidMessage;
     InventoryCredentials(Context context) {
         this(context.getSharedPreferences("lunivo-inventory-credentials", Context.MODE_PRIVATE), InventoryCredentials::platformKey);
+    }
+    static InventoryCredentials catalog(Context context) {
+        return new InventoryCredentials(context.getSharedPreferences("lunivo-catalog-credentials", Context.MODE_PRIVATE), InventoryCredentials::platformKey,
+                CATALOG_PATTERN, "Revisa la clave del catálogo web: usa la misma clave de administración de la web.");
     }
     private static synchronized SecretKey platformKey() throws GeneralSecurityException {
         KeyStore store = KeyStore.getInstance("AndroidKeyStore");
@@ -32,13 +42,14 @@ final class InventoryCredentials {
         }
         return (SecretKey) store.getKey(alias, null);
     }
-    InventoryCredentials(SharedPreferences prefs, Keys keys) { this.prefs = prefs; this.keys = keys; }
+    InventoryCredentials(SharedPreferences prefs, Keys keys) { this(prefs, keys, SPLIT_PATTERN, "Revisa la clave de Split."); }
+    InventoryCredentials(SharedPreferences prefs, Keys keys, String pattern, String invalidMessage) { this.prefs = prefs; this.keys = keys; this.pattern = pattern; this.invalidMessage = invalidMessage; }
     static void scope(String scope) {
         if (scope == null || scope.isEmpty() || scope.length() > 200 || !scope.matches("[A-Za-z0-9:_-]+")) throw new IllegalArgumentException("Cuenta inválida");
     }
     void save(String scope, String value) throws GeneralSecurityException {
         scope(scope);
-        if (value == null || !value.matches("[A-Za-z0-9_-]{8,256}")) throw new IllegalArgumentException("Revisa la clave de Split.");
+        if (value == null || !value.matches(pattern)) throw new IllegalArgumentException(invalidMessage);
         Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.ENCRYPT_MODE, keys.get());
         cipher.updateAAD(scope.getBytes(StandardCharsets.UTF_8));
         String encrypted = Base64.encodeToString(cipher.getIV(), Base64.NO_WRAP) + ":" + Base64.encodeToString(cipher.doFinal(value.getBytes(StandardCharsets.UTF_8)), Base64.NO_WRAP);

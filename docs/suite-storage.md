@@ -116,3 +116,7 @@ El Worker es una fuente única razonable para los precios; la clave administrati
 Se ejecutan escala (1.800 → 5.001 ventas), reversión, pérdida simulada de base, diario antiguo, diario lleno y transacción fallida, colas de nube y fechas, actualización de assets antiguos, dos clientes con Firestore real emulado y las pruebas nativas Android. `StorageMigrationInstrumentedTest` está compilada para ejecutar migración y 5.000 registros en un WebView real con una clave de prueba aislada. No se ha ejecutado aquí: no hay teléfono conectado ni aceleración KVM para el emulador.
 
 No se ha comprobado la expulsión real por almacenamiento casi lleno, el apagado físico durante un guardado ni la instalación sobre un teléfono con ventas reales. La prueba física es la condición pendiente antes de fusionar y publicar una versión estable. El APK candidato no debe convertirse en el último release estable automáticamente.
+
+### Publicación 1.7.34
+
+El usuario solicitó publicar la actualización y probarla personalmente. La estable 1.7.34 usa código 70, conserva la lógica validada del candidato y permite actualizar desde 1.7.33 o 1.7.34-rc.1. Las restricciones de publicación de la sección del candidato describen esa fase anterior; la prueba física sigue pendiente y no se presenta como ejecutada.

@@ -30,6 +30,7 @@ const assert = require('node:assert/strict');
     assert.match(await page.locator('#record-author').textContent(), /Ana María/);
     await page.locator('#form [type=submit]').click(); await page.locator('#listado').waitFor();
     await page.locator('nav a[href="#dashboard"]').click();
+    await page.locator('#upcoming-items .record-creator').waitFor();
     assert.match(await page.locator('#upcoming-items').textContent(), /Registrado por: Ana María/);
     const original = await page.evaluate(() => LunivoApp.records()[0]);
     assert.equal(original.createdById, ana); assert.equal(original.createdByName, 'Ana María'); assert.ok(Number.isFinite(Date.parse(original.createdAt)));

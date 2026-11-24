@@ -55,7 +55,7 @@ const assert = require('node:assert/strict');
         }
       }
       if (width < 600) {
-        const nav = await page.locator('nav').boundingBox();
+        const nav = await page.getByRole('navigation', { name: 'Navegación principal' }).boundingBox();
         assert.ok(nav.y + nav.height <= height + 1, 'bottom navigation must stay within the viewport');
       }
       console.log(`PASS Samsung viewport ${width}×${height}: vistas, navegación, agenda adaptable y borrador`);

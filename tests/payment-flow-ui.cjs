@@ -1,4 +1,5 @@
-const {chromium}=require('playwright'),a=require('node:assert/strict'),policy=require('../catalogo/payment-plans.json');
+const {chromium}=require('playwright'),a=require('node:assert/strict'),rawPolicy=require('../catalogo/payment-plans.json'),receipt=require('../receipt-core.js');
+const policy={...rawPolicy,banks:rawPolicy.banks.map(bank=>({...bank,name:receipt.bankInfo(bank.name).name}))};
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});try{
  const p=await b.newPage({viewport:{width:412,height:915}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await require('./profile-fixture.cjs').installProfile(p);await p.addInitScript(()=>sessionStorage.setItem('lunivo-intro-v1','seen'));await p.goto('http://127.0.0.1:8000/#ventas/nueva');
  await p.locator('#sale-payment').selectOption('Tasa cero');a.deepEqual(await p.locator('#sale-bank option').evaluateAll(v=>v.map(o=>o.value).filter(Boolean)),policy.banks.map(b=>b.name));

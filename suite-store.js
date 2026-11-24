@@ -71,6 +71,9 @@ function changes(next,base,touched){
  for(const id of base.sales.keys())if(!next.sales.has(id))deletes.push(id);for(const id of touched)if(!next.sales.has(id)&&!base.sales.has(id))deletes.push(id);
  return{full:false,puts,deletes};
 }
+function writeTransaction(db,names){
+ try{return db.transaction(names,'readwrite',{durability:'strict'});}catch(error){if(error instanceof TypeError)return db.transaction(names,'readwrite');throw error;}
+}
 function apply(tx,key,diff,rest,order,jid){
  const sales=tx.objectStore('sales');if(diff.full)sales.delete(range(key));
  for(const[id,json]of diff.puts)sales.put(json,[key,id]);for(const id of diff.deletes)sales.delete([key,id]);
@@ -92,11 +95,11 @@ async function recover(db,key,stored){
  if(stored&&stored.jid===j.jid){clearJournal(key);return stored;}
  if(stored&&Array.isArray(j.parents)&&!j.parents.includes(stored.jid)){
   // A stale/other writer's journal must never replace a newer confirmed state.
-  const tx=db.transaction('backups','readwrite'),finished=done(tx);tx.objectStore('backups').put({savedAt:new Date().toISOString(),reason:'stale-journal',journal:raw},[key,'journal-'+j.jid]);await finished;clearJournal(key,j.jid);return stored;
+  const tx=writeTransaction(db,'backups'),finished=done(tx);tx.objectStore('backups').put({savedAt:new Date().toISOString(),reason:'stale-journal',journal:raw},[key,'journal-'+j.jid]);await finished;clearJournal(key,j.jid);return stored;
  }
  if(!stored&&!j.full)throw Error('Falta la copia base de un guardado interrumpido. El diario se conserva para recuperar los datos.');
  const diff={full:j.full,puts:Object.entries(j.puts).map(([id,sale])=>[id,JSON.stringify(sale)]),deletes:j.deletes};
- const tx=db.transaction(['state','sales'],'readwrite'),finished=done(tx);apply(tx,key,diff,j.rest,j.order,j.jid);await finished;
+ const tx=writeTransaction(db,['state','sales']),finished=done(tx);apply(tx,key,diff,j.rest,j.order,j.jid);await finished;
  clearJournal(key,j.jid);return readParts(db,key);
 }
 async function load(key){
@@ -112,7 +115,7 @@ async function load(key){
  // A legacy blob exists only before migration, or if an older version wrote after it: merge it in.
  const parts=split(stored?mergeLegacy(join(stored),JSON.parse(legacy)):JSON.parse(legacy));if(stored)parts.jid=stored.jid;
  if(!stored||!same(stored,parts)){
-  const tx=db.transaction(['state','sales','backups'],'readwrite'),finished=done(tx);
+  const tx=writeTransaction(db,['state','sales','backups']),finished=done(tx);
   if(stored)tx.objectStore('backups').put({savedAt:new Date().toISOString(),reason:'legacy-import',data:JSON.stringify(join(stored))},[key,new Date().toISOString()]);
   apply(tx,key,changes(parts,null),parts.rest,parts.order,uid());await finished;
   const check=await readParts(db,key);if(!check||!same(check,parts))throw Error('No se pudo verificar la copia de tus ventas. Se conserva el almacenamiento anterior.');
@@ -135,7 +138,7 @@ function settle(e,version,error){const keep=[];for(const w of e.waiters){if(w.ve
 function persist(e,parts,{full=false,backup=null}={}){
  const db=connection;if(!db)throw Error('No se pudo abrir el almacenamiento de Ventas.');
  const diff=full?changes(parts,null):changes(parts,e.committed,e.touched),jid=uid(),version=e.version+1;
- const tx=db.transaction(backup?['state','sales','backups']:['state','sales'],'readwrite');
+ const tx=writeTransaction(db,backup?['state','sales','backups']:['state','sales']);
  try{if(backup)tx.objectStore('backups').put(backup,[e.key,new Date().toISOString()]);apply(tx,e.key,diff,parts.rest,parts.order,jid);}catch(error){try{tx.abort();}catch{}throw storageError(error);}
  // A full rewrite (legacy import) keeps the legacy blob until saved, which already serves as its journal.
  if(!full)writeJournal(e.key,journalText(jid,diff,parts.rest,parts.order,[e.committed?.jid??null,...e.jids]));

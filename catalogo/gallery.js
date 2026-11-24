@@ -18,7 +18,7 @@
   function draw(img,art){
     const request={};renders.set(img,request);img.style.visibility='hidden';
     frame(img,art);img.style.visibility='hidden';img.src=src(art);
-    img.alt=product.model+', '+product.color+' · '+art.label;
+    img.alt=product.model+', '+(product.imageIllustrative?'color ilustrativo':product.color)+' · '+art.label;
     const loading=img===photo?stage:img===zoomPhoto?viewport:null;
     if(loading)loading.setAttribute('aria-busy','true');
     img.decode().then(()=>{
@@ -29,11 +29,11 @@
   function select(next){
     if(!slides.length)return;index=(next+slides.length)%slides.length;failed=false;
     draw(photo,slides[index]);photo.hidden=false;$('gallery-empty').hidden=true;stage.disabled=false;
-    const label=slides[index].label+(product.color==='Color por confirmar'?' · Color ilustrativo':'');$('gallery-caption').textContent=label;$('gallery-counter').textContent=(index+1)+' / '+slides.length;
+    const label=slides[index].label+(product.imageIllustrative?' · Color ilustrativo':'');$('gallery-caption').textContent=label;$('gallery-counter').textContent=(index+1)+' / '+slides.length;
     for(const [i,b] of [...$('gallery-thumbs').children].entries()){b.setAttribute('aria-pressed',String(i===index));if(i===index)$('gallery-thumbs').scrollLeft=b.offsetLeft-($('gallery-thumbs').clientWidth-b.offsetWidth)/2;}
     if(viewer.open){draw(zoomPhoto,slides[index]);resetZoom();updateViewerLabel();}
   }
-  function updateViewerLabel(){$('zoom-title').textContent=product.model+' · '+product.color;$('zoom-counter').textContent=(index+1)+' / '+slides.length+' · '+slides[index].label;}
+  function updateViewerLabel(){$('zoom-title').textContent=product.model+' · '+(product.imageIllustrative?'Color ilustrativo':product.color);$('zoom-counter').textContent=(index+1)+' / '+slides.length+' · '+slides[index].label;}
   function move(step){select(index+step);}
   function resetZoom(){scale=1;canvas.style.width='100%';canvas.style.height='100%';viewport.scrollLeft=0;viewport.scrollTop=0;updateZoom();}
   function updateZoom(){$('zoom-level').textContent=Math.round(scale*100)+'%';$('zoom-out').disabled=scale<=1;$('zoom-in').disabled=scale>=4;viewport.classList.toggle('is-zoomed',scale>1);}
@@ -44,9 +44,9 @@
   }
   function openZoom(){if(failed||!slides.length)return;draw(zoomPhoto,slides[index]);resetZoom();updateViewerLabel();viewer.showModal();}
   function show(device,picture){
-    if(viewer.open)viewer.close();section.hidden=false;product=device;index=0;slides=[];
+    if(viewer.open)viewer.close();section.hidden=false;product={...device,imageIllustrative:device.color==='Color por confirmar'||Boolean(picture?.colorIllustrative)};index=0;slides=[];
     if(safe(picture)){
-      const views=(Array.isArray(picture.gallery)?picture.gallery:[]).filter(art=>safe(art)&&art.model===device.model&&(art.color===device.color||device.color==='Color por confirmar'));
+      const views=(Array.isArray(picture.gallery)?picture.gallery:[]).filter(art=>safe(art)&&art.model===device.model&&(art.color===device.color||product.imageIllustrative));
       // Reviewed individual views take precedence over paired front/back artboards.
       // Keep the comparison artboard for catalog cards, never repeat it in the modal.
       const individual=views.filter(art=>art.singleDevice===true).sort((a,b)=>Number(b.label==='Frente')-Number(a.label==='Frente'));

@@ -2,7 +2,7 @@
 (() => {
   const $ = selector => document.querySelector(selector);
   const money = value => new Intl.NumberFormat('es-SV',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(value/100);
-  const nodes={products:$('#products'),count:$('#count'),search:$('#search'),capacity:$('#capacity'),sort:$('#sort'),dialog:$('#details'),variant:$('#variant')};
+  const nodes={products:$('#products'),count:$('#count'),search:$('#search'),dialog:$('#details'),variant:$('#variant')};
   // Keep the desktop gallery below the heading even when a long model name wraps.
   const detailHeading=nodes.dialog.querySelector('.dialog-heading');
   const sizeDetailHeading=()=>{const height=detailHeading.getBoundingClientRect().height;if(height>0&&nodes.dialog.style.getPropertyValue('--detail-heading-height')!==height+'px')nodes.dialog.style.setProperty('--detail-heading-height',height+'px');};
@@ -55,7 +55,10 @@
   const imagesReady=loadImages();
   function pictureFor(device){
     const exact=images[device.model+'|'+device.color];
-    if(exact||device.color!=='Color por confirmar')return exact;
+    if(exact)return exact;
+    const reference=images[device.model+'|Color por confirmar'];
+    if(reference?.modelReference)return {...reference,colorIllustrative:true};
+    if(device.color!=='Color por confirmar')return undefined;
     // Illustrate the exact model without assigning a color to the supplier's unit.
     return images[device.model+'|Negro']||Object.values(images).find(art=>art.model===device.model);
   }
@@ -179,8 +182,8 @@
     selectedVersion=b.dataset.version;
     function destination(){return selectedVersion==='all'?nodes.products:[...nodes.products.querySelectorAll('.model-version')].find(n=>n.dataset.versionModel===selectedVersion)||[...nodes.products.querySelectorAll('.card')].find(n=>n.dataset.versionModel===selectedVersion);}
     let target=destination();
-    // Clear restrictive search/capacity filters only when they hide the destination.
-    if(!target){nodes.search.value='';nodes.capacity.value='all';render();target=destination();}
+    // Clear the search only when it hides the destination.
+    if(!target){nodes.search.value='';render();target=destination();}
     else renderVersions();
     const nav=$('#version-list');nav.scrollTo({left:b.offsetLeft-(nav.clientWidth-b.offsetWidth)/2,behavior:'instant'});
     if(target){
@@ -213,33 +216,40 @@
   function render(){
     renderVersions();
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
-    const lowest=g=>Math.min(...g.variants.map(v=>v.priceCents));
-    const direction=nodes.sort.value==='model-desc'?-1:1;
-    matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||compareModels(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||compareModels(a.model,b.model):direction*compareModels(a.model,b.model));
+    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
+    matches.sort((a,b)=>compareModels(a.model,b.model));
     const fragment=document.createDocumentFragment();
     const stale=Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000;
     const recent=$('#recent-arrivals'),rail=$('#recent-products');
     const recentGroups=matches.map(g=>({...g,variants:g.variants.filter(v=>Date.parse(v.addedAt)>Date.now()-7*86400000)})).filter(g=>g.variants.length).sort((a,b)=>Math.max(...b.variants.map(v=>Date.parse(v.addedAt)))-Math.max(...a.variants.map(v=>Date.parse(v.addedAt)))).slice(0,6);
-    recent.hidden=brand!=='all'||Boolean(query)||nodes.capacity.value!=='all'||nodes.sort.value!=='model'||!recentGroups.length;
+    recent.hidden=brand!=='all'||Boolean(query)||!recentGroups.length;
     rail.replaceChildren(...(recent.hidden?[]:recentGroups.map(g=>createCard(g,stale))));
-    if(['model','model-desc'].includes(nodes.sort.value)){
+    {
       const series=new Map();
       for(const group of matches){
         const family=deviceSeries(group);
         if(!series.has(family.key))series.set(family.key,{...family,groups:[]});
         series.get(family.key).groups.push(group);
       }
-      const ordered=[...series.values()].sort((a,b)=>(a.manufacturer==='Apple'?0:1)-(b.manufacturer==='Apple'?0:1)||direction*compareModels(a.title,b.title));
+      const ordered=[...series.values()].sort((a,b)=>(a.manufacturer==='Apple'?0:1)-(b.manufacturer==='Apple'?0:1)||compareModels(a.title,b.title));
       for(const family of ordered)fragment.append(seriesSection(family,stale));
-    }else for(const group of matches)fragment.append(createCard(group,stale));
+    }
     nodes.products.replaceChildren(fragment);
     const units=matches.flatMap(g=>g.variants).reduce((n,v)=>n+(v.quantity||0),0);
     nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
     $('#empty').hidden=matches.length!==0;
   }
-  function updateViewers(){if(document.visibilityState==='hidden')return;const n=1+Math.floor(Math.random()*6);$('#viewer-count').textContent=n+' '+(n===1?'persona viendo':'personas viendo')+' ahora';}
-  updateViewers();setInterval(updateViewers,25000);
+  const viewerStorageKey='lunivo-viewer-activity-v1';
+  let viewerState;
+  try{const saved=JSON.parse(localStorage.getItem(viewerStorageKey));if(Number.isInteger(saved?.count)&&saved.count>=1&&saved.count<=6&&Number.isFinite(saved.nextAt))viewerState=saved;}catch{}
+  if(!viewerState)viewerState={count:1+Math.floor(Math.random()*6),nextAt:Date.now()+25000};
+  function paintViewers(){const n=viewerState.count;$('#viewer-count').textContent=n+' '+(n===1?'persona viendo':'personas viendo')+' ahora';$('#viewer-bubble-count').textContent=n+' viendo ahora';try{localStorage.setItem(viewerStorageKey,JSON.stringify(viewerState));}catch{}}
+  paintViewers();
+  setInterval(()=>{if(document.visibilityState==='hidden'||Date.now()<viewerState.nextAt)return;viewerState={count:1+Math.floor(Math.random()*6),nextAt:Date.now()+25000};paintViewers();},1000);
+  window.addEventListener('storage',event=>{if(event.key!==viewerStorageKey)return;try{const state=JSON.parse(event.newValue);if(Number.isInteger(state?.count)&&state.count>=1&&state.count<=6&&Number.isFinite(state.nextAt)){viewerState=state;const n=state.count;$('#viewer-count').textContent=n+' '+(n===1?'persona viendo':'personas viendo')+' ahora';$('#viewer-bubble-count').textContent=n+' viendo ahora';}}catch{}});
+  const viewerBubble=$('#viewer-bubble'),viewerActivity=$('.viewer-activity');
+  if('IntersectionObserver' in window)new IntersectionObserver(([entry])=>{viewerBubble.hidden=entry.isIntersecting||entry.boundingClientRect.bottom>=0;}).observe(viewerActivity);
+  else window.addEventListener('scroll',()=>{viewerBubble.hidden=viewerActivity.getBoundingClientRect().bottom>=0;},{passive:true});
   let shareStatusTimer,handledDeviceLink='';
   let previewPages={},lastPreviewCheck=0;
   function loadPreviewPages(){lastPreviewCheck=Date.now();return fetch('share-pages.json',{cache:'no-cache',signal:AbortSignal.timeout(3000)}).then(async r=>{if(r.ok){const data=await r.json();if(data.version===1&&data.products)previewPages=data.products;}}).catch(()=>{});}
@@ -283,14 +293,14 @@
       const card=$('#card').content.firstElementChild.cloneNode(true);
       card.classList.toggle('samsung',group.manufacturer==='Samsung');card.dataset.versionModel=group.model;
       const device=group.variants.find(v=>v.id===selectedColors.get(group.key))||group.variants[0];
-      card.querySelector('.manufacturer').textContent=[group.manufacturer==='Apple'?'iPhone':'Samsung','Lunivo',...(device.sourceInitials||[])].join(' · ');
+      card.querySelector('.manufacturer').textContent=[group.manufacturer==='Apple'?'iPhone':'Samsung','Lunivo'].join(' · ');
       card.querySelector('.product-name').textContent=group.model;
       card.querySelector('.summary').textContent=[device.capacity,device.color].join(' · ');
       const details=[device.condition,device.ram?'RAM '+device.ram:'',device.grade?'Categoría '+device.grade:'','Batería '+batteryText(device),device.cycles!==null&&device.cycles!==undefined?device.cycles+' ciclos':'',device.sim!=='Por confirmar'?device.sim:'',typeof device.box==='boolean'?(device.box?'Con caja':'Sin caja'):'',...device.observations].filter(Boolean);
       card.querySelector('.variant-specs').textContent=details.join(' · ');
       const image=card.querySelector('.product-image'),picture=pictureFor(device);
       const origins=device.sourceInitials||[],photoCaption=card.querySelector('.image-caption'),originCaption=[device.color,...origins].join(' · ');
-      if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent='Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
+      if(picture){framePhoto(image,picture);image.src=picture.path;image.alt=picture.colorIllustrative?device.model+' · imagen del modelo, color ilustrativo':device.model+', '+device.color+' · imagen oficial de referencia';image.hidden=false;photoCaption.textContent=picture.colorIllustrative?['Imagen del modelo · Color ilustrativo',...origins].join(' · '):'Imagen de referencia · '+originCaption;card.querySelector('.image-placeholder').hidden=true;image.addEventListener('error',()=>{image.hidden=true;image.closest('.photo-frame').hidden=true;card.querySelector('.image-placeholder').hidden=false;photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;},{once:true});}
       else{photoCaption.textContent=originCaption;photoCaption.hidden=!origins.length;card.querySelector('.image-placeholder').textContent='Foto de este color pendiente';}
       card.dataset.productId=device.id;
       const prices=group.variants.map(v=>v.priceCents);
@@ -388,7 +398,7 @@
     const colorIcon=/verde/.test(color)?'🟢':/negro|grafito/.test(color)?'⚫️':/blanco|plata/.test(color)?'⚪️':/azul|celeste/.test(color)?'🔵':/morado|lila|violeta/.test(color)?'🟣':/rojo/.test(color)?'🔴':/anaranjado|naranja/.test(color)?'🟠':/amarillo|dorado/.test(color)?'🟡':'🔘';
     const initials=p.sourceInitials||[];
     $('#detail-note').textContent='Confirmaremos el estado y la disponibilidad contigo antes de la compra.';
-    $('#consult-label').textContent=['Consultar este equipo',...initials].join(' · ');
+    $('#consult-label').textContent='Consultar este equipo';
     const deviceLines=[
       ['📲 '+p.model+' - '+p.capacity,...initials].join(' · '),
       '⭐️ Estado: '+p.condition+(p.grade?', categoría '+p.grade:''),
@@ -425,7 +435,6 @@
   async function load(background=false){
     if(loading||background&&nodes.dialog.open)return;loading=true;
     const previous=catalog;lastInventoryCheck=Date.now();
-    const previousCapacity=nodes.capacity.value;
     nodes.products.setAttribute('aria-busy','true');$('#error').hidden=true;$('#empty').hidden=true;$('#notice').hidden=true;
     if(!background){nodes.count.textContent='Cargando modelos…';$('#updated').textContent='Consultando catálogo…';}
     try{
@@ -440,8 +449,6 @@
       deviceSignatures.clear();
       await Promise.all(catalog.products.map(async p=>{deviceSignatures.set(p.id,await deviceSignature(p));}));
       paintHero(catalog);
-      nodes.capacity.replaceChildren(option('all','Capacidad'),...[...new Set(catalog.products.map(v=>v.capacity))].sort(collator.compare).map(c=>option(c,c)));
-      if([...nodes.capacity.options].some(o=>o.value===previousCapacity))nodes.capacity.value=previousCapacity;
       $('#updated').textContent='Inventario actualizado: '+new Intl.DateTimeFormat('es-SV',{dateStyle:'medium',timeStyle:'short',timeZone:'America/El_Salvador'}).format(new Date(catalog.updatedAt))+' · El Salvador';
       render();
       await openSharedDevice();
@@ -452,10 +459,8 @@
   }
   $('#filters').addEventListener('submit',event=>event.preventDefault());
   nodes.search.addEventListener('input',()=>{if(catalog)render();});
-  nodes.capacity.addEventListener('change',()=>{if(catalog)render();});
-  nodes.sort.addEventListener('change',()=>{if(catalog)render();});
   document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;}}));
-  $('#reset').addEventListener('click',()=>{brand='all';selectedVersion='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
+  $('#reset').addEventListener('click',()=>{brand='all';selectedVersion='all';nodes.search.value='';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
   function resetInstallments(){
     $('#installment-grid').replaceChildren();delete $('#installment-grid').dataset.plan;$('#installment-options').hidden=true;
   }

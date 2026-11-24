@@ -12,6 +12,7 @@ on:
       - 'scripts/test-catalog-series.cjs'
       - 'scripts/test-catalog-xr.cjs'
       - 'scripts/test-catalog-recent.cjs'
+      - 'scripts/test-catalog-clean-filters.cjs'
       - 'scripts/test-catalog-image-refresh.cjs'
       - 'scripts/check-gallery-coverage.cjs'
       - 'scripts/bespoke-render-sources.json'
@@ -46,6 +47,7 @@ jobs:
           CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-sticky-gallery.cjs
           CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-missing-images.cjs
           CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-recent.cjs
+          CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-clean-filters.cjs
           npm run test:catalog-series
           CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-xr.cjs
           CATALOG_TEST_URL=http://127.0.0.1:8000/catalogo/ node scripts/test-catalog-image-refresh.cjs

@@ -182,6 +182,14 @@ El descubridor reconoce los selectores oficiales de Apple para modelos con letra
 
 La sección «Agregados recientemente» aparece automáticamente antes del catálogo completo, sin botón. Muestra hasta seis grupos incorporados durante los últimos siete días, de más nuevo a más antiguo, en una fila desplazable. Al buscar, elegir una marca o cambiar filtros se oculta para dejar únicamente los resultados. `addedAt` se conserva entre actualizaciones de GitHub y del Worker. Un cambio de precio, cantidad o proveedor disponible no reinicia la fecha de una variante con las mismas características. Las fechas iniciales se recuperaron del historial versionado de inventario; no se usa el orden del proveedor como fecha. La primera captura sin historial establece una base, sin marcar todo el inventario como recién agregado.
 
-La web combina fechas del respaldo estático con el catálogo de existencias más reciente sin recuperar equipos vendidos. Las iniciales T, S y J aparecen en la tarjeta, pie de imagen, botón de consulta y mensaje. Se mantienen las existencias y los importes originales.
+La web combina fechas del respaldo estático con el catálogo de existencias más reciente sin recuperar equipos vendidos. Las iniciales T, S y J se muestran únicamente en el pie de la imagen dentro de la web. El mensaje conserva el origen para identificar el equipo al consultar. Se mantienen las existencias y los importes originales.
 
-El indicador «personas viendo ahora» es un contador aleatorio solicitado por el propietario: toma valores de 1 a 6 y se actualiza cada 25 segundos con la pestaña visible. No realiza medición de visitantes ni comparte datos del navegador.
+El indicador «personas viendo ahora» es un contador aleatorio solicitado por el propietario: toma valores de 1 a 6 y se actualiza cada 25 segundos con la pestaña visible. El valor y el momento de la próxima actualización se conservan en el almacenamiento local al recargar y se sincronizan entre pestañas. Al pasar la línea de actividad, una burbuja fija muestra el mismo valor arriba a la derecha. No realiza medición de visitantes ni comparte datos del navegador.
+
+### Búsqueda simplificada e imágenes del Air
+
+La web conserva búsqueda, marcas y versiones, y retira los selectores de capacidad y orden. El catálogo sigue ordenado por generaciones.
+
+El proveedor llama «iPhone 17 Air · Plata» a una variante sin foto ni color oficial verificable. La web usa una referencia del mismo iPhone Air publicada por Apple, con frente y reverso individuales de Swappie en Cloud White. La foto indica «Color ilustrativo» y conserva «Plata» en las características del proveedor; no se afirma que la imagen confirme ese acabado. Esta referencia explícita solo puede ilustrar su mismo modelo, sin sustituir fotos exactas de colores verificados.
+
+En móvil, los recién agregados tienen una pista «Desliza para ver más» y dejan visible parte de la siguiente tarjeta para indicar el desplazamiento horizontal.

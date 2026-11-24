@@ -10319,6 +10319,47 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-16-pink.png"
       ]
     },
+    "iPhone 17 Air|Color por confirmar": {
+      "model": "iPhone 17 Air",
+      "color": "Color por confirmar",
+      "officialColor": "cloudwhite",
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_air_cloud_white__fay39sc7sru6_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "modelReference": true,
+      "path": "assets/products/iphone-17-air-color-por-confirmar.jpg",
+      "sha256": "1fd15f44285e470d702ccf86af69f2a04f653d13c7848632ef5d06586f975382",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-air-cloud-white-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-air/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "singleDevice": true,
+          "model": "iPhone 17 Air",
+          "color": "Color por confirmar",
+          "path": "assets/products/iphone-17-air-color-por-confirmar-view-0.png",
+          "sha256": "8e28f1098b51867c98d63f169c80c91a6ec516e8dd3587a9ddaaa25ca62892b0",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-air-cloud-white-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-air/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "singleDevice": true,
+          "model": "iPhone 17 Air",
+          "color": "Color por confirmar",
+          "path": "assets/products/iphone-17-air-color-por-confirmar-view-1.png",
+          "sha256": "85bc2d9711b73725e31766a675466920f0af60d30f50210274072193135a94ca",
+          "width": 1200,
+          "height": 1200
+        }
+      ]
+    },
     "iPhone 17 Pro Max|Anaranjado": {
       "model": "iPhone 17 Pro Max",
       "color": "Anaranjado",

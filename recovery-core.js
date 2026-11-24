@@ -46,7 +46,7 @@ function local(copy,currentMonth,floor){
 function importBackup(copy,backup,{currentMonth,floor}={}){
  if(!backup||backup.format!=='lunivo-sales-backup'||backup.version!==1||backup.accountKey!==copy.accountKey)throw Error('El respaldo es incompatible o pertenece a otra cuenta.');
  const incoming=clone(backup.data||parse(backup.legacy));validate(incoming);const data=base(copy);data.sales??=[];data.inventory??=[];data.offers??=[];validate(data);
- let added=0,identical=0,conflicts=0;const addedIds={sales:[],inventory:[]};const latest=row=>Math.max(0,...['createdAt','saleEditedAt','cancelledAt','visibilityChangedAt','paidAt'].map(k=>Date.parse(row?.[k])||0),Date.parse(row?.receipt?.savedAt)||0);
+ let added=0,identical=0,conflicts=incoming.cloud?.pending&&incoming.cloud.pending.id!==data.cloud?.pending?.id?1:0;const addedIds={sales:[],inventory:[]};const latest=row=>Math.max(0,...['createdAt','saleEditedAt','cancelledAt','visibilityChangedAt','paidAt'].map(k=>Date.parse(row?.[k])||0),Date.parse(row?.receipt?.savedAt)||0);
  for(const name of ['sales','inventory','offers']){const byId=new Map(data[name].map(row=>[row.id,row]));for(const row of incoming[name]){const current=byId.get(row.id);if(!current){byId.set(row.id,row);added++;if(name!=='offers'&&(name!=='sales'||row.status!=='Borrador'))addedIds[name].push(row.id);}else if(JSON.stringify(current)===JSON.stringify(row))identical++;else if(!data.cloud?.versions?.[name]?.[row.id]&&latest(row)>latest(current)){byId.set(row.id,row);conflicts++;}else conflicts++;}data[name]=[...byId.values()];}
  data.receiptCounters=counters([...sources(copy),incoming]);
  if(copy.accountKey.includes(':account:')){

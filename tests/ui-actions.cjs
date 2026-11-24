@@ -6,4 +6,6 @@ exports.click = async locator => {
   await closed.locator(':scope > summary').click();
  }
  await locator.click();
+ // Local business writes now acknowledge durability before reporting success.
+ await locator.page().evaluate(async()=>{const store=window.LunivoSuiteStore,account=window.LunivoStore?.account?.();if(!store)return;const key='lunivo-suite-preview-v1:'+(account?'account:'+account:'local');try{await store.saved(key);}catch{}});
 };

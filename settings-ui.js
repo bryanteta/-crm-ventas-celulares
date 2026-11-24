@@ -44,5 +44,22 @@ function route(){if(location.hash==='#ajustes'&&previous!=='#ajustes'){const fro
 window.addEventListener('hashchange',route);window.addEventListener('lunivo-module-change',event=>{requestAnimationFrame(()=>{const sales=event.detail.module==='sales';$('#workspace-announcement').textContent=sales?'Ventas. Inventarios, ventas y garantías.':'Follows. Clientes, seguimientos y agenda.';if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&typeof document.querySelector('main').animate==='function')document.querySelector('main').animate([{opacity:.65,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'ease-out'});$('#view-title').focus({preventScroll:true});});});
 window.LunivoDismissDialog=()=>{const dialogs=[...document.querySelectorAll('dialog[open]')];if(!dialogs.length)return false;dialogs[dialogs.length-1].close();return true;};
 window.LunivoSettings={open(id){pending=id;if(location.hash==='#ajustes'){select(id);pending=null;}else location.hash='#ajustes';}};
-select('account');route();
+// Local storage usage: the small localStorage area (follows, profiles, settings) and the IndexedDB sales database.
+let usageWarned=false,usageTimer=0;
+const size=bytes=>bytes<1e6?Math.max(1,Math.round(bytes/1e3))+' KB':bytes<1e9?(bytes/1e6).toLocaleString('es-SV',{maximumFractionDigits:1})+' MB':(bytes/1e9).toLocaleString('es-SV',{maximumFractionDigits:1})+' GB',percent=ratio=>Math.round(ratio*100)+' %';
+async function paintUsage(){
+ const target=$('#storage-usage'),store=window.LunivoSuiteStore;if(!target||!store)return;
+ try{const u=await store.usage(),ratio=Math.max(u.localRatio,u.dbRatio);
+  const parts=['Datos generales: '+size(u.local*2)+' de '+size(u.localLimit*2)+' ('+percent(u.localRatio)+').'];
+  if(u.backend==='indexedDB')parts.push('Ventas e inventario: '+(u.used===null?'base de datos del teléfono':size(u.used)+(u.quota?' de '+size(u.quota)+' disponibles ('+percent(u.dbRatio)+')':''))+'.');else parts.push('Ventas e inventario usan el espacio de datos generales en este navegador.');
+  parts.push(u.sales.toLocaleString('es-SV')+' venta(s) guardadas en este teléfono.');target.textContent=parts.join(' ');
+  $('#storage-usage-meter').value=Math.min(100,Math.round(ratio*100));
+  const warning=$('#storage-usage-warning');warning.hidden=!u.warning;
+  if(u.warning){warning.textContent='El espacio local está al '+percent(ratio)+'. Libera almacenamiento en el teléfono o quita listas de proveedores que ya no uses para que Lunivo pueda seguir guardando.';if(!usageWarned){usageWarned=true;window.LunivoApp?.notice?.(warning.textContent,'error');}}
+ }catch{target.textContent='No se pudo calcular el espacio usado.';}
+}
+const scheduleUsage=()=>{clearTimeout(usageTimer);usageTimer=setTimeout(paintUsage,location.hash==='#ajustes'?50:3000);};
+window.addEventListener('hashchange',()=>{if(location.hash==='#ajustes')scheduleUsage();});window.addEventListener('lunivo-suite-storage',scheduleUsage);document.addEventListener('lunivo-suite-saved',scheduleUsage);
+window.LunivoSettings.usage=paintUsage;
+select('account');route();scheduleUsage();
 })();

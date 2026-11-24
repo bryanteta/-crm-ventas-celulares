@@ -1,0 +1,46 @@
+name: Verificar migración y recuperación de ventas
+on:
+  push:
+    paths:
+      - 'suite-store.js'
+      - 'suite.js'
+      - 'suite-sync.js'
+      - 'settings-ui.js'
+      - 'tests/storage-*.cjs'
+      - 'tests/profile-fixture.cjs'
+      - '.github/workflows/test-suite-storage.yml'
+  pull_request:
+    paths:
+      - 'suite-store.js'
+      - 'suite.js'
+      - 'suite-sync.js'
+      - 'settings-ui.js'
+      - 'tests/storage-*.cjs'
+      - 'tests/profile-fixture.cjs'
+      - '.github/workflows/test-suite-storage.yml'
+permissions:
+  contents: read
+concurrency:
+  group: suite-storage-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+jobs:
+  storage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - name: Seleccionar Chromium de las pruebas
+        run: node -e 'process.stdout.write("CHROMIUM_PATH="+require("playwright").chromium.executablePath()+"\n")' >> "$GITHUB_ENV"
+      - name: Migración, escala, reversión y fallos de guardado
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/suite-storage-http.log 2>&1 &
+          node tests/storage-scale-ui.cjs
+          node tests/storage-rollback-ui.cjs
+          node tests/storage-safety-ui.cjs
+          node tests/web-prices-ui.cjs

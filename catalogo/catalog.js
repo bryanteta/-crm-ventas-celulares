@@ -242,12 +242,14 @@
   }
   const motionRail=$('#recent-products'),motionSection=$('#recent-arrivals');
   const mobileMotion=matchMedia('(max-width:700px)'),reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
-  let recentTouched=false,recentVisible=false,recentFrame=0;
+  let recentPausedUntil=0,recentVisible=false,recentFrame=0,recentResumeTimer=0,recentKeyboardFocus=false;
+  const recentPointers=new Set();
   function cancelRecentMotion(){cancelAnimationFrame(recentFrame);recentFrame=0;}
-  function canMoveRecent(){return !recentTouched&&recentVisible&&mobileMotion.matches&&!reducedMotion.matches&&!motionSection.hidden&&!nodes.dialog.open&&document.visibilityState==='visible';}
+  function canMoveRecent(){return Date.now()>=recentPausedUntil&&!recentPointers.size&&!recentKeyboardFocus&&recentVisible&&mobileMotion.matches&&!reducedMotion.matches&&!motionSection.hidden&&!nodes.dialog.open&&document.visibilityState==='visible';}
   function refreshRecentMotion(){
     cancelRecentMotion();if(!canMoveRecent())return;
-    const origin=motionRail.scrollLeft,travel=Math.min(42,motionRail.scrollWidth-motionRail.clientWidth-origin);
+    const origin=motionRail.scrollLeft,remaining=motionRail.scrollWidth-motionRail.clientWidth-origin;
+    const direction=remaining<42&&origin>remaining?-1:1,travel=Math.min(42,direction===1?remaining:origin);
     if(travel<2)return;
     // Keep the same card widths. Only move the native scroll position; never
     // intercept touch gestures or force the row back after the visitor touches it.
@@ -255,15 +257,29 @@
     function step(time){
       if(!canMoveRecent()){cancelRecentMotion();return;}
       if(started===null)started=time;
-      const elapsed=time-started-600,phase=elapsed<0?0:elapsed%5200;
+      const elapsed=time-started-(recentPausedUntil?0:600),phase=elapsed<0?0:elapsed%5200;
       const offset=phase<3200?travel*(1-Math.cos(2*Math.PI*phase/3200))/2:0;
-      motionRail.scrollLeft=origin+offset;
+      motionRail.scrollLeft=origin+direction*offset;
       recentFrame=requestAnimationFrame(step);
     }
     recentFrame=requestAnimationFrame(step);
   }
-  function stopRecentMotion(){recentTouched=true;cancelRecentMotion();}
-  for(const event of ['pointerdown','touchstart','wheel','keydown','focusin'])motionRail.addEventListener(event,stopRecentMotion,{passive:true});
+  function pauseRecentMotion(){
+    cancelRecentMotion();clearTimeout(recentResumeTimer);recentPausedUntil=Date.now()+2200;
+    if(!recentPointers.size&&!recentKeyboardFocus)recentResumeTimer=setTimeout(refreshRecentMotion,2200);
+  }
+  motionRail.addEventListener('pointerdown',event=>{recentPointers.add(event.pointerId);pauseRecentMotion();},{passive:true});
+  function releaseRecentPointer(event){if(recentPointers.delete(event.pointerId))pauseRecentMotion();}
+  window.addEventListener('pointerup',releaseRecentPointer,{passive:true});window.addEventListener('pointercancel',releaseRecentPointer,{passive:true});
+  if(!('PointerEvent' in window)){
+    motionRail.addEventListener('touchstart',()=>{recentPointers.add('touch');pauseRecentMotion();},{passive:true});
+    window.addEventListener('touchend',event=>{if(!event.touches.length&&recentPointers.delete('touch'))pauseRecentMotion();},{passive:true});
+    window.addEventListener('touchcancel',()=>{recentPointers.delete('touch');pauseRecentMotion();},{passive:true});
+  }
+  for(const event of ['wheel','keydown'])motionRail.addEventListener(event,pauseRecentMotion,{passive:true});
+  motionRail.addEventListener('scroll',()=>{if(Date.now()<recentPausedUntil||recentPointers.size)pauseRecentMotion();},{passive:true});
+  motionRail.addEventListener('focusin',event=>{recentKeyboardFocus=event.target.matches(':focus-visible');pauseRecentMotion();});
+  motionRail.addEventListener('focusout',event=>{if(!motionRail.contains(event.relatedTarget)){recentKeyboardFocus=false;pauseRecentMotion();}});
   if('IntersectionObserver' in window)new IntersectionObserver(([entry])=>{recentVisible=entry.isIntersecting;refreshRecentMotion();},{threshold:.15}).observe(motionRail);
   mobileMotion.addEventListener('change',refreshRecentMotion);reducedMotion.addEventListener('change',refreshRecentMotion);
   window.addEventListener('resize',refreshRecentMotion,{passive:true});

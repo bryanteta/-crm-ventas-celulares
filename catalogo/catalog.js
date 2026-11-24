@@ -9,7 +9,7 @@
   if('ResizeObserver' in window)new ResizeObserver(sizeDetailHeading).observe(detailHeading);
   else window.addEventListener('resize',sizeDetailHeading);
   let catalog=null, groups=[], brand='all', activeGroup=null, loading=false;
-  let selectedVersion='all',versionSignature='',recentOnly=false;
+  let selectedVersion='all',versionSignature='';
   let images={};
   const selectedColors=new Map();
   let inventoryEndpoint='',lastInventoryCheck=0;
@@ -159,7 +159,7 @@
   function versionName(model){return model.replace(/^Samsung /,'Galaxy ');}
   function versionLabel(model,family){const name=versionName(model);return family.title.startsWith('Galaxy Z ')?name.replace(/^Galaxy /,''):(name.slice(family.title.length).trim()||'Estándar');}
   function renderVersions(){
-    const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all'||recentOnly;if(bar.hidden)return;
+    const bar=$('#version-bar'),nav=$('#version-list');bar.hidden=brand==='all';if(bar.hidden)return;
     const models=[...new Set(groups.filter(g=>g.manufacturer===brand).map(g=>g.model))].sort(compareModels);
     const removed=selectedVersion!=='all'&&!models.includes(selectedVersion);if(removed)selectedVersion='all';
     const label=brand==='Apple'?'iPhone':'Samsung',signature=JSON.stringify([brand,models]);
@@ -213,15 +213,17 @@
   function render(){
     renderVersions();
     const query=nodes.search.value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(!recentOnly||(Date.parse(v.addedAt)>Date.now()-7*24*60*60*1000))&&(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
+    const matches=groups.map(g=>({...g,variants:g.variants.filter(v=>(nodes.capacity.value==='all'||v.capacity===nodes.capacity.value)&&`${v.model} ${v.manufacturer} ${v.capacity} ${v.color} ${deviceSeries(g).title}`.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(query))})).filter(g=>(brand==='all'||g.manufacturer===brand)&&g.variants.length);
     const lowest=g=>Math.min(...g.variants.map(v=>v.priceCents));
     const direction=nodes.sort.value==='model-desc'?-1:1;
     matches.sort((a,b)=>nodes.sort.value==='low'?lowest(a)-lowest(b)||compareModels(a.model,b.model):nodes.sort.value==='high'?lowest(b)-lowest(a)||compareModels(a.model,b.model):direction*compareModels(a.model,b.model));
-    if(recentOnly)matches.sort((a,b)=>Math.max(...b.variants.map(v=>Date.parse(v.addedAt)||0))-Math.max(...a.variants.map(v=>Date.parse(v.addedAt)||0))||compareModels(a.model,b.model));
-    $('#recent-filter').setAttribute('aria-pressed',String(recentOnly));
     const fragment=document.createDocumentFragment();
     const stale=Date.now()-Date.parse(catalog.updatedAt)>2*60*60*1000;
-    if(!recentOnly&&['model','model-desc'].includes(nodes.sort.value)){
+    const recent=$('#recent-arrivals'),rail=$('#recent-products');
+    const recentGroups=matches.map(g=>({...g,variants:g.variants.filter(v=>Date.parse(v.addedAt)>Date.now()-7*86400000)})).filter(g=>g.variants.length).sort((a,b)=>Math.max(...b.variants.map(v=>Date.parse(v.addedAt)))-Math.max(...a.variants.map(v=>Date.parse(v.addedAt)))).slice(0,6);
+    recent.hidden=brand!=='all'||Boolean(query)||nodes.capacity.value!=='all'||nodes.sort.value!=='model'||!recentGroups.length;
+    rail.replaceChildren(...(recent.hidden?[]:recentGroups.map(g=>createCard(g,stale))));
+    if(['model','model-desc'].includes(nodes.sort.value)){
       const series=new Map();
       for(const group of matches){
         const family=deviceSeries(group);
@@ -445,16 +447,15 @@
       await openSharedDevice();
     }catch{
       if(background&&previous){catalog=previous;render();$('#notice').textContent='No pudimos comprobar la última actualización. Se conserva la lista anterior; confirma disponibilidad por WhatsApp.';$('#notice').hidden=false;return;}
-      catalog=null;groups=[];nodes.products.replaceChildren();nodes.count.textContent='Inventario no disponible';$('#updated').textContent='No se pudo consultar la lista';$('#error').hidden=false;
+      catalog=null;groups=[];nodes.products.replaceChildren();$('#recent-arrivals').hidden=true;$('#recent-products').replaceChildren();nodes.count.textContent='Inventario no disponible';$('#updated').textContent='No se pudo consultar la lista';$('#error').hidden=false;
     }finally{loading=false;nodes.products.setAttribute('aria-busy','false');}
   }
   $('#filters').addEventListener('submit',event=>event.preventDefault());
   nodes.search.addEventListener('input',()=>{if(catalog)render();});
   nodes.capacity.addEventListener('change',()=>{if(catalog)render();});
   nodes.sort.addEventListener('change',()=>{if(catalog)render();});
-  document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{recentOnly=false;brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;}}));
-  $('#recent-filter').addEventListener('click',()=>{recentOnly=true;brand='all';selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed','false'));if(catalog)render();});
-  $('#reset').addEventListener('click',()=>{recentOnly=false;brand='all';selectedVersion='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
+  document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',()=>{brand=button.dataset.brand;selectedVersion='all';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(catalog){render();$('#version-list').scrollLeft=0;}}));
+  $('#reset').addEventListener('click',()=>{brand='all';selectedVersion='all';nodes.search.value='';nodes.capacity.value='all';nodes.sort.value='model';document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand==='all')));if(catalog)render();nodes.search.focus();});
   function resetInstallments(){
     $('#installment-grid').replaceChildren();delete $('#installment-grid').dataset.plan;$('#installment-options').hidden=true;
   }

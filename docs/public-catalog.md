@@ -193,3 +193,11 @@ La web conserva búsqueda, marcas y versiones, y retira los selectores de capaci
 El proveedor llama «iPhone 17 Air · Plata» a una variante sin foto ni color oficial verificable. La web usa una referencia del mismo iPhone Air publicada por Apple, con frente y reverso individuales de Swappie en Cloud White. La foto indica «Color ilustrativo» y conserva «Plata» en las características del proveedor; no se afirma que la imagen confirme ese acabado. Esta referencia explícita solo puede ilustrar su mismo modelo, sin sustituir fotos exactas de colores verificados.
 
 En móvil, los recién agregados tienen una pista «Desliza para ver más» y dejan visible parte de la siguiente tarjeta para indicar el desplazamiento horizontal.
+
+### Publicación de Pages por identificador de archivo
+
+La subida oficial `upload-pages-artifact` devuelve el ID inmutable del archivo. `scripts/deploy-pages-rest.cjs` valida por REST que ese archivo se llama `github-pages`, no está vencido y pertenece al run actual. Crea la publicación con ese ID y el SHA realmente compilado; usa OIDC y espera el estado `succeed` antes de anunciar éxito.
+
+Esto evita la segunda búsqueda mediante Twirp de `deploy-pages@v4`, que devolvía cero resultados incluso cuando el archivo ya aparecía por REST. La espera anterior consultaba solo REST, por lo que no podía garantizar visibilidad en ese segundo servicio. Se retiró esa espera y se unificó la publicación en REST.
+
+Los GET temporales se reintentan con límite, sin repetir a ciegas el POST de creación. Los errores reales de permisos o contenido siguen fallando. Si el despliegue no termina dentro del plazo, se solicita su cancelación. El token OIDC se oculta y no se registran cuerpos de peticiones. `tests/pages-deployment.test.cjs` cubre estas condiciones y se ejecuta dentro del workflow antes de preparar el sitio. Este cambio no modifica el diseño ni los datos del catálogo.

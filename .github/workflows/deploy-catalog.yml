@@ -8,8 +8,8 @@ on:
       - 'scripts/prepare-catalog-site.cjs'
       - 'scripts/catalog-share-pages.cjs'
       - 'scripts/catalog-seo.cjs'
-      - 'scripts/wait-pages-artifact.cjs'
-      - 'tests/pages-artifact.test.cjs'
+      - 'scripts/deploy-pages-rest.cjs'
+      - 'tests/pages-deployment.test.cjs'
       - '.github/workflows/deploy-catalog.yml'
   workflow_dispatch:
   # A GITHUB_TOKEN commit does not trigger push workflows. A successful refresh
@@ -58,8 +58,9 @@ jobs:
           fi
       - name: Preparar catálogo público en la raíz
         run: |
-          node --test tests/pages-artifact.test.cjs
+          node --test tests/pages-deployment.test.cjs
           node scripts/prepare-catalog-site.cjs
+          echo "PAGES_BUILD_VERSION=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - uses: actions/configure-pages@v5
         if: steps.site.outputs.enabled == 'true'
       - uses: actions/upload-pages-artifact@v3
@@ -67,13 +68,16 @@ jobs:
         if: steps.site.outputs.enabled == 'true'
         with:
           path: _catalog_site
-      - name: Esperar disponibilidad del archivo de esta ejecución
-        if: steps.site.outputs.enabled == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PAGES_ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
-        run: node scripts/wait-pages-artifact.cjs
       - name: Publicar en GitHub Pages
         id: deployment
         if: steps.site.outputs.enabled == 'true'
-        uses: actions/deploy-pages@v4
+        uses: actions/github-script@v8
+        env:
+          PAGES_ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
+        with:
+          script: |
+            const {deployPages}=require('./scripts/deploy-pages-rest.cjs');
+            await deployPages({github,core,repo:context.repo,
+              runId:process.env.GITHUB_RUN_ID,
+              artifactId:process.env.PAGES_ARTIFACT_ID,
+              buildVersion:process.env.PAGES_BUILD_VERSION});

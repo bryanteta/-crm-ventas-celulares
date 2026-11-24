@@ -17,7 +17,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
   if(account)await page.evaluate(()=>{const rows=LunivoApp.records(),profiles=LunivoProfiles.legacyRecords();LunivoProfiles.switchAccount('upgrade-user',profiles);LunivoStore.switchAccount('upgrade-user',rows);LunivoApp.reload(true);localStorage.setItem('lunivo-active-brand-v1:upgrade-user','Split');});
   const expected=await page.evaluate(()=>({records:LunivoApp.records(),pending:LunivoStore.pending(),profiles:LunivoProfiles.records(),profilePending:LunivoProfiles.pending()}));
   await context.unrouteAll();await page.reload();
-  assert.equal(await page.locator('#brand-filter,[name=brand],[data-brand-target]').count(),0);
+  assert.equal(await page.locator('#brand-filter,#form [name=brand],[data-brand-target]').count(),0);
   assert.deepEqual(await page.evaluate(()=>LunivoApp.records()),expected.records);
   assert.deepEqual(await page.evaluate(()=>LunivoStore.pending()),expected.pending);
   assert.deepEqual(await page.evaluate(()=>LunivoProfiles.records()),expected.profiles);

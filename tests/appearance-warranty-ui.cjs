@@ -11,7 +11,7 @@ const artifact=require('./artifacts.cjs').path;
    window.CrmAndroid={postMessage(raw){const r=JSON.parse(raw);messages.push(r);if(r.type==='appearance')return;queueMicrotask(()=>{if(r.type==='cloudState')dispatchEvent(new CustomEvent('lunivo-cloud',{detail:{type:'cloudState',configured:false,uid:null,email:''}}));else if(r.type.startsWith('launchSound'))this.onmessage({data:JSON.stringify({type:'launchSoundStatus',enabled:false,available:true})});else if(r.type==='receiptExport')window.exported=r;else this.onmessage({data:JSON.stringify({type:'status',enabled:true,exact:true,scheduled:0})});});}};
   });
   await page.route('**/assets/provider-bootstrap.json',r=>r.fulfill({json:{version:1,checkedAt:new Date().toISOString(),providers:{samuel:{rows:[],total:0},split:{rows:[],total:0}}}}));
-  const data=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('lunivo-suite-preview-v1:local')));
+  const data=()=>page.evaluate(()=>JSON.parse(LunivoSuiteStore.peek('lunivo-suite-preview-v1:local')));
   await page.goto('http://127.0.0.1:8000/#ventas');
   await page.locator('#sales-summary .own-stock-access').getByRole('link',{name:'Ver mis equipos',exact:true}).click();await page.locator('#inventory-add').click();
   await page.locator('#stock-form').waitFor();a.equal(await page.locator('#stock-form [name=ownerId]').inputValue(),'lunivo');

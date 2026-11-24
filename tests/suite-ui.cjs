@@ -8,9 +8,9 @@ for(const[w,h]of[[320,840],[412,915],[840,920],[915,412]]){await p.setViewportSi
 // A failed local write must not remove or mark a commission as paid.
 await p.goto('http://127.0.0.1:8000/#ventas/nueva');await p.locator('#sale-origin').selectOption('manual');
 for(const[k,v]of Object.entries({client:'Cuota de prueba',model:'Galaxy',price:'400',cost:'350'})){if(k==='cost'&&!await p.locator('#sale-form [name=cost]').isVisible())await p.locator('#sale-details>summary').click();await p.locator(`#sale-form [name=${k}]`).fill(v)};
-const saved=await p.evaluate(()=>localStorage.getItem('lunivo-suite-preview-v1:local'));
-await p.evaluate(()=>{window.originalSet=Storage.prototype.setItem;Storage.prototype.setItem=()=>{throw new DOMException('Full','QuotaExceededError')}});
-await p.locator('#sale-confirm').click();a.equal(await p.evaluate(()=>localStorage.getItem('lunivo-suite-preview-v1:local')),saved);await p.evaluate(()=>{Storage.prototype.setItem=window.originalSet});
+const saved=await p.evaluate(()=>LunivoSuiteStore.peek('lunivo-suite-preview-v1:local'));
+await p.evaluate(()=>{window.originalSet=Storage.prototype.setItem;Storage.prototype.setItem=()=>{throw new DOMException('Full','QuotaExceededError')};window.__idbPut=window.__idbPut||IDBObjectStore.prototype.put;IDBObjectStore.prototype.put=function(){throw new DOMException('Full','QuotaExceededError')};});
+await p.locator('#sale-confirm').click();a.equal(await p.evaluate(()=>LunivoSuiteStore.peek('lunivo-suite-preview-v1:local')),saved);await p.evaluate(()=>{Storage.prototype.setItem=window.originalSet;IDBObjectStore.prototype.put=window.__idbPut;});
 await p.evaluate(()=>{LunivoProfiles.switchAccount('isolated');LunivoStore.switchAccount('isolated');LunivoApp.reload(true);LunivoSuite.render()});
 await p.goto('http://127.0.0.1:8000/#ventas/historial');a.equal(await p.locator('#sales-list .suite-sale').count(),0);a.equal(await p.locator('#sale-form [name=client]').inputValue(),'');
 await p.evaluate(()=>{LunivoProfiles.switchAccount(null);LunivoStore.switchAccount(null);LunivoApp.reload(true);LunivoSuite.render()});await p.goto('http://127.0.0.1:8000/#ventas/historial');a.equal(await p.locator('#sales-list .suite-sale').count(),2);

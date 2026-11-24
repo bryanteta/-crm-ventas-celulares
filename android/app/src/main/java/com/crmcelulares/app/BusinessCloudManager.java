@@ -2,6 +2,10 @@ package com.crmcelulares.app;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Source;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -74,13 +78,31 @@ final class BusinessCloudManager {
         String type=request.getString("type"),requestId=request.optString("requestId"),requested=request.optString("uid");
         if(type.equals("cloudSuiteState")){replay();return;}
         if(!current(requested)){failure(requestId,requested,new BusinessEngine.Problem("account","Vuelve a iniciar sesión en la cuenta correcta."));return;}
-        if(type.equals("cloudSuiteCommit")){
+        if(type.equals("cloudSuiteRecoverySnapshot")){
+            recovery(requestId,requested,request.getJSONArray("operationIds"));
+        }else if(type.equals("cloudSuiteCommit")){
             JSONObject operation=request.getJSONObject("operation");if(operation.toString().length()>80000)throw new IllegalArgumentException("Operación demasiado grande");
             commit(requestId,requested,operation,0);
         }else if(type.equals("cloudSuiteImport")){
             String collection=request.getString("collection");JSONArray rows=request.getJSONArray("records");if(rows.length()>30)throw new IllegalArgumentException("Demasiados registros");
             importNext(requestId,requested,collection,rows,0,new JSONArray());
         }else throw new IllegalArgumentException("Acción desconocida");
+    }
+    // Explicit server reads; never use the listeners' cache to authorize recovery.
+    private void recovery(String requestId,String requested,JSONArray ids)throws Exception{
+        if(ids.length()>100)throw new IllegalArgumentException("Demasiadas solicitudes pendientes");
+        List<Task<?>> reads=new ArrayList<>();
+        reads.add(database.collection(BusinessEngine.collection(requested,"sales")).get(Source.SERVER));
+        reads.add(database.collection(BusinessEngine.collection(requested,"inventory")).get(Source.SERVER));
+        reads.add(database.collection("users/"+requested+"/suiteCounters").get(Source.SERVER));
+        for(int n=0;n<ids.length();n++){String id=ids.getString(n);if(!id.matches("[A-Za-z0-9_-]{1,128}"))throw new IllegalArgumentException("Solicitud inválida");reads.add(database.document("users/"+requested+"/suiteOperations/"+id).get(Source.SERVER));}
+        Tasks.whenAllSuccess(reads).addOnSuccessListener(results->{if(!current(requested))return;
+            try{
+                JSONObject response=new JSONObject().put("type","cloudSuiteRecoveryResult").put("requestId",requestId).put("uid",requested).put("complete",true).put("fromCache",false);
+                String[] names={"sales","inventory","counters"};for(int i=0;i<3;i++){QuerySnapshot snapshot=(QuerySnapshot)results.get(i);if(snapshot.getMetadata().isFromCache())throw new IllegalStateException("Se necesita conexión al servidor");JSONArray rows=new JSONArray();for(DocumentSnapshot doc:snapshot.getDocuments()){if(doc.getData()==null)throw new IllegalStateException("Registro incompleto");rows.put(new JSONObject(doc.getData()));}response.put(names[i],rows);}
+                JSONObject operations=new JSONObject();for(int i=0;i<ids.length();i++){DocumentSnapshot doc=(DocumentSnapshot)results.get(i+3);if(doc.getMetadata().isFromCache())throw new IllegalStateException("No se pudo verificar una solicitud");operations.put(ids.getString(i),doc.exists());}response.put("operations",operations);emit(response);
+            }catch(Exception error){failure(requestId,requested,error);}
+        }).addOnFailureListener(error->{if(current(requested))failure(requestId,requested,error);});
     }
     // Rules can reject a stale counter before Firestore reports its transaction conflict.
     // Retry the same durable operation against fresh reads; the ledger prevents duplicate sales.

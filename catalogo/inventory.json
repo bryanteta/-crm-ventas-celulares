@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-24T01:03:07.084Z",
+  "updatedAt": "2026-11-24T04:40:05.770Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1839,7 +1839,7 @@
       "addedAt": "2026-11-15T04:12:51.201Z"
     },
     {
-      "id": "42bb24003de2117f2fdb",
+      "id": "76bdf93b22f988bc0688",
       "manufacturer": "Apple",
       "model": "iPhone 15 Pro Max",
       "capacity": "256 GB",
@@ -2655,6 +2655,28 @@
         "T"
       ],
       "addedAt": "2026-11-12T20:57:38.337Z"
+    },
+    {
+      "id": "ad18348e69058a1def69",
+      "manufacturer": "Apple",
+      "model": "iPhone 18 Pro Max",
+      "capacity": "256 GB",
+      "color": "Borgoña",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 178500,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-24T04:40:05.770Z"
     },
     {
       "id": "ad89d4dbb3bd0b4872b5",

@@ -192,7 +192,7 @@ La web conserva búsqueda, marcas y versiones, y retira los selectores de capaci
 
 El proveedor llama «iPhone 17 Air · Plata» a una variante sin foto ni color oficial verificable. La web usa una referencia del mismo iPhone Air publicada por Apple, con frente y reverso individuales de Swappie en Cloud White. La foto indica «Color ilustrativo» y conserva «Plata» en las características del proveedor; no se afirma que la imagen confirme ese acabado. Esta referencia explícita solo puede ilustrar su mismo modelo, sin sustituir fotos exactas de colores verificados.
 
-En móvil, los recién agregados tienen una pista «Desliza para ver más» y dejan visible parte de la siguiente tarjeta para indicar el desplazamiento horizontal.
+En móvil se conserva el ancho de las tarjetas (80% del carrusel). Sin texto de ayuda, el carrusel visible realiza un movimiento suave de hasta 42 px de ida y vuelta, seguido de una pausa. El primer toque, gesto, rueda o interacción con teclado lo detiene para el resto de esa visita, también tras actualizar el inventario. No intercepta los gestos manuales. Se suspende fuera de pantalla, en pestañas ocultas y con un diálogo abierto, y respeta la preferencia de movimiento reducido. En computadora no se anima.
 
 ### Publicación de Pages por identificador de archivo
 

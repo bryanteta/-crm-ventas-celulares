@@ -224,6 +224,7 @@
     const recentGroups=matches.map(g=>({...g,variants:g.variants.filter(v=>Date.parse(v.addedAt)>Date.now()-7*86400000)})).filter(g=>g.variants.length).sort((a,b)=>Math.max(...b.variants.map(v=>Date.parse(v.addedAt)))-Math.max(...a.variants.map(v=>Date.parse(v.addedAt)))).slice(0,6);
     recent.hidden=brand!=='all'||Boolean(query)||!recentGroups.length;
     rail.replaceChildren(...(recent.hidden?[]:recentGroups.map(g=>createCard(g,stale))));
+    refreshRecentMotion();
     {
       const series=new Map();
       for(const group of matches){
@@ -239,6 +240,35 @@
     nodes.count.textContent=`${matches.length} ${matches.length===1?'opción':'opciones'}${units?' · '+units+' equipo'+(units===1?'':'s'):''}`;
     $('#empty').hidden=matches.length!==0;
   }
+  const motionRail=$('#recent-products'),motionSection=$('#recent-arrivals');
+  const mobileMotion=matchMedia('(max-width:700px)'),reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
+  let recentTouched=false,recentVisible=false,recentFrame=0;
+  function cancelRecentMotion(){cancelAnimationFrame(recentFrame);recentFrame=0;}
+  function canMoveRecent(){return !recentTouched&&recentVisible&&mobileMotion.matches&&!reducedMotion.matches&&!motionSection.hidden&&!nodes.dialog.open&&document.visibilityState==='visible';}
+  function refreshRecentMotion(){
+    cancelRecentMotion();if(!canMoveRecent())return;
+    const origin=motionRail.scrollLeft,travel=Math.min(42,motionRail.scrollWidth-motionRail.clientWidth-origin);
+    if(travel<2)return;
+    // Keep the same card widths. Only move the native scroll position; never
+    // intercept touch gestures or force the row back after the visitor touches it.
+    motionRail.classList.add('motion-surface');let started=null;
+    function step(time){
+      if(!canMoveRecent()){cancelRecentMotion();return;}
+      if(started===null)started=time;
+      const elapsed=time-started-600,phase=elapsed<0?0:elapsed%5200;
+      const offset=phase<3200?travel*(1-Math.cos(2*Math.PI*phase/3200))/2:0;
+      motionRail.scrollLeft=origin+offset;
+      recentFrame=requestAnimationFrame(step);
+    }
+    recentFrame=requestAnimationFrame(step);
+  }
+  function stopRecentMotion(){recentTouched=true;cancelRecentMotion();}
+  for(const event of ['pointerdown','touchstart','wheel','keydown','focusin'])motionRail.addEventListener(event,stopRecentMotion,{passive:true});
+  if('IntersectionObserver' in window)new IntersectionObserver(([entry])=>{recentVisible=entry.isIntersecting;refreshRecentMotion();},{threshold:.15}).observe(motionRail);
+  mobileMotion.addEventListener('change',refreshRecentMotion);reducedMotion.addEventListener('change',refreshRecentMotion);
+  window.addEventListener('resize',refreshRecentMotion,{passive:true});
+  document.addEventListener('visibilitychange',refreshRecentMotion);
+  nodes.dialog.addEventListener('close',refreshRecentMotion);
   const viewerStorageKey='lunivo-viewer-activity-v1';
   let viewerState;
   try{const saved=JSON.parse(localStorage.getItem(viewerStorageKey));if(Number.isInteger(saved?.count)&&saved.count>=1&&saved.count<=6&&Number.isFinite(saved.nextAt))viewerState=saved;}catch{}

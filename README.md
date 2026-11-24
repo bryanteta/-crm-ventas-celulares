@@ -27,7 +27,7 @@ npm ci
 python3 -m http.server 8000
 ```
 
-Abre `http://127.0.0.1:8000`. El almacenamiento del navegador es independiente del APK.
+Abre `http://127.0.0.1:8000`. El almacenamiento del navegador es independiente del APK. Ventas guarda sus datos en IndexedDB (ver [docs/suite-storage.md](docs/suite-storage.md)).
 
 En otra terminal:
 

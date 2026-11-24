@@ -21,7 +21,7 @@ const assert=require('node:assert/strict');
  assert.match(await page.locator('#today-items').textContent(),/Cliente original/);assert.match(await page.locator('#today-items').textContent(),/Historial conservado/);
  assert.equal(await page.evaluate(()=>nativeMessages.filter(r=>r.type==='sync').at(-1).records.length),3);
  const before=await page.evaluate(()=>localStorage.getItem('crm-telefonos-seguimientos-v1'));
- await page.locator('nav a[href="#listado"]').click();assert.equal(await page.locator('#items .row').count(),3);
+ await page.locator('nav a[href="#listado"]').click();await page.locator('#items .row').nth(2).waitFor();assert.equal(await page.locator('#items .row').count(),3);
  await page.locator('#search').fill('Historial');assert.equal(await page.locator('#items .row').count(),1);await page.locator('#search').fill('');
  await page.locator('nav a[href="#agenda"]').click();await page.getByRole('button',{name:'2026-10-31, 2 contactos',exact:true}).click();assert.equal(await page.locator('#day-items .row').count(),2);
  assert.equal(await page.evaluate(()=>localStorage.getItem('crm-telefonos-seguimientos-v1')),before,'reading all historical rows must not rewrite/migrate data');

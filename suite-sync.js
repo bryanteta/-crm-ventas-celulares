@@ -77,6 +77,8 @@ window.addEventListener('lunivo-cloud',event=>{
   else if(response.type==='cloudSuiteError'){problem=response.message;paint();}
  }catch(e){problem=e.message;paint();}
 });
+// Cloud snapshots that arrive while this phone's copy is still opening are ignored; ask the bridge to replay them.
+window.addEventListener('lunivo-suite-storage',event=>{if(!api||!event.detail.loaded)return;changeScope();if(shared()&&api.ready())retry();else paint();});
 window.addEventListener('online',retry);window.addEventListener('offline',paint);window.addEventListener('hashchange',paint);
 $('#suite-cloud-retry').addEventListener('click',retry);
 window.LunivoSuiteCloud={enabled:shared,mutate,paint,revision(collection,id){try{return shared()?metadata(api.read()).versions[collection][id]||'':null;}catch{return null;}},connect(value){api=value;changeScope();paint();if(shared()&&api.ready())retry();}};

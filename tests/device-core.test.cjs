@@ -13,3 +13,12 @@ test('wearables cannot masquerade as Samsung or Apple phone families',()=>{
  for(const model of ['Apple Watch SE 3 44MM','GALAXY WATCH 7','Samsung Watch','Smartwatch','Reloj Samsung','Mi Band 8']){a.equal(d.isWearable(model),true);a.equal(d.family({model}),'');}
  for(const model of ['iPhone 11','Galaxy S24','Samsung Z Fold 6'])a.equal(d.isWearable(model),false);
 });
+test('16e, 17e, Air and Edge are their own models so a cheaper edition never looks like the base phone',()=>{
+ for(const raw of ['iPhone 16e','IPHONE 16E 128GB','Apple iPhone 16e · 256GB'])a.equal(d.model(raw),'iPhone 16e');
+ a.equal(d.model('iPhone 17e'),'iPhone 17e');a.equal(d.model('iPhone Air 256GB'),'iPhone 17 Air');a.equal(d.modelKey('iPhone Air'),d.modelKey('iPhone 17 Air'));a.equal(d.model('iPhone XS Max 64GB'),'iPhone XS Max');a.equal(d.model('iPhoneXR 64GB'),'iPhone XR');
+ a.notEqual(d.modelKey('iPhone 16e'),d.modelKey('iPhone 16'));a.notEqual(d.modelKey('iPhone 17e'),d.modelKey('iPhone 17'));a.notEqual(d.modelKey('iPhone XS Max'),d.modelKey('iPhone XS'));
+ a.equal(d.model('iPhone 16 esim 128GB'),'iPhone 16','an eSIM note is not the 16e');
+ a.equal(d.model('Samsung Galaxy S25 Edge'),'Samsung S25 Edge');a.notEqual(d.modelKey('Galaxy S25 Edge'),d.modelKey('Galaxy S25'));
+ for(const raw of ['S23+','Galaxy S23 +','Samsung Galaxy S23 Plus'])a.equal(d.model(raw),'Samsung S23 Plus');
+ a.equal(d.family({model:'iPhone 16e'}),'iphone');a.equal(d.family({model:'Galaxy S25 Edge'}),'samsung');
+});

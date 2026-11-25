@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-24T22:04:07.349Z",
+  "updatedAt": "2026-11-25T03:50:16.076Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1219,28 +1219,6 @@
       "available": true,
       "sourceInitials": [
         "J"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
-      "id": "626f9b9c2a01f0646bd1",
-      "manufacturer": "Apple",
-      "model": "iPhone 15",
-      "capacity": "128 GB",
-      "color": "Amarillo",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 57000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "S"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
     },
@@ -3010,28 +2988,6 @@
         "S"
       ],
       "addedAt": "2026-11-12T03:15:48.367Z"
-    },
-    {
-      "id": "112bb735dc53419445a2",
-      "manufacturer": "Samsung",
-      "model": "Samsung S25",
-      "capacity": "128 GB",
-      "color": "Celeste",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 53000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
     },
     {
       "id": "3b168df3f8c805087cfb",

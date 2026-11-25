@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "revision": 9,
-  "updatedAt": "2026-11-24T20:14:46.698Z",
+  "revision": 19,
+  "updatedAt": "2026-11-25T03:32:30.811Z",
   "overrides": {
     "71b80666bc38f2e24c1feba249ea0117": {
       "priceCents": 25000,
@@ -29,6 +29,46 @@
     },
     "e17050ac85c25faef64cf0164c603245": {
       "priceCents": 26000,
+      "images": []
+    },
+    "3e763f521b8d437689f7586d10f9c4ac": {
+      "priceCents": 30000,
+      "images": []
+    },
+    "245a12b0fd8209be09e4c92dfc30e991": {
+      "priceCents": 30000,
+      "images": []
+    },
+    "7c923773e233bb42d4153aab908d7610": {
+      "priceCents": 32500,
+      "images": []
+    },
+    "e4761be3effdd1a3e349fd0b1869e682": {
+      "priceCents": 36500,
+      "images": []
+    },
+    "b062c7df04b761208780a99e85ab6c1f": {
+      "priceCents": 36500,
+      "images": []
+    },
+    "c3cf5bfdedc38ed787e840289e9714e3": {
+      "priceCents": 36500,
+      "images": []
+    },
+    "1ea79925c8cceb845c5c34f29ea7653c": {
+      "priceCents": 34000,
+      "images": []
+    },
+    "ebbabeba0a27ebb8a69312c328a05510": {
+      "priceCents": 34000,
+      "images": []
+    },
+    "9a5ef813ef330d3007509ba547d74a6a": {
+      "priceCents": 175000,
+      "images": []
+    },
+    "a62490e85f6c63c40290c3562bf7fbae": {
+      "priceCents": 162500,
       "images": []
     }
   }

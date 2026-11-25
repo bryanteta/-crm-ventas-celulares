@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "revision": 19,
-  "updatedAt": "2026-11-25T03:32:30.811Z",
+  "revision": 20,
+  "updatedAt": "2026-11-25T20:55:56.363Z",
   "overrides": {
     "71b80666bc38f2e24c1feba249ea0117": {
       "priceCents": 25000,
@@ -69,6 +69,10 @@
     },
     "a62490e85f6c63c40290c3562bf7fbae": {
       "priceCents": 162500,
+      "images": []
+    },
+    "e8fc09a04ed83948c3bcd93773cca44e": {
+      "priceCents": 82500,
       "images": []
     }
   }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-25T13:45:38.182Z",
+  "updatedAt": "2026-11-25T22:50:49.884Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -1135,28 +1135,6 @@
       "addedAt": "2026-11-10T03:51:26.155Z"
     },
     {
-      "id": "59c1a2d99d30206b5334",
-      "manufacturer": "Apple",
-      "model": "iPhone 14 Pro",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 64000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
       "id": "ef009e7c652ea29faeb5",
       "manufacturer": "Apple",
       "model": "iPhone 14 Pro Max",
@@ -1413,7 +1391,7 @@
       "box": null,
       "ram": "",
       "priceCents": 70500,
-      "quantity": 12,
+      "quantity": 11,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1463,6 +1441,28 @@
         "J"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
+    },
+    {
+      "id": "5d54b1fd0b5d67dac1fd",
+      "manufacturer": "Apple",
+      "model": "iPhone 15 Pro",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": 0,
+      "sim": "SIM física",
+      "box": true,
+      "ram": "",
+      "priceCents": 77500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-25T22:50:49.884Z"
     },
     {
       "id": "47361043f603debcd8e5",
@@ -1552,7 +1552,7 @@
       "box": null,
       "ram": "",
       "priceCents": 83000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1853,34 +1853,12 @@
       "box": true,
       "ram": "",
       "priceCents": 86000,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "J"
       ],
       "addedAt": "2026-11-14T16:05:44.671Z"
-    },
-    {
-      "id": "53d55b445e703c370044",
-      "manufacturer": "Apple",
-      "model": "iPhone 15 Pro Max",
-      "capacity": "256 GB",
-      "color": "Titanio natural",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 0,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 86500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
     },
     {
       "id": "8c8d253647dd1febd3ca",
@@ -2237,26 +2215,26 @@
       "addedAt": "2026-11-08T18:37:02.466Z"
     },
     {
-      "id": "1a89a171bd5d1e2d2fb1",
+      "id": "7afcb02f0477181ab35d",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
-      "color": "Negro",
+      "color": "Titanio desierto",
       "condition": "Seminuevo",
       "grade": "",
-      "battery": "99%",
+      "battery": "96%",
       "observations": [],
       "cycles": null,
       "sim": "Por confirmar",
       "box": true,
       "ram": "",
-      "priceCents": 95000,
+      "priceCents": 94500,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
         "J"
       ],
-      "addedAt": "2026-11-21T21:43:50.280Z"
+      "addedAt": "2026-11-25T22:50:49.884Z"
     },
     {
       "id": "8a9d7572bea0b2a45ef5",
@@ -2433,28 +2411,6 @@
         "S"
       ],
       "addedAt": "2026-11-12T03:15:48.367Z"
-    },
-    {
-      "id": "0cc7c7456559b7daeee6",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro",
-      "capacity": "256 GB",
-      "color": "Azul",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 142,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 121500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ],
-      "addedAt": "2026-11-14T16:05:44.671Z"
     },
     {
       "id": "00178614600d9d2cf7da",

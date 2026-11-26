@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-26T14:32:43.677Z",
+  "updatedAt": "2026-11-26T23:16:35.759Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -769,7 +769,7 @@
       "box": null,
       "ram": "",
       "priceCents": 53000,
-      "quantity": 2,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -1043,50 +1043,6 @@
       "available": true,
       "sourceInitials": [
         "S"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
-      "id": "754a5660f99e4103e0ab",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 45000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ],
-      "addedAt": "2026-11-12T03:15:48.367Z"
-    },
-    {
-      "id": "f428dcade3ef39d14c1e",
-      "manufacturer": "Apple",
-      "model": "iPhone 14",
-      "capacity": "128 GB",
-      "color": "Blanco",
-      "condition": "Seminuevo",
-      "grade": "A",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "SIM física y eSIM",
-      "box": null,
-      "ram": "",
-      "priceCents": 46000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
     },
@@ -1391,7 +1347,7 @@
       "box": null,
       "ram": "",
       "priceCents": 70500,
-      "quantity": 11,
+      "quantity": 10,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2413,6 +2369,50 @@
       "addedAt": "2026-11-26T14:32:43.677Z"
     },
     {
+      "id": "87d81400af89b5df6f6b",
+      "manufacturer": "Apple",
+      "model": "iPhone 17 Pro",
+      "capacity": "256 GB",
+      "color": "Plata",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": 73,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 122500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-26T23:16:35.759Z"
+    },
+    {
+      "id": "1d42d2b3b6ef22bd0a36",
+      "manufacturer": "Apple",
+      "model": "iPhone 17 Pro",
+      "capacity": "512 GB",
+      "color": "Anaranjado",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": 1,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 129000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-26T23:16:35.759Z"
+    },
+    {
       "id": "00178614600d9d2cf7da",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
@@ -2435,6 +2435,50 @@
         "T"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
+    },
+    {
+      "id": "a2d9dc4dc19a19477e14",
+      "manufacturer": "Apple",
+      "model": "iPhone 17 Pro Max",
+      "capacity": "256 GB",
+      "color": "Azul",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "95%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 129500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-26T23:16:35.759Z"
+    },
+    {
+      "id": "7f545c0b322ff805cfa5",
+      "manufacturer": "Apple",
+      "model": "iPhone 17 Pro Max",
+      "capacity": "256 GB",
+      "color": "Azul",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "97%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 130500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-26T23:16:35.759Z"
     },
     {
       "id": "ca18356b138204e75ae8",
@@ -2501,6 +2545,28 @@
         "S"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
+    },
+    {
+      "id": "f9dced71f692a60b293a",
+      "manufacturer": "Apple",
+      "model": "iPhone 18 Pro",
+      "capacity": "256 GB",
+      "color": "Borgoña",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": 5,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 151500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-26T23:16:35.759Z"
     },
     {
       "id": "52391581a91983f994ca",

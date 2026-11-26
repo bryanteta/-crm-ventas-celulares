@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-26T04:39:05.624Z",
+  "updatedAt": "2026-11-26T14:32:43.677Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -703,7 +703,7 @@
       "box": true,
       "ram": "",
       "priceCents": 49500,
-      "quantity": 3,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "J"
@@ -2127,7 +2127,7 @@
       "addedAt": "2026-11-12T03:15:48.367Z"
     },
     {
-      "id": "afc0f36a9203a819eb60",
+      "id": "86029f3cae8ba709342a",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
       "capacity": "256 GB",
@@ -2140,7 +2140,7 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 91000,
+      "priceCents": 89000,
       "quantity": 1,
       "available": true,
       "sourceInitials": [
@@ -2389,6 +2389,28 @@
         "S"
       ],
       "addedAt": "2026-11-12T03:15:48.367Z"
+    },
+    {
+      "id": "0cc7c7456559b7daeee6",
+      "manufacturer": "Apple",
+      "model": "iPhone 17 Pro",
+      "capacity": "256 GB",
+      "color": "Azul",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": 142,
+      "sim": "Por confirmar",
+      "box": true,
+      "ram": "",
+      "priceCents": 121500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "J"
+      ],
+      "addedAt": "2026-11-26T14:32:43.677Z"
     },
     {
       "id": "00178614600d9d2cf7da",

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-25T22:50:49.884Z",
+  "updatedAt": "2026-11-26T04:39:05.624Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -2289,28 +2289,6 @@
       "condition": "Seminuevo",
       "grade": "A+",
       "battery": "93%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 98000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
-      "id": "d55f2908bb8f842298da",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Dorado",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "92%",
       "observations": [],
       "cycles": null,
       "sim": "Por confirmar",

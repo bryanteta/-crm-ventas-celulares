@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-27T15:21:28.941Z",
+  "updatedAt": "2026-11-27T23:38:16.259Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -19,7 +19,7 @@
       "box": null,
       "ram": "",
       "priceCents": 31500,
-      "quantity": 4,
+      "quantity": 3,
       "available": true,
       "sourceInitials": [
         "T"
@@ -755,11 +755,11 @@
       "addedAt": "2026-11-08T18:37:02.466Z"
     },
     {
-      "id": "aaa0e82aa7e16729239c",
+      "id": "3e5afc849e9bf834c2ec",
       "manufacturer": "Apple",
       "model": "iPhone 13 Pro",
       "capacity": "128 GB",
-      "color": "Celeste",
+      "color": "Dorado",
       "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
@@ -774,7 +774,7 @@
       "sourceInitials": [
         "T"
       ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
+      "addedAt": "2026-11-27T23:38:16.259Z"
     },
     {
       "id": "db1e9d1225ebe2ed1fa9",
@@ -1201,28 +1201,6 @@
       "addedAt": "2026-11-13T18:05:51.713Z"
     },
     {
-      "id": "90399fbb8aa5e6ae8aef",
-      "manufacturer": "Apple",
-      "model": "iPhone 15",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 86,
-      "sim": "SIM física",
-      "box": true,
-      "ram": "",
-      "priceCents": 69500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
       "id": "420e567212040ea3f57f",
       "manufacturer": "Apple",
       "model": "iPhone 15",
@@ -1325,7 +1303,7 @@
       "box": null,
       "ram": "",
       "priceCents": 70500,
-      "quantity": 10,
+      "quantity": 9,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2039,28 +2017,6 @@
       "addedAt": "2026-11-12T03:15:48.367Z"
     },
     {
-      "id": "86029f3cae8ba709342a",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "93%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 89000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "S"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
       "id": "1ec3bbfbf3202dd87632",
       "manufacturer": "Apple",
       "model": "iPhone 16 Pro Max",
@@ -2125,28 +2081,6 @@
         "S"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
-      "id": "7afcb02f0477181ab35d",
-      "manufacturer": "Apple",
-      "model": "iPhone 16 Pro Max",
-      "capacity": "256 GB",
-      "color": "Titanio desierto",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "96%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 94500,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ],
-      "addedAt": "2026-11-25T22:50:49.884Z"
     },
     {
       "id": "8a9d7572bea0b2a45ef5",
@@ -2347,28 +2281,6 @@
       "addedAt": "2026-11-26T23:16:35.759Z"
     },
     {
-      "id": "1d42d2b3b6ef22bd0a36",
-      "manufacturer": "Apple",
-      "model": "iPhone 17 Pro",
-      "capacity": "512 GB",
-      "color": "Anaranjado",
-      "condition": "Seminuevo",
-      "grade": "",
-      "battery": "100%",
-      "observations": [],
-      "cycles": 1,
-      "sim": "Por confirmar",
-      "box": true,
-      "ram": "",
-      "priceCents": 129000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "J"
-      ],
-      "addedAt": "2026-11-26T23:16:35.759Z"
-    },
-    {
       "id": "00178614600d9d2cf7da",
       "manufacturer": "Apple",
       "model": "iPhone 17 Pro Max",
@@ -2561,12 +2473,34 @@
       "box": null,
       "ram": "",
       "priceCents": 173000,
-      "quantity": 8,
+      "quantity": 9,
       "available": true,
       "sourceInitials": [
         "T"
       ],
       "addedAt": "2026-11-12T20:57:38.337Z"
+    },
+    {
+      "id": "b079f81b35b53cd4868f",
+      "manufacturer": "Apple",
+      "model": "iPhone 18 Pro Max",
+      "capacity": "256 GB",
+      "color": "Negro",
+      "condition": "Nuevo",
+      "grade": "",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 173000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
     },
     {
       "id": "ad18348e69058a1def69",
@@ -2671,7 +2605,7 @@
       "box": null,
       "ram": "",
       "priceCents": 26500,
-      "quantity": 1,
+      "quantity": 14,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2693,12 +2627,100 @@
       "box": null,
       "ram": "",
       "priceCents": 26500,
-      "quantity": 1,
+      "quantity": 2,
       "available": true,
       "sourceInitials": [
         "T"
       ],
       "addedAt": "2026-11-21T16:23:49.472Z"
+    },
+    {
+      "id": "efbd6bbb01c29c65ce57",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 28000,
+      "quantity": 11,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
+    },
+    {
+      "id": "93920810ed0125b44a56",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "128 GB",
+      "color": "Blanco",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 28000,
+      "quantity": 5,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
+    },
+    {
+      "id": "09b42312ab5030520e48",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "128 GB",
+      "color": "Rojo",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 28000,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
+    },
+    {
+      "id": "69dc4e17489b4d85e1ec",
+      "manufacturer": "Apple",
+      "model": "iPhone XR",
+      "capacity": "128 GB",
+      "color": "Amarillo",
+      "condition": "Seminuevo",
+      "grade": "A",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 28000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
     },
     {
       "id": "60b1037be1c6b71d2716",
@@ -2787,6 +2809,76 @@
         "T"
       ],
       "addedAt": "2026-11-08T18:37:02.466Z"
+    },
+    {
+      "id": "a230efa19c9f0985709f",
+      "manufacturer": "Samsung",
+      "model": "Samsung S22 Ultra",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "B",
+      "battery": "100%",
+      "observations": [
+        "Desgaste visible"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 40500,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
+    },
+    {
+      "id": "9c1d3618c960ed5fc8b8",
+      "manufacturer": "Samsung",
+      "model": "Samsung S22 Ultra",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "B",
+      "battery": "100%",
+      "observations": [
+        "Desgaste visible"
+      ],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 40500,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
+    },
+    {
+      "id": "596e7864fffd1a4f0df3",
+      "manufacturer": "Samsung",
+      "model": "Samsung S22 Ultra",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "B+",
+      "battery": "100%",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 43000,
+      "quantity": 3,
+      "available": true,
+      "sourceInitials": [
+        "T"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
     },
     {
       "id": "e5ec40880f420fb1f4dc",
@@ -2944,6 +3036,28 @@
         "S"
       ],
       "addedAt": "2026-11-12T03:15:48.367Z"
+    },
+    {
+      "id": "d69e5b58aa63337a775d",
+      "manufacturer": "Samsung",
+      "model": "Samsung S25 FE",
+      "capacity": "128 GB",
+      "color": "Negro",
+      "condition": "Seminuevo",
+      "grade": "",
+      "battery": "",
+      "observations": [],
+      "cycles": null,
+      "sim": "Por confirmar",
+      "box": null,
+      "ram": "",
+      "priceCents": 51000,
+      "quantity": 1,
+      "available": true,
+      "sourceInitials": [
+        "S"
+      ],
+      "addedAt": "2026-11-27T23:38:16.259Z"
     },
     {
       "id": "3b168df3f8c805087cfb",

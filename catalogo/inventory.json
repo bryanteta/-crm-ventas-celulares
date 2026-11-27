@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "brand": "Lunivo",
   "currency": "USD",
-  "updatedAt": "2026-11-27T05:10:32.408Z",
+  "updatedAt": "2026-11-27T15:21:28.941Z",
   "products": [
     {
       "id": "b6e631e24592f2ebcee2",
@@ -2767,29 +2767,7 @@
       "addedAt": "2026-11-18T23:26:26.856Z"
     },
     {
-      "id": "72e90066d9a1c803dd2d",
-      "manufacturer": "Samsung",
-      "model": "Samsung S21 Ultra",
-      "capacity": "128 GB",
-      "color": "Negro",
-      "condition": "Seminuevo",
-      "grade": "A+",
-      "battery": "100%",
-      "observations": [],
-      "cycles": null,
-      "sim": "Por confirmar",
-      "box": null,
-      "ram": "",
-      "priceCents": 37000,
-      "quantity": 1,
-      "available": true,
-      "sourceInitials": [
-        "T"
-      ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
-    },
-    {
-      "id": "94a9ed918f63892125ab",
+      "id": "7d733788a852c1a9c64a",
       "manufacturer": "Samsung",
       "model": "Samsung S21 Ultra",
       "capacity": "128 GB",
@@ -2802,8 +2780,8 @@
       "sim": "Por confirmar",
       "box": null,
       "ram": "",
-      "priceCents": 37000,
-      "quantity": 4,
+      "priceCents": 33000,
+      "quantity": 1,
       "available": true,
       "sourceInitials": [
         "T"
@@ -2811,11 +2789,11 @@
       "addedAt": "2026-11-08T18:37:02.466Z"
     },
     {
-      "id": "c1e0498542f268110419",
+      "id": "e5ec40880f420fb1f4dc",
       "manufacturer": "Samsung",
       "model": "Samsung S22 Ultra",
       "capacity": "128 GB",
-      "color": "Borgoña",
+      "color": "Blanco",
       "condition": "Seminuevo",
       "grade": "A+",
       "battery": "100%",
@@ -2830,7 +2808,7 @@
       "sourceInitials": [
         "T"
       ],
-      "addedAt": "2026-11-08T18:37:02.466Z"
+      "addedAt": "2026-11-27T15:21:28.941Z"
     },
     {
       "id": "642f2d13ee7c138134da",

@@ -47,4 +47,15 @@ public class StorageMigrationInstrumentedTest {
             until("window.restoredCount===5000");
         }finally{if(scenario!=null)scenario.close();}
     }
+    @Test public void backupUsesSystemPickerAndReportsCancellation()throws Exception{
+        android.app.Instrumentation instrumentation=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation();
+        android.app.Instrumentation.ActivityMonitor monitor=instrumentation.addMonitor(new android.content.IntentFilter(android.content.Intent.ACTION_CREATE_DOCUMENT),new android.app.Instrumentation.ActivityResult(android.app.Activity.RESULT_CANCELED,null),true);
+        scenario=ActivityScenario.launch(MainActivity.class);
+        try{
+            until("window.CrmAndroid&&document.readyState==='complete'");
+            js("window.backupTestStatus='';window.addEventListener('lunivo-backup',e=>{if(e.detail.requestId!=='instrumented-backup')return;const status=e.detail.status;if(status==='ready')CrmAndroid.postMessage(JSON.stringify({type:'backupExportChunk',requestId:'instrumented-backup',index:0,chunk:'e30='}));if(status==='chunk')CrmAndroid.postMessage(JSON.stringify({type:'backupExportEnd',requestId:'instrumented-backup'}));if(status==='cancelled'||status==='error')window.backupTestStatus=status;});CrmAndroid.postMessage(JSON.stringify({type:'backupExportBegin',requestId:'instrumented-backup',bytes:2,sha256:'44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a'}));true");
+            until("window.backupTestStatus==='cancelled'");assertEquals(1,monitor.getHits());
+        }finally{instrumentation.removeMonitor(monitor);if(scenario!=null)scenario.close();}
+    }
+
 }

@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'suite-store.js'
+      - 'recovery-*.js'
       - 'suite.js'
       - 'suite-sync.js'
       - 'settings-ui.js'
@@ -12,6 +13,7 @@ on:
   pull_request:
     paths:
       - 'suite-store.js'
+      - 'recovery-*.js'
       - 'suite.js'
       - 'suite-sync.js'
       - 'settings-ui.js'
@@ -43,4 +45,6 @@ jobs:
           node tests/storage-scale-ui.cjs
           node tests/storage-rollback-ui.cjs
           node tests/storage-safety-ui.cjs
+          node tests/storage-recovery-ui.cjs
+          node tests/storage-backup-import-ui.cjs
           node tests/web-prices-ui.cjs

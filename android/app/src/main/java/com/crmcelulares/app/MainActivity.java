@@ -41,6 +41,7 @@ public final class MainActivity extends Activity {
     private SafeAreaLayout safeArea;
     private LaunchSound launchSound;
     private ReceiptPrinter receiptPrinter;
+    private SalesBackupExporter salesBackupExporter;
     private AppUpdater updater;
     private InventoryBridge inventoryBridge;
     private boolean startupSoundPending;
@@ -54,6 +55,7 @@ public final class MainActivity extends Activity {
         readFollowup(getIntent());
         launchSound = new LaunchSound(this);
         receiptPrinter = new ReceiptPrinter(this);
+        salesBackupExporter = new SalesBackupExporter(this,event -> {if(webView!=null&&!isDestroyed())webView.evaluateJavascript("window.dispatchEvent(new CustomEvent('lunivo-backup',{detail:"+event+"}))",null);});
         updater = new AppUpdater(this, event -> { if (webView != null && !isDestroyed()) webView.evaluateJavascript("window.dispatchEvent(new CustomEvent('lunivo-update',{detail:"+event+"}))",null); });
         inventoryBridge = new InventoryBridge(this);
         startupSoundPending = state == null && pendingFollowup == null;
@@ -99,6 +101,11 @@ public final class MainActivity extends Activity {
                                 return;
                             }
                             switch (request.optString("type")) {
+                                case "backupImport":
+                                case "backupExportBegin":
+                                case "backupExportChunk":
+                                case "backupExportEnd":
+                                case "backupExportCancel": salesBackupExporter.handle(request); return;
                                 case "updateState": updater.state(); return;
                                 case "updateCheck": updater.check(request.optBoolean("force",true)); return;
                                 case "updateDownload": updater.download(); return;
@@ -264,6 +271,7 @@ public final class MainActivity extends Activity {
     @Override
     @SuppressWarnings("deprecation")
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (salesBackupExporter != null && salesBackupExporter.result(requestCode,resultCode,data)) return;
         if (receiptPrinter != null && receiptPrinter.handleExportResult(requestCode, resultCode, data)) return;
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -358,6 +366,7 @@ public final class MainActivity extends Activity {
     protected void onDestroy() {
         if (inventoryBridge != null) inventoryBridge.close();
         pageReady = false;
+        if (salesBackupExporter != null) salesBackupExporter.close();
         if (receiptPrinter != null) receiptPrinter.close();
         if (updater != null) updater.close();
         if (cloud != null) cloud.close();

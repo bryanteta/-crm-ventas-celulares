@@ -26,8 +26,8 @@ function paint(){
  const count=meta?.migration?Object.values(meta.migration).reduce((n,ids)=>n+ids.length,0):0;
  const urgent=Boolean(request||problem||migrating||meta&&!meta.imported);if(urgent)banner.open=true;else if(banner.dataset.urgent==='true')banner.open=false;banner.dataset.urgent=String(urgent);
  $('#suite-cloud-title').textContent=request?'Operación pendiente de confirmar':migrating||meta&&!meta.imported?'Preparando Ventas compartidas':online()?'Ventas compartidas':'Tu copia está disponible';
- $('#suite-cloud-copy').textContent=problem||(request?'Se conserva la solicitud de '+request.actor.name+'. Se recuperará al volver la conexión. Reintentar usa el mismo identificador y evita duplicados.':migrating||meta&&!meta.imported?'Conecta este teléfono para compartir sus registros anteriores. Pendientes: '+count+'.':online()?'Ventas, garantías y Mis equipos se comparten con esta cuenta. Cada operación guarda su usuario.':'Puedes consultar los datos guardados y preparar borradores. Conecta el teléfono para confirmar ventas o modificar el inventario.');
- $('#suite-cloud-retry').disabled=working||migrating||!navigator.onLine;$('#suite-cloud-retry').textContent=request?'Reintentar solicitud':'Sincronizar Ventas';
+ $('#suite-cloud-copy').textContent=problem||(meta?.recoveryImportPaused?'Respaldo importado solo en este teléfono. Pulsa Sincronizar respaldo para revisar su incorporación a la nube.':request?'Se conserva la solicitud de '+request.actor.name+'. Se recuperará al volver la conexión. Reintentar usa el mismo identificador y evita duplicados.':migrating||meta&&!meta.imported?'Conecta este teléfono para compartir sus registros anteriores. Pendientes: '+count+'.':online()?'Ventas, garantías y Mis equipos se comparten con esta cuenta. Cada operación guarda su usuario.':'Puedes consultar los datos guardados y preparar borradores. Conecta el teléfono para confirmar ventas o modificar el inventario.');
+ $('#suite-cloud-retry').disabled=working||migrating||!navigator.onLine;$('#suite-cloud-retry').textContent=meta?.recoveryImportPaused?'Sincronizar respaldo':request?'Reintentar solicitud':'Sincronizar Ventas';
  for(const selector of['#sale-form','#stock-form','#warranty-form','#sale-edit-form','#prepared-form']){const form=$(selector);form.inert=Boolean(request);form.setAttribute('aria-busy',String(Boolean(request)));}
  if(shared()){$('#sale-edit-save').disabled=Boolean(request)||working;$('#prepared-save').disabled=Boolean(request)||working;}$('#sale-action-confirm').disabled=Boolean(request)||working;for(const input of document.querySelectorAll('#sale-action input,#sale-action textarea'))input.readOnly=Boolean(request);
  if(shared())for(const[selector,kinds,label,busy]of[['#sale-confirm',['confirmSale'],'Registrar venta','Confirmando…'],['#prepared-save',['addStock','organizeStock'],'Guardar en Mis equipos','Guardando…'],['#stock-form button[type=submit]',['addStock'],'Guardar equipo','Guardando…'],['#stock-organize-form button[type=submit]',['organizeStock'],'Guardar organización','Guardando…'],['#sale-edit-save',['editSale'],'Guardar cambios','Guardando…'],['#sale-action-confirm',['restock','cancelSale','setSaleVisibility'],'Confirmar','Guardando…']]){const button=$(selector);button.disabled=Boolean(request)||working;button.textContent=request&&kinds.includes(request.kind)?busy:label;}
@@ -37,7 +37,7 @@ function paint(){
 function refresh(){api?.render();paint();}
 async function migrate(){
  if(!online()||migrating||working)return;const uid=scope;let data,meta;migrating=true;problem='';
- try{data=api.read();meta=metadata(data);if(meta.imported)return;await write(data);paint();for(const collection of['inventory','sales','counters']){
+ try{data=api.read();meta=metadata(data);if(meta.imported||meta.recoveryImportPaused)return;await write(data);paint();for(const collection of['inventory','sales','counters']){
   while(current(uid)&&online()){
    data=api.read();meta=metadata(data);const ids=meta.migration?.[collection]||[];if(!ids.length)break;const batch=ids.slice(0,30),records=collection==='counters'?batch.map(month=>({id:month,month,sequence:data.receiptCounters[month]})):batch.map(id=>data[collection].find(r=>r.id===id));if(records.some(r=>!r))throw Error('Falta un registro anterior. Se conserva la copia de este teléfono.');
    const result=await send('cloudSuiteImport',{collection,records});if(!current(uid))return;data=api.read();meta=metadata(data);if(collection!=='counters')merge(data,collection,result.documents);const done=new Set(result.documents.map(d=>d.id));meta.migration[collection]=meta.migration[collection].filter(id=>!done.has(id));await write(data,uid);refresh();
@@ -53,10 +53,10 @@ async function run(operation,recovered=false){
  }finally{if(current(uid)){working=false;paint();}}
 }
 async function retry(){
- changeScope();if(!shared()||!api.ready())return;problem='';try{bridge.postMessage(JSON.stringify({type:'cloudSuiteState',uid:scope}));const data=api.read(),meta=metadata(data);await write(data);if(meta.pending){if(working||!online())return;lastRetry=Date.now();await run(meta.pending,true);}else await migrate();}catch(e){problem=e.message;paint();}
+ changeScope();if(!shared()||!api.ready())return;problem='';try{bridge.postMessage(JSON.stringify({type:'cloudSuiteState',uid:scope}));const data=api.read(),meta=metadata(data);await write(data);if(meta.recoveryImportPaused)return;if(!meta.imported){await migrate();return;}if(meta.pending){if(working||!online())return;lastRetry=Date.now();await run(meta.pending,true);}else await migrate();}catch(e){problem=e.message;paint();}
 }
 async function mutate(kind,values,targetId){
- changeScope();const uid=scope;if(!shared())throw Error('La cuenta no está vinculada.');if(!api.ready())throw Error('Espera a que se abra tu cuenta.');let data=api.read(),meta=metadata(data);if(meta.pending)throw Error('Hay una solicitud pendiente. Usa Reintentar solicitud antes de registrar otra operación.');
+ changeScope();const uid=scope;if(!shared())throw Error('La cuenta no está vinculada.');if(!api.ready())throw Error('Espera a que se abra tu cuenta.');let data=api.read(),meta=metadata(data);if(meta.recoveryImportPaused)throw Error('Sincroniza el respaldo desde Ventas antes de registrar nuevas operaciones.');if(meta.pending)throw Error('Hay una solicitud pendiente. Usa Reintentar solicitud antes de registrar otra operación.');
  const actor=window.LunivoProfileUI.current();if(!actor)throw Error('Selecciona tu usuario en Ajustes antes de guardar.');
  if(kind==='confirmSale'){
   const draft=clone(values.sale);draft.status='Borrador';draft.stockDeducted=false;delete draft.saleNumber;delete draft.saleSequence;delete draft.saleMonth;if(draft.receipt)draft.receipt.number='';data.sales=data.sales.some(s=>s.id===targetId)?data.sales.map(s=>s.id===targetId?draft:s):[draft,...data.sales];
@@ -69,17 +69,18 @@ window.addEventListener('lunivo-cloud',event=>{
  const response=event.detail;if(!api||!response||typeof response.type!=='string')return;changeScope();
  if(response.type==='cloudState'){paint();if(shared()&&api.ready()){try{bridge.postMessage(JSON.stringify({type:'cloudSuiteState',uid:scope}));}catch{}}return;}
  if(!response.type.startsWith('cloudSuite')){if(shared()&&ready&&!migrating&&!working)queueMicrotask(()=>migrate());return;}
- if(response.uid!==scope||!current(scope))return;
+ if(response.uid!==scope||response.uid!==account())return;
+ if(!current(scope)&&!response.requestId)return;
  try{
   if(response.requestId){const p=pending.get(response.requestId);if(p&&p.uid===scope){pending.delete(response.requestId);clearTimeout(p.timer);if(response.type==='cloudSuiteError'){const error=Object.assign(Error(response.message),{definitive:response.definitive,code:response.code});p.reject(error);}else p.resolve(response);return;}}
   if(response.type==='cloudSuiteSnapshot'){let data=api.read();merge(data,response.collection,response.documents,response.reset,response.fromCache);write(data);refresh();}
-  else if(response.type==='cloudSuiteState'){ready=Boolean(response.ready);paint();if(online()&&!working&&!migrating){const meta=metadata(api.read());if(meta.pending&&Date.now()-lastRetry>30000){lastRetry=Date.now();run(meta.pending,true).catch(()=>{});}else if(!meta.pending)migrate();}}
+  else if(response.type==='cloudSuiteState'){ready=Boolean(response.ready);paint();if(online()&&!working&&!migrating){const meta=metadata(api.read());if(!meta.imported){migrate();}else if(meta.pending&&Date.now()-lastRetry>30000){lastRetry=Date.now();run(meta.pending,true).catch(()=>{});}else if(!meta.pending)migrate();}}
   else if(response.type==='cloudSuiteError'){problem=response.message;paint();}
  }catch(e){problem=e.message;paint();}
 });
 // Cloud snapshots that arrive while this phone's copy is still opening are ignored; ask the bridge to replay them.
 window.addEventListener('lunivo-suite-storage',event=>{if(!api||!event.detail.loaded)return;changeScope();if(shared()&&api.ready())retry();else paint();});
 window.addEventListener('online',retry);window.addEventListener('offline',paint);window.addEventListener('hashchange',paint);
-$('#suite-cloud-retry').addEventListener('click',retry);
-window.LunivoSuiteCloud={enabled:shared,mutate,paint,revision(collection,id){try{return shared()?metadata(api.read()).versions[collection][id]||'':null;}catch{return null;}},connect(value){api=value;changeScope();paint();if(shared()&&api.ready())retry();}};
+$('#suite-cloud-retry').addEventListener('click',async()=>{try{if(shared()&&api.ready()){const data=api.read(),meta=metadata(data);if(meta.recoveryImportPaused){if(!confirm('¿Incorporar los registros importados a esta cuenta? Los existentes en la nube se conservan.'))return;delete meta.recoveryImportPaused;await write(data);}}await retry();}catch(error){problem=error.message;paint();}});
+window.LunivoSuiteCloud={enabled:shared,mutate,paint,recoverySnapshot(ids){changeScope();if(!shared()||!navigator.onLine)return Promise.reject(Error('Conecta el teléfono e inicia sesión para recuperar desde la nube.'));return send('cloudSuiteRecoverySnapshot',{operationIds:ids});},recovered(){ready=false;changeScope();retry();},revision(collection,id){try{return shared()?metadata(api.read()).versions[collection][id]||'':null;}catch{return null;}},connect(value){api=value;changeScope();paint();if(shared()&&api.ready())retry();}};
 })();

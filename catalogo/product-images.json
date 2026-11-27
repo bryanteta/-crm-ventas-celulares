@@ -11063,6 +11063,40 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-glacier.png"
       ]
     },
+    "iPhone 18 Pro Max|Negro": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_max_black__s6eln189sr2u_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "black",
+      "model": "iPhone 18 Pro Max",
+      "color": "Negro",
+      "path": "assets/products/iphone-18-pro-max-negro.jpg",
+      "sha256": "acd2a835562759696cc3b30e81db5cce68cdb90af0131053c94b6c58087c4f91",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "model": "iPhone 18 Pro Max",
+          "color": "Negro",
+          "officialColor": "black",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-max-finish-select-black-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-max-negro-apple-camera-detail.jpg",
+          "sha256": "995810daa367195dfcebee1287d8c0cd529f5da5104c1622484adab73495c426",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 316,
+            "width": 643,
+            "height": 569
+          }
+        }
+      ]
+    },
     "iPhone 18 Pro Max|Plata": {
       "model": "iPhone 18 Pro Max",
       "color": "Plata",
@@ -11442,6 +11476,18 @@
       "galleryRejectedSources": [
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-black.png"
       ]
+    },
+    "iPhone XR|Amarillo": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphoneXR_yellow__b4ux4f7n3xle_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "yellow",
+      "model": "iPhone XR",
+      "color": "Amarillo",
+      "path": "assets/products/iphone-xr-amarillo.jpg",
+      "sha256": "ccd66a96fed5c629d4a335da66b352c6cea58fa9bc2c3c0f34913c3559c67ffb",
+      "width": 612,
+      "height": 760
     },
     "iPhone XR|Anaranjado": {
       "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphoneXR_coral__ckmesqgoxryq_large_2x.jpg",

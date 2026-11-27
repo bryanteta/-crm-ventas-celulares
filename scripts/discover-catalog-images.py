@@ -32,7 +32,7 @@ def apple_candidates(css, base):
             result[name, finish] = {'sourceImage': urllib.parse.urljoin(base, url[1]), 'sourcePage': 'https://www.apple.com/iphone/compare/', 'credit': 'Apple', 'officialColor': finish}
     return result
 
-APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight', 'graphite', 'spaceblack', 'blacktitanium'), 'Morado': ('purple',), 'Lila': ('purple',), 'Rosado': ('pink',), 'Rojo': ('red',), 'Verde': ('green',), 'Azul': ('blue', 'deepblue'), 'Celeste': ('blue', 'skyblue'), 'Amarillo': ('yellow',), 'Plata': ('silver',), 'Dorado': ('gold',), 'Anaranjado': ('cosmicorange', 'orange'), 'Titanio natural': ('naturaltitanium',), 'Titanio desierto': ('deserttitanium',)}
+APPLE_COLORS = {'Blanco': ('white', 'starlight'), 'Negro': ('black', 'midnight', 'graphite', 'spaceblack', 'blacktitanium'), 'Morado': ('purple',), 'Lila': ('purple',), 'Rosado': ('pink',), 'Borgoña': ('burgundy',), 'Rojo': ('red',), 'Verde': ('green',), 'Azul': ('blue', 'deepblue'), 'Celeste': ('blue', 'skyblue'), 'Amarillo': ('yellow',), 'Plata': ('silver',), 'Dorado': ('gold',), 'Anaranjado': ('cosmicorange', 'orange'), 'Titanio natural': ('naturaltitanium',), 'Titanio desierto': ('deserttitanium',)}
 # Apple names the blue finish on this family Ultramarine; keep the match model-specific.
 APPLE_MODEL_COLORS = {('iPhone XR', 'Anaranjado'): ('coral',),('iPhone 13 Pro', 'Celeste'): ('sierrablue',), ('iPhone 13 Pro Max', 'Celeste'): ('sierrablue',), ('iPhone 16', 'Azul'): ('ultramarine',), ('iPhone 16 Plus', 'Azul'): ('ultramarine',)}
 

@@ -11143,6 +11143,66 @@
         "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-max-silver.png"
       ]
     },
+    "iPhone 18 Pro|Borgoña": {
+      "sourceImage": "https://www.apple.com/v/iphone/compare/an/images/overview/compare_iphone_18_pro_burgundy__mdv9ns7r6oa6_large_2x.jpg",
+      "sourcePage": "https://www.apple.com/iphone/compare/",
+      "credit": "Apple",
+      "officialColor": "burgundy",
+      "model": "iPhone 18 Pro",
+      "color": "Borgoña",
+      "path": "assets/products/iphone-18-pro-borgona.jpg",
+      "sha256": "7942326e4e0281f647fe085a56ed5b50ffa34a18cc9d1a8f40c8eabc794dbbd6",
+      "width": 612,
+      "height": 760,
+      "gallery": [
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-burgundy-back.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro/",
+          "credit": "Swappie",
+          "label": "Reverso",
+          "singleDevice": true,
+          "model": "iPhone 18 Pro",
+          "color": "Borgoña",
+          "path": "assets/products/iphone-18-pro-borgona-view-dd27bed01f.png",
+          "sha256": "e58767da07c0f0343d416c0ad28fd07855e534638a3cb73c661364a1ddefdf81",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "sourceImage": "https://assets.swappie.com/cdn-cgi/image/width=1200,height=1200,fit=contain,format=webp,quality=85/swappie-iphone-18-pro-burgundy-front.png",
+          "sourcePage": "https://swappie.com/us/iphone/iphone-18-pro/",
+          "credit": "Swappie",
+          "label": "Frente",
+          "singleDevice": true,
+          "model": "iPhone 18 Pro",
+          "color": "Borgoña",
+          "path": "assets/products/iphone-18-pro-borgona-view-0fbefe0131.png",
+          "sha256": "948e4c3ada30084d6253be8db402574016f76be662953ebac8ccc921d76ffba8",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "model": "iPhone 18 Pro",
+          "color": "Borgoña",
+          "officialColor": "burgundy",
+          "sourceImage": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-18-pro-finish-select-burgundy-202609_AV2?wid=1200&hei=1200&fmt=jpeg&qlt=90",
+          "sourcePage": "https://www.apple.com/iphone/compare/",
+          "credit": "Apple",
+          "label": "Detalle de cámaras",
+          "singleDevice": true,
+          "path": "assets/products/iphone-18-pro-borgona-view-927d98eb17.jpg",
+          "sha256": "c3151cf4bc91009a7b73467dc7456cdeb3bc536a33ed2d95de21f8c3f532016a",
+          "width": 1200,
+          "height": 1200,
+          "framing": {
+            "x": 279,
+            "y": 315,
+            "width": 641,
+            "height": 570
+          }
+        }
+      ]
+    },
     "iPhone 18 Pro|Celeste": {
       "model": "iPhone 18 Pro",
       "color": "Celeste",
@@ -11558,11 +11618,6 @@
     "iPhone 17 Air|Plata": {
       "model": "iPhone 17 Air",
       "color": "Plata",
-      "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
-    },
-    "iPhone 18 Pro|Borgoña": {
-      "model": "iPhone 18 Pro",
-      "color": "Borgoña",
       "reason": "Sin coincidencia oficial verificada; consulta automática pendiente."
     }
   }

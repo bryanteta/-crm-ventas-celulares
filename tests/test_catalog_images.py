@@ -21,6 +21,13 @@ class ExactImageTests(unittest.TestCase):
         self.assertEqual(result['sourceImage'], 'https://www.apple.com/v/iphone/compare/an/images/pink_large_2x.jpg')
         self.assertIsNone(d.resolve({'model':'iPhone 13 Pro','color':'Rosado'}, candidates, {}, {}))
         self.assertIsNone(d.resolve({'model':'iPhone 13','color':'Color por confirmar'}, candidates, {}, {}))
+    def test_burgundy_uses_the_exact_pro_model_not_pro_max(self):
+        css = '.image-compare-iphone-18-pro-burgundy{background-image:url(/pro-burgundy_large_2x.jpg)}.image-compare-iphone-18-pro-max-burgundy{background-image:url(/max-burgundy_large_2x.jpg)}'
+        apple = d.apple_candidates(css, 'https://www.apple.com/style.css')
+        result = d.resolve({'model':'iPhone 18 Pro','color':'Borgoña'}, apple, {}, {})
+        self.assertEqual(result['sourceImage'], 'https://www.apple.com/pro-burgundy_large_2x.jpg')
+        self.assertEqual(result['officialColor'], 'burgundy')
+
     def test_no_guessing_ambiguous_finishes_or_overwriting_reviewed_color(self):
         apple = {('iPhone 13','blue'):{}, ('iPhone 13','deepblue'):{}}
         self.assertIsNone(d.resolve({'model':'iPhone 13','color':'Azul'}, apple, {}, {}))
